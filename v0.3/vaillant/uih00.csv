@@ -12,7 +12,9 @@ get;uih00;TempIncrease;Temperaturüberhöhung;MS;15;B509;3;0D2F00;1;-;sd;1,2;d2c
 get;uih00;PreTurnOffTime;Vorabschaltzeit;MS;15;B509;3;0D2D00;1;-;sd;1;uch;-;min;-;-;;;;;;;;;;;;;;;;;;;;;;;;
 get;uih00;FrostProtectionDelayTime;Frostschutzverzögerung;MS;15;B509;3;0D2E00;1;-;sd;1;uch;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;
 get;uih00;TempErrorDetectTime;Temperaturfehlererkennung;MS;15;B509;3;0D3300;1;-;sd;1;uch;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;
+get;uih00;NameHeatCircuit1;Name Heizkreis 1;MS;15;B509;3;0D4100;1;-;sd;1,10;str;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;
 get;uih00;NameHeatCircuit2;Name Heizkreis 2;MS;15;B509;3;0D4108;1;-;sd;1,10;str;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;
+get;uih00;NameHeatCircuit3;Name Heizkreis 3;MS;15;B509;3;0D4110;1;-;sd;1,10;str;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;
 get;uih00;NameHeatCircuit4;Name Heizkreis 4;MS;15;B509;3;0D4118;1;-;sd;1,10;str;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;
 get;uih00;NameHeatCircuit5;Name Heizkreis 5;MS;15;B509;3;0D4120;1;-;sd;1,10;str;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;
 get;uih00;NameHeatCircuit6;Name Heizkreis 6;MS;15;B509;3;0D4128;1;-;sd;1,10;str;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;
