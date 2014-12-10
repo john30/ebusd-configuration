@@ -40,6 +40,8 @@ ehtype,,uch,0=not present;1=external heat;2=external water;3=external heat and w
 ehmode,,uch,0=no backup;1=with backup;2=only backup,,
 power,,uch,,kW,
 powersum,,ulg,,kW,
+energy,,uin,,kWh,
+energy4,,ulg,,kWh,
 startcnt,,ulg,,,
 pumppow,,uch,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,
 pumpstate,,uch,0=ok;1=error;2=none,,
