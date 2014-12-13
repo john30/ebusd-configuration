@@ -7,6 +7,7 @@ press,,flt,,bar,Druck
 percent,,uch,,%,
 date,,bda,,,
 day,,bdy,,,
+days,,uch,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
 time,,bti,,,
 time2,,htm,,,
 minutes,,ulg,120,min,
