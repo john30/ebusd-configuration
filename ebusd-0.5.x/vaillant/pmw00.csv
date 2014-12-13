@@ -1,35 +1,55 @@
-# type (r/p,w,c);class;cmd;comment;QQ;ZZ;PBSB;NN;D1D2D3;elements;sub;part;position;datatype;factor;unit;valid;comment;sub;part;position;datatype;factor;unit;valid;comment;sub;part;position;datatype;factor;unit;valid;comment;sub;part;position;datatype;factor;unit;valid;comment;;;;;;;;;;;;;;;;;;;;;;;;
-p;pmw00;Ntc1;Ntc1 Sensor;;0A;B509;3;0D0000;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;pmw00;Ntc2;Ntc2 Sensor;;0A;B509;3;0D0100;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;pmw00;Ntc3;Ntc3 Sensor;;0A;B509;3;0D0200;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;Vortex;Wirbel, Bypass?;;0A;B509;3;0D0300;1;-;sd;2,1;uin;-;hz;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;CircoPumpPower;Zirkulationspumpe Leistung;;0A;B509;3;0D0400;1;-;sd;1;uch;-;%;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;PumpDutyCycle;Pumpe Einschaltdauer;;0A;B509;3;0D0500;1;-;sd;1;uch;-;%;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;MixerPosition;Mischer Position max. 220 Schritte;;0A;B509;3;0D0600;1;-;sd;2,1;uin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;ElectricHeater;Elektrische Zusatzheizung;;0A;B509;3;0D0800;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;HeatDemand;Heizanforderung;;0A;B509;3;0D0900;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;OperatingMode;Betriebsart;;0A;B509;3;0D0A00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;TappingSetpointManual;Zapfsollwert manuell;;0A;B509;3;0D0B00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;TappingSetpointAuto;Zapfsollwert automatisch;;0A;B509;3;0D0C00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;TappingSetpointActual;Zapfsollwert aktuell;;0A;B509;3;0D0E00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;LegionellaProtectionDay;Legionellenfunktion Wochentag;;0A;B509;3;0D1000;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;LegionellaProtectionTime;Legionellenfunktion Zeitpunkt;;0A;B509;3;0D1100;1;-;sd;3,2,1;hti;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;StartParty;Modus Party;;0A;B509;3;0D1200;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;StartHoliday;Modus Urlaub;;0A;B509;3;0D1300;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;FlowRate;Volumenstrom;;0A;B509;3;0D4600;1;-;sd;1,2;d2c;1.0;l/min;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;VPMType;1=VPM20/25 2=VPM30/35;;0A;B509;3;0D4B00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-# ttm;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;pmw00;TTMonday;Zeitfenster Montag;;0A;B504;1;02;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;TTTuesday;Zeitfenster Dienstag;;0A;B504;1;03;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;TTWednesday;Zeitfenster Mittwoch;;0A;B504;1;04;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;TTThursday;Zeitfenster Donnerstag;;0A;B504;1;05;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;TTFriday;Zeitfenster Freitrag;;0A;B504;1;06;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;TTSaturday;Zeitfenster Samstag;;0A;B504;1;07;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;TTSunday;Zeitfenster Sonntag;;0A;B504;1;08;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTMonday;Zirkulationspumpe Zeitfenster Montag;;12;B504;1;02;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTTuesday;Zirkulationspumpe Zeitfenster Dienstag;;12;B504;1;03;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTWednesday;Zirkulationspumpe Zeitfenster Mittwoch;;12;B504;1;04;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTThursday;Zirkulationspumpe Zeitfenster Donnerstag;;12;B504;1;05;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTFriday;Zirkulationspumpe Zeitfenster Freitrag;;12;B504;1;06;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTSaturday;Zirkulationspumpe Zeitfenster Samstag;;12;B504;1;07;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;pmw00;cpTTSunday;Zirkulationspumpe Zeitfenster Sonntag;;12;B504;1;08;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
+# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
+*r,pmw00,,,,0A,B509,0D,,,,,,,,,,,,
+*w,pmw00,,,,0A,B509,0E,,,,,,,,,,,,
+*u,pmw00,,,,0A,B509,29,,,IGN:2,,,,,,,,,
+r1;w,,Ntc1,Ntc1 Sensor,,,,0000,,,tempsensor,,,,,,,,,
+r1;w,,Ntc2,Ntc2 Sensor,,,,0100,,,tempsensor,,,,,,,,,
+r1;w,,Ntc3,Ntc3 Sensor,,,,0200,,,tempsensor,,,,,,,,,
+r;w,,Vortex,"Wirbel, Bypass?",,,,0300,,,uin,,hz,,,,,,,
+r;w,,cpPower,Zirkulationspumpe Leistung,,,,0400,,,percent,,,,,,,,,
+r;w,,PumpDutyCycle,Pumpe Einschaltdauer,,,,0500,,,percent,,,,,,,,,
+r;w,,MixerPosition,Mischer Position max. 220 Schritte,,,,0600,,,uin,,,,,,,,,
+r;w,,ElectricHeater,Elektrische Zusatzheizung,,,,0800,,,yesno,,,,,,,,,
+r;w,,HeatDemand,Heizanforderung,,,,0900,,,temp,,,,,,,,,
+r;w,,OperatingMode,Betriebsart,,,,0A00,,,uch,0=off;1=on;2=auto;3=manual,,,,,,,,
+r;w,,TappingSetpointManual,Zapfsollwert manuell,,,,0B00,,,temp,,,,,,,,,
+r;w,,TappingSetpointAuto,Zapfsollwert automatisch,,,,0C00,,,temp,,,,,,,,,
+r;w,,TappingSetpointActual,Zapfsollwert aktuell,,,,0E00,,,temp,,,,,,,,,
+r;w,,LegionellaProtectionDay,Legionellenfunktion Wochentag,,,,1000,,,day,,,,,,,,,
+r;w,,LegionellaProtectionTime,Legionellenfunktion Zeitpunkt,,,,1100,,,time2,,,,,,,,,
+r;w,,StartParty,Modus Party,,,,1200,,,onoff,,,,,,,,,
+r;w,,StartHoliday,Modus Urlaub,,,,1300,,,onoff,,,,,,,,,
+r,,FlowRate,Volumenstrom,,,,4600,,,d2c,,l/min,,,,,,,
+r;w,,VPMType,VPM Typ,,,,4B00,,,uch,1=VPM20/25;2=VPM30/35,,,,,,,,
+*r,pmw00,,,,0A,B504,,,,,,,,,,,,,
+*w,pmw00,,,,0A,B505,09,,,,,,,,,,,,
+r,,mcTTMonday,Zeitfenster Montag,,,,02,,,slot1-3;days,,,,,,,,,
+w,,mcTTMonday,Zeitfenster Montag,,,,01,,,slot1-3;days,,,,,,,,,
+r,,mcTTTuesday,Zeitfenster Dienstag,,,,03,,,slot1-3;days,,,,,,,,,
+w,,mcTTTuesday,Zeitfenster Dienstag,,,,02,,,slot1-3;days,,,,,,,,,
+r,,mcTTWednesday,Zeitfenster Mittwoch,,,,04,,,slot1-3;days,,,,,,,,,
+w,,mcTTWednesday,Zeitfenster Mittwoch,,,,03,,,slot1-3;days,,,,,,,,,
+r,,mcTTThursday,Zeitfenster Donnerstag,,,,05,,,slot1-3;days,,,,,,,,,
+w,,mcTTThursday,Zeitfenster Donnerstag,,,,04,,,slot1-3;days,,,,,,,,,
+r,,mcTTFriday,Zeitfenster Freitrag,,,,06,,,slot1-3;days,,,,,,,,,
+w,,mcTTFriday,Zeitfenster Freitrag,,,,05,,,slot1-3;days,,,,,,,,,
+r,,mcTTSaturday,Zeitfenster Samstag,,,,07,,,slot1-3;days,,,,,,,,,
+w,,mcTTSaturday,Zeitfenster Samstag,,,,06,,,slot1-3;days,,,,,,,,,
+r,,mcTTSunday,Zeitfenster Sonntag,,,,08,,,slot1-3;days,,,,,,,,,
+w,,mcTTSunday,Zeitfenster Sonntag,,,,07,,,slot1-3;days,,,,,,,,,
+*r,pmw00,,,,12,B504,,,,,,,,,,,,,
+*w,pmw00,,,,12,B505,09,,,,,,,,,,,,
+r,,cpTTMonday,Zirkulationspumpe Zeitfenster Montag,,,,02,,,slot1-3;days,,,,,,,,,
+w,,cpTTMonday,Zirkulationspumpe Zeitfenster Montag,,,,01,,,slot1-3;days,,,,,,,,,
+r,,cpTTTuesday,Zirkulationspumpe Zeitfenster Dienstag,,,,03,,,slot1-3;days,,,,,,,,,
+w,,cpTTTuesday,Zirkulationspumpe Zeitfenster Dienstag,,,,02,,,slot1-3;days,,,,,,,,,
+r,,cpTTWednesday,Zirkulationspumpe Zeitfenster Mittwoch,,,,04,,,slot1-3;days,,,,,,,,,
+w,,cpTTWednesday,Zirkulationspumpe Zeitfenster Mittwoch,,,,03,,,slot1-3;days,,,,,,,,,
+r,,cpTTThursday,Zirkulationspumpe Zeitfenster Donnerstag,,,,05,,,slot1-3;days,,,,,,,,,
+w,,cpTTThursday,Zirkulationspumpe Zeitfenster Donnerstag,,,,04,,,slot1-3;days,,,,,,,,,
+r,,cpTTFriday,Zirkulationspumpe Zeitfenster Freitrag,,,,06,,,slot1-3;days,,,,,,,,,
+w,,cpTTFriday,Zirkulationspumpe Zeitfenster Freitrag,,,,05,,,slot1-3;days,,,,,,,,,
+r,,cpTTSaturday,Zirkulationspumpe Zeitfenster Samstag,,,,07,,,slot1-3;days,,,,,,,,,
+w,,cpTTSaturday,Zirkulationspumpe Zeitfenster Samstag,,,,06,,,slot1-3;days,,,,,,,,,
+r,,cpTTSunday,Zirkulationspumpe Zeitfenster Sonntag,,,,08,,,slot1-3;days,,,,,,,,,
+w,,cpTTSunday,Zirkulationspumpe Zeitfenster Sonntag,,,,07,,,slot1-3;days,,,,,,,,,
