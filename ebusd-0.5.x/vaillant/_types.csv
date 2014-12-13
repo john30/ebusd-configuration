@@ -1,0 +1,57 @@
+# template name,part (m;s),type / templates,divider / values,unit,comment
+temp,,d2c,,°C,Temperatur
+temp1,,d1c,,°C,Temperatur
+temp0,,uch,,°C,Temperatur
+temps,,sch,,°C,Temperatur
+press,,flt,,bar,Druck
+percent,,uch,,%,
+date,,bda,,,
+day,,bdy,,,
+days,,uch,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
+time,,bti,,,
+time2,,htm,,,
+minutes,,ulg,120,min,
+hoursum,,ulg,,h,Stunden
+hours,,uch,,h,Stunden
+hours2,,uch,2,h,Stunden
+hour,,uch,,h,Stunde
+seconds,,ulg,2,s,Sekunden
+calibration,,d2c,,K,
+integral,,sin,,°min,
+mcmode,,uch,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,
+mctype,,uch,0=uninitialized;1=mixer;2=fixed,,
+hwmode,,uch,0=disabled;1=on;2=off;3=auto,,
+status,,uch,,,
+onoff,,uch,0=off;1=on,,
+yesno,,uch,0=no;1=yes,,
+errorok,,uch,0=ok;1=error,,
+sensor,,uch,0=ok;85=circuit;170=cutoff,,Fühlerstatus
+tempsensor,,temp;sensor,,,
+presssensor,,press;sensor,,,
+uin100,,uin,100,,
+phase1,,bi0,0=missing;1=present,,
+phase2,,bi1,0=missing;1=present,,
+phase3,,bi2,0=missing;1=present,,
+phase,,phase1;phase2;phase3,,,
+code,,uin,,,todo hex digits without space in between
+from,,ttm,,,von
+to,,ttm,,,bis
+slot,,from;to,,,Slot von/bis
+slot1-3,,slot;slot;slot,,,Slots 1 - 3
+ehtype,,uch,0=not present;1=external heat;2=external water;3=external heat and water; 4=internal heat and water,,
+ehmode,,uch,0=no backup;1=with backup;2=only backup,,
+power,,uch,,kW,
+powersum,,ulg,,kW,
+energy,,uin,,kWh,
+energy4,,ulg,,kWh,
+startcnt,,ulg,,,
+pumppow,,uch,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,
+pumpstate,,uch,0=ok;1=error;2=none,,
+dcfstate,,uch,0=nosignal;1=ok;2=sync;3=valid,,
+phaseok,,uch,0=error;7=ok,,
+switchvalve,,uch,0=heat;1=water,,
+hfrom,,hda,,,Ferienzeitraum von
+hto,,hda,,,Ferienzeitraum bis
+holiday,,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
+pin,,uch,,,
+pin1-4,,pin;pin;pin;pin,,,

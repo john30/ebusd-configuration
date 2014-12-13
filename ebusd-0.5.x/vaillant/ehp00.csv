@@ -1,129 +1,173 @@
-# type (r/p,w,c);class;cmd;comment;QQ;ZZ;PBSB;NN;D1D2D3;elements;sub;part;position;datatype;factor;unit;valid;comment;sub;part;position;datatype;factor;unit;valid;comment;sub;part;position;datatype;factor;unit;valid;comment;sub;part;position;datatype;factor;unit;valid;comment;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BivalentTemp;Bivalenztemperatur;;08;B509;3;0D6500;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Bleeding;Entlüften;;08;B509;3;0D1300;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;BrinePress;Druck Solekreis;;08;B509;3;0D1600;2;press;sd;2,1;flt;1.0;bar;-;Druck;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BrinePressSwitch;Soledruckschalter;;08;B509;3;0D2600;1;-;sd;2,1;sin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BrinePumpCoolingRunTime;Kühlung Laufzeit Solepumpe;;08;B509;3;0D7D01;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BrinePumpPower;Solepumpe Leistung;;08;B509;3;0DAC01;1;-;sd;1;uch;-;%;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BrinePumpPowerHeating;Solepumpe Leistung beim Heizen;;08;B509;3;0DAE01;1;-;sd;1;uch;-;%;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BrinePumpPreRunTime;Vorlaufzeit Quellenpumpe;;08;B509;3;0D7600;1;-;sd;4,3,2,1;ulg;-;min;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;BrinePumpState;Solepumpe Status;;08;B509;3;0D1900;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;BrineTempInput;T3 Sole Temperatur Vorlauf – von Quelle;;08;B509;3;0D0F00;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;BrineTempOutput;T8 Sole Temperatur Rücklauf – zur Quelle;;08;B509;3;0D0800;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;cpInput;Zirkulationspumpe Eingang;;08;B509;3;0D0B00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;cpPower;Zirkulationspumpe Leistung;;23;B509;3;0DE601;1;-;sd;1;uch;-;%;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;cpState;Zirkulationspumpe Status;;08;B509;3;0D0C00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Code1;Code 1;;08;B509;3;0D9700;1;-;sd;2,1;uin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Code2;Code 2;;08;B509;3;0D9800;1;-;sd;2,1;uin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;CodeValid;Code 1 und 2 gültig;;08;B509;3;0D2400;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;CommutationState;Kompressor Kommunikationsstatus;;08;B509;3;0DAA00;1;-;sd;4,3,2,1;ulg;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;CompressorNumberStarts;Kompressor Starts pro Stunde;;08;B509;3;0D7400;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;CompressorState;Kompressor Status;;08;B509;3;0D1D00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;CompressorTempInput;T1 Kompressor Temperatur Eintritt;;08;B509;3;0D0200;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;CompressorTempOutput;T2 Kompressor Temperatur Austritt;;08;B509;3;0D0400;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Date;Datum;;08;B509;3;0D2900;1;-;sd;1,2,3;hda;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;DeicingState;Enteisung Status;;08;B509;3;0DCE01;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;DeicingWaitTime;Enteisung Wartezeit zur nächsten Enteisung;;08;B509;3;0D7000;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;EvaporatorTemp;Verdampfer Temperatur;;08;B509;3;0D0500;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;ExpansionValveInputTemp;TEV Temperatur Eintritt;;08;B509;3;0D0D00;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;FlowTemp;VF2 Vorlauftemperatur IST;;08;B509;3;0D0300;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;FlowTempIntern;T6 interne Vorlauftempertur IST;;08;B509;3;0D0900;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;FreezeProtectionTempMin;Einfrierschutz T81;;08;B509;3;0D7A01;1;-;sd;1;sch;-;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;HeatPumpState;Heizkreispumpe Status;;08;B509;3;0D1700;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;HeatSystemPress;Heizanlagendruck;;08;B509;3;0D1200;2;press;sd;2,1;flt;1.0;bar;-;Druck;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Hysteresis;Kompressor Hysterese;;08;B509;3;0D7D00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;InitialCurrentLimitation;Anlaufstrombegrenzung;;08;B509;3;0D3F00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Integral;Energieintegral;;08;B509;3;0D8000;1;-;sd;2,1;sin;-;°min;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;IntegralStartValue;Energieintegral Startwert;;08;B509;3;0D7C00;1;-;sd;2,1;sin;-;°min;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;MixerPosition;Mischer Position -100 – 100;;08;B509;3;0D0E00;1;-;sd;1;sch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;NoiseReductionFactor;Lautstärken Reduktion Faktor;;08;B509;3;0D2401;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;NoiseReductionState;Lautstärken Reduktion Status;;08;B509;3;0DA901;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Overheating;Überhitzung;;08;B509;3;0D8D00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;PhaseOrder;Drehfeld Status;;08;B509;3;0D5701;1;-;sd;2,1;sin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;PhaseState;Phasen Status;;08;B509;3;0D8800;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;PowerCutOff;EVU Sperrzeit – Stromunterbrechung;;08;B509;3;0D1100;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;PumpState;Pumpen Status;;08;B509;3;0D1800;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ReturnTempMax;Heizkreis Rücklauftemperatur MAX;;08;B509;3;0D7300;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;ReturnTempIntern;T5 interne Rücklauftempertur IST;;08;B509;3;0D0A00;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;RunTime;Kompressor Laufzeit Summe;;08;B509;3;0D9A00;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;RunTimeHeating;Kompressor Laufzeit Heizung;;08;B509;3;0D9B00;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;RunTimeHotWater;Kompressor Laufzeit Warmwasser;;08;B509;3;0D9C00;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ServiceMode;Servicezeit;;08;B509;3;0D6600;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;SoftwareState;Software Status;;08;B509;3;0DCF00;1;-;sd;4,3,2,1;ulg;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;SwitchValve;Umschaltventil Heizen = 0 / Warmwasser = 1;;08;B509;3;0D1000;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;TempOutside;Aussentemperatur;;08;B509;3;0D0600;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;TempSpreadMax;Zulässige Temperaturspreizung T6 zu T7;;08;B509;3;0D6E00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Time;Uhrzeit;;08;B509;3;0D2800;1;-;sd;3,2,1;hti;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Undercooling;Unterkühlung;;08;B509;3;0D8E00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;VaporPressHigh;Hochdruck Kältekreis;;08;B509;3;0D1400;2;press;sd;2,1;flt;1.0;bar;-;Druck;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;VaporPressLow;Niederdruck Kältekreis;;08;B509;3;0D1500;2;press;sd;2,1;flt;1.0;bar;-;Druck;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;VaporPressostate;Kältekreis Über/Unterdruck Sicherheitsabschaltung;;08;B509;3;0D2500;1;-;sd;2,1;sin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;Weekday;Wochentag;;08;B509;3;0D2A00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;YieldEnvironmentEnergy;Energieertrag Umgebung;;08;B509;3;0DBC00;1;-;sd;4,3,2,1;ulg;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calBrineTempInput;Kalibrierung Quelle Eintritt;;08;B509;3;0DCD00;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calBrineTempOutput;Kalibrierung Quelle Austritt;;08;B509;3;0DC900;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calCompressorTempInput;Kalibrierung Kompressor Eintritt;;08;B509;3;0DC600;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calCompressorTempOutput;Kalibrierung Kompressor Austritt;;08;B509;3;0DC700;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calFlowTemp;Kalibrierung Vorlauftemperatur VF1;;08;B509;3;0DCA00;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calFlowTempVF2;Kalibrierung VF2 Temperatur;;08;B509;3;0DC500;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calHotWaterTemp;Kalibrierung Warmwassertemperatur;;08;B509;3;0DC400;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calOutsideTemp;Kalibrierung Aussentemperatur;;08;B509;3;0DC300;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calReturnTemp;Kalibrierung Rücklauftemperatur RF1;;08;B509;3;0DCB00;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calTankTempBottom;Kalibrierung Speicher Bodentemperatur;;08;B509;3;0D3401;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;calTankTempTop;Kalibrierung Speicher Kopftemperatur;;08;B509;3;0D3301;1;-;sd;1,2;d2c;1.0;K;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehCommutationState;Zusatzheizung Kommunikationsstatus;;08;B509;3;0DB100;1;-;sd;4,3,2,1;ulg;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehElectricHeaterModeHeat;Zusatzheizung für Warmwasser;;08;B509;3;0D6300;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehElectricHeaterModeHotWater;Zusatzheizung für Heizung;;08;B509;3;0D6400;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehElectricHeaterState;Zusatzheizung Status;;08;B509;3;0D5F00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehElectricHeaterType;Zusatzheizung Typ;;08;B509;3;0D9200;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehHysteresis;Zusatzheizung Hysterese;;08;B509;3;0D7E00;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehIntegralStartValue;Zusatzheizung Energieintegral Startwert;;08;B509;3;0D7F00;1;-;sd;2,1;sin;-;°min;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehRunTime;Zusatzheizung Laufzeit Summe;;08;B509;3;0DA100;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehRunTimeHeating;Zusatzheizung Laufzeit Heizung;;08;B509;3;0DA200;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;ehRunTimeHotWater;Zusatzheizung Laufzeit Warmwasser;;08;B509;3;0DA300;1;-;sd;4,3,2,1;ulg;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;hwFlowTemp;VF1 Bufferspeicher Kopftemperatur;;08;B509;3;0D0100;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwHotWaterTempMax;Warmwasser Termperatur MAX;;25;B509;3;0D8200;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwHotWaterTempMin;Warmwasser Termperatur MIN;;25;B509;3;0D8300;1;-;sd;1,2;d2c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwLegionellaProtectionActive;Legionellenfunktion aktivert;;25;B509;3;0D4000;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwLegionellaProtectionDay;Legionellenfunktion Wochentag;;25;B509;3;0D7C01;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwLegionellaProtectionTime;Legionellenfunktion Zeitpunkt;;25;B509;3;0D6700;2;hh;sd;1;uch;-;h;-;Stunde;mm;sd;2;uch;-;min;-;Minute;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwOperatingMode;Betriebsart;;25;B509;3;0D2B00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;hwReturnTemp;RF1 Bufferspeicher Bodentemperatur;;08;B509;3;0D0700;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-p;ehp00;hwTankTemp;Speichertemperatur IST;;08;B509;3;0D0000;2;temp;sd;1,2;d2c;1.0;°C;-;Temperatur;sensor;sd;3;uch;-;-;-;Fühler;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;hwTankTypePipe;Speichertyp ist Rohr;;25;B509;3;0DCD01;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcCoolingOperatingMode;Kühlung Betriebsart;;50;B509;3;0D8C01;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcDesiredTemp;Solltemperatur;;50;B509;3;0D3200;1;-;sd;1;d1c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcDesiredTemp;Solltemperatur;;50;B509;4;0E3200;1;-;sd;1;d1c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcDesiredTempLow;Absenktemperatur;;50;B509;3;0D3300;1;-;sd;1;d1c;1.0;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcFloorProtectionTempLimit;Fußbodenschutz Temp > VF2;;50;B509;3;0D7B01;1;-;sd;1;uch;-;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcFloorScreedDryingDay;Estrichtrocknung Tag;;50;B509;3;0D3B00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcFlowTempDesired;Vorlauftemperatur Soll;;50;B509;3;0D4600;1;-;sd;1;d1c;1.0;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcHeatingCircuitType;Heizkreistyp;;50;B509;3;0D3C00;1;-;sd;2,1;sin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcHeatingCurve;Heizkurve;;50;B509;3;0D3500;1;-;sd;2,1;uin;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcOperatingMode;Betriebsart;;50;B509;3;0D2B00;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcOutsideTempLimitShutdown;Abschaltgrenze Aussentempertur;;50;B509;3;0D3600;1;-;sd;1;uch;-;°C;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcPreHeatingTimeMax;Voraufheizung MAX;;50;B509;3;0D3800;1;-;sd;1;uch;-;h;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcPumpPower;Pumpen Leistung;;50;B509;3;0DBA01;1;-;sd;1;uch;-;%;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcPumpState;Pumpen Status;;50;B509;3;0DB901;1;-;sd;1;uch;-;-;-;-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-# ttm;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-r;ehp00;mcTTMonday;Zeitfenster Montag;;50;B504;1;02;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;mcTTTuesday;Zeitfenster Dienstag;;50;B504;1;03;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;mcTTWednesday;Zeitfenster Mittwoch;;50;B504;1;04;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;mcTTThursday;Zeitfenster Donnerstag;;50;B504;1;05;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;mcTTFriday;Zeitfenster Freitrag;;50;B504;1;06;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;mcTTSaturday;Zeitfenster Samstag;;50;B504;1;07;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;mcTTSunday;Zeitfenster Sonntag;;50;B504;1;08;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTMonday;Warmwasser Zeitfenster Montag;;25;B504;1;02;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTTuesday;Warmwasser Zeitfenster Dienstag;;25;B504;1;03;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTWednesday;Warmwasser Zeitfenster Mittwoch;;25;B504;1;04;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTThursday;Warmwasser Zeitfenster Donnerstag;;25;B504;1;05;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTFriday;Warmwasser Zeitfenster Freitrag;;25;B504;1;06;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTSaturday;Warmwasser Zeitfenster Samstag;;25;B504;1;07;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;hwTTSunday;Warmwasser Zeitfenster Sonntag;;25;B504;1;08;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTMonday;Zirkulationspumpe Zeitfenster Montag;;23;B504;1;02;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTTuesday;Zirkulationspumpe Zeitfenster Dienstag;;23;B504;1;03;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTWednesday;Zirkulationspumpe Zeitfenster Mittwoch;;23;B504;1;04;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTThursday;Zirkulationspumpe Zeitfenster Donnerstag;;23;B504;1;05;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTFriday;Zirkulationspumpe Zeitfenster Freitrag;;23;B504;1;06;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTSaturday;Zirkulationspumpe Zeitfenster Samstag;;23;B504;1;07;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
-r;ehp00;cpTTSunday;Zirkulationspumpe Zeitfenster Sonntag;;23;B504;1;08;7;from1;sd;1;ttm;-;-;-;Slot 1 von;to1;sd;2;ttm;-;-;-;Slot 1 bis;from2;sd;3;ttm;-;-;-;Slot 2 von;to2;sd;4;ttm;-;-;-;Slot 2 bis;from3;sd;5;ttm;-;-;-;Slot 3 von;to3;sd;6;ttm;-;-;-;Slot 3 bis;state;sd;7;uch;-;-;-;Status
+# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
+*r,ehp00,,,,08,B509,0D,,,,,,,,,,,,
+*w,ehp00,,,,08,B509,0E,,,,,,,,,,,,
+*u,ehp00,,,,08,B509,29,,,IGN:2,,,,,,,,,
+r,,BivalentTemp,Bivalenztemperatur,,,,6500,,,temp,,,,,,,,,
+r,,Bleeding,Entlüften,,,,1300,,,yesno,,,,,,,,,
+r2,,BrinePress,Druck Solekreis,,,,1600,,,presssensor,,,,,,,,,
+r,,BrinePressSwitch,Soledruckschalter,,,,2600,,,errorok,,,,,,,,,
+r,,BrinePumpCoolingRunTime,Kühlung Laufzeit Solepumpe,,,,7D01,,,hoursum,,,,,,,,,
+r,,BrinePumpPower,Solepumpe Leistung,,,,AC01,,,pumppow,,,,,,,,,
+r,,BrinePumpPowerHeating,Solepumpe Leistung beim Heizen,,,,AE01,,,percent,,,,,,,,,
+r,,BrinePumpPreRunTime,Vorlaufzeit Quellenpumpe,,,,7600,,,minutes,,,,,,,,,
+r,,BrinePumpState,Solepumpe Status,,,,1900,,,onoff,,,,,,,,,
+r,,Brine2PumpState,Externe Quellenpumpe Status,,,,1A00,,,onoff,,,,,,,,,
+r,,SwitchCool,Umschaltventil Kühlung,,,,1C00,,,onoff,,,,,,,,,
+r;u,,BrineTempInput,T3 Sole Temperatur Vorlauf - von Quelle,,,,0F00,,,tempsensor,,,,,,,,,
+r1,,BrineTempOutput,T8 Sole Temperatur Rücklauf - zur Quelle,,,,0800,,,tempsensor,,,,,,,,,
+r,,cpInput,Zirkulationspumpe Eingang,,,,0B00,,,onoff,,,,,,,,,
+r,,cpPower,Zirkulationspumpe Leistung,,23,,E601,,,percent,,,,,,,,,
+r,,cpState,Zirkulationspumpe Status,,,,0C00,,,onoff,,,,,,,,,
+r,,Code1,Code 1,,,,9700,,,code,,,,,,,,,
+r,,Code2,Code 2,,,,9800,,,code,,,,,,,,,
+r,,CodeValid,Code 1 und 2 gültig,,,,2400,,,yesno,,,,,,,,,
+r,,Starts,Kompressor Starts,,,,AA00,,,startcnt,,,,,,,,,
+r,,StartsHeating,Kompressor Starts Heizung,,,,A900,,,startcnt,,,,,,,,,
+r,,StartsHotWater,Kompressor Starts Warmwasser,,,,A800,,,startcnt,,,,,,,,,
+r,,StartsBrine,Quellenpumpe Starts,,,,AC00,,,startcnt,,,,,,,,,
+r,,CompressorNumberStarts,Kompressor Starts pro Stunde,,,,7400,,,uch,,,,,,,,,
+r,,CompressorState,Kompressor Status,,,,1D00,,,onoff,,,,,,,,,
+r1,,CompressorTempInput,T1 Kompressor Temperatur Eintritt,,,,0200,,,tempsensor,,,,,,,,,
+r1,,CompressorTempOutput,T2 Kompressor Temperatur Austritt,,,,0400,,,tempsensor,,,,,,,,,
+r,,Date,Datum,,,,2900,,,HDA:3,,,,,,,,,
+r,,DeicingState,Enteisung Status,,,,CE01,,,yesno,,,,,,,,,
+r,,DeicingWaitTime,Enteisung Wartezeit zur nächsten Enteisung,,,,7000,,,seconds,,,,,,,,,
+r,,StartDeicing,Start Enteisung,,,,7100,,,yesno,,,,,,,,,
+r1,,EvaporatorTemp,Verdampfer Temperatur,,,,0500,,,tempsensor,,,,,,,,,
+r1,,ExpansionValveInputTemp,TEV Temperatur Eintritt,,,,0D00,,,tempsensor,,,,,,,,,
+r;u,,FlowTemp,VF2 Vorlauftemperatur IST,,,,0300,,,tempsensor,,,,,,,,,
+r1,,FlowTempIntern,T6 interne Vorlauftemperatur IST,,,,0900,,,tempsensor,,,,,,,,,
+r,,FreezeProtectionTempMin,Einfrierschutz T81,,,,7A01,,,temps,,,,,,,,,
+r,,HeatPumpState,Heizkreispumpe Status,,,,1700,,,onoff,,,,,,,,,
+r1,,HeatSystemPress,Heizanlagendruck,,,,1200,,,presssensor,,,,,,,,,
+r,,Hysteresis,Kompressor Hysterese,,,,7D00,,,temp,,,,,,,,,
+r,,InitialCurrentLimitation,Anlaufstrombegrenzung,,,,3F00,,,onoff,,,,,,,,,
+r,,Integral,Energieintegral,,,,8000,,,integral,,,,,,,,,
+r,,IntegralStartValue,Energieintegral Startwert,,,,7C00,,,integral,,,,,,,,,
+r,,MixerPosition,Mischer Position -100 - +100,,,,0E00,,,sch,,,,,,,,,
+r,,NoiseReductionFactor,Lautstärken Reduktion Faktor,,,,2401,,,uch,,,,,,,,,
+r,,NoiseReductionState,Lautstärken Reduktion Status,,,,A901,,,yesno,,,,,,,,,
+r,,Overheating,Überhitzung,,,,8D00,,,temp,,,,,,,,,
+r,,PhaseOrder,Drehfeld Status,,,,5701,,,phaseok,,,,,,,,,
+r,,PhaseState,Phasen Status,,,,8800,,,status,,,,,,,,,
+r,,PowerCutOff,EVU Sperrzeit - Stromunterbrechung,,,,1100,,,yesno,,,,,,,,,
+u,,NextPredictedPowerCutOff,Nächste voraussichtliche EVU Sperrzeit - Stromunterbrechung,,,,D300,,,vti,,,,,,,,,
+r,,hydraulicsSchema,Hydraulikplan,,,,6000,,,uch,,,,,,,,,
+r,,electricSchema,Elektroplan,,,,8700,,,uch,,,,,,,,,
+r,,PumpState,Pumpen Status,,,,1800,,,onoff,,,,,,,,,
+r,,ReturnTempMax,Heizkreis Rücklauftemperatur MAX,,,,7300,,,temp,,,,,,,,,
+r2,,ReturnTempIntern,T5 interne Rücklauftempertur IST,,,,0A00,,,tempsensor,,,,,,,,,
+r,,RunTime,Kompressor Laufzeit Summe,,,,9A00,,,hoursum,,,,,,,,,
+r,,RunTimeHeating,Kompressor Laufzeit Heizung,,,,9B00,,,hoursum,,,,,,,,,
+r,,RunTimeHotWater,Kompressor Laufzeit Warmwasser,,,,9C00,,,hoursum,,,,,,,,,
+r,,RunTimeBrine,Quellenpumpe Laufzeit,,,,9D00,,,hoursum,,,,,,,,,
+r,,RunTimeBrine2,Quellenpumpe2 Laufzeit,,,,9E00,,,hoursum,,,,,,,,,
+r,,ServiceMode,Servicezeit,,,,6600,,,yesno,,,,,,,,,
+r,,SoftwareState,Software Status,,,,CF00,,,ulg,,,,,,,,,
+r,,SwitchValve,Umschaltventil,,,,1000,,,switchvalve,,,,,,,,,
+r,,TempOutside,Aussentemperatur,,,,0600,,,tempsensor,,,,,,,,,
+r,,TempSpreadMax,Zulässige Temperaturspreizung T6 zu T7,,,,6E00,,,temp,,,,,,,,,
+r,,Time,Uhrzeit,,,,2800,,,hti,,,,,,,,,
+r,,Undercooling,Unterkühlung,,,,8E00,,,temp,,,,,,,,,
+r2,,VaporPressHigh,Hochdruck Kältekreis,,,,1400,,,presssensor,,,,,,,,,
+r2,,VaporPressLow,Niederdruck Kältekreis,,,,1500,,,presssensor,,,,,,,,,
+r,,VaporPressostate,Kältekreis Über/Unterdruck Sicherheitsabschaltung,,,,2500,,,errorok,,,,,,,,,
+r,,Weekday,Wochentag,,,,2A00,,,day,,,,,,,,,
+u,,ActualEnvironmentPower,Energiebezug aus Umgebung,,,,BA00,,,power,,,,,,,,,
+u,,ActualEnvironmentPowerPercentage,Energiebezug aus Umgebung,,,,BB00,,,percent,,,,,,,,,
+r;u,,YieldEnvironmentEnergy,Energieertrag Umgebung,,,,BC00,,,powersum,,,,,,,,,
+r,,calBrineTempInput,Kalibrierung Quelle Eintritt,,,,CD00,,,calibration,,,,,,,,,
+r,,calBrineTempOutput,Kalibrierung Quelle Austritt,,,,C900,,,calibration,,,,,,,,,
+r,,calCompressorTempInput,Kalibrierung Kompressor Eintritt,,,,C600,,,calibration,,,,,,,,,
+r,,calCompressorTempOutput,Kalibrierung Kompressor Austritt,,,,C700,,,calibration,,,,,,,,,
+r,,calFlowTemp,Kalibrierung Vorlauftemperatur VF1,,,,CA00,,,calibration,,,,,,,,,
+r,,calFlowTempVF2,Kalibrierung VF2 Temperatur,,,,C500,,,calibration,,,,,,,,,
+r,,calHotWaterTemp,Kalibrierung Warmwassertemperatur,,,,C400,,,calibration,,,,,,,,,
+r,,calOutsideTemp,Kalibrierung Aussentemperatur,,,,C300,,,calibration,,,,,,,,,
+r,,calReturnTemp,Kalibrierung Rücklauftemperatur RF1,,,,CB00,,,calibration,,,,,,,,,
+r,,calTankTempBottom,Kalibrierung Speicher Bodentemperatur,,,,3401,,,calibration,,,,,,,,,
+r,,calTankTempTop,Kalibrierung Speicher Kopftemperatur,,,,3301,,,calibration,,,,,,,,,
+r,,ehCommutationState,Zusatzheizung Kommunikationsstatus,,,,B100,,,startcnt,,,,,,,,,
+r,,ehElectricHeaterModeHeat,Zusatzheizung für Heizung,,,,6300,,,ehmode,,,,,,,,,
+r,,ehElectricHeaterModeHotWater,Zusatzheizung für Warmwasser,,,,6400,,,ehmode,,,,,,,,,
+r,,ehElectricHeaterState,Zusatzheizung Status,,,,5F00,,,onoff,,,,,,,,,
+r,,ehElectricHeaterType,Zusatzheizung Typ,,,,9200,,,ehtype,,,,,,,,,
+r,,ehHysteresis,Zusatzheizung Hysterese,,,,7E00,,,temp,,,,,,,,,
+r,,ehIntegralStartValue,Zusatzheizung Energieintegral Startwert,,,,7F00,,,integral,,,,,,,,,
+r,,ehRunTime,Zusatzheizung Laufzeit Summe,,,,A100,,,hoursum,,,,,,,,,
+r,,ehRunTimeHeating,Zusatzheizung Laufzeit Heizung,,,,A200,,,hoursum,,,,,,,,,
+r,,ehRunTimeHotWater,Zusatzheizung Laufzeit Warmwasser,,,,A300,,,hoursum,,,,,,,,,
+r;u,,hwFlowTemp,VF1 Bufferspeicher Kopftemperatur,,,,0100,,,tempsensor,,,,,,,,,
+r,,hwHotWaterTempMax,Warmwasser Termperatur MAX,,25,,8200,,,temp,,,,,,,,,
+r,,hwHotWaterTempMin,Warmwasser Termperatur MIN,,25,,8300,,,temp,,,,,,,,,
+r,,hwLegionellaProtectionActive,Legionellenfunktion aktivert,,25,,4000,,,yesno,,,,,,,,,
+r,,hwLegionellaProtectionDay,Legionellenfunktion Wochentag,,25,,7C01,,,day,,,,,,,,,
+r,,hwLegionellaProtectionTime,Legionellenfunktion Zeitpunkt,,25,,6700,,,time2,,,,,,,,,
+r,,hwOperatingMode,Betriebsart,,25,,2B00,,,hwmode,,,,,,,,,
+r;u,,hwReturnTemp,RF1 Bufferspeicher Bodentemperatur,,,,0700,,,tempsensor,,,,,,,,,
+r,,hwTankTemp,Speichertemperatur IST,,,,0000,,,tempsensor,,,,,,,,,
+u,,hwTankTemp,Speichertemperatur IST,,25,,0000,,,tempsensor,,,,,,,,,
+r,,hwTankTypePipe,Speichertyp ist Rohr,,25,,CD01,,,yesno,,,,,,,,,
+r,,mcCoolingOperatingMode,Kühlung Betriebsart,,50,,8C01,,,mcmode,,,,,,,,,
+r;w,,mcDesiredTemp,Solltemperatur,,50,,3200,,,temp1,,,,,,,,,
+r,,mcDesiredTempLow,Absenktemperatur,,50,,3300,,,temp1,,,,,,,,,
+r,,mcFlowTempMin,Vorlauftemperatur MIN,,50,,3000,,,temp1,,,,,,,,,
+r,,mcFlowTempMax,Vorlauftemperatur MAX,,50,,3100,,,temp1,,,,,,,,,
+r,,mcFloorProtectionTempLimit,Fußbodenschutz Temp > VF2,,50,,7B01,,,temp0,,,,,,,,,
+r,,mcFloorScreedDryingDay,Estrichtrocknung Tag,,50,,3B00,,,uch,,,,,,,,,
+r,,mcFlowTempDesired,Vorlauftemperatur Soll,,50,,4600,,,temp1,,,,,,,,,
+r,,mcHeatingCircuitType,Heizkreistyp,,50,,3C00,,,mctype,,,,,,,,,
+r,,mcHeatingCurve,Heizkurve,,50,,3500,,,uin100,,,,,,,,,
+r,,mcOperatingMode,Betriebsart,,50,,2B00,,,mcmode,,,,,,,,,
+r,,mcOutsideTempLimitShutdown,Abschaltgrenze Aussentempertur,,50,,3600,,,temp0,,,,,,,,,
+r,,mcPreHeatingTimeMax,Voraufheizung MAX,,50,,3800,,,hours,,,,,,,,,
+r,,mcPumpPower,Pumpen Leistung,,50,,BA01,,,pumppow,,,,,,,,,
+r,,mcPumpState,Pumpen Status,,50,,B901,,,pumpstate,,,,,,,,,
+*r,ehp00,,,,50,B504,,,,,,,,,,,,,
+*w,ehp00,,,,50,B505,09,,,,,,,,,,,,
+r,,mcTTMonday,Zeitfenster Montag,,,,02,,,slot1-3;days,,,,,,,,,
+w,,mcTTMonday,Zeitfenster Montag,,,,01,,,slot1-3;days,,,,,,,,,
+r,,mcTTTuesday,Zeitfenster Dienstag,,,,03,,,slot1-3;days,,,,,,,,,
+w,,mcTTTuesday,Zeitfenster Dienstag,,,,02,,,slot1-3;days,,,,,,,,,
+r,,mcTTWednesday,Zeitfenster Mittwoch,,,,04,,,slot1-3;days,,,,,,,,,
+w,,mcTTWednesday,Zeitfenster Mittwoch,,,,03,,,slot1-3;days,,,,,,,,,
+r,,mcTTThursday,Zeitfenster Donnerstag,,,,05,,,slot1-3;days,,,,,,,,,
+w,,mcTTThursday,Zeitfenster Donnerstag,,,,04,,,slot1-3;days,,,,,,,,,
+r,,mcTTFriday,Zeitfenster Freitrag,,,,06,,,slot1-3;days,,,,,,,,,
+w,,mcTTFriday,Zeitfenster Freitrag,,,,05,,,slot1-3;days,,,,,,,,,
+r,,mcTTSaturday,Zeitfenster Samstag,,,,07,,,slot1-3;days,,,,,,,,,
+w,,mcTTSaturday,Zeitfenster Samstag,,,,06,,,slot1-3;days,,,,,,,,,
+r,,mcTTSunday,Zeitfenster Sonntag,,,,08,,,slot1-3;days,,,,,,,,,
+w,,mcTTSunday,Zeitfenster Sonntag,,,,07,,,slot1-3;days,,,,,,,,,
+*r,ehp00,,,,25,B504,,,,,,,,,,,,,
+*w,ehp00,,,,25,B505,09,,,,,,,,,,,,
+r,,hwTTMonday,Warmwasser Zeitfenster Montag,,,,02,,,slot1-3;days,,,,,,,,,
+w,,hwTTMonday,Warmwasser Zeitfenster Montag,,,,01,,,slot1-3;days,,,,,,,,,
+r,,hwTTTuesday,Warmwasser Zeitfenster Dienstag,,,,03,,,slot1-3;days,,,,,,,,,
+w,,hwTTTuesday,Warmwasser Zeitfenster Dienstag,,,,02,,,slot1-3;days,,,,,,,,,
+r,,hwTTWednesday,Warmwasser Zeitfenster Mittwoch,,,,04,,,slot1-3;days,,,,,,,,,
+w,,hwTTWednesday,Warmwasser Zeitfenster Mittwoch,,,,03,,,slot1-3;days,,,,,,,,,
+r,,hwTTThursday,Warmwasser Zeitfenster Donnerstag,,,,05,,,slot1-3;days,,,,,,,,,
+w,,hwTTThursday,Warmwasser Zeitfenster Donnerstag,,,,04,,,slot1-3;days,,,,,,,,,
+r,,hwTTFriday,Warmwasser Zeitfenster Freitag,,,,06,,,slot1-3;days,,,,,,,,,
+w,,hwTTFriday,Warmwasser Zeitfenster Freitag,,,,05,,,slot1-3;days,,,,,,,,,
+r,,hwTTSaturday,Warmwasser Zeitfenster Samstag,,,,07,,,slot1-3;days,,,,,,,,,
+w,,hwTTSaturday,Warmwasser Zeitfenster Samstag,,,,06,,,slot1-3;days,,,,,,,,,
+r,,hwTTSunday,Warmwasser Zeitfenster Sonntag,,,,08,,,slot1-3;days,,,,,,,,,
+w,,hwTTSunday,Warmwasser Zeitfenster Sonntag,,,,07,,,slot1-3;days,,,,,,,,,
+*r,ehp00,,,,23,B504,,,,,,,,,,,,,
+*w,ehp00,,,,23,B505,09,,,,,,,,,,,,
+r,,cpTTMonday,Zirkulationspumpe Zeitfenster Montag,,,,02,,,slot1-3;days,,,,,,,,,
+w,,cpTTMonday,Zirkulationspumpe Zeitfenster Montag,,,,01,,,slot1-3;days,,,,,,,,,
+r,,cpTTTuesday,Zirkulationspumpe Zeitfenster Dienstag,,,,03,,,slot1-3;days,,,,,,,,,
+w,,cpTTTuesday,Zirkulationspumpe Zeitfenster Dienstag,,,,02,,,slot1-3;days,,,,,,,,,
+r,,cpTTWednesday,Zirkulationspumpe Zeitfenster Mittwoch,,,,04,,,slot1-3;days,,,,,,,,,
+w,,cpTTWednesday,Zirkulationspumpe Zeitfenster Mittwoch,,,,03,,,slot1-3;days,,,,,,,,,
+r,,cpTTThursday,Zirkulationspumpe Zeitfenster Donnerstag,,,,05,,,slot1-3;days,,,,,,,,,
+w,,cpTTThursday,Zirkulationspumpe Zeitfenster Donnerstag,,,,04,,,slot1-3;days,,,,,,,,,
+r,,cpTTFriday,Zirkulationspumpe Zeitfenster Freitrag,,,,06,,,slot1-3;days,,,,,,,,,
+w,,cpTTFriday,Zirkulationspumpe Zeitfenster Freitrag,,,,05,,,slot1-3;days,,,,,,,,,
+r,,cpTTSaturday,Zirkulationspumpe Zeitfenster Samstag,,,,07,,,slot1-3;days,,,,,,,,,
+w,,cpTTSaturday,Zirkulationspumpe Zeitfenster Samstag,,,,06,,,slot1-3;days,,,,,,,,,
+r,,cpTTSunday,Zirkulationspumpe Zeitfenster Sonntag,,,,08,,,slot1-3;days,,,,,,,,,
+w,,cpTTSunday,Zirkulationspumpe Zeitfenster Sonntag,,,,07,,,slot1-3;days,,,,,,,,,
