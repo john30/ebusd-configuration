@@ -12,6 +12,7 @@ time2,,htm,,,
 minutes,,ulg,120,min,
 hoursum,,ulg,,h,Stunden
 hours,,uch,,h,Stunden
+hours2,,uch,2,h,Stunden
 hour,,uch,,h,Stunde
 seconds,,ulg,2,s,Sekunden
 calibration,,d2c,,K,
