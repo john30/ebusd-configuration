@@ -35,7 +35,7 @@ phase1,,bi0,0=missing;1=present,,
 phase2,,bi1,0=missing;1=present,,
 phase3,,bi2,0=missing;1=present,,
 phase,,phase1;phase2;phase3,,,
-code,,uin,,,todo hex digits without space in between
+code,,pin,,,
 from,,ttm,,,von
 to,,ttm,,,bis
 slot,,from;to,,,Slot von/bis
@@ -55,5 +55,5 @@ switchvalve,,uch,0=heat;1=water,,
 hfrom,,hda,,,Ferienzeitraum von
 hto,,hda,,,Ferienzeitraum bis
 holiday,,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
-pin,,uch,,,
-pin1-4,,pin;pin;pin;pin,,,
+pin1,,uch,,,
+pin1-4,,pin1;pin1;pin1;pin1,,,
