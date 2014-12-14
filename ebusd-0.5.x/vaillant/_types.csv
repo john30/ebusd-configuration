@@ -8,6 +8,8 @@ percent,,uch,,%,
 date,,bda,,,
 day,,bdy,,,
 days,,uch,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
+skip,,IGN:1,,,
+daycnt,,uch,,,Tage
 time,,bti,,,
 time2,,htm,,,
 minutes,,ulg,120,min,
@@ -19,7 +21,7 @@ seconds,,ulg,2,s,Sekunden
 calibration,,d2c,,K,
 integral,,sin,,°min,
 mcmode,,uch,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,
-mctype,,uch,0=uninitialized;1=mixer;2=fixed,,
+mctype,,uch,0=uninitialized;1=mixer;2=fixed;3=3;4=4,,
 hwmode,,uch,0=disabled;1=on;2=off;3=auto,,
 status,,uch,,,
 onoff,,uch,0=off;1=on,,
@@ -33,7 +35,7 @@ phase1,,bi0,0=missing;1=present,,
 phase2,,bi1,0=missing;1=present,,
 phase3,,bi2,0=missing;1=present,,
 phase,,phase1;phase2;phase3,,,
-code,,uin,,,todo hex digits without space in between
+code,,pin,,,
 from,,ttm,,,von
 to,,ttm,,,bis
 slot,,from;to,,,Slot von/bis
@@ -53,5 +55,5 @@ switchvalve,,uch,0=heat;1=water,,
 hfrom,,hda,,,Ferienzeitraum von
 hto,,hda,,,Ferienzeitraum bis
 holiday,,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
-pin,,uch,,,
-pin1-4,,pin;pin;pin;pin,,,
+pin1,,uch,,,
+pin1-4,,pin1;pin1;pin1;pin1,,,
