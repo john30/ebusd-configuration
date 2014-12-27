@@ -32,7 +32,7 @@ skip,IGN:1,,,
 #vaillant types:,,,,
 temps,SCH,,°C,Temperatur
 press,FLT,,bar,Druck
-date,HDA,,,Datum
+date,HDA:3,,,Datum
 day,BDY,,,
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
 days,UCH,,,Tage
