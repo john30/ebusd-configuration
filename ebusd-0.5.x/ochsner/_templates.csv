@@ -1,10 +1,11 @@
 group,UCH,,,Gruppe
-value,BI0:7,,,Parameter
+value,BI0:7,,,Wert
 type,HEX,,,Datentyp
 unit,HEX,,,Einheit
 maxu,UIN,,,Maximum
 minu,UIN,,,Minimum
 maxs,SIN,,,Maximum
 mins,SIN,,,Minimum
-parameter,group;value;type;unit;maxs;mins,,,Kommando
+command,group;value;type;unit,,,Kommando
+parameter,command;maxs;mins,,,Parameter
 temperature,SIN,10,°C,Temperatur
