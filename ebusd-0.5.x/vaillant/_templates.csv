@@ -25,6 +25,7 @@ temp2,D2B,,°C,Temperatur
 press,D2B,,bar,Druck
 btime,BTI,,,Uhrzeit
 bdate,BDA,,,Datum
+bday,BDY,,,Wochentag
 id,STR:5,,,Geräte-ID
 version,PIN,,,Version
 skip,IGN:1,,,
@@ -57,6 +58,7 @@ sensor,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 tempsensor,temp;sensor,,,
 presssensor,press;sensor,,,
 uin100,UIN,100,,
+curve,UIN,100,,Heizkurve
 phase1,BI0,0=missing;1=present,,
 phase2,BI1,0=missing;1=present,,
 phase3,BI2,0=missing;1=present,,
@@ -80,3 +82,4 @@ switchvalve,UCH,0=heat;1=water,,
 hfrom,HDA:3,,,Ferienzeitraum von
 hto,HDA:3,,,Ferienzeitraum bis
 holiday,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
+hpstatus,UCH,0=off;3=heat;6=standby;7=AT-Abschaltung;8=water,,
