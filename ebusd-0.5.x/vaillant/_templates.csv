@@ -82,4 +82,4 @@ switchvalve,UCH,0=heat;1=water,,
 hfrom,HDA:3,,,Ferienzeitraum von
 hto,HDA:3,,,Ferienzeitraum bis
 holiday,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
-hpstatus,UCH,0=off;3=heat;6=standby;7=AT-Abschaltung;8=water,,
+hpstatus,UCH,0=off;3=heat;6=standby;7=otshutdown;8=water,,
