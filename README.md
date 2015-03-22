@@ -28,11 +28,11 @@ from the names given by the third column of the scan result, e.g.:
 > 08;Vaillant;BAI00;0703;7401  
 > 15;Vaillant;UI   ;0501;6201  
 
-For this scan result, pick the following files from the vendor subdirectory
-with your language preference:
+For this scan result, pick the following files from the vendor directory
+(second column) with your language preference:
 
-> bai00.csv  
-> ui.csv  
+> vaillant_de/bai00.csv  
+> vaillant_de/ui.csv  
 
 In order to use these files, the "_templates.csv" file is required as well
 (if available in the vendor directory). 
@@ -47,10 +47,15 @@ suffixes used and the corresponding circuits:
 * ".cir": circulation circuit
 * ".solar": solar circuit
 
+Mixers and room controllers  usually are available for more than one heat
+circuit. If so, these files are available multiple times with the heat
+circuit number appended, e.g. "mc2.mix4.csv" for heat circuit 4. For the
+primary heat circuit the number is not appended, though.
+
 For some devices, there are several variants of the same circuit. For
 example, the mixer might be available as fix value or real mixer circuit.
 Variants for the same device are indicated by a suffix starting with an
-underscore "_" and only one variant can  be picked from those.
+underscore "_" and only one variant can be picked from those.
 
 
 Contact
