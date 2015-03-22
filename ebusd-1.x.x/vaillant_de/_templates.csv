@@ -41,6 +41,7 @@ time,VTI,,,
 time2,HTM,,,
 minutes,ULG,120,min,
 hoursum,ULG,,h,Stunden
+hoursum2,UIN,,h,Stunden
 hours,UCH,,h,Stunden
 hours2,UCH,2,h,Stunden
 hour,UCH,,h,Stunde
@@ -74,6 +75,7 @@ power,UCH,,kW,
 energy,UIN,,kWh,
 energy4,ULG,,kWh,
 cntstarts,ULG,,,
+cntstarts2,UIN,,,
 pumppow,UCH,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,
 pumpstate,UCH,0=ok;1=error;2=none,,
 dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,

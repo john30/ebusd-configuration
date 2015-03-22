@@ -27,19 +27,19 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,Puffersp
 r,,ChildProtection,Kindersicherung,,,,"6E00",,,yesno,,,Kindersicherung
 r;wi,,YieldEnergyOld,Mitternacht Übertragswert Energieertrag,,,,"8600",,,ULG,,,Beinhaltet den Gesamtenergieertrag zur letzten Mitternacht. Wird für die monatliche Balkendarstellung und dessen Übertragung auf Austauschplatinen benötigt.
 # ##### HK Namen und Tel. Nummer #####
-r;w,,HcNamesHc2,Name HK2,,,,"4108",,,STR:11,,,Name für HK2
-r;w,,HcNamesHc4,Name HK4,,,,"4118",,,STR:11,,,Name für HK4
-r;w,,HcNamesHc5,Name HK5,,,,"4120",,,STR:11,,,Name für HK5
-r;w,,HcNamesHc6,Name HK6,,,,"4128",,,STR:11,,,Name für HK6
-r;w,,HcNamesHc7,Name HK7,,,,"4130",,,STR:11,,,Name für HK7
-r;w,,HcNamesHc8,Name HK8,,,,"4138",,,STR:11,,,Name für HK8
-r;w,,HcNamesHc9,Name HK9,,,,"4140",,,STR:11,,,Name für HK9
-r;w,,HcNamesHc10,Name HK10,,,,"4148",,,STR:11,,,Name für HK10
-r;w,,HcNamesHc11,Name HK11,,,,"4150",,,STR:11,,,Name für HK11
-r;w,,HcNamesHc12,Name HK12,,,,"4158",,,STR:11,,,Name für HK12
-r;w,,HcNamesHc13,Name HK13,,,,"4160",,,STR:11,,,Name für HK13
-r;w,,HcNamesHc14,Name HK14,,,,"4168",,,STR:11,,,Name für HK14
-r;w,,HcNamesHc15,Name HK15,,,,"4170",,,STR:11,,,Name für HK15
-r;w,,HcNamesHc16,Name HK16,,,,"4178",,,STR:11,,,Name für HK16
+r;w,,HcName2,Name HK2,,,,"4108",,,STR:11,,,Name für HK2
+r;w,,HcName4,Name HK4,,,,"4118",,,STR:11,,,Name für HK4
+r;w,,HcName5,Name HK5,,,,"4120",,,STR:11,,,Name für HK5
+r;w,,HcName6,Name HK6,,,,"4128",,,STR:11,,,Name für HK6
+r;w,,HcName7,Name HK7,,,,"4130",,,STR:11,,,Name für HK7
+r;w,,HcName8,Name HK8,,,,"4138",,,STR:11,,,Name für HK8
+r;w,,HcName9,Name HK9,,,,"4140",,,STR:11,,,Name für HK9
+r;w,,HcName10,Name HK10,,,,"4148",,,STR:11,,,Name für HK10
+r;w,,HcName11,Name HK11,,,,"4150",,,STR:11,,,Name für HK11
+r;w,,HcName12,Name HK12,,,,"4158",,,STR:11,,,Name für HK12
+r;w,,HcName13,Name HK13,,,,"4160",,,STR:11,,,Name für HK13
+r;w,,HcName14,Name HK14,,,,"4168",,,STR:11,,,Name für HK14
+r;w,,HcName15,Name HK15,,,,"4170",,,STR:11,,,Name für HK15
+r;w,,HcName16,Name HK16,,,,"4178",,,STR:11,,,Name für HK16
 r;wi,,PhoneNumberPart1,Telefonnummer Teil 1,,,,"4200",,,STR:9,,,Erster Teil der Telefonnummer für den Servicefall
 r;wi,,PhoneNumberPart2,Telefonnummer Teil 2,,,,"4208",,,STR:9,,,Zweiter Teil der Telefonnummer für den Servicefall
