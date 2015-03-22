@@ -1,0 +1,169 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,BAI00,ecoTEC (euro),308523 174
+*r,bai00,,,,"08","B509","0D"
+*w,bai00,,,,"08","B509","0E"
+*wi,bai00#install,,,,"08","B509","0E"
+*ws,bai00#service,,,,"08","B509","0E"
+# ##### Diagnose Ebene 1 #####
+r;wi,,PartloadHcKW,d.00 Heizungsteillast,,,,"0704",,,UCH,,,Heizungsteillast
+r;wi,,WPPostrunTime,d.01 Pumpennachlaufzeit,,,,"F703",,,UCH,,,Wasserpumpennachlaufzeit nach Heizbetrieb
+r;wi,,BlockTimeHcMax,d.02 Maximale Brennersperrzeit,,,,"0904",,,UCH,,,Max. Brennersperrzeit bei einem Vorlaufsollwert von 20°C
+r,,THwcDK,d.03 WW Vorlaufsolltemp.,,,,"1600",,,tempsensor,,,Vorlauftemperatur bei Warmwasserzapfung (nur bei Kombi-Heizgeräten)
+r,,TTANKDK,d.04 Speicheristtemp.,,,,"1700",,,tempsensor,,,Aktuelle Temperatur des Warmstartspeichers (bei Kombigeräten) oder aktuelle Speichertemperatur bei (VC Geräten)
+r,,FlowsetpointDK,d.05 Vorlaufsolltemperatur,,,,"3900",,,temp,,,Vorlaufsolltemperatur oder Rücklaufsolltemperatur (wenn Rücklaufregelung aktiviert wurde). Der Maximalwert wird über d.71 und einem eBUS Regler begrenzt.
+r,,HwcSetpoint,d.06 Brauchwassersollwert,,,,"EA03",,,temp,,,Gewünschte Warmwasser Solltemperatur
+r,,TanksetpointDK,d.07 Speichersolltemp.,,,,"0400",,,temp,,,VCW: Solltemperatur des WarmstartspeichersVC: Solltemperatur des externen Speichers
+r,,ACRoomthermostatDK,d.08 Raumthermostat,,,,"2A00",,,onoff,,,Status des extrenen Raumthermostat an Klemme 3/4
+r,,ExtFlowsetpointMin,d.09 Min. ext. Vorlaufsollwert,,,,"6E04",,,temp,,,minimum out of Kl.7 and eBus flow setpoint
+r,,WPDK,d.10 Wasserpumpe,,,,"4400",,,onoff,,,Interne Heizungspumpe
+r,,extWPDK,d.11 ext. Heizungspumpe,,,,"3F00",,,onoff,,,Externe Heizungspumpe
+r,,Tankloadpump,d.12 Speicherladepumpe,,,,"9E00",,,UCH,,,Ladepumpenanforderung
+r,,CircPumpDK,d.13 Zirkulationspumpe,,,,"7B00",,,onoff,,,Status Zirkulationspumpe (über ein externes Modul ansteuerbar)
+r,,DCRoomthermostatDK,d.16 Raumthermostat,,,,"0E00",,,onoff,,,Wärmeanforderung vom externen Regler (Klemme 3-4)
+r,,HwcDemandDK,d.22 WW Anforderung,,,,"5800",,,yesno,,,Brauchwasseranforderung (Zapfung oder Schaltsignal vom Speicher)
+r,,HeatingSwitch,d.23 Winterbetrieb,,,,"F203",,,onoff,,,Wintermodus aktiv (Heizbetrieb und Warmwasser)
+r,,TankreleaseClock,d.25 Speicherfreigabe,,,,"4704",,,yesno,,,Freigabe der Speichrladung oder des Warmstartspeichers durcheinen eBUS Regler
+r,,SDGasvalve,d.30 Gasventil,,,,"BB00",,,UCH,240=off;15=on,,GMV Ansteuersignal
+r,,TargetFanSpeedDK,d.33 Lüfter Solldrehzahl,,,,"2400",,,UIN,,,Drehzahlsollwert des Lüfters
+r,,SDFanSpeedDK,d.34 Lüfteristdrehzahl,,,,"8300",,,UIN,,,Aktuelle Lüfterdrehzahl
+r,,PositionTWVSetDK,d.35 Position VUV,,,,"5400",,,UCH,,,Position des 3-Wege Ventil: 100=Warmwasser 0=Heizbetrieb 40=Mittenstellung
+r,,HwcWaterflowDK,d.36 Zapfmenge,,,,"5500",,,uin100,,,WW Durchflußsensor
+r,,TFTDK,d.40 Vorlauftemperatur,,,,"1800",,,tempsensor,,,Vorlauftemperatur
+r,,SDTRTDK,d.41 Rücklauftemperatur,,,,"9800",,,temp,,,,tempmirror,,UIN,,,,,,sensor,,,Rücklauftemperatur
+r,,IonisationVoltageLevel,d.44 Spannungspegel Ionisationssignal,,,,"A400",,,SIN,10,,Ionisationsspannung: größer 80 = keine Flammekleiner 40 = gutes Flammensignal
+r,,OutdoorstempSensorDK,d.47 Außentemperaturfühler,,,,"7600",,,tempsensor,,,Außentemperaturwert (ohne Korrekturwert) und Sensorstatus
+r,,RemainingBoilerblocktimeDK,d.67 Verbleibende Brennersperrzeit,,,,"3800",,,UCH,,,Verbleibende Brennersperrzeit
+r,,EBusHeatcontrol,d.90 Digitaler Regler,,,,"0004",,,yesno,,,Gibt an ob ein digitaler Regler erkannt wurde
+r,,dcfStateDK,d.91 DCF Status,,,,"6900",,,dcfstate,,,DCF Status
+# ##### Expertenebene #####
+r,,externalFlowsetpointDK,ext. Vorlaufsollwert,,,,"2500",,,temp,,,Vorlaufsollwert von einem externen Regler an Klemme 7-8-9
+r,,HwcSwitchDK,Wasserschalter,,,,"0000",,,onoff,,,Speicheranforderung eines externen Speichers über den Speicherkontakt.
+r,,WaterpressuresensorDK,Wasserdruck,,,,"0200",,,presssensor,,,Wasserdruck
+r,,SDFlameDK,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal
+r,,ChangesDSNDK,Anzhl der DSN Änderungen,,,,"0C00",,,UCH,,,Anzahl der DSN (Gerätekennung) Änderungen
+r,,SDGasvalveUCDK,Gasventil,,,,"0D00",,,UCH,240=off;15=on,,Schaltsignal für das Gasventil
+r,,SDVolatileLockoutDK,Verriegelnde Störabschaltungen,,,,"1000",,,UCH,240=no;15=yes,,WAHR: STB Fehler sind verriegelnd
+r,,ModulationsetpointDK,Modulationssollwert,,,,"2E00",,,SIN,10,,Modulationssollwert
+r,,SDFlameSensingASICDK,SD_Flame_Sensing_ASIC_DK,,,,"2F00",,,UIN,,,Ioni/ADC Wert vom Flammenwächter
+r,,HZUnderHundredSwiActiDK,HZ_UnderHundred_SwiActi_DK,,,,"3000",,,UCH,,,Heat switch cycles under hundred
+r,,BWUnderHundredSwiActiDK,BW_UnderHundred_SwiActi_DK,,,,"3100",,,UCH,,,DHW switch cycles under hundred
+r,,EbusSourceOnDK,eBUS Spannungsversorgung,,,,"3400",,,onoff,,,Aktivierung der eBUS Speisung
+r,,FluegasvalveDK,Abgasklappe,,,,"3C00",,,onoff,,,Flüssiggas Magnetventil
+r,,ExternalFaultmessageDK,Ext. Störmeldung,,,,"3E00",,,onoff,,,Signal für die externe Störmeldeeinrichtung
+r,,SDGasvalveASICFeedbackDK,Rückmeldung Gasventil,,,,"4700",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom ASIC
+r,,SDGasvalveUCFeedbackDK,Rückmeldung Gasventil,,,,"4800",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom Prozessor
+r,,SDIgnitorDK,Zünder,,,,"4900",,,UCH,240=off;15=on,,Zündung aktiviert
+r,,HwcTypesDK,WW Typen,,,,"4B00",,,UCH,,,DHW type of the appliance
+r,,HwcImpellorSwitchDK,Brauchwasserzapfung,,,,"5700",,,yesno,,,WW Zapfung
+r,,WarmstartDemand,Warmstartanforderung,,,,"3A04",,,yesno,,,Warmstartaktivierung
+r,,BoilerTypeDK,BoilerType_DK,,,,"5E00",,,UCH,,,Boiler typ of the bmu
+r,,ParamTokenDK,ParamToken_DK,,,,"6000",,,UCH,,,token for parameter managment
+r,,ReturnTempDK,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor
+r,,FloorHeatingContactDK,Anlegethermostat,,,,"7000",,,onoff,,,Eingang Anlegethermostat
+r,,SDTemplimiterDK,Temperaturbegrenzer,,,,"7700",,,UCH,240=off;15=on,,Rückmeldung des Temperaturbegrenzer Signals
+r,,EbusVoltageDK,eBUS Spannung,,,,"7F00",,,onoff,,,Rückmeldung der eBUS Spannung
+r,,FluegasvalveOpenDK,Abgasklappe offen,,,,"8900",,,onoff,,,Rückmeldung Flüssiggasventil
+r,,TestbyteDK,Testbyte_DK,,,,"9900",,,UCH,,,Testbyte (relevant for the Tester)
+r,,DSNDK,DSN,,,,"9A00",,,UIN,,,DSN: Device Specific number
+r,,TargetFanSpeedOutputDK,Lüfter Solldrehzahl,,,,"9F00",,,UIN,,,Lüfterdrehzahl
+r,,PowerValueDK,Leistungsdaten,,,,"AA00",,,HEX:6,,,Geräteleistung (min und max)
+r,,StatenumberDK,Statenumber_DK,,,,"AB00",,,UCH,,,status number
+r,,WaterpressureBranchControlOffDK,Drucksprungerkennung ausschalten,,,,"AF00",,,onoff,,,Überwachung der Druckänderung beim Schalten der Pumpe kann hiermit aktiviert oder deaktiviert werden
+r,,DSNStart,DSN Startadresse,,,,"3104",,,UIN,,,DSN Startadresse
+r,,ExtTankModulConDK,VR65 angeschlossen,,,,"BF00",,,yesno,,,Externes Speichermodul (VR65) angeschlosssen
+r,,PartnumberBox,Partnumber_Box,,,,"C000",,,HEX:5,,,part number of the eBox
+r,,WPSecondStageDK,WP_SecondStage_DK,,,,"ED00",,,onoff,,,Second stage of the pump activated
+r,,SDSTLWithNTC,SD_STL_with_NTC,,,,"D200",,,UCH,240=no;15=yes,,Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
+r,,SDVolatileLockoutIFCGVDK,SD_VolatileLockout_IFC_GV_DK,,,,"D300",,,UCH,240=no;15=yes,,Alle IFC Fehler sind nichtflüchtig
+r,,VortexFlowSensorDK,VortexFlowSensor_DK,,,,"D500",,,UIN,,,"Predictive Maintenance data, CH water flow"
+r,,DisplayModeDK,DisplayMode_DK,,,,"DA00",,,UCH,,,Display mode of the aplliance
+r,,SDGasvalve3UCDK,Gasventil 3,,,,"DB00",,,UCH,240=off;15=on,,Gasventil Schaltsignal (vom Prozessor)
+r,,InitialisationEEPROMDK,InitialisationEEPROM_DK,,,,"DC00",,,yesno,,,EEPROM Initialisierrung (für die Produktion)
+r,,TimerInputHcDK,Eingang Schaltuhr,,,,"DE00",,,onoff,,,timer input (block heatdemand)
+r,,FanMinSpeedOperationDK,Min. Lüfterdrehzahl,,,,"DF00",,,UIN,,,Lüfter Minimaldrehzahl
+r,,FanMaxSpeedOperationDK,Max. Lüfterdrehzahl,,,,"E000",,,UIN,,,Lüfter Maximaldrehzahl
+r,,ExternGasvalveDK,Ext. Gasventil,,,,"E400",,,onoff,,,Externes Magnetventil
+r,,DCFTimeDateDK,DCF Datum/Uhrzeit,,,,"E500",,,HEX:8,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
+r,,FlowSetPotmeter,Vorlaufsollwert Poti,,,,"F003",,,temp,,,Vorlaufsollwert Potentiometer
+r,,HwcSetPotmeter,WW Sollwert Potentiometer,,,,"F103",,,temp,,,WW Sollwertpotentiometer
+r,,HwcSwitch,Wasserschalter,,,,"F303",,,onoff,,,WW aus/ein
+r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,
+r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI
+# ##### Diagnose Ebene 2 #####
+r;wi,,ReturnRegulation,d.17 Rücklaufregelung,,,,"0C04",,,onoff,,,Aktivierung der Rücklaufregelung.
+r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pumpenbetriebsart für den Heizbetrieb
+r;wi,,SecondPumpMode,d.19 Betriebsart 2. Pumpe,,,,"0B04",,,UCH,,,Betriebsart 2stufige Pumpe:0 : Brennerbetrieb = Stufe 2 / Vor-Nachlauf = Stufe 11: Brennerbetrieb + Vorlauf = Stufe 1 / Warmwasser = Stufe 22 : Wie 1 aber im Heizbetrieb hängt die Stufe von der Teillast ab (default)3 : Immer Stufe 2
+r;wi,,TempHwcMax,d.20 Max. WW Temperatur,,,,"4304",,,temp,,,Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers (Rechtsanschlag).
+r;wi,,AccessoriesOne,d.27 Zubehörrelais 1,,,,"4B04",,,UCH,1=circulation pump;2=Ext. heating pump;3=Storage charging pump;4=Flue gas flap/extractor hood;5=External gas valve;6=External error message;7=Solar pump;8=remote control,,Funktion des Zubehörrelais 1
+r;wi,,AccessoriesTwo,d.28 Zubehörrelais 2,,,,"4C04",,,UCH,1=circulation pump;2=Ext. heating pump;3=Storage charging pump;4=Flue gas flap/extractor hood;5=External gas valve;6=External error message;7=Solar pump;8=remote control,,Funktion des Zubehörrelais 2
+r;wi,,FanSpeedOffsetMin,d.50 Offet min. Lüfterdrehzahl,,,,"2404",,,SIN,,,Offset min. Drehzahl
+r;wi,,FanSpeedOffsetMax,d.51 Offset max. Lüfterdrehzahl,,,,"2504",,,SIN,,,Offset max. Drehzahl
+r;wi,,SolarPostHeat,d.58 Solarbetriebsart,,,,"7304",,,UCH,,,Spezielle WW Funktionen:0 = Solarfunktion deaktiviert (default)1 = Solarfunktion aktiviert und WW Sollwert minimal 60°C2 = Solarfunktion aktiviert und WW Sollwert min. 35°C3 = WW Sollwert minimum 60°C
+r,,DeactivationsTLDK,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers
+r,,DeactivationsIFCDK,d.61 Anzahl Zündfehler,,,,"1F00",,,UCH,,,Anzahl der Zündfehler (nicht erfolgreiche Züdung im letzten Versuch oder fehlerhaftes Flammensignal)
+r,,averageIgnitiontimeDK,d.64 Mittlere Zündzeit,,,,"2D00",,,UCH,10,,Mittlere Zündzeit
+r,,maxIgnitiontimeDK,d.65 Max. Zündzeit,,,,"2C00",,,UCH,10,,Maximale Zündzeit
+r,,CounterStartattempts1DK,d.68 Zündfehler 1. Versuch,,,,"6E00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 1. Versuch)
+r,,CounterStartattempts2DK,d.69 Zündfehler 2. Versuch,,,,"6F00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 2. Versuch)
+r;wi,,TWVMode,d.70 VUV Betriebsart,,,,"2A04",,,UCH,,,Betriebsart 3-Wegeventil:0 = normaler Modus1 = Mittenstellung2 = Permanent Heizbetrieb (keine Umschaltung in den WW Betrieb)
+r;wi,,FlowsetHcMax,d.71 Max. Vorlauftemp. Heizbetrieb,,,,"0E04",,,temp,,,Einstellung des maximalen Vorlaufsollwert im Heizbetrieb (bei Linksanschlag des Poti)
+r;wi,,HwcPostrunTime,d.72 WW Pumpnenachlaufzeit,,,,"1104",,,UCH,-10,,Pumpennachlaufzeit nach Speicherladung
+r;wi,,WarmstartOffset,d.73 Warmstart Offset,,,,"1004",,,temp,,,Offset für Warmstartsollwert (nur bei VCW)
+r;wi,,APCLegioProtection,d.74 APC_LegioProtection,,,,"9704",,,UCH,,,Legionella protection for actoSTORE
+r;wi,,TankLoadTimeMax,d.75 Max. Speicherladezeit,,,,"1204",,,UCH,,,Max. Speicherladezeit für Speicher ohne eigene Regelung
+r;wi,,PartloadHwcKW,d.77 Speicherteillast,,,,"0804",,,UCH,,,Teillast für Speicherladung (Geräteleistung kann auf den angegebenen Wert limitiert werden)
+r;wi,,FlowsetHwcMax,d.78 Max. Vorlauftemp. WW,,,,"0F04",,,temp,,,Maximal erlaubte Vorlauftemperatur für die Speicherladung
+r,,HEATOperatinghrsDK,d.80 Hz. Betriebsstunden,,,,"2800",,,hoursum2,,,Betriebsstunden im Heizbetrieb
+r,,HwcOperatinghrsDK,d.81 Betriebsstunden WW,,,,"2200",,,hoursum2,,,Betriebsstunden Brauchwasser
+r,,HEATSwitchactionsDK,d.82 Schaltspiele Heizbetrieb,,,,"2900",,,UIN,-100,,Schaltspiele Heizbetrieb
+r,,HwcSwitchactionsDK,d.83 Schaltspiele BW Betrieb,,,,"2300",,,UIN,-100,,Schaltspiele WW Betrieb
+r;wi,,HoursTillService,d.84 Stunden bis Wartung,,,,"2004",,,UIN,,h,Wartungsintervall:Anzahl der Stunden bis zur nächsten Wartung
+r,,APCComStatusDK,d.92 APC_ComStatus_DK,,,,"6200",,,UCH,,,actoSTORE communication status
+r;ws,,DSNOffset,d.93 Gerätekennung,,,,"3004",,,UCH,,,Gerätekennung (DSN)
+r;wi,,SetFactoryValues,d.96 Werkseinstellungen,,,,"6804",,,yesno,,,Werkseinstellungen
+# ##### Wartungsdaten #####
+r,,TempGradientFailureDK,Gradientenfehler,,,,"1100",,,temp0,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)
+r,,TempDiffBlockDK,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
+r,,TempDiffFailureDK,TempDiffFailure_DK,,,,"1300",,,temp0,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur
+r,,PumpOperationHoursDK,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pumpenbetriebsstunden
+r,,HcPumpCommuntDK,CH_PumpCommunt_DK,,,,"1500",,,cntstarts2,,,Schaltspiele Pumpe
+r,,TWVCommuntDK,3WV Schaltspiele,,,,"1A00",,,cntstarts2,,,Anzahl der 3WV Umschaltungen
+r,,FanOperationHoursDK,Betriebsstunden Lüfter,,,,"1B00",,,hoursum2,,,Betriebsstunden des Lüfters
+r,,FanCommuntDK,FanCommunt_DK,,,,"1C00",,,cntstarts2,,,Anzahl der Lüfterschaltspiele
+r,,OverflowCounterDK,Überlauf PM Zähler,,,,"1E00",,,yesno,,,Predictive Maintenance counter have got an overflow
+r,,TempDiffExtTFTDKMax,MaxTempDiffExtTFT_DK,,,,"2700",,,temp,,,Predictive maintenance data
+r,,minIgnitiontimeDK,Min. Zündzeit,,,,"2B00",,,UCH,10,,Minimale Zündzeit
+r,,THwcMaxDK,Max. WW Temperatur,,,,"3500",,,temp,,,Maximaltemperatur gemessen am Brauchwasserauslaufsensor
+r,,TTANKMaxDK,Max. Speichertemp.,,,,"3600",,,temp,,,Maximaltemperatur gemessen am Speichersensor
+r,,TFTMaxDK,Max. Vorlauftemperatur,,,,"3700",,,temp,,,Maximaltemperatur gemessen am Vorlaufsensor
+r,,FanPWMSumDK,Fan_PWM_Sum_DK,,,,"3A00",,,UIN,,,Predictive Maintenance data for the fan damage recognition
+r,,FanPWMTestDK,Fan_PWM_Test_DK,,,,"3B00",,,UCH,,,Predictive Maintenance data for the fan damage recognition
+r,,DeltaFlowReturnDKMax,MaxDeltaFlowReturn_DK,,,,"3D00",,,temp,,,Wartungsdaten
+r,,TankLoadPumpOperationHoursDK,TankLoadPumpOperationHours_DK,,,,"4C00",,,hoursum2,,,Preditive maintenance data
+r,,TankloadPumpCommuntDK,TankloadPumpCommunt_DK,,,,"4F00",,,cntstarts2,,,Preditive maintenance data
+r,,HwcWaterflowMaxDK,Max. WW Vorlauftemp.,,,,"5600",,,uin100,,,Maximalwert des Warmwassersensors
+r,,CounterStartAttempts3DK,Zündfehler 3. Versuch,,,,"8100",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 3. Versuch)
+r,,CounterStartAttempts4DK,Zündfehler 4. Versuch,,,,"8200",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 4. Versuch)
+r,,TRTMaxDK,Max. Rücklauftemperatur,,,,"BE00",,,temp,,,Max. Rücklauftemperatur
+r,,PumpHwcFlowSumDK,PumpDHWFlowSum_DK,,,,"C100",,,UIN,,,summed up DHW flow rate
+r,,PumpHwcFlowNumberDK,PumpDHWFlowNumber_DK,,,,"C200",,,UCH,,,number of times DHW flow rate was detected
+r,,SHEMaxFlowTempDK,Max. WW Vorlauftemp.,,,,"C300",,,temp,,,Max. Vorlauftemperatur für WW
+r,,SHEMaxDeltaHwcFlowDK,SHE_MaxDeltaFlowDHW_DK,,,,"C400",,,temp,,,maximum difference between flow and DHW outlet temperature
+r,,PrEnergySumHwc1DK,PrEnergySumDHW1_DK,,,,"C500",,,ULG,,,Wartungsdaten
+r,,PrEnergyCountHwc1DK,PrEnergyCountDHW1_DK,,,,"C600",,,ULG,,,Wartungsdaten
+r,,PrEnergySumHwc2DK,PrEnergySumDHW2_DK,,,,"C700",,,ULG,,,Wartungsdaten
+r,,PrEnergyCountHwc2DK,PrEnergyCountDHW2_DK,,,,"C800",,,ULG,,,Wartungsdaten
+r,,PrEnergySumHwc3DK,PrEnergySumDHW3_DK,,,,"C900",,,ULG,,,Wartungsdaten
+r,,PrEnergyCountHwc3DK,PrEnergyCountDHW3_DK,,,,"CA00",,,ULG,,,Wartungsdaten
+r,,WaterHcFlowDKMax,MaxWaterFlowCH_DK,,,,"D000",,,UIN,,,Wartungsdaten
+r,,WaterpressureVariantSumDK,WaterpressureVariantSum_DK,,,,"F000",,,UIN,,,Wartungsdaten
+r,,WaterpressureMeasureCounterDK,WaterpressureMeasureCounter_DK,,,,"F100",,,UCH,,,Wartungsdaten
+r,,PrAPSCounterDK,PrAPSCounter_DK,,,,"F200",,,UCH,,,Wartungsdaten
+r,,PrAPSSumDK,PrAPSSum_DK,,,,"F300",,,UIN,,,Wartungsdaten
+r,,PrVortexFlowSensorValueDK,PrVortexFlowSensorValue_DK,,,,"F400",,,SIN,,,Wartungsdaten
+r,,PrEnergySumHc1DK,PrEnergySumCH1_DK,,,,"F500",,,ULG,,,Wartungsdaten
+r,,PrEnergyCountHc1DK,PrEnergyCountCH1_DK,,,,"F600",,,ULG,,,Wartungsdaten
+r,,PrEnergySumHc2DK,PrEnergySumCH2_DK,,,,"F700",,,ULG,,,Wartungsdaten
+r,,PrEnergyCountHc2DK,PrEnergyCountCH2_DK,,,,"F800",,,ULG,,,Wartungsdaten
+r,,PrEnergySumHc3DK,PrEnergySumCH3_DK,,,,"F900",,,ULG,,,Wartungsdaten
+r,,PrEnergyCountHc3DK,PrEnergyCountCH3_DK,,,,"FA00",,,ULG,,,Wartungsdaten

@@ -1,0 +1,8 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,sol00,VR 68,sol 210
+*r,cir,,,,"A1","B509","0D"
+*w,cir,,,,"A1","B509","0E"
+# ##### CP: Zirkulationspumpe #####
+r,,CircPump,Zirkulationspumpe,,,,"0500",,,onoff,,,Zirkulationspumpe
+# ##### CP: CP #####
+r,,OperatingMode,Betriebsart,,,,"0F00",,,mixmode,,,"Operating mode of CP circuit (Auto=1,Manual,Off)"
