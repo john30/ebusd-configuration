@@ -48,8 +48,8 @@ r,,DisplayType,DisplayTyp,,,,"8D00",,,UCH,,,"display misubishi=0x07, mtek=0x70"
 r,,ScanPrevention,ScanPrevention,,,,"8400",,,onoff,,,cyclic scan are started
 # ##### Kaskadenparameter #####
 r;wi,,BoilerSwitchHyster,Kesselschalthysterese,,,,"2300",,,temp,,,
-r;wi,,BoilerMaxTemp,Maximaltemperatur Wärmeerzeuger,,,,"2400",,,temp,,,
-r;wi,,BoilerMinTemp,Minimaltemperatur Wärmeerzeuger,,,,"2500",,,temp,,,
+r;wi,,BoilerTempMax,Maximaltemperatur Wärmeerzeuger,,,,"2400",,,temp,,,
+r;wi,,BoilerTempMin,Minimaltemperatur Wärmeerzeuger,,,,"2500",,,temp,,,
 r;wi,,StartPowerVantage,Startleistung Warmwasser,,,,"2800",,,UCH,,,Startleistung für Speicherladung. Anzahl der Kesselstufen oder Anzahl der Heizgeräte (je nach System).
 r;wi,,SeparationShift,Trennschaltung,,,,"2A00",,,onoff,,,
 r;wi,,TurnOnDelay,Einschaltverzögerung,,,,"3000",,,UCH,,,

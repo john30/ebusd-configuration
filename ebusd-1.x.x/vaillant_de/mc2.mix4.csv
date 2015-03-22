@@ -14,14 +14,14 @@ r,,StatRestarts,StatRestarts,,,,"D200",,,UIN,,,
 r,,StatRTOSErrorCounter,StatRTOSErrorCounter,,,,"D300",,,UIN,,,
 # ##### MK1: Daten #####
 r,,FlowTempDesired,Vorlaufsolltemperatur,,,,"4600",,,D1C,,,Desired flow temperature of MK1
-r,,FlowSensor,VF1 Sensor,,,,"0100",,,tempsensor,,,Vorlauftemperatur
+r,,FlowTemp,VF1 Sensor,,,,"0100",,,tempsensor,,,Vorlauftemperatur
 r,,OutsideTemp,Außentemp. Sensor,,,,"0600",,,tempsensor,,,current outside temperature (valid only if a sensor is connected to the VR60)
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
 r,,IsInHoliday,Ferienprogramm aktiv,,,,"2700",,,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
 r,,IsInParty,Partyfunktion aktiv,,,,"4E00",,,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 r,,CleaningLady,Sparfunktion,,,,"4B00",,,UCH,,,saving function is activated until read value * 1/2 h
 r,,IsInTankFilling,Speicherladung aktiv,,,,"4700",,,yesno,,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
-r,,Mixer1DutyCycle1,ED Mischer,,,,"0E00",,,SCH,,,"Teleswitch,Pumpe,Zirkulationspumpe,WW Anforderung,WW Freigabe"
+r,,MixerDutyCycle,ED Mischer,,,,"0E00",,,SCH,,,"Teleswitch,Pumpe,Zirkulationspumpe,WW Anforderung,WW Freigabe"
 r,,HcPumpPort,HK2-P,,,,"9100",,,onoff,,,Status of mixer cicuit pump on MK1P
 # ##### MK1: Konfiguration #####
 r;wi,,CfgHeatSinkType,Kreis Typ,,,,"3C00",,,UCH,0=disabled;1=mixer;2=water;3=fix value;4=back flow,,Type of the configurable mixer circuit

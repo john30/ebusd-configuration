@@ -51,5 +51,5 @@ r;w,,ExtendedYieldCalculation,Erweiterter Solarertrag,,,,"7F00",,,onoff,,,calcul
 r;w,,SolarPriority,Priorität Solarspeicher,,,,"9900",,,UCH,16=1-2;4=2-1,,Priority of water tanks for solar loading algorithms. 1 = SP2 2 = SP3
 r,,SolOperatingMode,Betriebsart,,,,"AC00",,,UCH,,,Operating mode solar
 r,,SolTeleswitchOperatingMode,Teleswitch Betriebsart,,,,"AD00",,,UCH,,,Teleswitch operating mode solar
-r;w,,KolMinTemp1,Minimaltemperatur 1,,,,"A000",,,temp0,,,Temperature COL1 sensor has to reach before starting pumps at least
-r;w,,KolMinTemp2,Minimaltemperatur 2,,,,"A008",,,temp0,,,Temperature COL2 sensor has to reach before starting pumps at least
+r;w,,KolTempMin1,Minimaltemperatur 1,,,,"A000",,,temp0,,,Temperature COL1 sensor has to reach before starting pumps at least
+r;w,,KolTempMin2,Minimaltemperatur 2,,,,"A008",,,temp0,,,Temperature COL2 sensor has to reach before starting pumps at least

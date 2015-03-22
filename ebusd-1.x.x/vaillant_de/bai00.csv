@@ -93,7 +93,7 @@ r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI
 r;wi,,ReturnRegulation,d.17 Rücklaufregelung,,,,"0C04",,,onoff,,,Aktivierung der Rücklaufregelung.
 r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pumpenbetriebsart für den Heizbetrieb
 r;wi,,SecondPumpMode,d.19 Betriebsart 2. Pumpe,,,,"0B04",,,UCH,,,Betriebsart 2stufige Pumpe:0 : Brennerbetrieb = Stufe 2 / Vor-Nachlauf = Stufe 11: Brennerbetrieb + Vorlauf = Stufe 1 / Warmwasser = Stufe 22 : Wie 1 aber im Heizbetrieb hängt die Stufe von der Teillast ab (default)3 : Immer Stufe 2
-r;wi,,TempHwcMax,d.20 Max. WW Temperatur,,,,"4304",,,temp,,,Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers (Rechtsanschlag).
+r;wi,,HwcTempMax,d.20 Max. WW Temperatur,,,,"4304",,,temp,,,Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers (Rechtsanschlag).
 r;wi,,AccessoriesOne,d.27 Zubehörrelais 1,,,,"4B04",,,UCH,1=circulation pump;2=Ext. heating pump;3=Storage charging pump;4=Flue gas flap/extractor hood;5=External gas valve;6=External error message;7=Solar pump;8=remote control,,Funktion des Zubehörrelais 1
 r;wi,,AccessoriesTwo,d.28 Zubehörrelais 2,,,,"4C04",,,UCH,1=circulation pump;2=Ext. heating pump;3=Storage charging pump;4=Flue gas flap/extractor hood;5=External gas valve;6=External error message;7=Solar pump;8=remote control,,Funktion des Zubehörrelais 2
 r;wi,,FanSpeedOffsetMin,d.50 Offet min. Lüfterdrehzahl,,,,"2404",,,SIN,,,Offset min. Drehzahl
@@ -131,7 +131,7 @@ r,,TWVCommuntDK,3WV Schaltspiele,,,,"1A00",,,cntstarts2,,,Anzahl der 3WV Umschal
 r,,FanOperationHoursDK,Betriebsstunden Lüfter,,,,"1B00",,,hoursum2,,,Betriebsstunden des Lüfters
 r,,FanCommuntDK,FanCommunt_DK,,,,"1C00",,,cntstarts2,,,Anzahl der Lüfterschaltspiele
 r,,OverflowCounterDK,Überlauf PM Zähler,,,,"1E00",,,yesno,,,Predictive Maintenance counter have got an overflow
-r,,TempDiffExtTFTDKMax,MaxTempDiffExtTFT_DK,,,,"2700",,,temp,,,Predictive maintenance data
+r,,TempMaxDiffExtTFTDK,MaxTempDiffExtTFT_DK,,,,"2700",,,temp,,,Predictive maintenance data
 r,,minIgnitiontimeDK,Min. Zündzeit,,,,"2B00",,,UCH,10,,Minimale Zündzeit
 r,,THwcMaxDK,Max. WW Temperatur,,,,"3500",,,temp,,,Maximaltemperatur gemessen am Brauchwasserauslaufsensor
 r,,TTANKMaxDK,Max. Speichertemp.,,,,"3600",,,temp,,,Maximaltemperatur gemessen am Speichersensor
