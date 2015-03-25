@@ -17,7 +17,7 @@ r,,FlowTemp,VF1 Sensor,,,,"0100",,,tempsensor,,,Temperature measured on VF2
 r,,FlowTempDesired,Vorlaufsolltemperatur,,,,"4600",,,D1C,,,Desired flow temperature of MK1
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
 r,,IsInHoliday,Ferienprogramm aktiv,,,,"2700",,,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
-r,,IsInTankFilling,Speicherladung aktiv,,,,"4700",,,yesno,,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
+r,,IsInStorageFilling,Speicherladung aktiv,,,,"4700",,,yesno,,,heating circuit is locked because of ongoing tank loading unless parallel loading has been activated
 r,,CleaningLady,Sparfunktion,,,,"4B00",,,UCH,,,saving function is activated until read value * 1/2 h
 r,,IsInParty,Partyfunktion aktiv,,,,"4E00",,,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 r,,HcPumpPort,HK2-P,,,,"9100",,,onoff,,,Status of mixer cicuit pump on MK1P

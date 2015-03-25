@@ -15,16 +15,16 @@ r,,StatRestarts,StatRestarts,,,,"D200",,,UIN,,,
 r,,StatRTOSErrorCounter,StatRTOSErrorCounter,,,,"D300",,,UIN,,,
 # ##### DHW: Daten #####
 r,,Storage1Sensor2,SP1 Sensor,,,,"0000",,,tempsensor,,,Temperature of SP1 sensor
-r,,CircPump2,Zirkulationspumpe,,,,"0C00",,,onoff,,,State of the circulation pump
+r,,CirPump2,Zirkulationspumpe,,,,"0C00",,,onoff,,,State of the circulation pump
 r,,ThreeWayValveLoadingPump12,LP/UV1,,,,"1000",,,onoff,,,State of LP/UV1
 r,,LegioPump2,Legionellenpumpe,,,,"1100",,,onoff,,,State of the legionella pump
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
-r,,OneTimeCircSwitch,1x ZP Schalter,,,,"0B00",,,onoff,,,non-recurring circulation pump running period
+r,,OneTimeCirSwitch,1x ZP Schalter,,,,"0B00",,,onoff,,,non-recurring circulation pump running period
 r,,IsInParty,Partyfunktion aktiv,,,,"4E00",,,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 # ##### DHW: Konfiguration #####
 r;w,,HwcLaggingTime2,WP Nachlaufzeit WW,,,,"6100",,,UCH,,,Time pump is running after energy demand is met
 r,,FlowTempDesired2,Vorlaufsolltemperatur,,,,"4600",,,D1C,,,Flow setpoint if tank has an energy demand
-r;w,,HcParallelTankFillingEnabled2,HcParallelTankFillingEnabled2,,,,"5500",,,yesno,,,Heating cuircuits can be loaded in parallel to an active tank loading
+r;w,,HcParallelStorageFillingEnabled2,HcParallelTankFillingEnabled2,,,,"5500",,,yesno,,,Heating cuircuits can be loaded in parallel to an active tank loading
 r;w,,HwcLoadingDelay2,WW Ladeverzögerung,,,,"6200",,,UCH,,,Time waiting for a heating demand in caser of solar gain
 r;ws,,SpreadingHwcLoading,Offset Warmwasserladung,,,,"8800",,,UCH,,,Offset for DHW flow temperature
 r;w,,LegioStartTime2,LegioStartTime2,,,,"8A00",,,UCH,,,Hour for legio protection

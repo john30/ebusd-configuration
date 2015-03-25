@@ -11,7 +11,7 @@ r,,Weekday,Wochentag,,,,"5F00",,,bday,,,Aktueller Wochentag
 r;w,,Time,Zeit,,,,"6000",,,time,,,Aktuelle Uhrzeit
 r;w,,Date,Datum,,,,"6100",,,date,,,Aktuelles Datum
 r,,StatusDcf,Status DCF,,,,"0200",,,dcfstate,,,status of the DCF signal (0x00 = no DCF-Signal detected / no RTC value; 0x01 = DCF-signal detected; 0x02 = DCF-signal is being interpreted; 0x03 = DCF-data valid; 0x04 = RTC-data is valid)
-r,,DisplayedHc1RoomSetpoint,Angezeigte Raumtemperatur Soll Heizkreis 1,,,,"9600",,,temp1,,,0= >5°Ccurrently displayed room temperature setpoint
+r,,DisplayedHc1RoomTempDesired,Angezeigte Raumtemperatur Soll Heizkreis 1,,,,"9600",,,temp1,,,0= >5°Ccurrently displayed room temperature setpoint
 r,,GlobalSystemOff,GlobalSystemOFF,,,,"0100",,,onoff,,,"activation of operation mode ""system off"""
 r;w,,Hc1OPMode,Betriebsart Heizkreis 1,,,,"2F00",,,UCH,,,"operation mode of the first heating circuit (0 = off, 1 = manual, 2 = auto, 3 = on, 4 = night, 5 = summer)"
 r;w,,Hc1NightTemp,Absenktemperatur Heizkreis 1,,,,"3000",,,D1C,,,Absenktemperatur des 1. Heizkreises
@@ -26,10 +26,10 @@ r;w,,Hc1BankHolidayEndPeriod,HC1BankHolidayEndPeriod,,,,"2200",,,date,,,first he
 r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,STR:10,,,labelling of the first heating circuit
 r;w,,HcName2,aaucHcNames_HK2,,,,"3F08",,,STR:10,,,labelling of the second heating circuit
 r,,HwcOPMode,Betriebsart Warmwasserkreis,,,,"4200",,,UCH,,,"0 = off, 1 = on, 2 = auto, 3 = auto sunday, 4 = party, 6 = one time tank loading, 7 = holiday"
-r;w,,HwcTempDesiredDK,DHW_DesiredTemp_DK,,,,"4400",,,D1C,,,setpoint of domestic hot water circuit
+r;w,,HwcTempDesired,DHW_DesiredTemp_DK,,,,"4400",,,D1C,,,setpoint of domestic hot water circuit
 r;w,,SummerWinterTimeAdjust,Sommer/Winterzeit Umstellung,,,,"5300",,,onoff,,,enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON)
-r,,DisplayedHwcTankTemp,DisplayedDHWTankTemperature,,,,"9E00",,,D1C,,,display of the storage's temperature in C4 (also in case of an SP1error)
-r,,HwcActualDesiredSetpointDK,DHW_ActualDesired_Setpoint_DK,,,,"8600",,,temp1,,,Aktuell für Regelung berechneter Wert
+r,,DisplayedHwcStorageTemp,DisplayedDHWTankTemperature,,,,"9E00",,,D1C,,,display of the storage's temperature in C4 (also in case of an SP1error)
+r,,HwcActualTempDesired,DHW_ActualDesired_Setpoint_DK,,,,"8600",,,temp1,,,Aktuell für Regelung berechneter Wert
 r,,Hc2TempDesiredB50418,HC2_Desired_TempB50418,,,,"3200",,,D1C,,,current flow temperature setpoint of the second heating circuit
 r,,Hc2OPMode,HC2_OPMode,,,,"1B00",,,UCH,,,"operation mode of the second heating circuit (0 = off, 1 = manual, 2 = auto, 3 = on, 4 = night, 5 = summer)"
 r,,Hc2SFMode,HC2_SFMode,,,,"1C00",,,UCH,,,"0 = _SFNothing,1 = _SFParty,2 = _SFOneDayBankHoliday,3 = _SFOneDayHoliday,4 = _SFHolidayPeriod,5 = _SFBankHolidayPeriod,6 = _SFQuickVeto,7 = _SFOneTimeVentilation,8 = _SFWhisperMode,9 = _SFLoadOnceDHW"
@@ -46,10 +46,10 @@ r,,OpModeEffect,OpModeEffect,,,,"B800",,,UCH,,,"selection which heating circuit 
 r;wi,,Hc1HeatCurve,Heizkurve Heizkreis 1,,,,"3100",,,curve,,,heating curve of the first heating circuit
 r;wi,,Hc1AutoOffMode,HC1_AutoOFF_Mode,,,,"4D00",,,UCH,0=frostprotection;1=lowering;2=disabled,,operation during the lowering time
 r;wi,,Hc1RoomTempSwitchOn,Raumtemperaturschalter Heizkreis 1,,,,"3400",,,UCH,0=off;1=modulating;2=thermostat,,room temperature modulation of the first heating circuit
-r;wi,,Hc1MinimalFlowSetpoint,Minimale Vorlauftemperatur Soll Heizkreis 1,,,,"3500",,,D1C,,,minimum flow temperature setpoint (end emphasis) of the first heating circuit
+r;wi,,Hc1MinimalFlowTempDesired,Minimale Vorlauftemperatur Soll Heizkreis 1,,,,"3500",,,D1C,,,minimum flow temperature setpoint (end emphasis) of the first heating circuit
 r;wi,,Hc1HcType,Typ Heizkreis 1,,,,"3A00",,,UCH,0=disabled;1=burner circuit,,type of the first heating circuit
 r;wi,,Hc1SummerOffset,Sommer-Abgleich Heizkreis 1,,,,"3B00",,,SCH,2,,"summer offset of the first heating circuit (if outside temperature > room setpoint + summer offset => heating is OFF;applies to comfort and night setback setpoint; no influence if room temperature modulation is set to ""thermostat"")"
-r,,Hc1ActualFlowSetPoint,Aktuelle Vorlauftemperatur Soll Heizkreis 1,,,,"3E00",,,D1C,,,current flow temperature setpoint of the first heating circuit
+r,,Hc1ActualFlowTempDesired,Aktuelle Vorlauftemperatur Soll Heizkreis 1,,,,"3E00",,,D1C,,,current flow temperature setpoint of the first heating circuit
 r;wi,,HwcLoadingOffset,Speicherlade-Abgleich Warmwasserkreis,,,,"4600",,,D1C,,,flow temperature's tank loading offset (flow setpoint of the DHW circuit = DHW setpoint + flow temperature's tank loading offset; only relevant if DHW control is done by control)
 r;wi,,HwcPressLowpostrunningtime,Vorlaufzeit Speicherladung Warmwasserkreis,,,,"4700",,,UCH,,,duration of the tank loading pump's lag (only relevant if DHW control is done by control)
 r;wi,,HwcParallelLoading,Parallele Ladung Warmwasserkreis,,,,"4800",,,onoff,,,Heizbetrieb und Speicherladung parallel
@@ -62,7 +62,7 @@ r;wi,,PreStopTime,Vorabsenkzeit,,,,"5100",,,UCH,,,in steps of 10maximum time of 
 r;wi,,ExcessTemp,ExcessTemperature,,,,"5200",,,D1C,,,excess temperature (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
 r;wi,,ContactName,aucContactName,,,,"B400",,,STR:10,,,installer's name
 r;wi,,PhoneNumber,Telefonnummer Fachhandwerker,,,,"5400",,,STR:10,,,installer's telephone number
-r;wi,,KeyCodeforConfigMenue,Passwort für das Konfigurationsmenü,,,,"5500",,,code,,,code for the installer's menues
+r;wi,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,"5500",,,code,,,code for the installer's menues
 r;wi,,MaintenanceDate,nächste Wartung,,,,"5900",,,date,,,Datum nächste Wartung
 r;w,,LcdContrastValue,Display Kontrastwert,,,,"5A00",,,UCH,,,setting of the LCD contrast
 r,,Hc1FloorPavementDryingTemp,HC1_FloorPavementDryingTemperature,,,,"2A00",,,D1C,,,HC1's current flow temperature setpoint with activated floor pavement drying
@@ -70,8 +70,8 @@ r,,Hc1FloorPavementDryingDay,HC1_FloorPavementDryingDay,,,,"3800",,,UCH,,,HC1's 
 r,,BMUFlowTempOrVF1,Vorlauftemperaturfühler 1,,,,"8700",,,tempsensor,,,value of either an externally connected flow temperature sensor or the BMU's internal flow sensor if an external sensor is missing
 r;wi,,HcMK1ConfigCPLP,BKMK1ConfigCPLP,,,,"7D00",,,UCH,,,"configuration of the VR61 relay-output (0 = deactivated, 1 = ZP, 2 = LP)"
 r;wi,,PumpBlockingTimeMax,Maximale Pumpen Sperrzeit,,,,"7E00",,,UCH,,,0=offheating circuit pump's maximum blocking time for pump's energy saving function
-r,,CircuPumpRunning,Zirkulationspumpe aktiv,,,,"8100",,,onoff,,,circulation pump's state
-r,,Hc1PumpState,Pumpe Heizkreis 1 aktiv,,,,"8200",,,onoff,,,first heating circuit pump's state
+r,,CirPump,Zirkulationspumpe aktiv,,,,"8100",,,onoff,,,circulation pump's state
+r,,Hc1Pump,Pumpe Heizkreis 1 aktiv,,,,"8200",,,onoff,,,first heating circuit pump's state
 r;wi,,Hc2HcType,Typ Heizkreis 2,,,,"8500",,,UCH,0=disabled;1=mixing;2=zone,,type of the second heating circuit
 r;wi,,HydraulicSwitch,HydraulicSwitch,,,,"B700",,,yesno,,,hydraulic switch is installed
 # ##### Informationen für Entwickler #####
@@ -79,19 +79,19 @@ r,,DcfIsValid,DcfIsValid,,,,"0400",,,onoff,,,validity of DCF signal (0 = invalid
 r,,StartEepromUpdate,Starte EEPROM Aktualsiserung,,,,"0E00",,,onoff,,,update of the EEPROM has to be started
 r,,EepromUpdateActive,EEPROM Aktivierung aktiv,,,,"0F00",,,onoff,,,update of the EEPROM has been started
 r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"1500",,,temp,,,room temperature intrinsic heating offset
-r,,ActualRoomTempSetpointHc1,Raumsolltemp. HK1,,,,"6300",,,temp,,,current room setpoint considering all basic conditions passed to the control algorithms
+r,,ActualRoomTempDesiredHc1,Raumsolltemp. HK1,,,,"6300",,,temp,,,current room setpoint considering all basic conditions passed to the control algorithms
 r,,HydraulicMap,HydraulicMap,,,,"1800",,,UCH,,,"hydraulic map (0 = H1, 3 = H4, 11 = A1, 12 = A2, 14 = A5, 15 = S1, 16 = S3a, 17 = S3b)"
 r,,SolarModuleDetected,Solarmodul erkannt,,,,"6C00",,,yesno,,,indicates that a VR68 has been detected
 r,,HcMK1Detected,BKMK1Detected,,,,"6D00",,,yesno,,,indicates that a VR61 has been detected
 r,,ACTOstorDetected,ACTOstorDetected,,,,"6F00",,,yesno,,,indicates that an ACTOstor has been detected
 r,,BMUB51101ErrorStatus,BMUB51101_ErrorStatus,,,,"7000",,,UCH,,,error state of BMU received via eBUS service B51101
-r,,BMUB51101TankTemp,Speichertemperatur Ist,,,,"7100",,,D1C,,,hot water storage temperature received via eBUS service B5 11 01
+r,,BMUB51101StorageTemp,Speichertemperatur Ist,,,,"7100",,,D1C,,,hot water storage temperature received via eBUS service B5 11 01
 r,,LegioProtectActive,LegioProtectActive,,,,"7300",,,yesno,,,legionella protection is active
 r,,BMUB51101HwcState,BMUB51101_DHWState,,,,"7500",,,onoff,,,flame is on because of either tapping or tank loading
 r,,VF1,VF_1,,,,"7600",,,tempsensor,,,Gemessene Vorlauftemperatur am externen Vorlaufsensor
 r,,BMUB51101BoilerFlowTemp,BMUB51101_BoilerFlowTemp,,,,"7700",,,D1C,,,Gemessene Vorlauftemperatur am internen Sensor
 r,,EnermanState,EnermanState,,,,"7A00",,,UCH,,,"current energy-manager-state (Off = 0, Heating = 1, DHW = 2, DHW pump lag = 3)"
-r,,B51000SetPointLoadingPump,B51000SetPointLoadingPump,,,,"7B00",,,D1C,,,loading pump's setpoint sent via B5 10 00 to the BMU
+r,,B51000TempDesiredLoadingPump,B51000SetPointLoadingPump,,,,"7B00",,,D1C,,,loading pump's setpoint sent via B5 10 00 to the BMU
 r,,HcMK1CPLPState,BKMK1CPLPState,,,,"7F00",,,onoff,,,nominal condition of the VR61's circulation or loading pump
 r,,CirLPLast24started,CP_LPLast24started,,,,"8300",,,yesno,,,circulation respectively loading pump has been started during the last 24h
 r,,Hc1PumpLast24started,HK1PumpLast24started,,,,"8400",,,yesno,,,first heating circuit's pump has been started during the last 24h

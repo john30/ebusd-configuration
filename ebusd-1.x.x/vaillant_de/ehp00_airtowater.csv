@@ -52,7 +52,7 @@ r,,Mixer1DutyCycle,Mischerstatus,,,,"0E00",,,spercent,,,"Status des Mischers; -1
 r,,Hc2Pump,Pumpenstatus,,,,"1800",,,onoff,,,"Pumpenstatus zeigt an, ob die externe Keizkreispumpe an- oder ausgeschaltet ist (AN/AUS)."
 # ***** Wärmesenke Warmwasser *****
 r,,HwcTemp,Speichertemp. IST,,,,"0000",,,tempsensor,,,Speichertemp. IST: Temperatur im Warmwasserspeicher.
-r,,CircPump,Zirkulationspumpe,,,,"0C00",,,onoff,,,ZP: = Status der Zirkulationspumpe (AN/AUS).
+r,,CirPump,Zirkulationspumpe,,,,"0C00",,,onoff,,,ZP: = Status der Zirkulationspumpe (AN/AUS).
 r,,HwcHcValve,UV1,,,,"1000",,,onoff,,,"Umschaltventil Heizen/Warmwasser, UV1."
 r,,HwcSwitch,1xZP,,,,"0B00",,,onoff,,,Status des 1xZP Eingangs.
 # ***** Spannungsversorgung *****
@@ -109,7 +109,7 @@ r;wi,,Code1Code2Valid,Codes übernehmen?,,,,"2400",,,yesno,,,Code 1/Code 2: ohne
 r,,HydraulicScheme,Hydraulikplan,,,,"6000",,,UCH,,,Hydraulic Schematic
 r,,HwcLaggingTime,WP Nachlaufzeit WW,,,,"6100",,,UCH,,,Backup heater use for CH
 r,,HwcLoadingDelay,WW Ladeverzögerung,,,,"6200",,,UCH,,,Backup heater use for DHW
-r,,HcParallelTankFillingEnabled,Parallele Speicherladung,,,,"5500",,,yesno,,,"BMR: indicates that heating circuits can keep running at dhw loading; for heatpumps, this is 1 if there is a heat buffer, 0 otherwise"
+r,,HcParallelStorageFillingEnabled,Parallele Speicherladung,,,,"5500",,,yesno,,,"BMR: indicates that heating circuits can keep running at dhw loading; for heatpumps, this is 1 if there is a heat buffer, 0 otherwise"
 # ##### EHP: Werkzeug #####
 r;wi,,OutsideTempOffset,Aussentemperatur,,,,"C300",,,calibration,,,"Manuelle Anpassung der angezeigten Temperaturen.Kalibrier-VerstellbereichAußentemperatur: +/- 5 K, Schrittweite 1,0 K.alle anderen: +/- 3 K, Schrittweite 0,5 K."
 r;wi,,SourceTempInputOffset,Kal.Qu.Eintritt,,,,"CD00",,,calibration,,,"Manuelle Anpassung der angezeigten Temperaturen.Kalibrier-VerstellbereichAußentemperatur: +/- 5 K, Schrittweite 1,0 K.alle anderen: +/- 3 K, Schrittweite 0,5 K."

@@ -33,6 +33,6 @@ r,,CMResetCnt,CMResetCnt,,,,"3100",,,UIN,,,counter of clock monitor reset events
 r,,COMErrorCnt,COMErrorCnt,,,,"3200",,,UIN,,,Fehler eBUS-Kommunikation
 r,,VariantDKRefreshCnt,VariantDKRefreshCnt,,,,"3300",,,UCH,,,counts how often variant ID has been corrected
 r,,RfCommErrorPending,Übertragungsfehler auf der Funkstrecke,,,,"3500",,,onoff,,,Kommunikationsstörung auf der Funkstrecke
-r,,BMUErrorStatusDK,Fehlerstatus Heizgerät,,,,"3600",,,UCH,,,Fehlerstatus des Heizgerätes
+r,,BMUErrorStatus,Fehlerstatus Heizgerät,,,,"3600",,,UCH,,,Fehlerstatus des Heizgerätes
 r,,BatteryError,Battriefehler,,,,"3700",,,onoff,,,low battery
 r,,eBUSCommErrorPending,eBUSCommErrorPending,,,,"3900",,,onoff,,,eBUS Kommunikationsfehler

@@ -12,7 +12,7 @@ r,,StateEM,Status Energiemanger,,,,"4B00",,,UCH,,,"Status des Energie-Manager:0:
 r;w,,LanguageVariant,Sprachvariante,,,,"2600",,,UCH,,,Sprache
 r;w,,HolidayPeriods,Ferienzeitraum,,,,"4300",,,hfrom;hto;hfrom;hto,,,Ferienzeitraum
 r;w,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,Raumsolltemperatur für den Ferienbetrieb
-r;wi,,KeyCodeforConfigMenue,Passwort für das Konfigurationsmenü,,,,"2C00",,,HEX:4,,,Code für die Konfigurationsmenüs
+r;wi,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,"2C00",,,HEX:4,,,Code für die Konfigurationsmenüs
 r,,FlowTempDesired,Vorlauftemp. SOLL,,,,"0500",,,temp,,,
 r,,FlowTemp,Vorlauftemp. IST,,,,"0200",,,tempsensor,,,Anlagenvorlauftemperatur
 r;wi,,ChSupportTimeMax,Max. Heizzeit,,,,"4D00",,,UCH,,,Max.Heizbetriebszeit bei parallel anstehender WW Anforderung

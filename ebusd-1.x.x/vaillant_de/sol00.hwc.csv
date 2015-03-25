@@ -18,8 +18,8 @@ r,,HwcLoadingEnabled,Ladefreigabe,,,,"1D00",,,yesno,,,Flag: Loading enabled by t
 r,,ActualTempDesired,Akt. Solltemperatur,,,,"1F00",,,D1C,,,"Current tank setpoint. Depends on the programmed period and current time, operating mode …"
 r,,HwcLegioTempOkTimer,Max. Rücklauftemperatur,,,,"2000",,,temp0,,,Time for which the temperature for legio protection should be hold
 r;wi,,HwcLaggingTime,WP Nachlaufzeit WW,,,,"2200",,,UCH,,,Lagging time after tank loading
-r,,QuickVetoSetpoint,Quick Veto Sollwert,,,,"4600",,,temp,,,DHW setpoint in case of quick veto
-r;w,,ManualTankSetpoint,Manueller Speichersollwert,,,,"4700",,,temp,,,DHW setpoint in case of manual mode
+r,,QuickVetoTempDesired,Quick Veto Sollwert,,,,"4600",,,temp,,,DHW setpoint in case of quick veto
+r;w,,ManualStorageTempDesired,Manueller Speichersollwert,,,,"4700",,,temp,,,DHW setpoint in case of manual mode
 r,,LegionellaProtectionActive,LegionellaProtectionActive,,,,"4900",,,yesno,,,Flag: Legionella protection active
 r,,IsInQuickVeto,Quick Veto aktiv,,,,"4B00",,,yesno,,,Flag: Quick veto active
 r;wi,,HwcTempOffset,T_DHWOffset,,,,"5000",,,UCH,,,Offset between desired temperature and setpoint

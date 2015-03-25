@@ -3,6 +3,6 @@
 *r,cir,,,,"A1","B509","0D"
 *w,cir,,,,"A1","B509","0E"
 # ##### CP: Zirkulationspumpe #####
-r,,CircPump,Zirkulationspumpe,,,,"0500",,,onoff,,,Zirkulationspumpe
+r,,CirPump,Zirkulationspumpe,,,,"0500",,,onoff,,,Zirkulationspumpe
 # ##### CP: CP #####
 r,,OperatingMode,Betriebsart,,,,"0F00",,,mixmode,,,"Operating mode of CP circuit (Auto=1,Manual,Off)"

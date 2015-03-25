@@ -16,14 +16,14 @@ r;wi,,SolarPumpRelay,Relais Solarpumpe,,,,"0F00",,,onoff,,,Solar pump relay: 0: 
 r;wi,,SolarPumpPower,Leistung Solarpumpe,,,,"1000",,,power,,,Performance of solar pump: (7 - 100 %)
 r;wi,,BufferPumpPower,Leistung Pufferpumpe,,,,"1100",,,power,,,Performance of buffer pump: (15 - 100%)
 r,,MonitorMatlabLast5minSolarAverage,MonitorMatlab_Last5minSolarAverage,,,,"1700",,,SIN,,,
-r,,CurrentSolarSetpoint,Solar Zieltemperatur,,,,"1800",,,UIN,,,Temperature target in solar flow at sensor Ntc1Sensor
+r,,CurrentSolarTempDesired,Solar Zieltemperatur,,,,"1800",,,UIN,,,Temperature target in solar flow at sensor Ntc1Sensor
 r,,CurrentVPMLoadingMode,Aktuelle Betriebsart,,,,"1900",,,UCH,,,1 = Warmwasser (autonom)2 = Heizung (autonom)3 = +10K (autonom)4 = Schwimmbad5 = Warmwasser6 = Heizung7 = +10K
 r,,RunTimePump1Minutes,Laufzeit Pumpe 1,,,,"1A00",,,UCH,,,Laufzeit der Solarpumpe (Minuten Anteil)
 r,,RunTimePump1Hours,Laufzeit Pumpe 1,,,,"1B00",,,UIN,,,Laufzeit der Solarpumpe (Stunden Anteil)
 r,,ExternalHwcRequest,Externe Warmwasseranforderung,,,,"1C00",,,onoff,,,0: No request; 1: Request
 r,,ExternalHcRequest,Externe Heizungsanforderung,,,,"1D00",,,onoff,,,0: No request; 1: Request
-r,,ExternalHwcSetpoint,Externer Warmwassersollwert,,,,"1E00",,,UCH,,,Requested temperature for DHW
-r,,ExternalHcSetpoint,Externer Heizungssollwert,,,,"1F00",,,UCH,,,Requested temperature for CH
+r,,ExternalHwcTempDesired,Externer Warmwassersollwert,,,,"1E00",,,UCH,,,Requested temperature for DHW
+r,,ExternalHcTempDesired,Externer Heizungssollwert,,,,"1F00",,,UCH,,,Requested temperature for CH
 r,,CurrentASCStateforExternals,CurrentASCStateforExternals,,,,"2000",,,UCH,,,1:OFF 2: Proofing 3:DHWLoading 4:CHLoading 5:Overtemperature
 r,,CurrentASCStateforASI,CurrentASCStateforASI,,,,"2100",,,UCH,,,1: Standby 2:Proofing 3:StorageLoading 4:Error_System_blocked
 r,,DateAndTimeIsSet,DateAndTimeIsSet,,,,"2200",,,onoff,,,0: Date and Time is not set; 1: Date and Time is set
@@ -41,8 +41,8 @@ r,,FlowSensorFrequency,FlowSensorFrequency,,,,"2D00",,,UIN,,,
 r,,CurrentFlow,Volumenstrom,,,,"2E00",,,UIN,,,Flow thru buffer circuit if loading the storage
 r,,Variante,Variante,,,,"3000",,,UCH,,,1: VMS 302: VPM 20 S3: VPM 60 S
 r,,CurrentSystemMode,Aktueller Systemmodus,,,,"3300",,,UCH,,,1 : Autonomer Modus3 : Regler Modus
-r,,InternalHwcSetpoint,InternalDHWSetpoint,,,,"3500",,,UCH,,,Temperature target for DHW loading if solar module is in stand alone appliccation without external control
-r,,InternalHcSetpoint,InternalCHSetpoint,,,,"3600",,,UCH,,,Temperature target for CW loading if solar module is in stand alone appliccation without external control
+r,,InternalHwcTempDesired,InternalDHWSetpoint,,,,"3500",,,UCH,,,Temperature target for DHW loading if solar module is in stand alone appliccation without external control
+r,,InternalHcTempDesired,InternalCHSetpoint,,,,"3600",,,UCH,,,Temperature target for CW loading if solar module is in stand alone appliccation without external control
 r,,ASIDetected,ASIDetected,,,,"3800",,,onoff,,,
 r;wi,,CountryZone,Land,,,,"3900",,,UCH,,,Standort der für den Sonnenkalender herangezogen wird. Siehe Anleitung
 r,,RequestForExternalDateTimeSetting,Status Datum/Uhrzeit,,,,"3A00",,,onoff,,,0: Time and Date is set; 1: Time and Date is not set
@@ -51,7 +51,7 @@ r,,PowerOnCounter,Netz ein Zähler,,,,"3F00",,,UIN,,,
 r,,RTCLowVoltageCounter,RTCLowVoltageCounter,,,,"4000",,,UIN,,,
 r,,ForceStartSolarPumpKick,Pumpenkick erzwingen,,,,"4700",,,onoff,,,Startet die Kollektorpumpe für maximal 5 Minuten um die Kollektortemperatur zu überprüfen.0 = aus1 = ein
 r,,MonitorMatlabState,MonitorMatlabState,,,,"4800",,,UCH,,,main states: 201: Waiting; 209: Loading; 41: Night Modus
-r,,CurrentBufferSetpoint,Puffer Zieltemperatur,,,,"4900",,,SIN,,,Zieltemperatur für den Pufferkreis am Ntc 3 Sensor
+r,,CurrentBufferTempDesired,Puffer Zieltemperatur,,,,"4900",,,SIN,,,Zieltemperatur für den Pufferkreis am Ntc 3 Sensor
 r,,RunTimeBufferPumpMinutes,Laufzeit Pufferpumpe,,,,"4B00",,,UCH,,,Laufzeit der Pufferpumpe (Minuten Anteil)
 r,,RunTimeBufferPumpHours,Laufzeit Pufferpumpe,,,,"4C00",,,UIN,,,Laufzeit der Pufferpumpe (Stunden Anteil)
 r,,MonitorOverheatState,MonitorOverheatState,,,,"4F00",,,UCH,,,111: Waiting; 112 and 113: Temperature to high; 220 and 221: In Overheat protection

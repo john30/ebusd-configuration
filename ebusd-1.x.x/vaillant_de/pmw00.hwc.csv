@@ -14,10 +14,10 @@ r,,CalculatedMixerPosition,Berechnete Mischerposition,,,,"0600",,,UIN,,,0 : prim
 r,,ElectricalHeater,Elektrischer Heizstab,,,,"0800",,,onoff,,,
 r,,HeatDemand,Wärmeanforderung,,,,"0900",,,temp,,,
 r,,OperatingMode,Betriebsart,,,,"0A00",,,mixmode,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"
-r,,ManualTappingSetpoint,ManualTappingSetpoint,,,,"0B00",,,temp,,,
-r,,AutoTappingSetpoint,Automatischer Zapfsollwert,,,,"0C00",,,temp,,,
-r,,QuickVetoSetpoint,Quick Veto Sollwert,,,,"0D00",,,temp,,,
-r,,ActualTappingSetpoint,Aktueller Zapfsollwert,,,,"0E00",,,temp,,,
+r,,ManualTappingTempDesired,ManualTappingSetpoint,,,,"0B00",,,temp,,,
+r,,AutoTappingTempDesired,Automatischer Zapfsollwert,,,,"0C00",,,temp,,,
+r,,QuickVetoTempDesired,Quick Veto Sollwert,,,,"0D00",,,temp,,,
+r,,ActualTappingTempDesired,Aktueller Zapfsollwert,,,,"0E00",,,temp,,,
 r,,QuickVetoStart,Quick Veto start,,,,"0F00",,,onoff,,,
 r,,LegioStartDay,Starttag Legionellenschutz,,,,"1000",,,UCH,,,0=Montag1 = Dienstag..6 = Sonntag7 = Legionellenschutz aus8 = täglich
 r,,LegioStartTime,Startzeit Legionellenschutz,,,,"1100",,,time,,,Time when LegioProtect starts on specific day
@@ -30,8 +30,8 @@ r,,Weekday,Wochentag,,,,"2E00",,,bday,,,"System Weekday (0=Monday, 5=Saturday, 6
 r,,TeleSwitch,TeleSwitch,,,,"3900",,,UCH,,,"TeleSwitch Operating Mode (0=disabled, 1=ON, 2=OFF, 3=AUTO"
 r,,TeleSwitchState,TeleSwitchState,,,,"3A00",,,onoff,,,Teleswitch port state (On / Off)
 r,,EnableHwcOperation,EnableDHWOperation,,,,"4300",,,onoff,,,Enable DHW Ooperation
-r,,SingleTankCharge,1x Speicherladung,,,,"4400",,,onoff,,,Enable SingleTankCharge
-r,,TDurchfluss,Volumenstrom,,,,"4600",,,temp,,,Volumenstrom in Liter / Minute
+r,,SingleStorageCharge,1x Speicherladung,,,,"4400",,,onoff,,,Enable SingleTankCharge
+r,,DurchflussTemp,Volumenstrom,,,,"4600",,,temp,,,Volumenstrom in Liter / Minute
 r,,VPMWMode,VPMW Typ,,,,"4B00",,,UCH,,,"1=VPM 20/25W, 2=VPM 30/35W"
 # ##### P-I-Regler #####
 r,,Krm,Krm,,,,"1400",,,SIN,,,"enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5"
