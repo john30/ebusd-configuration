@@ -10,7 +10,7 @@ r;wi,,LegioStartTime,Startzeit Legionellenschutz,,,,"4F00",,,UCH,,,Start time fo
 r,,SolarGainPressLowDelay,SolarGain_LP_Delay,,,,"5D00",,,yesno,,,Parameter: Set TRUE for LP delay in case of solar gain
 # ##### DHW: Warmwasser #####
 r,,LegionellaPump,Legionellenpumpe,,,,"0700",,,onoff,,,Legionella pump
-r;w,,OperatingMode,Betriebsart,,,,"0F00",,,mixmode,,,"Operating mode of DHW circuit (Auto=1,Manual,Off)"
+r;w,,OperatingMode,Betriebsart,,,,"0F00",,,mcmode,,,"Operating mode of DHW circuit (Auto=1,Manual,Off)"
 r,,FlowTempDesired,Vorlaufsolltemperatur,,,,"1600",,,D1C,,,Vorlaufsolltemperatur berechnet von VR68
 r,,HwcLegioProtectionMaxTimer,Legionellenschutz max. Timer,,,,"1A00",,,UCH,,,Maximal time the legio protection state is hold (indepent of reached temperature)
 r,,HwcLoadingRequest,Ladeanforderung,,,,"1C00",,,yesno,,,Flag: Loading request to the energy manager for DHW

@@ -44,8 +44,8 @@ r;wi,,EnableDisErrorMsg,Fehlerfreiheit melden,,,,"2600",,,onoff,,,"Wenn diese Fu
 r;wi,,SwitchRelays,Relaisausgänge,,,,"2700",,,BI0;BI1,,,
 r;wi,,StandbySignal,,,,,"2B00",,,UCH,,,
 r;wi,,PowerOnMessage,Netz ein Alarm,,,,"2C00",,,onoff,,,Ein = Alarmmeldung nach Netz ein
-r;wi,,AlarmOnDelay,,,,,"2E00",,,UIN,,,,,,UIN,,,
-r;wi,,AlarmOffDelay,,,,,"2F00",,,UIN,,,,,,UIN,,,
+r;wi,,AlarmOnDelay,,,,,"2E00",,,UIN;UIN,,,
+r;wi,,AlarmOffDelay,,,,,"2F00",,,UIN;UIN,,,
 r;wi,,ScanLayoutCycle,,,,,"3000",,,UCH,,,
 r;wi,,PredMaintConnectionCycle,,,,,"3100",,,UCH,,,
 r;wi,,LastKnownEbusAddr,,,,,"3200",,,UCH,,,
@@ -56,8 +56,8 @@ r;wi,,GsmGprsPin,GSM SIM Pin,,,,"3700",,,STR:4,,,Achtung ! Die falsche PIN macht
 r;wi,,ModemType,,,,,"3800",,,UCH,0=analogue;1=GSM;2=GPRS,,
 r;wi,,H2BusLayout,,,,,"3900",,,UCH,,,
 r;wi,,ActualDigitalInputs,Aktueller Wert 230V Alarmeingänge,,,,"3A00",,,BI0;BI1,,,
-r;wi,,ActualAnalogInputs,Aktueller Wert 24V Eingänge,,,,"3B00",,,UIN,,,,,,UIN,,,
-r;wi,,ActualCounterValue,Zählerstand 24V Zählereingänge,,,,"3C00",,,UIN,,,,,,UIN,,,
+r;wi,,ActualAnalogInputs,Aktueller Wert 24V Eingänge,,,,"3B00",,,UIN;UIN,,,
+r;wi,,ActualCounterValue,Zählerstand 24V Zählereingänge,,,,"3C00",,,UIN;UIN,,,
 r;wi,,ModemDialPrefix,Modem Wahlprefix,,,,"3D00",,,STR:4,,,Diese Zeichenkette wird vor dem Wählen an das Modem gesendet.
 r;wi,,DebugFlags,,,,,"3E00",,,ULG,,,
 r;wi,,ModemCountryCode,Modem Landescode,,,,"3F00",,,UCH,,,

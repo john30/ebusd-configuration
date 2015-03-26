@@ -68,7 +68,7 @@ r;w,,LcdContrastValue,Display Kontrastwert,,,,"5A00",,,UCH,,,setting of the LCD 
 r,,Hc1FloorPavementDryingTemp,HC1_FloorPavementDryingTemperature,,,,"2A00",,,D1C,,,HC1's current flow temperature setpoint with activated floor pavement drying
 r,,Hc1FloorPavementDryingDay,HC1_FloorPavementDryingDay,,,,"3800",,,UCH,,,HC1's current day of floor pavement drying
 r,,BMUFlowTempOrVF1,Vorlauftemperaturfühler 1,,,,"8700",,,tempsensor,,,value of either an externally connected flow temperature sensor or the BMU's internal flow sensor if an external sensor is missing
-r;wi,,HcMK1ConfigCPLP,BKMK1ConfigCPLP,,,,"7D00",,,UCH,,,"configuration of the VR61 relay-output (0 = deactivated, 1 = ZP, 2 = LP)"
+r;wi,,HcMc1ConfigCPLP,BKMK1ConfigCPLP,,,,"7D00",,,UCH,,,"configuration of the VR61 relay-output (0 = deactivated, 1 = ZP, 2 = LP)"
 r;wi,,PumpBlockingTimeMax,Maximale Pumpen Sperrzeit,,,,"7E00",,,UCH,,,0=offheating circuit pump's maximum blocking time for pump's energy saving function
 r,,CirPump,Zirkulationspumpe aktiv,,,,"8100",,,onoff,,,circulation pump's state
 r,,Hc1Pump,Pumpe Heizkreis 1 aktiv,,,,"8200",,,onoff,,,first heating circuit pump's state
@@ -82,7 +82,7 @@ r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"1500",,,temp,,,room temp
 r,,ActualRoomTempDesiredHc1,Raumsolltemp. HK1,,,,"6300",,,temp,,,current room setpoint considering all basic conditions passed to the control algorithms
 r,,HydraulicMap,HydraulicMap,,,,"1800",,,UCH,,,"hydraulic map (0 = H1, 3 = H4, 11 = A1, 12 = A2, 14 = A5, 15 = S1, 16 = S3a, 17 = S3b)"
 r,,SolarModuleDetected,Solarmodul erkannt,,,,"6C00",,,yesno,,,indicates that a VR68 has been detected
-r,,HcMK1Detected,BKMK1Detected,,,,"6D00",,,yesno,,,indicates that a VR61 has been detected
+r,,HcMc1Detected,BKMK1Detected,,,,"6D00",,,yesno,,,indicates that a VR61 has been detected
 r,,ACTOstorDetected,ACTOstorDetected,,,,"6F00",,,yesno,,,indicates that an ACTOstor has been detected
 r,,BMUB51101ErrorStatus,BMUB51101_ErrorStatus,,,,"7000",,,UCH,,,error state of BMU received via eBUS service B51101
 r,,BMUB51101StorageTemp,Speichertemperatur Ist,,,,"7100",,,D1C,,,hot water storage temperature received via eBUS service B5 11 01
@@ -92,7 +92,7 @@ r,,VF1,VF_1,,,,"7600",,,tempsensor,,,Gemessene Vorlauftemperatur am externen Vor
 r,,BMUB51101BoilerFlowTemp,BMUB51101_BoilerFlowTemp,,,,"7700",,,D1C,,,Gemessene Vorlauftemperatur am internen Sensor
 r,,EnermanState,EnermanState,,,,"7A00",,,UCH,,,"current energy-manager-state (Off = 0, Heating = 1, DHW = 2, DHW pump lag = 3)"
 r,,B51000TempDesiredLoadingPump,B51000SetPointLoadingPump,,,,"7B00",,,D1C,,,loading pump's setpoint sent via B5 10 00 to the BMU
-r,,HcMK1CPLPState,BKMK1CPLPState,,,,"7F00",,,onoff,,,nominal condition of the VR61's circulation or loading pump
+r,,HcMc1CPLPState,BKMK1CPLPState,,,,"7F00",,,onoff,,,nominal condition of the VR61's circulation or loading pump
 r,,CirLPLast24started,CP_LPLast24started,,,,"8300",,,yesno,,,circulation respectively loading pump has been started during the last 24h
 r,,Hc1PumpLast24started,HK1PumpLast24started,,,,"8400",,,yesno,,,first heating circuit's pump has been started during the last 24h
 r,,Hc1PreOrContinuosHeatingActive,HC1PreOrContinuosHeatingActive,,,,"8B00",,,yesno,,,preheating or continous heating is active for the first heating circuit
@@ -113,5 +113,5 @@ r,,PumpEnergySaveCalculatedTimeMonitor,PumpEnergySaveCalculatedTimeMonitor,,,,"9
 r,,HwcLoadingIn430Active,DHWLoadingIn430Active,,,,"9300",,,yesno,,,DHW-loading is active in non parallel loading cases
 r,,actoSTOROPMode,actoSTOR_OPMode,,,,"9400",,,UCH,,,state diagram actoSTOR control
 r,,V430PluggedIn,V430_PluggedIn,,,,"B300",,,onoff,,,false if vaiMATIC 470 is set inside a wall socket and not plugged in
-r,,MonitorCurrentIAnteil,MonitorCurrent_I_Anteil,,,,"3300",,,temp,,,current i-control value; updated every 3 minutes
+r,,MonitorCurrentIPart,MonitorCurrent_I_Anteil,,,,"3300",,,temp,,,current i-control value; updated every 3 minutes
 r,,ClockSwitchSummerWinterDone,Umschaltung Sommer-Winterzeit erfolgt,,,,"7800",,,yesno,,,automatic switching over to/from daylight saving's time has been done

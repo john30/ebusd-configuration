@@ -5,4 +5,4 @@
 # ##### CP: Zirkulationspumpe #####
 r,,CirPump,Zirkulationspumpe,,,,"0500",,,onoff,,,Zirkulationspumpe
 # ##### CP: CP #####
-r,,OperatingMode,Betriebsart,,,,"0F00",,,mixmode,,,"Operating mode of CP circuit (Auto=1,Manual,Off)"
+r,,OperatingMode,Betriebsart,,,,"0F00",,,mcmode,,,"Operating mode of CP circuit (Auto=1,Manual,Off)"
