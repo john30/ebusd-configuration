@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,MC2  ,VR 60/3,306782<<<< 163
+#,MC2  ,VR 60/3,306782<<<< 163 500+600
 *r,mc4,,,,"52","B509","0D"
 *w,mc4,,,,"52","B509","0E"
 *wi,mc4#install,,,,"52","B509","0E"

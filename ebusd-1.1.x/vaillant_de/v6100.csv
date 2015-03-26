@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,V6100,VR 61,V61 219
+#,V6100,VR 61,V61 219 418+518
 *r,v6100,,,,"50","B509","0D"
 *w,v6100,,,,"50","B509","0E"
 *wi,v6100#install,,,,"50","B509","0E"

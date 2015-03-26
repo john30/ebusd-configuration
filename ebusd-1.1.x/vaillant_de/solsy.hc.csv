@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,SOLSY,auroMATIC 620/3,0020080463 163
+#,SOLSY,auroMATIC 620/3,0020080463 163 500+600+601
 *r,hc,,,,"26","B509","0D"
 *w,hc,,,,"26","B509","0E"
 *wi,hc#install,,,,"26","B509","0E"
@@ -28,7 +28,7 @@ r,,BoilerMaxPreShutdown,Kesselvorabschaltung,,,,"3900",,,UCH,,,Maximal Boiler pr
 r,,HcFlowIncrease,Temperaturüberhöhung,,,,"3A00",,,UCH,,,Offset added to flow temperature
 r,,FrostProtectDelay,Frostschutz-Verzögerung,,,,"4900",,,UCH,,,Delay time of frost protection
 r,,HydraulicScheme,Hydraulikplan,,,,"6000",,,UCH,,,
-r,,EnergyDemandCounttReachedDelay,Verzögerung Fehler Wärmebedarf nicht gedeckt,,,,"7B00",,,UCH,,,Delay time for not reached temperature
+r,,EnergyDemandNotReachedDelay,Verzögerung Fehler Wärmebedarf nicht gedeckt,,,,"7B00",,,UCH,,,Delay time for not reached temperature
 r,,EnergyDemandPercentage,EnergyDemandPercentage,,,,"7E00",,,percent0,,,Flow temperature's maximum deviation from setpoint for set delay time
 r;w,,OtShutdownLimit,Außentemp. Abschaltgrenze,,,,"3600",,,UCH,,,"For outside temperatures higher than this, there is no heat demand generated anymore"
 r;w,,FlowTempMin,Min. Vorlauftemp.,,,,"3000",,,temp0,,,For a heat demand the desired flow temperature will at least be this value

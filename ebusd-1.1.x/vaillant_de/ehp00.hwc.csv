@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,EHP00,AMU Wärmepumpe,EHP00 172
+#,EHP00,AMU Wärmepumpe,EHP00 172 327+427
 *r,hwc,,,,"25","B509","0D"
 *w,hwc,,,,"25","B509","0E"
 *wi,hwc#install,,,,"25","B509","0E"

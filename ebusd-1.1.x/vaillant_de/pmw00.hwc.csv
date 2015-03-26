@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,PMW00,VPM-W Fresh water Station,PMW 244
+#,PMW00,VPM-W Fresh water Station,PMW 244 117+217+229+230+231+255+256+257
 *r,hwc,,,,"0A","B509","0D"
 *w,hwc,,,,"0A","B509","0E"
 *ws,hwc#service,,,,"0A","B509","0E"

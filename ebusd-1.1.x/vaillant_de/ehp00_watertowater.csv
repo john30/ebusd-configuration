@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,EHP00,AMU Wärmepumpe,EHP00 172 WaterToWater
+#,EHP00,AMU Wärmepumpe,EHP00 172 327+427 WaterToWater
 *r,ehp,,,,"08","B509","0D"
 *w,ehp,,,,"08","B509","0E"
 *wi,ehp#install,,,,"08","B509","0E"

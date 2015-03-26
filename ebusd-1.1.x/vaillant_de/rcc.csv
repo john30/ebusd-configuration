@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,RC C ,VR 90/3,0020040079 162
+#,RC C ,VR 90/3,0020040079 162 501+601+617+632
 *r,rcc,,,,"75","B509","0D"
 *w,rcc,,,,"75","B509","0E"
 *wi,rcc#install,,,,"75","B509","0E"

@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,E7f_2,ExaCONTROL E7 radio,E7f00 206
+#,E7f_2,ExaCONTROL E7 radio,E7f00 206 001+101
 *r,e7f2,,,,"15","B509","0D"
 *w,e7f2,,,,"15","B509","0E"
 *wi,e7f2#install,,,,"15","B509","0E"

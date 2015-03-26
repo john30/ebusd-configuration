@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,SOLSY,auroMATIC 620/3,0020080463 163
+#,SOLSY,auroMATIC 620/3,0020080463 163 500+600
 *r,hwc,,,,"25","B509","0D"
 *w,hwc,,,,"25","B509","0E"
 *wi,hwc#install,,,,"25","B509","0E"
@@ -29,7 +29,7 @@ r;w,,HwcLoadingDelay2,WW Ladeverzögerung,,,,"6200",,,UCH,,,Time waiting for a h
 r;ws,,SpreadingHwcLoading,Offset Warmwasserladung,,,,"8800",,,UCH,,,Offset for DHW flow temperature
 r;w,,LegioStartTime2,LegioStartTime2,,,,"8A00",,,UCH,,,Hour for legio protection
 r;wi,,NativeHwcCircuitDisabled,Warmwasserkreis deaktivieren,,,,"A900",,,yesno,,,Disable DHW
-r;w,,CountrmalHwcHysteresis,Hysterese Warmwasserladung,,,,"AF00",,,UCH,,,The hysteresis for DHW loading
+r;w,,NormalHwcHysteresis,Hysterese Warmwasserladung,,,,"AF00",,,UCH,,,The hysteresis for DHW loading
 r;w,,OperatingMode2,Betriebsart,,,,"2B00",,,mcmode,,,Operating mode of the water circuit
 r;w,,TempDesired2,Solltemperatur,,,,"3200",,,D1C,,,Temperature setpoint of water tank
 r;w,,TeleswitchOperatingMode2,TeleSWITCH Betriebsart,,,,"3F00",,,mcmode,,,If the tele switch port is activated the water circuit operates in this mode

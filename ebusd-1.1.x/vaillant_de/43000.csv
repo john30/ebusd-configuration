@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,43000,VRC 430,430 220
+#,43000,VRC 430,430 220 215+315+323+325+340+341
 *r,43000,,,,"15","B509","0D"
 *w,43000,,,,"15","B509","0E"
 *wi,43000#install,,,,"15","B509","0E"

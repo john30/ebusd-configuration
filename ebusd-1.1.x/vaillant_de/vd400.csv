@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,VD400,vrnetDIALOG 840/2,175 175
+#,VD400,vrnetDIALOG 840/2,175 175 211+213+311+313
 *r,vd400,,,,"05","B509","0D"
 *w,vd400,,,,"05","B509","0E"
 *wi,vd400#install,,,,"05","B509","0E"

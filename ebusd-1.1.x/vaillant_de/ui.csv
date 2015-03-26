@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,UI   ,Bedienteil VRS 620/3,0020040141 162
+#,UI   ,Bedienteil VRS 620/3,0020040141 162 501+508+601+608+630+632+637+639
 *r,ui,,,,"15","B509","0D"
 *w,ui,,,,"15","B509","0E"
 *wi,ui#install,,,,"15","B509","0E"

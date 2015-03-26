@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,sol00,VR 68,sol 210
+#,sol00,VR 68,sol 210 315+415
 *r,hwc,,,,"A0","B509","0D"
 *w,hwc,,,,"A0","B509","0E"
 *wi,hwc#install,,,,"A0","B509","0E"

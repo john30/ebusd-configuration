@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,EHP00,AMU Wärmepumpe,EHP00 172 Fix value circuit
+#,EHP00,AMU Wärmepumpe,EHP00 172 327+427 Fix value circuit
 *r,mc,,,,"50","B509","0D"
 *w,mc,,,,"50","B509","0E"
 *wi,mc#install,,,,"50","B509","0E"
