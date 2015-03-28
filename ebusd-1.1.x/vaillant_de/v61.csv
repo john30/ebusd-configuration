@@ -1,8 +1,8 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,V6100,VR 61,V61 219 418+518
-*r,v6100,,,,"50","B509","0D"
-*w,v6100,,,,"50","B509","0E"
-*wi,v6100#install,,,,"50","B509","0E"
+*r,v61,,,,"50","B509","0D"
+*w,v61,,,,"50","B509","0E"
+*wi,v61#install,,,,"50","B509","0E"
 # ##### Generell #####
 r,,Flow1Sensor,VF1 Sensor,,,,"0000",,,tempsensor,,,second heating circuit's flow temperature and sensorstate
 r,,CirPump,Zirkulationspumpe,,,,"0100",,,onoff,,,control state of the circulation respectively loading pump (functionality of the pump depends on the configuration)
@@ -36,7 +36,6 @@ r,,MonitorEEpromInkonsiNumber,MonitorEEpromInkonsiNumber,,,,"4600",,,HEX:8,,,ide
 r,,Hc1PumpKol1PP1Port,Hk1P_Kol1P_P1_Port,,,,"4200",,,onoff,,,first heating circuit pump's state
 r,,Hc2aLegPumpP2Port,Rückmeldung P2,,,,"4400",,,onoff,,,port: open mixer
 r,,Hc2zPort,Hk2z_Port,,,,"4500",,,onoff,,,port: close mixer
-#TODO: skip duplicate addr 4600 SunMoonInfo
 r,,DisplayedRoomTempDesired,DisplayedRoomSetpoint,,,,"4700",,,temp,,,
 r,,Hc2pDemand,Hk2pDemand,,,,"4800",,,onoff,,,
 r,,SfState,SfState,,,,"4900",,,UCH,,,"0 = _SfsNone, 1 = _SfsForceConsumption, 2 = _SfsFloorPavingDrying, 3 = _SfsSummerSwitchOff, 4 =_SfsTankFilling"

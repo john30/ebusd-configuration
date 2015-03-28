@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,BAI00,ecoTEC (euro),308523 174 518+618+631+703+803+816
-*r,bai00,,,,"08","B509","0D"
-*w,bai00,,,,"08","B509","0E"
-*wi,bai00#install,,,,"08","B509","0E"
-*ws,bai00#service,,,,"08","B509","0E"
+*r,bai,,,,"08","B509","0D"
+*w,bai,,,,"08","B509","0E"
+*wi,bai#install,,,,"08","B509","0E"
+*ws,bai#service,,,,"08","B509","0E"
 # ##### Diagnose Ebene 1 #####
 r;wi,,PartloadHcKW,d.00 Heizungsteillast,,,,"0704",,,UCH,,,Heizungsteillast
 r;wi,,WPPostrunTime,d.01 Pumpennachlaufzeit,,,,"F703",,,UCH,,,Wasserpumpennachlaufzeit nach Heizbetrieb

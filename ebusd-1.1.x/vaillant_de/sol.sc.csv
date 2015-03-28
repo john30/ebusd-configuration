@@ -1,8 +1,8 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,sol00,VR 68,sol 210 315+415+500+600
-*r,sol,,,,"EC","B509","0D"
-*w,sol,,,,"EC","B509","0E"
-*wi,sol#install,,,,"EC","B509","0E"
+*r,sc,,,"EC","B509","0D"
+*w,sc,,,,"EC","B509","0E"
+*wi,sc#install,,,,"EC","B509","0E"
 # ##### SOLAR: Solar #####
 r,,SP1,SP1,,,,"0000",,,tempsensor,,,value and sensorstate of upper tank temperature sensor SP1
 r,,SP2,SP2,,,,"0100",,,tempsensor,,,value and sensorstate of lower tank temperature sensor SP2

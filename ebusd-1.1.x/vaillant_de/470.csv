@@ -1,8 +1,8 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,47000,VRC 470,470 260 420+520
-*r,47000,,,,"15","B509","0D"
-*w,47000,,,,"15","B509","0E"
-*wi,47000#install,,,,"15","B509","0E"
+*r,470,,,,"15","B509","0D"
+*w,470,,,,"15","B509","0E"
+*wi,470#install,,,,"15","B509","0E"
 # ##### Generell #####
 r,,DisplayedRoomTemp,Raumtemperatur Ist,,,,"8000",,,temp,,,Aktuelle Raumtemperatur
 r,,RoomTemp,Raumisttemp.,,,,"0000",,,tempsensor,,,raw value current room temperature and sensorstate (without any correction)

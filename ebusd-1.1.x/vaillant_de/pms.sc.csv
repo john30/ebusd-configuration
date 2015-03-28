@@ -1,8 +1,8 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,PMS00,VPM 20 S,0020071488 243 107+207
-*r,solar,,,,"ED","B509","0D"
-*w,solar,,,,"ED","B509","0E"
-*wi,solar#install,,,,"ED","B509","0E"
+*r,sc,,,,"ED","B509","0D"
+*w,sc,,,,"ED","B509","0E"
+*wi,sc#install,,,,"ED","B509","0E"
 # ##### Generell #####
 r,,Ntc1RawData,NTC 1 Rohdaten,,,,"0000",,,UIN,,,
 r,,Ntc2RawData,NTC 2 Rohdaten,,,,"0100",,,UIN,,,

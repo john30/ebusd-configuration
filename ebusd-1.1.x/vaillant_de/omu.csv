@@ -1,8 +1,8 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,OMU00,OMU_no_serial,OMU00 252 118+218+222
-*r,omu00,,,,"E0","B509","0D"
-*w,omu00,,,,"E0","B509","0E"
-*wi,omu00#install,,,,"E0","B509","0E"
+*r,omu,,,,"E0","B509","0D"
+*w,omu,,,,"E0","B509","0E"
+*wi,omu#install,,,,"E0","B509","0E"
 # ##### Parameter und Informationen #####
 r,,ODUSourceInput,ODU_air_inlet,,,,"0500",,,tempsensor,,,air inlet sensor on ODU
 r,,SourceInputSensorOffset,AirInletSensor_Offset,,,,"4A00",,,temp,,,calibration value for air inlet sensor

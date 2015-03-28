@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,UIH00,CI,UIH00 169 216+316+318
-*r,uih00,,,,"15","B509","0D"
-*w,uih00,,,,"15","B509","0E"
-*wi,uih00#install,,,,"15","B509","0E"
-*ws,uih00#service,,,,"15","B509","0E"
+*r,uih,,,,"15","B509","0D"
+*w,uih,,,,"15","B509","0E"
+*wi,uih#install,,,,"15","B509","0E"
+*ws,uih#service,,,,"15","B509","0E"
 # ##### Parameter und Informationen #####
 r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,Außentemperatur
 r;ws,,EhpHydraulicMap,Hydraulikschema (EHP),,,,"2900",,,UCH,,,Hydraulikschema
