@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m;s),type / templates,divider / values,unit,comment
-*h,heatgen,,Wärmeerzeuger,,08,B511,,,,,,,
+*h,bc,,Wärmeerzeuger,,08,B511,,,,,,,
 *rw,hwc,,Warmwasser,,25,B504,,,,,,,
 *ww,hwc,,Warmwasser,,25,B505,,,,,,,
-*rc,cir,,Zirkulation,,23,B504,,,,,,,
-*wc,cir,,Zirkulation,,23,B505,,,,,,,
+*rc,cp,,Zirkulation,,23,B504,,,,,,,
+*wc,cp,,Zirkulation,,23,B505,,,,,,,
 *rm,mc,,Mischer,,50,B504,,,,,,,
 *wm,mc,,Mischer,,50,B505,,,,,,,
 *rm4,mc4,,Mischer,,52,B504,,,,,,,
