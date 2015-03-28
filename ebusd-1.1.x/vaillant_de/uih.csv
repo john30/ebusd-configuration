@@ -15,11 +15,11 @@ r;w,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,Raumsollte
 r;wi,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,"2C00",,,HEX:4,,,Code für die Konfigurationsmenüs
 r,,FlowTempDesired,Vorlauftemp. SOLL,,,,"0500",,,temp,,,
 r,,FlowTemp,Vorlauftemp. IST,,,,"0200",,,tempsensor,,,Anlagenvorlauftemperatur
-r;wi,,ChSupportTimeMax,Max. Heizzeit,,,,"4D00",,,UCH,,,Max.Heizbetriebszeit bei parallel anstehender WW Anforderung
-r;wi,,HwcLoadingTimeMax,Max. Ladezeit WW,,,,"4C00",,,UCH,,,Max. WW Ladezeit bei parallel anstehender Heizungsanforderung
+r;wi,,HcSupportTimeMax,Max. Heizzeit,,,,"4D00",,,minutes0,,,Max.Heizbetriebszeit bei parallel anstehender WW Anforderung
+r;wi,,HwcLoadingTimeMax,Max. Ladezeit WW,,,,"4C00",,,minutes0,,,Max. WW Ladezeit bei parallel anstehender Heizungsanforderung
 r;wi,,TempIncrease,Temperaturüberhöhung,,,,"2F00",,,temp,,,Temperaturüberhöhung
-r;wi,,PreShutDownTime,Vorabschaltzeit,,,,"2D00",,,UCH,,,Vorabschaltzeit
-r;wi,,FrostOverRideTime,Frostschutz-Verzögerung,,,,"2E00",,,UCH,,,Frostschutzverzögerung
+r;wi,,PreShutDownTime,Vorabschaltzeit,,,,"2D00",,,minutes0,,,Vorabschaltzeit
+r;wi,,FrostOverRideTime,Frostschutz-Verzögerung,,,,"2E00",,,hours,,,Frostschutzverzögerung
 r,,EhpBackupRelease,Freigabe Zusatzheizer,,,,"7100",,,onoff,,,Freigabe Reserveheizung
 r,,EhpTimeOfPredictedPowerCut,Erwarteter EVU Abschaltzeitpunkt,,,,"7300",,,time,,,Zeit bis zur nächsten Abschaltung durch das EVU
 r;wi,,TempFailDetectTime,Temperaturfehlererkennung nach,,,,"3300",,,temp0,,,Zeit für die Temperaturfehlererkennung

@@ -22,14 +22,14 @@ r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
 r,,OneTimeCirSwitch,1x ZP Schalter,,,,"0B00",,,onoff,,,non-recurring circulation pump running period
 r,,IsInParty,Partyfunktion aktiv,,,,"4E00",,,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 # ##### DHW: Konfiguration #####
-r;w,,HwcLaggingTime2,WP Nachlaufzeit WW,,,,"6100",,,UCH,,,Time pump is running after energy demand is met
-r,,FlowTempDesired2,Vorlaufsolltemperatur,,,,"4600",,,D1C,,,Flow setpoint if tank has an energy demand
+r;w,,HwcLaggingTime2,WP Nachlaufzeit WW,,,,"6100",,,minutes0,,,Time pump is running after energy demand is met
+r,,FlowTempDesired2,Vorlaufsolltemperatur,,,,"4600",,,temp1,,,Flow setpoint if tank has an energy demand
 r;w,,HcParallelStorageFillingEnabled2,HcParallelTankFillingEnabled2,,,,"5500",,,yesno,,,Heating cuircuits can be loaded in parallel to an active tank loading
-r;w,,HwcLoadingDelay2,WW Ladeverzögerung,,,,"6200",,,UCH,,,Time waiting for a heating demand in caser of solar gain
-r;ws,,SpreadingHwcLoading,Offset Warmwasserladung,,,,"8800",,,UCH,,,Offset for DHW flow temperature
+r;w,,HwcLoadingDelay2,WW Ladeverzögerung,,,,"6200",,,minutes0,,,Time waiting for a heating demand in caser of solar gain
+r;ws,,SpreadingHwcLoading,Offset Warmwasserladung,,,,"8800",,,calibration0,,,Offset for DHW flow temperature
 r;w,,LegioStartTime2,LegioStartTime2,,,,"8A00",,,UCH,,,Hour for legio protection
 r;wi,,NativeHwcCircuitDisabled,Warmwasserkreis deaktivieren,,,,"A900",,,yesno,,,Disable DHW
-r;w,,NormalHwcHysteresis,Hysterese Warmwasserladung,,,,"AF00",,,UCH,,,The hysteresis for DHW loading
+r;w,,NormalHwcHysteresis,Hysterese Warmwasserladung,,,,"AF00",,,calibration0,,,The hysteresis for DHW loading
 r;w,,OperatingMode2,Betriebsart,,,,"2B00",,,mcmode,,,Operating mode of the water circuit
-r;w,,TempDesired2,Solltemperatur,,,,"3200",,,D1C,,,Temperature setpoint of water tank
+r;w,,TempDesired2,Solltemperatur,,,,"3200",,,temp1,,,Temperature setpoint of water tank
 r;w,,TeleswitchOperatingMode2,TeleSWITCH Betriebsart,,,,"3F00",,,mcmode,,,If the tele switch port is activated the water circuit operates in this mode

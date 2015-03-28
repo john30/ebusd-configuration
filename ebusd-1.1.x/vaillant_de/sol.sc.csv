@@ -1,6 +1,6 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,sol00,VR 68,sol 210 315+415+500+600
-*r,sc,,,"EC","B509","0D"
+*r,sc,,,,"EC","B509","0D"
 *w,sc,,,,"EC","B509","0E"
 *wi,sc#install,,,,"EC","B509","0E"
 # ##### SOLAR: Solar #####
@@ -14,23 +14,23 @@ r,,SolarCollPumpDcIntegrator,SolarCollPumpDcIntegrator,,,,"1900",,,SIN,,,integra
 r;wi,,TempDifferenceOn,Einschaltdifferenz,,,,"2400",,,temp0,,,solar difference control's switch on temperature
 r;wi,,TempDifferenceOff,Ausschaltdifferenz,,,,"2500",,,temp0,,,solar difference control's switch off temperature
 r;wi,,MaximalTemp,Maximaltemperatur,,,,"2600",,,temp0,,,Maximale Speichertemperatur für Solarladung
-r,,SolarCollPumpED,ED Kollektorpumpe,,,,"2800",,,UCH,,,percentage of 'pump is on' during one minute (if duty ratio control is enabled)
-r,,RuntimeCollPump,Laufzeit Kollektorpumpe,,,,"2A00",,,UIN,,,accumulated runtime of the collector pump
-r;wi,,FlowRate,Volumenstrom,,,,"2D00",,,SIN,10,,chosen flow rate of the collector pump (to calculate solar gain)
-r;wi,,SolarCircuitProtectionLimit,Abschaltgrenze Schutzfunktion,,,,"3000",,,UCH,,,Switch off temperature for collector protection
-r,,SolarCircuitProtectionHysteresis,Hysterese Schutzfunktion,,,,"3100",,,UCH,,,temperature hysteresis for activating solar pump after collector protection
+r,,SolarCollPumpED,ED Kollektorpumpe,,,,"2800",,,percent0,,,percentage of 'pump is on' during one minute (if duty ratio control is enabled)
+r,,RuntimeCollPump,Laufzeit Kollektorpumpe,,,,"2A00",,,hoursum2,,,accumulated runtime of the collector pump
+r;wi,,FlowRate,Volumenstrom,,,,"2D00",,,SIN,10,l/min,chosen flow rate of the collector pump (to calculate solar gain)
+r;wi,,ScProtectionLimit,Abschaltgrenze Schutzfunktion,,,,"3000",,,temp0,,,Switch off temperature for collector protection
+r,,ScProtectionHysteresis,Hysterese Schutzfunktion,,,,"3100",,,temp0,,,temperature hysteresis for activating solar pump after collector protection
 r;wi,,KickFunction,KickFunction,,,,"3200",,,onoff,,,enable kick function
-r,,SumSolarGain,SumSolarGain,,,,"3300",,,ULG,,,accumulated solar gain
+r,,SumSolarGain,SumSolarGain,,,,"3300",,,energy4,,,accumulated solar gain
 r;wi,,EDFunction,EDFunktion,,,,"3400",,,onoff,,,enable duty ratio control
 r;w,,ResetSolarGain,Rücksetzen Solarertrag,,,,"3500",,,yesno,,,reset solar gain
 r,,SolarOperationMode,Betriebsart Solarkreis,,,,"3600",,,onoff,,,Betriebsart des Solarkreises
-r,,ColKickPumpTime,Länge Kollektorkick,,,,"3B00",,,UCH,,,time pump is running when collector kick function is activated
+r,,ColKickPumpTime,Länge Kollektorkick,,,,"3B00",,,seconds0,,,time pump is running when collector kick function is activated
 r,,ColKickTempDelta,ColKickTempDelta,,,,"3C00",,,temp0,,,temperature difference necessary for activating the pump kick
-r,,ProtectionLimitOffTime,ProtectionLimitOFFTime,,,,"3E00",,,UCH,,,time for which KOL temperature has to exceed the protection temperature to enter solar circuit protection mode
-r,,SumSolarGainDayBefore,SumSolarGain_day_before,,,,"4C00",,,ULG,,,sum of yesterday's solar gain
-r;wi,,EnableSolarCircuitProtection,Solarkreisschutzfunktion,,,,"5900",,,yesno,,,enable solar circuit protection
+r,,ProtectionLimitOffTime,ProtectionLimitOFFTime,,,,"3E00",,,seconds0,,,time for which KOL temperature has to exceed the protection temperature to enter solar circuit protection mode
+r,,SumSolarGainDayBefore,SumSolarGain_day_before,,,,"4C00",,,energy4,,,sum of yesterday's solar gain
+r;wi,,EnableScProtection,Solarkreisschutzfunktion,,,,"5900",,,yesno,,,enable solar circuit protection
 r,,FrostProtectionEnabled,Solarkreis Frostschutzfunktion,,,,"5A00",,,yesno,,,set TRUE to enable solar frost protection
-r,,FrostProtectionLimit,Grenze für Solarkreisschutzfunktion,,,,"5B00",,,SIN,,,temperature level for activating solar frost protection
+r,,FrostProtectionLimit,Grenze für Solarkreisschutzfunktion,,,,"5B00",,,temps2,,,temperature level for activating solar frost protection
 # ##### SOLAR: Generell #####
 r,,D2Temp,TD2,,,,"0800",,,tempsensor,,,value and sensorstate of the system's return flow sensor TD2
 r,,PumpAntiLockingFlags,PumpAntiLockingFlags,,,,"0900",,,UIN,,,each set bit represents a pump that has not run in the last 24h

@@ -8,7 +8,7 @@ r,,ODUSourceInput,ODU_air_inlet,,,,"0500",,,tempsensor,,,air inlet sensor on ODU
 r,,SourceInputSensorOffset,AirInletSensor_Offset,,,,"4A00",,,temp,,,calibration value for air inlet sensor
 r,,Parametersandinformation_ODUSourceInput,ODU_brine_Warm,,,,"0600",,,tempsensor,,,brine_warm sensor on ODU
 r,,Parametersandinformation_SourceInputSensorOffset,Brine_warmSensor_Offset,,,,"4B00",,,temp,,,calibration value for brine sensor
-r,,FanSpeedIs,Fan_Speed_Is,,,,"3900",,,UCH,-10,,actual fan speed
+r,,FanSpeedIs,Fan_Speed_Is,,,,"3900",,,UCH,-10,/min,actual fan speed
 r,,FanIsRunning,FanIsRunning,,,,"3B00",,,yesno,,,fan started successful
 r,,DeiceRequest,DeiceRequest,,,,"1B00",,,yesno,,,defrosting requested
 r;wi,,ManualDeiceRequest,ManualDeiceRequest,,,,"1A00",,,yesno,,,start manual defrosting
@@ -23,8 +23,8 @@ r,,STBOK,STB_OK,,,,"3800",,,yesno,,,STB is closed
 r,,BadWeather,BadWeather,,,,"3100",,,yesno,,,too cold to start compressor
 r,,HotSummer,HotSummer,,,,"3C00",,,yesno,,,air inlet too hot to run compressor
 r,,NoiseReduction,NoiseReduction,,,,"3500",,,yesno,,,noise reduction is active
-r,,DeiceTimeMax,MaxDeiceTime,,,,"4500",,,UIN,,,"max. deicing time. By exceeding this value, message unsuccessful deicing is released"
-r,,DeicePeriodMin,MinDeicePeriod,,,,"4600",,,UIN,,,"Min. time between deicings. If time is shorter, something is wrong"
+r,,DeiceTimeMax,MaxDeiceTime,,,,"4500",,,minutes2,,,"max. deicing time. By exceeding this value, message unsuccessful deicing is released"
+r,,DeicePeriodMin,MinDeicePeriod,,,,"4600",,,minutes2,,,"Min. time between deicings. If time is shorter, something is wrong"
 r;wi,,DeicefinishTemp,TDeicefinish,,,,"2900",,,temp,,,stops automatic defrosting process
 r;wi,,DeltaTMax,MaxDeltaT,,,,"2800",,,temp,,,start defrost process when temperature difference between air and brine is above this setpoint
 r;wi,,DeiceOnTemp,TDeiceOn,,,,"2700",,,temp,,,above this air temperature ice is quite unusual
@@ -33,8 +33,8 @@ r;wi,,DeiceWFanHyst,DeiceWFanHyst,,,,"2400",,,temp,,,remaining temperature diffe
 r;wi,,DeiceRequestHyst,DeiceRequestHyst,,,,"2300",,,temp,,,for stable frost detection
 r,,SpeedTempMin,MinSpeedTemp,,,,"5800",,,temp,,,temperature for minimum speed
 r,,SpeedTempMax,MaxSpeedTemp,,,,"5700",,,temp,,,temperature for maximum speed
-r,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,UCH,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
-r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,UCH,,,noise reduction factor to reduce fan speed
+r,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,percent0,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
+r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,percent0,,,noise reduction factor to reduce fan speed
 r;wi,,SourceMAXTemp,T_AirMAX,,,,"4300",,,temp,,,maximum allowed air inlet temperature
 # ##### testing #####
 r,,ZustandOAWLogic,ZustandOAWLogic,,,,"2A00",,,UIN,,,"Output of ""OAW_control"" statemachine"
@@ -64,11 +64,11 @@ r,,RelaisOut,RelaisOut,,,,"1E00",,,onoff,,,reserved
 r,,PumpSpeedControl,PumpSpeedControl,,,,"1900",,,UIN,,,reserved
 r,,fanPWM,fan_PWM,,,,"1400",,,UIN,,,PWM value from hardware
 # ##### statistics #####
-r,,FanRuntimeMinutes,FanRuntimeMinutes,,,,"4C00",,,ULG,,,fan run time
-r,,HeaterRuntimeMinutes,HeaterRuntimeMinutes,,,,"4E00",,,ULG,,,defroster run time
+r,,FanRuntimeMinutes,FanRuntimeMinutes,,,,"4C00",,,ULG,,min,fan run time
+r,,HeaterRuntimeMinutes,HeaterRuntimeMinutes,,,,"4E00",,,ULG,,min,defroster run time
 r,,HeaterStarts,HeaterCommutations,,,,"4F00",,,ULG,,,defroster cycles
 r,,DeicingStarts,DeicingCommutations,,,,"5100",,,ULG,,,deicing cycles
-r,,DeicingRuntimeMinutes,DeicingRuntimeMinutes,,,,"5200",,,ULG,,,deicing run time
+r,,DeicingRuntimeMinutes,DeicingRuntimeMinutes,,,,"5200",,,ULG,,min,deicing run time
 r,,DeiceErrorStarts,DeiceErrorCommutations,,,,"5300",,,ULG,,,deice error cycles
 r,,STBErrorStarts,STBErrorCommutations,,,,"5000",,,ULG,,,STB cycles
 r,,PowerOnStarts,PowerOnCommutations,,,,"5400",,,ULG,,,power on cycles

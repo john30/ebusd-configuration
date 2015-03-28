@@ -48,7 +48,7 @@ r,,Hc1Pump,Heizkreispumpe,,,,"1700",,,onoff,,,Status Heizkreispumpe: AN/AUS.
 r,,StorageTempTop,Vorlauffühler VF1,,,,"0100",,,tempsensor,,,Pufferspeicher-Kopftemperaturfühler VF1
 r,,StorageTempBottom,Rücklauffühler RF1,,,,"0700",,,tempsensor,,,Pufferspeicher-Bodentemperatur fühler RF1
 r,,FlowTemp,Vorlauftemp. IST,,,,"0300",,,tempsensor,,,Aktuelle Vorlauftemperatur VF2
-r,,Mixer1DutyCycle,Mischerstatus,,,,"0E00",,,spercent,,,"Status des Mischers; -100:Geschlossen, 0:Keine Ansteuerung, +100:offen. Achtung: die Anzeige -100 oder +100 für Auffahren oder Schließen des Mischers wird zeitversetzt um ca. 10–15 Sekunden angezeigt und ist daher nur bedingt aussagekräftig."
+r,,Mixer1DutyCycle,Mischerstatus,,,,"0E00",,,percents,,,"Status des Mischers; -100:Geschlossen, 0:Keine Ansteuerung, +100:offen. Achtung: die Anzeige -100 oder +100 für Auffahren oder Schließen des Mischers wird zeitversetzt um ca. 10–15 Sekunden angezeigt und ist daher nur bedingt aussagekräftig."
 r,,Hc2Pump,Pumpenstatus,,,,"1800",,,onoff,,,"Pumpenstatus zeigt an, ob die externe Keizkreispumpe an- oder ausgeschaltet ist (AN/AUS)."
 # ***** Wärmesenke Warmwasser *****
 r,,HwcTemp,Speichertemp. IST,,,,"0000",,,tempsensor,,,Speichertemp. IST: Temperatur im Warmwasserspeicher.
@@ -85,7 +85,7 @@ r;wi,,CompHysteresis,Komp. Hysterese,,,,"7D00",,,temp,,,Komp. Hysterese (nur bei
 r;wi,,CompIntegral,Energieint. Start,,,,"7C00",,,integral,,,Komp. Start in: Einstellen der Gradminuten bis Kompressorstart.
 r;wi,,NumberCompStarts,Kompressor Start/h,,,,"7400",,,UCH,,,Komp. Start/h: max. mögliche Kompressorstarts pro Std. (3-5).
 r;wi,,ReturnTempMax,Max. Rücklauf Temp HK,,,,"7300",,,temp,,,Max. Rücklauf-Temp. HK: Einstellen des Limits der Rücklauftemperatur für Kompressor betrieb. Diese Funktion soll einen unnötigen kurzzeitigen Kom pressorbetrieb vermeiden.
-r;ws,,OverpressureThresholdHwc,Abschaltgrenze Hochdruck,,,,"7701",,,ULG,,,Abschaltgrenze Hochdruck nach Warmwasserbereitung
+r;ws,,OverpressureThresholdHwc,Abschaltgrenze Hochdruck,,,,"7701",,,pressm,,,Abschaltgrenze Hochdruck nach Warmwasserbereitung
 # ***** Wärmequelle Geothermie *****
 r;wi,,DeltaTempT6T7,Zul. Temp.Spreizung,,,,"6E00",,,temp,,,Zul. Temp.-Spreizung: Max. zulässige Differenz der Wärmequellenein-und austrittstemperatur. Bei Überschreitung erscheint eine Fehlermeldung und der Kompressor schaltet sich ab.
 r;wi,,SourceTempOutputT8Min,Einfrierschutz,,,,"7A01",,,temps,,,Einfrierschutz: Minimal zulässige Wärmequellenaustrittstemperatur.
