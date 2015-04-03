@@ -1,6 +1,7 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,EHP00,AMU Wärmepumpe,EHP00 172 327+427 AirToBrineToWater
 *r,ehp,,,,"08","B509","0D"
+*u,ehp,,,,"08","B509","29",,,IGN:2
 *w,ehp,,,,"08","B509","0E"
 *wi,ehp#install,,,,"08","B509","0E"
 *ws,ehp#service,,,,"08","B509","0E"
@@ -18,12 +19,12 @@ r,,HwcHcValveStarts,V_DHW_CH_Commutations,,,,"B300",,,cntstarts,,,Number of comm
 r,,CompCutPressHighCount,Compressor_Cut_HP_No,,,,"B400",,,ULG,,,shows how often the compressor has been stopped by high pressure switch
 r,,CompCutPressLowCount,Compressor_Cut_LP_No,,,,"B500",,,ULG,,,shows how often the compressor has been stopped by low pressure switch
 r,,CompCutTempCount,Compressor_Cut_T_No,,,,"B600",,,ULG,,,shows how often the compressor has been stopped due to outlet temperature exceeding
-r,,ActualEnvironmentPower,ActualEnvironmentPower,,,,"BA00",,,power,,,only for graphic display: the environmental power that is actually displayed in kW
-r,,ActualEnvironmentPowerPercentage,ActualEnvironmentPowerPercentage,,,,"BB00",,,percent0,,,only for graphic display: amount of filling of the big energy arrow
+r;u,,ActualEnvironmentPower,ActualEnvironmentPower,,,,"BA00",,,power,,,only for graphic display: the environmental power that is actually displayed in kW
+r;u,,ActualEnvironmentPowerPercentage,ActualEnvironmentPowerPercentage,,,,"BB00",,,percent0,,,only for graphic display: amount of filling of the big energy arrow
 # ##### EHP: Messwerte  Schalter  Aktoren und sonstige IOs #####
 # ***** Wärmequelle *****
-r;ws,,YieldEnvironmentEnergy,Energieertrag,,,,"BC00",,,energy4,,,Gesamtsumme Energieertrag
-r,,SourceTempInput,Quellentemperatur,,,,"0F00",,,tempsensor,,,"Quellentemperatur: Wärmequellentemperatur am Eintritt zurWärmepumpe, T3."
+r;ws;u,,YieldEnvironmentEnergy,Energieertrag,,,,"BC00",,,energy4,,,Gesamtsumme Energieertrag
+r;u,,SourceTempInput,Quellentemperatur,,,,"0F00",,,tempsensor,,,"Quellentemperatur: Wärmequellentemperatur am Eintritt zurWärmepumpe, T3."
 r,,SourceTempOutput,Austrittstemp.,,,,"0800",,,tempsensor,,,"Soleaustrittstemp.: Wärmequellentemperatur am Austritt der Wärmepumpe, T8"
 r,,SourcePress,Druck Wärmequelle,,,,"1600",,,presssensor,,,Druck der Wärmequelle (Drucksensor Wärmequellenkreis)
 r,,Source,Quellenpumpe,,,,"1900",,,onoff,,,Quellenpumpe
@@ -45,9 +46,9 @@ r,,HcFlowTemp,Vorlauftemp. IST,,,,"0900",,,tempsensor,,,Aktuelle Vorlauftemperat
 r,,HcReturnTemp,Rücklauftemp. IST,,,,"0A00",,,tempsensor,,,Aktuelle Rücklauftemperatur T5 - interner Rücklauffühler
 r,,HcPress,Heizanlagendruck,,,,"1200",,,presssensor,,,Heizanlagendruck (Drucksensor Heizkreis).
 r,,Hc1Pump,Heizkreispumpe,,,,"1700",,,onoff,,,Status Heizkreispumpe: AN/AUS.
-r,,StorageTempTop,Vorlauffühler VF1,,,,"0100",,,tempsensor,,,Pufferspeicher-Kopftemperaturfühler VF1
-r,,StorageTempBottom,Rücklauffühler RF1,,,,"0700",,,tempsensor,,,Pufferspeicher-Bodentemperatur fühler RF1
-r,,FlowTemp,Vorlauftemp. IST,,,,"0300",,,tempsensor,,,Aktuelle Vorlauftemperatur VF2
+r;u,,StorageTempTop,Vorlauffühler VF1,,,,"0100",,,tempsensor,,,Pufferspeicher-Kopftemperaturfühler VF1
+r;u,,StorageTempBottom,Rücklauffühler RF1,,,,"0700",,,tempsensor,,,Pufferspeicher-Bodentemperatur fühler RF1
+r;u,,FlowTemp,Vorlauftemp. IST,,,,"0300",,,tempsensor,,,Aktuelle Vorlauftemperatur VF2
 r,,Mixer1DutyCycle,Mischerstatus,,,,"0E00",,,percents,,,"Status des Mischers; -100:Geschlossen, 0:Keine Ansteuerung, +100:offen. Achtung: die Anzeige -100 oder +100 für Auffahren oder Schließen des Mischers wird zeitversetzt um ca. 10–15 Sekunden angezeigt und ist daher nur bedingt aussagekräftig."
 r,,Hc2Pump,Pumpenstatus,,,,"1800",,,onoff,,,"Pumpenstatus zeigt an, ob die externe Keizkreispumpe an- oder ausgeschaltet ist (AN/AUS)."
 # ***** Wärmesenke Warmwasser *****
