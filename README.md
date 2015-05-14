@@ -62,4 +62,4 @@ underscore "_" and only one variant can be picked from those.
 Contact
 -------
 
-The author can be contacted at ebusd@johnm.de .
+The author can be contacted at ebusd@ebusd.eu .
