@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,OMU00,OMU_no_serial,OMU00 252 118+218+222
-*r,omu,,,,"E0","B509","0D"
-*w,omu,,,,"E0","B509","0E"
-*wi,omu#install,,,,"E0","B509","0E"
-# ##### Parameter und Informationen #####
+#,OMU00,OMU_no_serial,OMU00 252 118+218+222,,,,,,,,,,
+*r,omu,,,,"E0","B509","0D",,,,,,
+*w,omu,,,,"E0","B509","0E",,,,,,
+*wi,omu#install,,,,"E0","B509","0E",,,,,,
+# ##### Parameter und Informationen #####,,,,,,,,,,,,,
 r,,ODUSourceInput,ODU_air_inlet,,,,"0500",,,tempsensor,,,air inlet sensor on ODU
 r,,SourceInputSensorOffset,AirInletSensor_Offset,,,,"4A00",,,temp,,,calibration value for air inlet sensor
 r,,Parametersandinformation_ODUSourceInput,ODU_brine_Warm,,,,"0600",,,tempsensor,,,brine_warm sensor on ODU
@@ -36,7 +36,7 @@ r,,SpeedTempMax,MaxSpeedTemp,,,,"5700",,,temp,,,temperature for maximum speed
 r,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,percent0,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
 r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,percent0,,,noise reduction factor to reduce fan speed
 r;wi,,SourceMAXTemp,T_AirMAX,,,,"4300",,,temp,,,maximum allowed air inlet temperature
-# ##### testing #####
+# ##### testing #####,,,,,,,,,,,,,
 r,,ZustandOAWLogic,ZustandOAWLogic,,,,"2A00",,,UIN,,,"Output of ""OAW_control"" statemachine"
 r,,IDUApplianceCode,IDU_appliance_code,,,,"3E00",,,UCH,,,"appliance code, copy from AMU"
 r,,FrostProtection,FrostProtection,,,,"4100",,,temp,,,copy from AMU: frost protection
@@ -63,7 +63,7 @@ r,,OffsetFanSpeed,OffsetFanSpeed,,,,"1F00",,,UIN,,,reserved
 r,,RelaisOut,RelaisOut,,,,"1E00",,,onoff,,,reserved
 r,,PumpSpeedControl,PumpSpeedControl,,,,"1900",,,UIN,,,reserved
 r,,fanPWM,fan_PWM,,,,"1400",,,UIN,,,PWM value from hardware
-# ##### statistics #####
+# ##### statistics #####,,,,,,,,,,,,,
 r,,FanRuntimeMinutes,FanRuntimeMinutes,,,,"4C00",,,ULG,,min,fan run time
 r,,HeaterRuntimeMinutes,HeaterRuntimeMinutes,,,,"4E00",,,ULG,,min,defroster run time
 r,,HeaterStarts,HeaterCommutations,,,,"4F00",,,ULG,,,defroster cycles

@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,47000,VRC 470,470 260 420+520
-*r,470,,,,"15","B509","0D"
-*w,470,,,,"15","B509","0E"
-*wi,470#install,,,,"15","B509","0E"
-# ##### Generell #####
+#,47000,VRC 470,470 260 420+520,,,,,,,,,,
+*r,470,,,,"15","B509","0D",,,,,,
+*w,470,,,,"15","B509","0E",,,,,,
+*wi,470#install,,,,"15","B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
 r,,DisplayedRoomTemp,Raumtemperatur Ist,,,,"8000",,,temp,,,Aktuelle Raumtemperatur
 r,,RoomTemp,Raumisttemp.,,,,"0000",,,tempsensor,,,raw value current room temperature and sensorstate (without any correction)
 r,,OutsideTemp,Außentemp. Sensor,,,,"6200",,,tempsensor,,,Außentemperatur und Sensorstatus
@@ -38,7 +38,7 @@ r;w,,Hc2HolidayEndPeriod,HC2HolidayEndPeriod,,,,"2400",,,date,,,second heating c
 r;w,,Hc2BankHolidayStartPeriod,HC2BankHolidayStartPeriod,,,,"2500",,,date,,,second heating circuit's start date of bank holidays
 r;w,,Hc2BankHolidayEndPeriod,HC2BankHolidayEndPeriod,,,,"2600",,,date,,,second heating circuit's end date of bank holidays
 r;wi,,TestVarActivateFunction,TestVarActivateFunction,,,,"0B00",,,UCH,,,0=All SF_OFF1/2=1DayHolON/OFF13/4=1DayBankON/OFF15/6=1DayHolON/OFF27/8=1DayBankON/OFF29/10=1xDHWLoadON/OFF11/12=QVetoON/OFF113/14=QVetoON/OFF215/16=PartyON/OFF117/18=PartyON/OFF219/20=Ventil.ON/OFF121/22=Ventil.ON/OFF223/24=SystemOff_ON/OFF
-# ##### extra #####
+# ##### extra #####,,,,,,,,,,,,,
 r;wi,,RoomTempCorrection,Raumtemperatur-Abgleich,,,,"5700",,,calibrations,,,Korrekturwert der Raumtemperaturanzeige
 r;wi,,OutsideTempOffset,Außentemperatur-Abgleich,,,,"5800",,,calibrations,,,Korrekturwert für die Außentemperatur
 r;wi,,FrostOverRideTime,Frostschutz-Verzögerung,,,,"1A00",,,hours,,,delay before frost protection is activated
@@ -74,7 +74,7 @@ r,,CirPump,Zirkulationspumpe aktiv,,,,"8100",,,onoff,,,circulation pump's state
 r,,Hc1Pump,Pumpe Heizkreis 1 aktiv,,,,"8200",,,onoff,,,first heating circuit pump's state
 r;wi,,Hc2HcType,Typ Heizkreis 2,,,,"8500",,,UCH,0=disabled;1=mixing;2=zone,,type of the second heating circuit
 r;wi,,HydraulicSwitch,HydraulicSwitch,,,,"B700",,,yesno,,,hydraulic switch is installed
-# ##### Informationen für Entwickler #####
+# ##### Informationen für Entwickler #####,,,,,,,,,,,,,
 r,,DcfIsValid,DcfIsValid,,,,"0400",,,onoff,,,validity of DCF signal (0 = invalid; 1 = valid)
 r,,StartEepromUpdate,Starte EEPROM Aktualsiserung,,,,"0E00",,,onoff,,,update of the EEPROM has to be started
 r,,EepromUpdateActive,EEPROM Aktivierung aktiv,,,,"0F00",,,onoff,,,update of the EEPROM has been started

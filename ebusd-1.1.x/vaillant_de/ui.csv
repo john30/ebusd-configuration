@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,UI   ,Bedienteil VRS 620/3,0020040141 162 501+508+601+608+630+632+637+639
-*r,ui,,,,"15","B509","0D"
-*w,ui,,,,"15","B509","0E"
-*wi,ui#install,,,,"15","B509","0E"
-# ##### Hauptdaten #####
+#,UI   ,Bedienteil VRS 620/3,0020040141 162 501+601+630+632,,,,,,,,,,
+*r,ui,,,,"15","B509","0D",,,,,,
+*w,ui,,,,"15","B509","0E",,,,,,
+*wi,ui#install,,,,"15","B509","0E",,,,,,
+# ##### Hauptdaten #####,,,,,,,,,,,,,
 r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,Außentemperatur
 r,,FlowTemp,Vorlauftemp. IST,,,,"0200",,,tempsensor,,,Systemtemperatur in der hydraulischen Weiche oder am gemeinsamen Vorlauf (VF1)
 r,,SystemTempGradient,SystemTempGradient,,,,"8C00",,,temp,,,gradient of the system temperature (VF1)
@@ -14,7 +14,7 @@ r;w,,PreShutDownTime,Vorabschaltzeit,,,,"2D00",,,minutes0,,,
 r;w,,FrostOverRideTime,Frostschutz-Verzögerung,,,,"2E00",,,hours,,,
 r;w,,TempIncrease,Temperaturüberhöhung,,,,"2F00",,,temp,,,
 r;w,,ContinuousHeatingLimit,AT Durchheizen,,,,"6400",,,SCH,,,-128=offUnterhalb der hier eingestellten Temperatur wird die Nachtabsenkung unterdrückt. Die Kreise arbeiten mit dem eingestellten Tagsollwert weiter.
-# ##### Systemkomponenten #####
+# ##### Systemkomponenten #####,,,,,,,,,,,,,
 r,,MixerDetected,Erkannte VR60,,,,"1800",,,UCH,,,detected VR60 (bit counted)
 r,,BoilerDetected,Entdeckte Buskoppler,,,,"1900",,,UCH,,,"detected bus coppler e.g. VR30,31,32 (bit counted)"
 r,,RemoteDetected,Erkannte Fernbediengeräte,,,,"1A00",,,UCH,,,detected VR80 or VR90 (bit counted)
@@ -25,7 +25,7 @@ r,,WaterstationModulDetected,FwsModulDetected,,,,"8100",,,UCH,,,detected VPM-W (
 r,,BoilerCount,Anzahl Heizgeräte,,,,"1C00",,,UCH,,,active boiler in the system
 r;wi,,BoilerSwitchSteps,Kesselstufen,,,,"3500",,,UCH,,,Eingestellte Anzahl von Kesselstufen
 r,,SourceType,SourceType,,,,"4E00",,,UCH,0=noSystem;1=SSR;2=VRC;3=eSys;4=mixedSys,,"noSystem=0, SSR=1, VRC=2, eSys=3, mixedSys=4"
-# ##### Reglerintern #####
+# ##### Reglerintern #####,,,,,,,,,,,,,
 r,,RoomTemp,Raumisttemp.,,,,"0000",,,tempsensor,,,Raumtemperatur
 r;wi,,RoomTempOffset,Raumisttemp. Korrekturwert,,,,"1F00",,,temp,,,
 r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"2000",,,temp,,,
@@ -46,7 +46,7 @@ r,,ClockSwitchSummerWinterDone,Umschaltung Sommer-Winterzeit erfolgt,,,,"6800",,
 r,,InstallationCompleted,InstallationCompleted,,,,"6900",,,yesno,,,Installation assistant is done
 r,,DisplayType,DisplayTyp,,,,"8D00",,,UCH,,,"display misubishi=0x07, mtek=0x70"
 r,,ScanPrevention,ScanPrevention,,,,"8400",,,onoff,,,cyclic scan are started
-# ##### Kaskadenparameter #####
+# ##### Kaskadenparameter #####,,,,,,,,,,,,,
 r;wi,,BoilerSwitchHyster,Kesselschalthysterese,,,,"2300",,,temp,,,
 r;wi,,BoilerTempMax,Maximaltemperatur Wärmeerzeuger,,,,"2400",,,temp,,,
 r;wi,,BoilerTempMin,Minimaltemperatur Wärmeerzeuger,,,,"2500",,,temp,,,
@@ -65,7 +65,7 @@ r,,BoilerHoursB5,Ansteuerstunden Gerät 5,,,,"4C20",,,hoursum,,,
 r,,BoilerHoursB6,Ansteuerstunden Gerät 6,,,,"4C28",,,hoursum,,,
 r,,BoilerHoursB7,Ansteuerstunden Gerät 7,,,,"4C30",,,hoursum,,,
 r,,BoilerHoursB8,Ansteuerstunden Gerät 8,,,,"4C38",,,hoursum,,,
-# ##### Energiemanager intern #####
+# ##### Energiemanager intern #####,,,,,,,,,,,,,
 r,,SystemModeStream1,SystemModeStream1,,,,"6E00",,,UCH,0=off;1=heat;2=cool;3=water;4=water during heat;5=water during cool,,"Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5"
 r,,SystemModeStream2,SystemModeStream2,,,,"6F00",,,UCH,0=off;1=heat;2=cool;3=water;4=water during heat;5=water during cool,,"Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5"
 r,,SystemModeStream3,SystemModeStream3,,,,"7000",,,UCH,0=off;1=heat;2=cool;3=water;4=water during heat;5=water during cool,,"Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5"
@@ -84,7 +84,7 @@ r,,ASCStatus,ASC_Status,,,,"7A00",,,UCH,0=off;1=heat;2=water,,"ASC_OFF=0, ASC_CH
 r,,StorageSensorTop,TankSensorAbove,,,,"7B00",,,temp,,,
 r,,StorageSensorMiddle,TankSensorMittel,,,,"7C00",,,temp,,,
 r,,StorageSensorBottom,TankSensorBottom,,,,"7D00",,,temp,,,
-# ##### Ausgabewerte Heizgeräte #####
+# ##### Ausgabewerte Heizgeräte #####,,,,,,,,,,,,,
 r,,FlowTempDesiredB1,VT Soll Heizgerät 1,,,,"4808",,,temp0,,,
 r,,FlowTempDesiredB2,VT Soll Heizgerät 2,,,,"4810",,,temp0,,,
 r,,FlowTempDesiredB3,VT Soll Heizgerät 3,,,,"4818",,,temp0,,,
@@ -133,7 +133,7 @@ r,,FlagsB5,FlagsBoiler_5,,,,"8728",,,UCH,,,
 r,,FlagsB6,FlagsBoiler_6,,,,"8730",,,UCH,,,
 r,,FlagsB7,FlagsBoiler_7,,,,"8738",,,UCH,,,
 r,,FlagsB8,FlagsBoiler_8,,,,"8740",,,UCH,,,
-# ##### Heizkreisnamen #####
+# ##### Heizkreisnamen #####,,,,,,,,,,,,,
 r;w,,HcName1,Name HK1,,,,"4100",,,STR:11,,,Name für den 1. Heizkreis
 r;w,,HcName2,Name HK2,,,,"4108",,,STR:11,,,Name für den 2. Heizkreis
 r;w,,HcName3,Name HK3,,,,"4110",,,STR:11,,,Name für den 3. Heizkreis

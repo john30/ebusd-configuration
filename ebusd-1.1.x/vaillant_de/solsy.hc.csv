@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,SOLSY,auroMATIC 620/3,0020080463 163 500+600+601
-*r,hc,,,,"26","B509","0D"
-*w,hc,,,,"26","B509","0E"
-*wi,hc#install,,,,"26","B509","0E"
-# ##### Statistics #####
+#,SOLSY,auroMATIC 620/3,0020080463 163 500+600+601,,,,,,,,,,
+*r,hc,,,,"26","B509","0D",,,,,,
+*w,hc,,,,"26","B509","0E",,,,,,
+*wi,hc#install,,,,"26","B509","0E",,,,,,
+# ##### Statistics #####,,,,,,,,,,,,,
 r,,StatPowerOn,StatPowerOn,,,,"CC00",,,UIN,,,
 r,,StatOperatingHours,StatOperatingHours,,,,"CD00",,,UIN,,,
 r,,StatMonthOfInstallation,StatMonthOfInstallation,,,,"CE00",,,UCH,,,
@@ -12,7 +12,7 @@ r,,Stat15MinBusTimeout,Stat15MinBusTimeout,,,,"D000",,,UCH,,,
 r,,StatRTOSErrorcode,StatRTOSErrorcode,,,,"D100",,,UIN,,,
 r,,StatRestarts,StatRestarts,,,,"D200",,,UIN,,,
 r,,StatRTOSErrorCounter,StatRTOSErrorCounter,,,,"D300",,,UIN,,,
-# ##### BK1: Daten #####
+# ##### BK1: Daten #####,,,,,,,,,,,,,
 r,,SumFlowSensor,VF1,,,,"0400",,,tempsensor,,,Temperature measured on VF1
 r,,OutsideTemp,Außentemperatursensor,,,,"0600",,,tempsensor,,,Outside temperature
 r,,FlowTempDesired,Vorlaufsolltemperatur,,,,"4600",,,temp1,,,Flow temperature BK1 want to have to fullfill the actual heat demand
@@ -22,7 +22,7 @@ r,,IsInStorageFilling,Speicherladung aktiv,,,,"4700",,,yesno,,,burner circuit is
 r,,CleaningLady,Sparfunktion,,,,"4B00",,,UCH,,,saving function is activated until read value * 1/2 h
 r,,IsInParty,Partyfunktion aktiv,,,,"4E00",,,UCH,,,Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC
 r,,Hc1PumpPort,HK1-P,,,,"8E00",,,onoff,,,State of burner cicuit pump on HK1P
-# ##### BK1: Konfiguration #####
+# ##### BK1: Konfiguration #####,,,,,,,,,,,,,
 r,,OutsideTempCorrection,Außentemp. Sensor Korrektur,,,,"2D00",,,temps,,,Correction for outside temperature sensor
 r,,BoilerMaxPreShutdown,Kesselvorabschaltung,,,,"3900",,,minutes0,,,Maximal Boiler preshutdown time
 r,,HcFlowIncrease,Temperaturüberhöhung,,,,"3A00",,,calibration0,,,Offset added to flow temperature
@@ -30,7 +30,7 @@ r,,FrostProtectDelay,Frostschutz-Verzögerung,,,,"4900",,,hours,,,Delay time of 
 r,,HydraulicScheme,Hydraulikplan,,,,"6000",,,UCH,,,
 r,,EnergyDemandNotReachedDelay,Verzögerung Fehler Wärmebedarf nicht gedeckt,,,,"7B00",,,hours,,,Delay time for not reached temperature
 r,,EnergyDemandPercentage,EnergyDemandPercentage,,,,"7E00",,,percent0,,,Flow temperature's maximum deviation from setpoint for set delay time
-r;w,,OtShutdownLimit,Außentemp. Abschaltgrenze,,,,"3600",,,temp0,,,"For outside temperatures higher than this, there is no heat demand generated anymore"
+r;w,,OtShutdownLimit,Außentemp. Abschaltgrenze,,,,"3600",,,desiredtemp,,,"For outside temperatures higher than this, there is no heat demand generated anymore"
 r;w,,FlowTempMin,Min. Vorlauftemp.,,,,"3000",,,temp0,,,For a heat demand the desired flow temperature will at least be this value
 r;w,,TempDesiredLow,Absenksollwert,,,,"3300",,,temp1,,,Night temperature setpoint of the burner circuit
 r;wi,,BoilerCircuitDisabled,Brennerkreis deaktiviert,,,,"AA00",,,yesno,,,Disable the burner circuit?

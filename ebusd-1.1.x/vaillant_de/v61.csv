@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,V6100,VR 61,V61 219 418+518
-*r,v61,,,,"50","B509","0D"
-*w,v61,,,,"50","B509","0E"
-*wi,v61#install,,,,"50","B509","0E"
-# ##### Generell #####
+#,V6100,VR 61,V61 219 418+518,,,,,,,,,,
+*r,v61,,,,"50","B509","0D",,,,,,
+*w,v61,,,,"50","B509","0E",,,,,,
+*wi,v61#install,,,,"50","B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
 r,,Flow1Sensor,VF1 Sensor,,,,"0000",,,tempsensor,,,second heating circuit's flow temperature and sensorstate
 r,,CirPump,Zirkulationspumpe,,,,"0100",,,onoff,,,control state of the circulation respectively loading pump (functionality of the pump depends on the configuration)
 r,,Mixer1DutyCycle,Mischerstatus,,,,"0200",,,percents,,,"Geschwindigkeit mit der der Mischer verfahren wird (negative Werte = Mischer wird geschlossen, positive Werte = Mischer wird geöffnet)"
@@ -13,7 +13,7 @@ r;w,,TempDesiredLow,Absenksollwert,,,,"1300",,,temp1,,,Absenktemperatur des 2. H
 r,,Hc2QuickVetoTemp,HK2 Quick Veto Temp.,,,,"3200",,,temp1,,,manual override setpoint of the second heating circuit
 r,,Hc2QuickVetoActive,HK2 Quick Veto aktiv,,,,"3300",,,yesno,,,manual override of the second heating circuit enabled
 r;w,,Hc2ManualOPRoomTempDesired,HK2 Raumsoll Manuell,,,,"3400",,,temp1,,,room setpoint in operation mode manual of the second heating circuit
-# ##### extra #####
+# ##### extra #####,,,,,,,,,,,,,
 r,,Hc2CircuitType,HK2 Kreisart,,,,"1E00",,,UCH,0=disabled;1=mixing;2=zone,,type of the second heating circuit
 r;wi,,FlowTempMin,Min. Vorlauftemp.,,,,"1000",,,temp1,,,lower limitation of the second heating circuit's flow temperature
 r;wi,,FlowTempMax,Max. Vorlauftemp.,,,,"1100",,,temp1,,,upper limitation of the second heating circuit's flow temperature
@@ -26,7 +26,7 @@ r;wi,,Hc2SummerOffset,HK2 Offset Sommerbetrieb,,,,"3700",,,calibration1,,,"summe
 r,,Hc2PumpAlPort,Rückmeldung HK2-P,,,,"4300",,,onoff,,,second heating circuit (mixer circuit) pump's state
 r,,FloorPavingDryingTemp,Estrichtrocknungstemperatur,,,,"0400",,,temp1,,,flow temperature setpoint for the current day of floor pavement drying
 r;wi,,FloorPavingDryingDay,Estrichtrocknung Tag,,,,"1A00",,,UCH,,,Aktiver Tag der estrichtrocknungsfunktion
-# ##### Informationen für Entwickler #####
+# ##### Informationen für Entwickler #####,,,,,,,,,,,,,
 r,,Time,Zeit,,,,"0900",,,time,,,Aktuelle Uhrzeit
 r,,Date,Datum,,,,"0A00",,,date,,,Aktuelles Datum
 r,,Weekday,Wochentag,,,,"0B00",,,bday,,,Aktueller Wochentag

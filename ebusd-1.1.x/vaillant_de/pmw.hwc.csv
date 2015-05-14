@@ -1,13 +1,13 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,PMW00,VPM-W Fresh water Station,PMW 244 117+217+229+230+231+255+256+257
-*r,hwc,,,,"0A","B509","0D"
-*w,hwc,,,,"0A","B509","0E"
-*ws,hwc#service,,,,"0A","B509","0E"
-# ##### Generell #####
+#,PMW00,VPM-W Fresh water Station,PMW 244 117+217+229+230+231+255+256+257,,,,,,,,,,
+*r,hwc,,,,"0A","B509","0D",,,,,,
+*w,hwc,,,,"0A","B509","0E",,,,,,
+*ws,hwc#service,,,,"0A","B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
 r,,Ntc1Sensor,NTC 1 Sensor,,,,"0000",,,tempsensor,,,T1 Temperature
 r,,Ntc2Sensor,NTC 2 Sensor,,,,"0100",,,tempsensor,,,T2 Temperature
 r,,Ntc3Sensor,NTC 3 Sensor,,,,"0200",,,tempsensor,,,T3 Temperature
-r,,Vortex,Vortex,,,,"0300",,,hertz,,,"Frequency in Hz ( 1: y [l/min] = 0,0835 * x [Hz] - 0,03, 2: y [l/min] = 0,185 * x [Hz] )"
+r,,Vortex,Vortex,,,,"0300",,,frequency,,,"Frequency in Hz ( 1: y [l/min] = 0,0835 * x [Hz] - 0,03, 2: y [l/min] = 0,185 * x [Hz] )"
 r,,CircoPump,Zirkulationspumpe,,,,"0400",,,percent0,,,Leistung in %
 r,,PumpED,Einschaltdauer Pumpe,,,,"0500",,,percent0,,,Leistung in %
 r,,CalculatedMixerPosition,Berechnete Mischerposition,,,,"0600",,,UIN,,Schritte,0 : primär offen .. 220 primär geschlossen
@@ -33,7 +33,7 @@ r,,EnableHwcOperation,EnableDHWOperation,,,,"4300",,,onoff,,,Enable DHW Ooperati
 r,,SingleStorageCharge,1x Speicherladung,,,,"4400",,,onoff,,,Enable SingleTankCharge
 r,,DurchflussTemp,Volumenstrom,,,,"4600",,,temp,,,Volumenstrom in Liter / Minute
 r,,VPMWMode,VPMW Typ,,,,"4B00",,,UCH,,,"1=VPM 20/25W, 2=VPM 30/35W"
-# ##### P-I-Regler #####
+# ##### P-I-Regler #####,,,,,,,,,,,,,
 r,,Krm,Krm,,,,"1400",,,SIN,,in 1/1000,"enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5"
 r,,Tm,Tm,,,,"1500",,,SIN,,in 1/1000,"enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5"
 r,,Tnm,Tnm,,,,"1600",,,SIN,,in 1/1000,"enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5"
@@ -51,13 +51,13 @@ r,,KrmFaktorSmall,Krm_Faktor_Small,,,,"4E00",,,SIN,,in 1/1000,Krm Verstärkungsf
 r,,KrmFaktorMiddl,Krm_Faktor_Middl,,,,"4F00",,,SIN,,in 1/1000,Krm Verstärkungsfaktor Middl (1/1000)
 r,,TnmFaktorSmall,Tnm_Faktor_Small,,,,"5000",,,SIN,,in 1/1000,Tnm Verstärkungsfaktor Small (1/1000)
 r,,TnmFaktorMiddl,Tnm_Faktor_Middl,,,,"5100",,,SIN,,in 1/1000,Tnm Verstärkungsfaktor Middl (1/1000)
-# ##### Statemachine #####
+# ##### Statemachine #####,,,,,,,,,,,,,
 r,,StateMainControl,State_MainControl,,,,"2F00",,,UCH,,,Aktuelle Zustandsnummer MainControl
 r,,StateMixerPumpControl,State_MixerPumpControl,,,,"3000",,,UCH,,,Aktuelle Zustandsnummer MixerPumpControl
 r,,StateCircoKick,State_CircoKick,,,,"3100",,,UCH,,,Aktuelle Zustandsnummer CircoKickControl
 r,,StateHExMonitoring,State_HExMonitoring,,,,"3200",,,UCH,,,Aktuelle Zustandsnummer HExMonitoring
 r,,TimeTicker,TimeTicker,,,,"3300",,,seconds4,,,Sekunden des Tages
-# ##### Statistik #####
+# ##### Statistik #####,,,,,,,,,,,,,
 r;ws,,StLegioStopTimeCounter,Legionellenschutz Stop Zähler,,,,"3E00",,,UIN,,,End LegioProtect with Stop
 r;ws,,StLegioAbortTimeCounter,Legionellenschutz Abbruch Zähler,,,,"3F00",,,UIN,,,End LegioProtect with Abort
 r;ws,,StFrostProtCounter,Frostschutz Zähler,,,,"4000",,,UIN,,,FrostProtectCounter

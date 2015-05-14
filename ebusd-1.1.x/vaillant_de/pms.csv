@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,PMS00,VPM 20 S,0020071488 243 107+207
-*r,pms,,,,"06","B509","0D"
-*w,pms,,,,"06","B509","0E"
-*wi,pms#install,,,,"06","B509","0E"
-# ##### Generell #####
+#,PMS00,VPM 20 S,0020071488 243 107+207,,,,,,,,,,
+*r,pms,,,,"06","B509","0D",,,,,,
+*w,pms,,,,"06","B509","0E",,,,,,
+*wi,pms#install,,,,"06","B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
 r,,Ntc1RawData,NTC 1 Rohdaten,,,,"0000",,,UIN,,,
 r,,Ntc2RawData,NTC 2 Rohdaten,,,,"0100",,,UIN,,,
 r,,Ntc3RawData,NTC 3 Rohdaten,,,,"0200",,,UIN,,,
@@ -22,8 +22,8 @@ r,,RunTimePump1Minutes,Laufzeit Pumpe 1,,,,"1A00",,,minutes0,,,Laufzeit der Sola
 r,,RunTimePump1Hours,Laufzeit Pumpe 1,,,,"1B00",,,hoursum2,,,Laufzeit der Solarpumpe (Stunden Anteil)
 r,,ExternalHwcRequest,Externe Warmwasseranforderung,,,,"1C00",,,onoff,,,0: No request; 1: Request
 r,,ExternalHcRequest,Externe Heizungsanforderung,,,,"1D00",,,onoff,,,0: No request; 1: Request
-r,,ExternalHwcTempDesired,Externer Warmwassersollwert,,,,"1E00",,,temp0,,,Requested temperature for DHW
-r,,ExternalHcTempDesired,Externer Heizungssollwert,,,,"1F00",,,temp0,,,Requested temperature for CH
+r,,ExternalHwcTempDesired,Externer Warmwassersollwert,,,,"1E00",,,desiredtemp,,,Requested temperature for DHW
+r,,ExternalHcTempDesired,Externer Heizungssollwert,,,,"1F00",,,desiredtemp,,,Requested temperature for CH
 r,,CurrentASCStateforExternals,CurrentASCStateforExternals,,,,"2000",,,UCH,,,1:OFF 2: Proofing 3:DHWLoading 4:CHLoading 5:Overtemperature
 r,,CurrentASCStateforASI,CurrentASCStateforASI,,,,"2100",,,UCH,,,1: Standby 2:Proofing 3:StorageLoading 4:Error_System_blocked
 r,,DateAndTimeIsSet,DateAndTimeIsSet,,,,"2200",,,onoff,,,0: Date and Time is not set; 1: Date and Time is set

@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,43000,VRC 430,430 220 215+315+323+325+340+341
-*r,430,,,,"15","B509","0D"
-*w,430,,,,"15","B509","0E"
-*wi,430#install,,,,"15","B509","0E"
-# ##### Generell #####
+#,43000,VRC 430,430 220 215+315+323+325+340+341,,,,,,,,,,
+*r,430,,,,"15","B509","0D",,,,,,
+*w,430,,,,"15","B509","0E",,,,,,
+*wi,430#install,,,,"15","B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
 r,,DisplayedRoomTemp,Raumtemperatur Ist,,,,"8000",,,temp,,,Aktuelle Raumtemperatur
 r,,RoomTemp,Raumisttemp.,,,,"0000",,,tempsensor,,,raw value current room temperature and sensorstate (without any correction)
 r,,OutsideTemp,Außentemp. Sensor,,,,"6200",,,tempsensor,,,Außentemperatur und Sensorstatus
@@ -32,7 +32,7 @@ r;w,,HwcManualOPTempDesired,Warmwassertemperatur Soll (manuell),,,,"4C00",,,temp
 r;w,,SummerWinterTimeAdjust,Sommer/Winterzeit Umstellung,,,,"5300",,,onoff,,,enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON)
 r,,DisplayedHwcStorageTemp,DisplayedDHWTankTemperature,,,,"9E00",,,temp1,,,display of the storage's temperature in C4 (also in case of an SP1error)
 r,,DisplayedHc1RoomTempDesired,Angezeigte Raumtemperatur Soll Heizkreis 1,,,,"9600",,,temp1,,,0= >5°Ccurrently displayed room temperature setpoint
-# ##### extra #####
+# ##### extra #####,,,,,,,,,,,,,
 r;wi,,RoomTempCorrection,Raumtemperatur-Abgleich,,,,"5700",,,calibrations,,,Korrekturwert der Raumtemperaturanzeige
 r;wi,,OutsideTempOffset,Außentemperatur-Abgleich,,,,"5800",,,calibrations,,,Korrekturwert für die Außentemperatur
 r;wi,,FrostOverRideTime,Frostschutz-Verzögerung,,,,"1A00",,,hours,,,delay before frost protection is activated
@@ -65,7 +65,7 @@ r,,Hc1Pump,Pumpe Heizkreis 1 aktiv,,,,"8200",,,onoff,,,first heating circuit pum
 r;wi,,Hc2HcType,Typ Heizkreis 2,,,,"8500",,,UCH,0=disabled;1=mixing;2=zone,,type of the second heating circuit
 r,,HwcActualTempDesired,Aktuelle Temperatur Soll Warmwasserkreis,,,,"8600",,,temp1,,,current domestic hot water setpoint
 r,,BMUFlowTempOrVF1,Vorlauftemperaturfühler 1,,,,"8700",,,tempsensor,,,value of either an externally connected flow temperature sensor or the BMU's internal flow sensor if an external sensor is missing
-# ##### Informationen für Entwickler #####
+# ##### Informationen für Entwickler #####,,,,,,,,,,,,,
 r,,StartEepromUpdate,Starte EEPROM Aktualsiserung,,,,"0E00",,,onoff,,,update of the EEPROM is to be started
 r,,EepromUpdateActive,EEPROM Aktivierung aktiv,,,,"0F00",,,onoff,,,update of the EEPROM has been started
 r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"1500",,,temp,,,room temperature intrinsic heating offset
@@ -108,7 +108,7 @@ r,,AssertLineNumber,AssertLineNumber,,,,"A100",,,UIN,,,assert fail occured in th
 r,,actostorstate,actostorstate,,,,"A400",,,UCH,,,state of the actoSTOR control (0 = off; 1 = DHW released; 2 = DHW loading; 3 = Pump overrun; 4 = stop pump overrun)
 r,,B50418actDesFlowTemp,B50418actDesFlowTemp,,,,"6B00",,,D1C,,,Vorlaufsolltemperatur von actoSTOR berechnet
 r,,V430PluggedIn,V430_PluggedIn,,,,"B300",,,onoff,,,false if calorMATIC 430 is set inside a wall socket and not plugged in
-# ##### adaptive heating #####
+# ##### adaptive heating #####,,,,,,,,,,,,,
 r,,adpPreHRoomTempDesired,adpPreH_RoomSetpoint,,,,"B400",,,temp,,,
 r,,adpPreHCurrentRoomTemp,adpPreH_CurrentRoomTemp,,,,"B500",,,temp,,,
 r,,adpPreHMinutesBeforeFirstTW,adpPreH_MinutesBeforeFirstTW,,,,"B600",,,seconds2,,,

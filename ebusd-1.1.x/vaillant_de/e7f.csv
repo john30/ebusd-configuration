@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,E7f_2,ExaCONTROL E7 radio,E7f00 206 001+101
-*r,e7f,,,,"15","B509","0D"
-*w,e7f,,,,"15","B509","0E"
-*wi,e7f#install,,,,"15","B509","0E"
-# ##### Generell #####
+#,E7f_2,ExaCONTROL E7 radio,E7f00 206 001+101,,,,,,,,,,
+*r,e7f,,,,"15","B509","0D",,,,,,
+*w,e7f,,,,"15","B509","0E",,,,,,
+*wi,e7f#install,,,,"15","B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
 r,,OutsideTemp,Außentemp. Sensor,,,,"0300",,,tempsensor,,,Außentemperatur und Sensorstatus
 r;w,,OperatingMode,Betriebsart,,,,"0500",,,mcmode,,,Betriebsart
 r;w,,ActualWeekday,Wochentag,,,,"0600",,,bday,,,Aktueller Wochentag
@@ -16,11 +16,11 @@ r,,IsInQuickVeto,Quick Veto aktiv,,,,"1600",,,onoff,,,Quick Veto Funktion aktiv
 r,,QuickVetoTemp,Quick Veto Temp.,,,,"1700",,,temp,,,room temperature setpoint during activated quick veto function
 r;w,,HwcTempDesired,WW Sollwert,,,,"1E00",,,temp,,,WW Sollwert
 r;w,,ComfTempDesired,Komforttemp.,,,,"2000",,,temp;temp;temp;temp,,,Raumsollwert
-# ##### extra #####
+# ##### extra #####,,,,,,,,,,,,,
 r;wi,,RoomTempOffset,Raumisttemp. Korrekturwert,,,,"0200",,,temp,,,Korrekturwert der Raumtemperaturanzeige
 r;wi,,OutsideTempOffset,Außentemperatur-Abgleich,,,,"0400",,,temp,,,Korrekturwert für die Außentemperatur
 r;wi,,HeatingCurve,Heizkurve,,,,"2300",,,curve,,,Heizkurve (nur relevant wenn ein Außentemperaturfühler an das Heizgerät angeschlossen ist)
-# ##### intern #####
+# ##### intern #####,,,,,,,,,,,,,
 r,,StackeBUSTaskMax,MaxStackeBUSTask,,,,"1800",,,UCH,,,maximum number of bytes needed for the eBUS task stack
 r,,StackMainTaskMax,MaxStackMainTask,,,,"1900",,,UCH,,,maximum number of bytes needed for the main task stack
 r,,StackLifeCheckTaskMax,MaxStackLifeCheckTask,,,,"1A00",,,UCH,,,maximum number of bytes needed for the life check task stack
