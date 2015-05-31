@@ -16,7 +16,7 @@ Installation
 ------------
 
 The right files for an existing environment need to be picked from the
-directory corresponding to the used ebusd version (currently ebusd-1.x.x for
+directory corresponding to the used ebusd version (currently ebusd-1.1.x for
 the ebusd master branch).
 
 For all environments, the best way to find the necessary files is to start a
@@ -31,26 +31,27 @@ from the names given by the third column of the scan result, e.g.:
 For this scan result, pick the following files from the vendor directory
 (second column) with your language preference:
 
-> vaillant_de/bai00.csv  
+> vaillant_de/bai.csv  
 > vaillant_de/ui.csv  
 
 In order to use these files, the "_templates.csv" file is required as well
 (if available in the vendor directory). 
 
-Some devices share the same prefix (e.g. "ehp00.*"). This is due to the fact
+Some devices share the same prefix (e.g. "ehp.*"). This is due to the fact
 that the same physical unit can contain several circuits. Here is a list of
 suffixes used and the corresponding circuits:
 
-* ".hc": heat circuit
-* ".mix": mixer circuit
+* ".bc": burner circuit
+* ".hc": heating circuit
+* ".mc": mixer circuit
 * ".hwc": hot water circuit
-* ".cir": circulation circuit
-* ".solar": solar circuit
+* ".cc": circulation circuit
+* ".sc": solar circuit
 
-Mixers and room controllers  usually are available for more than one heat
-circuit. If so, these files are available multiple times with the heat
-circuit number appended, e.g. "mc2.mix4.csv" for heat circuit 4. For the
-primary heat circuit the number is not appended, though.
+Mixers and room controllers  usually are available for more than one heating
+circuit. If so, these files are available multiple times with the heating
+circuit number appended, e.g. "mc2.4.csv" for heating circuit 4. For the
+primary heating circuit the number is not appended, though.
 
 For some devices, there are several variants of the same circuit. For
 example, the mixer might be available as fix value or real mixer circuit.
@@ -61,4 +62,4 @@ underscore "_" and only one variant can be picked from those.
 Contact
 -------
 
-The author can be contacted at ebusd@johnm.de .
+The author can be contacted at ebusd@ebusd.eu .

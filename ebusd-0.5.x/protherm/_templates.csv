@@ -17,7 +17,7 @@ percent,D2C,,%,
 percent0,UCH,,%,
 percent1,D1C,,%,
 percent2,D2B,,%,
-percents,SCH,,%,
+spercent,SCH,,%,
 temp,D2C,,°C,Temperatur
 temp0,UCH,,°C,Temperatur
 temp1,D1C,,°C,Temperatur
@@ -25,14 +25,12 @@ temp2,D2B,,°C,Temperatur
 press,D2B,,bar,Druck
 btime,BTI,,,Uhrzeit
 bdate,BDA,,,Datum
-bday,BDY,,,Wochentag
 id,STR:5,,,Geräte-ID
 version,PIN,,,Version
 skip,IGN:1,,,
 ,,,,
 #vaillant types:,,,,
 temps,SCH,,°C,Temperatur
-temps2,SIN,,°C,Temperatur
 press,FLT,,bar,Druck
 date,HDA:3,,,Datum
 day,BDY,,,
@@ -40,26 +38,17 @@ daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
 days,UCH,,,Tage
 time,VTI,,,
 time2,HTM,,,
-minutes,ULG,120,min,Minuten
-minutes0,UCH,,min,Minuten
-minutes2,UIN,,min,Minuten
+minutes,ULG,120,min,
 hoursum,ULG,,h,Stunden
-hoursum2,UIN,,h,Stunden
 hours,UCH,,h,Stunden
-hours1,D1C,,h,Stunden
+hours2,UCH,2,h,Stunden
 hour,UCH,,h,Stunde
 seconds,ULG,2,s,Sekunden
-seconds0,UCH,,s,Sekunden
-seconds2,UIN,,s,Sekunden
-seconds4,ULG,,s,Sekunden
 calibration,D2C,,K,
-calibration0,UCH,,K,
-calibration1,D1C,,K,
-calibrations,SCH,2,K,
 integral,SIN,,°min,
 mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,
 mctype,UCH,0=uninitialized;1=mixer;2=fixed;3=3;4=4,,
-hwcmode,UCH,0=disabled;1=on;2=off;3=auto,,
+hwmode,UCH,0=disabled;1=on;2=off;3=auto,,
 status,UCH,,,
 onoff,UCH,0=off;1=on,,
 yesno,UCH,0=no;1=yes,,
@@ -67,10 +56,7 @@ errorok,UCH,0=ok;1=error,,
 sensor,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 tempsensor,temp;sensor,,,
 presssensor,press;sensor,,,
-pressm,ULG,,mbar,Druck
-pressm2,UIN,,mbar,Druck
 uin100,UIN,100,,
-curve,UIN,100,,Heizkurve
 phase1,BI0,0=missing;1=present,,
 phase2,BI1,0=missing;1=present,,
 phase3,BI2,0=missing;1=present,,
@@ -80,13 +66,12 @@ from,TTM,,,von
 to,TTM,,,bis
 slot,from;to,,,Slot von/bis
 slot1-3,slot;slot;slot,,,Slots 1 - 3
-backtype,UCH,0=not present;1=external heat;2=external water;3=external heat and water; 4=internal heat and water,,
-backmode,UCH,0=no backup;1=with backup;2=only backup,,
+ehtype,UCH,0=not present;1=external heat;2=external water;3=external heat and water; 4=internal heat and water,,
+ehmode,UCH,0=no backup;1=with backup;2=only backup,,
 power,UCH,,kW,
 energy,UIN,,kWh,
 energy4,ULG,,kWh,
 cntstarts,ULG,,,
-cntstarts2,UIN,,,
 pumppow,UCH,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,
 pumpstate,UCH,0=ok;1=error;2=none,,
 dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,
@@ -95,5 +80,3 @@ switchvalve,UCH,0=heat;1=water,,
 hfrom,HDA:3,,,Ferienzeitraum von
 hto,HDA:3,,,Ferienzeitraum bis
 holiday,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
-hpstatus,UCH,0=off;3=heat;6=standby;7=otshutdown;8=water,,
-frequency,UIN,,Hz,
