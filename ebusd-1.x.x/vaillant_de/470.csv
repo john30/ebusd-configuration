@@ -18,7 +18,7 @@ r;w,,Hc1NightTemp,Absenktemperatur Heizkreis 1,,,,"3000",,,temp1,,,Absenktempera
 r;w,,Hc1DayTemp,HC1_DaySetTemp,,,,"2700",,,temp1,,,day setpoint
 r,,Hc1QuickVetoTemp,Quick Veto Temperatur Heizkreis 1,,,,"3C00",,,temp1,,,manual override setpoint of the first heating circuit
 r,,Hc1SFMode,HC1_SFMode,,,,"5D00",,,UCH,,,"0 = _SFNothing,1 = _SFParty,2 = _SFOneDayBankHoliday,3 = _SFOneDayHoliday,4 = _SFHolidayPeriod,5 = _SFBankHolidayPeriod,6 = _SFQuickVeto,7 = _SFOneTimeVentilation,8 = _SFWhisperMode,9 = _SFLoadOnceDHW"
-r;w,,HolidayRoomTemp,Urlaub Raumtemperatur Soll,,,,"4000",,,D1C,,,4.5=frostprotect"room setpoint during holidays (4,5 = frost protection)"
+r;w,,HolidayRoomTemp,Urlaub Raumtemperatur Soll,,,,"4000",,,D1C,,,"4.5=frostprotect room setpoint during holidays (4,5 = frost protection)"
 r;w,,Hc1HolidayStartPeriod,HC1HolidayStartPeriod,,,,"1100",,,date,,,first heating circuit's start date of holidays
 r;w,,Hc1HolidayEndPeriod,HC1HolidayEndPeriod,,,,"1200",,,date,,,first heating circuit's end date of holidays
 r;w,,Hc1BankHolidayStartPeriod,HC1BankHolidayStartPeriod,,,,"2100",,,date,,,first heating circuit's start date of bank holidays
@@ -101,9 +101,9 @@ r,,B51000M8HeatFlowSetMonitor,B51000M8HeatFlowSetMonitor,,,,"8D00",,,temp1,,,flo
 r,,B51000M7OpModeMonitor,B51000M7OpModeMonitor,,,,"6500",,,UCH,,,"operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW)"
 r,,B51000M9TappingSetMon,B51000M9TappingSetMon,,,,"5600",,,D1C,,,DHW setpoint without loading offset (for hydraulic map H1)
 r,,B51000M10HwcFlowSetMon,B51000M10DHWFlowSetMon,,,,"6600",,,UCH,,,flow setpoint DHW sent via B5 10 00
-r,,B51000M12DisableBitsMon,B51000M12DisableBitsMon,,,,"6700",,,UCH,,,bit0=disable CH... "disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7)"
+r,,B51000M12DisableBitsMon,B51000M12DisableBitsMon,,,,"6700",,,UCH,,,"bit0=disable CH... disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7)"
 r,,B51000M12WithoutBlocking,B51000M12WithoutBlocking,,,,"8203",,,UCH,,,bit0=disable CH... indicates only CH & DHW blocking bits
-r,,B51000M14Monitor,B51000M14Monitor,,,,"6800",,,UCH,,,bit0=remote control CH pump..."bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump)"
+r,,B51000M14Monitor,B51000M14Monitor,,,,"6800",,,UCH,,,"bit0=remote control CH pump... bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump)"
 r,,FrostProtectStateMonitor,FrostProtectState_Monitor,,,,"8900",,,UCH,,,monitoring of the frost protection's state transition diagram
 r,,FrostProtectionRequiredMonitor,FrostProtectionRequired_Monitor,,,,"8A00",,,yesno,,,frost protection should be enabled
 r,,FrostProtectDelayMonitor,FrostProtectDelayMonitor,,,,"8F00",,,yesno,,,frost protection delay has not elapsed yet
