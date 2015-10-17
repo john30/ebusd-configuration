@@ -39,7 +39,7 @@ day,BDY,,,Wochentag
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
 days,UCH,,,Tage
 time,VTI,,,Zeit
-time2,HTM,,,Zeit
+time2,VTM,,,Zeit
 minutes,ULG,120,min,Minuten
 minutes0,UCH,,min,Minuten
 minutes2,UIN,,min,Minuten
