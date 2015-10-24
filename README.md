@@ -16,11 +16,11 @@ Installation
 ------------
 
 The right files for an existing environment need to be picked from the
-directory corresponding to the used ebusd version (currently ebusd-1.1.x for
+directory corresponding to the used ebusd version (currently [ebusd-1.x.x](https://github.com/john30/ebusd-configuration/tree/master/ebusd-1.x.x) for
 the ebusd master branch).
 
 For all environments, the best way to find the necessary files is to start a
-scan on the eBUS (see ebusd documentation).
+scan on the eBUS, see [ebusd scan documentation](https://github.com/john30/ebusd/wiki/3.-Commands#scan).
 
 Depending on the scan result, pick the files suitable for your environment
 from the names given by the third column of the scan result, e.g.:
