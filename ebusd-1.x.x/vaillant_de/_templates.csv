@@ -35,11 +35,11 @@ temps,SCH,,°C,Temperatur
 temps2,SIN,,°C,Temperatur
 press,FLT,,bar,Druck
 date,HDA:3,,,Datum
-day,BDY,,,
+day,BDY,,,Wochentag
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
 days,UCH,,,Tage
-time,VTI,,,
-time2,HTM,,,
+time,VTI,,,Zeit
+time2,VTM,,,Zeit
 minutes,ULG,120,min,Minuten
 minutes0,UCH,,min,Minuten
 minutes2,UIN,,min,Minuten

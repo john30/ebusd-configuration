@@ -16,11 +16,11 @@ Installation
 ------------
 
 The right files for an existing environment need to be picked from the
-directory corresponding to the used ebusd version (currently ebusd-1.1.x for
+directory corresponding to the used ebusd version (currently [ebusd-1.x.x](https://github.com/john30/ebusd-configuration/tree/master/ebusd-1.x.x) for
 the ebusd master branch).
 
 For all environments, the best way to find the necessary files is to start a
-scan on the eBUS (see ebusd documentation).
+scan on the eBUS, see [ebusd scan documentation](https://github.com/john30/ebusd/wiki/3.-Commands#scan).
 
 Depending on the scan result, pick the files suitable for your environment
 from the names given by the third column of the scan result, e.g.:
@@ -36,6 +36,8 @@ For this scan result, pick the following files from the vendor directory
 
 In order to use these files, the "_templates.csv" file is required as well
 (if available in the vendor directory). 
+
+**Please note:** due to a corrected data type in the [_templates.csv](https://github.com/john30/ebusd-configuration/blob/master/ebusd-1.x.x/vaillant_de/_templates.csv) for [vaillant_de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-1.x.x/vaillant_de), at least [ebusd 1.3.0](https://github.com/john30/ebusd/tree/v1.3.0) is required to use these files.
 
 Some devices share the same prefix (e.g. "ehp.*"). This is due to the fact
 that the same physical unit can contain several circuits. Here is a list of

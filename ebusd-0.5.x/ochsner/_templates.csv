@@ -1,3 +1,4 @@
+# template name,type / templates,divider / values,unit,comment
 group,UCH,,,Gruppe
 value,BI0:7,,,Wert
 type,HEX,,,Datentyp
@@ -8,4 +9,4 @@ maxs,SIN,,,Maximum
 mins,SIN,,,Minimum
 command,group;value;type;unit,,,Kommando
 parameter,command;maxs;mins,,,Parameter
-temperature,SIN,10,°C,Temperatur
+temperature,SIN,10,Â°C,Temperatur
