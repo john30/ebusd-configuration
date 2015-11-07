@@ -94,7 +94,7 @@ r,,B51000FlowSetMonitor,B51000FlowSetMonitor,,,,"8D00",,,temp1,,,flow temperatur
 r,,B51000M7OpModeMonitor,B51000M7OpModeMonitor,,,,"6500",,,UCH,,,"operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW)"
 r,,B51000M10HwcFlowSetMon,B51000M10DHWFlowSetMon,,,,"6600",,,UCH,,,flow setpoint DHW sent via B5 10 00
 r,,B51000M12DisableBitsMon,B51000M12DisableBitsMon,,,,"6700",,,UCH,,,"bit0=disable CH... disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7)"
-r,,B51000M14Monitor,B51000M14Monitor,,,,"6800",,,UCH,,,bit0="remote control CH pump... bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump)"
+r,,B51000M14Monitor,B51000M14Monitor,,,,"6800",,,UCH,,,"bit0=remote control CH pump... bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump)"
 r,,FrostProtectDelayMonitor,FrostProtectDelayMonitor,,,,"8F00",,,yesno,,,frost protection delay has not elapsed yet
 r,,ChimneySweepModeActive,Schornsteinfegerbetrieb,,,,"9000",,,yesno,,,chimney sweep mode has been enabled by the BMU
 r,,PumpEnergySaveStateMonitor,PumpEnergySaveStateMonitor,,,,"9100",,,UCH,,,monitoring of the pump energy saving's state transition diagram
