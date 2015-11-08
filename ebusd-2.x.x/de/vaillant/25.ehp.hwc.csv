@@ -1,0 +1,19 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,EHP00,AMU Wärmepumpe,EHP00 172 DHW,,,,,,,,,,
+*r,hwc,,,,,"B509","0D",,,,,,
+*w,hwc,,,,,"B509","0E",,,,,,
+*wi,hwc#install,,,,,"B509","0E",,,,,,
+*[SW>=337],scan,,,SW,,>=337,,,,,,,
+*[SW>=407],scan,,,SW,,>=407,,,,,,,
+*[SW>=415],scan,,,SW,,>=415,,,,,,,
+# ##### DHW: Parameter und Informationen #####,,,,,,,,,,,,,
+,,OperatingMode,Betriebsart,,,,"2B00",,,hwcmode,,,"Betriebsmodus Warmwasser (Auto, Ein, Aus)"
+r;wi,,StorageTempDesiredStop,Max. Warmwassertemp,,,,"8200",,,temp,,,"Anzeige maximale Warmwassertemperatur, erfolgt nur, wenn die Zusatzheizung für Warmwasser freigeschaltet ist! Ohne Zusatzheizung wird die Warmwasser-Temperatur nur durch die Drucksensor-Regelabschaltung begrenzt (ca. 58 °C Speichertemperatur)."
+r;wi,,StorageTempDesiredStart,Min. Warmwassertemp,,,,"8300",,,temp,,,"Min. Warmwasser, Starttemperatur für die Nachladung des Warmwasserspeichers."
+r;wi,,LegioProtectionEnabled,Legionellenschutz,,,,"4000",,,yesno,,,"Der Legionellenschutz wird, wenn eine Zusatzheizung aktiviert ist, bei „AN“ Mittwochs zur eingestellten Uhrzeit durch die Zusatzheizung ausgeführt"
+[SW>=337]r;wi,,LegioProtectionDay,Legionellenschutztag,,,,"7C01",,,bday,,,Legionellenschutztag (0-6:Mo-So; 7:Aus). Anzeige als Kürzel. Aktivierung des Legionellenschutz über einen weiteren Parameter.
+r;wi,,LegionellaStartTime,Startzeit Legionellenschutz,,,,"6700",,,time2,,,"Startzeit des Legionellenschutzes wenn aktiviert, immer Mittwochs"
+[SW>=407]r;wi,,Hc1PumpSpeedLayeredStorage,CH1P_PumpSpeed_layered_tank,,,,"C101",,,percent0,,,CH pump speed setpoint while shiftloading DHW tank [%]
+[SW>=407]r;wi,,Hc1PumpSpeedCoilStorage,CH1P_PumpSpeed_coil_tank,,,,"C201",,,percent0,,,CH pump speed setpoint while loading DHW tank with coils [%]
+[SW>=407]r;wi,,HwcStorageIsCoil,DHW_Tank_is_coil,,,,"CD01",,,yesno,,,DHW tank is shift loading type if no
+[SW>=415]r;wi,,TappingDetectionLimit,TappingDetectionLimit,,,,"E801",,,UCH,,,"turns on backup heater, if temperature drops below this value; 0=function is off"

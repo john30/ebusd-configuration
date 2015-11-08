@@ -1,0 +1,6 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,EHP00,AMU Wärmepumpe,EHP00 172 Circulation,,,,,,,,,,
+*r,cc,,,,,"B509","0D",,,,,,
+*w,cc,,,,,"B509","0E",,,,,,
+# ##### CC: Parameter und Informationen #####,,,,,,,,,,,,,
+,,CirPumpED,CirculationPumpED,,,,"E601",,,UCH,,,defines the percentage of a 10 minutes period to power the pump
