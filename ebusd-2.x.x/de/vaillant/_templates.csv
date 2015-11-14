@@ -7,7 +7,7 @@ day,BDY,,,Wochentag
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,
 days,UCH,,,Tage
 time,VTI,,,Zeit
-time2,HTM,,,Zeit
+time2,VTM,,,Zeit
 minutes,ULG,120,min,Minuten
 minutes0,UCH,,min,Minuten
 minutes2,UIN,,min,Minuten
@@ -44,10 +44,14 @@ phase2,BI1,0=missing;1=present,,
 phase3,BI2,0=missing;1=present,,
 phase,phase1;phase2;phase3,,,
 code,PIN,,,
+error,UIN,,,
+errors,error;error;error;error;error,,,
+errorhistory,status;time2;date;error
 from,TTM,,,von
 to,TTM,,,bis
 slot,from;to,,,Slot von/bis
 slot1-3,slot;slot;slot,,,Slots 1 - 3
+timer,slot1-3;daysel,,,
 backtype,UCH,0=not present;1=external heat;2=external water;3=external heat and water; 4=internal heat and water,,
 backmode,UCH,0=no backup;1=with backup;2=only backup,,
 power,UCH,,kW,
