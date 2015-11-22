@@ -124,7 +124,6 @@ r;wi,,ReturnTempMax,Max. Rücklauf Temp HK,,,,"7300",,,temp,,,Max. Rücklauf-Tem
 [brinetowater]r;ws,,OverpressureThresholdHwc,Abschaltgrenze Hochdruck,,,,"7701",,,pressm,,,Abschaltgrenze Hochdruck nach Warmwasserbereitung,,,
 [watertowater]r;ws,,OverpressureThresholdHwc,Abschaltgrenze Hochdruck,,,,"7701",,,pressm,,,Abschaltgrenze Hochdruck nach Warmwasserbereitung,,,
 # ***** Wärmequelle Geothermie *****,,,,,,,,,,,,,,,,
-# ***** Wärmequelle Geothermie *****,,,,,,,,,,,,,,,,
 [airtobrinetowater]r;wi,,DeltaTempT6T7,Zul. Temp.Spreizung,,,,"6E00",,,temp,,,Zul. Temp.-Spreizung: Max. zulässige Differenz der Wärmequellenein-und austrittstemperatur. Bei Überschreitung erscheint eine Fehlermeldung und der Kompressor schaltet sich ab.,,,
 [brinetowater]r;wi,,DeltaTempT6T7,Zul. Temp.Spreizung,,,,"6E00",,,temp,,,Zul. Temp.-Spreizung: Max. zulässige Differenz der Wärmequellenein-und austrittstemperatur. Bei Überschreitung erscheint eine Fehlermeldung und der Kompressor schaltet sich ab.,,,
 [watertowater]r;wi,,DeltaTempT6T7,Zul. Temp.Spreizung,,,,"6E00",,,temp,,,Zul. Temp.-Spreizung: Max. zulässige Differenz der Wärmequellenein-und austrittstemperatur. Bei Überschreitung erscheint eine Fehlermeldung und der Kompressor schaltet sich ab.,,,
