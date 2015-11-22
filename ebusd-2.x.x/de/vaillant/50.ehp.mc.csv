@@ -75,4 +75,7 @@ r,,currenterror,Aktuelle Fehler,,,,01,,,errors,,,,,,
 *r,mc,,,,,"B503","01",,,,,,,,,
 *wi,mc#install,,,,,"B503","02",,,,,,,,,
 r,,errorhistory,Fehlerhistorie,,,,01,index,m,UCH,,,,,,errorhistory
-wi,,clearerrorhistory,Fehlerhistorie löschen,,,,01,cleared,s,yesno,,,,,,
+wi,,clearerrorhistory,Fehlerhistorie: löschen,,,,01,cleared,s,yesno,,,,,,
+# Raumaufschaltung,,,,,,,,,,,,,,,,
+*w,mc,,,,,"B505","2d",,,,,,,,,
+w,,RoomTempOffset,Raumaufschaltung,,,,,,,temp,,,,,,
