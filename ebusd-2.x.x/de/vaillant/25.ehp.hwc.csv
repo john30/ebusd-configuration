@@ -41,4 +41,4 @@ r,,currenterror,Aktuelle Fehler,,,,01,,,errors,,,,,,
 *r,hwc,,,,,"B503","01",,,,,,,,,
 *wi,hwc#install,,,,,"B503","02",,,,,,,,,
 r,,errorhistory,Fehlerhistorie,,,,01,index,m,UCH,,,,,,errorhistory
-wi,,clearerrorhistory,Fehlerhistorie löschen,,,,01,cleared,s,yesno,,,,,,
+wi,,clearerrorhistory,Fehlerhistorie: löschen,,,,01,cleared,s,yesno,,,,,,
