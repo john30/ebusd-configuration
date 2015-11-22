@@ -7,6 +7,6 @@
 r,,RoomTemp,Raumisttemp,,,,"0000",,,tempsensor,,,Raumtemperatur
 r;wi,,RoomTempOffset,Raumisttemp. Korrekturwert,,,,"1F00",,,temp,,,
 r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"2000",,,temp,,,
-,,HolidayPeriod,Ferienzeitraum,,,,"4300",,,hfrom;hto;hfrom;hto,,,
-,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,
+r;w,,HolidayPeriod,Ferienzeitraum,,,,"4300",,,hfrom;hto;hfrom;hto,,,
+r;w,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,
 r;wi,,LcdContrastPwmValue,LCD Kontrast,,,,"3600",,,UCH,,,Displaykontrast

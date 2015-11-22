@@ -91,9 +91,9 @@ r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,Außentemperatur
 r;ws,,EhpHydraulicMap,Hydraulikschema (EHP),,,,"2900",,,UCH,,,Hydraulikschema
 r,,EhpBasicStatus,Status,,,,"5000",,,UCH,,,AMU Status
 r,,StateEM,Status Energiemanger,,,,"4B00",,,UCH,,,"Status des Energie-Manager:0: Aus,1: WW Anforderungt,2: WW Betrieb3 WW Nachlauf4: Heizbetrieb5: Überdruck im WW Betrieb6: Überdruck im Heizbetrieb7: Wartezustand Überdruck8: Wartezustand Heizung9: Wartezustand WW"
-,,LanguageVariant,Sprachvariante,,,,"2600",,,UCH,,,Sprache
-,,HolidayPeriods,Ferienzeitraum,,,,"4300",,,hfrom;hto;hfrom;hto,,,Ferienzeitraum
-,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,Raumsolltemperatur für den Ferienbetrieb
+r;w,,LanguageVariant,Sprachvariante,,,,"2600",,,UCH,,,Sprache
+r;w,,HolidayPeriods,Ferienzeitraum,,,,"4300",,,hfrom;hto;hfrom;hto,,,Ferienzeitraum
+r;w,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,Raumsolltemperatur für den Ferienbetrieb
 r;wi,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,"2C00",,,HEX:4,,,Code für die Konfigurationsmenüs
 r,,FlowTempDesired,Vorlauftemp. SOLL,,,,"0500",,,temp,,,
 r,,FlowTemp,Vorlauftemp. IST,,,,"0200",,,tempsensor,,,Anlagenvorlauftemperatur
@@ -124,19 +124,19 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,Puffersp
 [SW>=250]r,,SysWithCoolingSupport,Kühlsystem erkannt,,,,"9B00",,,onoff,,,
 [SW>=362]r,,reserve1,reserve 1,,,,"9D00",,,UCH,,,for future use
 # ##### HK Namen und Tel. Nummer #####,,,,,,,,,,,,,
-,,HcName2,Name HK2,,,,"4108",,,STR:11,,,Name für HK2
-,,HcName4,Name HK4,,,,"4118",,,STR:11,,,Name für HK4
-,,HcName5,Name HK5,,,,"4120",,,STR:11,,,Name für HK5
-,,HcName6,Name HK6,,,,"4128",,,STR:11,,,Name für HK6
-,,HcName7,Name HK7,,,,"4130",,,STR:11,,,Name für HK7
-,,HcName8,Name HK8,,,,"4138",,,STR:11,,,Name für HK8
-,,HcName9,Name HK9,,,,"4140",,,STR:11,,,Name für HK9
-,,HcName10,Name HK10,,,,"4148",,,STR:11,,,Name für HK10
-,,HcName11,Name HK11,,,,"4150",,,STR:11,,,Name für HK11
-,,HcName12,Name HK12,,,,"4158",,,STR:11,,,Name für HK12
-,,HcName13,Name HK13,,,,"4160",,,STR:11,,,Name für HK13
-,,HcName14,Name HK14,,,,"4168",,,STR:11,,,Name für HK14
-,,HcName15,Name HK15,,,,"4170",,,STR:11,,,Name für HK15
-,,HcName16,Name HK16,,,,"4178",,,STR:11,,,Name für HK16
+r;w,,HcName2,Name HK2,,,,"4108",,,STR:11,,,Name für HK2
+r;w,,HcName4,Name HK4,,,,"4118",,,STR:11,,,Name für HK4
+r;w,,HcName5,Name HK5,,,,"4120",,,STR:11,,,Name für HK5
+r;w,,HcName6,Name HK6,,,,"4128",,,STR:11,,,Name für HK6
+r;w,,HcName7,Name HK7,,,,"4130",,,STR:11,,,Name für HK7
+r;w,,HcName8,Name HK8,,,,"4138",,,STR:11,,,Name für HK8
+r;w,,HcName9,Name HK9,,,,"4140",,,STR:11,,,Name für HK9
+r;w,,HcName10,Name HK10,,,,"4148",,,STR:11,,,Name für HK10
+r;w,,HcName11,Name HK11,,,,"4150",,,STR:11,,,Name für HK11
+r;w,,HcName12,Name HK12,,,,"4158",,,STR:11,,,Name für HK12
+r;w,,HcName13,Name HK13,,,,"4160",,,STR:11,,,Name für HK13
+r;w,,HcName14,Name HK14,,,,"4168",,,STR:11,,,Name für HK14
+r;w,,HcName15,Name HK15,,,,"4170",,,STR:11,,,Name für HK15
+r;w,,HcName16,Name HK16,,,,"4178",,,STR:11,,,Name für HK16
 r;wi,,PhoneNumberPart1,Telefonnummer Teil 1,,,,"4200",,,STR:9,,,Erster Teil der Telefonnummer für den Servicefall
 r;wi,,PhoneNumberPart2,Telefonnummer Teil 2,,,,"4208",,,STR:9,,,Zweiter Teil der Telefonnummer für den Servicefall

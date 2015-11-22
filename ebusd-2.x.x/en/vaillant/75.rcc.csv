@@ -7,6 +7,6 @@
 r,,RoomTemp,RaumtemperaturIst,,,,"0000",,,tempsensor,,,room temperature
 r;wi,,RoomTempOffset,RaumtemperaturIstOffset,,,,"1F00",,,temp,,,
 r,,RoomTempOffsetSelfWarming,RaumTempOffsetEigenErwaerm,,,,"2000",,,temp,,,
-,,HolidayPeriod,HolidayPeriod,,,,"4300",,,hfrom;hto;hfrom;hto,,,
-,,RoomTempHoliday,RoomSetTempHoliday,,,,"2200",,,temp,,,
+r;w,,HolidayPeriod,HolidayPeriod,,,,"4300",,,hfrom;hto;hfrom;hto,,,
+r;w,,RoomTempHoliday,RoomSetTempHoliday,,,,"2200",,,temp,,,
 r;wi,,LcdContrastPwmValue,LcdContrastPwmValue,,,,"3600",,,UCH,,,contrast for the display

@@ -7,7 +7,7 @@
 *[SW>=407],scan,,,SW,,>=407,,,,,,,,,,
 *[SW>=415],scan,,,SW,,>=415,,,,,,,,,,
 # ##### DHW: Parameter und Informationen #####,,,,,,,,,,,,,,,,
-,,OperatingMode,Betriebsart,,,,"2B00",,,hwcmode,,,"Betriebsmodus Warmwasser (Auto, Ein, Aus)",,,
+r;w,,OperatingMode,Betriebsart,,,,"2B00",,,hwcmode,,,"Betriebsmodus Warmwasser (Auto, Ein, Aus)",,,
 r;wi,,StorageTempDesiredStop,Max. Warmwassertemp,,,,"8200",,,temp,,,"Anzeige maximale Warmwassertemperatur, erfolgt nur, wenn die Zusatzheizung für Warmwasser freigeschaltet ist! Ohne Zusatzheizung wird die Warmwasser-Temperatur nur durch die Drucksensor-Regelabschaltung begrenzt (ca. 58 °C Speichertemperatur).",,,
 r;wi,,StorageTempDesiredStart,Min. Warmwassertemp,,,,"8300",,,temp,,,"Min. Warmwasser, Starttemperatur für die Nachladung des Warmwasserspeichers.",,,
 r;wi,,LegioProtectionEnabled,Legionellenschutz,,,,"4000",,,yesno,,,"Der Legionellenschutz wird, wenn eine Zusatzheizung aktiviert ist, bei „AN“ Mittwochs zur eingestellten Uhrzeit durch die Zusatzheizung ausgeführt",,,

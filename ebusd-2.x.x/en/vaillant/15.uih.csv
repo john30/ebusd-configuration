@@ -91,9 +91,9 @@ r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,outdoor temperature
 r;ws,,EhpHydraulicMap,EhpHydraulicMap,,,,"2900",,,UCH,,,hydraulic scheme
 r,,EhpBasicStatus,EhpBasicStatus,,,,"5000",,,UCH,,,AMU basic state (copy from AMU)
 r,,StateEM,StateEM,,,,"4B00",,,UCH,,,"state of energie manager:0: EmOff,1: EmDhwRequest,2: EmDhw,3: EmTankPunmpOverrun,4: EmHeating,5: EmOverpressureFromDhw,6: EmOverpressureFromCh,7: EmWaitForChDemandOverpressure,8: EmWaitForChDemandHeating,9: EmWaitForChDemandEndOfDhw"
-,,LanguageVariant,LanguageVariant,,,,"2600",,,UCH,,,language of the menue
-,,HolidayPeriods,HolidayPeriods,,,,"4300",,,hfrom;hto;hfrom;hto,,,Holiday periods
-,,RoomTempHoliday,RoomSetTempHoliday,,,,"2200",,,temp,,,desired room setpoint for holiday
+r;w,,LanguageVariant,LanguageVariant,,,,"2600",,,UCH,,,language of the menue
+r;w,,HolidayPeriods,HolidayPeriods,,,,"4300",,,hfrom;hto;hfrom;hto,,,Holiday periods
+r;w,,RoomTempHoliday,RoomSetTempHoliday,,,,"2200",,,temp,,,desired room setpoint for holiday
 r;wi,,KeyCodeforConfigMenu,KeyCodeforConfigMenue,,,,"2C00",,,HEX:4,,,key code for the config menue
 r,,FlowTempDesired,SystemDesiredFlowTemp,,,,"0500",,,temp,,,
 r,,FlowTemp,SystemFlowTemp,,,,"0200",,,tempsensor,,,systen flow temperature
@@ -124,19 +124,19 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,heat buf
 [SW>=250]r,,SysWithCoolingSupport,SysWithCoolingSupport,,,,"9B00",,,onoff,,,
 [SW>=362]r,,reserve1,reserve 1,,,,"9D00",,,UCH,,,for future use
 # ##### HC Names and Tel No #####,,,,,,,,,,,,,
-,,HcName2,aaucHcNames CH2,,,,"4108",,,STR:11,,,name of CH2
-,,HcName4,aaucHcNames CH4,,,,"4118",,,STR:11,,,name of CH4
-,,HcName5,aaucHcNames CH5,,,,"4120",,,STR:11,,,name of CH5
-,,HcName6,aaucHcNames CH6,,,,"4128",,,STR:11,,,name of CH6
-,,HcName7,aaucHcNames CH7,,,,"4130",,,STR:11,,,name of CH7
-,,HcName8,aaucHcNames CH8,,,,"4138",,,STR:11,,,name of CH8
-,,HcName9,aaucHcNames CH9,,,,"4140",,,STR:11,,,name of CH9
-,,HcName10,aaucHcNames CH10,,,,"4148",,,STR:11,,,name of CH10
-,,HcName11,aaucHcNames CH11,,,,"4150",,,STR:11,,,name of CH11
-,,HcName12,aaucHcNames CH12,,,,"4158",,,STR:11,,,name of CH12
-,,HcName13,aaucHcNames CH13,,,,"4160",,,STR:11,,,name of CH13
-,,HcName14,aaucHcNames CH14,,,,"4168",,,STR:11,,,name of CH14
-,,HcName15,aaucHcNames CH15,,,,"4170",,,STR:11,,,name of CH15
-,,HcName16,aaucHcNames CH16,,,,"4178",,,STR:11,,,name of CH16
+r;w,,HcName2,aaucHcNames CH2,,,,"4108",,,STR:11,,,name of CH2
+r;w,,HcName4,aaucHcNames CH4,,,,"4118",,,STR:11,,,name of CH4
+r;w,,HcName5,aaucHcNames CH5,,,,"4120",,,STR:11,,,name of CH5
+r;w,,HcName6,aaucHcNames CH6,,,,"4128",,,STR:11,,,name of CH6
+r;w,,HcName7,aaucHcNames CH7,,,,"4130",,,STR:11,,,name of CH7
+r;w,,HcName8,aaucHcNames CH8,,,,"4138",,,STR:11,,,name of CH8
+r;w,,HcName9,aaucHcNames CH9,,,,"4140",,,STR:11,,,name of CH9
+r;w,,HcName10,aaucHcNames CH10,,,,"4148",,,STR:11,,,name of CH10
+r;w,,HcName11,aaucHcNames CH11,,,,"4150",,,STR:11,,,name of CH11
+r;w,,HcName12,aaucHcNames CH12,,,,"4158",,,STR:11,,,name of CH12
+r;w,,HcName13,aaucHcNames CH13,,,,"4160",,,STR:11,,,name of CH13
+r;w,,HcName14,aaucHcNames CH14,,,,"4168",,,STR:11,,,name of CH14
+r;w,,HcName15,aaucHcNames CH15,,,,"4170",,,STR:11,,,name of CH15
+r;w,,HcName16,aaucHcNames CH16,,,,"4178",,,STR:11,,,name of CH16
 r;wi,,PhoneNumberPart1,aucPhoneNumber part 1,,,,"4200",,,STR:9,,,phone number part 1
 r;wi,,PhoneNumberPart2,aucPhoneNumber part 2,,,,"4208",,,STR:9,,,phone number part 2

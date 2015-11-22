@@ -7,7 +7,7 @@
 *[SW>=407],scan,,,SW,,>=407,,,,,,,,,,
 *[SW>=415],scan,,,SW,,>=415,,,,,,,,,,
 # ##### DHW: Parameters and information #####,,,,,,,,,,,,,,,,
-,,OperatingMode,OperatingMode,,,,"2B00",,,hwcmode,,,Operating mode for the DHWcircuit,,,
+r;w,,OperatingMode,OperatingMode,,,,"2B00",,,hwcmode,,,Operating mode for the DHWcircuit,,,
 r;wi,,StorageTempDesiredStop,Tank_Setpoint_Stop,,,,"8200",,,temp,,,DHW temperature at which loading stops,,,
 r;wi,,StorageTempDesiredStart,Tank_Setpoint_Start,,,,"8300",,,temp,,,DHW temperature at which loading starts,,,
 r;wi,,LegioProtectionEnabled,LegioProtectionEnabled,,,,"4000",,,yesno,,,BMR:enables/disables the anti-legionella feature,,,
