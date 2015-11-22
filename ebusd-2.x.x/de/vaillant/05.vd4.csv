@@ -17,10 +17,10 @@ r;wi,,BoxSerialNumber1,,,,,"0800",,,HEX:9,,,
 r;wi,,BoxSerialNumber2,,,,,"0900",,,HEX:9,,,
 r;wi,,BoxSerialNumber3,,,,,"0A00",,,HEX:9,,,
 r;wi,,BoxSerialNumber4,,,,,"0B00",,,HEX:9,,,
-r;wi,,DeviceLayout,Anlagenkonfiguration,,,,"0C00",,,UCH,0=unknown;1=JV-PC;2=H2B;3=1-16;4=complex;5=eBUS heater,,Type of Interface which will be used and definition of appliance
+r;wi,,DeviceLayout,Anlagenkonfiguration,,,,"0C00",,,UCH,0=unknown;1=JV-PC;2=H2B;3=1-16;4=complex;5=eBUSheater,,Type of Interface which will be used and definition of appliance
 r;wi,,DeviceLayoutCRC,Prüfsumme Anlagenlayout,,,,"0D00",,,UCH,,,"Prüfsumme über alle angeschlossenen Geräte. Wird verwendet, um zu erkennen ob neue Geräte an den Bus angeschlossen wurden oder ob Geräte vom Bus entfernt"
 r;wi,,AutoSyncEnable,AutoSync einschalten,,,,"0E00",,,onoff,,,"Die Abschaltung des AutoSync auf dem eBUS sollte nur vorgenommen werden, wenn es zu Kollisionen mit anderen Geräten auf dem eBUS kommt, die einen Auto"
-r;wi,,LastConnectionError,Letzter Verbindungsfehler,,,,"0F00",,,UCH,0=none;1=connection;2=PPP;3=TCP open;4=TCP auth;5=TCP send,,"Zustand bei dem sich ein Verbindungsfehler ereignet hat. ""Verbunden"" bedeutet kein Fehler"
+r;wi,,LastConnectionError,Letzter Verbindungsfehler,,,,"0F00",,,UCH,0=none;1=connection;2=PPP;3=TCPopen;4=TCPauth;5=TCPsend,,"Zustand bei dem sich ein Verbindungsfehler ereignet hat. ""Verbunden"" bedeutet kein Fehler"
 r;wi,,ConnErrorRetryDelay,Verzögerungszeit nach Verbindungsfehler [min],,,,"1000",,,UCH,,,"Wartezeit zwischen zwei Verbindungsversuchen, wenn der Verbindungsversuch fehlgeschlagen ist"
 r;wi,,ConnectionDelay,Verzögerungszeit Verbindung [min],,,,"1100",,,UCH,,,Minimal Verzögerungszeit zwischen zwei Verbindungen zum Servr. Nur Wirksam für Verbindungen die von der kommunikationseinheit initiert werden (wie z.B
 r;wi,,ErrorMessage,,,,,"1200",,,UCH,,,
