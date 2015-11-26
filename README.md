@@ -12,8 +12,22 @@ provided here and you should definitely know what you're doing.
 **Otherwise: keep your hands off!!!**
 
 
-Installation
-------------
+Installation on up-to-date ebusd (2.0 or higher)
+------------------------------------------------
+
+Starting with ebusd 2.0, the daemon is able to pick the right configuration files for your devices when started with the [--scanconfig](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options) parameter and when using CSV files from either the [ebusd-2.x.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/de) or the [ebusd-2.x.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/en) directory.
+
+For each seen device on the bus, ebusd will pick the best suiting file from the manufacturer subdirectory after reading the device's identification.
+
+The CSV file is picked from the manufacturer directory by using the slave address (the two hex digits prefix of the CSV file name), the identification part converted to lower case and with spaces removed (and also trailing "0" removed up to two times, the next part of the CSV file name between dots), and optionally by software and/or hardware version number (when the CSV file name contains a ".HWvvvv" or ".SWvvvv" part).
+
+So, e.g. for the scan result  
+`08;Vaillant;EHP00;0327;7201`  
+which is slave address 0x08, manufacturer 0xB5 (=Vaillant), identification "EHP00", software version "03.27" and hardware version "72.01", ebusd will load the file [vaillant/08.ehp.csv](https://github.com/john30/ebusd-configuration/blob/master/ebusd-2.x.x/de/vaillant/08.ehp.csv) (from either [ebusd-2.x.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/de) or [ebusd-2.x.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/en) used as configuration directory).
+
+
+Installation on older ebusd (until 1.3)
+------------------------------------------------
 
 The right files for an existing environment need to be picked from the
 directory corresponding to the used ebusd version (currently [ebusd-1.x.x](https://github.com/john30/ebusd-configuration/tree/master/ebusd-1.x.x) for
