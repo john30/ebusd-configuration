@@ -34,6 +34,8 @@ yesno,UCH,0=no;1=yes,,
 errorok,UCH,0=ok;1=error,,
 sensor,UCH,0=ok;85=circuit;170=cutoff,,Fühlerstatus
 tempsensor,temp;sensor,,,
+tempmirror,UIN,,,
+tempmirrorsensor,temp;tempmirror;sensor
 presssensor,press;sensor,,,
 pressm,ULG,,mbar,Druck
 pressm2,UIN,,mbar,Druck
