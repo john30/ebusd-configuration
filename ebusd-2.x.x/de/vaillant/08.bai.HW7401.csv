@@ -176,3 +176,7 @@ r,,currenterror,Aktuelle Fehler,,,,01,,,errors,,,,,,
 *wi,#install,,,,,"B503","02",,,,,,,,,
 r,,errorhistory,Fehlerhistorie,,,,01,index,m,UCH,,,,,,errorhistory
 wi,,clearerrorhistory,Fehlerhistorie: löschen,,,,01,cleared,s,yesno,,,,,,
+# Betriebsart,,,,,,,,,,,,,,,,
+*r,,,,,,"B504",,,,,,,,,,
+r,,Mode,Betriebsart,,,B510,00,mode,,UCH,0=off;1=standby;2=heat;3=water,,,,,
+r,,Status,Status,,,,03,,,temp;press;press;HEX:4,,,,,,
