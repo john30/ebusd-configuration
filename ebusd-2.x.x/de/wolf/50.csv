@@ -1,0 +1,5 @@
+# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field1,part (m;s),type / templates,divider / values,unit,comment,field2,part (m;s),type / templates,divider / values,unit,comment,field3,part (m;s),type / templates,divider / values,unit,comment,field4,part (m;s),type / templates,divider / values,unit,comment,field5,part (m;s),type / templates,divider / values,unit,comment,field6,part (m;s),type / templates,divider / values,unit,comment,field7,part (m;s),type / templates,divider / values,unit,comment
+*w,solar,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+w,,ertraege,,,,5018,,leistung,,D2B,,,Solarleistung,ertraglow,,D1C,,,ErtragTagLow,ertraghigh,,D1C,,,ErtragTagHigh,ertragsummelow,,D1C,,,SummeErtragLow,summertraghigh,,D1C,,,SummeErtragHigh,ertragsumme,,D1C,,,SummeErtragM,,,,,,
+w,,temp,,,,5017,,pumpe,,D1C,,,SolarPumpe,,,IGN:1,,,,kollektortemp,,D2C,,,KollektorTemp,wwsolartemp,,D2C,,,WWSolarTemp,,,,,,,,,,,,,,,,,,
+w,,regler,,,,5014,,status,,D1C,,,StatusSolar,,,IGN:1,,,,mischersolltemp,,D2B,,,MischerSolltemperatur,raumtemp,,D1C,,,Raumtemperatur,wwsolltemp,,D1C,,,SollWarmwasser,,,,,,,,,,,,
