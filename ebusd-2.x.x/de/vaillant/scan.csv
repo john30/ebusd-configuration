@@ -1,6 +1,3 @@
-# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
-*r,scan,,,,,B509,,,,,,,,,,,,,
-r,,id1,Scan ID,,,,24,,,IGN,,,,id1,,STR:8,,,
-r,,id2,Scan ID,,,,25,id2,,STR:9,,,,,,,,,
-r,,id3,Scan ID,,,,26,id3,,STR:9,,,,,,,,,
-r,,id4,Scan ID,,,,27,id4,,STR:2,,,,,,IGN:7,,,
+# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
+*r,scan,,,,,B509,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,scan,id,Scan ID,,,,24;25;26;27,,,IGN,,,,prefix,,STR:2,,,,year,,STR:2,,,,week,,STR:2,,,,product,,STR:10,,,,supplier,,STR:4,,,,counter,,STR:6,,,,suffix,,STR:2,,,
