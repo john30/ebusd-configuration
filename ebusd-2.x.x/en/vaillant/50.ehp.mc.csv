@@ -54,6 +54,7 @@ r;wi,,FloorPavingDryingDay,FloorPavingDryingDay,,,,"3B00",,,UCH,,,BMR: actual da
 # MK: Operation mode,,,,,,,,,,,,,,,,
 *r,mc,,,,,"B504",,,,,,,,,,
 r,,Mode,Operation mode,,,,01,,,temp0;mcmode;IGN:2;HEX;IGN;onoff;IGN,,,,,,
+r,,DateTime,Date Time,,,,00,,,dcfstate;btime;bdate;temp2,,,,,,
 r,,Status,Status,,,,0D,,,temp0;onoff;temp;temp0,,,,,,
 # MK: Periods,,,,,,,,,,,,,,,,
 *r,mc,,,,,"B504",,,,,,,,,,
