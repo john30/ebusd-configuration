@@ -15,6 +15,8 @@ provided here and you should definitely know what you're doing.
 Installation on up-to-date ebusd (2.0 or higher)
 ------------------------------------------------
 
+If you're on a Debian system, simply pick the [latest configuration release](https://github.com/john30/ebusd-configuration/releases) and install it in your preferred language.
+
 Starting with ebusd 2.0, the daemon is able to pick the right configuration files for your devices when started with the [--scanconfig](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options) parameter and when using CSV files from either the [ebusd-2.x.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/de) or the [ebusd-2.x.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/en) directory.
 
 For each seen device on the bus, ebusd will pick the best suiting file from the manufacturer subdirectory after reading the device's identification.
