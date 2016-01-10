@@ -47,6 +47,7 @@ r;w,,TeleswitchOperatingMode,TeleSWITCH Betriebsart,,,,"3F00",,,mcmode,,,If the 
 r,,Mode,Betriebsart,,,,01,,,temp0;mcmode;IGN:2;HEX;IGN;onoff;IGN,,,,,,
 r,,DateTime,Datum Uhrzeit,,,,00,,,dcfstate;btime;bdate;temp2,,,,,,
 r,,Status,Status,,,,0D,,,temp0;onoff;temp;temp0,,,,,,
+r,,Status16,Aussentemperatur,,,,16,,,temp,,,,,,
 # MK1: Zeitprogramm,,,,,,,,,,,,,,,,
 *r,mc,,,,,"B504",,,,,,,,,,
 *w,mc,,,,,"B505","09",,,,,,,,,
