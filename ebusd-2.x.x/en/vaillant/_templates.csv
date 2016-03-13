@@ -35,7 +35,7 @@ errorok,UCH,0=ok;1=error,,
 sensor,UCH,0=ok;85=circuit;170=cutoff,,sensor status
 tempsensor,temp;sensor,,,
 tempmirror,UIN,,,
-tempmirrorsensor,temp;tempmirror;sensor
+tempmirrorsensor,temp;tempmirror;sensor,,,
 presssensor,press;sensor,,,
 pressm,ULG,,mbar,pressure
 pressm2,UIN,,mbar,pressure
