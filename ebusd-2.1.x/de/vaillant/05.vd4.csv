@@ -4,7 +4,7 @@
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
 *ws,#service,,,,,"B509","0E",,,,,,
-*[SW>=200],scan,,,SW,,>=200,,,,,,,
+*[SW],scan,,,SW,,,,,,,,,
 r;wi,,SoftwareVersion,,,,,"0000",,,HEX:4,,,
 r;wi,,EnableMonitoring,,,,,"0100",,,HEX:5,,,
 r;wi,,FlexibleMonitoring,,,,,"0200",,,HEX:8,,,

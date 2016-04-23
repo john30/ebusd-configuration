@@ -4,14 +4,7 @@
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
 *ws,#service,,,,,"B509","0E",,,,,,
-*[SW=202-349],scan,,,SW,,202-349,,,,,,,
-*[SW=350-363],scan,,,SW,,350-363,,,,,,,
-*[SW>=364],scan,,,SW,,>=364,,,,,,,
-*[SW>=202],scan,,,SW,,>=202,,,,,,,
-*[SW<=345],scan,,,SW,,<=345,,,,,,,
-*[SW>=220],scan,,,SW,,>=220,,,,,,,
-*[SW>=250],scan,,,SW,,>=250,,,,,,,
-*[SW>=362],scan,,,SW,,>=362,,,,,,,
+*[SW],scan,,,SW,,,,,,,,,
 # ##### Energieertrag #####,,,,,,,,,,,,,
 [SW=202-349]r,,ThisYearsYieldEnergyMonth1,Ertrag Januar dieses Jahres,,,,"8400",,,energy,,,Ertrag Januar dieses Jahres
 [SW=202-349]r,,ThisYearsYieldEnergyMonth2,Ertrag Februar dieses Jahres,,,,"8408",,,energy,,,Ertrag Februar dieses Jahres
