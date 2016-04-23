@@ -1,7 +1,7 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 # MK2: Zeitprogramm Kühlen,,,,,,,,,,,,,
-*r,mc,,,,,"B515",,,,IGN:1,,,
-*w,mc,,,,,"B515",,,,,,,
+*r,,,,,,"B515",,,,IGN:1,,,
+*w,,,,,,"B515",,,,,,,
 r;w,,coolingTimer.Monday,Zeitfenster Montag,,,,0003,,,timer,,,
 r;w,,coolingTimer.Tuesday,Zeitfenster Dienstag,,,,0103,,,timer,,,
 r;w,,coolingTimer.Wednesday,Zeitfenster Mittwoch,,,,0203,,,timer,,,

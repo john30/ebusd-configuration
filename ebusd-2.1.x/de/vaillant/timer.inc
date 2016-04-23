@@ -1,7 +1,7 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 # DHW: Zeitprogramme DHW,,,,,,,,,,,,,
-*r,hwc,,,,,"B504",,,,,,,
-*w,hwc,,,,,"B505","09",,,,,,
+*r,,,,,,"B504",,,,,,,
+*w,,,,,,"B505","09",,,,,,
 r,,Timer.Monday,Zeitfenster Montag,,,,02,,,timer,,,
 r,,Timer.Tuesday,Zeitfenster Dienstag,,,,03,,,timer,,,
 r,,Timer.Wednesday,Zeitfenster Mittwoch,,,,04,,,timer,,,
