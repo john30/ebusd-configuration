@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+# Schaltzeiten Warmwasser,,,,,,,,,,,,,
+*r,,,,,,"B515",,,,IGN:1,,,
+*w,,,,,,"B515",,,,,,,
+r;w,,hwcTimer.Monday,Zeitfenster Montag,,,,0001,,,timer,,,
+r;w,,hwcTimer.Tuesday,Zeitfenster Dienstag,,,,0101,,,timer,,,
+r;w,,hwcTimer.Wednesday,Zeitfenster Mittwoch,,,,0201,,,timer,,,
+r;w,,hwcTimer.Thursday,Zeitfenster Donnerstag,,,,0301,,,timer,,,
+r;w,,hwcTimer.Friday,Zeitfenster Freitag,,,,0401,,,timer,,,
+r;w,,hwcTimer.Saturday,Zeitfenster Samstag,,,,0501,,,timer,,,
+r;w,,hwcTimer.Sunday,Zeitfenster Sonntag,,,,0601,,,timer,,,
