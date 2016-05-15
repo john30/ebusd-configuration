@@ -13,8 +13,7 @@ r,,IsInHoliday,Ferienprogramm aktiv,,,,"0B00",,,yesno,,,TRUE if holiday is activ
 r,,IsInBankHoliday,IsInBankHoliday,,,,"5F00",,,yesno,,,TRUE if BankHoliday is active
 r,,IsInSystemOff,IsInSystemOff,,,,"6000",,,yesno,,,TRUE if SystemOff is active
 # ##### DHW: Warmwasser #####,,,,,,,,,,,,,
-r;w,,OperatingMode430,OperatingMode430,,,,"0F00",,,UCH,,,"Operating mode of solar DHW circuit for 430 (1 = auto, 2 = manual, 3 = off)"
-#TODO: duplicate addr 0F00: @15[0F00]=uchar [],,,,,,,,,,,,,
+[SW<201]r;w,,OperatingMode430,OperatingMode430,,,,"0F00",,,UCH,,,"Operating mode of solar DHW circuit for 430 (1 = auto, 2 = manual, 3 = off)"
 [SW>=201]r,,OperatingMode470,OperatingMode470,,,,"0F00",,,UCH,,,"Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on)"
 r,,FlowTempDesired,Vorlaufsolltemperatur,,,,"1600",,,temp1,,,Vorlaufsolltemperatur berechnet von VR68
 r,,ActualTempDesired,Akt. Solltemperatur,,,,"1F00",,,temp1,,,"Current tank setpoint. Depends on the programmed period and current time, operating mode …"

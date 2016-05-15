@@ -18,7 +18,6 @@ r,,IsInHoliday,Ferienprogramm aktiv,,,,"1100",,,UCH,,,Restliche Urlaubstage
 r,,IsInQuickVeto,Quick Veto aktiv,,,,"1600",,,onoff,,,Quick Veto Funktion aktiv
 r,,QuickVetoTemp,Quick Veto Temp,,,,"1700",,,temp,,,room temperature setpoint during activated quick veto function
 r;w,,HwcTempDesired,WW Sollwert,,,,"1E00",,,temp,,,WW Sollwert
-#TODO: part DesiredComfTemp,,,,,,,,,,,,,
 r;w,,ComfTempDesired,Komforttemp,,,,"2000",,,temp;temp;temp;temp,,,Raumsollwert
 # ##### extra #####,,,,,,,,,,,,,
 r;wi,,RoomTempOffset,Raumisttemp. Korrekturwert,,,,"0200",,,temp,,,Korrekturwert der Raumtemperaturanzeige
