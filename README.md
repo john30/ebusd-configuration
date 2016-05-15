@@ -18,7 +18,7 @@ Installation on up-to-date ebusd (2.0 or higher)
 If you're on a Debian system, simply pick the [latest configuration release](https://github.com/john30/ebusd-configuration/releases) and install it in your preferred language.  
 For other OS's, the latest release also contains a tgz for easy copying to your /etc/ebusd directory.
 
-Starting with ebusd 2.0, the daemon is able to pick the right configuration files for your devices when started with the [--scanconfig](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options) parameter and when using CSV files from either the [ebusd-2.x.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/de) or the [ebusd-2.x.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/en) directory.
+Starting with ebusd 2.0, the daemon is able to pick the right configuration files for your devices when started with the [--scanconfig](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options) parameter and when using CSV files from either the [ebusd-2.1.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.1.x/de) or the [ebusd-2.1.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.1.x/en) directory.
 
 For each seen device on the bus, ebusd will pick the best suiting file from the manufacturer subdirectory after reading the device's identification.
 
@@ -26,7 +26,7 @@ The CSV file is picked from the manufacturer directory by using the slave addres
 
 So, e.g. for the scan result  
 `08;Vaillant;EHP00;0327;7201`  
-which is slave address 0x08, manufacturer 0xB5 (=Vaillant), identification "EHP00", software version "03.27" and hardware version "72.01", ebusd will load the file [vaillant/08.ehp.csv](https://github.com/john30/ebusd-configuration/blob/master/ebusd-2.x.x/de/vaillant/08.ehp.csv) (from either [ebusd-2.x.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/de) or [ebusd-2.x.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.x.x/en) used as configuration directory).
+which is slave address 0x08, manufacturer 0xB5 (=Vaillant), identification "EHP00", software version "03.27" and hardware version "72.01", ebusd will load the file [vaillant/08.ehp.csv](https://github.com/john30/ebusd-configuration/blob/master/ebusd-2.1.x/de/vaillant/08.ehp.csv) (from either [ebusd-2.1.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.1.x/de) or [ebusd-2.1.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.1.x/en) used as configuration directory).
 
 
 Installation on older ebusd (until 1.3)
