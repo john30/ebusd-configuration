@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+# Zeitprogramme HK,,,,,,,,,,,,,
+*r,,,,,,"B515",,,,IGN:1,,,
+*w,,,,,,"B515",,,,,,,
+r;w,,hcTimer.Monday,Zeitfenster Montag,,,,0000,,,timer,,,
+r;w,,hcTimer.Tuesday,Zeitfenster Dienstag,,,,0100,,,timer,,,
+r;w,,hcTimer.Wednesday,Zeitfenster Mittwoch,,,,0200,,,timer,,,
+r;w,,hcTimer.Thursday,Zeitfenster Donnerstag,,,,0300,,,timer,,,
+r;w,,hcTimer.Friday,Zeitfenster Freitag,,,,0400,,,timer,,,
+r;w,,hcTimer.Saturday,Zeitfenster Samstag,,,,0500,,,timer,,,
+r;w,,hcTimer.Sunday,Zeitfenster Sonntag,,,,0600,,,timer,,,

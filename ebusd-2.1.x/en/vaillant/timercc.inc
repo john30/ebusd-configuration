@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+# Zeitprogramm Zirkulationspumpe,,,,,,,,,,,,,
+*r,,,,,,"B515",,,,IGN:1,,,
+*w,,,,,,"B515",,,,,,,
+r;w,,ccTimer.Monday,Zeitfenster Montag,,,,0002,,,timer,,,
+r;w,,ccTimer.Tuesday,Zeitfenster Dienstag,,,,0102,,,timer,,,
+r;w,,ccTimer.Wednesday,Zeitfenster Mittwoch,,,,0202,,,timer,,,
+r;w,,ccTimer.Thursday,Zeitfenster Donnerstag,,,,0302,,,timer,,,
+r;w,,ccTimer.Friday,Zeitfenster Freitag,,,,0402,,,timer,,,
+r;w,,ccTimer.Saturday,Zeitfenster Samstag,,,,0502,,,timer,,,
+r;w,,ccTimer.Sunday,Zeitfenster Sonntag,,,,0602,,,timer,,,
