@@ -40,7 +40,7 @@ r;ws,,Password,d.97 Password_DK,,,,"4904",,,UCH,,,Password
 r;ws,,PhoneNumber,d.98 PhoneNumber_DK,,,,"8104",,,HEX:8,,,Phone number
 r;ws,,Language,d.99 Language_DK,,,,"8204",,,UCH,,,language selection
 # ##### Diagnose Ebene 2 #####,,,,,,,,,,,,,
-r,,PumpspeedTempDesired,d.14 PumpspeedSetpoint,,,,"A100",,,percent0,,,PWM pump speed
+r,,PumpspeedDesired,d.14 PumpspeedSetpoint,,,,"A100",,,percent0,,,PWM pump speed
 r;wi,,ReturnRegulation,d.17 Rücklaufregelung,,,,"B300",,,onoff,,,Aktivierung der Rücklaufregelung
 r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"B700",,,UCH,0=post run;1=permanent;2=winter,,Pumpenbetriebsart für den Heizbetrieb
 r;wi,,HwcTempMax,d.20 Max. WW Temperatur,,,,"D900",,,temp,,,Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers (Rechtsanschlag).

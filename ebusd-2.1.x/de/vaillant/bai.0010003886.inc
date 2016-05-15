@@ -95,7 +95,7 @@ r,,HwcSwitch,Wasserschalter,,,,"F303",,,onoff,,,WW aus/ein
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI
 # ##### Diagnose Ebene 2 #####,,,,,,,,,,,,,
-r,,PumpspeedTempDesired,d.14 PumpspeedSetpoint,,,,"0A04",,,UCH,,,PWM pump speed
+r,,PumpspeedDesired,d.14 PumpspeedSetpoint,,,,"0A04",,,UCH,,,PWM pump speed
 r;wi,,ReturnRegulation,d.17 Rücklaufregelung,,,,"0C04",,,onoff,,,Aktivierung der Rücklaufregelung
 r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pumpenbetriebsart für den Heizbetrieb
 r;wi,,SecondPumpMode,d.19 Betriebsart 2. Pumpe,,,,"0B04",,,UCH,,,Betriebsart 2stufige Pumpe:0 : Brennerbetrieb = Stufe 2 / Vor-Nachlauf = Stufe 11: Brennerbetrieb + Vorlauf = Stufe 1 / Warmwasser = Stufe 22 : Wie 1 aber im Heizbetrieb hängt die Stufe von der Teillast ab (default)3 : Immer Stufe 2
