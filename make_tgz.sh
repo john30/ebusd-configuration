@@ -37,7 +37,7 @@ echo "*************"
 echo " pack"
 echo "*************"
 echo
-tar czf "$PACKAGE" -C ebusd-2.x.x/$LANG --exclude=./.* . || exit 1
+tar czf "$PACKAGE" -C ebusd-2.1.x/$LANG --exclude=./.* . || exit 1
 
 echo
 echo "Package created: $PACKAGE"

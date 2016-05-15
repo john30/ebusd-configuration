@@ -41,7 +41,7 @@ echo " pack"
 echo "*************"
 echo
 mkdir -p $RELEASE/DEBIAN $RELEASE/etc/ebusd || exit 1
-(tar cf - -C ../ebusd-2.x.x/$LANG "--exclude=./$BUILD" --exclude=./.* . | tar xf - -C $RELEASE/etc/ebusd --wildcards **/*.csv) || exit 1
+(tar cf - -C ../ebusd-2.1.x/$LANG "--exclude=./$BUILD" --exclude=./.* . | tar xf - -C $RELEASE/etc/ebusd --wildcards **/*.csv) || exit 1
 
 cat <<EOF > $RELEASE/DEBIAN/control
 Package: ebusd-configuration
@@ -52,7 +52,7 @@ Architecture: $ARCH
 Maintainer: John Baier <ebusd@ebusd.eu>
 Homepage: https://github.com/john30/ebusd-configuration
 Bugs: https://github.com/john30/ebusd-configuration/issues
-Depends: ebusd
+Depends: ebusd (>= 2.1)
 Description: ebusd configuration files ($LANG).
 EOF
 cat <<EOF > $RELEASE/DEBIAN/dirs
