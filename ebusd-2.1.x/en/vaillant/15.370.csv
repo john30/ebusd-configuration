@@ -1,0 +1,85 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,37000,VRT 370,370 260,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*wi,#install,,,,,"B509","0E",,,,,,
+# ##### general #####,,,,,,,,,,,,,
+r,,ActualWeekday,ActualWeekday,,,,"5F00",,,bday,,,current day of week
+r;w,,Date,Date,,,,"6100",,,date,,,current date
+r;w,,Time,Time,,,,"6000",,,time,,,current time
+r,,RoomTemp,RaumtemperaturIst,,,,"0000",,,tempsensor,,,raw value current room temperature and sensorstate (without any correction)
+r;w,,RoomTempCorrection,RoomTempCorrection,,,,"5700",,,calibrations,,,room temperature correction
+r,,DisplayedHc1RoomTempDesired,DisplayedHK1RoomSetpoint,,,,"9600",,,temp1,,,"0= >5°C, currently displayed room temperature setpoint"
+r;w,,Hc1OPMode,HC1_OPMode,,,,"2F00",,,UCH,2=auto;3=on;4=night;5=summer,,operation mode of the first heating circuit
+r;w,,Hc1DayTemp,HC1_DaySetTemp,,,,"2700",,,temp1,,,day setpoint
+r;w,,Hc1NightTemp,HC1_NightSetTemp,,,,"3000",,,temp1,,,lowering temperature setpoint of the first heating circuit
+r,,Hc1QuickVetoTemp,HC1_QuickVetoTemp,,,,"3C00",,,temp1,,,manual override setpoint of the first heating circuit
+r;w,,Hc1HolidayRoomTemp,HC1_HolidayRoomSetTemp,,,,"4000",,,D1C,,,"4.5=frostprotect, room setpoint during holidays"
+r,,Hc1SFMode,HC1_SFMode,,,,"5D00",,,UCH,0=none;1=party;2=onedaybankholiday;3=onedayholiday;4=holiday;5=bankholiday;6=quickveto;7=onetimeventilation;8=onetimewater,,activated special function of first heating circuit
+r;w,,Hc1HolidayStartPeriod,HC1HolidayStartPeriod,,,,"1100",,,date,,,first heating circuit's start date of holidays
+r;w,,Hc1HolidayEndPeriod,HC1HolidayEndPeriod,,,,"1200",,,date,,,first heating circuit's end date of holidays
+r;w,,Hc1BankHolidayStartPeriod,HC1BankHolidayStartPeriod,,,,"2100",,,date,,,first heating circuit's start date of bank holidays
+r;w,,Hc1BankHolidayEndPeriod,HC1BankHolidayEndPeriod,,,,"2200",,,date,,,first heating circuit's end date of bank holidays
+r;w,,HwcTempDesired,DHW_DesiredTemp,,,,"4400",,,temp1,,,setpoint of domestic hot water circuit
+r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,STR:11,,,"labelling of the first heating circuit (only A-Z,0-9,blank)"
+r;wi,,ContactName,aucContactName,,,,"B400",,,STR:13,,,"installer's name (only A-Z,0-9,blank)"
+r;wi,,PhoneNumber,aucPhoneNumber,,,,"5400",,,STR:13,,,"installer's telephone number (only 0-9,-,blank)"
+r;wi,,MaintenanceDate,MaintenanceDate,,,,"5900",,,date,,,date of the next maintenance service
+r;w,,LcdContrastValue,LcdContrastValue,,,,"5A00",,,UCH,,,setting of the LCD contrast
+r;w,,SummerWinterTimeAdjust,SummerWinterTimeAdjust,,,,"5300",,,UCH,0=off;1=auto,,enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON)
+r;w,,LanguageVariant,LanguageVariant,,,,"1600",,,UCH,0=german;1=english;2=french;3=italian;4=danish;5=dutch;6=spanish;7=turkish;8=hungarian;9=russian;10=ukrainian;11=estonian;12=latvian;13=lithuanian;14=swedish;15=norwegian;16=polish;17=czech;18=croatian;19=slovakian;20=romanian;21=slovenian;22=serbian,,display language
+# ##### extra #####,,,,,,,,,,,,,
+r,,BMUFlowTempOrVF1,BMU_FlowTempOrVF_1,,,,"8700",,,tempsensor,,,value of either an externally connected flow temperature sensor or the BMU's internal flow sensor if an external sensor is missing
+r,,RoomTempOffsetSelfWarming,RaumTempOffsetEigenErwaerm,,,,"1500",,,temp,,,room temperature intrinsic heating offset
+r;wi,,Hc12stepanalogCtrl,HC1_2stepanalogCtrl,,,,"3600",,,UCH,0=two-point control;1=analogue control,,two-point / analogue control
+r;wi,,Hc1LineMatchingAdaption,HC1_LineMatchingAdaption,,,,"3700",,,SCH,,,adjustment of closed loop control
+r,,CirPump,CircuPumpRunning,,,,"8100",,,yesno,,,circulation pump's state
+r,,Hc1ActualFlowTempDesired,HC1ActualFlowSetPoint,,,,"3E00",,,temp1,,,current flow temperature setpoint of the first heating circuit
+r;wi,,HwcCircuitActive,DHW_CircuitActive,,,,"4B00",,,yesno,,,domestic hot water circuit is enabled
+r;wi,,HwcLegioStartDay,DHW_LegioStartDay,,,,"4900",,,UCH,0=Mon;1=Tue;2=Wed;3=Thu;4=Fri;5=Sat;6=Sun;7=off;8=Mon-Sun,,weekday on which legionella protection is started (may also be every day of the week)
+r;wi,,HwcLegioStartTime,DHW_LegioStartTime,,,,"4A00",,,time,,,time on which legionella protection is started
+r,,DisplayedHwcStorageTemp,DisplayedDHWTankTemperature,,,,"9E00",,,temp1,,,display of the storage's temperature (also in case of an SP1error)
+r,,HwcActualTempDesired,DHW_ActualDesired_Setpoint,,,,"8600",,,temp1,,,current domestic hot water setpoint
+r;wi,,KeyCodeforConfigMenu,KeyCodeforConfigMenue,,,,"5500",,,code,,,code for the installer's menues
+r,,GlobalSystemOff,GlobalSystemOFF,,,,"0100",,,onoff,,,"Set to TRUE if ""System Off"" is selected"
+r,,StatusDcf,StatusDcf,,,,"0200",,,UCH,0=nosignal;1=ok;2=sync;3=validDCF;4=validRTC,,status of the DCF signal
+r,,DcfIsValid,DcfIsValid,,,,"0400",,,yesno,,,validity of DCF signal
+r,,ACTOstorDetected,ACTOstorDetected,,,,"6F00",,,yesno,,,indicates that an ACTOstor has been detected
+# ##### developer's info #####,,,,,,,,,,,,,
+r,,HydraulicMap,HydraulicMap,,,,"1800",,,UCH,,,"hydraulic map (0 = H1, 3 = H4, 11 = A1, 12 = A2, 14 = A5, 15 = S1, 16 = S3a, 17 = S3b)"
+r,,ActualRoomTempDesiredHc1,ActualRoomTempSetpointHC1,,,,"6300",,,temp,,,current room setpoint considering all basic conditions passed to the control algorithms
+r,,B51000M7OpModeMonitor,B51000M7OpModeMonitor,,,,"6500",,,UCH,,,"operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW)"
+r,,B51000M8HeatFlowSetMonitor,B51000M8HeatFlowSetMonitor,,,,"8D00",,,D1C,,,flow temperature setpoint sent via B5 10 00 to the BMU
+r,,B51000M9TappingSetMon,B51000M9TappingSetMon,,,,"5600",,,D1C,,,DHW setpoint without loading offset (for hydraulic map H1)
+r,,B51000M10HwcFlowSetMon,B51000M10DHWFlowSetMon,,,,"6600",,,UCH,,,flow setpoint DHW sent via B5 10 00
+r,,B51000M12DisableBitsMon,B51000M12DisableBitsMon,,,,"6700",,,UCH,,,"bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (left bit 0, right bit 7)"
+r,,B51000M14Monitor,B51000M14Monitor,,,,"6800",,,UCH,,,"bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (left bit 0, right bit 7; relevant is bit 0: remote control of CH pump)"
+r,,TestVarActivateFunction,TestVarActivateFunction,,,,"0B00",,,UCH,,,0=All SF_OFF11/2=1DayHolON/OFF13/4=1DayBankON/OFF19/10=1xDHWLoadON/OFF11/12=QVetoON/OFF115/16=PartyON/OFF119/20=Ventil.ON/OFF123/24=SystemOff_ON/OFF
+r,,HwcOPMode,DHW_OPMode,,,,"4200",,,UCH,,,"operation mode of the domestic hot water circuit set implicitly (0 = off, 1 = on, 2 = auto, 3 = auto sunday, 4 = party, 6 = one time tank loading, 7 = holiday)"
+r,,BMUB51101HwcState,BMUB51101_DHWState,,,,"7500",,,UCH,,,flame is on because of either tapping or tank loading
+r,,B51000TempDesiredLoadingPump,B51000SetPointLoadingPump,,,,"7B00",,,D1C,,,loading pump's setpoint sent via B5 10 00 to the BMU
+r,,BMUB51101BoilerFlowTemp,BMUB51101_BoilerFlowTemp,,,,"7700",,,temp1,,,current flow temperature inside the BMU
+r,,BMUB51101StorageTemp,BMUB51101_TankTemp,,,,"7100",,,temp1,,,hot water storage temperature received via eBUS service B5 11 01
+r,,BMUB51101ErrorStatus,BMUB51101_ErrorStatus,,,,"7000",,,UCH,,,error state of BMU received via eBUS service B51101
+r,,StartEepromUpdate,StarteEepromAktualisierung,,,,"0E00",,,yesno,,,update of the EEPROM has to be started
+r,,EepromUpdateActive,EepromAktualisierungAktiv,,,,"0F00",,,yesno,,,update of the EEPROM has been started
+r,,ChimneySweepModeActive,ChimneySweepModeActive,,,,"9000",,,yesno,,,chimney sweep mode has been enabled by the BMU
+r,,HwcLoadingIn430Active,DHWLoadingIn430Active,,,,"9300",,,yesno,,,DHW-loading is active in non parallel loading cases
+r,,LegioProtectActive,LegioProtectActive,,,,"7300",,,yesno,,,legionella protection is active
+r,,InstallAssistant,InstallAssistant,,,,"5E00",,,onoff,,,"install assistant not active (0 = active, 1 = not active)"
+r,,FactoryTestActive,FactoryTestAktiv,,,,"1000",,,yesno,,,Factory Test Pin
+r,,CPLPLast24started,CP_LPLast24started,,,,"8300",,,yesno,,,circulation respectively loading pump has been started during the last 24h
+r,,PumpEnergySaveStateMonitor,PumpEnergySaveStateMonitor,,,,"9100",,,UCH,,,monitoring of the pump energy saving's state transition diagram
+r,,PumpEnergySaveCalculatedTimeMonitor,PumpEnergySaveCalculatedTimeMonitor,,,,"9200",,,minutes0,,,calculated time for the heating circuit's pump's switch off time during pump energy saving function (depends on outside temperature)
+r,,actoSTOROPMode,actoSTOR_OPMode,,,,"9400",,,UCH,,,state diagram actoSTOR control
+r,,ClockSwitchSummerWinterDone,ClockSwitchSummerWinterDone,,,,"7800",,,yesno,,,automatic switching over to/from daylight saving's time has been done
+r,,MonitorEEpromInkonsiNumber,MonitorEEpromInkonsiNumber,,,,"9F00",,,HEX:8,,,identification of the last eight EEPROM inconsistencies
+r,,MonitorCurrentIPart,MonitorCurrent_I_Anteil,,,,"3300",,,temp,,,current i-control value; updated every 3 minutes
+r,,CountryVariant,CountryVariant,,,,"1700",,,UCH,,,"country variant (0 = west, 1 = east, 2 = all)"
+r,,DisplayedRoomTemp,DisplayedRoomTemp,,,,"8000",,,temp,,,displayed room temperature
+r,,RaumtempIstUnten,RaumtempIstUnten,,,,"C100",,,tempsensor,,,lower room temp sensor value
+r,,ADCValueTempbelow,ADCValue_T_below,,,,"4E00",,,UIN,,,lower room temp sensor ADC value
+!include,timercc.inc,,,,,,,,,,,,
+!include,timerhwc.inc,,,,,,,,,,,,
+!include,timerhc.inc,,,,,,,,,,,,
+!include,errors.inc,,,,,,,,,,,,
