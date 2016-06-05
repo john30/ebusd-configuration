@@ -41,7 +41,7 @@ echo " pack"
 echo "*************"
 echo
 mkdir -p $RELEASE/DEBIAN $RELEASE/etc/ebusd || exit 1
-(tar cf - -C ../ebusd-2.1.x/$LANG "--exclude=./$BUILD" --exclude=./.* . | tar xf - -C $RELEASE/etc/ebusd --wildcards **/*.csv) || exit 1
+(tar cf - -C ../ebusd-2.1.x/$LANG "--exclude=./$BUILD" --exclude=./.* . | tar xf - -C $RELEASE/etc/ebusd) || exit 1
 
 cat <<EOF > $RELEASE/DEBIAN/control
 Package: ebusd-configuration
@@ -71,7 +71,5 @@ cd ..
 rm -rf "$BUILD"
 
 echo
-echo "Package created: $PACKAGE"
-echo
-echo "Content:"
-dpkg -c "$PACKAGE"
+files=`dpkg -c "$PACKAGE"|wc -l`
+echo "Package created: $PACKAGE, $files files"
