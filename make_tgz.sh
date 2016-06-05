@@ -40,7 +40,5 @@ echo
 tar czf "$PACKAGE" -C ebusd-2.1.x/$LANG --exclude=./.* . || exit 1
 
 echo
-echo "Package created: $PACKAGE"
-echo
-echo "Content:"
-tar tzvf "$PACKAGE"
+files=`tar tzvf "$PACKAGE"|wc -l`
+echo "Package created: $PACKAGE, $files files"
