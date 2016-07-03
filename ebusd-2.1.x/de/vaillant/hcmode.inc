@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-# EHP: Betriebsart,,,,,,,,,,,,,
+# HC Betriebsart,,,,,,,,,,,,,
 *r,,,,,,"B504",,,,,,,
 r,,Mode,Betriebsart,,,B510,00,mode,,UCH,0=off;1=standby;2=heat;3=water,,
 r,,DateTime,Datum Uhrzeit,,,,00,,,dcfstate;btime;bdate;temp2,,,
