@@ -7,4 +7,3 @@ r,,currenterror,Aktuelle Fehler,,,,01,,,errors,,,,,,
 *wi,#install,,,,,"B503","02",,,,,,,,,
 r,,errorhistory,Fehlerhistorie,,,,01,index,m,UCH,,,,,,errorhistory
 wi,,clearerrorhistory,Fehlerhistorie: löschen,,,,01,cleared,s,yesno,,,,,,
-
