@@ -4,7 +4,7 @@
 *w,,,,,,"B509","0E",,,,,,
 # ##### Generell #####,,,,,,,,,,,,,
 r,,DisplayedRoomTemp,Raumtemperatur Ist,,,,"1B00",,,temp,,,Aktuelle Raumtemperatur
-r,,RoomTemp,Raumisttemp,,,,"0000",,,tempsensor,,,raw value current room temperature and sensorstate (without any correction)
+r,,Hc2RoomTemp,Raumisttemp,,,,"0000",,,tempsensor,,,raw value current room temperature and sensorstate (without any correction)
 r,,DesiredHcRoomTempDesired,Raumsollwert,,,,"1D00",,,temp,,,Aktueller Raumsollwert
 r,,HcRoomTempDesiredAdjustable,HCRoomSetPointAdjustable,,,,"1E00",,,yesno,,,room temperature setpoint is currently adjustable
 r,,HcActiveSpecialFunction,HCActiveSpecialFunction,,,,"1F00",,,UCH,,,"if unequal zero a special function (e.g. holidays, floor pavement drying …) has been activated"
