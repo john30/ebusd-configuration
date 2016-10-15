@@ -74,7 +74,7 @@ r,,EepromUpdateActive,EEPROM Aktivierung aktiv,,,,"0F00",,,onoff,,,update of the
 r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"1500",,,temp,,,room temperature intrinsic heating offset
 r,,CountryVariant,Ländervariante,,,,"1700",,,UCH,,,"country variant (0 = west, 1 = east)"
 r,,ActualRoomTempDesiredHc1,Raumsolltemp. HK1,,,,"6300",,,temp,,,current room setpoint considering all basic conditions passed to the control algorithms
-r,,SolarModuleDetected,Solarmodul erkannt,,,,"6C00",,,yesno,,,indicates that a VR68 has been detected
+r,,SolModuleDetected,Solarmodul erkannt,,,,"6C00",,,yesno,,,indicates that a VR68 has been detected
 r,,HcMc1Detected,BKMK1Detected,,,,"6D00",,,yesno,,,indicates that a VR61 has been detected
 r,,HRUDetected,HRUDetected,,,,"6E00",,,yesno,,,indicates that an airvent module / a heat recovery unit has been detected
 r,,ACTOstorDetected,ACTOstorDetected,,,,"6F00",,,yesno,,,indicates that an ACTOstor has been detected

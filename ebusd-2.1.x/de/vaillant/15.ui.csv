@@ -3,6 +3,7 @@
 *r,,,,,,"B509","0D",,,,,,
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
+*[SW],scan,,,SW,,,,,,,,,
 # ##### Hauptdaten #####,,,,,,,,,,,,,
 r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,Außentemperatur
 r,,FlowTemp,Vorlauftemp. IST,,,,"0200",,,tempsensor,,,Systemtemperatur in der hydraulischen Weiche oder am gemeinsamen Vorlauf (VF1)
@@ -75,8 +76,8 @@ r,,HwcRequestAsc,DhwRequestAsc,,,,"7200",,,onoff,,,
 r,,HcRequestAsc,ChRequestAsc,,,,"7300",,,onoff,,,
 r,,FlowTempDesiredAscHwc,FlowSetpointAscDhw,,,,"7400",,,temp,,,
 r,,FlowTempDesiredAscHc,FlowSetpointAscCh,,,,"7500",,,temp,,,
-r,,SolarLoadingDelayHwc,SolarLoadingDelay_Dhw,,,,"7600",,,minutes0,,,
-r,,SolarLoadingDelayHc,SolarLoadingDelay_Ch,,,,"8900",,,minutes0,,,
+r,,SolLoadingDelayHwc,SolarLoadingDelay_Dhw,,,,"7600",,,minutes0,,,
+r,,SolLoadingDelayHc,SolarLoadingDelay_Ch,,,,"8900",,,minutes0,,,
 r,,BufferFlowThresholdOn,BufferFlowThreshold_On,,,,"7700",,,temp,,,
 r,,BufferFlowThresholdOff,BufferFlowThreshold_Off,,,,"7800",,,temp,,,
 r,,OffsetFlowTempDesiredBufToBoiler,OffsetFlowSetpointBufToBoiler,,,,"7900",,,temp,,,
@@ -149,4 +150,5 @@ r;w,,HcName12,Name HK12,,,,"4158",,,STR:11,,,Name für den 12. Heizkreis
 r;w,,HcName13,Name HK13,,,,"4160",,,STR:11,,,Name für den 13. Heizkreis
 r;w,,HcName14,Name HK14,,,,"4168",,,STR:11,,,Name für den 14. Heizkreis
 r;w,,HcName15,Name HK15,,,,"4170",,,STR:11,,,Name für den 15. Heizkreis
+[SW>=400]!include,yield4445.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

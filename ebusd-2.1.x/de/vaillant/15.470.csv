@@ -36,30 +36,7 @@ r;wi,,MaintenanceDate,nächste Wartung,,,,"5900",,,date,,,Datum nächste Wartung
 r;w,,LcdContrastValue,Display Kontrastwert,,,,"5A00",,,UCH,,,setting of the LCD contrast
 r;w,,SummerWinterTimeAdjust,Sommer/Winterzeit Umstellung,,,,"5300",,,UCH,0=off;1=auto,,enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON)
 r;w,,LanguageVariant,Sprachvariante,,,,"1600",,,UCH,0=german;1=english;2=french;3=italian;4=danish;5=dutch;6=spanish;7=turkish;8=hungarian;9=russian;10=ukrainian;11=estonian;12=latvian;13=lithuanian;14=swedish;15=norwegian;16=polish;17=czech;18=croatian;19=slovakian;20=romanian;21=slovenian;22=serbian,,display language
-r,,ThisYearsSolarYields1,ThisYearsSolarYields_1,,,,"3D00",,,energy,,,With VMS: this years solar yield january
-r,,ThisYearsSolarYields2,ThisYearsSolarYields_2,,,,"3D08",,,energy,,,With VMS: this years solar yield february
-r,,ThisYearsSolarYields3,ThisYearsSolarYields_3,,,,"3D10",,,energy,,,With VMS: this years solar yield march
-r,,ThisYearsSolarYields4,ThisYearsSolarYields_4,,,,"3D18",,,energy,,,With VMS: this years solar yield april
-r,,ThisYearsSolarYields5,ThisYearsSolarYields_5,,,,"3D20",,,energy,,,With VMS: this years solar yield may
-r,,ThisYearsSolarYields6,ThisYearsSolarYields_6,,,,"3D28",,,energy,,,With VMS: this years solar yield june
-r,,ThisYearsSolarYields7,ThisYearsSolarYields_7,,,,"3D30",,,energy,,,With VMS: this years solar yield july
-r,,ThisYearsSolarYields8,ThisYearsSolarYields_8,,,,"3D38",,,energy,,,With VMS: this years solar yield august
-r,,ThisYearsSolarYields9,ThisYearsSolarYields_9,,,,"3D40",,,energy,,,With VMS: this years solar yield september
-r,,ThisYearsSolarYields10,ThisYearsSolarYields_10,,,,"3D48",,,energy,,,With VMS: this years solar yield october
-r,,ThisYearsSolarYields11,ThisYearsSolarYields_11,,,,"3D50",,,energy,,,With VMS: this years solar yield november
-r,,ThisYearsSolarYields12,ThisYearsSolarYields_12,,,,"3D58",,,energy,,,With VMS: this years solar yield december
-r,,LastYearsSolarYields1,LastYearsSolarYields_1,,,,"4300",,,energy,,,With VMS: last years solar yield january
-r,,LastYearsSolarYields2,LastYearsSolarYields_2,,,,"4308",,,energy,,,With VMS: last years solar yield february
-r,,LastYearsSolarYields3,LastYearsSolarYields_3,,,,"4310",,,energy,,,With VMS: last years solar yield march
-r,,LastYearsSolarYields4,LastYearsSolarYields_4,,,,"4318",,,energy,,,With VMS: last years solar yield april
-r,,LastYearsSolarYields5,LastYearsSolarYields_5,,,,"4320",,,energy,,,With VMS: last years solar yield may
-r,,LastYearsSolarYields6,LastYearsSolarYields_6,,,,"4328",,,energy,,,With VMS: last years solar yield june
-r,,LastYearsSolarYields7,LastYearsSolarYields_7,,,,"4330",,,energy,,,With VMS: last years solar yield july
-r,,LastYearsSolarYields8,LastYearsSolarYields_8,,,,"4338",,,energy,,,With VMS: last years solar yield august
-r,,LastYearsSolarYields9,LastYearsSolarYields_9,,,,"4340",,,energy,,,With VMS: last years solar yield september
-r,,LastYearsSolarYields10,LastYearsSolarYields_10,,,,"4348",,,energy,,,With VMS: last years solar yield october
-r,,LastYearsSolarYields11,LastYearsSolarYields_11,,,,"4350",,,energy,,,With VMS: last years solar yield november
-r,,LastYearsSolarYields12,LastYearsSolarYields_12,,,,"4358",,,energy,,,With VMS: last years solar yield december
+!include,yield3d43.inc,,,,,,,,,,,,
 # ##### extra #####,,,,,,,,,,,,,
 r,,BMUFlowTempOrVF1,Vorlauftemperaturfühler 1,,,,"8700",,,tempsensor,,,value of either an externally connected flow temperature sensor or the BMU's internal flow sensor if an external sensor is missing
 r,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"1500",,,temp,,,room temperature intrinsic heating offset
@@ -96,7 +73,7 @@ r,,GlobalSystemOff,GlobalSystemOFF,,,,"0100",,,onoff,,,"Set to TRUE if ""System 
 r,,StatusDcf,Status DCF,,,,"0200",,,UCH,0=nosignal;1=ok;2=sync;3=validDCF;4=validRTC,,Status DCF Signal
 r,,DcfIsValid,DcfIsValid,,,,"0400",,,yesno,,,validity of DCF signal
 r,,HcMc1Detected,BKMK1Detected,,,,"6D00",,,yesno,,,indicates that a VR61 has been detected
-r,,SolarModuleDetected,Solarmodul erkannt,,,,"6C00",,,yesno,,,indicates that a VR68 has been detected
+r,,SolModuleDetected,Solarmodul erkannt,,,,"6C00",,,yesno,,,indicates that a VR68 has been detected
 r,,ACTOstorDetected,ACTOstorDetected,,,,"6F00",,,yesno,,,indicates that an ACTOstor has been detected
 r,,VR81Detected,VR81Detected,,,,"7400",,,yesno,,,indicates that a VR81 has been detected
 r,,ASCDetected,ASCDetected,,,,"BB00",,,yesno,,,indicates that a VMS has been detected
