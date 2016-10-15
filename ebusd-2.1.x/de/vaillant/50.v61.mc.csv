@@ -69,3 +69,4 @@ r,,ThermostatState,ThermostatState,,,,"5100",,,UCH,,,"0 = _ThermOn, 1 =_ThermOff
 !include,errors.inc,,,,,,,,,,,,
 !include,timerhc.inc,,,,,,,,,,,,
 !include,tempsetpoints.inc,,,,,,,,,,,,
+!include,iotestbmc.inc,,,,,,,,,,,,

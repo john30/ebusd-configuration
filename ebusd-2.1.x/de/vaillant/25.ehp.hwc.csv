@@ -17,4 +17,5 @@ r;wi,,LegionellaStartTime,Startzeit Legionellenschutz,,,,"6700",,,time2,,,"Start
 [SW>=415]r;wi,,TappingDetectionLimit,TappingDetectionLimit,,,,"E801",,,UCH,,,"turns on backup heater, if temperature drops below this value; 0=function is off"
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
+!include,iotesthp.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

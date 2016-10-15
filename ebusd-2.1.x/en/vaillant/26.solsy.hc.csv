@@ -44,4 +44,5 @@ r;w,,HeatingCurve,Heating curve,,,,"3500",,,curve,,,Heating curve
 r;w,,TeleswitchOperatingMode,TeleswitchOperatingMode,,,,"3F00",,,mcmode,,,If the tele switch port is activated the burner circuit operates in this mode
 !include,hcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
+!include,iotest620.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

@@ -35,4 +35,5 @@ r;w,,TempDesired2,Solltemperatur,,,,"3200",,,temp1,,,Temperature setpoint of wat
 r;w,,TeleswitchOperatingMode2,TeleSWITCH Betriebsart,,,,"3F00",,,mcmode,,,If the tele switch port is activated the water circuit operates in this mode
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
+!include,iotest620.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

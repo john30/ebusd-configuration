@@ -6,4 +6,5 @@
 r;w,,CirPumpED,CirculationPumpED,,,,"E601",,,UCH,,,defines the percentage of a 10 minutes period to power the pump
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
+!include,iotesthp.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

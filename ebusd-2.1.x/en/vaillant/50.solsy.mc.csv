@@ -39,6 +39,7 @@ r,,FloorPavingDryingDay,FloorPavingDryingDay1,,,,"3B00",,,UCH,,,Current day of f
 r;w,,TeleswitchOperatingMode,TeleswitchOperatingMode1,,,,"3F00",,,mcmode,,,If the tele switch port is activated the mixer circuit operates in this mode
 !include,mcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
+!include,iotest620.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
 !include,roomtempoffset.inc,,,,,,,,,,,,
 !include,quick.inc,,,,,,,,,,,,

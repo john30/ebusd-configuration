@@ -49,6 +49,7 @@ r;wi,,FloorPavingDryingDay,Estrichtrocknung Tag,,,,"3B00",,,UCH,,,"Sie können d
 [SW>=414]r;wi,,Hc1PumpSpeedControlDirectCircuitWhileO,CH1P_PumpSpeedControlDirectCircuitWhileOff,,,,"E101",,,percent0,,,CH pump speed setpoint while energybalancing and compressor=off
 !include,mcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
+!include,iotesthp.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
 !include,roomtempoffset.inc,,,,,,,,,,,,
 !include,quick.inc,,,,,,,,,,,,
