@@ -2,6 +2,7 @@
 # Current errors,,,,,,,,,,,,,,,,
 *r,,,,,,"B503","00",,,,,,,,,
 r,,currenterror,Current errors,,,,01,,,errors,,,,,,
+r,,lasterror,Last errors,,,,02,,,errors,,,,,,
 # Error history,,,,,,,,,,,,,,,,
 *r,,,,,,"B503","01",,,,,,,,,
 *wi,#install,,,,,"B503","02",,,,,,,,,
