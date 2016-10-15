@@ -26,12 +26,12 @@ r,,HeatingSwitch,d.23 Winterbetrieb,,,,"F203",,,onoff,,,Wintermodus aktiv (Heizb
 r,,SourcePressure,d.24 Druckdosensignal,,,,"FF00",,,UIN,,Pa,value of airpressure-sensor
 r,,StoragereleaseClock,d.25 Speicherfreigabe,,,,"4704",,,yesno,,,Freigabe der Speichrladung oder des Warmstartspeichers durcheinen eBUS Regler
 r,,PrimaryCircuitFlowrate,d.29 PrimaryCircuitFlowrate_DK,,,,"FB00",,,UIN,,l/h,value of flowrate
-r,,SDGasvalve,d.30 Gasventil,,,,"BB00",,,UCH,240=off;15=on,,GMV Ansteuersignal
+r,,Gasvalve,d.30 Gasventil,,,,"BB00",,,UCH,240=off;15=on,,GMV Ansteuersignal
 r,,TargetFanSpeed,d.33 Lüfter Solldrehzahl,,,,"2400",,,UIN,,1/min,Drehzahlsollwert des Lüfters
-r,,SDFanSpeed,d.34 Lüfteristdrehzahl,,,,"8300",,,UIN,,1/min,Aktuelle Lüfterdrehzahl
+r,,FanSpeed,d.34 Lüfteristdrehzahl,,,,"8300",,,UIN,,1/min,Aktuelle Lüfterdrehzahl
 r,,PositionValveSet,d.35 Position VUV,,,,"5400",,,UCH,,,Position des 3-Wege Ventil: 100=Warmwasser 0=Heizbetrieb 40=Mittenstellung
 r,,FlowTemp,d.40 Vorlauftemperatur,,,,"1800",,,tempsensor,,,Vorlauftemperatur
-r,,SDTRT,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauftemperatur
+r,,ReturnTemp,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauftemperatur
 r,,IonisationVoltageLevel,d.44 Spannungspegel Ionisationssignal,,,,"A400",,,SIN,10,,Ionisationsspannung: größer 80 = keine Flammekleiner 40 = gutes Flammensignal
 r,,OutdoorstempSensor,d.47 Außentemperaturfühler,,,,"7600",,,tempsensor,,,Außentemperaturwert (ohne Korrekturwert) und Sensorstatus
 r,,RemainingBoilerblocktime,d.67 Verbleibende Brennersperrzeit,,,,"3800",,,minutes0,,,Verbleibende Brennersperrzeit
@@ -40,10 +40,10 @@ r,,dcfState,d.91 DCF Status,,,,"6900",,,dcfstate,,,DCF Status
 # ##### Expertenebene #####,,,,,,,,,,,,,
 r,,SMGVCorrFactorLowOffset,e.04 SMGV_CorrFactorLow_Offset_DK,,,,"0F01",,,percents,,,CO2 offset-value low-load
 r,,SMGVCorrFactorHighOffset,e.05 SMGV_CorrFactorHigh_Offset_DK,,,,"1001",,,percents,,,CO2 offset-value high-load
-r,,SDCOConcentration,e.06 SD_CO_Concentration_DK,,,,"0601",,,UIN,,ppm,calculated CO-concentration
-r,,SDCORsens,e.07 SD_CO_Rsens_DK,,,,"0501",,,UIN,,kOhm,Aktueller Widderstand des CO-Sensors
-r,,SDCOR0,e.08 SD_CO_R0_DK,,,,"0401",,,UIN,,kOhm,CO-sensor resistance @ 0ppm CO
-r,,SDCOPTCActualTemp,e.09 SD_CO_PTC_ActualTemp_DK,,,,"0901",,,temp,,,actual heater-temperature
+r,,COConcentration,e.06 SD_CO_Concentration_DK,,,,"0601",,,UIN,,ppm,calculated CO-concentration
+r,,CORsens,e.07 SD_CO_Rsens_DK,,,,"0501",,,UIN,,kOhm,Aktueller Widderstand des CO-Sensors
+r,,COR0,e.08 SD_CO_R0_DK,,,,"0401",,,UIN,,kOhm,CO-sensor resistance @ 0ppm CO
+r,,COPTCActualTemp,e.09 SD_CO_PTC_ActualTemp_DK,,,,"0901",,,temp,,,actual heater-temperature
 r,,COPTCMeasureTemp,e.10 CO_PTC_MeasureTemp_DK,,,,"0701",,,temp,,,heater-temperature during burner operation
 r,,COCorrFactorOffset,e.11 CO_CorrFactor_Offset_DK,,,,"0E01",,,percents,,,CO2 offset value for gas-adaptive correction-factor
 r,,COCorrFactor,e.12 CO_CorrFactor_DK,,,,"0101",,,percent0,,,calculated gas-adaptive correction-factor
@@ -52,7 +52,7 @@ r,,SMGVCorrFactorHigh,e.14 SMGV_CorrFactorHigh_DK,,,,"0301",,,percent0,,,calcula
 r,,COLastError,e.18 CO_LastError_DK,,,,"0A01",,,UCH,,,CO-sensor failure number
 r,,FluePipeFactor,e.19 FluePipeFactor_DK,,,,"0B01",,,UCH,,,calculated fluepipe-factor
 r,,HwcImpellorSwitch,Brauchwasserzapfung,,,,"5700",,,yesno,,,WW Zapfung
-r,,SDCOPTCTargetTemp,SD_CO_PTC_TargetTemp_DK,,,,"0801",,,temp,,,target heater-temperature
+r,,COPTCTargetTemp,SD_CO_PTC_TargetTemp_DK,,,,"0801",,,temp,,,target heater-temperature
 r,,BoilerType2,BoilerType_2_DK,,,,"0C01",,,ULG,,,
 r,,TMMaxTimeTemp,TTM_MaxTime_DK,,,,"1801",,,seconds2,,,maximum time for calibration-routine
 r,,TMAverageTimeSumTemp,TTM_AverageTime_sum_DK,,,,"1901",,,UIN,,_1S * 100,average time for calibration-routine
@@ -64,16 +64,16 @@ r,,COPTCADC1,CO_PTC_ADC1_DK,,,,"1E01",,,UIN,,,
 r,,COPTCADC2,CO_PTC_ADC2_DK,,,,"1F01",,,UIN,,,
 r,,COPTCPWMTest,CO_PTC_PWM_Test_DK,,,,"2001",,,UIN,,,
 r,,COPTCCalParms,CO_PTC_CalParms,,,,"2101",,,UCH,,,
-r,,TMDoneTemp,TTM_Done_DK,,,,"2201",,,onoff,,,calibration-routine after burner start finished
-r,,TMRecalDoneTemp,TTM_RecalDone_DK,,,,"2301",,,onoff,,,calibration-routine during burner operation finished
-r,,TLDoneTemp,TTL_Done_DK,,,,"2401",,,onoff,,,calibration-routine low-load after burner start finished
-r,,TLRecalDoneTemp,TTL_RecalDone_DK,,,,"2501",,,onoff,,,calibration-routine low-load during burner operation finished
-r,,THDoneTemp,TTH_Done_DK,,,,"2601",,,onoff,,,calibration-routine high-load after burner start finished
-r,,THRecalDoneTemp,TTH_RecalDone_DK,,,,"2701",,,onoff,,,calibration-routine high-load during burner operation finished
+r,,CalibrationDone,TTM_Done_DK,,,,"2201",,,onoff,,,calibration-routine after burner start finished
+r,,CalibrationRecalDone,TTM_RecalDone_DK,,,,"2301",,,onoff,,,calibration-routine during burner operation finished
+r,,CalibrationLowDone,TTL_Done_DK,,,,"2401",,,onoff,,,calibration-routine low-load after burner start finished
+r,,CalibrationLowRecalDone,TTL_RecalDone_DK,,,,"2501",,,onoff,,,calibration-routine low-load during burner operation finished
+r,,CalibrationHighDone,TTH_Done_DK,,,,"2601",,,onoff,,,calibration-routine high-load after burner start finished
+r,,CalibrationHighRecalDone,TTH_RecalDone_DK,,,,"2701",,,onoff,,,calibration-routine high-load during burner operation finished
 r,,WindOff,Wind_Off_DK,,,,"2801",,,onoff,,,Wind-function not active
 r,,COmonOff,COmon_Off_DK,,,,"2901",,,onoff,,,CO-monitoring not active
 r,,FlameLossOff,FlameLoss_Off_DK,,,,"2A01",,,onoff,,,Flame-loss-function not active
-r,,SDForcedR0Trigger,SD_ForcedR0_Trigger_DK,,,,"2B01",,,onoff,,,forced-R0-mode active
+r,,ForcedR0Trigger,SD_ForcedR0_Trigger_DK,,,,"2B01",,,onoff,,,forced-R0-mode active
 r,,StartPeakEnable,StartPeak_Enable_DK,,,,"2C01",,,onoff,,,
 r,,COPTCU1,CO_PTC_U1_DK,,,,"2D01",,,UIN,,,
 r,,COPTCU2,CO_PTC_U2_DK,,,,"2E01",,,UIN,,,
@@ -91,27 +91,27 @@ r,,PredSourcePressureRefPressureSum,Pred_AirPressure_RefPressureSum_DK,,,,"8001"
 r;ws,,SRFLIDEMode,SR_FLIDE_Mode_DK,,,,"8101",,,UCH,,,
 r,,COSensorSNR,CO_Sensor_SNR,,,,"AF01",,,HEX:7,,,
 r,,WaterPressure,Wasserdruck,,,,"0200",,,presssensor,,,value of waterpressure-sensor
-r,,SDFlame,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal
+r,,Flame,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal
 r,,ChangesDSN,Anzhl der DSN Änderungen,,,,"0C00",,,UCH,,,Anzahl der DSN (Gerätekennung) Änderungen
-r,,SDGasvalveUC,Gasventil,,,,"0D00",,,UCH,240=off;15=on,,Schaltsignal für das Gasventil
-r,,SDVolatileLockout,Verriegelnde Störabschaltungen,,,,"1000",,,UCH,240=no;15=yes,,WAHR: STB Fehler sind verriegelnd
+r,,GasvalveUC,Gasventil,,,,"0D00",,,UCH,240=off;15=on,,Schaltsignal für das Gasventil
+r,,VolatileLockout,Verriegelnde Störabschaltungen,,,,"1000",,,UCH,240=no;15=yes,,WAHR: STB Fehler sind verriegelnd
 r,,ModulationTempDesired,Modulationssollwert,,,,"2E00",,,SIN,10,%,Modulationssollwert
-r,,SDFlameSensingASIC,SD_Flame_Sensing_ASIC_DK,,,,"2F00",,,UIN,,,Ioni/ADC Wert vom Flammenwächter
+r,,FlameSensingASIC,SD_Flame_Sensing_ASIC_DK,,,,"2F00",,,UIN,,,Ioni/ADC Wert vom Flammenwächter
 r,,HcUnderHundredStarts,HZ_UnderHundred_SwiActi_DK,,,,"3000",,,UCH,,,Heat switch cycles under hundred
 r,,HwcUnderHundredStarts,BW_UnderHundred_SwiActi_DK,,,,"3100",,,UCH,,,DHW switch cycles under hundred
 r,,EbusSourceOn,eBUS Spannungsversorgung,,,,"3400",,,onoff,,,Aktivierung der eBUS Speisung
 r,,Fluegasvalve,Abgasklappe,,,,"3C00",,,onoff,,,Flüssiggas Magnetventil
 r,,ExternalFaultmessage,Ext. Störmeldung,,,,"3E00",,,onoff,,,Signal für die externe Störmeldeeinrichtung
-r,,SDGasvalveASICFeedback,Rückmeldung Gasventil,,,,"4700",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom ASIC
-r,,SDGasvalveUCFeedback,Rückmeldung Gasventil,,,,"4800",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom Prozessor
-r,,SDIgnitor,Zünder,,,,"4900",,,UCH,240=off;15=on,,Zündung aktiviert
+r,,GasvalveASICFeedback,Rückmeldung Gasventil,,,,"4700",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom ASIC
+r,,GasvalveUCFeedback,Rückmeldung Gasventil,,,,"4800",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom Prozessor
+r,,Ignitor,Zünder,,,,"4900",,,UCH,240=off;15=on,,Zündung aktiviert
 r,,HwcTypes,WW Typen,,,,"4B00",,,UCH,,,DHW type of the appliance
 r,,WarmstartDemand,Warmstartanforderung,,,,"3A04",,,yesno,,,Warmstartaktivierung
 r,,BoilerType,BoilerType_DK,,,,"5E00",,,UCH,,,Boiler typ of the bmu
 r,,ParamToken,ParamToken_DK,,,,"6000",,,UCH,,,token for parameter managment
-r,,ReturnTemp,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor
+r,,expertlevel_ReturnTemp,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor
 r,,FloorHeatingContact,Anlegethermostat,,,,"7000",,,onoff,,,Eingang Anlegethermostat
-r,,SDTemplimiter,Temperaturbegrenzer,,,,"7700",,,UCH,240=off;15=on,,Rückmeldung des Temperaturbegrenzer Signals
+r,,Templimiter,Temperaturbegrenzer,,,,"7700",,,UCH,240=off;15=on,,Rückmeldung des Temperaturbegrenzer Signals
 r,,EbusVoltage,eBUS Spannung,,,,"7F00",,,onoff,,,Rückmeldung der eBUS Spannung
 r,,FluegasvalveOpen,Abgasklappe offen,,,,"8900",,,onoff,,,Rückmeldung Flüssiggasventil
 r,,Testbyte,Testbyte_DK,,,,"9900",,,UCH,,,Testbyte (relevant for the Tester)
@@ -123,11 +123,11 @@ r,,DSNStart,DSN Startadresse,,,,"3104",,,UIN,,,DSN Startadresse
 r,,ExtStorageModulCon,VR65 angeschlossen,,,,"BF00",,,yesno,,,Externes Speichermodul (VR65) angeschlosssen
 r,,PartnumberBox,Partnumber_Box,,,,"C000",,,HEX:5,,,part number of the eBox
 r,,WPSecondStage,WP_SecondStage_DK,,,,"ED00",,,UCH,240=off;15=on,,Second stage of the pump activated
-r,,SDSTLWithNTC,SD_STL_with_NTC,,,,"D200",,,UCH,240=no;15=yes,,Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
-r,,SDVolatileLockoutIFCGV,SD_VolatileLockout_IFC_GV_DK,,,,"D300",,,UCH,240=no;15=yes,,Alle IFC Fehler sind nichtflüchtig
+r,,TemplimiterWithNTC,SD_STL_with_NTC,,,,"D200",,,UCH,240=no;15=yes,,Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
+r,,VolatileLockoutIFCGV,SD_VolatileLockout_IFC_GV_DK,,,,"D300",,,UCH,240=no;15=yes,,Alle IFC Fehler sind nichtflüchtig
 r,,VortexFlowSensor,VortexFlowSensor_DK,,,,"D500",,,UIN,,,"Predictive Maintenance data, CH water flow"
 r,,DisplayMode,DisplayMode_DK,,,,"DA00",,,UCH,,,Display mode of the appliance
-r,,SDGasvalve3UC,Gasventil 3,,,,"DB00",,,UCH,240=off;15=on,,Gasventil Schaltsignal (vom Prozessor)
+r,,Gasvalve3UC,Gasventil 3,,,,"DB00",,,UCH,240=off;15=on,,Gasventil Schaltsignal (vom Prozessor)
 r,,InitialisationEEPROM,InitialisationEEPROM_DK,,,,"DC00",,,yesno,,,EEPROM Initialisierrung (für die Produktion)
 r,,TimerInputHc,Eingang Schaltuhr,,,,"DE00",,,onoff,,,timer input (block heatdemand)
 r,,FanMinSpeedOperation,Min. Lüfterdrehzahl,,,,"DF00",,,UIN,,1/min,Lüfter Minimaldrehzahl
@@ -148,7 +148,7 @@ r;wi,,AccessoriesOne,d.27 Zubehörrelais 1,,,,"4B04",,,UCH,1=circulationpump;2=e
 r;wi,,AccessoriesTwo,d.28 Zubehörrelais 2,,,,"4C04",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 2
 r;wi,,FanSpeedOffsetMin,d.50 Offet min. Lüfterdrehzahl,,,,"2404",,,SIN,,1/min,Offset min. Drehzahl
 r;wi,,FanSpeedOffsetMax,d.51 Offset max. Lüfterdrehzahl,,,,"2504",,,SIN,,1/min,Offset max. Drehzahl
-r,,DeactivationsTL,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers
+r,,DeactivationsTemplimiter,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers
 r,,DeactivationsIFC,d.61 Anzahl Zündfehler,,,,"1F00",,,UCH,,,Anzahl der Zündfehler (nicht erfolgreiche Züdung im letzten Versuch oder fehlerhaftes Flammensignal)
 r,,averageIgnitiontime,d.64 Mittlere Zündzeit,,,,"2D00",,,UCH,10,s,Mittlere Zündzeit
 r,,maxIgnitiontime,d.65 Max. Zündzeit,,,,"2C00",,,UCH,10,s,Maximale Zündzeit
@@ -242,4 +242,3 @@ r,,PrEnergyCountHc3,PrEnergyCountCH3_DK,,,,"FA00",,,ULG,,,Wartungsdaten
 !include,errors.inc,,,,,,,,,,,,
 !include,servicehistory.inc,,,,,,,,,,,,
 !include,currentservice.inc,,,,,,,,,,,,
-!include,hcmode.inc,,,,,,,,,,,,

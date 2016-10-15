@@ -22,9 +22,9 @@ r,,DCRoomthermostat,d.16 Raumthermostat,,,,"0E00",,,onoff,,,Wärmeanforderung vo
 r,,HwcDemand,d.22 WW Anforderung,,,,"5800",,,yesno,,,Brauchwasseranforderung (Zapfung oder Schaltsignal vom Speicher)
 r,,HeatingSwitch,d.23 Winterbetrieb,,,,"F203",,,onoff,,,Wintermodus aktiv (Heizbetrieb und Warmwasser)
 r,,StoragereleaseClock,d.25 Speicherfreigabe,,,,"4704",,,yesno,,,Freigabe der Speichrladung oder des Warmstartspeichers durcheinen eBUS Regler
-r,,SDGasvalve,d.30 Gasventil,,,,"BB00",,,UCH,240=off;15=on,,GMV Ansteuersignal
+r,,Gasvalve,d.30 Gasventil,,,,"BB00",,,UCH,240=off;15=on,,GMV Ansteuersignal
 r,,FlowTemp,d.40 Vorlauftemperatur,,,,"1800",,,tempsensor,,,Vorlauftemperatur
-r,,SDTRT,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauftemperatur
+r,,ReturnTemp,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauftemperatur
 r,,OutdoorstempSensor,d.47 Außentemperaturfühler,,,,"7600",,,tempsensor,,,Außentemperaturwert (ohne Korrekturwert) und Sensorstatus
 r;wi,,FlowHysteresisON,d.53 FlowHysteresis_ON_DK,,,,"1601",,,temp,,,Adjustment of the switch on hysteresis
 r;wi,,FlowHysteresisOff,d.54 FlowHysteresis_OFF_DK,,,,"1701",,,temp,,,Adjustment of the switch off hysteresis
@@ -42,7 +42,7 @@ r;wi,,HwcTempMax,d.20 Max. WW Temperatur,,,,"D900",,,temp,,,Max. Speichersollwer
 r;wi,,OptionalRelais,d.26 OptionalRelais_DK,,,,"B800",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Option relais function
 r;wi,,AccessoriesOne,d.27 Zubehörrelais 1,,,,"B900",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 1
 r;wi,,AccessoriesTwo,d.28 Zubehörrelais 2,,,,"BA00",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 2
-r,,DeactivationsTL,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers
+r,,DeactivationsTemplimiter,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers
 r,,DeactivationsIFC,d.61 Anzahl Zündfehler,,,,"1F00",,,UCH,,,Anzahl der Zündfehler (nicht erfolgreiche Züdung im letzten Versuch oder fehlerhaftes Flammensignal)
 r,,averageIgnitiontime,d.64 Mittlere Zündzeit,,,,"2D00",,,UCH,10,s,Mittlere Zündzeit
 r,,maxIgnitiontime,d.65 Max. Zündzeit,,,,"2C00",,,UCH,10,s,Maximale Zündzeit
@@ -50,7 +50,7 @@ r,,CounterStartattempts1,d.68 Zündfehler 1. Versuch,,,,"6E00",,,temp0,,,Anzahl 
 r,,CounterStartattempts2,d.69 Zündfehler 2. Versuch,,,,"6F00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 2. Versuch)
 r;wi,,FlowsetHcMax,d.71 Max. Vorlauftemp. Heizbetrieb,,,,"A500",,,temp,,,Einstellung des maximalen Vorlaufsollwert im Heizbetrieb (bei Linksanschlag des Poti)
 r;wi,,StorageLoadTimeMax,d.75 Max. Speicherladezeit,,,,"6600",,,minutes0,,,Max. Speicherladezeit für Speicher ohne eigene Regelung
-r,,SDCodingResistor,d.76 SD_CodingResistor_DK,,,,"9200",,,HEX:3,,,boiler identification resistor
+r,,CodingResistor,d.76 SD_CodingResistor_DK,,,,"9200",,,HEX:3,,,boiler identification resistor
 r;wi,,FlowsetHwcMax,d.78 Max. Vorlauftemp. WW,,,,"A600",,,temp,,,Maximal erlaubte Vorlauftemperatur für die Speicherladung
 r,,HcHours,d.80 Hz. Betriebsstunden,,,,"2800",,,hoursum2,,,Betriebsstunden im Heizbetrieb
 r,,HwcHours,d.81 Betriebsstunden WW,,,,"2200",,,hoursum2,,,Betriebsstunden Brauchwasser
@@ -94,14 +94,14 @@ r,,WaterpressureMeasureCounter,WaterpressureMeasureCounter_DK,,,,"F100",,,UCH,,,
 # ##### expert level\Main #####,,,,,,,,,,,,,
 r,,externalFlowTempDesired,ext. Vorlaufsollwert,,,,"2500",,,temp,,,Vorlaufsollwert von einem externen Regler an Klemme 7-8-9
 r,,externalHwcSwitch,Wasserschalter,,,,"0000",,,onoff,,,Speicheranforderung eines externen Speichers über den Speicherkontakt
-r,,SDFlame,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal
-r,,SDIFCFault,SD_IFC_Fault_DK,,,,"0700",,,UCH,240=off;15=on,,IFC error
+r,,Flame,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal
+r,,IFCFault,SD_IFC_Fault_DK,,,,"0700",,,UCH,240=off;15=on,,IFC error
 r,,ChangesDSN,Anzhl der DSN Änderungen,,,,"0C00",,,UCH,,,Anzahl der DSN (Gerätekennung) Änderungen
 r,,Brennstoffventil,Brennstoffventil,,,,"0D00",,,UCH,240=off;15=on,,Schaltsignal für das Gasventil
-r,,SDVolatileLockout,Verriegelnde Störabschaltungen,,,,"1000",,,UCH,240=no;15=yes,,WAHR: STB Fehler sind verriegelnd
+r,,VolatileLockout,Verriegelnde Störabschaltungen,,,,"1000",,,UCH,240=no;15=yes,,WAHR: STB Fehler sind verriegelnd
 r,,Faultlist,Faultlist_DK,,,,"2600",,,HEX:10,,,last 10 fault codes
 r,,ModulationTempDesired,Modulationssollwert,,,,"2E00",,,SIN,10,%,Modulationssollwert
-r,,SDFlameSensingASIC,SD_Flame_Sensing_ASIC_DK,,,,"2F00",,,UIN,,,Ioni/ADC Wert vom Flammenwächter
+r,,FlameSensingASIC,SD_Flame_Sensing_ASIC_DK,,,,"2F00",,,UIN,,,Ioni/ADC Wert vom Flammenwächter
 r,,HcUnderHundredStarts,HZ_UnderHundred_SwiActi_DK,,,,"3000",,,UCH,,,Heat switch cycles under hundred
 r,,HwcUnderHundredStarts,BW_UnderHundred_SwiActi_DK,,,,"3100",,,UCH,,,DHW switch cycles under hundred
 r,,EbusSourceOn,eBUS Spannungsversorgung,,,,"3400",,,onoff,,,Aktivierung der eBUS Speisung
@@ -109,18 +109,18 @@ r,,Fluegasvalve,Abgasklappe,,,,"3C00",,,onoff,,,Flüssiggas Magnetventil
 r,,ExternalFaultmessage,Ext. Störmeldung,,,,"3E00",,,onoff,,,Signal für die externe Störmeldeeinrichtung
 r,,RückmeldungBrennstoffventil1,Rückmeldung Brennstoffventil 1,,,,"4700",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom ASIC
 r,,RückmeldungBrennstoffventil2,Rückmeldung Brennstoffventil 2,,,,"4800",,,UCH,240=off;15=on,,Rückmeldung Gasventil vom Prozessor
-r,,SDIgnitor,Zünder,,,,"4900",,,UCH,240=off;15=on,,Zündung aktiviert
+r,,Ignitor,Zünder,,,,"4900",,,UCH,240=off;15=on,,Zündung aktiviert
 r,,Fan,Lüfter,,,,"4A00",,,yesno,,,Fan activation signal
 r,,HwcTypes,WW Typen,,,,"4B00",,,UCH,,,DHW type of the appliance
-r,,SDTLFault,SD_TL_Fault_DK,,,,"4D00",,,UCH,240=off;15=on,,temperature limiter error
-r,,SDADCOk,SD_ADC_ok_DK,,,,"4E00",,,UCH,240=off;15=on,,internal electronic error
-r,,SDFanFault,SD_Fan_Fault_DK,,,,"5300",,,UCH,240=off;15=on,,Fan error
+r,,TemplimiterFault,SD_TL_Fault_DK,,,,"4D00",,,UCH,240=off;15=on,,temperature limiter error
+r,,ADCOk,SD_ADC_ok_DK,,,,"4E00",,,UCH,240=off;15=on,,internal electronic error
+r,,FanFault,SD_Fan_Fault_DK,,,,"5300",,,UCH,240=off;15=on,,Fan error
 r,,BoilerType,BoilerType_DK,,,,"5E00",,,UCH,,,Boiler typ of the bmu
 r,,FunctionFlags,FunctionFlags_DK,,,,"5F00",,,UCH,,,differrent function flags
 r,,ParamToken,ParamToken_DK,,,,"6000",,,UCH,,,token for parameter managment
-r,,ReturnTemp,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor
+r,,expertlevelMain_ReturnTemp,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor
 r,,FloorHeatingContact,Anlegethermostat,,,,"7000",,,onoff,,,Eingang Anlegethermostat
-r,,SDTemplimiter,Temperaturbegrenzer,,,,"7700",,,UCH,240=off;15=on,,Rückmeldung des Temperaturbegrenzer Signals
+r,,Templimiter,Temperaturbegrenzer,,,,"7700",,,UCH,240=off;15=on,,Rückmeldung des Temperaturbegrenzer Signals
 r,,SRIFCEEFaultCause,SR_IFC_EE_FaultCause_DK,,,,"7A00",,,UCH,,,current IFC fault cause
 r,,ParamReplication,ParamReplication_DK,,,,"7C00",,,yesno,,,activated the parameter managment again
 r,,AnodeINFeedback,Anode_IN_Feedback_DK,,,,"7E00",,,yesno,,,feedback signal of the anode
@@ -139,8 +139,8 @@ r,,Shiftloadtankpump,Shiftloadtankpump_DK,,,,"B400",,,yesno,,,current status of 
 r,,ExtStorageModulCon,VR65 angeschlossen,,,,"BF00",,,yesno,,,Externes Speichermodul (VR65) angeschlosssen
 r,,PartnumberBox,Partnumber_Box,,,,"C000",,,HEX:5,,,part number of the eBox
 r,,SRSyphonINSDSwitch,SR_Syphon_IN_SD_Switch_DK,,,,"CF00",,,UCH,240=no;15=yes,,feedback of the syphon switch contact
-r,,SDSTLWithNTC,SD_STL_with_NTC,,,,"D200",,,UCH,240=no;15=yes,,Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
-r,,SDVolatileLockoutIFCGV,SD_VolatileLockout_IFC_GV_DK,,,,"D300",,,UCH,240=no;15=yes,,Alle IFC Fehler sind nichtflüchtig
+r,,TemplimiterWithNTC,SD_STL_with_NTC,,,,"D200",,,UCH,240=no;15=yes,,Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
+r,,VolatileLockoutIFCGV,SD_VolatileLockout_IFC_GV_DK,,,,"D300",,,UCH,240=no;15=yes,,Alle IFC Fehler sind nichtflüchtig
 r,,DisplayMode,DisplayMode_DK,,,,"DA00",,,UCH,,,Display mode of the aplliance
 r,,RückmeldungBrennstoffventil3,Rückmeldung Brennstoffventil 3,,,,"DB00",,,UCH,240=off;15=on,,Gasventil Schaltsignal (vom Prozessor)
 r,,InitialisationEEPROM,InitialisationEEPROM_DK,,,,"DC00",,,yesno,,,EEPROM Initialisierrung (für die Produktion)
@@ -167,4 +167,3 @@ r,,OILINPreHeaterFeedback,OIL_IN_PreHeaterFeedback_DK,,,,"3201",,,yesno,,,feedba
 !include,errors.inc,,,,,,,,,,,,
 !include,servicehistory.inc,,,,,,,,,,,,
 !include,currentservice.inc,,,,,,,,,,,,
-!include,hcmode.inc,,,,,,,,,,,,
