@@ -2,6 +2,7 @@
 #,EHP00,Heat pump AMU,EHP00 172 Boiler,,,,,,,,,,
 *r,,,,,,"B509","0D",,,,,,
 *u,,,,,,"B509","29",,,IGN:2,,,
+*uhwc,,,,,"25","B509","29",,,IGN:2,,,
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
 *ws,#service,,,,,"B509","0E",,,,,,
@@ -25,7 +26,7 @@ r,,CompCutPressLowCount,Compressor_Cut_LP_No,,,,"B500",,,ULG,,,shows how often t
 r,,CompCutTempCount,Compressor_Cut_T_No,,,,"B600",,,ULG,,,shows how often the compressor has been stopped due to outlet temperature exceeding
 # ##### EHP: Measurements Switches Actors IOs #####,,,,,,,,,,,,,
 # ***** Heat source *****,,,,,,,,,,,,,
-r;ws;u,,YieldEnvironmentEnergy,EarnedEnvironmentEnergy,,,,"BC00",,,energy4,,,sum of earned environmental energy in kWh
+r;ws;u,,YieldTotal,EarnedEnvironmentEnergy,,,,"BC00",,,energy4,,,sum of earned environmental energy in kWh
 r;u,,SourceTempInput,T_Brine_Warm,,,,"0F00",,,tempsensor,,,Brine inlet temperature sensor
 [watertowater]r;u,,SourceTempOutput,OutletTemperature,,,,"0800",,,tempsensor,,,heat source outlet temperature for water to water machines
 [brinetowater]r;u,,SourceTempOutput,BrineOutlet,,,,"0800",,,tempsensor,,,heat source outlet temperature for brine to water machines
@@ -69,7 +70,7 @@ r;u,,FlowTemp,T_Flow_Mixed,,,,"0300",,,tempsensor,,,"External flow temperature s
 r,,Mixer1DutyCycle,Mixer1DutyCycle,,,,"0E00",,,percents,,,"Opening/Closing status of mixing valve HK2, -100%...+100%"
 r,,Hc2Pump,CH2_P,,,,"1800",,,onoff,,,external CH pump (HK2P)
 # ***** Heat sink domestic hot water *****,,,,,,,,,,,,,
-r,,HwcTemp,T_DHW,,,,"0000",,,tempsensor,,,External DHW temperature sensor
+r;uhwc,,HwcTemp,T_DHW,,,,"0000",,,tempsensor,,,External DHW temperature sensor
 r;u,,CirPump,CirculationPump,,,,"0C00",,,onoff,,,circulation pump
 r;u,,HwcHcValve,V_DHW_CH,,,,"1000",,,onoff,,,UV 1
 r,,HwcSwitch,DHW_Switch,,,,"0B00",,,onoff,,,one time circulation switch Main PCB input
@@ -109,11 +110,11 @@ r;wi,,CompHysteresis,Compressor_Hysteresis,,,,"7D00",,,temp,,,difference between
 r;wi,,CompIntegral,Integral_Comp_Start,,,,"7C00",,,integral,,,integral at which compressor should start
 r;wi,,NumberCompStarts,Number_Comp_Starts,,,,"7400",,,UCH,,,maximum number of compressor starts per hour
 r;wi,,ReturnTempMax,Max_Return_Temperature,,,,"7300",,,temp,,,"if return temperature is higher than this, compressor stops or might not restart"
-[airtobrinetowater]r;ws,,OverpressureThresholdHwc,Overpressure_BW,,,,"7701",,,pressm,,,limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines)
+[airtobrinetowater]r;ws,,OverpressureThreshold,Overpressure_BW,,,,"7701",,,pressm,,,limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines)
 # ***** Heat source geothermal energy *****,,,,,,,,,,,,,
-[airtowater]r;ws,,OverpressureThresholdAW,Overpressure_Threshold_AW,,,,"FA00",,,pressm,,,limit for high pressure when Overpressure should be indicated on A/W machines
-[brinetowater]r;ws,,OverpressureThresholdHwc,Overpressure_BW,,,,"7701",,,pressm,,,limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines)
-[watertowater]r;ws,,OverpressureThresholdHwc,Overpressure_WW,,,,"7701",,,pressm,,,limit for compressor high pressure which is considered an overpressure situation (for Water/Water machines)
+[airtowater]r;ws,,OverpressureThreshold,Overpressure_Threshold_AW,,,,"FA00",,,pressm,,,limit for high pressure when Overpressure should be indicated on A/W machines
+[brinetowater]r;ws,,OverpressureThreshold,Overpressure_BW,,,,"7701",,,pressm,,,limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines)
+[watertowater]r;ws,,OverpressureThreshold,Overpressure_WW,,,,"7701",,,pressm,,,limit for compressor high pressure which is considered an overpressure situation (for Water/Water machines)
 [airtobrinetowater]r;wi,,DeltaTempT6T7,Delta_T6_T7_BW,,,,"6E00",,,temp,,,Maximum temperature difference between heat source outlet and inlet - BW
 [brinetowater]r;wi,,DeltaTempT6T7,Delta_T6_T7_BW,,,,"6E00",,,temp,,,Maximum temperature difference between heat source outlet and inlet - BW
 [watertowater]r;wi,,DeltaTempT6T7,Delta_T6_T7_WW,,,,"6E00",,,temp,,,Maximum temperature difference between heat source outlet and inlet - WW
@@ -122,15 +123,15 @@ r;wi,,ReturnTempMax,Max_Return_Temperature,,,,"7300",,,temp,,,"if return tempera
 [brinetowater]r;wi,,SourcePumpPrerunTime,HS_Pump_Prerun_BW,,,,"7600",,,minutes,,,Heat source pump prerun in heat source circuit - BW
 [airtobrinetowater]r;wi,,SourcePumpPrerunTime,HS_Pump_Prerun_BW,,,,"7600",,,minutes,,,Heat source pump prerun in heat source circuit - BW
 [watertowater]r;wi,,SourcePumpPrerunTime,HS_Pump_Prerun_WW,,,,"7600",,,minutes,,,Heat source pump prerun in heat source circuit - WW
-[airtowater][SW=350-400]r;wi,,AWFanPrerunTime,AW_Fan_Prerun_Time,,,,"9D01",,,seconds,,,Prerun time of the fan in s
-[airtowater][SW>=403]r;wi,,AWFanPrerunTime,AW_Fan_Prerun_Time,,,,"C601",,,seconds,,,Prerun time of the fan in s
+[airtowater][SW=350-400]r;wi,,FanPrerunTime,AW_Fan_Prerun_Time,,,,"9D01",,,seconds,,,Prerun time of the fan in s
+[airtowater][SW>=403]r;wi,,FanPrerunTime,AW_Fan_Prerun_Time,,,,"C601",,,seconds,,,Prerun time of the fan in s
 # ***** Heat sink heating circuit *****,,,,,,,,,,,,,
 [SW>=370]r;wi,,FirstHcEnergySavingPumpOffTime,FirstCHEnergySavingPumpOffTime,,,,"9901",,,minutes0,,,CH pump off time for pump switch off during heating operation with direct heating circuits. Function is off from factory but can be activated in service menus via Code1.
-[airtowater][SW=350-400]r;wi,,AWHc1PumpPrerunTime,AW_CH1P_Prerun_Time,,,,"9E01",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time.
-[brinetowater][SW=350-400]r;wi,,HwcHwcHc1PumpPrerunTime,BW_WW_CH1P_Prerun_Time,,,,"9F01",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.
-[airtowater][SW>=403]r;wi,,AWHc1PumpPrerunTime,AW_CH1P_Prerun_Time,,,,"C701",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time.
-[brinetowater][SW>=403]r;wi,,HwcHwcHc1PumpPrerunTime,BW_WW_CH1P_Prerun_Time,,,,"C801",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.
-[airtobrinetowater][SW>=403]r;wi,,HwcHwcHc1PumpPrerunTime,BW_WW_CH1P_Prerun_Time,,,,"C901",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.
+[airtowater][SW=350-400]r;wi,,Hc1PumpPrerunTime,AW_CH1P_Prerun_Time,,,,"9E01",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time.
+[brinetowater][SW=350-400]r;wi,,Hc1PumpPrerunTime,BW_WW_CH1P_Prerun_Time,,,,"9F01",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.
+[airtowater][SW>=403]r;wi,,Hc1PumpPrerunTime,AW_CH1P_Prerun_Time,,,,"C701",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time.
+[brinetowater][SW>=403]r;wi,,Hc1PumpPrerunTime,BW_WW_CH1P_Prerun_Time,,,,"C801",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.
+[airtobrinetowater][SW>=403]r;wi,,Hc1PumpPrerunTime,BW_WW_CH1P_Prerun_Time,,,,"C901",,,seconds,,,Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.
 # ***** Operating data ****,,,,,,,,,,,,,
 r,,CompHoursHc,Compressor_Hours_CH,,,,"9B00",,,hoursum,,,operating hours of compressor for CH mode
 r,,CompHours,Compressor_Hours,,,,"9A00",,,hoursum,,,operating hours of compressor (overall)
@@ -177,6 +178,10 @@ r,,TimeBetweenTwoCompStartsMin,MinTimeBetweenTwoCompressorStarts,,,,"E800",,,sec
 r,,CompControlState,CompressorControlState,,,,"E900",,,UCH,,,number of status of compressor control state machine
 r,,RebootCounter,RebootCounter,,,,"F500",,,UIN,,,number of appliance starts
 r,,T19MaxToCompOff,T19_Max_To_Compressor_Off,,,,"2B01",,,temp,,,limit on compressor outlet temp that leads to an overpressure situation
+r;w,,EnergyBalancingRelease,,,,,"D100",,,onoff,,,
+r;u,,TimeOfNextPredictedPowerCut,,,,,"D300",,,time,,,
+r,,PowerCutPreloading,,,,,"F400",,,onoff,,,
+w,,PowerCutPreloading,,,"25",,"F400",,,onoff,,,
 # ***** for high efficiency pumps only *****,,,,,,,,,,,,,
 [SW>=407]r;u,,SourcePumpStatus,BrinePumpStatus,,,,"B801",,,UCH,,,0=HEP_ok: 1= HEP_error; >=2=noHEP
 [SW>=407]r,,SourcePumpPWM,BrinePumpPWM,,,,"AC01",,,percent0,,,actual speed of brine pump (7%=off)
@@ -188,16 +193,16 @@ r,,T19MaxToCompOff,T19_Max_To_Compressor_Off,,,,"2B01",,,temp,,,limit on compres
 [airtobrinetowater][SW>=407]r;ws,,Selftest,Selftest,,,,"D001",,,UCH,,,"selftest adjustable steps: 0=off; 1=StartSelfTest, 30=bleeding (Entlüftung brine circuit)"
 [airtobrinetowater][SW>=407]r;wi,,BivalentPoint2Temp,BivalentPoint2_Temperature,,,,"BC01",,,temp,,,temperature to force backup heater even if it is disabled
 [SW>=414]r;wi,,BivalentMode,BivalentMode,,,,"E301",,,UCH,,,reserved for special bivalent setting
-[airtobrinetowater][SW>=407]r;w,,VWLSNoiseReduction,VWLS_NoiseReduction,,,,"A901",,,yesno,,,noise reduction is activated by time schedule
+[airtobrinetowater][SW>=407]r;w,,NoiseReduction,VWLS_NoiseReduction,,,,"A901",,,yesno,,,noise reduction is activated by time schedule
 [airtobrinetowater][SW>=407]r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"2401",,,percent0,,,amount of noise reduction when activated by time schedule
-[airtobrinetowater][SW>=407]r,,VWLSFanError,VWLS_FanError,,,,"A101",,,yesno,,,fan error OMU 1
-[airtobrinetowater][SW>=407]r,,VWLSFanErrorOMU2,VWLS_FanError_OMU2,,,,"B601",,,yesno,,,fan error OMU 2
-[airtobrinetowater][SW>=407]r,,VWLSSTBError,VWLS_STBError,,,,"A201",,,yesno,,,defroster STB error OMU 1
-[airtobrinetowater][SW>=407]r,,VWLSSTBErrorOMU2,VWLS_STBError_OMU2,,,,"B701",,,yesno,,,defroster STB error OMU 2
-[airtobrinetowater][SW>=407]r,,VWLSBadWeather,VWLS_BadWeather,,,,"A401",,,yesno,,,ambient too cold OMU 1
-[airtobrinetowater][SW>=407]r;u,,VWLSBadWeatherOMU2,VWLS_BadWeather_OMU2,,,,"B901",,,yesno,,,ambient too cold OMU 2
-[airtobrinetowater][SW>=407]r,,VWLSHotSummer,VWLS_HotSummer,,,,"B501",,,yesno,,,ambient too hot OMU 1
-[airtobrinetowater][SW>=407]r;u,,VWLSHotSummerOMU2,VWLS_HotSummer_OMU2,,,,"B801",,,yesno,,,ambient too hot OMU 2
+[airtobrinetowater][SW>=407]r,,FanError,VWLS_FanError,,,,"A101",,,yesno,,,fan error OMU 1
+[airtobrinetowater][SW>=407]r,,FanErrorOMU2,VWLS_FanError_OMU2,,,,"B601",,,yesno,,,fan error OMU 2
+[airtobrinetowater][SW>=407]r,,STBError,VWLS_STBError,,,,"A201",,,yesno,,,defroster STB error OMU 1
+[airtobrinetowater][SW>=407]r,,STBErrorOMU2,VWLS_STBError_OMU2,,,,"B701",,,yesno,,,defroster STB error OMU 2
+[airtobrinetowater][SW>=407]r,,BadWeather,VWLS_BadWeather,,,,"A401",,,yesno,,,ambient too cold OMU 1
+[airtobrinetowater][SW>=407]r;u,,BadWeatherOMU2,VWLS_BadWeather_OMU2,,,,"B901",,,yesno,,,ambient too cold OMU 2
+[airtobrinetowater][SW>=407]r,,HotSummer,VWLS_HotSummer,,,,"B501",,,yesno,,,ambient too hot OMU 1
+[airtobrinetowater][SW>=407]r;u,,HotSummerOMU2,VWLS_HotSummer_OMU2,,,,"B801",,,yesno,,,ambient too hot OMU 2
 [airtobrinetowater]r;wi,,StartDeicing,Start Defrosting,,,,"7100",,,yesno,,,
 [SW>=415]r;ws,,SourceLimitSlope,BrineLimitSlope,,,,"E501",,,UCH,,,Slope to calculate pressure switchpoint below lowest brine temperature
 [SW>=415]r;ws,,maxNDPressure,maxNDPressure,,,,"E901",,,ULG,,,max. allowed low pressure for compressor protection
@@ -219,5 +224,6 @@ r;wi,,StorageTempBottomOffset,T_HB_Bottom_Offset,,,,"3401",,,calibration,,,Offse
 r;wi,,StorageTempTopOffset,T_HB_Top_Offset,,,,"3301",,,calibration,,,Offset for calibrating temperature sensor
 # ##### EHP: Sensor Check #####,,,,,,,,,,,,,
 [watertowater]r,,EvaporatorTemp,T_Condensor_WW,,,,"0500",,,temp,,,Condensor temperature sensor WW
+!include,iotesthp.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
 !include,hcmode.inc,,,,,,,,,,,,
