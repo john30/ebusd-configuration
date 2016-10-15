@@ -1,0 +1,3 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m;s),type / templates,divider / values,unit,comment,field2,part (m;s),type / templates,divider / values,unit,comment,field3,part (m;s),type / templates,divider / values,unit,comment,field4,part (m;s),type / templates,divider / values,unit,comment,field5,part (m;s),type / templates,divider / values,unit,comment,field6,part (m;s),type / templates,divider / values,unit,comment
+*r,general,,,,,"B513",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,,valuerange,Register Wertebereich,,,,"04",id,m,UIN,,,Registernummer,,,IGN:2,,,,cur,,UIN,,,aktueller Wert,min,,UIN,,,minimaler Wert,max,,UIN,,,maximaler Wert,def,,UIN,,,default Wert
