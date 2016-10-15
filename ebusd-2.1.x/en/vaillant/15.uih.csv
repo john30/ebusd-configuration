@@ -6,79 +6,10 @@
 *ws,#service,,,,,"B509","0E",,,,,,
 *[SW],scan,,,SW,,,,,,,,,
 # ##### Earned energy #####,,,,,,,,,,,,,
-[SW=202-349]r,,ThisYearsYieldEnergyMonth1,ThisYearsEarnedEnergy month 1,,,,"8400",,,energy,,,this year: earnd energy of month 1
-[SW=202-349]r,,ThisYearsYieldEnergyMonth2,ThisYearsEarnedEnergy month 2,,,,"8408",,,energy,,,this year: earnd energy of month 2
-[SW=202-349]r,,ThisYearsYieldEnergyMonth3,ThisYearsEarnedEnergy month 3,,,,"8410",,,energy,,,this year: earnd energy of month 3
-[SW=202-349]r,,ThisYearsYieldEnergyMonth4,ThisYearsEarnedEnergy month 4,,,,"8418",,,energy,,,this year: earnd energy of month 4
-[SW=202-349]r,,ThisYearsYieldEnergyMonth5,ThisYearsEarnedEnergy month 5,,,,"8420",,,energy,,,this year: earnd energy of month 5
-[SW=202-349]r,,ThisYearsYieldEnergyMonth6,ThisYearsEarnedEnergy month 6,,,,"8428",,,energy,,,this year: earnd energy of month 6
-[SW=202-349]r,,ThisYearsYieldEnergyMonth7,ThisYearsEarnedEnergy month 7,,,,"8430",,,energy,,,this year: earnd energy of month 7
-[SW=202-349]r,,ThisYearsYieldEnergyMonth8,ThisYearsEarnedEnergy month 8,,,,"8438",,,energy,,,this year: earnd energy of month 8
-[SW=202-349]r,,ThisYearsYieldEnergyMonth9,ThisYearsEarnedEnergy month 9,,,,"8440",,,energy,,,this year: earnd energy of month 9
-[SW=202-349]r,,ThisYearsYieldEnergyMonth10,ThisYearsEarnedEnergy month 10,,,,"8448",,,energy,,,this year: earnd energy of month 10
-[SW=202-349]r,,ThisYearsYieldEnergyMonth11,ThisYearsEarnedEnergy month 11,,,,"8450",,,energy,,,this year: earnd energy of month 11
-[SW=202-349]r,,ThisYearsYieldEnergyMonth12,ThisYearsEarnedEnergy month 12,,,,"8458",,,energy,,,this year: earnd energy of month 12
-[SW=202-349]r,,LastYearsYieldEnergyMonth1,LastYearsEarnedEnergy month 1,,,,"8500",,,energy,,,last year: earnd energy of month 1
-[SW=202-349]r,,LastYearsYieldEnergyMonth2,LastYearsEarnedEnergy month 2,,,,"8508",,,energy,,,last year: earnd energy of month 2
-[SW=202-349]r,,LastYearsYieldEnergyMonth3,LastYearsEarnedEnergy month 3,,,,"8510",,,energy,,,last year: earnd energy of month 3
-[SW=202-349]r,,LastYearsYieldEnergyMonth4,LastYearsEarnedEnergy month 4,,,,"8518",,,energy,,,last year: earnd energy of month 4
-[SW=202-349]r,,LastYearsYieldEnergyMonth5,LastYearsEarnedEnergy month 5,,,,"8520",,,energy,,,last year: earnd energy of month 5
-[SW=202-349]r,,LastYearsYieldEnergyMonth6,LastYearsEarnedEnergy month 6,,,,"8528",,,energy,,,last year: earnd energy of month 6
-[SW=202-349]r,,LastYearsYieldEnergyMonth7,LastYearsEarnedEnergy month 7,,,,"8530",,,energy,,,last year: earnd energy of month 7
-[SW=202-349]r,,LastYearsYieldEnergyMonth8,LastYearsEarnedEnergy month 8,,,,"8538",,,energy,,,last year: earnd energy of month 8
-[SW=202-349]r,,LastYearsYieldEnergyMonth9,LastYearsEarnedEnergy month 9,,,,"8540",,,energy,,,last year: earnd energy of month 9
-[SW=202-349]r,,LastYearsYieldEnergyMonth10,LastYearsEarnedEnergy month 10,,,,"8548",,,energy,,,last year: earnd energy of month 10
-[SW=202-349]r,,LastYearsYieldEnergyMonth11,LastYearsEarnedEnergy month 11,,,,"8550",,,energy,,,last year: earnd energy of month 11
-[SW=202-349]r,,LastYearsYieldEnergyMonth12,LastYearsEarnedEnergy month 12,,,,"8558",,,energy,,,last year: earnd energy of month 12
-[SW=350-363]r,,ThisYearsYieldEnergyMonth1,ThisYearsEarnedEnergy month 1,,,,"8400",,,UCH;UCH,,,this year: earnd energy of month 1
-[SW=350-363]r,,ThisYearsYieldEnergyMonth2,ThisYearsEarnedEnergy month 2,,,,"8408",,,UCH;UCH,,,this year: earnd energy of month 2
-[SW=350-363]r,,ThisYearsYieldEnergyMonth3,ThisYearsEarnedEnergy month 3,,,,"8410",,,UCH;UCH,,,this year: earnd energy of month 3
-[SW=350-363]r,,ThisYearsYieldEnergyMonth4,ThisYearsEarnedEnergy month 4,,,,"8418",,,UCH;UCH,,,this year: earnd energy of month 4
-[SW=350-363]r,,ThisYearsYieldEnergyMonth5,ThisYearsEarnedEnergy month 5,,,,"8420",,,UCH;UCH,,,this year: earnd energy of month 5
-[SW=350-363]r,,ThisYearsYieldEnergyMonth6,ThisYearsEarnedEnergy month 6,,,,"8428",,,UCH;UCH,,,this year: earnd energy of month 6
-[SW=350-363]r,,ThisYearsYieldEnergyMonth7,ThisYearsEarnedEnergy month 7,,,,"8430",,,UCH;UCH,,,this year: earnd energy of month 7
-[SW=350-363]r,,ThisYearsYieldEnergyMonth8,ThisYearsEarnedEnergy month 8,,,,"8438",,,UCH;UCH,,,this year: earnd energy of month 8
-[SW=350-363]r,,ThisYearsYieldEnergyMonth9,ThisYearsEarnedEnergy month 9,,,,"8440",,,UCH;UCH,,,this year: earnd energy of month 9
-[SW=350-363]r,,ThisYearsYieldEnergyMonth10,ThisYearsEarnedEnergy month 10,,,,"8448",,,UCH;UCH,,,this year: earnd energy of month 10
-[SW=350-363]r,,ThisYearsYieldEnergyMonth11,ThisYearsEarnedEnergy month 11,,,,"8450",,,UCH;UCH,,,this year: earnd energy of month 11
-[SW=350-363]r,,ThisYearsYieldEnergyMonth12,ThisYearsEarnedEnergy month 12,,,,"8458",,,UCH;UCH,,,this year: earnd energy of month 12
-[SW=350-363]r,,LastYearsYieldEnergyMonth1,LastYearsEarnedEnergy month 1,,,,"8500",,,UCH;UCH,,,last year: earnd energy of month 1
-[SW=350-363]r,,LastYearsYieldEnergyMonth2,LastYearsEarnedEnergy month 2,,,,"8508",,,UCH;UCH,,,last year: earnd energy of month 2
-[SW=350-363]r,,LastYearsYieldEnergyMonth3,LastYearsEarnedEnergy month 3,,,,"8510",,,UCH;UCH,,,last year: earnd energy of month 3
-[SW=350-363]r,,LastYearsYieldEnergyMonth4,LastYearsEarnedEnergy month 4,,,,"8518",,,UCH;UCH,,,last year: earnd energy of month 4
-[SW=350-363]r,,LastYearsYieldEnergyMonth5,LastYearsEarnedEnergy month 5,,,,"8520",,,UCH;UCH,,,last year: earnd energy of month 5
-[SW=350-363]r,,LastYearsYieldEnergyMonth6,LastYearsEarnedEnergy month 6,,,,"8528",,,UCH;UCH,,,last year: earnd energy of month 6
-[SW=350-363]r,,LastYearsYieldEnergyMonth7,LastYearsEarnedEnergy month 7,,,,"8530",,,UCH;UCH,,,last year: earnd energy of month 7
-[SW=350-363]r,,LastYearsYieldEnergyMonth8,LastYearsEarnedEnergy month 8,,,,"8538",,,UCH;UCH,,,last year: earnd energy of month 8
-[SW=350-363]r,,LastYearsYieldEnergyMonth9,LastYearsEarnedEnergy month 9,,,,"8540",,,UCH;UCH,,,last year: earnd energy of month 9
-[SW=350-363]r,,LastYearsYieldEnergyMonth10,LastYearsEarnedEnergy month 10,,,,"8548",,,UCH;UCH,,,last year: earnd energy of month 10
-[SW=350-363]r,,LastYearsYieldEnergyMonth11,LastYearsEarnedEnergy month 11,,,,"8550",,,UCH;UCH,,,last year: earnd energy of month 11
-[SW=350-363]r,,LastYearsYieldEnergyMonth12,LastYearsEarnedEnergy month 12,,,,"8558",,,UCH;UCH,,,last year: earnd energy of month 12
-[SW>=364]r,,ThisYearsYieldEnergyMonth1,ThisYearsEarnedEnergy month 1,,,,"8400",,,energy,,,this year: earnd energy of month 1
-[SW>=364]r,,ThisYearsYieldEnergyMonth2,ThisYearsEarnedEnergy month 2,,,,"8408",,,energy,,,this year: earnd energy of month 2
-[SW>=364]r,,ThisYearsYieldEnergyMonth3,ThisYearsEarnedEnergy month 3,,,,"8410",,,energy,,,this year: earnd energy of month 3
-[SW>=364]r,,ThisYearsYieldEnergyMonth4,ThisYearsEarnedEnergy month 4,,,,"8418",,,energy,,,this year: earnd energy of month 4
-[SW>=364]r,,ThisYearsYieldEnergyMonth5,ThisYearsEarnedEnergy month 5,,,,"8420",,,energy,,,this year: earnd energy of month 5
-[SW>=364]r,,ThisYearsYieldEnergyMonth6,ThisYearsEarnedEnergy month 6,,,,"8428",,,energy,,,this year: earnd energy of month 6
-[SW>=364]r,,ThisYearsYieldEnergyMonth7,ThisYearsEarnedEnergy month 7,,,,"8430",,,energy,,,this year: earnd energy of month 7
-[SW>=364]r,,ThisYearsYieldEnergyMonth8,ThisYearsEarnedEnergy month 8,,,,"8438",,,energy,,,this year: earnd energy of month 8
-[SW>=364]r,,ThisYearsYieldEnergyMonth9,ThisYearsEarnedEnergy month 9,,,,"8440",,,energy,,,this year: earnd energy of month 9
-[SW>=364]r,,ThisYearsYieldEnergyMonth10,ThisYearsEarnedEnergy month 10,,,,"8448",,,energy,,,this year: earnd energy of month 10
-[SW>=364]r,,ThisYearsYieldEnergyMonth11,ThisYearsEarnedEnergy month 11,,,,"8450",,,energy,,,this year: earnd energy of month 11
-[SW>=364]r,,ThisYearsYieldEnergyMonth12,ThisYearsEarnedEnergy month 12,,,,"8458",,,energy,,,this year: earnd energy of month 12
-[SW>=364]r,,LastYearsYieldEnergyMonth1,LastYearsEarnedEnergy month 1,,,,"8500",,,energy,,,last year: earnd energy of month 1
-[SW>=364]r,,LastYearsYieldEnergyMonth2,LastYearsEarnedEnergy month 2,,,,"8508",,,energy,,,last year: earnd energy of month 2
-[SW>=364]r,,LastYearsYieldEnergyMonth3,LastYearsEarnedEnergy month 3,,,,"8510",,,energy,,,last year: earnd energy of month 3
-[SW>=364]r,,LastYearsYieldEnergyMonth4,LastYearsEarnedEnergy month 4,,,,"8518",,,energy,,,last year: earnd energy of month 4
-[SW>=364]r,,LastYearsYieldEnergyMonth5,LastYearsEarnedEnergy month 5,,,,"8520",,,energy,,,last year: earnd energy of month 5
-[SW>=364]r,,LastYearsYieldEnergyMonth6,LastYearsEarnedEnergy month 6,,,,"8528",,,energy,,,last year: earnd energy of month 6
-[SW>=364]r,,LastYearsYieldEnergyMonth7,LastYearsEarnedEnergy month 7,,,,"8530",,,energy,,,last year: earnd energy of month 7
-[SW>=364]r,,LastYearsYieldEnergyMonth8,LastYearsEarnedEnergy month 8,,,,"8538",,,energy,,,last year: earnd energy of month 8
-[SW>=364]r,,LastYearsYieldEnergyMonth9,LastYearsEarnedEnergy month 9,,,,"8540",,,energy,,,last year: earnd energy of month 9
-[SW>=364]r,,LastYearsYieldEnergyMonth10,LastYearsEarnedEnergy month 10,,,,"8548",,,energy,,,last year: earnd energy of month 10
-[SW>=364]r,,LastYearsYieldEnergyMonth11,LastYearsEarnedEnergy month 11,,,,"8550",,,energy,,,last year: earnd energy of month 11
-[SW>=364]r,,LastYearsYieldEnergyMonth12,LastYearsEarnedEnergy month 12,,,,"8558",,,energy,,,last year: earnd energy of month 12
-[SW>=202]r,,YieldEnergySum,EarnedEnergySum,,,,"8700",,,ULG,,,
+[SW<=349]!include,yield8485.inc,,,,,,,,,,,,
+[SW=350-363]!include,yield8485r.inc,,,,,,,,,,,,
+[SW>=364]!include,yield8485.inc,,,,,,,,,,,,
+[SW>=202]r,,YieldSum,EarnedEnergySum,,,,"8700",,,ULG,,,
 # ##### Parameters and information #####,,,,,,,,,,,,,
 r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,outdoor temperature
 r;ws,,EhpHydraulicMap,EhpHydraulicMap,,,,"2900",,,UCH,,,hydraulic scheme
@@ -102,7 +33,7 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,heat buf
 [SW<=345]r,,ChildProtection,Child protection,,,,"6E00",,,yesno,,,child protection
 [SW>=220]r,,CoolingDay,CoolingDay,,,,"7C00",,,UCH,,,
 [SW>=220]r,,CoolingActive,CoolingActive,,,,"8300",,,onoff,,,
-[SW>=202]r;wi,,YieldEnergyOld,EarnedEnergyOld,,,,"8600",,,ULG,,,Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs.
+[SW>=202]r;wi,,YieldOld,EarnedEnergyOld,,,,"8600",,,ULG,,,Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs.
 [SW>=250]r,,DiagnoseMode,DiagnoseMode,,,,"8F00",,,UCH,,,"_DiaMode_Not=0, _DiaMode_Off, _DiaMode_CH, _DiaMode_DhwLoading, _DiaMode_Cooling, _DiaMode_Deicing"
 [SW>=250]r,,EmStateWorkingMode,EmState_WorkingMode,,,,"9000",,,UCH,,,0 = Standby1 = CH2 = Cooling
 [SW>=250]r,,EmStateCooling,EmStateCooling,,,,"9100",,,UCH,,,0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby
