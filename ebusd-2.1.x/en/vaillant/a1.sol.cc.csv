@@ -6,6 +6,8 @@
 r,,CirPump,CirculationPump,,,,"0500",,,onoff,,,Circulation Pump ZP
 # ##### CP: CP #####,,,,,,,,,,,,,
 r,,OperatingMode,OperatingMode,,,,"0F00",,,mcmode,,,"Operating mode of CP circuit (1 = auto, 2 = manual, 3 = off, 4 = on)"
+!include,yield3f40.inc,,,,,,,,,,,,
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
+!include,iotestbsol.inc,,,,,,,,,,,,

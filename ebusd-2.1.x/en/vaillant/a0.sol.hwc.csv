@@ -8,7 +8,7 @@
 r;w,,TempDesired,DesiredTemperature,,,,"1300",,,temp1,,,desired temperature (day temperature) for DHW
 r;wi,,LegioStartDay,LegioStartDay,,,,"4E00",,,UCH,0=Mon;1=Tue;2=Wed;3=Thu;4=Fri;5=Sat;6=Sun;7=off;8=Mon-Sun,,Start day for legio protection
 r;wi,,LegioStartTime,LegioStartTime,,,,"4F00",,,UCH,,,Start time for legio protection
-r,,SolarGainPressLowDelay,SolarGain_LP_Delay,,,,"5D00",,,yesno,,,Set TRUE for LP delay in case of solar gain
+r,,SolGainPressLowDelay,SolarGain_LP_Delay,,,,"5D00",,,yesno,,,Set TRUE for LP delay in case of solar gain
 r,,IsInHoliday,Holiday function active,,,,"0B00",,,yesno,,,TRUE if holiday is active
 r,,IsInBankHoliday,IsInBankHoliday,,,,"5F00",,,yesno,,,TRUE if BankHoliday is active
 r,,IsInSystemOff,IsInSystemOff,,,,"6000",,,yesno,,,TRUE if SystemOff is active
@@ -31,6 +31,8 @@ r,,HwcLoadingEnabled,DhwLoadingEnabled,,,,"1D00",,,yesno,,,Flag: Loading enabled
 r,,HwcLegioTempOkTimer,DhwLegioTempOkTimer,,,,"2000",,,temp0,,,Time for which the temperature for legio protection should be hold
 r,,IsInQuickVeto,IsInQuickVeto,,,,"4B00",,,yesno,,,Flag: Quick veto active
 r,,IsInOneOffLoading,IsInOneOffLoading,,,,"4A00",,,yesno,,,TRUE if one off loading is active
+!include,yield3f40.inc,,,,,,,,,,,,
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
+!include,iotestbsol.inc,,,,,,,,,,,,

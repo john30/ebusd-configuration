@@ -23,11 +23,11 @@ r,,Coll1Sensor,KOL1 Sensor,,,,"0900",,,tempsensor,,,Temperature of COL1 sensor
 r,,Storage4Sensor3,TD1 Sensor,,,,"1400",,,tempsensor,,,Temperature of SP4 sensor
 r,,SumBackflowSensor,TD2 Sensor,,,,"0700",,,tempsensor,,,Temperature of TD2 sensor
 r,,Coll2Sensor,KOL2 Sensor,,,,"1500",,,tempsensor,,,Temperature of COL2 sensor
-r,,SolarCollPumpED1,KOL1-P PWM,,,,"6700",,,percent0,,,Percantage of power COL1 pump is running actually
-r,,SolarCollPumpED2,KOL2-P PWM,,,,"6708",,,percent0,,,Percantage of power COL2 pump is running actually
+r,,SolCollPumpED1,KOL1-P PWM,,,,"6700",,,percent0,,,Percantage of power COL1 pump is running actually
+r,,SolCollPumpED2,KOL2-P PWM,,,,"6708",,,percent0,,,Percantage of power COL2 pump is running actually
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
-r,,HasSolarCollVolumeSensor,Volumenstrommeßteil erkannt,,,,"9A00",,,yesno,,,-
-r,,SolarCollVolumeSensorPowerLastMinut,Gemessener Volumenstrom der letzten Minute,,,,"9B00",,,UIN,,l/h,-
+r,,HasSolCollVolumeSensor,Volumenstrommeßteil erkannt,,,,"9A00",,,yesno,,,-
+r,,SolCollVolumeSensorPowerLastMinut,Gemessener Volumenstrom der letzten Minute,,,,"9B00",,,UIN,,l/h,-
 # ##### SOLAR: Konfiguration #####,,,,,,,,,,,,,
 r;w,,SolEnableDiffTemp1,Einschaltdifferenz 1,,,,"6300",,,temp0,,,Temperaturdifferenz zwischen KOL1 und Speicher unten ab der die Kollektorpumpe gestartet wird
 r;w,,DeltaTOnFlexDtController,Einschaltdifferenz TD1/TD2,,,,"A600",,,calibration0,,,Temperaturdifferenz zwischen TD1 und TD2 ab der der Ausgang MA angesteuert wird
@@ -37,20 +37,21 @@ r;w,,SolDisableDiffTemp1,Ausschaltdifferenz 1,,,,"6400",,,temp0,,,Temperaturdiff
 r;w,,SolDisableDiffTemp2,Ausschaltdifferenz 2,,,,"6408",,,temp0,,,Temperaturdifferenz zwischen KOL2 und Speicher unten unterhalb der die Kollektorpumpe gestoppt wird
 r;w,,SolHwcMaxLoadTemp1,Maximaltemperatur 1,,,,"6500",,,temp0,,,"Maximaltemperatur für den 1. Solarspeicher an SP3 bei deren erreichen KOL1-P abgeschaltet wird. Erst 1,5K unterhalb dieser Temperatur kann der Speicher wieder beladen werden."
 r;w,,SolHwcMaxLoadTemp2,Maximaltemperatur 2,,,,"6508",,,temp0,,,"Maximaltemperatur für den 2. Solarspeicher bzw Schwimmbad an SP1 bei deren erreichen KOL1-P abgeschaltet wird. Erst 1,5K unterhalb dieser Temperatur kann der Speicher wieder beladen werden."
-r;w,,SolarProtection,Solarkreisschutzfunktion,,,,"8100",,,onoff,,,"Wird der hier eingestellte Wert überschritten, dann wird die Kollektorpumpe des betroffenen Kreises zum Schutz vor Überhitzung der Komponenten abgeschaltet. Die Kollektortemperatur muß 30K unter diesen Wert sinken um die Schutzfunktion zu verlassen."
-r;w,,SolarProtectionStartTemp,Starttemp. Sol. Schutzfunktion,,,,"8200",,,temp0,,,Temperature for collector pump protection in case of high temperatures
+r;w,,SolProtection,Solarkreisschutzfunktion,,,,"8100",,,onoff,,,"Wird der hier eingestellte Wert überschritten, dann wird die Kollektorpumpe des betroffenen Kreises zum Schutz vor Überhitzung der Komponenten abgeschaltet. Die Kollektortemperatur muß 30K unter diesen Wert sinken um die Schutzfunktion zu verlassen."
+r;w,,SolProtectionStartTemp,Starttemp. Sol. Schutzfunktion,,,,"8200",,,temp0,,,Temperature for collector pump protection in case of high temperatures
 r;ws,,ColKickGradient,Gradient Kollektorkick,,,,"9D00",,,UCH,,0.1 K / 30 min,
 r;ws,,ColKickPumpTime,Länge Kollektorkick,,,,"9E00",,,seconds0,,,
 r;w,,ScProtectionHysteresis,Hysterese Schutzfunktion,,,,"9F00",,,desiredtemp,,,Hysterese für die Kollektorkreisschutzfunktion
 r,,FrostProtectionLimit,Grenze für Solarkreis Frostschutz,,,,"A200",,,SCH,,K,limits for the solar collector frost protection
 r,,FrostProtectionEnabled,Solarkreis Frostschutzfunktion,,,,"A300",,,onoff,,,Frostschutzfunktion für den Solarkreis. In einigen Ländern gesetzlich vorgeschrieben. Bitte nin Deutschland nicht aktivieren
-r,,SolarCollVolumeSensorTicksPer10Lite,Anzahl Impule für 10 Liter,,,,"B000",,,UCH,,ticks,How often the volume sensor has to pulse for the detection of 10 liters
-r;w,,SolarFlowRate,Volumenstrom Solarkreis,,,,"7400",,,UIN,60,l/min,Flow rate the collector pumps are able to deliver for 100% power
+r,,SolCollVolumeSensorTicksPer10Lite,Anzahl Impule für 10 Liter,,,,"B000",,,UCH,,ticks,How often the volume sensor has to pulse for the detection of 10 liters
+r;w,,SolFlowRate,Volumenstrom Solarkreis,,,,"7400",,,UIN,60,l/min,Flow rate the collector pumps are able to deliver for 100% power
 r;w,,SolEnablePumpPWM,ED-Steuerung,,,,"AE00",,,onoff,,,Collector pumps should be driven by a slow pulse width modulation
 r;w,,ExtendedYieldCalculation,Erweiterter Solarertrag,,,,"7F00",,,onoff,,,calculate solar yield like specified by austrian regulation. Uses SP3 or this purpose!
-r;w,,SolarPriority,Priorität Solarspeicher,,,,"9900",,,UCH,16=1-2;4=2-1,,Priority of water tanks for solar loading algorithms. 1 = SP2 2 = SP3
+r;w,,SolPriority,Priorität Solarspeicher,,,,"9900",,,UCH,16=1-2;4=2-1,,Priority of water tanks for solar loading algorithms. 1 = SP2 2 = SP3
 r,,SolOperatingMode,Betriebsart,,,,"AC00",,,UCH,,,Operating mode solar
 r,,SolTeleswitchOperatingMode,Teleswitch Betriebsart,,,,"AD00",,,UCH,,,Teleswitch operating mode solar
 r;w,,KolTempMin1,Minimaltemperatur 1,,,,"A000",,,temp0,,,Temperature COL1 sensor has to reach before starting pumps at least
 r;w,,KolTempMin2,Minimaltemperatur 2,,,,"A008",,,temp0,,,Temperature COL2 sensor has to reach before starting pumps at least
+!include,iotest620.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
