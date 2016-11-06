@@ -1,0 +1,4 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+#,V6500,VR 65,V65 199,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*u,,,,,,"B512","02",,,,,,,,,,,,,,,,,,,,,,,,
+u,,State,,,,,,setvalve,m,switchvalve2,,,,state,,switchvalve2,,,,dhwdemand,,yesno,,,,,,temp,,,
