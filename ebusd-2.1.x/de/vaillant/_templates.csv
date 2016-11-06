@@ -1,7 +1,9 @@
 # template name,type / templates,divider / values,unit,comment
 temps,SCH,,°C,Temperatur
 temps2,SIN,,°C,Temperatur
+tempv,EXP,,°C,Temperatur
 press,FLT,,bar,Druck
+pressv,EXP,,bar,Druck
 date,HDA:3,,,Datum
 day,BDY,,,Wochentag
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
@@ -24,6 +26,7 @@ calibration,D2C,,K,
 calibration0,UCH,,K,
 calibration1,D1C,,K,
 calibrations,SCH,2,K,
+calibrationv,EXP,,K,
 integral,SIN,,°min,
 mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,Mischer Modus
 mctype,UCH,0=uninitialized;1=mixer;2=fixed;3=3;4=4,,Mischer Typ
@@ -66,6 +69,7 @@ pumpstate,UCH,0=off;1=on;2=overrun,,Pumpenstatus
 dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatus
 phaseok,UCH,0=error;7=ok,,Phasenstatus
 switchvalve,UCH,0=heat;1=water,,Ventilposition
+switchvalve2,UCH,0=heat;50=both;100=water;254=standby,Ventilposition
 hfrom,HDA:3,,,Ferienzeitraum von
 hto,HDA:3,,,Ferienzeitraum bis
 holiday,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis
