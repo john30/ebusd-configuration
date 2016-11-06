@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+# Zeitprogramm Hochtarif,,,,,,,,,,,,,
+*r,,,,,,"B515",,,,IGN:1,,,
+*w,,,,,,"B515",,,,,,,
+r;w,,tariffTimer.Monday,Zeitfenster Montag,,,,0004,,,timer,,,
+r;w,,tariffTimer.Tuesday,Zeitfenster Dienstag,,,,0104,,,timer,,,
+r;w,,tariffTimer.Wednesday,Zeitfenster Mittwoch,,,,0204,,,timer,,,
+r;w,,tariffTimer.Thursday,Zeitfenster Donnerstag,,,,0304,,,timer,,,
+r;w,,tariffTimer.Friday,Zeitfenster Freitag,,,,0404,,,timer,,,
+r;w,,tariffTimer.Saturday,Zeitfenster Samstag,,,,0504,,,timer,,,
+r;w,,tariffTimer.Sunday,Zeitfenster Sonntag,,,,0604,,,timer,,,
