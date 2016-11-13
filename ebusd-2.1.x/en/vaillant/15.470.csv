@@ -138,4 +138,6 @@ r,,MenuTestingCurrParameterTextId,MenuTesting_CurrParameterTextId,,,,"F900",,,UI
 !include,timercc.inc,,,,,,,,,,,,
 !include,timerhwc.inc,,,,,,,,,,,,
 !include,timerhc.inc,,,,,,,,,,,,
+!include,timercool.inc,only with heat pump or VR 61/4,,,,,,,,,,,
+!include,timertariff.inc,only with heat pump,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

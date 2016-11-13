@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+# Periods high tariff,,,,,,,,,,,,,
+*r,,,,,,"B515",,,,IGN:1,,,
+*w,,,,,,"B515",,,,,,,
+r;w,,tariffTimer.Monday,Periods Monday,,,,0004,,,timer,,,
+r;w,,tariffTimer.Tuesday,Periods Tuesday,,,,0104,,,timer,,,
+r;w,,tariffTimer.Wednesday,Periods Wednesday,,,,0204,,,timer,,,
+r;w,,tariffTimer.Thursday,Periods Thursday,,,,0304,,,timer,,,
+r;w,,tariffTimer.Friday,Periods Friday,,,,0404,,,timer,,,
+r;w,,tariffTimer.Saturday,Periods Saturday,,,,0504,,,timer,,,
+r;w,,tariffTimer.Sunday,Periods Sunday,,,,0604,,,timer,,,
