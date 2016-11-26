@@ -160,7 +160,7 @@ r,,FanMinSpeedOperation,Min. Lüfterdrehzahl,,,,"DF00",,,UIN,,1/min,Lüfter Mini
 r,,FanMaxSpeedOperation,Max. Lüfterdrehzahl,,,,"E000",,,UIN,,1/min,Lüfter Maximaldrehzahl
 r;wi,,RManagEE.VirtualPartloadEnableTemp,TR_Manag_EE.Virtual_Partload_Enable_DK,,,,"E300",,,UCH,,,Überschrift
 r,,ExternGasvalve,Ext. Gasventil,,,,"E400",,,onoff,,,Externes Magnetventil
-r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,HEX:8,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
+r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,btime;bdate,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 r,,InitialisationSequence,InitialisationSequence_DK,,,,"9A01",,,UCH,,,value:0 -> off1-> full initialisation incl. all defaultvalues (done in the production)
 r,,FlowSetPotmeter,Vorlaufsollwert Poti,,,,"1900",,,temp,,,Vorlaufsollwert Potentiometer
 r,,HwcSetPotmeter,WW Sollwert Potentiometer,,,,"F103",,,temp,,,WW Sollwertpotentiometer
@@ -174,5 +174,4 @@ r,,LimpHomeModeEEHistoryList,LimpHomeMode_EE_History_List_DK,,,,"8B01",,,UIN;UIN
 r;wi,,AWPCEEMinThreshold,AWPC_EE_MinThreshold_DK,,,,"1201",,,SIN,10,bar/10,minimum waterpressure threshold
 r;wi,,AWPCEEMaxThreshold,AWPC_EE_MaxThreshold_DK,,,,"1301",,,SIN,10,bar/10,maximum waterpressure threshold
 !include,errors.inc,,,,,,,,,,,,
-!include,servicehistory.inc,,,,,,,,,,,,
-!include,currentservice.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,

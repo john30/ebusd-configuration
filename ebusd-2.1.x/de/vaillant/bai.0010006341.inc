@@ -148,7 +148,7 @@ r,,DefaultSettingEEPROM,DefaultSettingEEPROM_DK,,,,"DD00",,,yesno,,,default valu
 r,,TimerInputHc,Eingang Schaltuhr,,,,"DE00",,,onoff,,,timer input (block heatdemand)
 r,,RManagEE.VirtualHcPartloadEnableDTemp,TR_Manag_EE.Virtual_CH_Partload_Enable_DK,,,,"E300",,,onoff,,,enable the adaptive CH-partload calulation
 r,,ExternGasvalve,Ext. Gasventil,,,,"E400",,,onoff,,,Externes Magnetventil
-r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,HEX:8,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
+r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,btime;bdate,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 r,,actoSTOREEPreventiveCounter,actoSTOR_EE_PreventiveCounter_DK,,,,"EC00",,,UIN;UIN;UIN,,,Predictive maintenance date of the actoSTOR
 r,,InitialisationSequence,InitialisationSequence_DK,,,,"9A01",,,UCH,,,value:0 -> off1-> full initialisation incl. all defaultvalues (done in the production)
 r,,FlowSetPotmeter,Vorlaufsollwert Poti,,,,"1900",,,temp,,,Vorlaufsollwert Potentiometer
@@ -165,5 +165,4 @@ r;wi,,AWPCEEMaxThreshold,AWPC_EE_MaxThreshold_DK,,,,"1301",,,SIN,10,bar/10,maxim
 r,,OILOUTPreHeater,OIL_OUT_PreHeater_DK,,,,"3101",,,onoff,,,activated the preheater
 r,,OILINPreHeaterFeedback,OIL_IN_PreHeaterFeedback_DK,,,,"3201",,,yesno,,,feedback of the preheater
 !include,errors.inc,,,,,,,,,,,,
-!include,servicehistory.inc,,,,,,,,,,,,
-!include,currentservice.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,
