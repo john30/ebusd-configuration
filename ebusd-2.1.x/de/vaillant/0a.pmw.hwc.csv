@@ -15,7 +15,7 @@ r,,PumpED,Einschaltdauer Pumpe,,,,"0500",,,percent0,,,Leistung in %
 r,,CalculatedMixerPosition,Berechnete Mischerposition,,,,"0600",,,UIN,,Schritte,0 : primär offen .. 220 primär geschlossen
 r,,ElectricalHeater,Elektrischer Heizstab,,,,"0800",,,onoff,,,
 r,,HeatDemand,Wärmeanforderung,,,,"0900",,,temp,,,
-r;wi,,OperatingMode,Betriebsart,,,,"0A00",,,mcmode,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"
+r;wi,,OperatingMode,Betriebsart,,,,"0A00",,,hwcmode2,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"
 r;wi,,ManualTappingTempDesired,ManualTappingSetpoint,,,,"0B00",,,temp,,,
 r,,AutoTappingTempDesired,Automatischer Zapfsollwert,,,,"0C00",,,temp,,,
 r,,QuickVetoTempDesired,Quick Veto Sollwert,,,,"0D00",,,temp,,,

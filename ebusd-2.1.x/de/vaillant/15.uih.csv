@@ -48,19 +48,19 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,Puffersp
 [SW>=250]r,,SysWithCoolingSupport,Kühlsystem erkannt,,,,"9B00",,,onoff,,,
 [SW>=362]r,,reserve1,reserve 1,,,,"9D00",,,UCH,,,for future use
 # ##### HK Namen und Tel. Nummer #####,,,,,,,,,,,,,
-r;w,,HcName2,Name HK2,,,,"4108",,,STR:11,,,Name für HK2
-r;w,,HcName4,Name HK4,,,,"4118",,,STR:11,,,Name für HK4
-r;w,,HcName5,Name HK5,,,,"4120",,,STR:11,,,Name für HK5
-r;w,,HcName6,Name HK6,,,,"4128",,,STR:11,,,Name für HK6
-r;w,,HcName7,Name HK7,,,,"4130",,,STR:11,,,Name für HK7
-r;w,,HcName8,Name HK8,,,,"4138",,,STR:11,,,Name für HK8
-r;w,,HcName9,Name HK9,,,,"4140",,,STR:11,,,Name für HK9
-r;w,,HcName10,Name HK10,,,,"4148",,,STR:11,,,Name für HK10
-r;w,,HcName11,Name HK11,,,,"4150",,,STR:11,,,Name für HK11
-r;w,,HcName12,Name HK12,,,,"4158",,,STR:11,,,Name für HK12
-r;w,,HcName13,Name HK13,,,,"4160",,,STR:11,,,Name für HK13
-r;w,,HcName14,Name HK14,,,,"4168",,,STR:11,,,Name für HK14
-r;w,,HcName15,Name HK15,,,,"4170",,,STR:11,,,Name für HK15
-r;w,,HcName16,Name HK16,,,,"4178",,,STR:11,,,Name für HK16
-r;wi,,PhoneNumberPart1,Telefonnummer Teil 1,,,,"4200",,,STR:9,,,Erster Teil der Telefonnummer für den Servicefall
-r;wi,,PhoneNumberPart2,Telefonnummer Teil 2,,,,"4208",,,STR:9,,,Zweiter Teil der Telefonnummer für den Servicefall
+r;w,,HcName2,Name HK2,,,,"4108",,,hcname,,,Name für HK2
+r;w,,HcName4,Name HK4,,,,"4118",,,hcname,,,Name für HK4
+r;w,,HcName5,Name HK5,,,,"4120",,,hcname,,,Name für HK5
+r;w,,HcName6,Name HK6,,,,"4128",,,hcname,,,Name für HK6
+r;w,,HcName7,Name HK7,,,,"4130",,,hcname,,,Name für HK7
+r;w,,HcName8,Name HK8,,,,"4138",,,hcname,,,Name für HK8
+r;w,,HcName9,Name HK9,,,,"4140",,,hcname,,,Name für HK9
+r;w,,HcName10,Name HK10,,,,"4148",,,hcname,,,Name für HK10
+r;w,,HcName11,Name HK11,,,,"4150",,,hcname,,,Name für HK11
+r;w,,HcName12,Name HK12,,,,"4158",,,hcname,,,Name für HK12
+r;w,,HcName13,Name HK13,,,,"4160",,,hcname,,,Name für HK13
+r;w,,HcName14,Name HK14,,,,"4168",,,hcname,,,Name für HK14
+r;w,,HcName15,Name HK15,,,,"4170",,,hcname,,,Name für HK15
+r;w,,HcName16,Name HK16,,,,"4178",,,hcname,,,Name für HK16
+r;wi,,PhoneNumberPart1,Telefonnummer Teil 1,,,,"4200",,,phone,,,Erster Teil der Telefonnummer für den Servicefall
+r;wi,,PhoneNumberPart2,Telefonnummer Teil 2,,,,"4208",,,phone,,,Zweiter Teil der Telefonnummer für den Servicefall

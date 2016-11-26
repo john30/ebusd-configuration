@@ -34,8 +34,8 @@ r;wi,,OutsideTempOffset,Außentemperatur-Abgleich,,,,"2100",,,temp,,,
 r;w,,RoomTempHoliday,Raumsollwert im Ferienbetrieb,,,,"2200",,,temp,,,
 r;w,,HolidayPeriod,Ferienzeitraum,,,,"4300",,,hfrom;hto;hfrom;hto,,,
 r;wi,,ServicePeriod,Wartung,,,,"2B00",,,date,,,
-r;wi,,PhoneNumberPart1,Telefonnummer Teil 1,,,,"4200",,,STR:9,,,
-r;wi,,PhoneNumberPart2,Telefonnummer Teil 2,,,,"4208",,,STR:9,,,
+r;wi,,PhoneNumberPart1,Telefonnummer Teil 1,,,,"4200",,,phone,,,
+r;wi,,PhoneNumberPart2,Telefonnummer Teil 2,,,,"4208",,,phone,,,
 r;wi,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,"2C00",,,HEX:4,,,
 r;wi,,TempFailDetectTime,Temperaturfehlererkennung nach,,,,"3300",,,temp0,,,
 r;wi,,LcdContrastPwmValue,LCD Kontrast,,,,"3600",,,UCH,,,Displaykontrast
@@ -118,14 +118,14 @@ r,,LoadingPumpB5,LoadingPumpBoiler_5,,,,"8528",,,UCH,,,"Off=0, On=100"
 r,,LoadingPumpB6,LoadingPumpBoiler_6,,,,"8530",,,UCH,,,"Off=0, On=100"
 r,,LoadingPumpB7,LoadingPumpBoiler_7,,,,"8538",,,UCH,,,"Off=0, On=100"
 r,,LoadingPumpB8,LoadingPumpBoiler_8,,,,"8540",,,UCH,,,"Off=0, On=100"
-r,,HcPumpB1,ChPumpBoiler_1,,,,"8608",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB2,ChPumpBoiler_2,,,,"8610",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB3,ChPumpBoiler_3,,,,"8618",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB4,ChPumpBoiler_4,,,,"8620",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB5,ChPumpBoiler_5,,,,"8628",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB6,ChPumpBoiler_6,,,,"8630",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB7,ChPumpBoiler_7,,,,"8638",,,UCH,,,"Off=0, On=1"
-r,,HcPumpB8,ChPumpBoiler_8,,,,"8640",,,UCH,,,"Off=0, On=1"
+r,,HcPumpB1,ChPumpBoiler_1,,,,"8608",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB2,ChPumpBoiler_2,,,,"8610",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB3,ChPumpBoiler_3,,,,"8618",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB4,ChPumpBoiler_4,,,,"8620",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB5,ChPumpBoiler_5,,,,"8628",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB6,ChPumpBoiler_6,,,,"8630",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB7,ChPumpBoiler_7,,,,"8638",,,onoff,,,"Off=0, On=1"
+r,,HcPumpB8,ChPumpBoiler_8,,,,"8640",,,onoff,,,"Off=0, On=1"
 r,,FlagsB1,FlagsBoiler_1,,,,"8708",,,UCH,,,
 r,,FlagsB2,FlagsBoiler_2,,,,"8710",,,UCH,,,
 r,,FlagsB3,FlagsBoiler_3,,,,"8718",,,UCH,,,
@@ -135,20 +135,20 @@ r,,FlagsB6,FlagsBoiler_6,,,,"8730",,,UCH,,,
 r,,FlagsB7,FlagsBoiler_7,,,,"8738",,,UCH,,,
 r,,FlagsB8,FlagsBoiler_8,,,,"8740",,,UCH,,,
 # ##### Heizkreisnamen #####,,,,,,,,,,,,,
-r;w,,HcName1,Name HK1,,,,"4100",,,STR:11,,,Name für den 1. Heizkreis
-r;w,,HcName2,Name HK2,,,,"4108",,,STR:11,,,Name für den 2. Heizkreis
-r;w,,HcName3,Name HK3,,,,"4110",,,STR:11,,,Name für den 3. Heizkreis
-r;w,,HcName4,Name HK4,,,,"4118",,,STR:11,,,Name für den 4. Heizkreis
-r;w,,HcName5,Name HK5,,,,"4120",,,STR:11,,,Name für den 5. Heizkreis
-r;w,,HcName6,Name HK6,,,,"4128",,,STR:11,,,Name für den 6. Heizkreis
-r;w,,HcName7,Name HK7,,,,"4130",,,STR:11,,,Name für den 8. Heizkreis
-r;w,,HcName8,Name HK8,,,,"4138",,,STR:11,,,Name für den 8. Heizkreis
-r;w,,HcName9,Name HK9,,,,"4140",,,STR:11,,,Name für den 9. Heizkreis
-r;w,,HcName10,Name HK10,,,,"4148",,,STR:11,,,Name für den 2. Heizkreis
-r;w,,HcName11,Name HK11,,,,"4150",,,STR:11,,,Name für den 11. Heizkreis
-r;w,,HcName12,Name HK12,,,,"4158",,,STR:11,,,Name für den 12. Heizkreis
-r;w,,HcName13,Name HK13,,,,"4160",,,STR:11,,,Name für den 13. Heizkreis
-r;w,,HcName14,Name HK14,,,,"4168",,,STR:11,,,Name für den 14. Heizkreis
-r;w,,HcName15,Name HK15,,,,"4170",,,STR:11,,,Name für den 15. Heizkreis
+r;w,,HcName1,Name HK1,,,,"4100",,,hcname,,,Name für den 1. Heizkreis
+r;w,,HcName2,Name HK2,,,,"4108",,,hcname,,,Name für den 2. Heizkreis
+r;w,,HcName3,Name HK3,,,,"4110",,,hcname,,,Name für den 3. Heizkreis
+r;w,,HcName4,Name HK4,,,,"4118",,,hcname,,,Name für den 4. Heizkreis
+r;w,,HcName5,Name HK5,,,,"4120",,,hcname,,,Name für den 5. Heizkreis
+r;w,,HcName6,Name HK6,,,,"4128",,,hcname,,,Name für den 6. Heizkreis
+r;w,,HcName7,Name HK7,,,,"4130",,,hcname,,,Name für den 8. Heizkreis
+r;w,,HcName8,Name HK8,,,,"4138",,,hcname,,,Name für den 8. Heizkreis
+r;w,,HcName9,Name HK9,,,,"4140",,,hcname,,,Name für den 9. Heizkreis
+r;w,,HcName10,Name HK10,,,,"4148",,,hcname,,,Name für den 2. Heizkreis
+r;w,,HcName11,Name HK11,,,,"4150",,,hcname,,,Name für den 11. Heizkreis
+r;w,,HcName12,Name HK12,,,,"4158",,,hcname,,,Name für den 12. Heizkreis
+r;w,,HcName13,Name HK13,,,,"4160",,,hcname,,,Name für den 13. Heizkreis
+r;w,,HcName14,Name HK14,,,,"4168",,,hcname,,,Name für den 14. Heizkreis
+r;w,,HcName15,Name HK15,,,,"4170",,,hcname,,,Name für den 15. Heizkreis
 [SW>=400]!include,yield4445.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

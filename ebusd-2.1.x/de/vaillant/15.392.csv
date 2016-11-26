@@ -39,8 +39,8 @@ r,,Hc1ActualFlowTempDesired,Aktuelle Vorlauftemperatur Soll Heizkreis 1,,,,"3E00
 r;wi,,HwcLegioStartDay,Start Legionellenschutz Warmwasserkreis,,,,"4900",,,UCH,0=Mon;1=Tue;2=Wed;3=Thu;4=Fri;5=Sat;6=Sun;7=off;8=Mon-Sun,,Wochentag an dem die Legionellenschutzfunktion gestartet wird (evt. auch täglich)
 r;wi,,HwcLegioStartTime,Startzeit Legionellenschutz Warmwasserkreis,,,,"4A00",,,time,,,time on which legionella protection is started
 r;wi,,HwcCircuitActive,Warmwasserkreis aktiv,,,,"4B00",,,yesno,,,Warmwasserkreis ist eingeschaltet
-r;wi,,PhoneNumber1,Telefonnummer Teil 1,,,,"5400",,,STR:9,,,first part of the installer's telephone number
-r;wi,,PhoneNumber2,Telefonnummer Teil 2,,,,"5408",,,STR:9,,,second part of the installer's telephone number
+r;wi,,PhoneNumber1,Telefonnummer Teil 1,,,,"5400",,,phone,,,first part of the installer's telephone number
+r;wi,,PhoneNumber2,Telefonnummer Teil 2,,,,"5408",,,phone,,,second part of the installer's telephone number
 r;wi,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,"5500",,,HEX:4,,,code for the installer's menues
 r;wi,,MaintenanceDate,nächste Wartung,,,,"5900",,,date,,,Datum nächste Wartung
 r;wi,,LcdContrastValue,Display Kontrastwert,,,,"5A00",,,UCH,,,setting of the LCD contrast
