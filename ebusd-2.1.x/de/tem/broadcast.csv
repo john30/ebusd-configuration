@@ -1,0 +1,3 @@
+#type,circuit,name,comment,QQ,ZZ,PBSB,ID,field1,part,type/templates,divider/values,unit,comment,field2,part,type/templates,divider/values,unit,comment,field3,part,type/templates,divider/values,unit,comment,field4,part,type/templates,divider/values,unit,comment
+*b,broadcast,,,,FE,,,,,,,,,,,,,,,,,,,,,,,,,,
+b,,temperatures,Temperaturen,,,0801,,hk_temp,,temp2,,,Heizkreistemperatur,ww_temp,,temp2,,,Warmwassertemperatur,xx_temp,,temp2,,,?TempX,yy_temp,,temp2,,,?TempY
