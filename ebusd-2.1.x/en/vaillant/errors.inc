@@ -2,9 +2,8 @@
 # Current errors,,,,,,,,,,,,,,,,
 *r,,,,,,"B503","00",,,,,,,,,
 r,,currenterror,Current errors,,,,01,,,errors,,,,,,
-r,,lasterror,Last errors,,,,02,,,errors,,,,,,
 # Error history,,,,,,,,,,,,,,,,
 *r,,,,,,"B503","01",,,,,,,,,
 *wi,#install,,,,,"B503","02",,,,,,,,,
 r,,errorhistory,Error history,,,,01,index,m,UCH,,,,,,errorhistory
-wi,,clearerrorhistory,Error history: clear,,,,01,cleared,s,yesno,,,,,,
+wi,,clearerrorhistory,Clear error history,,,,01,cleared,s,yesno,,,,,,

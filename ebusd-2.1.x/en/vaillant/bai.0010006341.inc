@@ -165,5 +165,4 @@ r;wi,,AWPCEEMaxThreshold,AWPC_EE_MaxThreshold_DK,,,,"1301",,,SIN,10,bar/10,maxim
 r,,OILOUTPreHeater,OIL_OUT_PreHeater_DK,,,,"3101",,,onoff,,,activated the preheater
 r,,OILINPreHeaterFeedback,OIL_IN_PreHeaterFeedback_DK,,,,"3201",,,yesno,,,feedback of the preheater
 !include,errors.inc,,,,,,,,,,,,
-!include,servicehistory.inc,,,,,,,,,,,,
-!include,currentservice.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,
