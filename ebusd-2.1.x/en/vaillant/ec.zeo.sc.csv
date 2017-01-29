@@ -1,0 +1,17 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,ZEO00,Zeolite AMU,ZEO00 197 Solar,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+# ##### SOL: #####,,,,,,,,,,,,,
+r,,SolCollPumpDcIntegrator,SolarCollPumpDcIntegrator,,,,"CB00",,,SIN,,,-50..50
+r;ws,,SolEnableDiffTemp,SolEnableDiffTemp,,,,"CD00",,,temp0,,,5..12K / 1K Auflösung
+r;ws,,SolDisableDiffTemp,SolDisableDiffTemp,,,,"CE00",,,temp0,,,1..10K / 1K Auflösung
+r;ws,,SolHwcMaxLoadTemp,SolDhwMaxLoadTemp,,,,"CF00",,,temp0,,,35..80°C / 1°C
+r,,SolConfigFlags,SolarConfigFlags,,,,"D000",,,UCH,,,
+r,,SolCollPumpED,SolarCollectorPumpED,,,,"D100",,,UCH,,,0..100%
+r;ws,,CollPumpSRuntime,CollectorPumpSRuntime,,,,"D200",,,UIN,,,runtime in seconds base for runtime in hours
+r;ws,,CollPumpHRuntime,CollectorPumpHRuntime,,,,"D300",,,UIN,,,runtime in hours
+r;ws,,YieldMinute,SolarYieldMinute,,,,"D400",,,UIN,,,nur Summe von dT ohne Volumenstrom nur mit PWM
+r;ws,,Yield,SolarYieldKw,,,,"D500",,,UIN,,,um den Wert in KW zu bekommenmuß gerechnet werden:kW=x*SolarVolumnFlowUser*c
+r;ws,,SolFlowRate,SolarFlowRate,,,,"D600",,,UIN,,,0..20l/h Wert des Taco-Setters für Ertragsermittlung

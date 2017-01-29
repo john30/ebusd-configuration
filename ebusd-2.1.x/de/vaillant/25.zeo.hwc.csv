@@ -1,0 +1,15 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,ZEO00,Zeolite AMU,ZEO00 197 DHW,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+# ##### DHW: #####,,,,,,,,,,,,,
+r,,OperatingMode,Betriebsart,,,,"0600",,,mcmode,,,1=Ein 2=Aus 3=Auto
+r,,TempDesired,Solltemperatur,,,,"0D00",,,temp1,,,1/2 °C resolution
+r,,CircuitDiaState,CircuitDiaState,,,,"1800",,,UCH,,,
+r,,CircuitsStates,Zustand Wärmeabnehmer,,,,"1E00",,,UCH,,,
+r,,CleaningLady,Sparfunktion,,,,"2300",,,UCH,,,"0,5h"
+r,,HwcLegioProtectionMaxTimer,Legionellenschutz max. Timer,,,,"2D00",,,UCH,,,
+r,,ActualTempDesired,Akt. Solltemperatur,,,,"3300",,,temp1,,,1/2°C Auflösung
+r,,HwcLegioTempOkTimer,Max. Rücklauftemperatur,,,,"3400",,,temp0,,,
+!include,hwcmode.inc,,,,,,,,,,,,
+!include,timer.inc,,,,,,,,,,,,

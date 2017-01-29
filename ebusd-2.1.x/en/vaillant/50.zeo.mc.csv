@@ -1,0 +1,27 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,ZEO00,Zeolite AMU,ZEO00 197 Mixer,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+# ##### MK: #####,,,,,,,,,,,,,
+r,,OperatingMode,OperatingMode,,,,"0604",,,mcmode,,,1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken
+r,,FlowTempMin,MinFlowTemp,,,,"0B04",,,temp0,,,1 °C resolution
+r,,FlowTempMax,MaxFlowTemp,,,,"0C04",,,temp0,,,1 °C resolution
+r,,TempDesired,DesiredTemperature,,,,"0D04",,,temp1,,,1/2 °C resolution
+r,,TempDesiredLow,DesiredLowTemperature,,,,"0E00",,,temp1,,,1/2 °C resolution
+r,,HcMaxPreHeating,HcMaxPreHeating,,,,"1300",,,UCH,,,0..5h
+r,,FloorPavingDryingDay,FloorPavingDryingDay,,,,"1600",,,UCH,,,
+r;ws,,Kreisart,Kreisart,,,,"1700",,,UCH,,,1=Brennerkreis 2=BrennerFestwert
+r,,CircuitDiaState,CircuitDiaState,,,,"1804",,,UCH,,,
+r,,CleaningLady,CleaningLady,,,,"2304",,,UCH,,,"0,5h"
+r,,RemoteControlMode,RemoteControlMode,,,,"2400",,,UCH,,,
+r,,RemoteControlRtOffset,RemoteControlRtOffset,,,,"2500",,,SCH,,,"0,5°C"
+r,,ActualTempDesired,ActualDesiredTemp,,,,"3304",,,temp1,,,1/2°C Auflösung
+r;ws,,Regelungsart,Regelungsart,,,,"3500",,,UCH,,,1 : Rücklaufregelung 2 : Vorlaufregelung
+r;ws,,Konfiguration,Configuration,,,,"C400",,,UCH,,,
+r,,HzTemp,T_Hz,,,,"D800",,,temp,,,Vorlauf- oder Rücklauftemperatur je nach gewählter Regelungsart
+r,,HTSoll,HT_Soll,,,,"D900",,,temp,,,°C
+!include,mcmode.inc,,,,,,,,,,,,
+!include,timer.inc,,,,,,,,,,,,
+!include,roomtempoffset.inc,,,,,,,,,,,,
+!include,quick.inc,,,,,,,,,,,,
