@@ -78,7 +78,7 @@ pumpstate,UCH,0=off;1=on;2=overrun,,Pumpenstatus
 dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatus
 phaseok,UCH,0=error;7=ok,,Phasenstatus
 switchvalve,UCH,0=heat;1=water,,Ventilposition
-switchvalve2,UCH,0=heat;50=both;100=water;254=standby,Ventilposition
+switchvalve2,UCH,0=heat;50=both;100=water;254=standby,,Ventilposition
 hfrom,HDA:3,,,Ferienzeitraum von
 hto,HDA:3,,,Ferienzeitraum bis
 holiday,hfrom;hfrom;hto;hto,,,Ferienzeitraum 1 von; 2 von; 1 bis; 2 bis

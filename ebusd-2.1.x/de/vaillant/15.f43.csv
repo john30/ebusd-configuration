@@ -121,4 +121,4 @@ r,,RfChannelSettings,Rf_ChannelSettings,,,,"B900",,,UCH,,,used rf channel settin
 !include,errors.inc,,,,,,,,,,,,
 !include,timerhc.inc,,,,,,,,,,,,
 !include,tempsetpoints.inc,,,,,,,,,,,,
-!include,currentservice.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,
