@@ -14,7 +14,7 @@ r,,StatRTOSErrorcode,StatRTOSErrorcode,,,,"D100",,,UIN,,,
 r,,StatRestarts,StatRestarts,,,,"D200",,,UIN,,,
 r,,StatRTOSErrorCounter,StatRTOSErrorCounter,,,,"D300",,,UIN,,,
 # ##### MK1: Daten #####,,,,,,,,,,,,,
-r,,FlowTemp,VF1 Sensor,,,,"0100",,,tempsensor,,,Temperature measured on VF2
+r,,FlowTemp,VF2 Sensor,,,,"0100",,,tempsensor,,,Temperature measured on VF2
 r,,FlowTempDesired,Vorlaufsolltemperatur,,,,"4600",,,temp1,,,Desired flow temperature of MK1
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
 r,,IsInHoliday,Ferienprogramm aktiv,,,,"2700",,,UCH,,,Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit
