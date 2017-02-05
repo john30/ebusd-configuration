@@ -1,0 +1,216 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,ZEO00,Zeolite AMU,ZEO00 197 Boiler,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+# ##### ZEO: Zeolite #####,,,,,,,,,,,,,
+r,,EnergyDemand,Wärmeanforderung,,,,"2700",,,onoff,,,vom UI
+r,,BoilerDemand,Brenneranforderung,,,,"4F00",,,onoff,,,von der BMU
+r,,B1Press,Solepumpe 1,,,,"5C00",,,onoff,,,Pumpe Kondensatorkreis
+r,,PrimaryCircuitPump2Power,PrimaryCircuitPump2Power,,,,"5F00",,,UIN,,,aktuelle Leistung in %
+r,,B2Press,Solepumpe 2,,,,"6000",,,UCH,,,Pumpe Umweltkreis
+r,,SMPrimaryCircuitCycleOKState,SM_PrimaryCircuitCycle_OKState,,,,"6200",,,UCH,,,Prozesszustand
+r,,Pos1,Start,,,,"6500",,,onoff,,,Umschalterposition Direktheizbetrieb
+r,,Pos2,Pos2,,,,"6600",,,onoff,,,Umschalterposition Desorption mit Bypass
+r,,PrimaryCircuitCycleState,PrimaryCircuitCycleState,,,,"6800",,,UCH,,,
+r,,Ventilatorfreigabe,Ventilatorfreigabe,,,,"6A00",,,onoff,,,Kollektorventilator
+r,,VolumenstromPumpP1,Volumenstrom_P_P1,,,,"6B00",,,UIN,,,in %
+r,,VolumenstromPumpP2,Volumenstrom_P_P2,,,,"6C00",,,UIN,,,in %
+r;ws,,manWeiter,man_weiter,,,,"7000",,,onoff,,,
+r,,WAnfo,W_Anfo,,,,"7200",,,onoff,,,
+r,,Quelle,Quelle,,,,"7300",,,UCH,,,1=DHB 2=Kollektorbetrieb 3=Wärmetauscherbetrieb
+r,,PrimaryCircuitPumpsControlState,PrimaryCircuitPumpsControlState,,,,"7400",,,UCH,,,
+r,,PlValve,V_Pl,,,,"7700",,,onoff,,,Primärkreisumschalter Linkslauf
+r,,PrValve,V_Pr,,,,"7800",,,onoff,,,Primärkreisumschalter Rechtslauf
+r,,testbetrieb,Testbetrieb,,,,"7A00",,,onoff,,,
+r,,HwcAnfo,BW_Anfo,,,,"7B00",,,onoff,,,
+r,,BrAnfo,Br_Anfo,,,,"8200",,,onoff,,,Ansteuerung Gasventil
+r,,DesiredPositionReached,DesiredPositionReached,,,,"8300",,,onoff,,,
+r,,GFAStoerung,GFA Störung,,,,"8500",,,onoff,,,
+r,,TadsAus,Tads_aus,,,,"8600",,,temp,,,°C
+r,,MSWMax,MSW_max,,,,"8800",,,UCH,,,in %
+r,,TdesEin,Tdes_ein,,,,"8900",,,temp,,,°C
+r,,ActualEnvironmentalPower,ActualEnvironmentalPower,,,,"8A00",,,power,,,in kW (Näherungswert)
+r,,PWTSoll,PWT_Soll,,,,"8B00",,,temp,,,°C
+r,,PrimVol,Prim_Vol,,,,"8C00",,,UCH,,,in %
+r,,TsoleEin,Tsole_ein,,,,"8F00",,,tempsensor,,,°C; hinten
+r,,TsoleAus,Tsole_aus,,,,"9000",,,tempsensor,,,°C; vorne
+r,,PLH,PL_H,,,,"9100",,,onoff,,,Umschalterposition Desorption ohne Bypass
+r,,PLPump,PL_P,,,,"9200",,,onoff,,,Umschalterposition Adsorption
+r,,PrimaryCircuitPump1Power,PrimaryCircuitPump1Power,,,,"A700",,,UIN,,,in %
+r,,PrimaryCircuitSwitchControlState,PrimaryCircuitSwitchControlState,,,,"A900",,,UCH,,,
+r,,PrimaryCircuitPump1PowerCorrected,PrimaryCircuitPump1PowerCorrected,,,,"B300",,,UIN,,,
+r,,PrimaryCircuitPump2PowerCorrected,PrimaryCircuitPump2PowerCorrected,,,,"B400",,,UIN,,,
+r,,tdesUm,tdes_um,,,,"BA00",,,temp,,,
+r,,QZeo,Zeolith Ertrag,,,,"DD00",,,UIN,,,in kWh
+r,,PumpB1Valve,Volumenstrom Verdampfer,,,,"DE00",,,UIN,,,Durchflussmenge durch Verdampfer
+r,,ZSpNach,Nachlaufzeit Sp-Pumpe,,,,"DF00",,,UCH,,,Nachlaufzeit Speicherpumpe/min
+r,,Teillast,Teillast,,,,"F800",,,UCH,,,0..100% MSW_max in Testbetrieb
+r,,PrimaryCircuitMicroSwitchPattern,PrimaryCircuitMicroSwitchPattern,,,,"F900",,,UCH,,,1=Des.o.B. 2=Adsorption 4=Des.m.B. 8=Direktheizbetrieb
+# ##### ZEO: Global #####,,,,,,,,,,,,,
+r,,Code1Code2Valid,Codes übernehmen?,,,,"0100",,,onoff,,,
+r,,dcfStatus,DCF Status,,,,"3A00",,,UCH,,,
+r,,StackeBUSTaskMax,MaxStackeBUSTask,,,,"3B00",,,UCH,,,
+r,,StackMainTaskMax,MaxStackMainTask,,,,"3C00",,,UCH,,,
+r,,StackLifeCheckTaskMax,MaxStackLifeCheckTask,,,,"3D00",,,UCH,,,
+r,,ErrorActual,Error_Actual,,,,"4600",,,UCH,,,
+r,,Global_ErrorActual,Error_Actual,,,,"4602",,,UCH,,,
+r,,ErrorHistory,Fehlerhistorie,,,,"4700",,,UCH,,,
+r,,Global_ErrorHistory,Fehlerhistorie,,,,"4702",,,UCH,,,
+r,,Reset,Reset,,,,"4800",,,onoff,,,
+r,,RebootCounter,RebootCounter,,,,"5100",,,UIN,,,incremented each time Firmware boots
+r,,Anlegethermostat,Anlegethermostat,,,,"A100",,,onoff,,,
+# ##### ZEO: BMR #####,,,,,,,,,,,,,
+r,,IsInHoliday,Ferienprogramm aktiv,,,,"0200",,,UCH,,,
+r,,OutsideTempCorrection,Außentemp. Sensor Korrektur,,,,"0800",,,temps,,,"0,5 °C Auflösung"
+r,,HolidayTempDesired,Feriensollwert,,,,"0F00",,,temp1,,,1/2 °C resolution
+r,,HeatingCurve,Heizkurve,,,,"1000",,,curve,,,1/100 resolution
+r,,OtShutdownLimit,Außentemp. Abschaltgrenze,,,,"1100",,,UCH,,,Bedarfsabhängige Heizungsabschaltung
+r,,BoilerMaxPreShutdown,Kesselvorabschaltung,,,,"1400",,,UCH,,,15..120min
+r,,HcFlowIncrease,Temperaturüberhöhung,,,,"1500",,,UCH,,,
+r,,CircuitPeriods,CircuitPeriods,,,,"1900",,,UCH,,,
+r,,LegioProtectionEnabled,Legionellenschutz,,,,"1A00",,,onoff,,,global für alle WW Kreise
+r,,IsInStorageFilling,Speicherladung aktiv,,,,"2000",,,onoff,,,
+r,,FrostProtectDelay,Frostschutz-Verzögerung,,,,"2200",,,UCH,,,1h
+r,,IsInParty,Partyfunktion aktiv,,,,"2600",,,UCH,,,
+r,,HcPreShutdownActive,Vorarabschaltung aktiv,,,,"2800",,,UCH,,,bit für jeden Heizkreis
+r,,HcPreHeatingActive,Voraufheizung aktiv,,,,"2900",,,UCH,,,bit für jeden Heizkreis
+r,,InitCircuit,InitCircuit,,,,"2B00",,,UCH,,,bit für jeden Heizkreis
+r,,StartOneOffFilling,Start Einmalladung,,,,"2E00",,,UCH,,,bit für jeden Heizkreis
+r,,StorageFlowTemp,DCF Status,,,,"2F00",,,temp0,,,1°C resolution
+r,,HwcLoadingRequest,Ladeanforderung,,,,"3000",,,UCH,,,bit für jeden Heizkreis
+r,,HwcLoadingEnabled,Ladefreigabe,,,,"3100",,,onoff,,,bit für jeden Heizkreis
+r,,HwcLaggingTime,WP Nachlaufzeit WW,,,,"3600",,,UCH,,,3..9min 1min Auflösung
+r,,HwcLoadingDelay,WW Ladeverzögerung,,,,"3700",,,UCH,,,0..30min / 1min
+r,,RestartBlockingTime,RestartBlockingTime,,,,"3800",,,UIN,,,
+r,,ReturnTempMax,Max. Rücklauf Temp HK,,,,"3F00",,,temp,,,
+r,,OutputTesting,Test der Ausgänge,,,,"4200",,,onoff,,,
+r;ws,,OneTimeCirSwitch,1x ZP Schalter,,,,"5400",,,onoff,,,
+r,,HwcTempMax,Max. WW Temperatur,,,,"5900",,,temp0,,,1°C resolution
+# ##### ZEO: Reserved #####,,,,,,,,,,,,,
+r;ws,,dt12,dt1_2,,,,"1B00",,,temp,,,"Kalibrierwert T1,T2"
+r;ws,,dt56,dt5_6,,,,"1C00",,,temp,,,"Kalibrierwert T5,T6"
+r;ws,,TriggerCalibrationT1t2,TriggerCalibration_t1t2,,,,"1D00",,,onoff,,,"löst Kalibriervorgang T1,T2 aus"
+r,,PrimaryCircuitPumpDemandByBoiler,PrimaryCircuitPumpDemandByBurner,,,,"2100",,,onoff,,,
+r;ws,,TriggerCalibrationT5t6,TriggerCalibration_t5t6,,,,"2A00",,,onoff,,,"löst Kalibriervorgang T5,T6 aus"
+r,,InhibitT1T2T3Counting,InhibitT1T2T3Counting,,,,"3900",,,onoff,,,"stoppt Zeitglieder t1, t2, t3"
+r,,StateSoftwareCode,Software-Status,,,,"4E00",,,ULG,,,
+r,,ApplianceCode,Wärmepumpen Typ,,,,"5800",,,UCH,,,
+r,,ForcedParametersatz,ForcedParametersatz,,,,"A800",,,UCH,,,0=no forcing 1=kleinste Leistung 2=mittlere Leistung 3=max. Leistung
+r;ws,,TwoPointRegulatorHysteresisHc,TwoPointRegulatorHysteresis_CH,,,,"B500",,,temp,,,
+r;ws,,TwoPointRegulatorHysteresisHwc,TwoPointRegulatorHysteresis_DHW,,,,"B600",,,temp,,,
+r,,ModuleDisplayedFilling,ModuleDisplayedFilling,,,,"CC00",,,UCH,,,Schwärzungsgrad in %
+r;ws,,P1Voltage38,P1_Voltage_38,,,,"E400",,,UIN,,,gemessene P1 Spannung bei 38% in 1/100V
+r;ws,,P2Voltage38,P2_Voltage_38,,,,"E600",,,UIN,,,gemessene P2 Spannung bei 38% in 1/100V
+r,,FillSourceCircuit,Befüllprogramm Solarkreis,,,,"F600",,,onoff,,,
+r,,DeaerateSourceCircuit,DeaerateBrineCircuit,,,,"F700",,,onoff,,,
+r,,Ymin,Ymin,,,,"FB00",,,UCH,,,PI-Regelung: Ymin
+r,,Ymax,Ymax,,,,"FC00",,,UCH,,,PI-Regelung: Ymax
+r,,BandPress,P_Band,,,,"FD00",,,temp,,,PI-Regelung: Xp
+r,,FillDearatePrimCircuit,FillDearatePrimCircuit,,,,"FE00",,,UCH,,,
+# ##### ZEO: Timers #####,,,,,,,,,,,,,
+r,,timer1,t1,,,,"6D00",,,ULG,,,verbleibende Zeit mit Kleinstlast in s
+r,,timer2,t2,,,,"6E00",,,ULG,,,verbleibende Zeit mit mittlerer Leistung in s
+r,,timer3,t3,,,,"6F00",,,ULG,,,verbleibende Zeit bis Umschaltung in Direktheizbetrieb in s
+r,,ZeitgliedAusgleichszeit1,ZeitgliedAusgleichszeit1,,,,"7500",,,ULG,,,in Sekunden
+r,,ZeitgliedAusgleichszeit2,ZeitgliedAusgleichszeit2,,,,"7600",,,ULG,,,in Sekunden
+r;ws,,ZeitgliedMaxLaufzeit,ZeitgliedMaxLaufzeit,,,,"7E00",,,ULG,,,des Primärkreisumschalters in Sekunden
+r,,PrimPumpPostrunTimer,PrimPumpPostrunTimer,,,,"A600",,,UIN,,,in Sekunden
+r,,PrimPumpPostrunTime,PrimPumpPostrunTime,,,,"AA00",,,UIN,,,in Sekunden
+r,,Ausgleichszeit1Dauer,Ausgleichszeit1Dauer,,,,"AB00",,,UIN,,,in Sekunden
+r;ws,,ParamSatz1Ausgleichszeit1Dauer,ParamSatz_1_Ausgleichszeit1Dauer,,,,"AB02",,,UIN,,,in Sekunden
+r;ws,,ParamSatz2Ausgleichszeit1Dauer,ParamSatz_2_Ausgleichszeit1Dauer,,,,"AB04",,,UIN,,,in Sekunden
+r;ws,,ParamSatz3Ausgleichszeit1Dauer,ParamSatz_3_Ausgleichszeit1Dauer,,,,"AB06",,,UIN,,,in Sekunden
+r;ws,,t1Dauer,t1Dauer,,,,"AC00",,,UCH,,,in Minuten
+r;ws,,t2Dauer,t2Dauer,,,,"AD00",,,UCH,,,in Minuten
+r;ws,,t3Dauer,t3Dauer,,,,"AE00",,,UCH,,,in Minuten
+r,,RestartBlockingTimer,RestartBlockingTimer,,,,"B200",,,UIN,,,
+r;ws,,VUVPumpLockTime,VUVPumpLockTime,,,,"E000",,,UCH,,,time to block pump when VUV moves
+r,,ZHzNach,Nachlaufzeit Hz-Pumpe,,,,"E100",,,UCH,,,Nachlaufzeit Heizpumpe/min
+r,,ParamSatzAusglZeit2,ParamSatz_AusglZeit2,,,,"E700",,,UIN,,,in Sekunden
+r,,LaufzeitDauerMax,MaxLaufzeitDauer,,,,"E800",,,UCH,,,des Primärkreisumschalters
+r,,ParamSatz1Ausgleichszeit2Dauer,ParamSatz_1_Ausgleichszeit2Dauer,,,,"E702",,,UIN,,,in Sekunden
+r,,ParamSatz2Ausgleichszeit2Dauer,ParamSatz_2_Ausgleichszeit2Dauer,,,,"E704",,,UIN,,,in Sekunden
+r,,ParamSatz3Ausgleichszeit2Dauer,ParamSatz_3_Ausgleichszeit2Dauer,,,,"E706",,,UIN,,,in Sekunden
+r,,P2Peaktime,P2Peaktime,,,,"FF00",,,UCH,,,"Dauer in sec, die P2 beim Einschalten mit 100% gefahren wird"
+# ##### ZEO: Statistics #####,,,,,,,,,,,,,
+r,,P1PressStarts,P_P1_starts,,,,"E900",,,ULG,,,Einschaltungen P1
+r,,P1PressHours,P_P1_hours,,,,"EA00",,,ULG,,,Laufzeit P1/h
+r,,P2PressStarts,P_P2_starts,,,,"EB00",,,ULG,,,Einschaltungen P2
+r,,P2PressHours,P_P2_hours,,,,"EC00",,,ULG,,,Laufzeit P2/h
+r,,HPressStarts,P_H_starts,,,,"ED00",,,ULG,,,Einschaltungen P_H
+r,,HPressHours,P_H_hours,,,,"EE00",,,ULG,,,Laufzeit P_H
+r,,cPressStarts,P_c_starts,,,,"EF00",,,ULG,,,Einschaltungen P_c
+r,,cPressHours,P_c_hours,,,,"F000",,,ULG,,,Laufzeit P_c
+r,,sPressStarts,P_s_starts,,,,"F100",,,ULG,,,Einschaltungen P_s
+r,,sPressHours,P_s_hours,,,,"F200",,,ULG,,,Laufzeit P_s
+r,,VHwcStarts,VDHW_starts,,,,"F300",,,ULG,,,Einschaltungen VDHW
+r,,VHwcHours,VDHW_hours,,,,"F400",,,ULG,,,Laufzeit VDHW
+# ##### ZEO: Zeolite1 #####,,,,,,,,,,,,,
+r;ws,,EckpunktDhb,EckpunktDhb,,,,"4500",,,temp,,,Grenze für Direktheizbetrieb
+r,,FlowTempDesired,Vorlaufsollwert,,,,"5000",,,temp,,,
+r;ws,,cPress,P_c,,,,"9600",,,onoff,,,Zirkulationspumpe
+r;ws,,FColl,F_coll,,,,"9700",,,onoff,,,Ventilator im Luftkollektor
+r;ws,,sPress,P_s,,,,"9800",,,onoff,,,Solarpumpe
+r;ws,,HPress,P_H,,,,"9900",,,onoff,,,Heizungspumpe
+r;ws,,HwcValve,V_DHW,,,,"9A00",,,onoff,,,Vorrangumschaltventil
+r,,envTemp,T_env,,,,"9B00",,,tempsensor,,,Aussentemperatur
+r,,collRTemp,T_coll_R,,,,"9C00",,,tempsensor,,,Kollektorrücklauftemperatur
+r,,S1Temp,TS_1,,,,"9D00",,,tempsensor,,,Speicherfühler oben
+r,,S2Temp,TS_2,,,,"9E00",,,tempsensor,,,Speicherfühler unten
+r,,collTemp,T_coll,,,,"9F00",,,tempsensor,,,Kollektortemperatur
+r,,F1Temp,TF_1,,,,"A200",,,tempsensor,,,Vorlauftemperatur
+r,,RTemp,TR,,,,"A300",,,tempsensor,,,Rücklauftemperatur
+r,,T5,T5,,,,"A400",,,tempsensor,,,°C; Desorberausgang (hinten)
+r,,T6,T6,,,,"A500",,,tempsensor,,,°C; Desorbereingang (vorne)
+r,,DesiredSwitchPos,DesiredSwitchPos,,,,"AF00",,,UCH,,,1=Des.o.B. 2=Adsorption 3=Des.m.B. 4=Direktheizbetrieb
+r,,ZeoStatus,ZeoStatus,,,,"B700",,,UCH,,,"Bereitschaft = 0,Heizbetrieb=1,Speicherladung=2,Legionellenschutz=3,Frostschutz=4,Speicherfrostschutz=5"
+r,,ActualDevicePower,ActualDevicePower,,,,"B900",,,power,,,in kW
+r,,FlameOn,FlameOn,,,,"BE00",,,onoff,,,von der BMU
+r,,lPress,P_l,,,,"C500",,,onoff,,,Legionellenschutz-Pumpe
+r,,HzVol,Hz_Vol,,,,"C700",,,UCH,,,in %
+r,,T3,T3,,,,"C900",,,temp,,,°C; rechts
+r,,T4,T4,,,,"CA00",,,temp,,,°C; links
+# ##### ZEO: Prozessparameter #####,,,,,,,,,,,,,
+r,,Parameter,Parameter,,,,"6700",,,UCH,,,
+r,,ZeitgliedAdsorption1,ZeitgliedAdsorption1,,,,"7100",,,ULG,,,
+r;ws,,ParamSatz1Vol,ParamSatz_1_Vol,,,,"7F02",,,UIN,,,Parametersatz 1: Volumenstrom (Ads 2)
+r;ws,,ParamSatz2Vol,ParamSatz_2_Vol,,,,"7F04",,,UIN,,,Parametersatz 2: Volumenstrom (Ads 2)
+r;ws,,ParamSatz3Vol,ParamSatz_3_Vol,,,,"7F06",,,UIN,,,Parametersatz 3: Volumenstrom (Ads 2)
+r;ws,,ParamSatz1DTadsEnd,ParamSatz_1_dTads_end,,,,"8002",,,temp,,,Parametersatz 1: Dauer (Ads 1)
+r;ws,,ParamSatz2DTadsEnd,ParamSatz_2_dTads_end,,,,"8004",,,temp,,,Parametersatz 2: Dauer (Ads 1)
+r;ws,,ParamSatz3DTadsEnd,ParamSatz_3_dTads_end,,,,"8006",,,temp,,,Parametersatz 3: Dauer (Ads 1)
+r;ws,,ParamSatz1Zeit,ParamSatz_1_Zeit,,,,"8102",,,UIN,,,Parametersatz 1: Adsorptionsende (Temp.Differenz)
+r;ws,,ParamSatz2Zeit,ParamSatz_2_Zeit,,,,"8104",,,UIN,,,Parametersatz 2: Adsorptionsende (Temp.Differenz)
+r;ws,,ParamSatz3Zeit,ParamSatz_3_Zeit,,,,"8106",,,UIN,,,Parametersatz 3: Adsorptionsende (Temp.Differenz)
+r,,TdesSoll,Tdes_soll,,,,"8400",,,temp,,,°C
+r,,dUm3,d_um_3,,,,"E500",,,temp,,,Offset Desorptionsendtemperatur
+# ##### ZEO: neu #####,,,,,,,,,,,,,
+r;ws,,InstallAssistantFinished,InstallAssistantFinished,,,,"4000",,,onoff,,,
+r;ws,,HeatingPumpOverrunDuration,HeatingPumpOverrunDuration,,,,"0001",,,UIN,,,
+r;ws,,HeatingPumpKickDuration,HeatingPumpKickDuration,,,,"0101",,,UIN,,,
+r;ws,,HeatingPumpKickPause,HeatingPumpKickPause,,,,"0201",,,UIN,,,
+r;ws,,HeatingPumpMaxPwm,HeatingPumpMaxPwm,,,,"0301",,,UCH,,,in %
+r;ws,,HeatingPumpMinPwm,HeatingPumpMinPwm,,,,"0401",,,UCH,,,in %
+r;ws,,HeatingPumpFaktor,HeatingPumpFaktor,,,,"0501",,,UCH,,,% pro Kelvin Regelabweichung
+r,,SHU,SHU,,,,"0601",,,onoff,,,aktiviert/deaktiviert die SHU-Funktionalität
+r,,SVUV1,SVUV1,,,,"0701",,,onoff,,,Sole-Vuv1
+r,,SVUV2,SVUV2,,,,"0801",,,onoff,,,Sole-Vuv2
+r;ws,,SolepumpenleistungSHU,Solepumpenleistung_SHU,,,,"0901",,,UCH,,,Solepumpenleistung während SHU
+r;ws,,SolepumpenleistungDesorption,Solepumpenleistung_Desorption,,,,"0A01",,,UCH,,,Solepumpenleistung während Desorption
+r;ws,,SolepumpenleistungAdsorption,Solepumpenleistung_Adsorption,,,,"0B01",,,UCH,,,Solepumpenleistung während Adsorption
+r;ws,,dHRAus,dHR_aus,,,,"0C01",,,temp,,,delta-Rücklauftemp für SHU
+r,,Tvmax,Tvmax,,,,"0D01",,,temp,,,
+r;ws,,notTestedYet,not_tested_yet,,,,"0E01",,,onoff,,,Merker für erfolgreichen Selbsttest
+r,,startupTest,startup_test,,,,"0F01",,,onoff,,,löst den selbsttest aus
+r,,ZeitgliedStartupTest,ZeitgliedStartupTest,,,,"1001",,,UCH,,,aktuelle Selbsttestzeit
+r,,ZeitgliedTestDesDauer,ZeitgliedTestDesDauer,,,,"1101",,,UIN,,,in sec
+r,,ZeitgliedTestAdsDauer,ZeitgliedTestAdsDauer,,,,"1201",,,UIN,,,in sec
+r;ws,,startupTestFehler,startup_test_fehler,,,,"1301",,,onoff,,,zeigt Fehler im selbsttest an
+r,,ExtChPump,ExtChPump,,,,"1401",,,onoff,,,s. Mantis 7915
+r;ws,,DTMax,Max_dT,,,,"1501",,,temp,,,für die berechnung von Tvmax
+r,,DVTMax,Max_dVT,,,,"1601",,,temp,,,für die berechnung von Tvmax
+r;ws,,StartupTestTempDelta,StartupTestTempDelta,,,,"1701",,,temp0,,,Nötige Temp.differenz für selbsttest (Mantis 8022) in Kelvin
+r,,SMStartupTestState,SM_startup_test_state,,,,"1801",,,UCH,,,mantis 8021
+r;ws,,dHREin,dHR_ein,,,,"1901",,,temp,,,delta-Rücklauftemp für SHU
+r;ws,,dTSchnell,dT_schnell,,,,"1A01",,,UCH,,,Nötige Temp.differenz für sofortigen DHB (Mantis 8305)
