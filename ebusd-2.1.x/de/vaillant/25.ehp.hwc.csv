@@ -19,3 +19,4 @@ r;wi,,LegionellaStartTime,Startzeit Legionellenschutz,,,,"6700",,,time2,,,"Start
 !include,timer.inc,,,,,,,,,,,,
 !include,iotesthp.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
+!include,quick.inc,,,,,,,,,,,,

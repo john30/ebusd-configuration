@@ -240,5 +240,4 @@ r,,PrEnergyCountHc2,PrEnergyCountCH2_DK,,,,"F800",,,ULG,,,Predictive Maintenance
 r,,PrEnergySumHc3,PrEnergySumCH3_DK,,,,"F900",,,ULG,,,Predictive Maintenance data
 r,,PrEnergyCountHc3,PrEnergyCountCH3_DK,,,,"FA00",,,ULG,,,Predictive Maintenance data
 !include,errors.inc,,,,,,,,,,,,
-!include,servicehistory.inc,,,,,,,,,,,,
-!include,currentservice.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,

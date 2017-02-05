@@ -1,0 +1,16 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,ZEO00,Zeolite AMU,ZEO00 197 Circulation,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+# ##### CC: #####,,,,,,,,,,,,,
+r,,OperatingMode,OperatingMode,,,,"0602",,,mcmode,,,
+r,,FlowTempMin,MinFlowTemp,,,,"0B02",,,temp0,,,1 °C resolution
+r,,FlowTempMax,MaxFlowTemp,,,,"0C02",,,temp0,,,1 °C resolution
+r,,TempDesired,DesiredTemperature,,,,"0D02",,,temp1,,,1/2 °C resolution
+r,,CircuitDiaState,CircuitDiaState,,,,"1802",,,UCH,,,
+r,,CircuitsStates,CircuitsStates,,,,"1E02",,,UCH,,,
+r,,FlowTempDesired,Flow setpoint,,,,"1F02",,,temp1,,,1/2 °C resolution
+r,,CleaningLady,CleaningLady,,,,"2302",,,UCH,,,"0,5h"
+r,,ActualTempDesired,ActualDesiredTemp,,,,"3302",,,temp1,,,1/2°C Auflösung
+!include,hwcmode.inc,,,,,,,,,,,,
+!include,timer.inc,,,,,,,,,,,,

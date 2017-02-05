@@ -19,3 +19,4 @@ r;wi,,LegionellaStartTime,Legionella_Start_Time,,,,"6700",,,time2,,,start time f
 !include,timer.inc,,,,,,,,,,,,
 !include,iotesthp.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
+!include,quick.inc,,,,,,,,,,,,

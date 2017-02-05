@@ -182,5 +182,4 @@ r,,LimpHomeModeEEHistoryList,LimpHomeMode_EE_History_List_DK,,,,"8B01",,,UIN;UIN
 r;wi,,AWPCEEMinThreshold,AWPC_EE_MinThreshold_DK,,,,"1201",,,SIN,10,bar/10,minimum waterpressure threshold
 r;wi,,AWPCEEMaxThreshold,AWPC_EE_MaxThreshold_DK,,,,"1301",,,SIN,10,bar/10,maximum waterpressure threshold
 !include,errors.inc,,,,,,,,,,,,
-!include,servicehistory.inc,,,,,,,,,,,,
-!include,currentservice.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,

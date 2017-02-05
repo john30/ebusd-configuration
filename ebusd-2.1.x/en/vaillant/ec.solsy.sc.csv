@@ -28,6 +28,7 @@ r,,SolCollPumpED2,SolarCollectorPumpED2,,,,"6708",,,percent0,,,Percantage of pow
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
 r,,HasSolCollVolumeSensor,HasSolarCollectorVolumeSensor,,,,"9A00",,,yesno,,,-
 r,,SolCollVolumeSensorPowerLastMinut,SolarCollectorVolumeSensorPowerLastMinute,,,,"9B00",,,UIN,,l/h,-
+r,,OutputMA,Multi purpose output,,,,"1C00",,,onoff,,,State of multi purpose output
 # ##### SOLAR: Configuration #####,,,,,,,,,,,,,
 r;w,,SolEnableDiffTemp1,SolEnableDiffTemp1,,,,"6300",,,temp0,,,"Temperature difference between collector 1 and tank, which is necassary to start solar pump"
 r;w,,DeltaTOnFlexDtController,DeltaTOnFlexDtController,,,,"A600",,,calibration0,,,"Temperature difference between flexible deltaT sensors, which is necassary to start solar pump"

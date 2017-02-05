@@ -28,6 +28,7 @@ r,,SolCollPumpED2,KOL2-P PWM,,,,"6708",,,percent0,,,Percantage of power COL2 pum
 r,,TeleSwitch,TeleSwitch,,,,"0A00",,,onoff,,,State of the Teleswitch
 r,,HasSolCollVolumeSensor,Volumenstrommeßteil erkannt,,,,"9A00",,,yesno,,,-
 r,,SolCollVolumeSensorPowerLastMinut,Gemessener Volumenstrom der letzten Minute,,,,"9B00",,,UIN,,l/h,-
+r,,OutputMA,Multifunktionsausgang MA,,,,"1C00",,,onoff,,,Status Multifunktionsausgang
 # ##### SOLAR: Konfiguration #####,,,,,,,,,,,,,
 r;w,,SolEnableDiffTemp1,Einschaltdifferenz 1,,,,"6300",,,temp0,,,Temperaturdifferenz zwischen KOL1 und Speicher unten ab der die Kollektorpumpe gestartet wird
 r;w,,DeltaTOnFlexDtController,Einschaltdifferenz TD1/TD2,,,,"A600",,,calibration0,,,Temperaturdifferenz zwischen TD1 und TD2 ab der der Ausgang MA angesteuert wird
