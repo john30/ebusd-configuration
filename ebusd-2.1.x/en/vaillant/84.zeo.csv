@@ -109,9 +109,9 @@ r,,Ymax,Ymax,,,,"FC00",,,UCH,,,PI-Regelung: Ymax
 r,,BandPress,P_Band,,,,"FD00",,,temp,,,PI-Regelung: Xp
 r,,FillDearatePrimCircuit,FillDearatePrimCircuit,,,,"FE00",,,UCH,,,
 # ##### ZEO: Timers #####,,,,,,,,,,,,,
-r,,t1,t1,,,,"6D00",,,ULG,,,verbleibende Zeit mit Kleinstlast in s
-r,,t2,t2,,,,"6E00",,,ULG,,,verbleibende Zeit mit mittlerer Leistung in s
-r,,t3,t3,,,,"6F00",,,ULG,,,verbleibende Zeit bis Umschaltung in Direktheizbetrieb in s
+r,,timer1,t1,,,,"6D00",,,ULG,,,verbleibende Zeit mit Kleinstlast in s
+r,,timer2,t2,,,,"6E00",,,ULG,,,verbleibende Zeit mit mittlerer Leistung in s
+r,,timer3,t3,,,,"6F00",,,ULG,,,verbleibende Zeit bis Umschaltung in Direktheizbetrieb in s
 r,,ZeitgliedAusgleichszeit1,ZeitgliedAusgleichszeit1,,,,"7500",,,ULG,,,in Sekunden
 r,,ZeitgliedAusgleichszeit2,ZeitgliedAusgleichszeit2,,,,"7600",,,ULG,,,in Sekunden
 r;ws,,ZeitgliedMaxLaufzeit,ZeitgliedMaxLaufzeit,,,,"7E00",,,ULG,,,des Primärkreisumschalters in Sekunden
