@@ -13,7 +13,7 @@ r,,HwcTemp,d.03 WW Vorlaufsolltemp,,,,"1600",,,tempsensor,,,Vorlauftemperatur be
 r,,StorageTemp,d.04 Speicheristtemp,,,,"1700",,,tempsensor,,,Aktuelle Temperatur des Warmstartspeichers (bei Kombigeräten) oder aktuelle Speichertemperatur bei (VC Geräten),,,
 r,,FlowTempDesired,d.05 Vorlaufsolltemperatur,,,,"3900",,,temp,,,Vorlaufsolltemperatur oder Rücklaufsolltemperatur (wenn Rücklaufregelung aktiviert wurde). Der Maximalwert wird über d.71 und einem eBUS Regler begrenzt.,,,
 r,,StorageTempDesired,d.07 Speichersolltemp,,,,"0400",,,temp,,,VCW: Solltemperatur des WarmstartspeichersVC: Solltemperatur des externen Speichers,,,
-#r,,ExtFlowTempDesiredMin,d.09 Min. ext. Vorlaufsollwert,,,,"6E04",,,temp,,,minimum out of Kl.7 and eBus flow setpoint,,,
+r,,ExtFlowTempDesiredMin,d.09 Min. ext. Vorlaufsollwert,,,,"F304",,,temp,,,minimum out of Kl.7 and eBus flow setpoint,,,
 r,,WP,d.10 Wasserpumpe,,,,"4400",,,onoff,,,Interne Heizungspumpe,,,
 r,,extWP,d.11 ext. Heizungspumpe,,,,"3F00",,,onoff,,,Externe Heizungspumpe,,,
 r,,Storageloadpump,d.12 Speicherladepumpe,,,,"9E00",,,percent0,,,Ladepumpenanforderung,,,
@@ -57,7 +57,7 @@ r,,HwcImpellorSwitch,Brauchwasserzapfung,,,,"5700",,,yesno,,,WW Zapfung,,,
 r,,WarmstartDemand,Warmstartanforderung,,,,"3A04",,,yesno,,,Warmstartaktivierung,,,
 r,,BoilerType,BoilerType,,,,"5E00",,,UCH,,,Boiler typ of the bmu,,,
 r,,ParamToken,ParamToken,,,,"6000",,,UCH,,,token for parameter managment,,,
-r,,expertlevel_ReturnTemp,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor,,,
+r,,ReturnTempExternal,Rücklauftemperatur,,,,"6B00",,,tempsensor,,,Externer Rücklauftemperatursensor,,,
 r,,FloorHeatingContact,Anlegethermostat,,,,"7000",,,onoff,,,Eingang Anlegethermostat,,,
 r,,Templimiter,Temperaturbegrenzer,,,,"7700",,,UCH,240=off;15=on,,Rückmeldung des Temperaturbegrenzer Signals,,,
 r,,EbusVoltage,eBUS Spannung,,,,"7F00",,,onoff,,,Rückmeldung der eBUS Spannung,,,
@@ -81,7 +81,7 @@ r,,TimerInputHc,Eingang Schaltuhr,,,,"DE00",,,onoff,,,timer input (block heatdem
 r,,FanMinSpeedOperation,Min. Lüfterdrehzahl,,,,"DF00",,,UIN,,1/min,Lüfter Minimaldrehzahl,,,
 r,,FanMaxSpeedOperation,Max. Lüfterdrehzahl,,,,"E000",,,UIN,,1/min,Lüfter Maximaldrehzahl,,,
 r,,ExternGasvalve,Ext. Gasventil,,,,"E400",,,onoff,,,Externes Magnetventil,,,
-r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,btime;bdate,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
+r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,VTI;HDA,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 r,,HwcSwitch,Wasserschalter,,,,"F303",,,onoff,,,WW aus/ein,,,
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI,,,
@@ -107,11 +107,20 @@ r,,HcHours,d.80 Hz. Betriebsstunden,,,,"2800",,,hoursum2,,,Betriebsstunden im He
 r,,HwcHours,d.81 Betriebsstunden WW,,,,"2200",,,hoursum2,,,Betriebsstunden Brauchwasser,,,
 r,,HcStarts,d.82 Schaltspiele Heizbetrieb,,,,"2900",,,UIN,-100,,Schaltspiele Heizbetrieb,,,
 r,,HwcStarts,d.83 Schaltspiele BW Betrieb,,,,"2300",,,UIN,-100,,Schaltspiele WW Betrieb,,,
-#r;wi,,HoursTillService,d.84 Stunden bis Wartung,,,,"2004",,,hoursum2,,,Wartungsintervall:Anzahl der Stunden bis zur nächsten Wartung,,,
-#r;wi,,AntiCondensValue,d.85 minimale Leistung,,,,"7704",,,UCH,,kW / %,increase of minimum power
+r;wi,,HoursTillService,d.84 Stunden bis Wartung,,,,"AC00",,,hoursum2,,,Wartungsintervall:Anzahl der Stunden bis zur nächsten Wartung,,,
+r;wi,,AntiCondensValue,d.85 minimale Leistung,,,,"EC00",,,UCH,,kW / %,Anhebung der minimalen Leistung
 r;ws,,DSNOffset,d.93 Gerätekennung,,,,"3004",,,UCH,,,Gerätekennung (DSN),,,
+#r;wi,,ClearErrorHistory,d.94 Fehlerhistorie löschen,,,,"0000",,,yesno,,,Fehler Liste löschen
+#r,,SoftwareVersion,d.95 Software Version,,,,"0000",,,HEX:8,,,Software Version
 r;wi,,SetFactoryValues,d.96 Werkseinstellungen,,,,"6804",,,yesno,,,Werkseinstellungen,,,
-r,,CodingResistor,d.98 SD_CodingResistor,,,,"9200",,,HEX:3,,,boiler identification resistor
+r,,CodingResistor,d.98 SD_CodingResistor,,,,"9200",,,HEX:3,,,Therme Identifikation Widerstand
+#r;wi,,ELGA,d.121 ELGA Teillastanfettung,,,,"0000",,,UCH,0=normal;1=angefettet;2=abgemagert,,ELGA Teillastanfettung
+#r;wi,,PressureLevel,d.122 Druckniveau,,,,"0000",,,mbar,,,Druckniveau
+#r,,LastStorageDuration,d.123 Dauer der letzen Speicherladung,,,,"0000",,,minutes0,,,Dauer der letzen Speicherladung
+#r;w,,Eco-Modus,d.124 Eco-Modus Speicherladung,,,,"0000",,,onoff,,,Eco-Modus Speicherladung
+r,,StorageExitTemp,d.125 Speicherauslauftemp. Istwert,,,,"5000",,,tempsensor,,,Speicherauslauftemperatur Istwert
+r,,StorageDelay,d.126 Verzögerung der Speicherladung,,,,"0900",,,minutes0,,,Verzögerung der Speicherladung
+#r;wi,,StateAnodeConnection,d.127 Status Fremdstromanode,,,,"0000",,,UCH,0=offen;1=angeschlossen,,,Status Fremdstromanodeanschluß
 # ##### Wartungsdaten #####,,,,,,,,,,,,,,,,
 r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,temp0,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54),,,
 r,,TempDiffBlock,TempDiffBlock,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures,,,
