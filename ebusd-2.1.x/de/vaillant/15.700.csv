@@ -157,8 +157,8 @@ r;w,,z2RoomZoneMapping,Raumregler Zuordnung Zone 2,,,,1300,,,zmapping,,,configur
 r;w,,z2ActualRoomTempDesired,Raumsolltemperatur Zone 2,,,,1400,,,tempv,,,current room setpoint considering all basic conditions passed to the control algorithms
 #r;w,,z2Unknown15Temp,(in FlüsterBetrieb 24 sonst 99 - max.Lüfterstufe?) Temperatur Zone 2,,,,1500,,,tempv,,,unknown value for zone 2
 r;w,,z2Shortname,Kurzbezeichnung Zone 2,,,,1600,,,shortname,,,short name of zone 2
-r;w,,z2Name1,Bezeichnung Zone 1 Teil 1,,,,1700,,,zname,,,name of zone 1
-r;w,,z2Name2,Bezeichnung Zone 1 Teil 2,,,,1800,,,zname,,,name of zone 1
+r;w,,z2Name1,Bezeichnung Zone 2 Teil 1,,,,1700,,,zname,,,name of zone 2
+r;w,,z2Name2,Bezeichnung Zone 2 Teil 2,,,,1800,,,zname,,,name of zone 2
 ,,,,,,,,,,,,,
 # ##### Zeitprogramme #####,,,,,,,,,,,,,
 # Lüftung,,,,,,,,,,,,,
