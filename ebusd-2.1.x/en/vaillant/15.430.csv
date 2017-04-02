@@ -28,7 +28,9 @@ r;w,,HolidayEndPeriod,HolidayEndPeriod,,,,"1200",,,date,,,end date of holidays
 r;w,,HwcOPMode,DHW_OPMode,,,,"4200",,,UCH,0=off;1=manual;2=auto,,operation mode of the domestic hot water circuit
 r;w,,HwcTempDesired,DHW_DesiredTemp,,,,"4400",,,temp1,,,setpoint of domestic hot water circuit
 r,,HwcQuickVetoTemp,DHW_QuickVetoTemp,,,,"4500",,,temp1,,,manual override setpoint for the domestic hot water circuit
+[SW>=215]w,,HwcQuickVetoTemp,DHW_QuickVetoTemp,,,,"4500",,,temp1,,,manual override setpoint for the domestic hot water circuit
 r,,HwcQuickVetoActive,DHW_QuickVetoActive,,,,"4300",,,yesno,,,manual override of the domestic hot water circuit enabled
+[SW>=215]w,,HwcQuickVetoActive,DHW_QuickVetoActive,,,,"4300",,,yesno,,,manual override of the domestic hot water circuit enabled
 r;w,,HwcManualOPTempDesired,DHW_ManualOPSetpoint,,,,"4C00",,,temp1,,,setpoint of domestic hot water circuit in manual operation mode
 r;w,,SummerWinterTimeAdjust,SummerWinterTimeAdjust,,,,"5300",,,onoff,,,enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON)
 [SW>=125]r,,DisplayedHwcStorageTemp,DisplayedDHWTankTemperature,,,,"9E00",,,temp1,,,display of the storage's temperature in C4 (also in case of an SP1error)
