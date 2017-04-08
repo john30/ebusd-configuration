@@ -134,8 +134,8 @@ r;w,,z1RoomZoneMapping,Raumregler Zuordnung Zone 1,,,,1300,,,zmapping,,,configur
 r;w,,z1ActualRoomTempDesired,Raumsolltemperatur Zone 1,,,,1400,,,tempv,,,current room setpoint considering all basic conditions passed to the control algorithms
 #r;w,,z1Unknown15Temp,(in FlüsterBetrieb 24 sonst 99 - max.Lüfterstufe?) Temperatur Zone 1,,,,1500,,,tempv,,,unknown value for zone 1
 r;w,,z1Shortname,Kurzbezeichnung Zone 1,,,,1600,,,shortname,,,short name of zone 1
-r;w,,z1Name1,Bezeichnung Zone 1 Teil 1,,,,1700,,,zname,,,name of zone 1
-r;w,,z1Name2,Bezeichnung Zone 1 Teil 2,,,,1800,,,zname,,,name of zone 1
+r;w,,z1Name1,Zone 1 label (first part),,,,1700,,,zname,,,name of zone 1
+r;w,,z1Name2,Zone 1 label (second part),,,,1800,,,zname,,,name of zone 1
 ,,,,,,,,,,,,,
 # ##### Zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
@@ -157,8 +157,8 @@ r;w,,z2RoomZoneMapping,Raumregler Zuordnung Zone 2,,,,1300,,,zmapping,,,configur
 r;w,,z2ActualRoomTempDesired,Raumsolltemperatur Zone 2,,,,1400,,,tempv,,,current room setpoint considering all basic conditions passed to the control algorithms
 #r;w,,z2Unknown15Temp,(in FlüsterBetrieb 24 sonst 99 - max.Lüfterstufe?) Temperatur Zone 2,,,,1500,,,tempv,,,unknown value for zone 2
 r;w,,z2Shortname,Kurzbezeichnung Zone 2,,,,1600,,,shortname,,,short name of zone 2
-r;w,,z2Name1,Bezeichnung Zone 1 Teil 1,,,,1700,,,zname,,,name of zone 1
-r;w,,z2Name2,Bezeichnung Zone 1 Teil 2,,,,1800,,,zname,,,name of zone 1
+r;w,,z2Name1,Zone 2 label (first part),,,,1700,,,zname,,,name of zone 2
+r;w,,z2Name2,Zone 2 label (second part),,,,1800,,,zname,,,name of zone 2
 ,,,,,,,,,,,,,
 # ##### Zeitprogramme #####,,,,,,,,,,,,,
 # Lüftung,,,,,,,,,,,,,
