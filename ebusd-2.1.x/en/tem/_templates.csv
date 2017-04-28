@@ -1,0 +1,17 @@
+# template name,type / templates,divider / values,unit,comment
+#TEM/Ochsner types:,,,,
+paramid,TEM_P,,,parameter ID
+type,UCH,,,data type
+unit,UCH,,,unit
+command,paramid;type;unit,,,command
+maxs:max,SIN,,,max value
+mins:min,SIN,,,min value
+param,command;maxs;mins,,,Parameter
+tempt:temp,SIN,10,°C,temperature
+temp4:temp,SIN,,°C,temperature
+temp8:temp,D2B,,°C,temperature
+regulationmode:mode,UIN,0=fix value;1=TA;2=room temp;3=outside temp;4=room and outside temp,,
+hcmode:mode,UIN,0=frozen;1=heating;2=summer;3=winter;4=off,,
+sec,UIN,,,seconds
+min,UIN,,,minutes
+onoff,UIN,0=off;1=on,,

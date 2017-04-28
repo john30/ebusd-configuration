@@ -1,0 +1,101 @@
+#type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+*r,boiler,,group 00,,15,0621,00,,,param,,,
+r1,,outsideTemp,00-000,,,,800040,,,temp8,,,11-2
+r1,,roomTemp,00-001,,,,810040,,,tempt,,,13-2
+r1,,roomTemp2,00-001,,,,811040,,,tempt,,,13-2
+r1,,roomTemp3,00-001,,,,812040,,,tempt,,,13-2
+r1,,hwcTemp,00-004,,,,840040,,,tempt,,,13-2
+r1,,startTemp,00-007,,,,870040,,,tempt,,,13-2
+r1,,returnTemp,00-008,,,,880040,,,tempt,,,13-2
+r1,,exchangeTemp,00-015,,,,8f0040,,,tempt,,,13-2
+r1,,circuitPress,00-023,,,,970040,,,press,,,13-24
+r1,,fanSpeed,00-041,,,,a90040,,,UIN,10,rpm,4-0
+r1,,hwcFlowDebit,00-067,,,,c30040,,,UIN,10,l,0-0
+,,,,,,,,,,,,,
+*r,order,,group 01,,15,0621,01,,,param,,,
+*w,heating_part,,group 01,,10,0623,01,,,,,,
+r1;w,,TempDesired,01-001,,,,810040,,,tempt,,,13-2
+r1;w,,TempDesired2,01-001,,,,811040,,,tempt,,,13-2
+r1;w,,TempDesired3,01-001,,,,812040,,,tempt,,,13-2
+r1;w,,hwcTempDesired,01-004,,,,840040,,,temp4,,,1-2
+r1;w,,heatingTempSelected,01-007,,,,870040,,,temp4,,,1-2
+,,,,,,,,,,,,,
+*r,usage,,group 02,,15,0621,02,,,param,,,
+r1,,boiler_cycle,02-080,,,,d00040,,,UIN,,,4-0
+r1,,boiler_heating_time,02-086,,,,d60040,,,UIN,,,4-0
+r1,,boiler_hot_water_time,02-087,,,,d70040,,,UIN,,,4-0
+r1,,boiler_time,02-089,,,,d90040,,,min,,,4-12
+,,,,,,,,,,,,,
+*r,boiler,,group 03,,15,0621,03,,,param,,,
+r1,,antifrozen_zone,03-000,,,,800040,,,temp8,,,11-2
+r1,,roomTempCompensation,03-007,,,,870040,,,temp4,,,0-0
+r1,,roomTempCompensation2,03-007,,,,871040,,,temp4,,,0-0
+r1,,roomTempCompensation3,03-007,,,,872040,,,temp4,,,0-0
+r1,,courbe_regulation,03-010,,,,8a0040,,,UIN,,,0-0
+r1,,courbe_regulation2,03-010,,,,8a1040,,,UIN,,,0-0
+r1,,courbe_regulation3,03-010,,,,8a2040,,,UIN,,,0-0
+r1,,parallelTemp,03-018,,,,920040,,,temp4,,,1-2
+r1,,parallelTemp2,03-018,,,,921040,,,temp4,,,1-2
+r1,,parallelTemp3,03-018,,,,922040,,,temp4,,,1-2
+r1,,fixTemp,03-019,,,,930040,,,temp4,,,1-2
+r1,,fixTemp2,03-019,,,,931040,,,temp4,,,1-2
+r1,,fixTemp3,03-019,,,,932040,,,temp4,,,1-2
+r1,,regulationMode,03-032,,,,a00040,,,regulationmode,,,0-0
+r1,,regulationMode2,03-032,,,,a01040,,,regulationmode,,,0-0
+r1,,regulationMode3,03-032,,,,a02040,,,regulationmode,,,0-0
+r1,,roomTempComfort,03-051,,,,b30040,,,temp8,,,11-2
+r1,,roomTempComfort2,03-051,,,,b31040,,,temp8,,,11-2
+r1,,roomTempComfort3,03-051,,,,b32040,,,temp8,,,11-2
+r1,,roomTempReduced,03-053,,,,b50040,,,temp8,,,11-2
+r1,,roomTempReduced2,03-053,,,,b51040,,,temp8,,,11-2
+r1,,roomTempReduced3,03-053,,,,b52040,,,temp8,,,11-2
+,,,,,,,,,,,,,
+*r,boiler,,group 04,,15,0621,04,,,param,,,
+*w,boiler,,group 04,,10,0623,04,,,,,,
+r1;w,,mode,04-007,,,,870040,,,hcmode,,,9-0
+r1,,boiler_mode_type,04-006,,,,860040,,,UIN,0=instant mixed;1=accu ext with sonde NTC;2=accu ext with thermostat;3=miniaccu;4=accu without stratification;5=accu standard,,0-0
+,,,,,,,,,,,,,
+*r,hot_water,,group 05,,15,0621,05,,,param,,,
+r1,,comfortMode,05-016,,,,900040,,,UIN,0=deactivate;1=temporary;2=always active;3=eco,,0-0
+r1,,hwcDepartureDelay,05-017,,,,910040,,,sec,,,0-14
+r1,,anticyclage,05-018,,,,920040,,,min,,,0-12
+r1,,hwcHeatDelay,05-019,,,,930040,,,min,,,0-12
+r1,,celectic,05-020,,,,940040,,,onoff,,,0-0
+r1,,reglage_T_reduite_accu,05-037,,,,a50040,,,temp4,,,1-2
+,,,,,,,,,,,,,
+*r,boiler,,group 07,,15,0621,07,,,param,,,
+r1,,FlowTempMin,07-002,,,,820040,,,temp4,,,1-2
+r1,,FlowTempMin2,07-002,,,,821040,,,temp4,,,1-2
+r1,,FlowTempMin3,07-002,,,,822040,,,temp4,,,1-2
+r1,,FlowTempType,07-004,,,,840040,type,,UIN,0=low;1=high,,0-0
+r1,,FlowTempType2,07-004,,,,841040,type,,UIN,0=low;1=high,,0-0
+r1,,FlowTempType3,07-004,,,,842040,type,,UIN,0=low;1=high,,0-0
+r1,,FlowTempMax,07-008,,,,880040,,,temp4,,,1-2
+r1,,FlowTempMax2,07-008,,,,881040,,,temp4,,,1-2
+r1,,FlowTempMax3,07-008,,,,882040,,,temp4,,,1-2
+,,,,,,,,,,,,,
+*r,boiler,,group 08,,15,0621,08,,,param,,,
+r1,,hwcModulation,08-052,,,,b40040,,,UIN,0=protection against limescale;1=setpoint +4°C,,0-0
+r1,,minDelta,08-068,,,,c40040,,,temp4,,,1-2
+,,,,,,,,,,,,,
+*r,heating_part,,group 09,,15,0621,09,,,param,,,
+*w,heating_part,,group 09,,10,0623,09,,,,,,
+r1,,post_heating_circulation,09-000,,,,800040,,,min,,,0-12
+r1,,PumpMode,09-018,,,,920040,,,UIN,0=Low speed;1=High speed;2=Modulate,,0-0
+r1,,deltaT_module,09-018,,,,930040,,,temp4,,,0-0
+r1,,anticyclage,09-023,,,,970040,,,min,,,0-12
+r1,,auto_basic_period,09-033,,,,a10040,,,min,,,3-12
+r1,,power_ignition,09-043,,,,ab0040,,,percent,,,0-8
+r1,,hcRpmMin,09-051,,,,b30040,,,percent,,,0-8
+r1,,hwcRpmMax,09-052,,,,b40040,,,percent,,,0-8
+r1,,hcRpmMax,09-053,,,,b50040,,,percent,,,0-8
+r1,,PowerMax,09-056,,,,b80040,,,percent,,,0-8
+r1,,month_next_maintenance,09-094,,,,de0040,,,UIN,,month,0-0
+r1,,ignition_waiting_period_heating,09-095,,,,df0040,,,UIN,0=disabled;1=10s;2=90s;3=210s,,0-0
+r1;w,,sra,09-096,,,,e00040,,,onoff,,,0-0
+,,,,,,,,,,,,,
+*r,heating_part,,group 10,,15,0621,0a,,,param,,,
+r1,,dispo_revelation_press_ch,10-044,,,,ac0040,,,UIN,0=sonde T seulement;1=pressostat de minimum;2=capteur de pression,,0-0
+,,,,,,,,,,,,,
+#To be test not working for me,,,,,,,,,,,,,
+#r2,boiler,mode_,group 05,,15,1011,05,mode,,UCH,0=off;1=eco;2=confort;64=FlammeBallon,,#NV
