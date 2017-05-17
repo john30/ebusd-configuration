@@ -1,6 +1,8 @@
 ebusd-configuration
 ===================
 
+[![Join the chat at https://gitter.im/john30/ebusd-configuration](https://badges.gitter.im/john30/ebusd-configuration.svg)](https://gitter.im/john30/ebusd-configuration?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository serves vendor specific configuration files for ebusd:
 
 > https://github.com/john30/ebusd
