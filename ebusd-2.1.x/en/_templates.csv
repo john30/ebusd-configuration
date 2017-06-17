@@ -8,7 +8,7 @@ fueltype,UCH,0=any;1=oil;2=gas,,fuel type
 countertype,UCH,0=starts;1=hours1;2=hours2;3=hours3;4=hours4;5=modulating;16=fuelquantity,,type of meter
 opdatacyclic,UCH,0x55=stop;0xaa=start,,cyclic transmission
 opdatatransfer,UCH,0=stop;1=cyclic;2=event;3=single;3=cyclicandevent,,data transmission
-opdataheat,UCH,0x00=off;0x01=none;0x55=hotwater;0xaa=heating;0xcc=emissioncheck;0xdd=qualitycontrol;0xee=controlstop;0x66=hotwaterincontrolstop;0xbb=hotwaterinheating;0xee=controlstopinstage,,heat request
+opdataheat,UCH,0x00=off;0x01=none;0x55=hotwater;0xaa=heating;0xcc=emissioncheck;0xdd=qualitycontrol;0xee=controlstop;0x66=hotwaterincontrolstop;0xbb=hotwaterinheating;0x44=controlstopinstage,,heat request
 opdataaction,UCH,0x00=none;0x01=stoppump;0x02=startpump;0x03=stopconsumer;0x04=startconsumer,,
 desiredtemp,UCH,,°C,desired temperature
 outsidetemp,SCH,,°C,outside temperature
