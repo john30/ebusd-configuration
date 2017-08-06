@@ -1,0 +1,17 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,VR_70,VR 70,109 109,,,,,,,,,,
+*r,,,,,,"B523",,,,,,,,,,
+*w,,,,,,"B523",,,,,,,,,,
+
+#r,,EX_VRCDataVR70,,,52,b523,03,,,temp;temp;temp;temp;temp;temp;HEX:3
+#r,,SensorData,,,,"B523",03,TempWWoben,,temp,,,,TempWWunten,,temp,,,,TempHZunten,,temp,,,,Systemvorlauf,,temp,,,,TempHZoben,,temp,,,,VorlaufHK2,,temp,,,,ignore,,HEX:3,,,
+
+w,,SetActorState,,,,,01,R1,,UCH,0=off;20=on,,,R2,,UCH,0=off;20=on,,,R3,,UCH,0=off;20=on,,,R4,,UCH,0=off;20=on,,,R5,,UCH,0=off;20=on,,,R6,,UCH,0=off;20=on,,,S7,,UCH,0=off;20=on,,
+
+#w,,McFlowTempDesired,,,,,02,McNumber,m,UCH,,,,FTStatus,m,UCH,0=off;1=on,,,FTDesired,m,temp1,,,,MixerStatus,s,UCH,0=off;1=on,,,MixerMovement,s,percents,,,
+w,,Mc1FlowTempDesired,,,,,0200,FTStatus,m,UCH,0=off;1=on,,,FTDesired,m,temp1,,,,MixerStatus,s,UCH,0=off;1=on,,,MixerMovement,s,percents,,,
+w,,Mc2FlowTempDesired,,,,,0201,FTStatus,m,UCH,0=off;1=on,,,FTDesired,m,temp1,,,,MixerStatus,s,UCH,0=off;1=on,,,MixerMovement,s,percents,,,
+
+r,,SensorData,,,,,03,S1,,temp,,,,S2,,temp,,,,S3,,temp,,,,S4,,temp,,,,S5,,temp,,,,S6,,temp,,,,ignore,,HEX:3,,,
+
+!include,errors.inc,,,,,,,,,,,,
