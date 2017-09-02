@@ -90,7 +90,7 @@ r,,B51000M10HwcFlowSetMon,B51000M10DHWFlowSetMon,,,,"6600",,,UCH,,,flow setpoint
 r,,B51000M12DisableBitsMon,B51000M12DisableBitsMon,,,,"6700",,,UCH,,,"bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (left bit 0, right bit 7)"
 r,,B51000M14Monitor,B51000M14Monitor,,,,"6800",,,UCH,,,"bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (left bit 0, right bit 7; relevant is bit 0: remote control of CH pump)"
 r,,TestVarActivateFunction,TestVarActivateFunction,,,,"0B00",,,UCH,,,0=All SF_OFF11/2=1DayHolON/OFF13/4=1DayBankON/OFF15/6=1DayHolON/OFF27/8=1DayBankON/OFF29/10=1xDHWLoadON/OFF11/12=QVetoON/OFF113/14=QVetoON/OFF215/16=PartyON/OFF117/18=PartyON/OFF219/20=Ventil.ON/OFF121/22=Ventil.ON/OFF223/24=SystemOff_ON/OFF
-r,,HwcOPMode,DHW_OPMode,,,,"4200",,,UCH,,,"operation mode of the domestic hot water circuit set implicitly (0 = off, 1 = on, 2 = auto, 3 = auto sunday, 4 = party, 6 = one time tank loading, 7 = holiday)"
+r,,HwcOPMode,DHW_OPMode,,,,"4200",,,UCH,0=off;1=on;2=auto;3=autosunday;4=party;5=load;7=holiday,,"operation mode of the domestic hot water circuit set implicitly"
 r,,BMUB51101HwcState,BMUB51101_DHWState,,,,"7500",,,UCH,,,flame is on because of either tapping or tank loading
 r,,B51000TempDesiredLoadingPump,B51000SetPointLoadingPump,,,,"7B00",,,D1C,,,loading pump's setpoint sent via B5 10 00 to the BMU
 r,,BMUB51101BoilerFlowTemp,BMUB51101_BoilerFlowTemp,,,,"7700",,,temp1,,,current flow temperature inside the BMU
