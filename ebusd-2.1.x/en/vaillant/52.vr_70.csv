@@ -1,0 +1,9 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment,field5,part (m/s),datatypes/templates,divider/values,unit,comment,field6,part (m/s),datatypes/templates,divider/values,unit,comment,field7,part (m/s),datatypes/templates,divider/values,unit,comment
+#,VR_70,VR 70,109 109,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*r,,,,,,"B523",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*w,,,,,,"B523",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+w,,SetActorState,,,,,"01",R1,,UCH,0=off;20=on,,,R2,,UCH,0=off;20=on,,,R3,,UCH,0=off;20=on,,,R4,,UCH,0=off;20=on,,,R5,,UCH,0=off;20=on,,,R6,,UCH,0=off;20=on,,,S7,,UCH,0=off;20=on,,
+w,,Mc1FlowTempDesired,,,,,"0200",FTStatus,,onoff,,,,FTDesired,,temp1,,,,MixerStatus,s,onoff,,,,MixerMovement,s,percents,,,,,,,,,,,,,,,,,,,,,
+w,,Mc2FlowTempDesired,,,,,"0201",FTStatus,,onoff,,,,FTDesired,,temp1,,,,MixerStatus,s,onoff,,,,MixerMovement,s,percents,,,,,,,,,,,,,,,,,,,,,
+r,,SensorData,,,,,"03",S1,,temp,,,,S2,,temp,,,,S3,,temp,,,,S4,,temp,,,,S5,,temp,,,,S6,,temp,,,,ignore,,HEX:3,,,
+!include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
