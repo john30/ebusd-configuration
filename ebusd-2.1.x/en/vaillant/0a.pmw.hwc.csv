@@ -70,3 +70,4 @@ r;ws,,SteBusCheckFailedCounter,SteBusCheckFailedCounter,,,,"4200",,,UIN,,,eBus F
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
+!include,quick.inc,,,,,,,,,,,,
