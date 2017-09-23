@@ -1,40 +1,40 @@
 # template name,type / templates,divider / values,unit,comment
-temps:temp,SCH,,°C,temperature
-temps2:temp,SIN,,°C,temperature
-tempv:temp,EXP,,°C,temperature
+temps,SCH,,°C,temperature
+temps2,SIN,,°C,temperature
+tempv,EXP,,°C,temperature
 press,FLT,,bar,pressure
-pressv:press,EXP,,bar,pressure
+pressv,EXP,,bar,pressure
 date,HDA:3,,,date
 day,BDY,,,weekday
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-Su;3=Mo-Su,,days
 days,UCH,,,days
 time,VTI,,,time
-time2:time,VTM,,,time
+time2,VTM,,,time
 minutes,ULG,120,min,minutes
-minutes0:minutes,UCH,,min,minutes
-minutes2:minutes,UIN,,min,minutes
+minutes0,UCH,,min,minutes
+minutes2,UIN,,min,minutes
 hoursum,ULG,,h,hours
-hoursum2:hoursum,UIN,,h,hours
+hoursum2,UIN,,h,hours
 hours,UCH,,h,hours
-hours1:hours,D1C,,h,hours
-hours12:hours,UCH,-12,h,hours
+hours1,D1C,,h,hours
+hours12,UCH,-12,h,hours
 hour,UCH,,h,hour
 seconds,ULG,2,s,seconds
-seconds0:seconds,UCH,,s,seconds
-seconds2:seconds,UIN,,s,seconds
-seconds4:seconds,ULG,,s,seconds
+seconds0,UCH,,s,seconds
+seconds2,UIN,,s,seconds
+seconds4,ULG,,s,seconds
 calibration,D2C,,K,
-calibration0:calibration,UCH,,K,
-calibration1:calibration,D1C,,K,
-calibrations:calibration,SCH,2,K,
-calibrationv:calibration,EXP,,K,
+calibration0,UCH,,K,
+calibration1,D1C,,K,
+calibrations,SCH,2,K,
+calibrationv,EXP,,K,
 integral,SIN,,°min,
-hcmode:mode,UCH,0=auto;1=off;2=heat;2=water,,boiler mode
-mcmode:mode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,mixer mode
-mctype:type,UCH,0=inactive;1=mixer;2=fixed;3=3;4=4,,mixer type
-mctype7:type,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
-hwcmode:mode,UCH,0=disabled;1=on;2=off;3=auto,,hot water mode
-hwcmode2:mode,UCH,0=off;1=on;2=auto;3=manual,,hot water mode
+hcmode,UCH,0=auto;1=off;2=heat;2=water,,boiler mode
+mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,mixer mode
+mctype,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
+mctype7,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
+hwcmode,UCH,0=disabled;1=on;2=off;3=auto,,hot water mode
+hwcmode2,UCH,0=off;1=on;2=auto;3=manual,,hot water mode
 mixer,UCH,0=off;1=open;2=close,,mixer State
 daynight,UCH,0=night;1=day;7=floorpaving,,day/night mode
 status,UCH,,,Status
@@ -46,8 +46,8 @@ tempsensor,temp;sensor,,,
 tempmirror,UIN,,,
 tempmirrorsensor,temp;tempmirror;sensor,,,
 presssensor,press;sensor,,,
-pressm:press,ULG,,mbar,pressure
-pressm2:press,UIN,,mbar,pressure
+pressm,ULG,,mbar,pressure
+pressm2,UIN,,mbar,pressure
 uin100,UIN,100,,
 curve,UIN,100,,heating curve
 phase1,BI0,0=missing;1=present,,phase 1 state
@@ -60,40 +60,39 @@ errors,error;error;error;error;error,,,
 errorhistory,status;time2;date;error,,,
 from,TTM,,,from
 to,TTM,,,to
-slot,from;to,,,slot from/to
-slot1,from:from1;to:to1,,,slot 1 from/to
-slot2,from:from2;to:to2,,,slot 2 from/to
-slot3,from:from3;to:to3,,,slot 3 from/to
+slot1,from;to,,,slot 1 from/to
+slot2,from;to,,,slot 2 from/to
+slot3,from;to,,,slot 3 from/to
 slot1-3,slot1;slot2;slot3,,,
 timer,slot1-3;daysel,,,
 backtype,UCH,0=not present;1=externalheat;2=externalwater;3=externalheatandwater;4=internalheatandwater,,
 backmode,UCH,0=no backup;1=withbackup;2=onlybackup,,
 power,UCH,,kW,
 energy,UIN,,kWh,
-energyr:energy,UIR,,kWh,
-energy4:energy,ULG,,kWh,
+energyr,UIR,,kWh,
+energy4,ULG,,kWh,
 cntstarts,ULG,,,start count
-cntstarts2:cntstarts,UIN,,,start count
+cntstarts2,UIN,,,start count
 pumppow,UCH,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,pump power
-pumpstate:state,UCH,0=off;1=on;2=overrun,,pump state
-dcfstate:state,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF receiver state
+pumpstate,UCH,0=off;1=on;2=overrun,,pump state
+dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF receiver state
 phaseok,UCH,0=error;7=ok,,phase state
 switchvalve,UCH,0=heat;1=water,,valve position
-switchvalve2:switchvalve,UCH,0=heat;50=both;100=water;254=standby,,valve position
+switchvalve2,UCH,0=heat;50=both;100=water;254=standby,,valve position
 hfrom,HDA:3,,,holiday period from
 hto,HDA:3,,,holiday period to
 holiday,hfrom;hfrom;hto;hto,,,holiday period 1 from; 2 from; 1 to; 2 to
-hpstatus:state,UCH,0=off;3=heat;6=standby;7=otshutdown;8=water,,heating state
+hpstatus,UCH,0=off;3=heat;6=standby;7=otshutdown;8=water,,heating state
 frequency,UIN,,Hz,frequency
 zonesel,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,selected zone
 sfmode,UCH,0=auto;1=ventilation;2=party;3=veto;6=load,,
 opmode,UIN,0=off;1=auto;2=day;3=night,,
 zmapping,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,
-hcname:name,STR:11,,,heat circuit name
-zname:name,STR:5,,,zone name
-shortname:name,STR:6,,,name
+hcname,STR:11,,,heat circuit name
+zname,STR:5,,,zone name
+shortname,STR:6,,,name
 phone,STR:9,,,phone number
-shortphone:phone,STR:6,,,phone number
+shortphone,STR:6,,,phone number
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,

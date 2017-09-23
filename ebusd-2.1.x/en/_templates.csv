@@ -13,18 +13,18 @@ opdataaction,UCH,0x00=none;0x01=stoppump;0x02=startpump;0x03=stopconsumer;0x04=s
 desiredtemp,UCH,,°C,desired temperature
 outsidetemp,SCH,,°C,outside temperature
 percent,D2C,,%,
-percent0:percent,UCH,,%,
-percent1:percent,D1C,,%,
-percent2:percent,D2B,,%,
-percents:percent,SCH,,%,
+percent0,UCH,,%,
+percent1,D1C,,%,
+percent2,D2B,,%,
+percents,SCH,,%,
 temp,D2C,,°C,temperature
-temp0:temp,UCH,,°C,temperature
-temp1:temp,D1C,,°C,temperature
-temp2:temp,D2B,,°C,temperature
+temp0,UCH,,°C,temperature
+temp1,D1C,,°C,temperature
+temp2,D2B,,°C,temperature
 press,D2B,,bar,pressure
-btime:time,BTI,,,time
-bdate:date,BDA,,,date
-bday:day,BDY,,,weekday
+btime,BTI,,,time
+bdate,BDA,,,date
+bday,BDY,,,weekday
 id,STR:5,,,device ID
 version,PIN,,,version
 skip,IGN:1,,,
