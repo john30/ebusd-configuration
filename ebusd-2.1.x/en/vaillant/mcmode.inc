@@ -2,12 +2,15 @@
 # MC: Operation mode,,,,,,,,,,,,,
 *r,,,,,,"B504",,,,,,,
 *w,,,,,,"B505",,,,,,,
-r,,DateTime,Date Time,,,,00,,,dcfstate;btime;bdate;temp2,,,
+r,,DateTime,Date time,,,,00,,,dcfstate;btime;bdate;temp2,,,
 r,,Mode,Operation mode,,,,01,,,temp0:tempdesired;mcmode;days:floorpavingdryingday;temp0:floorpavingdryingtemp;mcmode:teleswitchmode;mctype7;IGN;daynight,,,
 w,,SetTempDesired,Set desired temperature,,,,01,,,temp0,,,
 w,,SetMode,Set operation mode,,,,02,,,mcmode,,,
 w,,SetFloorPavingDryingDay,Set floor paving drying day,,,,03,,,days,,,
+w,,SetFloorPavingDryingTemp,Set floor paving drying temperature,,,,04,,,temp0,,,
 w,,SetType,Set type,,,,08,,,mctype,,,
+#r 2-7: timer
+#w 9: timer
 w,,SetTempDesiredLow,Set desired low temperature,,,,0a,,,temp0,,,
 w,,SetHeatingCurve,Set heating curve,,,,0b,,,curve,,,
 w,,SetShutdownTemp,Set outside shutdown temperature,,,,0c,,,temp0,,,
