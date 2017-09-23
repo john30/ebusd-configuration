@@ -7,7 +7,10 @@ r,,Mode,Betriebsart/Temperatur,,,,01,,,temp0:tempdesired;mcmode;days:floorpaving
 w,,SetTempDesired,Solltemperatur setzen,,,,01,,,temp0,,,
 w,,SetMode,Betriebsart setzen,,,,02,,,mcmode,,,
 w,,SetFloorPavingDryingDay,Estrichtrocknungstag setzen,,,,03,,,days,,,
+w,,SetFloorPavingDryingTemp,Estrichtrocknungstemperatur setzen,,,,04,,,temp0,,,
 w,,SetType,Kreis Typ setzen,,,,08,,,mctype,,,
+#r 2-7: timer
+#w 9: timer
 w,,SetTempDesiredLow,Absenksollwert setzen,,,,0a,,,temp0,,,
 w,,SetHeatingCurve,Heizkurve setzen,,,,0b,,,curve,,,
 w,,SetShutdownTemp,Aussentemp. Abschaltgrenze setzen,,,,0c,,,temp0,,,
