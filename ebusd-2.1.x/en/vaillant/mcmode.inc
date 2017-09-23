@@ -2,7 +2,7 @@
 # MC: Operation mode,,,,,,,,,,,,,
 *r,,,,,,"B504",,,,,,,
 *w,,,,,,"B505",,,,,,,
-r,,DateTime,Date Time,,,,00,,,dcfstate;btime;bdate;temp2,,,
+r,,DateTime,Date time,,,,00,,,dcfstate;btime;bdate;temp2,,,
 r,,Mode,Operation mode,,,,01,,,temp0:tempdesired;mcmode;days:floorpavingdryingday;temp0:floorpavingdryingtemp;mcmode:teleswitchmode;mctype7;IGN;daynight,,,
 w,,SetTempDesired,Set desired temperature,,,,01,,,temp0,,,
 w,,SetMode,Set operation mode,,,,02,,,mcmode,,,
