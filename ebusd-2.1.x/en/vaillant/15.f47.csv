@@ -81,7 +81,7 @@ r,,ASCDetected,ASCDetected,,,,"BB00",,,yesno,,,indicates that a VMS has been det
 r,,VF1,VF_1,,,,"7600",,,tempsensor,,,current external flow temperature and sensorstate
 r,,HydraulicMap,HydraulicMap,,,,"1800",,,UCH,,,"hydraulic map (0 = H1, 3 = H4, 11 = A1, 12 = A2, 14 = A5, 15 = S1, 16 = S3a, 17 = S3b)"
 r,,ActualRoomTempDesiredHc1,ActualRoomTempSetpointHC1,,,,"6300",,,temp,,,current room setpoint considering all basic conditions passed to the control algorithms
-r,,Hc2OPMode,HC2_OPMode,,,,"1B00",,,UCH,2=auto;3=on;4=night;5=summer,,operation mode of the second heating circuit
+r;w,,Hc2OPMode,HC2_OPMode,,,,"1B00",,,UCH,2=auto;3=on;4=night;5=summer,,operation mode of the second heating circuit
 r,,Hc2TempDesiredB50418,HC2_Desired_TempB50418,,,,"3200",,,temp1,,,current flow temperature setpoint of the second heating circuit
 r,,B51000M7OpModeMonitor,B51000M7OpModeMonitor,,,,"6500",,,UCH,,,"operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW)"
 r,,B51000M8HeatFlowSetMonitor,B51000M8HeatFlowSetMonitor,,,,"8D00",,,D1C,,,flow temperature setpoint sent via B5 10 00 to the BMU
