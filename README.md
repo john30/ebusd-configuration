@@ -15,8 +15,17 @@ provided here and you should definitely know what you're doing.
 Installation on up-to-date ebusd (2.0 or higher)
 ------------------------------------------------
 
-If you're on a Debian system, simply pick the [latest configuration release](https://github.com/john30/ebusd-configuration/releases) and install it in your preferred language.  
+If you're on a Debian system, simply pick the [latest configuration release](https://github.com/john30/ebusd-configuration/releases) and install it in your preferred language, or follow the hint below in order to get the most up-to-date files by checking out this repository.  
 For other OS's, the latest release also contains a tgz for easy copying to your /etc/ebusd directory.
+
+**Important hint:**
+In order to get the most up-to-date configuration files, simply checkout this repository and link the ebusd-2.1.x/de or ebusd-2.1.x/en folder to /etc/ebusd. On the command line you'd have to execute the following steps:
+
+```
+git clone https://github.com/john30/ebusd-configuration.git
+sudo mv /etc/ebusd /etc ebusd.old
+sudo ln -s $PWD/ebusd-configuration/ebusd-2.1.x/de /etc/ebusd
+```
 
 Starting with ebusd 2.0, the daemon is able to pick the right configuration files for your devices when started with the [--scanconfig](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options) parameter and when using CSV files from either the [ebusd-2.1.x/de](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.1.x/de) or the [ebusd-2.1.x/en](https://github.com/john30/ebusd-configuration/tree/master/ebusd-2.1.x/en) directory.
 
