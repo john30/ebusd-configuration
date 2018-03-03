@@ -23,7 +23,7 @@ In order to get the most up-to-date configuration files, simply checkout this re
 
 ```
 git clone https://github.com/john30/ebusd-configuration.git
-sudo mv /etc/ebusd /etc ebusd.old
+if [ -d /etc/ebusd ]; then sudo mv /etc/ebusd /etc/ebusd.old; fi
 sudo ln -s $PWD/ebusd-configuration/ebusd-2.1.x/de /etc/ebusd
 ```
 
