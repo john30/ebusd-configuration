@@ -17,7 +17,7 @@ r;w,,Hc1DayTemp,HC1_DaySetTemp,,,,"2700",,,temp1,,,day setpoint
 r;w,,Hc1NightTemp,HC1_NightSetTemp,,,,"3000",,,temp1,,,lowering temperature setpoint of the first heating circuit
 r,,Hc1QuickVetoTemp,HC1_QuickVetoTemp,,,,"3C00",,,temp1,,,manual override setpoint of the first heating circuit
 r;w,,Hc1HolidayRoomTemp,HC1_HolidayRoomSetTemp,,,,"4000",,,D1C,,,"4.5=frostprotect, room setpoint during holidays"
-r,,Hc1SFMode,HC1_SFMode,,,,"5D00",,,UCH,0=none;1=party;2=onedaybankholiday;3=onedayholiday;4=holiday;5=bankholiday;6=quickveto;7=onetimeventilation;8=onetimewater,,activated special function of first heating circuit
+r;w,,Hc1SFMode,HC1_SFMode,,,,"5D00",,,UCH,0=none;1=party;2=onedaybankholiday;3=onedayholiday;4=holiday;5=bankholiday;6=quickveto;7=onetimeventilation;8=onetimewater,,activated special function of first heating circuit
 r;w,,Hc1HolidayStartPeriod,HC1HolidayStartPeriod,,,,"1100",,,date,,,first heating circuit's start date of holidays
 r;w,,Hc1HolidayEndPeriod,HC1HolidayEndPeriod,,,,"1200",,,date,,,first heating circuit's end date of holidays
 r;w,,Hc1BankHolidayStartPeriod,HC1BankHolidayStartPeriod,,,,"2100",,,date,,,first heating circuit's start date of bank holidays
@@ -26,7 +26,7 @@ r;w,,Hc2HolidayStartPeriod,HC2HolidayStartPeriod,,,,"2300",,,date,,,second heati
 r;w,,Hc2HolidayEndPeriod,HC2HolidayEndPeriod,,,,"2400",,,date,,,second heating circuit's end date of holidays
 r;w,,Hc2BankHolidayStartPeriod,HC2BankHolidayStartPeriod,,,,"2500",,,date,,,second heating circuit's start date of bank holidays
 r;w,,Hc2BankHolidayEndPeriod,HC2BankHolidayEndPeriod,,,,"2600",,,date,,,second heating circuit's end date of bank holidays
-r,,Hc2SFMode,HC2_SFMode,,,,"1C00",,,UCH,0=none;1=party;2=onedaybankholiday;3=onedayholiday;4=holiday;5=bankholiday;6=quickveto;7=onetimeventilation;8=onetimewater,,activated special function of second heating circuit
+r;w,,Hc2SFMode,HC2_SFMode,,,,"1C00",,,UCH,0=none;1=party;2=onedaybankholiday;3=onedayholiday;4=holiday;5=bankholiday;6=quickveto;7=onetimeventilation;8=onetimewater,,activated special function of second heating circuit
 r;w,,HwcTempDesired,DHW_DesiredTemp,,,,"4400",,,temp1,,,setpoint of domestic hot water circuit
 r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,STR:11,,,"labelling of the first heating circuit (only A-Z,0-9,blank)"
 r;w,,HcName2,aaucHcNames_HK2,,,,"3F08",,,STR:11,,,"labelling of the second heating circuit (only A-Z,0-9,blank)"
