@@ -22,7 +22,7 @@ r;wi,,PumpPowerDesired,d.14 Leistung Heizungspumpe Soll,,,,A100,,,UCH,0=auto;1=5
 r,,PumpPower,d.15 Leistung Heizungspumpe,,,,7300,,,UCH,,,,,,
 r,,DCRoomthermostat,d.16 Raumthermostat,,,,"0E00",,,onoff,,,Wärmeanforderung vom externen Regler (Klemme 3-4),,,
 r,,HwcDemand,d.22 WW Anforderung,,,,"5800",,,yesno,,,Brauchwasseranforderung (Zapfung oder Schaltsignal vom Speicher),,,
-r,,HeatingSwitch,d.23 Winterbetrieb,,,,"F203",,,onoff,,,Wintermodus aktiv (Heizbetrieb und Warmwasser),,,
+r;wi,,HeatingSwitch,d.23 Winterbetrieb,,,,"F203",,,onoff,,,Wintermodus aktiv (Heizbetrieb und Warmwasser),,,
 #r,,StoragereleaseClock,d.25 Speicherfreigabe,,,,"4704",,,yesno,,,Freigabe der Speichrladung oder des Warmstartspeichers durcheinen eBUS Regler,,,
 r,,PrimaryCircuitFlowrate,d.29 Wasserumlaufmenge,,,,"FB00",,,uin100,,l/min,value of flowrate,,,
 r,,TargetFanSpeed,d.33 Lüfter Solldrehzahl,,,,"2400",,,UIN,,1/min,Drehzahlsollwert des Lüfters,,,
@@ -82,7 +82,7 @@ r,,FanMinSpeedOperation,Min. Lüfterdrehzahl,,,,"DF00",,,UIN,,1/min,Lüfter Mini
 r,,FanMaxSpeedOperation,Max. Lüfterdrehzahl,,,,"E000",,,UIN,,1/min,Lüfter Maximaldrehzahl,,,
 r,,ExternGasvalve,Ext. Gasventil,,,,"E400",,,onoff,,,Externes Magnetventil,,,
 r,,DCFTimeDate,DCF Datum/Uhrzeit,,,,"E500",,,VTI;HDA,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
-r,,HwcSwitch,Wasserschalter,,,,"F303",,,onoff,,,WW aus/ein,,,
+r;wi,,HwcSwitch,Wasserschalter,,,,"F303",,,onoff,,,WW aus/ein,,,
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI,,,
 # ##### Diagnose Ebene 2 #####,,,,,,,,,,,,,,,,
