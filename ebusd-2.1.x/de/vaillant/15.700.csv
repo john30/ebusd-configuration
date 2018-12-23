@@ -151,7 +151,7 @@ r;w,,z1NightTemp,Absenktemperatur Zone 1,,,,0900,,,tempv,,,night setpoint for zo
 r;w,,z1BankHolidayStartPeriod,Bank Feiertag Start Zone 1,,,,0C00,,,hfrom,,,start date of bank holidays for zone 1
 r;w,,z1BankHolidayEndPeriod,Bank Feiertag Ende Zone 1,,,,0D00,,,hto,,,end date of bank holidays for zone 1
 r;w,,z1SFMode,SFMode Zone 1,,,,0E00,,,sfmode,,,
-r,,z1RoomTemp,Raumisttemperatur Zone 1,,,,0F00,,,tempv,,,current room temperature in zone 1
+r,,z1RoomTemp,Raumisttemperatur Zone 1,,,,0F00,,,tempv,,,aktuelle Raumtemperatur in Zone 1
 r;w,,z1ValveStatus,Ventilstatus Zone 1,,,,1200,,,UCH,,,valve status of zone 1
 r;w,,z1RoomZoneMapping,Raumregler Zuordnung Zone 1,,,,1300,,,zmapping,,,configures which room temperature is assigned to zone 1
 r;w,,z1ActualRoomTempDesired,Raumsolltemperatur Zone 1,,,,1400,,,tempv,,,current room setpoint considering all basic conditions passed to the control algorithms
@@ -174,7 +174,7 @@ r;w,,z2NightTemp,Absenktemperatur Zone 2,,,,0900,,,tempv,,,night setpoint for zo
 r;w,,z2BankHolidayStartPeriod,Bank Feiertag Start Zone 2,,,,0C00,,,hfrom,,,start date of bank holidays for zone 2
 r;w,,z2BankHolidayEndPeriod,Bank Feiertag Ende Zone 2,,,,0D00,,,hto,,,end date of bank holidays for zone 2
 r;w,,z2SFMode,SFMode Zone 2,,,,0E00,,,sfmode,,,
-r,,z2RoomTemp,Raumisttemperatur Zone 2,,,,0F00,,,tempv,,,current room temperature in zone 2
+r,,z2RoomTemp,Raumisttemperatur Zone 2,,,,0F00,,,tempv,,,aktuelle Raumtemperatur in Zone 2
 r;w,,z2ValveStatus,Ventilstatus Zone 2,,,,1200,,,UCH,,,valve status of zone 2
 r;w,,z2RoomZoneMapping,Raumregler Zuordnung Zone 2,,,,1300,,,zmapping,,,configures which room temperature is assigned to zone 2
 r;w,,z2ActualRoomTempDesired,Raumsolltemperatur Zone 2,,,,1400,,,tempv,,,current room setpoint considering all basic conditions passed to the control algorithms
@@ -197,7 +197,7 @@ r;w,,z3NightTemp,Absenktemperatur Zone 3,,,,0900,,,tempv,,,night setpoint for zo
 r;w,,z3BankHolidayStartPeriod,Bank Feiertag Start Zone 3,,,,0C00,,,hfrom,,,start date of bank holidays for zone 3
 r;w,,z3BankHolidayEndPeriod,Bank Feiertag Ende Zone 3,,,,0D00,,,hto,,,end date of bank holidays for zone 3
 r;w,,z3SFMode,SFMode Zone 3,,,,0E00,,,sfmode,,,
-r,,z3RoomTemp,Raumisttemperatur Zone 3,,,,0F00,,,tempv,,,current room temperature in zone 3
+r,,z3RoomTemp,Raumisttemperatur Zone 3,,,,0F00,,,tempv,,,aktuelle Raumtemperatur in Zone 3
 r;w,,z3ValveStatus,Ventilstatus Zone 3,,,,1200,,,UCH,,,valve status of zone 3
 r;w,,z3RoomZoneMapping,Raumregler Zuordnung Zone 3,,,,1300,,,zmapping,,,configures which room temperature is assigned to zone 3
 r;w,,z3ActualRoomTempDesired,Raumsolltemperatur Zone 3,,,,1400,,,tempv,,,current room setpoint considering all basic conditions passed to the control algorithms
