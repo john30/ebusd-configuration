@@ -16,7 +16,8 @@ Usage with ebusd version 3.2 or higher
 --------------------------------------
 
 If you're using [ebusd in version 3.2](https://github.com/john30/ebusd/tree/v3.2) or higher, you can simply use the default option for the location of the configuration files that are served by ebusd.eu (see ["--configpath" option](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options)).
-Due to this new feature, no more packaged releases of this repository will be generated in future. If you intend to work on the configuration yourself, simply checkout this repository and point ebusd to your local folder with the latest version.
+Due to this new feature, no more packaged releases of this repository will be generated in future. If you intend to work on the configuration yourself, simply checkout this repository and point ebusd to your local folder with the latest version.  
+The current status of and latest changes to the files on ebusd.eu are stated in the [Changelog](https://github.com/john30/ebusd-configuration/blob/master/Changelog.md).
 
 
 Installation on up-to-date ebusd (2.0 or higher)
