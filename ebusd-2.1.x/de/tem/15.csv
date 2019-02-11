@@ -248,7 +248,7 @@ r,,status,Status Heizkreisregelung 02-051,,,,85000a,parameters,,parameter1,,,,st
 [expertlevel]r,,heizgrenze_spar,Heizgrenze Sparbetrieb 03-002,,,,82000a,parameters,,parameter_temp10,,,,temp,,temp10,,,,,,,,,,,,,,,
 [expertlevel]r,,startopt_vorhaltezeit,Startoptimierung Vorhaltezeit 03-006,,,,83000a,parameters,,parameter1,,,,time,,UIN,10,min,,,,,,,,,,,,,
 [expertlevel]r,,temp_raum_kompensation,Raumtemperatur Kompensation 03-007,,,,84000a,parameters,,parameter1,,,,status,,UIN,10,,,,,,,,,,,,,,
-[expertlevel]r,,temp_aussen_auslegung,Auslegungs Aussentemperatur Heizbetrieb 03-012,,,,85000a,parameters,,parameter_temp1,,,,temp,,temp1,,,,,,,,,,,,,,,
+[expertlevel]r,,temp_aussen_auslegung,Auslegungs Aussentemperatur Heizbetrieb 03-012,,,,85000a,parameters,,parameter_temp1_1b,,,,temp,,temp1_1b,,,,,,,,,,,,,,,
 [expertlevel]r,,temp_vl_auslegung,Auslegungs Vorlauftemperatur 03-013,,,,86000a,parameters,,parameter_temp2,,,,temp,,temp2,,,,,,,,,,,,,,,
 [expertlevel]r,,konst_at_mittelwert,Zeitkonstante für Aussentemperatur Mittelwertberechnung 03-020,,,,87000a,parameters,,parameter1,,,,time,,UIN,,h,,,,,,,,,,,,,
 [expertlevel]r,,temp_heizgrenze_normal,Heizgrenze Normalbetrieb 03-021,,,,88000a,parameters,,parameter_temp10,,,,temp,,temp10,,,,,,,,,,,,,,,

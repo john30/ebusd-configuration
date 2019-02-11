@@ -10,12 +10,15 @@ wd,BDY,,,Weekday
 range,SCH,,,Range
 command,TEM_P;type;unit,,,Kommando
 temp1,SIN,,°C,Temperatur
+temp1_1b,SCH;IGN:1,,°C,Temperatur
 temp10,SIN,10,°C,Temperatur (Teiler 10)
 temp10K,SIN,10,K,Temperatur (Teiler 10K)
 temp2,SIN,2,°C,Temperatur (Teiler 2)
 temp256,D2B,,°C,Temperatur (Teiler 256)
 max_temp1,temp1,,,Maximum
 min_temp1,temp1,,,Minimum
+max_temp1_1b,temp1_1b,,,Maximum
+min_temp1_1b,temp1_1b,,,Minimum
 max_temp10,temp10,,,Maximum
 min_temp10,temp10,,,Minimum
 max_temp10K,temp10K,,,Maximum
@@ -32,6 +35,7 @@ parameter1,command;maxs;mins,,,Parameter
 parameter1_10,command;maxs_10;mins_10,,,Parameter10
 parameter2,command;UCH;UCH,,,Parameter
 parameter_temp1,command;max_temp1;min_temp1,,,ParameterTemp1
+parameter_temp1_1b,command;max_temp1_1b;min_temp1_1b,,,ParameterTemp1
 parameter_temp10,command;max_temp10;min_temp10,,,ParameterTemp10
 parameter_temp10K,command;max_temp10K;min_temp10K,,,ParameterTemp10K
 parameter_temp2,command;max_temp2;min_temp2,,,ParameterTemp2
