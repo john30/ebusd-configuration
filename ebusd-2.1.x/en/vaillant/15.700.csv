@@ -5,6 +5,8 @@
 *w,,,,,,B524,02010000,,,,,,
 r;w,,ContinuosHeating,continuos heating,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,frost delay time,,,,0300,,,hoursum2,,,delay before frost protection is activated
+r,,ManualCooling,Manual cooling,,,,0600,,,UIN,0x00=off,,
+w,,ManualCooling,Manual cooling,,,,0600,,m,UIN,,,number of days of manual cooling. Max. days = 99. 0 days = off. Set temp via z1CoolingDayTemp.
 r;w,,HwcParallelLoading,hwc parallel loading,,,,0A00,,,onoff,,,heating and hot water parallel
 r;w,,MaxRoomHumidity,max room humidity,,,,0E00,,,UIN,,,maximum room humidity
 r;w,,AdaptHeatCurve,adaptive heat curve,,,,1400,,,yesno,,,automatic correction of configured heat curve
@@ -135,12 +137,12 @@ r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of z
 # ##### zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
-#r;w,,z1Unknown02,(constant 24 - air level?) temperature zone 1,,,,0200,,,tempv,,,unknown value for zone 1
+r;w,,z1CoolingDayTemp,desired cooling temperature zone 1,,,,0200,,,tempv,,,day cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,holiday period start zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,holiday period end zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
 r;w,,z1HolidayTemp,room setpoint holiday period zone 1,,,,0500,,,tempv,,,holiday setpoint for zone 1
 r;w,,z1OpMode,operation mode zone 1,,,,0600,,,opmode,,,operation mode of zone 1
-r;w,,z1DayTemp,desired temperature zone 1,,,,0700,,,tempv,,,day setpoint for zone 1
+r;w,,z1DayTemp,desired heating temperature zone 1,,,,0700,,,tempv,,,day heating setpoint for zone 1
 r;w,,z1QuickVetoTemp,quick veto temperature zone 1,,,,0800,,,tempv,,,manual override setpoint for zone 1
 r;w,,z1NightTemp,night temperature zone 1,,,,0900,,,tempv,,,night setpoint for zone 1
 r;w,,z1BankHolidayStartPeriod,bank holiday start zone 1,,,,0C00,,,hfrom,,,start date of bank holidays for zone 1
