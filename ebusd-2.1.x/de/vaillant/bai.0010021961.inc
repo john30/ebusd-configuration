@@ -35,7 +35,7 @@ r,,ReturnTemp,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauft
 r,,IonisationVoltageLevel,d.44 Spannungspegel Ionisationssignal,,,,"A400",,,SIN,10,,Ionisationsspannung: größer 80 = keine Flammekleiner 40 = gutes Flammensignal,,,
 r,,OutdoorstempSensor,d.47 Außentemperaturfühler,,,,"7600",,,tempsensor,,,Außentemperaturwert (ohne Korrekturwert) und Sensorstatus,,,
 r,,RemainingBoilerblocktime,d.67 Verbleibende Brennersperrzeit,,,,"3800",,,minutes0,,,Verbleibende Brennersperrzeit,,,
-#r,,EBusHeatcontrol,d.90 Digitaler Regler,,,,"0004",,,yesno,,,Gibt an ob ein digitaler Regler erkannt wurde,,,
+r,,EBusHeatcontrol,d.90 Digitaler Regler,,,,"0004",,,yesno,,,Gibt an ob ein digitaler Regler erkannt wurde,,,
 r,,dcfState,d.91 DCF Status,,,,"6900",,,dcfstate,,,DCF Status,,,
 [SW>=413]r,,APCComStatus,d.92 APC_ComStatus_DK,,,,"6200",,,UCH,,,actoSTORE communication status
 # ##### Expertenebene #####,,,,,,,,,,,,,,,,
@@ -112,7 +112,7 @@ r;wi,,WarmstartOffset,d.73 Warmstart Offset,,,,"1004",,,temp,,,Offset für Warms
 r;wi,,StorageLoadTimeMax,d.75 Max. Speicherladezeit,,,,"6600",,,minutes0,,,Max. Speicherladezeit für Speicher ohne eigene Regelung,,,
 r,,CodingResistor,d.76 SD_CodingResistor_DK,,,,"9200",,,HEX:3,,,boiler identification resistor
 r;wi,,PartloadHwcKW,d.77 Speicherteillast,,,,"0804",,,power,,,Teillast für Speicherladung (Geräteleistung kann auf den angegebenen Wert limitiert werden)
-r;wi,,FlowsetHwcMax,d.78 Max. Vorlauftemp. WW,,,,"0F04",,,temp,,,Maximal erlaubte Vorlauftemperatur für die Speicherladung
+r;wi,,FlowsetHwcMax,d.78 Max. Vorlauftemp. WW,,,,"A600",,,temp,,,Maximal erlaubte Vorlauftemperatur für die Speicherladung
 r,,HcHours,d.80 Hz. Betriebsstunden,,,,"2800",,,hoursum2,,,Betriebsstunden im Heizbetrieb,,,
 r,,HwcHours,d.81 Betriebsstunden WW,,,,"2200",,,hoursum2,,,Betriebsstunden Brauchwasser,,,
 r,,HcStarts,d.82 Schaltspiele Heizbetrieb,,,,"2900",,,UIN,-100,,Schaltspiele Heizbetrieb,,,
