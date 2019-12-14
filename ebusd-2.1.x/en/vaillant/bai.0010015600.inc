@@ -108,7 +108,7 @@ r,,HwcHours,d.81 Hours in DHW mode,,,,"2200",,,hoursum2,,,Hours of DHW operation
 r,,HcStarts,d.82 CH mode starts,,,,"2900",,,UIN,-100,,Number of CH mode starts,,,
 r,,HwcStarts,d.83 DHW mode starts,,,,"2300",,,UIN,-100,,Number of DHW mode starts,,,
 r;wi,,HoursTillService,d.84 Hours till service,,,,"AC00",,,hoursum2,,,Hours left before service is needed,,,
-r;wi,,AntiCondensValue,d.85 Minimal power to avoid condensation,,,,"EC00",,,UCH,,kW / %,Minimal power to avoid condensation 
+r;wi,,AntiCondensValue,d.85 Minimal power to avoid condensation,,,,"EC00",,,power,,,Minimal power to avoid condensation
 r;ws,,DSNOffset,d.93 Hardware ID,,,,"3004",,,UCH,,,Hardware ID (DSN),,,
 #r;wi,,ClearErrorHistory,d.94 Delete error history,,,,"0000",,,yesno,,,Delete error history
 #r,,SoftwareVersion,d.95 Software Version,,,,"0000",,,HEX:8,,,Software Version
