@@ -12,5 +12,5 @@ r,,Status01,Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW Temperatur
 r,,Status02,Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp,,,,02,,,hwcmode;temp0;temp1;temp0;temp1,,,
 r,,Status,Status,,,,03,,,temp;press;press;hcmode2;HEX,,,
 
-*uw,,,,,,"B512",02,,,,,,
+*uw,,,,,,"B512",,,,,,,
 uw,,StatusCirPump,Status Zirkulationspumpe,,,,00,,,UCH,0=off;100=on,,
