@@ -135,7 +135,7 @@ r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of z
 # ##### zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
-#r;w,,z1Unknown02,(constant 24 - air level?) temperature zone 1,,,,0200,,,tempv,,,unknown value for zone 1
+r;w,,z1CoolingTemp,cooling setpoint zone 1,,,,0200,,,tempv,,,desired cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,holiday period start zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,holiday period end zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
 r;w,,z1HolidayTemp,room setpoint holiday period zone 1,,,,0500,,,tempv,,,holiday setpoint for zone 1
@@ -157,7 +157,7 @@ r;w,,z1Name2,zone 1 label (second part),,,,1800,,,zname,,,name of zone 1
 # ##### zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
-#r;w,,z2Unknown02,(constant 24 - air level?) temperature zone 2,,,,0200,,,tempv,,,unknown value for zone 2
+r;w,,z2CoolingTemp,cooling setpoint zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 2
 r;w,,z2HolidayStartPeriod,holiday period start zone 2,,,,0300,,,hfrom,,,start date of holidays for zone 2
 r;w,,z2HolidayEndPeriod,holiday period end zone 2,,,,0400,,,hto,,,end date of holidays for zone 2
 r;w,,z2HolidayTemp,room setpoint holiday period zone 2,,,,0500,,,tempv,,,holiday setpoint for zone 2

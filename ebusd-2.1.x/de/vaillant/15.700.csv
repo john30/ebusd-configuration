@@ -135,7 +135,7 @@ r;w,,Hc3PumpStatus,PumpStatus Heizkreis 3,,,,1E00,,,UIN,,,pump status of zone 3
 # ##### Zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
-#r;w,,z1Unknown02,(konstant 24 - Lüfterstufe?) Temperatur Zone 1,,,,0200,,,tempv,,,unknown value for zone 1
+r;w,,z1CoolingTemp,Kühlsolltemperatur Zone 1,,,,0200,,,tempv,,,desired cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,Ferienzeitraum Start Zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,Ferienzeitraum Ende Zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
 r;w,,z1HolidayTemp,Raumsollwert Ferienbetrieb Zone 1,,,,0500,,,tempv,,,holiday setpoint for zone 1
@@ -157,7 +157,7 @@ r;w,,z1Name2,Bezeichnung Zone 1 Teil 2,,,,1800,,,zname,,,name of zone 1
 # ##### Zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
-#r;w,,z2Unknown02,(konstant 24 - Lüfterstufe?) Temperatur Zone 2,,,,0200,,,tempv,,,unknown value for zone 2
+r;w,,z2CoolingTemp,Kühlsolltemperatur Zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 2
 r;w,,z2HolidayStartPeriod,Ferienzeitraum Start Zone 2,,,,0300,,,hfrom,,,start date of holidays for zone 2
 r;w,,z2HolidayEndPeriod,Ferienzeitraum Ende Zone 2,,,,0400,,,hto,,,end date of holidays for zone 2
 r;w,,z2HolidayTemp,Raumsollwert Ferienbetrieb Zone 2,,,,0500,,,tempv,,,holiday setpoint for zone 2
