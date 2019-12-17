@@ -9,10 +9,12 @@
 r;wi,,PartloadHcKW,d.00 Heizungsteillast,,,,"6C00",,,power,,,Heizungsteillast,,,
 r;wi,,WPPostrunTime,d.01 Pumpennachlaufzeit,,,,"6400",,,minutes0,,,Wasserpumpennachlaufzeit nach Heizbetrieb,,,
 r;wi,,BlockTimeHcMax,d.02 Maximale Brennersperrzeit,,,,"2100",,,minutes0,,,Max. Brennersperrzeit bei einem Vorlaufsollwert von 20°C,,,
-r,,HwcTemp,d.03 WW Vorlaufsolltemp.,,,,"1600",,,tempsensor,,,Vorlauftemperatur bei Warmwasserzapfung (nur bei Kombi-Heizgeräten),,,
-r,,StorageTemp,d.04 Speicheristtemp.,,,,"1700",,,tempsensor,,,Aktuelle Temperatur des Warmstartspeichers (bei Kombigeräten) oder aktuelle Speichertemperatur bei (VC Geräten),,,
+r,,HwcTemp,d.03 WW Vorlaufsolltemp,,,,"1600",,,tempsensor,,,Vorlauftemperatur bei Warmwasserzapfung (nur bei Kombi-Heizgeräten),,,
+r,,StorageTemp,d.04 Speicheristtemp,,,,"1700",,,tempsensor,,,Aktuelle Temperatur des Warmstartspeichers (bei Kombigeräten) oder aktuelle Speichertemperatur bei (VC Geräten),,,
 r,,FlowTempDesired,d.05 Vorlaufsolltemperatur,,,,"3900",,,temp,,,Vorlaufsolltemperatur oder Rücklaufsolltemperatur (wenn Rücklaufregelung aktiviert wurde). Der Maximalwert wird über d.71 und einem eBUS Regler begrenzt.,,,
-r,,StorageTempDesired,d.07 Speichersolltemp.,,,,"0400",,,temp,,,VCW: Solltemperatur des WarmstartspeichersVC: Solltemperatur des externen Speichers,,,
+r,,HwcTempDesired,d.06 Brauchwassersollwert,,,,"EA03",,,temp,,,Gewünschte Warmwasser Solltemperatur
+r,,StorageTempDesired,d.07 Speichersolltemp,,,,"0400",,,temp,,,VCW: Solltemperatur des WarmstartspeichersVC: Solltemperatur des externen Speichers,,,
+r,,ACRoomthermostat,d.08 Raumthermostat,,,,"2A00",,,onoff,,,Status des extrenen Raumthermostat an Klemme 3/4
 r,,ExtFlowTempDesiredMin,d.09 Min. ext. Vorlaufsollwert,,,,"F304",,,temp,,,minimum out of Kl.7 and eBus flow setpoint,,,
 r,,WP,d.10 Wasserpumpe,,,,"4400",,,onoff,,,Interne Heizungspumpe,,,
 r,,extWP,d.11 ext. Heizungspumpe,,,,"3F00",,,onoff,,,Externe Heizungspumpe,,,
@@ -23,23 +25,24 @@ r,,PumpPower,d.15 Leistung Heizungspumpe,,,,7300,,,UCH,,,,,,
 r,,DCRoomthermostat,d.16 Raumthermostat,,,,"0E00",,,onoff,,,Wärmeanforderung vom externen Regler (Klemme 3-4),,,
 r,,HwcDemand,d.22 WW Anforderung,,,,"5800",,,yesno,,,Brauchwasseranforderung (Zapfung oder Schaltsignal vom Speicher),,,
 r;wi,,HeatingSwitch,d.23 Winterbetrieb,,,,"F203",,,onoff,,,Wintermodus aktiv (Heizbetrieb und Warmwasser),,,
-#r,,StoragereleaseClock,d.25 Speicherfreigabe,,,,"4704",,,yesno,,,Freigabe der Speichrladung oder des Warmstartspeichers durcheinen eBUS Regler,,,
-r,,PrimaryCircuitFlowrate,d.29 Wasserumlaufmenge,,,,"FB00",,,uin100,,l/min,value of flowrate,,,
+r,,StoragereleaseClock,d.25 Speicherfreigabe,,,,"4704",,,yesno,,,Freigabe der Speichrladung oder des Warmstartspeichers durcheinen eBUS Regler,,,
 r,,TargetFanSpeed,d.33 Lüfter Solldrehzahl,,,,"2400",,,UIN,,1/min,Drehzahlsollwert des Lüfters,,,
 r,,FanSpeed,d.34 Lüfteristdrehzahl,,,,"8300",,,UIN,,1/min,Aktuelle Lüfterdrehzahl,,,
 r,,PositionValveSet,d.35 Position VUV,,,,"5400",,,UCH,,,Position des 3-Wege Ventil: 100=Warmwasser 0=Heizbetrieb 40=Mittenstellung,,,
+r,,HwcWaterflow,d.36 Zapfmenge,,,,"5500",,,uin100,,,WW Durchflußsensor
 r,,FlowTemp,d.40 Vorlauftemperatur,,,,"1800",,,tempsensor,,,Vorlauftemperatur,,,
 r,,ReturnTemp,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauftemperatur,,,
 r,,IonisationVoltageLevel,d.44 Spannungspegel Ionisationssignal,,,,"A400",,,SIN,10,,Ionisationsspannung: größer 80 = keine Flammekleiner 40 = gutes Flammensignal,,,
 r,,OutdoorstempSensor,d.47 Außentemperaturfühler,,,,"7600",,,tempsensor,,,Außentemperaturwert (ohne Korrekturwert) und Sensorstatus,,,
 r,,RemainingBoilerblocktime,d.67 Verbleibende Brennersperrzeit,,,,"3800",,,minutes0,,,Verbleibende Brennersperrzeit,,,
-#r,,EBusHeatcontrol,d.90 Digitaler Regler,,,,"0004",,,yesno,,,Gibt an ob ein digitaler Regler erkannt wurde,,,
+r,,EBusHeatcontrol,d.90 Digitaler Regler,,,,"0004",,,yesno,,,Gibt an ob ein digitaler Regler erkannt wurde,,,
 r,,dcfState,d.91 DCF Status,,,,"6900",,,dcfstate,,,DCF Status,,,
+[SW>=413]r,,APCComStatus,d.92 APC_ComStatus_DK,,,,"6200",,,UCH,,,actoSTORE communication status
 # ##### Expertenebene #####,,,,,,,,,,,,,,,,
 r,,externalHwcSwitch,Wasserschalter,,,,"0000",,,onoff,,,Speicheranforderung eines externen Speichers über den Speicherkontakt,,,
 r,,WaterPressure,Wasserdruck,,,,"0200",,,presssensor,,,Wasserdruck,,,
 r,,Flame,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal,,,
-r,,ChangesDSN,Anzahl der DSN Änderungen,,,,"0C00",,,UCH,,,Anzahl der DSN (Gerätekennung) Änderungen,,,
+r,,ChangesDSN,Anzhl der DSN Änderungen,,,,"0C00",,,UCH,,,Anzahl der DSN (Gerätekennung) Änderungen,,,
 r,,GasvalveUC,Gasventil,,,,"0D00",,,UCH,240=off;15=on,,Schaltsignal für das Gasventil,,,
 r,,VolatileLockout,Verriegelnde Störabschaltungen,,,,"1000",,,UCH,240=no;15=yes,,WAHR: STB Fehler sind verriegelnd,,,
 r,,ModulationTempDesired,Modulationssollwert,,,,"2E00",,,SIN,10,%,Modulationssollwert,,,
@@ -92,36 +95,33 @@ r;wi,,HwcTempMax,d.20 Max. WW Temperatur,,,,"D900",,,temp,,,Max. Speichersollwer
 r;wi,,OptionalRelais,d.26 OptionalRelais,,,,"B800",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Option relais function
 r;wi,,AccessoriesOne,d.27 Zubehörrelais 1,,,,"B900",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 1,,,
 r;wi,,AccessoriesTwo,d.28 Zubehörrelais 2,,,,"BA00",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 2,,,
-r;wi,,FanSpeedOffsetMin,d.50 Offset min. Lüfterdrehzahl,,,,"A700",,,SIN,,1/min,Offset min. Drehzahl,,,
+r;wi,,FanSpeedOffsetMin,d.50 Offet min. Lüfterdrehzahl,,,,"A700",,,SIN,,1/min,Offset min. Drehzahl,,,
 r;wi,,FanSpeedOffsetMax,d.51 Offset max. Lüfterdrehzahl,,,,"A800",,,SIN,,1/min,Offset max. Drehzahl,,,
+r;wi,,SolPostHeat,d.58 Solarbetriebsart,,,,"7304",,,UCH,,,Spezielle WW Funktionen:0 = Solarfunktion deaktiviert (default)1 = Solarfunktion aktiviert und WW Sollwert minimal 60°C2 = Solarfunktion aktiviert und WW Sollwert min. 35°C3 = WW Sollwert minimum 60°C
 r,,DeactivationsTemplimiter,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers,,,
 r,,DeactivationsIFC,d.61 Anzahl Zündfehler,,,,"1F00",,,UCH,,,Anzahl der Zündfehler (nicht erfolgreiche Züdung im letzten Versuch oder fehlerhaftes Flammensignal),,,
 r,,averageIgnitiontime,d.64 Mittlere Zündzeit,,,,"2D00",,,UCH,10,s,Mittlere Zündzeit,,,
 r,,maxIgnitiontime,d.65 Max. Zündzeit,,,,"2C00",,,UCH,10,s,Maximale Zündzeit,,,
 r,,CounterStartattempts1,d.68 Zündfehler 1. Versuch,,,,"6E00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 1. Versuch),,,
 r,,CounterStartattempts2,d.69 Zündfehler 2. Versuch,,,,"6F00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 2. Versuch),,,
+r;wi,,ValveMode,d.70 VUV Betriebsart,,,,"2A04",,,UCH,,,Betriebsart 3-Wegeventil:0 = normaler Modus1 = Mittenstellung2 = Permanent Heizbetrieb (keine Umschaltung in den WW Betrieb)
 r;wi,,FlowsetHcMax,d.71 Max. Vorlauftemp. Heizbetrieb,,,,"0E04",,,temp,,,Einstellung des maximalen Vorlaufsollwert im Heizbetrieb (bei Linksanschlag des Poti),,,
-[SW>=413]r;wi,,APCLegioProtection,d.74 Legionellenschutz int.Speicher,,,,"9704",,,UCH,,,Legionellenschutz für internen Speicher,,,
+r;wi,,HwcPostrunTime,d.72 WW Pumpnenachlaufzeit,,,,"1104",,,UCH,-10,s,Pumpennachlaufzeit nach Speicherladung
+r;wi,,WarmstartOffset,d.73 Warmstart Offset,,,,"1004",,,temp,,,Offset für Warmstartsollwert (nur bei VCW)
+[SW>=413]r;wi,,APCLegioProtection,d.74 APC_LegioProtection,,,,"9704",,,UCH,,,Legionellenschutz für internen Speicher,,,
 r;wi,,StorageLoadTimeMax,d.75 Max. Speicherladezeit,,,,"6600",,,minutes0,,,Max. Speicherladezeit für Speicher ohne eigene Regelung,,,
+r,,CodingResistor,d.76 SD_CodingResistor_DK,,,,"9200",,,HEX:3,,,boiler identification resistor
+r;wi,,PartloadHwcKW,d.77 Speicherteillast,,,,"0804",,,power,,,Teillast für Speicherladung (Geräteleistung kann auf den angegebenen Wert limitiert werden)
 r;wi,,FlowsetHwcMax,d.78 Max. Vorlauftemp. WW,,,,"A600",,,temp,,,Maximal erlaubte Vorlauftemperatur für die Speicherladung
 r,,HcHours,d.80 Hz. Betriebsstunden,,,,"2800",,,hoursum2,,,Betriebsstunden im Heizbetrieb,,,
 r,,HwcHours,d.81 Betriebsstunden WW,,,,"2200",,,hoursum2,,,Betriebsstunden Brauchwasser,,,
 r,,HcStarts,d.82 Schaltspiele Heizbetrieb,,,,"2900",,,UIN,-100,,Schaltspiele Heizbetrieb,,,
 r,,HwcStarts,d.83 Schaltspiele BW Betrieb,,,,"2300",,,UIN,-100,,Schaltspiele WW Betrieb,,,
 r;wi,,HoursTillService,d.84 Stunden bis Wartung,,,,"AC00",,,hoursum2,,,Wartungsintervall:Anzahl der Stunden bis zur nächsten Wartung,,,
-r;wi,,AntiCondensValue,d.85 minimale Leistung,,,,"EC00",,,power,,,Anhebung der minimalen Leistung
+r;wi,,AntiCondensValue,d.85 minimale Leistung,,,,"EC00",,,UCH,,kW / %,Anhebung der minimalen Leistung
+r;wi,,SpecialAdj,d.88 SpecialAdj,,,,"7604",,,UCH,,,"switching on threshold for recognition of water tapping0 = 1,5 l/min and no delay, 1 = 3,7 l/min and 2s delay"
 r;ws,,DSNOffset,d.93 Gerätekennung,,,,"3004",,,UCH,,,Gerätekennung (DSN),,,
-#r;wi,,ClearErrorHistory,d.94 Fehlerhistorie löschen,,,,"0000",,,yesno,,,Fehler Liste löschen
-#r,,SoftwareVersion,d.95 Software Version,,,,"0000",,,HEX:8,,,Software Version
 r;wi,,SetFactoryValues,d.96 Werkseinstellungen,,,,"6804",,,yesno,,,Werkseinstellungen,,,
-r,,CodingResistor,d.98 SD_CodingResistor,,,,"9200",,,HEX:3,,,Therme Identifikation Widerstand
-#r;wi,,ELGA,d.121 ELGA Teillastanfettung,,,,"0000",,,UCH,0=normal;1=angefettet;2=abgemagert,,ELGA Teillastanfettung
-#r;wi,,PressureLevel,d.122 Druckniveau,,,,"0000",,,mbar,,,Druckniveau
-#r,,LastStorageDuration,d.123 Dauer der letzen Speicherladung,,,,"0000",,,minutes0,,,Dauer der letzen Speicherladung
-#r;w,,Eco-Modus,d.124 Eco-Modus Speicherladung,,,,"0000",,,onoff,,,Eco-Modus Speicherladung
-r,,StorageExitTemp,d.125 Speicherauslauftemp. Istwert,,,,"5000",,,tempsensor,,,Speicherauslauftemperatur Istwert
-r,,StorageDelay,d.126 Verzögerung der Speicherladung,,,,"0900",,,minutes0,,,Verzögerung der Speicherladung
-#r;wi,,StateAnodeConnection,d.127 Status Fremdstromanode,,,,"0000",,,UCH,0=offen;1=angeschlossen,,,Status Fremdstromanodeanschluß
 # ##### Wartungsdaten #####,,,,,,,,,,,,,,,,
 r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,temp0,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54),,,
 r,,TempDiffBlock,TempDiffBlock,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures,,,
