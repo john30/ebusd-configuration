@@ -103,6 +103,7 @@ r,,CounterStartattempts2,d.69 Failed ignition (2nd attempt),,,,"6F00",,,temp0,,,
 r;wi,,FlowsetHcMax,d.71 CH max flow temperature,,,,"0E04",,,temp,,,Setting the maximum flow setpoint in heating mode (with left-hand stop of the potentiometer),,,
 [SW>=413]r;wi,,APCLegioProtection,d.74 APC_LegioProtection,,,,"9704",,,UCH,,,Legionella protection for internal storage,,,
 r;wi,,StorageLoadTimeMax,d.75 Maximum storage time,,,,"6600",,,minutes0,,,Maximum water storing time for storage without own controls,,,
+r;wi,,FlowsetHwcMax,d.78 Max value flow temp storage,,,,"A600",,,temp,,,storage charging temperature limit (target flow temperature in storage mode)
 r,,HcHours,d.80 Hz. Hours in CH mode,,,,"2800",,,hoursum2,,,Hours of operation in heating mode,,,
 r,,HwcHours,d.81 Hours in DHW mode,,,,"2200",,,hoursum2,,,Hours of DHW operation,,,
 r,,HcStarts,d.82 CH mode starts,,,,"2900",,,UIN,-100,,Number of CH mode starts,,,
