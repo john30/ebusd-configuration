@@ -75,7 +75,7 @@ energy4,ULG,,kWh,
 cntstarts,ULG,,,Anzahl Starts
 cntstarts2,UIN,,,Anzahl Starts
 pumppow,UCH,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,Pumpenleistung
-pumpstate,UCH,0=off;1=on;2=overrun,,Pumpenstatus
+pumpstate,UCH,0=off;1=on;2=overrun;4=hwc,,Pumpenstatus
 dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF Empfängerstatus
 phaseok,UCH,0=error;7=ok,,Phasenstatus
 switchvalve,UCH,0=heat;1=water,,Ventilposition
