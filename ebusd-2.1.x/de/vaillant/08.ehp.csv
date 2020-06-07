@@ -174,7 +174,7 @@ r,,HwcModeFulfilledHours,DHW_Mode_Fulfilled_Hours,,,,"A700",,,hoursum,,,total ti
 r,,CompState,CompressorState,,,,"E400",,,UCH,,,compressor and ICL state machine status number
 r,,TimeCompOnMin,MinTimeCompressorOn,,,,"E600",,,seconds,,,"minimum time that compressor must run in 0,5s steps"
 r,,TimeCompOffMin,MinTimeCompressorOff,,,,"E700",,,seconds,,,"minimum time the compressor must be off before restart in 0,5s steps"
-r,,TimeBetweenTwoCompStartsMin,Min. Pausenzeit Kompressor,,,,"E800",,,seconds,,,"calculated from menu item ""compressor starts per hour"" in 0,5s steps"
+r,,TimeBetweenTwoCompStartsMin,Min. Pausenzeit Kompressor,,,,"E800",,,seconds,,,"calculated from menu item """"compressor starts per hour"""" in 0,5s steps"
 r,,CompControlState,CompressorControlState,,,,"E900",,,UCH,,,number of status of compressor control state machine
 r,,RebootCounter,RebootCounter,,,,"F500",,,UIN,,,number of appliance starts
 r,,T19MaxToCompOff,T19_Max_To_Compressor_Off,,,,"2B01",,,temp,,,limit on compressor outlet temp that leads to an overpressure situation
