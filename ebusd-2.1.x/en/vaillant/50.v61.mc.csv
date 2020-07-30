@@ -8,6 +8,7 @@
 [SW<202]r;w,,InternalOperatingMode430,InternalOperatingMode430,,,,"3100",,,UCH,0=off;1=manual;2=auto,,operation mode of the second heating circuit for 430
 [SW>=202]r;w,,InternalOperatingMode470,InternalOperatingMode470,,,,"3100",,,UCH,2=auto;3=on;4=night;5=summer,,"operation mode of the second heating circuit for 470"
 r;w,,TempDesiredLow,DesiredLowTemperature,,,,"1300",,,temp1,,,lowering temperature setpoint of the second heating circuit
+r;w,,TempDesiredHigh,DesiredHighTemperature,,,,"3800",,,temp1,,,day temperature setpoint of the second heating circuit,,,
 r;w,,HolidayTempDesired,DesiredHolidayTemperature,,,,"1400",,,D1C,,,"4.5=frostprotect, holiday temperature of the second heating circuit"
 r;w,,Hc2ManualOPRoomTempDesired,HC2_ManualOPRoomSetpoint,,,,"3400",,,temp1,,,room setpoint in operation mode manual of the second heating circuit
 r,,Hc2QuickVetoTemp,HC2_QuickVetoTemp,,,,"3200",,,temp1,,,manual override setpoint of the second heating circuit

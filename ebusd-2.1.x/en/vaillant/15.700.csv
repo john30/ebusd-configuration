@@ -24,13 +24,20 @@ r;w,,YieldTotal,total environmental yield,,,,3E00,,,energy4,,,Umweltertrag gesam
 r;w,,HwcMaxFlowTempDesired,hwc max flow temp desired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Hwc
 r,,SystemFlowTemp,system flow temp,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,multifunction relay setting,,,,4D00,,,mamode,,,
+r;w,,PrFuelSumHcThisMonth,this months fuel consumption heating,,,,4E00,,,energy4,,,Aktueller Monat Brennstoffverbrauch Heizung
 r;w,,PrEnergySumHcThisMonth,this months energy consumption heating,,,,4F00,,,energy4,,,Aktueller Monat Stromverbrauch Heizung
 r;w,,PrEnergySumHwcThisMonth,this months energy consumption hot water,,,,5000,,,energy4,,,Aktueller Monat Stromverbrauch hot water
+r;w,,PrFuelSumHwcThisMonth,this months fuel consumption hot water,,,,5100,,,energy4,,,Aktueller Monat Brennstoffverbrauch hot water
+r;w,,PrFuelSumHcLastMonth,last months fuel consumption heating,,,,5200,,,energy4,,,Letzter Monat Brennstoffverbrauch Heizung
 r;w,,PrEnergySumHcLastMonth,last months energy consumption heating,,,,5300,,,energy4,,,Letzter Monat Stromverbrauch Heizung
 r;w,,PrEnergySumHwcLastMonth,last months energy consumption hot water,,,,5400,,,energy4,,,Letzter Monat Stromverbrauch hot water
+r;w,,PrFuelSumHwcLastMonth,last months fuel consumption hot water,,,,5500,,,energy4,,,Letzter Monat Brennstoffverbrauch hot water
+r;w,,PrFuelSumHc,total fuel consumption heating,,,,5600,,,energy4,,,Brennstoffverbrauch Heizung gesamt
 r;w,,PrEnergySumHc,total energy consumption heating,,,,5700,,,energy4,,,Stromverbrauch Heizung gesamt
 r;w,,PrEnergySumHwc,total energy consumption hot water,,,,5800,,,energy4,,,Stromverbrauch hot water gesamt
-r;w,,PrEnergySum,total energy consumption,,,,5C00,,,energy4,,,Stromverbrauch gesamt
+r;w,,PrFuelSumHwc,total fuel consumption hot water,,,,5900,,,energy4,,,Brennstoffverbrauch hot water gesamt
+r;w,,PrEnergySum,total energy consumption,,,,5C00,,,energy4,,,Dieses Jahr Stromverbrauch gesamt
+r;w,,PrFuelSum,total fuel consumption,,,,5D00,,,energy4,,,Dieses Jahr Brennstoffverbrauch gesamt
 #r;w,,Unknown67,(VR70 konfig 1),,,,6700,,,tempv,,,unknown value
 #r;w,,Unknown68,(VR70 konfig 1),,,,6800,,,tempv,,,unknown value
 r;w,,OpModeEffect,op mode effect,,,,6900,,,zonesel,,,selection which heating circuit is affected by changing parameters in the basic display
@@ -135,7 +142,7 @@ r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of z
 # ##### zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
-#r;w,,z1Unknown02,(constant 24 - air level?) temperature zone 1,,,,0200,,,tempv,,,unknown value for zone 1
+r;w,,z1CoolingTemp,cooling setpoint zone 1,,,,0200,,,tempv,,,desired cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,holiday period start zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,holiday period end zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
 r;w,,z1HolidayTemp,room setpoint holiday period zone 1,,,,0500,,,tempv,,,holiday setpoint for zone 1
@@ -157,7 +164,7 @@ r;w,,z1Name2,zone 1 label (second part),,,,1800,,,zname,,,name of zone 1
 # ##### zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
-#r;w,,z2Unknown02,(constant 24 - air level?) temperature zone 2,,,,0200,,,tempv,,,unknown value for zone 2
+r;w,,z2CoolingTemp,cooling setpoint zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 2
 r;w,,z2HolidayStartPeriod,holiday period start zone 2,,,,0300,,,hfrom,,,start date of holidays for zone 2
 r;w,,z2HolidayEndPeriod,holiday period end zone 2,,,,0400,,,hto,,,end date of holidays for zone 2
 r;w,,z2HolidayTemp,room setpoint holiday period zone 2,,,,0500,,,tempv,,,holiday setpoint for zone 2
