@@ -8,6 +8,12 @@ r,,EnergyCool,,,,,01,,,energy,,,,,,,,,,,,,,,
 r,,Hours,,,,,40,,,energy,,,,,,,,,,,,,,,
 r,,HoursHc,,,,,41,,,energy,,,,,,,,,,,,,,,
 r,,HoursCool,,,,,43,,,energy,,,,,,,,,,,,,,,
+
+# some more statistics (Live Monitor)
+r,,CurrentYieldPower,,,,,23,,,D1B,10,,,,,,,,,,,,,,,,,,,,
+r,,CurrentConsumedPower,,,,,24,,,D1B,10,,,,,,,,,,,,,,,,,,,,
+r,,CurrentCompressorUtil,,,,,25,,,D1B,,,,,,,,,,,,,,,,,,,,,
+
 # Total heating yields
 *r,,,,,,"B516","18",,,IGN:1,,,
 r,,YieldTotal,,,,,01,,,energy,,,,,,,,,,,,,,,
