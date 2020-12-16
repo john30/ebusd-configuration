@@ -13,11 +13,12 @@ r;w,,HeatingOverrideTemp,Heating Override Temp,,,,2400,,,temp,,,Heating Override
 r;w,,HeatingOverrideEndTime,Heating Override End Time,,,,2500,,,ULG,,,Heating Override End Time (format - number of minutes from 00:00 at 01.01.2009)
 r;w,,KeyboardLockEnable,Keyboard Lock Enable,,,,2a00,,,onoff,,,Keyboard Lock Enable
 r;w,,Contrast,Contrast,,,,2b00,,,UCH,,,Contrast
+r;w,,Brightness,Brightness,,,,2c00,,,UCH,,,Brightness
 r;w,,Time&Date,Time & Date,,,,2e00,,,ULG,,,Time & Date (format - number of minutes from 00:00 at 01.01.2009)
 r;w,,DateFormat,Date Format,,,,2d00,,,UCH,,,Date format 1-dd.mm.yyyy 2-yyyy.mm.dd
 r;w,,Weekday,Weekday,,,,2f00,,,bday,,,Weekday
 r;w,,RoomName,Room Name,,,,3000,,,STR:14,,,Room Name
-r;w,,Language,Language,,,,3100,,,UCH,,,Language
+r;w,,Language,Language,,,,3100,,,UCH,0=german;1=english;2=french;3=italian;4=flemish;5=dutch;6=spanish;7=catalan;8=basque;9=galician;10=hungarian;11=russian;12=ukrainian;13=polish;14=czech;15=croatian;16=slovakian;17=romanian;18=slovenian;19=Portuguese;20=dutch (AT),,Language
 r,,RoomTemp,Room Temp,,,,3a00,,,tempsensor,,,Room Temp
 r,,DisplayedRoomTemp,Displayed Room Temp,,,,3b00,,,temp,,,Displayed Room Temp
 r,,OutsideTemp,Outside Temp,,,,3c00,,,tempsensor,,,Outside Temp
