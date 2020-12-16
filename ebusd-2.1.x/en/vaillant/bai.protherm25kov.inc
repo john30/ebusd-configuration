@@ -153,8 +153,8 @@ r,,FanMinSpeedOperation,FanMinSpeedOperation,,,,DF00,,,UIN,,1/min,Minimum Fan sp
 r,,FanMaxSpeedOperation,FanMaxSpeedOperation,,,,E000,,,UIN,,1/min,Maximum Fan speed of the appliance
 r,,ExternGasvalve,ExternGasvalve_DK,,,,E400,,,onoff,,,external gasvalve activated
 r,,DCFTimeDate,DCF_TimeDate_DK,,,,E500,,,HEX:8,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
-r,,FlowSetPotmeter,FlowSetPotmeter,,,,F003,,,temp,,,flow setpoint potentiometer
-r,,HwcSetPotmeter,DHWSetPotmeter,,,,F103,,,temp,,,DHW setpoint potentiometer
+r;w,,FlowSetPotmeter,FlowSetPotmeter,,,,F003,,,temp,,,flow setpoint potentiometer
+r;w,,HwcSetPotmeter,DHWSetPotmeter,,,,F103,,,temp,,,DHW setpoint potentiometer
 r;w,,HeatingSwitch,Heating Switch,,,,F203,,,onoff,,,Wintermode active
 r;w,,HwcSwitch,DHWSwitch,,,,F303,,,onoff,,,DHW on/off
 r,,ProductionByte,ProductionByte,,,,3E04,,,UCH,,,
