@@ -19,7 +19,7 @@ r,,CirPump,d.13 Circulation pump,,,,7B00,,,onoff,,,Hot water circulation pump (v
 r,,DCRoomthermostat,d.16 room thermostat 24 V,,,,0E00,,,onoff,,,External controls heat demand (Clamp 3'-4')
 #r,,Warmstart,d.21 Warmstart function,,,,5B00,,,onoff,,,Warmstart function : this parameter indicate if the function is enabled and allowed
 r,,HwcDemand,d.22 DHW demand,,,,5800,,,yesno,,,domestic hot water (tapping or tank contact) demand
-r,,HeatingSwitch,d.23 operation mode,,,,4000,,,onoff,,,Wintermode active
+r,,HeatingDemand,d.23 Heating demand,,,,4000,,,yesno,,,Heating demand
 r,,StoragereleaseClock,d.25 DHW demand enabled,,,,7100,,,yesno,,,hot water release (tank storage) via eBus Control
 r,,PrimaryCircuitFlowRate,d.29 PrimaryCircuitFlowRate_DK,,,,FB00,,,uin100,,,primary circuit water flow rate
 r,,Gasvalve,d.30 Gasvalve,,,,BB00,,,UCH,240=off;15=on,,Gasvalve activation signal
@@ -155,6 +155,7 @@ r,,ExternGasvalve,ExternGasvalve_DK,,,,E400,,,onoff,,,external gasvalve activate
 r,,DCFTimeDate,DCF_TimeDate_DK,,,,E500,,,HEX:8,,,DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 r,,FlowSetPotmeter,FlowSetPotmeter,,,,F003,,,temp,,,flow setpoint potentiometer
 r,,HwcSetPotmeter,DHWSetPotmeter,,,,F103,,,temp,,,DHW setpoint potentiometer
-r,,HwcSwitch,DHWSwitch,,,,F303,,,onoff,,,DHW on/off
+r;w,,HeatingSwitch,Heating Switch,,,,F203,,,onoff,,,Wintermode active
+r;w,,HwcSwitch,DHWSwitch,,,,F303,,,onoff,,,DHW on/off
 r,,ProductionByte,ProductionByte,,,,3E04,,,UCH,,,
 !include,errors.inc,,,,,,,,,,,,
