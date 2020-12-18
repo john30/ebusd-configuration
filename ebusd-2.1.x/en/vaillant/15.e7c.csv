@@ -95,7 +95,7 @@ r;wi,,SundayRecirculationState,Sunday Recirculation State,,,,8700,,,onoff;onoff;
 r;wi,,RoomTempMaxAllowed,Max Allowed Room Temp,,,,3200,,,temp,,,Max Allowed Room Temp
 r;wi,,RoomTempCorr,Room Temp Correction,,,,3300,,,temp,,,Room Temp Correction
 r;wi,,OutsideTempCorr,Outside Temp Correction,,,,3600,,,temp,,,Outside Temp Correction
-r;wi,,RoomTempCorr,Room Temp Correction,,,,3900,,,temp,,,Room Temp Correction (factory calibrated)
+r;wi,,RoomTempCorrFact,Room Temp Factory Correction,,,,3900,,,temp,,,Room Temp Correction (factory calibrated)
 r;wi,,HeatCurv,Heat Curv,,,,5c00,,,UIN,100,,Heat Curv
 r;wi,,DHWTempMaxAllowed,Max Allowed DHW Temp,,,,5e00,,,temp,,,Max Allowed DHW Temp
 r;wi,,DHWSheduleOptEnable,DHWSheduleOptEnable,,,,5f00,,,onoff,,,DHWSheduleOptEnable
