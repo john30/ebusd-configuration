@@ -49,6 +49,7 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,Puffersp
 [SW>=362]r,,reserve1,reserve 1,,,,"9D00",,,UCH,,,for future use
 # ##### HK Namen und Tel. Nummer #####,,,,,,,,,,,,,
 r;w,,HcName2,Name HK2,,,,"4108",,,hcname,,,Name für HK2
+r;w,,HcName3,Name HK3,,,,"4110",,,hcname,,,Name für HK3
 r;w,,HcName4,Name HK4,,,,"4118",,,hcname,,,Name für HK4
 r;w,,HcName5,Name HK5,,,,"4120",,,hcname,,,Name für HK5
 r;w,,HcName6,Name HK6,,,,"4128",,,hcname,,,Name für HK6
