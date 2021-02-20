@@ -1,6 +1,37 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+*r,,,,,,"B507",09,,,,,,
+#r,,Unknown,,,,,,,m,temp1,,,
+*w,,,,,,"B507",09,,,,,,
+#w,,Unknown,,,,,,,m,temp1,,,
 *r,,,,,,"B511",,,,,,,
 r,,State,,,,,07,energy,,UCH,,,,,,energy,,kWh,,onoff,,UCH,0=off;1=on,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
+# Livemonitor on VWZ. The read commands mimic the button press/menu selection on the VWZ.
+# ReadLiveMonitor: reads either one of the live monitoring sub menus. Updates via LiveMonitor.
+# ReadLiveMonitorMain: reads the main live monitor menu. Updates via LiveMonitorMain.
+# Payloads for ReadLiveMonitor:
+#   00321f: desired supply (D2C). 
+#   003220: current supply (D2C). 
+#   003224: current power consumption (UIN). 
+#   003223: power generated (UIN). 
+#   003225: Modulation (D1B). 
+#   003226: Air intake (D2C).
+*ru,,,,,,"B511",,,,,,,
+r,,LiveMonitor,,,,"B51A","05",,m,IGN:2,,,,subid,m,HEX:1,,,,,,IGN:3,,,,value,,HEX:2,,,,,,IGN:5,,,
+w,,ReadLiveMonitor,,,,"B51A","05",,m,HEX:3,,,,,,,,,
+r,,LiveMonitorMain,,71,,"B503","00",id,,UCH,0x39=Controller starting;0xf4=Standby;0xf5=Supply on;0xf6=Heating: Flow ok;0xf7=Heating: temperature self test;0xf8=Heating: Start;0xfa=Heating: Fan on;0xfc=EEV switch;0xfd=Compressor starting;0xfe=Heating: compressor on;0x00=Compressor off;0x02=Compressor coast down;0x03=Deicing start;0x04=Deicing;0x05=Deicing end;0x12=Cooling: Flow on;0x14=Cooling: temperature self test;0x15=Cooling: starting;0x17=Cooling: Fan on;0x13=Cooling: Flow ok;0x19=Cooling: EEV?;0x1a=Cooling: compressor starting;0x1b=Cooling: compressor on;0x1d=Cooling: ending;0x29=Start condition not met;0x57=Device error;0x44=flow error in distribution system,,,function,,UCH,0x01=Heating;0x02=Cooling,,
+w,,ReadLiveMonitorMain,,,,"B503","00",,m,HEX:1,,,,,,,,,
+# Test menu's on VWZ. The read commands imitate the button press/menu selection. Send fixed payload 03FFFF.
+*ru,,,,,,"B514",,,,,,,
+w,,ReadEEVPosition,Read T.008,,,B514,0515,,m,HEX:3,,,
+r,,EEVPosition,T.008 value,,,B514,0515,,,IGN:2,,,,,,UIN,,,
+w,,ReadCompressorExitTemp,Read T.026,,,B514,0537,,m,HEX:3,,,,,,,,,
+r,,CompressorExitTemp,T.026 value,,,B514,0537,,,IGN:2,,,,,,SIN,10,,,
+w,,ReadCompressorIntakeTemp,Read T.027,,,B514,0538,,m,HEX:3,,,,,,,,,
+r,,CompressorIntakeTemp,T.027 value,,,B514,0538,,,IGN:2,,,,,,SIN,10,,,
+w,,ReadDeliveryFlow,Read T.016,,,B514,052B,,m,HEX:3,,,
+r,,DeliveryFlow,T.016 value,,,B514,052B,,,IGN:2,,,,,,UIN,,,
+w,,ReadCompressorSpeed,Read T.068,,,B514,055D,,m,HEX:3,,,
+r,,CompressorSpeed,T.068 value,,,B514,055D,,,IGN:2,,,,,,UIN,10,,# Heatpump statistics
 # Heatpump statistics
 *r,,,,,,"B51A","05FF32",,,IGN:3,,,,
 r,,EnergyHc,,,,,00,,,energy,,,,,,,,,,,,,,,
