@@ -1,3 +1,11 @@
+# 2021-02-20
+* made vaillant/broadcast vdatetime writable to installer
+* added value 4=hwc to vaillant pumpstate
+* added hcname3 to vaillant/15.uih
+* added vaillant/15.720 and 15.basv
+* added vaillant/06.vms
+* added mctype7 value 6=circulation to vaillant templates
+
 # 2021-02-07
 * added vaillant/08.bai 0010021961 with variants
 * added vaillant/15.b7v
