@@ -21,6 +21,8 @@ r;w,,HydraulicScheme,system schema,,,,3600,,,UIN,,,Systemschema
 r,,WaterPressure,water pressure,,,,3900,,,pressv,,,Wasserdruck
 r;w,,SolarYieldTotal,total solar yield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,total environmental yield,,,,3E00,,,energy4,,,Umweltertrag gesamt
+r;w,,VentilationDay,day ventilation speed,,,,4200,,,UIN,,,Ventilation speed during day
+r;w,,VentilationNight,desired ventilation,,,,4300,,,UIN,,,Ventilation speed during night
 r;w,,HwcMaxFlowTempDesired,hwc max flow temp desired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Hwc
 r,,SystemFlowTemp,system flow temp,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,multifunction relay setting,,,,4D00,,,mamode,,,
@@ -51,6 +53,8 @@ r,,DisplayedOutsideTemp,outside temperature,,,,7300,,,tempv,,,Außentemperatur
 r;w,,SFMode,SF mode,,,,7400,,,sfmode,,,
 r;w,,KeyCodeforConfigMenu,code for installer menu,,,,7600,,,UIN,,,000-999; code for the installer's menues
 r;w,,OpMode,operation mode,,,,7b00,,,opmode,,,operation mode of all/configured zone(s) matching OpModeEffect
+r;w,,OpModeCooling,operation mode for cooling,,,,7c00,,,opmode,,,operation mode for cooling of all/configured zone(s)
+r;w,,OpModeVentilation,operation mode for ventilation,,,,7d00,,,opmode,,,operation mode for cooling of all/configured zone(s)
 r;w,,HolidayTemp,holiday temperature,,,,8200,,,tempv,,,holiday setpoint
 r;w,,BankHolidayStartPeriod,bank holiday start period,,,,8300,,,hfrom,,,start date of bank holidays
 r;w,,BankHolidayEndPeriod,bank holiday end period,,,,8400,,,hto,,,end date of bank holidays
@@ -142,6 +146,7 @@ r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of z
 # ##### zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
+r;w,,z1OpModeCooling,operation mode zone 1,,,,0100,,,opmode,,,operation mode for cooling of zone 1
 r;w,,z1CoolingTemp,cooling setpoint zone 1,,,,0200,,,tempv,,,desired cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,holiday period start zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,holiday period end zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
@@ -164,6 +169,7 @@ r;w,,z1Name2,zone 1 label (second part),,,,1800,,,zname,,,name of zone 1
 # ##### zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
+r;w,,z2OpModeCooling,operation mode zone 1,,,,0100,,,opmode,,,operation mode for cooling of zone 2
 r;w,,z2CoolingTemp,cooling setpoint zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 2
 r;w,,z2HolidayStartPeriod,holiday period start zone 2,,,,0300,,,hfrom,,,start date of holidays for zone 2
 r;w,,z2HolidayEndPeriod,holiday period end zone 2,,,,0400,,,hto,,,end date of holidays for zone 2
@@ -186,7 +192,8 @@ r;w,,z2Name2,zone 2 label (second part),,,,1800,,,zname,,,name of zone 2
 # ##### zone 3 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000302,,,IGN:4,,,
 *w,,,,,,B524,02010302,,,,,,
-#r;w,,z3Unknown02,(constant 24 - air level?) temperature zone 3,,,,0200,,,tempv,,,unknown value for zone 3
+r;w,,z3OpModeCooling,operation mode zone 1,,,,0100,,,opmode,,,operation mode for cooling of zone 3
+r;w,,z3CoolingTemp,cooling setpoint zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 3
 r;w,,z3HolidayStartPeriod,holiday period start zone 3,,,,0300,,,hfrom,,,start date of holidays for zone 3
 r;w,,z3HolidayEndPeriod,holiday period end zone 3,,,,0400,,,hto,,,end date of holidays for zone 3
 r;w,,z3HolidayTemp,room setpoint holiday period zone 3,,,,0500,,,tempv,,,holiday setpoint for zone 3
