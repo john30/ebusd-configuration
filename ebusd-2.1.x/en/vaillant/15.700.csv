@@ -21,6 +21,8 @@ r;w,,HydraulicScheme,system schema,,,,3600,,,UIN,,,Systemschema
 r,,WaterPressure,water pressure,,,,3900,,,pressv,,,Wasserdruck
 r;w,,SolarYieldTotal,total solar yield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,total environmental yield,,,,3E00,,,energy4,,,Umweltertrag gesamt
+r;w,,VentilationDay,LüftungTag,,,,4200,,,UIN,,,Lüftungsstufe am Tag
+r;w,,VentilationNight,LüftungNacht,,,,4300,,,UIN,,,Lüftungsstufe in der Nacht
 r;w,,HwcMaxFlowTempDesired,hwc max flow temp desired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Hwc
 r,,SystemFlowTemp,system flow temp,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,multifunction relay setting,,,,4D00,,,mamode,,,
