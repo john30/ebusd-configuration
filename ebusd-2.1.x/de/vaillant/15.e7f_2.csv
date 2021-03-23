@@ -1,0 +1,20 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,E7f_2, Thermolink RC/2
+*r,e7f,,,,"15","B509","0D",,,,,,
+*w,e7f,,,,"15","B509","0E",,,,,,
+*wi,e7f#install,,,,"15","B509","0E",,,,,,
+
+r,,RoomTemp,,,,,"3A00",,,temp,,,Room Tempearature
+r;w,,TargetRoomTemp,,,,,"2200",,,temp,,,Target Room Temperature
+r;w,,HWTemp,,,,,"4000",,,temp,,,HW Tempearature
+r,,DevName,,,,,"3000",,,NTS:14,,,Thermostat name
+r;w,,HeatingEnable,,,,,"0300",,,onoff,,,Turn heating on or off
+r;w,,HotWaterEnable,,,,,"4100",,,onoff,,,Turn hot water on or off
+r;w,,HolidayEnable,,,,,"5400",,,onoff,,,Enable or disable holiday mode
+r;w,,HolidayStart,,,,,"5500",,,HEX:4,,,Start of the holiday (date format unknown)
+r;w,,HolidayEnd,,,,,"5700",,,HEX:4,,,End of the holiday (date format unknown)
+r;w,,HolidayTemp,,,,,"5800",,,temp,,,Temperature during holiday
+r;w,,LcdBrightnessValue,LcdBrightnessValue,,,,"2C00",,,UCH,,,setting of the LCD brightness (0-5)
+r;w,,LcdContrastValue,LcdContrastValue,,,,"2B00",,,UCH,,,setting of the LCD contrast (0-5)
+r;w,,LanguageVariant,LanguageVariant,,,,"3100",,,UCH,0=german;1=english;2=french;3=italian;4=flemish;5=dutch;6=spanish;7=catalan;8=basque;9=galician;10=hungarian;11=russian;12=ukrainian;13=polish;14=czech;15=croatian;16=slovakian;17=romanian;18=slovenian;19=Portuguese;20=dutch (AT),,display language,,,
+r;wi,,InstallerPhoneNumber,,,,,"6100",,,STR:13,,,"Installer telephone number (only 0-9,-,blank)"
