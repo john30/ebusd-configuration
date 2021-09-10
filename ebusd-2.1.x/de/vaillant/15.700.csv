@@ -64,7 +64,7 @@ r,,HcStorageTempBottom,"Temp.fühler Hz, unten",,,,A000,,,tempv,,,"Temp.fühler 
 # ##### Warmwasserkreis #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000100,,,IGN:4,,,
 *w,,,,,,B524,02010100,,,,,,
-r;w,,HwcOpMode,HwcOpMode,,,,0300,,,opmode,,,operation mode of Hwc
+r;w,,HwcOpMode,Betriebsart Warmwasserkreis,,,,0300,,,opmode,,,operation mode of the domestic hot water circuit
 r;w,,HwcTempDesired,Speichersolltemperatur,,,,0400,,,tempv,,,setpoint of domestic hot water circuit
 r,,HwcStorageTemp,Speicheristtemperatur,,,,0500,,,tempv,,,Speicheristtemperatur
 r,,HwcFlowTemp,HwcFlowTemp,,,,0800,,,tempv,,,desired flow temp for Hwc
