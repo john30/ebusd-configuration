@@ -6,8 +6,6 @@
 *ws,#service,,,,,"B509","0E",,,,,,
 # ##### dia level 1 #####,,,,,,,,,,,,,
 r,,CirPump,d.13 Circulation pump,,,,"7B00",,,onoff,,,Hot water circulation pump (via external module)
-# ##### dia level 2 #####,,,,,,,,,,,,,
-r;wi,,ReturnRegulation,d.17 Return regulation,,,,"0C04",,,onoff,,,heating flow/return regulation activation
-r;wi,,HcPumpMode,d.18 CH pump mode,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pump mode
+r,,Flame,Flame,,,,"0500",,,UCH,240=off;15=on,,flame
 !include,errors.inc,,,,,,,,,,,,
 !include,service.inc,,,,,,,,,,,,
