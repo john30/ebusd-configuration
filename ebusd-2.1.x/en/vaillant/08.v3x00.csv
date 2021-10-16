@@ -5,7 +5,14 @@
 *wi,#install,,,,,"B509","0E",,,,,,
 *ws,#service,,,,,"B509","0E",,,,,,
 # ##### dia level 1 #####,,,,,,,,,,,,,
-r,,CirPump,d.13 Circulation pump,,,,"7B00",,,onoff,,,Hot water circulation pump (via external module)
-r,,Flame,Flame,,,,"0500",,,UCH,240=off;15=on,,flame
+r,,WP,d.10 Central heating pump,,,,"4400",,,onoff,,,internal heating pump
+r,,extWP,d.11 external pump,,,,"3F00",,,onoff,,,External heating pump
+r,,FlowTemp,d.40 TFT_DK,,,,"1800",,,tempsensor,,,flow temperature
+r,,ReturnTemp,d.41 Temp heating return,,,,"9800",,,tempmirrorsensor,,,return temperature
+r;wi,,HcPumpMode,d.18 CH pump mode,,,,"B700",,,UCH,0=post run;1=permanent;2=winter,,Pump mode
+r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,temp0,,,unsuccessfull ignitions in the first attempt
+r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,temp0,,,unsuccessfull ignitions in the second attempt
+r;wi,,PumpOverrun,d.72 PumpOverrun,,,,"6300",,,minutes0,,,setting range: 2…60min; default setting: 5 min
+r,,ACRoomthermostat,d.08 Room thermostat 230 V,,,,"2A00",,,onoff,,,External controls heat demand (Clamp 3-4)
 !include,errors.inc,,,,,,,,,,,,
 !include,service.inc,,,,,,,,,,,,
