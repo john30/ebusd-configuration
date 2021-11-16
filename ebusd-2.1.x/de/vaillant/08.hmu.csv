@@ -49,4 +49,3 @@ r,,ConsumptionThisYear11,,,,,0B00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,
 r,,ConsumptionThisYear12,,,,,0C00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,
 !include,hcmode.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
-
