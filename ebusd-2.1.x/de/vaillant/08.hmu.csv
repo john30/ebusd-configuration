@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
-*r,,,,,,"B511",,,,,,,
+*r,,,,,,"B511",,,,,,,,,,,,,,,,,,,,,,,,,
 r,,State,,,,,07,energy,,UCH,,,,,,energy,,kWh,,onoff,,UCH,0=off;1=on,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
 # Heatpump statistics
 *r,,,,,,"B51A","05FF32",,,IGN:3,,,,
