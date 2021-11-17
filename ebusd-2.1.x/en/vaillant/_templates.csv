@@ -33,7 +33,7 @@ hcmode,UCH,0=auto;1=off;2=heat;2=water,,boiler mode
 hcmode2,UCH,0=off;3=heat;4=water,,boiler mode
 mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,mixer mode
 mctype,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
-mctype7,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
+mctype7,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool;6=circulation,,mixer type
 hwcmode,UCH,0=disabled;1=on;2=off;3=auto,,hot water mode
 hwcmode2,UCH,0=off;1=on;2=auto;3=manual,,hot water mode
 mixer,UCH,0=off;1=open;2=close,,mixer State
@@ -75,7 +75,7 @@ energy4,ULG,,kWh,
 cntstarts,ULG,,,start count
 cntstarts2,UIN,,,start count
 pumppow,UCH,0=0;1=1;2=2;3=3;4=4;5=5;6=6;7=off,,pump power
-pumpstate,UCH,0=off;1=on;2=overrun,,pump state
+pumpstate,UCH,0=off;1=on;2=overrun;4=hwc,,pump state
 dcfstate,UCH,0=nosignal;1=ok;2=sync;3=valid,,DCF receiver state
 phaseok,UCH,0=error;7=ok,,phase state
 switchvalve,UCH,0=heat;1=water,,valve position
