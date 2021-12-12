@@ -15,4 +15,3 @@ r,,Status,Status,,,,03,,,temp;press;press;hcmode2;HEX,,,
 
 *uw,,,,,,"B512",,,,,,,
 uw,,StatusCirPump,Status circulation pump,,,,00,,,UCH,0=off;100=on,,
-
