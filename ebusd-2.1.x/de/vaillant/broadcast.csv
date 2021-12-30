@@ -1,6 +1,7 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m;s),type / templates,divider / values,unit,comment,field2,part (m;s),type / templates,divider / values,unit,comment,field3,part (m;s),type / templates,divider / values,unit,comment
 *b,broadcast,,,,"FE","B516",,,,,,,,,,,,,,,,,,,
-b,,vdatetime,Datum/Uhrzeit,,,,"00",time,,BTI,,,,date,,BDA,,,,,,,,,
+*wi,broadcast,,,,"FE","B516",,,,,,,,,,,,,,,,,,,
+b;wi,,vdatetime,Datum/Uhrzeit,,,,"00",time,,BTI,,,,date,,BDA,,,,,,,,,
 b,,outsidetemp,Außentemperatur,,,,"01",,,temp2,,,,,,,,,,,,,,,
 *b,broadcast,,,,"FE","B505",,,,,,,,,,,,,,,,,,,
 b,,hwcStatus,Status Warmwasser,,,,"27",,,onoff,,,,VF1,,temp0,,,,,,onoff,,,
