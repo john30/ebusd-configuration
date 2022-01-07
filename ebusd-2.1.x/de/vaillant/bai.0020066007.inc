@@ -20,8 +20,8 @@ r,,DeactivationsTemplimiter,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der 
 r,,DeactivationsIFC,d.61 Anzahl Zündfehler,,,,"1F00",,,UCH,,,Anzahl der Zündfehler (nicht erfolgreiche Züdung im letzten Versuch oder fehlerhaftes Flammensignal)
 r,,averageIgnitiontime,d.64 Mittlere Zündzeit,,,,"2D00",,,UCH,10,s,Mittlere Zündzeit
 r,,maxIgnitiontime,d.65 Max. Zündzeit,,,,"2C00",,,UCH,10,s,Maximale Zündzeit
-r,,CounterStartattempts1,d.68 Zündfehler 1. Versuch,,,,"6E00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 1. Versuch)
-r,,CounterStartattempts2,d.69 Zündfehler 2. Versuch,,,,"6F00",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 2. Versuch)
+r,,CounterStartattempts1,d.68 Zündfehler 1. Versuch,,,,"6E00",,,count,,,Anzahl der erfolglosen Zündversuche (im 1. Versuch)
+r,,CounterStartattempts2,d.69 Zündfehler 2. Versuch,,,,"6F00",,,count,,,Anzahl der erfolglosen Zündversuche (im 2. Versuch)
 r;ws,,DSNOffset,d.93 Gerätekennung,,,,"B500",,,UCH,,,Gerätekennung (DSN)
 # ##### Expertenebene #####,,,,,,,,,,,,,
 r,,Flame,Flammensignal,,,,"0500",,,UCH,240=off;15=on,,Flammensignal
@@ -57,7 +57,7 @@ r,,FanHours,Betriebsstunden Lüfter,,,,"1B00",,,hoursum2,,,Betriebsstunden des L
 r,,FanStarts,FanCommunt_DK,,,,"1C00",,,cntstarts2,,,Anzahl der Lüfterschaltspiele
 r,,minIgnitiontime,Min. Zündzeit,,,,"2B00",,,UCH,10,s,Minimale Zündzeit
 r,,T3Max,T3_max,,,,"3700",,,temp,,,Maximaltemperatur am PWT-Ausgang
-r,,CounterStartAttempts3,Zündfehler 3. Versuch,,,,"8100",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 3. Versuch)
-r,,CounterStartAttempts4,Zündfehler 4. Versuch,,,,"8200",,,temp0,,,Anzahl der erfolglosen Zündversuche (im 4. Versuch)
+r,,CounterStartAttempts3,Zündfehler 3. Versuch,,,,"8100",,,count,,,Anzahl der erfolglosen Zündversuche (im 3. Versuch)
+r,,CounterStartAttempts4,Zündfehler 4. Versuch,,,,"8200",,,count,,,Anzahl der erfolglosen Zündversuche (im 4. Versuch)
 r,,T4Max,T4_max,,,,"BE00",,,temp,,,Maximaltemperatur am PWT-Eingang
 !include,errors.inc,,,,,,,,,,,,

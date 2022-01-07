@@ -92,8 +92,8 @@ r,,DeactivationsIFC,d.61 Number ignition device cut off,,,,"1F00",,,UCH,,,"numbe
 r,,exhaustWayBlockCounter,d.63 exhaust way block counter,,,,"9C00",,,UCH,,,numbers the exhaust way was blocked
 r,,averageIgnitiontime,d.64 average ignition time,,,,"2D00",,,UCH,10,s,average ignition time
 r,,maxIgnitiontime,d.65 Max ignition time,,,,"2C00",,,UCH,10,s,maximum ignition time
-r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,temp0,,,unsuccessfull ignitions in the first attempt
-r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,temp0,,,unsuccessfull ignitions in the second attempt
+r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,count,,,unsuccessfull ignitions in the first attempt
+r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,count,,,unsuccessfull ignitions in the second attempt
 r;wi,,ValveMode,d.70 diverter valve position,,,,"2A04",,,UCH,,,"Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position"
 r;wi,,FlowsetHcMax,d.71 Max value flow temp,,,,"0E04",,,temp,,,Adjustment of maximum central heating setpoint range (maximum endposition of potmeter)
 r;wi,,HwcPostrunTime,d.72 postrun time storage,,,,"1104",,,UCH,-10,s,"Pump overrun time after charging a storage (charging through C1-C2, external/internal tank with tank sensor)"
@@ -124,7 +124,7 @@ r,,HwcImpellorSwitch,DHW impellor switch,,,,"5700",,,yesno,,,domestic hot water 
 r,,WarmstartDemand,WarmstartDemand,,,,"3A04",,,yesno,,,activation of warmstart
 r,,TargetFanSpeedOutput,TargetFan_Speed_Output_DK,,,,"9F00",,,UIN,,1/min,output fan speed
 r;ws,,ReduceModulationBlocktime,ReduceModulationBlocktime_DK,,,,"5C00",,,UCH,,,Reduced modulation blocking time to fulfil 3-star requirement
-r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,temp0,,,unsuccessfull ignitions in the third attempt
+r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,count,,,unsuccessfull ignitions in the third attempt
 r,,SHEMaxFlowTemp,SHE_MaxFlowTemp_DK,,,,"C300",,,temp,,,maximum flow temperature DHW
 r,,SHEMaxDeltaHwcFlow,SHE_MaxDeltaFlowDHW_DK,,,,"C400",,,temp,,,maximum difference between flow and DHW outlet temperature
 r,,PumpHours,Pump operation hours,,,,"1400",,,hoursum2,,,pump operation hours

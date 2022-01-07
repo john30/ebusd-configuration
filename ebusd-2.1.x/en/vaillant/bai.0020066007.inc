@@ -20,8 +20,8 @@ r,,DeactivationsTemplimiter,d.60 Number STL cut off,,,,"2000",,,UCH,,,Number of 
 r,,DeactivationsIFC,d.61 Number ignition device cut off,,,,"1F00",,,UCH,,,"number of lock outs (unsuccessfull ignitons in the last attempt, flame failure)"
 r,,averageIgnitiontime,d.64 average ignition time,,,,"2D00",,,UCH,10,s,average ignition time
 r,,maxIgnitiontime,d.65 Max ignition time,,,,"2C00",,,UCH,10,s,maximum ignition time
-r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,temp0,,,unsuccessfull ignitions in the first attempt
-r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,temp0,,,unsuccessfull ignitions in the second attempt
+r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,count,,,unsuccessfull ignitions in the first attempt
+r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,count,,,unsuccessfull ignitions in the second attempt
 r;ws,,DSNOffset,d.93 Device specific number,,,,"B500",,,UCH,,,DSN aplliance variant setting
 # ##### expert level #####,,,,,,,,,,,,,
 r,,Flame,Flame,,,,"0500",,,UCH,240=off;15=on,,flame
@@ -57,7 +57,7 @@ r,,FanHours,Fan operation hours,,,,"1B00",,,hoursum2,,,fan operation hours
 r,,FanStarts,FanCommunt_DK,,,,"1C00",,,cntstarts2,,,commutations of the fan
 r,,minIgnitiontime,min_Ignitiontime_DK,,,,"2B00",,,UCH,10,s,minimum ignition time
 r,,T3Max,T3_max,,,,"3700",,,temp,,,Maximaltemperatur am PWT-Ausgang
-r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,temp0,,,unsuccessfull ignitions in the third attempt
-r,,CounterStartAttempts4,CounterStartAttempts4_DK,,,,"8200",,,temp0,,,unsuccessfull ignitions in the fourth attempt
+r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,count,,,unsuccessfull ignitions in the third attempt
+r,,CounterStartAttempts4,CounterStartAttempts4_DK,,,,"8200",,,count,,,unsuccessfull ignitions in the fourth attempt
 r,,T4Max,T4_max,,,,"BE00",,,temp,,,Maximaltemperatur am PWT-Eingang
 !include,errors.inc,,,,,,,,,,,,

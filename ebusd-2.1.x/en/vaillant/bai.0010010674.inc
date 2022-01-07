@@ -52,8 +52,8 @@ r,,DeactivationsTemplimiter,d.60 Number STL cut off,,,,"2000",,,UCH,,,Number of 
 r,,DeactivationsIFC,d.61 Number ignition device cut off,,,,"1F00",,,UCH,,,"number of lock outs (unsuccessfull ignitons in the last attempt, flame failure)"
 r,,averageIgnitiontime,d.64 average ignition time,,,,"2D00",,,UCH,10,s,average ignition time
 r,,maxIgnitiontime,d.65 Max ignition time,,,,"2C00",,,UCH,10,s,maximum ignition time
-r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,temp0,,,unsuccessfull ignitions in the first attempt
-r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,temp0,,,unsuccessfull ignitions in the second attempt
+r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,count,,,unsuccessfull ignitions in the first attempt
+r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,count,,,unsuccessfull ignitions in the second attempt
 r;wi,,FlowsetHcMax,d.71 Max value flow temp,,,,"A500",,,temp,,,Adjustment of maximum central heating setpoint range (maximum endposition of potmeter)
 r;wi,,PumpOverrun,d.72 PumpOverrun,,,,"6300",,,minutes0,,,setting range: 2…60min; default setting: 5 min
 r;wi,,Storageloadoffset,d.73 Tankloadoffset,,,,"B401",,,temp,,,setting range:0 … 25k
@@ -86,8 +86,8 @@ r,,FlowTempMax,TFT_max_DK,,,,"3700",,,temp,,,maximum temperature measured by the
 r,,DeltaFlowReturnMax,MaxDeltaFlowReturn_DK,,,,"3D00",,,temp,,,Predictive Maintenance data
 r,,StorageLoadPumpHours,TankLoadPumpOperationHours_DK,,,,"4C00",,,hoursum2,,,Preditive maintenance data
 r,,StorageloadPumpStarts,TankloadPumpCommunt_DK,,,,"4F00",,,cntstarts2,,,Preditive maintenance data
-r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,temp0,,,unsuccessfull ignitions in the third attempt
-r,,CounterStartAttempts4,CounterStartAttempts4_DK,,,,"8200",,,temp0,,,unsuccessfull ignitions in the fourth attempt
+r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,count,,,unsuccessfull ignitions in the third attempt
+r,,CounterStartAttempts4,CounterStartAttempts4_DK,,,,"8200",,,count,,,unsuccessfull ignitions in the fourth attempt
 r,,ReturnTempMax,TRT_max_DK,,,,"BE00",,,temp,,,max. return temperature
 r,,PumpHwcFlowSum,PumpDHWFlowSum_DK,,,,"C100",,,UIN,,,summed up DHW flow rate
 r,,PumpHwcFlowNumber,PumpDHWFlowNumber_DK,,,,"C200",,,UCH,,,number of times DHW flow rate was detected
