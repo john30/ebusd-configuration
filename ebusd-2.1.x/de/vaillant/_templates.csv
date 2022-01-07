@@ -4,6 +4,7 @@ temps2,SIN,,°C,Temperatur
 tempv,EXP,,°C,Temperatur
 press,FLT,,bar,Druck
 pressv,EXP,,bar,Druck
+count,UCH,,,Anzahl
 date,HDA:3,,,Datum
 day,BDY,,,Wochentag
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
