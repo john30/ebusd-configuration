@@ -27,4 +27,4 @@ r,,LVResetCnt,LVResetCnt,,,,"1600",,,UIN,,,counter of low voltage reset events
 r,,CMResetCnt,CMResetCnt,,,,"1700",,,UIN,,,counter of clock monitor reset events
 r,,COMErrorCnt,COMErrorCnt,,,,"1800",,,UIN,,,Fehler eBUS-Kommunikation
 r,,VariantDKRefreshCnt,VariantDKRefreshCnt,,,,"1900",,,UCH,,,counts how often variant ID has been corrected
-r,,FiFoResetCnt,FiFoResetCnt,,,,"1A00",,,UCH,,,counter how often eBUS Fifo was cleared
+r,,FiFoResetCnt,FiFoResetCnt,,,,"1A00",,,count,,,counter how often eBUS Fifo was cleared
