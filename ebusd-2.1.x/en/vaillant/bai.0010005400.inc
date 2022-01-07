@@ -72,7 +72,7 @@ r,,WaterPressure,Waterpressure,,,,"0200",,,presssensor,,,water pressure
 # ##### maintenance data #####,,,,,,,,,,,,,
 r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,count,,,Number of cut offs of the boilers cause of to high gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
-r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
+r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,count,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
 r,,PumpHours,Pump operation hours,,,,"1400",,,hoursum2,,,pump operation hours
 r,,HcPumpStarts,CH_PumpCommunt_DK,,,,"1500",,,cntstarts2,,,pump switchings
 r,,FanHours,Fan operation hours,,,,"1B00",,,hoursum2,,,fan operation hours

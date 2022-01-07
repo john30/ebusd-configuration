@@ -125,7 +125,7 @@ r;wi,,SetFactoryValues,d.96 Set factory settings,,,,"6804",,,yesno,,,Factory set
 # ##### maintenance data #####,,,,,,,,,,,,,
 r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,count,,,Number of cut offs of the boilers cause of to high gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
-r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
+r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,count,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
 r,,PumpHours,Pump operation hours,,,,"1400",,,hoursum2,,,pump operation hours
 r,,HcPumpStarts,CH_PumpCommunt_DK,,,,"1500",,,cntstarts2,,,pump switchings
 r,,ValveStarts,TWV_Communt_DK,,,,"1A00",,,cntstarts2,,,commutations of the three way valve

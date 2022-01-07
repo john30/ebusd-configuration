@@ -125,7 +125,7 @@ r,,StorageDelay,d.126 Storage charge delay,,,,"0900",,,minutes0,,,Delay of the s
 # ##### Wartungsdaten #####,,,,,,,,,,,,,,,,
 r,,TempGradientFailure,Temperature gradient failures,,,,"1100",,,count,,,Number of boiler shutdown due to high gradient (S.54),,,
 r,,TempDiffBlock,TempDiffBlock,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures,,,
-r,,TempDiffFailure,TempDiffFailure,,,,"1300",,,temp0,,,Number of shutdowns due to incorrect difference between supply and return temperatures,,,
+r,,TempDiffFailure,TempDiffFailure,,,,"1300",,,count,,,Number of shutdowns due to incorrect difference between supply and return temperatures,,,
 r,,PumpHours,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pump operating hours,,,
 r,,HcPumpStarts,CH_PumpCommunt,,,,"1500",,,cntstarts2,,,Pump times switched on,,,
 r,,ValveStarts,3WV Schaltspiele,,,,"1A00",,,cntstarts2,,,Number of times 3WV value operated,,,

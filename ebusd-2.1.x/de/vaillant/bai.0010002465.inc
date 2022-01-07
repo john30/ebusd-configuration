@@ -127,7 +127,7 @@ r;wi,,SetFactoryValues,d.96 Werkseinstellungen,,,,"6804",,,yesno,,,set diagnosti
 # ##### Wartungsdaten #####,,,,,,,,,,,,,
 r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,count,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
-r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur
+r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,count,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur
 r,,PumpHours,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pumpenbetriebsstunden
 r,,HcPumpStarts,CH_PumpCommunt_DK,,,,"1500",,,cntstarts2,,,Schaltspiele Pumpe
 r,,ValveStarts,3WV Schaltspiele,,,,"1A00",,,cntstarts2,,,Anzahl der 3WV Umschaltungen

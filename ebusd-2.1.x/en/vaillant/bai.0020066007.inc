@@ -51,7 +51,7 @@ r,,FanMaxSpeedOperation,FanMaxSpeedOperation,,,,"E000",,,UIN,,1/min,Maximum Fan 
 r,,FaultlistDK[0],Faultlist_DK[0],,,,"2600",,,HEX:10,,,fault list (of the last 10 failures)
 # ##### maintenance data #####,,,,,,,,,,,,,
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
-r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
+r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,count,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
 r,,ValveStarts,TWV_Communt_DK,,,,"1A00",,,cntstarts2,,,commutations of the three way valve
 r,,FanHours,Fan operation hours,,,,"1B00",,,hoursum2,,,fan operation hours
 r,,FanStarts,FanCommunt_DK,,,,"1C00",,,cntstarts2,,,commutations of the fan

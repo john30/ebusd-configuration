@@ -142,7 +142,7 @@ r,,StorageLoadPumpHours,TankLoadPumpOperationHours_DK,,,,"4C00",,,hoursum2,,,Pre
 r,,StorageloadPumpStarts,TankloadPumpCommunt_DK,,,,"4F00",,,cntstarts2,,,Preditive maintenance data
 r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,count,,,Number of cut offs of the boilers cause of to high gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
-r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
+r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,count,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
 r,,ReturnTempMax,TRT_max_DK,,,,"BE00",,,temp,,,max. return temperature
 r,,maintenancedata_HwcTempMax,Temp DHW max,,,,"3500",,,temp,,,maximum temperature measured by the domestic hot water outlet sensor
 r,,StorageTempMax,Temp storage max,,,,"3600",,,temp,,,maximum temperature measured by the external tank sensor

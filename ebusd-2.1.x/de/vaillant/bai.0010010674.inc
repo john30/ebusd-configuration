@@ -72,7 +72,7 @@ r,,WaterPressure,Wasserdruck,,,,"0200",,,presssensor,,,Wasserdruck
 # ##### Wartungsdaten #####,,,,,,,,,,,,,
 r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,count,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
-r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur
+r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,count,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur
 r,,PumpHours,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pumpenbetriebsstunden
 r,,HcPumpStarts,CH_PumpCommunt_DK,,,,"1500",,,cntstarts2,,,Schaltspiele Pumpe
 r,,FanHours,Betriebsstunden Lüfter,,,,"1B00",,,hoursum2,,,Betriebsstunden des Lüfters
