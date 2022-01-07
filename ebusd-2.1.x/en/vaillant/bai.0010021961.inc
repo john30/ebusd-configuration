@@ -123,7 +123,7 @@ r;wi,,SpecialAdj,d.88 SpecialAdj,,,,"7604",,,UCH,,,"switching on threshold for r
 r;ws,,DSNOffset,d.93 Hardware ID,,,,"3004",,,UCH,,,Hardware ID (DSN),,,
 r;wi,,SetFactoryValues,d.96 Reset to defaults,,,,"6804",,,yesno,,,Reset to factory defaults,,,
 # ##### Wartungsdaten #####,,,,,,,,,,,,,,,,
-r,,TempGradientFailure,Temperature gradient failures,,,,"1100",,,temp0,,,Number of boiler shutdown due to high gradient (S.54),,,
+r,,TempGradientFailure,Temperature gradient failures,,,,"1100",,,count,,,Number of boiler shutdown due to high gradient (S.54),,,
 r,,TempDiffBlock,TempDiffBlock,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures,,,
 r,,TempDiffFailure,TempDiffFailure,,,,"1300",,,temp0,,,Number of shutdowns due to incorrect difference between supply and return temperatures,,,
 r,,PumpHours,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pump operating hours,,,

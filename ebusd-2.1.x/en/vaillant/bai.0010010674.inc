@@ -70,7 +70,7 @@ r;ws,,DSNOffset,d.93 Device specific number,,,,"B500",,,UCH,,,DSN aplliance vari
 r;wi,,SetFactoryValues,d.96 Set factory settings,,,,"7201",,,yesno,,,Factory settings
 r,,WaterPressure,Waterpressure,,,,"0200",,,presssensor,,,water pressure
 # ##### maintenance data #####,,,,,,,,,,,,,
-r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,temp0,,,Number of cut offs of the boilers cause of to high gradient (S.54)
+r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,count,,,Number of cut offs of the boilers cause of to high gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
 r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
 r,,PumpHours,Pump operation hours,,,,"1400",,,hoursum2,,,pump operation hours

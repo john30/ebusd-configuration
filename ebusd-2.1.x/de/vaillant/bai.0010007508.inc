@@ -70,7 +70,7 @@ r;ws,,DSNOffset,d.93 Gerätekennung,,,,"B500",,,UCH,,,Gerätekennung (DSN)
 r;wi,,SetFactoryValues,d.96 Werkseinstellungen,,,,"7201",,,yesno,,,Werkseinstellungen
 r,,WaterPressure,Wasserdruck,,,,"0200",,,presssensor,,,Wasserdruck
 # ##### Wartungsdaten #####,,,,,,,,,,,,,
-r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,temp0,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)
+r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,count,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
 r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur
 r,,PumpHours,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pumpenbetriebsstunden

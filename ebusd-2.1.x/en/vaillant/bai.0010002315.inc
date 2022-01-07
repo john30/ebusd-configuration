@@ -103,7 +103,7 @@ r;wi,,AntiCondensValue,d.85 AntiCondensValue,,,,"7704",,,power,,,increase of min
 r;wi,,DSNOffset,d.93 Device specific number,,,,"3004",,,UCH,,,DSN appliance variant setting
 r;wi,,SetFactoryValues,d.96 Set factory settings,,,,"6804",,,yesno,,,set diagnostic values back to factory settings
 # ##### maintenance data #####,,,,,,,,,,,,,
-r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,temp0,,,Number of cut offs of the boilers cause of to high gradient (S.54)
+r,,TempGradientFailure,TempGradientFailure_DK,,,,"1100",,,count,,,Number of cut offs of the boilers cause of to high gradient (S.54)
 r,,TempDiffBlock,TempDiffBlock_DK,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures
 r,,TempDiffFailure,TempDiffFailure_DK,,,,"1300",,,temp0,,,Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures
 r,,PumpHours,Pump operation hours,,,,"1400",,,hoursum2,,,pump operation hours

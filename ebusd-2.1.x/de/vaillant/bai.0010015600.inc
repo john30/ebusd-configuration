@@ -123,7 +123,7 @@ r,,StorageExitTemp,d.125 Speicherauslauftemp. Istwert,,,,"5000",,,tempsensor,,,S
 r,,StorageDelay,d.126 Verzögerung der Speicherladung,,,,"0900",,,minutes0,,,Verzögerung der Speicherladung
 #r;wi,,StateAnodeConnection,d.127 Status Fremdstromanode,,,,"0000",,,UCH,0=offen;1=angeschlossen,,,Status Fremdstromanodeanschluß
 # ##### Wartungsdaten #####,,,,,,,,,,,,,,,,
-r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,temp0,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54),,,
+r,,TempGradientFailure,Gradientenfehler,,,,"1100",,,count,,,Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54),,,
 r,,TempDiffBlock,TempDiffBlock,,,,"1200",,,temp0,,,Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures,,,
 r,,TempDiffFailure,TempDiffFailure,,,,"1300",,,temp0,,,Anzahl der Abschaltungen wegen zu hoher / fehlerhafter Differenz von Vor- und Rücklauftemperatur,,,
 r,,PumpHours,Betriebsstunden Pumpe,,,,"1400",,,hoursum2,,,Pumpenbetriebsstunden,,,
