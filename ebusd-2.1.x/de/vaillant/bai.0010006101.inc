@@ -89,7 +89,7 @@ r;ws,,ExhaustCurve,d.56 ExhaustCurve,,,,"7204",,,UCH,,,ExhaustCurve
 r,,SolPostHeat,d.58 Solarbetriebsart,,,,"7304",,,UCH,,,Spezielle WW Funktionen:0 = Solarfunktion deaktiviert (default)1 = Solarfunktion aktiviert und WW Sollwert minimal 60°C2 = Solarfunktion aktiviert und WW Sollwert min. 35°C3 = WW Sollwert minimum 60°C
 r,,DeactivationsTemplimiter,d.60 STB Abschaltungen,,,,"2000",,,UCH,,,Anzahl der Abschaltungen durch den Sicherheitstemperaturbgrenzers
 r,,DeactivationsIFC,d.61 Anzahl Zündfehler,,,,"1F00",,,UCH,,,Anzahl der Zündfehler (nicht erfolgreiche Züdung im letzten Versuch oder fehlerhaftes Flammensignal)
-r,,exhaustWayBlockCounter,d.63 exhaust way block counter,,,,"9C00",,,UCH,,,numbers the exhaust way was blocked
+r,,exhaustWayBlockCounter,d.63 exhaust way block counter,,,,"9C00",,,count,,,numbers the exhaust way was blocked
 r,,averageIgnitiontime,d.64 Mittlere Zündzeit,,,,"2D00",,,UCH,10,s,Mittlere Zündzeit
 r,,maxIgnitiontime,d.65 Max. Zündzeit,,,,"2C00",,,UCH,10,s,Maximale Zündzeit
 r,,CounterStartattempts1,d.68 Zündfehler 1. Versuch,,,,"6E00",,,count,,,Anzahl der erfolglosen Zündversuche (im 1. Versuch)

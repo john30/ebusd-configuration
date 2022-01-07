@@ -89,7 +89,7 @@ r;ws,,ExhaustCurve,d.56 ExhaustCurve,,,,"7204",,,UCH,,,ExhaustCurve
 r,,SolPostHeat,d.58 solar function,,,,"7304",,,UCH,,,special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)
 r,,DeactivationsTemplimiter,d.60 Number STL cut off,,,,"2000",,,UCH,,,Number of safety temperature limiter cut offs
 r,,DeactivationsIFC,d.61 Number ignition device cut off,,,,"1F00",,,UCH,,,"number of lock outs (unsuccessfull ignitons in the last attempt, flame failure)"
-r,,exhaustWayBlockCounter,d.63 exhaust way block counter,,,,"9C00",,,UCH,,,numbers the exhaust way was blocked
+r,,exhaustWayBlockCounter,d.63 exhaust way block counter,,,,"9C00",,,count,,,numbers the exhaust way was blocked
 r,,averageIgnitiontime,d.64 average ignition time,,,,"2D00",,,UCH,10,s,average ignition time
 r,,maxIgnitiontime,d.65 Max ignition time,,,,"2C00",,,UCH,10,s,maximum ignition time
 r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,count,,,unsuccessfull ignitions in the first attempt
