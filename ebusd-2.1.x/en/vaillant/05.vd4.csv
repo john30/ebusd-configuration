@@ -24,7 +24,7 @@ r;wi,,LastConnectionError,Last connection error,,,,"0F00",,,UCH,0=none;1=connect
 r;wi,,ConnErrorRetryDelay,Connection error retry delay [minutes],,,,"1000",,,UCH,,,Delay between two connection tries in case of a connection error
 r;wi,,ConnectionDelay,Connection Delay [minutes],,,,"1100",,,UCH,,,Minimum delay between two server connections established by the dialog box.
 r;wi,,ErrorMessage,,,,,"1200",,,UCH,,,
-r;wi,,ConnErrorCnt,Connection error counter,,,,"1300",,,UCH,,,Number of connection tries. Will be reset to zero after a successful connection
+r;wi,,ConnErrorCnt,Connection error counter,,,,"1300",,,count,,,Number of connection tries. Will be reset to zero after a successful connection
 r;wi,,PppPhoneNumber1,PPP phone number 1,,,,"1400",,,STR:21,,,Fon number or ATN of the first PPP provider selected by server
 r;wi,,PppLogin1,PPP Login 1,,,,"1500",,,STR:21,,,Login for the first internetprovider
 r;wi,,PppPassword1,PPP Password 1,,,,"1600",,,STR:21,,,Password for the first internet provider

@@ -24,7 +24,7 @@ r;wi,,LastConnectionError,Letzter Verbindungsfehler,,,,"0F00",,,UCH,0=none;1=con
 r;wi,,ConnErrorRetryDelay,Verzögerungszeit nach Verbindungsfehler [min],,,,"1000",,,UCH,,,"Wartezeit zwischen zwei Verbindungsversuchen, wenn der Verbindungsversuch fehlgeschlagen ist"
 r;wi,,ConnectionDelay,Verzögerungszeit Verbindung [min],,,,"1100",,,UCH,,,Minimal Verzögerungszeit zwischen zwei Verbindungen zum Servr. Nur Wirksam für Verbindungen die von der kommunikationseinheit initiert werden (wie z.B
 r;wi,,ErrorMessage,,,,,"1200",,,UCH,,,
-r;wi,,ConnErrorCnt,Zähler fehlerhafte Verbindungen,,,,"1300",,,UCH,,,Anzahl der fehlgeschlagenen Kommunikationsversuchen. Wird bei einem erfolgreichen Kommunikationsversuch auf Null zurückgesetzt.
+r;wi,,ConnErrorCnt,Zähler fehlerhafte Verbindungen,,,,"1300",,,count,,,Anzahl der fehlgeschlagenen Kommunikationsversuchen. Wird bei einem erfolgreichen Kommunikationsversuch auf Null zurückgesetzt.
 r;wi,,PppPhoneNumber1,PPP Telefonnummer 1,,,,"1400",,,STR:21,,,"Telefonnummer des Internetproviders bei GSM oder analoger Anwendung, bzw. ATN bei GPRS Providern"
 r;wi,,PppLogin1,PPP Login 1,,,,"1500",,,STR:21,,,Login für den ersten Internetprovider
 r;wi,,PppPassword1,PPP Passwort 1,,,,"1600",,,STR:21,,,Passwort für ersten Internetprovider
