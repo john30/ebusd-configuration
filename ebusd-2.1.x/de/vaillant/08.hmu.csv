@@ -1,13 +1,58 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+
+# Werte von Fachhandwerkerebene -> Testmenü -> Statistiken
+*r,,,,,,"B51A","05b434",,,IGN:3,,,,
+r,,CompressorHours,Kompressor Sunden,,,B51A,05b43400,,,hoursum,,,Kompressor Stunden
+r,,CompressorStarts,Kompressor Starts,,,B51A,05b43401,,,UIN,,,Kompressor Starts
+r,,BuildingPumpHours,Gebäudepumpe Stunden,,,B51A,05b43402,,,hoursum,,,Gebäudepumpe Stunden
+r,,BuildingPumpStarts,Gebäudepumpe Starts,,,B51A,05b43403,,,UIN,,,Gebäudepumpe Starts
+r,,FourWayValveHours,4-Wege-V. Std.,,,B51A,05073406,,,hoursum,,,4-Wege Ventil Stunden
+r,,FourWayValveSwitchingOperations,4-Wege Schaltv.,,,B51A,05363407,,,UIN,,,Schaltvorgänge 4-Wege Ventil
+r,,Fan1Hours,Betr.std.Lüfter 1,,,B51A,053c3451,,,hoursum,,,Betriebsstunden Lüfter 1
+r,,Fan1Starts,Starts Lüfter 1,,,B51A,05d63452,,,UIN,,,Starts Lüfter 1
+r,,EEVSteps,EEV Schritte,,,B51A,05e4340d,,,UIN,,,EEV Schritte
+r,,stat5,stat1,,,B51A,05b43404,,,UIN,,,comment
+
 *r,,,,,,"B511",,,,,,,
-r,,State,,,,,07,energy,,UCH,,,,,,energy,,kWh,,onoff,,UCH,0=off;1=on,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
+r,,State,,,,,07,field1,,UCH,,,,,,energy,10,kWh,Täglicher Energieertrag,onoff,,UCH,0=off;1=on,,,state,,UCH,0x00=ready;0x01=ready;0x0b=error;0x08=heating;0x09=heating;0x11=cooling;0x80=heating_water;0x81=heating_water,,
+
 # Heatpump statistics
 *r,,,,,,"B51A","05FF32",,,IGN:3,,,,
-r,,EnergyHc,,,,,00,,,energy,,,,,,,,,,,,,,,
+r,,EnergyHc,Energieertrag Tag Heizen,,,,00,,,energy,10,,,,,,,,,,,,,,
 r,,EnergyCool,,,,,01,,,energy,,,,,,,,,,,,,,,
-r,,Hours,,,,,40,,,energy,,,,,,,,,,,,,,,
-r,,HoursHc,,,,,41,,,energy,,,,,,,,,,,,,,,
-r,,HoursCool,,,,,43,,,energy,,,,,,,,,,,,,,,
+r,,F02,F02,,,,02,f02,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F03,F03,,,,03,f03,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F04,F04,,,,04,f04,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F05,F05,,,,05,f05,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F06,F06,,,,06,f06,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F07,F07,,,,07,f07,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F08,F08,,,,08,f08,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F09,F09,,,,09,f09,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,F10,F10,,,,10,f10,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,F11,F11,,,,11,f11,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,F12,F12,,,,12,f12,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,F13,F13,,,,13,f13,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F14,F14,,,,14,f14,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F15,F15,,,,15,f15,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,EnergyYieldHwc,Energieertrag gesamt Warmwasser,,,,16,energyyieldhwc,,ULG,,kWh,,,,,,,,,,,,,,,,,,,
+r,,F17,F17,,,,17,f17,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F18,F18,,,,18,f18,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F19,F19,,,,19,f19,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,F20,F20,,,,20,f20,,D2B,,,,,,,,,,,,,,,,,,,,,
+r,,EnergyIntegral,Energie Integral,,,,21,energyintegral,,SLG,,°min,,,,,,,,,,,,,,,,,
+#r,,F22,F22,,,,22,f22,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,CurrentYieldPower,Kälteleistung,,,,23,yieldpower,,D1B,10,kW,,,,,,,,,,,,,,,,,,,
+r,,CurrentConsumedPower,elektrische Leistungsaufnahme,,,,24,consumedpower,,D1B,10,kW,,,,,,,,,,,,,,,,,,,
+r,,CurrentCompressorUtil,Modulation Kompressor,,,,25,compressorutil,,D2C,,%,,,,,,,,,,,,,,,,,,,
+r,,AirInletTemp,Lufteinlasstemperatur,,,,26,airinlettemp,,temp,,,,,,,,,,,,,,,,,,,,,
+#r,,F27,F27,,,,27,f27,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F28,F28,,,,28,f28,,D1B,,,,,,,,,,,,,,,,,,,,,
+#r,,F29,F29,,,,29,f29,,D1B,,,,,,,,,,,,,,,,,,,,,
+r,,Hours,Betriebsstd. Gesamt,,,,40,,,hoursum,,,,,,,,,,,,,,,
+r,,HoursHc,Betriebsstd. Heizen,,,,41,,,hoursum,,,,,,,,,,,,,,,
+r,,HoursCool,Betriebsstd. Kühlen,,,,43,,,hoursum,,,,,,,,,,,,,,,
+
+
 # Total heating yields
 *r,,,,,,"B516","18",,,IGN:1,,,
 r,,YieldTotal,,,,,01,,,energy,,,,,,,,,,,,,,,
@@ -41,6 +86,51 @@ r,,ConsumptionThisYear9,,,,,0900,month,,D1B,,,,,,IGN:1,,,,,,energy,,,
 r,,ConsumptionThisYear10,,,,,0A00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,
 r,,ConsumptionThisYear11,,,,,0B00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,
 r,,ConsumptionThisYear12,,,,,0C00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,
-!include,hcmode.inc,,,,,,,,,,,,
-!include,errors.inc,,,,,,,,,,,,
 
+# Werte von Fachhandwerkerebene -> Testmenü -> Sensor-/Aktortest
+*r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
+r,,BuildingCircuitPumpPower,Gebäudekreispumpe Leistung,,,,0103ffff,,,UIN,,%,T.0.01 Gebäudekreispumpe Leistung
+r,,Fan1,Lüfter 1,,,,1103ffff,,,UIN,,%,T.0.02 Lüfter 1
+r,,CondensateTrayHeater,Kondensatwannenheizung,,,,1303ffff,,,UIN,0=aus;1=an,,T.0.19 Kondensatwannenheizung
+r,,FourPortValve,Vierwegeventil,,,,1403ffff,,,UIN,0=aus;1=an,,T.0.20 4-Wege-Ventil
+r,,PositionEEV,Position EEV,,,,1503ffff,,,UIN,,%,T.0.21 Position: EEV
+r,,HeatingCoilCompressor,Heizwendel Kompressor,,,,1703ffff,,,UIN,0=aus;1=an,,T.0.23 Heizwendel Kompressor
+r,,FlowTemp,Vorlauftemperatur,,,,2803ffff,,,SIN,10,°C,T.0.40 Vorlauftemperatur
+r,,ReturnTemp,Rücklauftemperatur,,,,2903ffff,,,SIN,10,°C,T.0.41 Rücklauftemperatur
+r,,CircuitBuildingWaterPressure,Gebäudekreis Druck,,,,2a03ffff,,,UIN,10,bar,T.0.42 Gebäudekreis: Druck
+r,,CircuitBuildingFlowRate,Gebäudekreis Durchfluss,,,,2B03ffff,,,UIN,,l/h,T.0.45 Gebäudekreis: Durchfluss
+r,,AirInletTempSens,Lufteinlasstemp.,,,,3003ffff,,,SIN,10,°C,T.0.48 Lufteinlasstemperatur
+r,,CompressorOutletTemp,Kompressorauslasstemperatur,,,,3703ffff,,,SIN,10,°C,T.0.55 Kompressorauslastemperatur
+r,,CompressorInletTemp,Kompressoreinlasstemperatur,,,,3803ffff,,,SIN,10,°C,T.0.56 Kompressoreinlastemperatur
+r,,EEVOutletTemp,EEV Auslass Tempperatur,,,,3903ffff,,,SIN,10,°C,T.0.57 Temperatur EEV Auslass
+r,,CondenserOutletTemp,Temperatur Kondensatorauslass,,,,3b03ffff,,,SIN,10,°C,T.0.59 Temperatur Kondensatorauslass
+r,,HighPressure,Hochdruck,,,,3f03ffff,,,SIN,10,bar,T.0.63 Hochdruck
+r,,LowPressure,Niederdruck,,,,4003ffff,,,SIN,10,bar,T.0.64 Niederdruck
+r,,HighPressureSwitch,Hochdruckschalter,,,,4303ffff,,,UIN,0=offen;1=geschlossen,,T.0.67 Hochdruckschalter
+r,,EvaporationTemp,Verdampfungstemperatur,,,,5503ffff,,,SIN,10,°C,T.0.85 Verdampfungstemperatur
+r,,CondensationTemp,Kondensationstemperatur,,,,5603ffff,,,SIN,10,°C,T.0.86 Kondensationstemperatur
+r,,OverheatingTargetValue,Sollwert Überhitzung,,,,5703ffff,,,SIN,10,K,T.0.87 Sollwert Überhitzung
+r,,OverheatingActualValue,Istwert Überhitzung,,,,5803ffff,,,SIN,10,K,T.0.88 Istwert Überhitzung
+r,,SubcoolingTargetValue,Sollwert Unterkühlung,,,,5903ffff,,,SIN,10,K,T.0.89 Sollwert Unterkühlung
+r,,SubcoolingActualValue,Istwert Unterkühlung,,,,5a03ffff,,,SIN,10,K,T.0.90 Istwert Unterkühlung
+r,,CompressorSpeed,Kompressor Drehzahl,,,,5d03ffff,,,SIN,10,U/s,T.0.93 Kompressor Drehzahl
+r,,TempSwitchCompressorOutlet,Temperaturschalter Kompressor Auslass,,,,7b03ffff,,,UIN,0=offen;1=geschlossen,,T.0.123 Temperaturschalter Kompressor Auslass
+r,,PrioritySwitchingValve,Vorrangumschaltventil WW,,,,0203ffff,,,UIN,0=Heizen;1=Warmwasser,,T.1.02 Vorrangumschaltventil WW
+r,,CylinderTemp,Speichertemperatur,,,,2c03ffff,,,SIN,10,°C,T.1.44 Speichertemperatur
+r,,LockoutContactS20,Sperrkontakt S20,,,,2e03ffff,,,UIN,0=geschlossen;1=offen,,T.1.46 Sperrkontakt S20
+r,,OutdoorTemp,Außentemperatur,,,,4503ffff,,,SIN,10,°C,T.1.69 Außentemperatur
+r,,SystemTemp,Systemtemperatur,,,,4603ffff,,,SIN,10,°C,T.1.70 Systemtemperatur
+r,,DCFStatus,DCF Status,,,,4703ffff,,,UIN,,,T.1.71 DCF Status
+r,,LockoutContactS21,Sperrkontakt S21,,,,4803ffff,,,UIN,0=geschlossen;1=offen,,T.1.72 Sperrkontakt S21
+r,,MA1Output,MA1 Ausgang,,,,7703ffff,,,UIN,0=aus;1=an,,T.1.119 MA1 Ausgang
+r,,ImmersionHeaterSafetyCutOut,STB Heizstab,,,,7c03ffff,,,UIN,0=geschlossen;1=offen,,T.1.124 STB Heizstab
+r,,MIInput,ME Eingang,,,,7d03ffff,,,SIN,,,T.1.125 ME Eingang
+r,,MO2Output,MA2 Ausgang,,,,7e03ffff,,,UIN,0=aus;1=an,,T.1.126 MA1 Ausgang
+r,,MO3Output,MA3 Ausgang,,,,7f03ffff,,,UIN,0=aus;1=an,,T.1.127 MA1 Ausgang
+r,,FlowTempImmersionHeater,Vorlauftemperatur Heizstab,,,,8203ffff,,,SIN,10,°C,T1.130 Vorlauftemperatur Heizstab
+
+
+
+
+!include,hcmode.inc,,,,,,,,,,,,
+!include,errors.inc,,,,,,,,,,,
