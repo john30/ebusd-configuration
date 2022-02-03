@@ -3,8 +3,7 @@
 ############ Luftvolumen################,,,,,,,,,,,,,
 *r,,,,,,B509,0D,,,,,,
 *w,,,,,,B509,0E,,,,,,
-# wartosc do wymnozenia przez 3/10
-w,,ventilation,ventilation level,,,,1500,,,UIN,,m³/h,
+w,,ventilation,ventilation level,,,,1500,,,UIN,,m³/h, wartosc do wymnozenia przez 3/10
 #r,,VolumeFlowAct,,,,,1500,,,UIN,,,
 #######Weitere #####,,,,,,,,,,,,,
 r;w,,FlowCorrection,Set volume flow correction,,,,2000,,,D1B,,,
