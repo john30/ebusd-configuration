@@ -6,4 +6,6 @@
 # ##### general #####,,,,,,,,,,,,,
 r;w,,VentMode,,,,,2400,,,UCH,1=Day;2=Out;3=Auto;5=Night,,
 r;w,,VentHI,Wietrzenie,,,,5800,,,BCD:2,,,
+r;w,,Waermerueckgewinnung,Waermerueckgewinnung,,,,0a00,,,UCH,1=An;2=Aus,,,,
+r,,Waermerueckgewinnung_Tage,Waermerueckgewinnung_Tage,,,,3600,,,,,,,,
 r,,Time,,,,,2C00,,,VTI,,,
