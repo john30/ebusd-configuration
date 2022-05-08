@@ -10,11 +10,11 @@ r;w,,HeatingEnable,Heating Enable,,,,0300,,,onoff,,,Heizung aktivieren
 r;w,,HeatingTempSet,Heating Temp Manual Set,,,,2200,,,temp,,,Manuelle Einstellung der Heiztemperatur
 r;w,,HeatingOverrideEnable,Heating Override Enable,,,,2300,,,onoff,,,Heizungsüberbrückung aktivieren
 r;w,,HeatingOverrideTemp,Heating Override Temp,,,,2400,,,temp,,,Übersteuerungstemperatur der Heizung
-r;w,,HeatingOverrideEndTime,Heating Override End Time,,,,2500,,,DTM,,,Endzeit Heizungsübersteuerung (Format - Anzahl der Minuten von 00:00 bis 01.01.2009)
+r;w,,HeatingOverrideEndTime,Heating Override End Time,,,,2500,,,DTM,,,Endzeit Heizungsübersteuerung
 r;w,,KeyboardLockEnable,Keyboard Lock Enable,,,,2a00,,,onoff,,,Tastatursperre aktivieren
 r;w,,Contrast,Contrast,,,,2b00,,,UCH,,,Kontrast
 r;w,,Brightness,Brightness,,,,2c00,,,UCH,,,Helligkeit
-r;w,,Time&Date,Time & Date,,,,2e00,,,DTM,,,Uhrzeit & Datum (Format - Anzahl der Minuten von 00:00 bis 01.01.2009)
+r;w,,Time&Date,Time & Date,,,,2e00,,,DTM,,,Uhrzeit & Datum
 r;w,,DateFormat,Date Format,,,,2d00,,,UCH,,,Datumsformat 1-TT.MM.JJJJ 2-JJJJ.MM.TT
 r;w,,Weekday,Weekday,,,,2f00,,,bday,,,Wochentag
 r;w,,RoomName,Room Name,,,,3000,,,STR:14,,,Raumname
@@ -27,10 +27,10 @@ r;w,,DHWEnable,DHW Enable,,,,4100,,,onoff,,,DHW Aktivieren
 r;w,,DHWScheduleEnable,DHW Shedule Enable,,,,4200,,,onoff,,,DHW Zeitplan aktivieren
 r;w,,DHWOverrideEnable,DHW Override Enable,,,,5100,,,onoff,,,DHW Überschreiben aktivieren
 r;w,,DHWOverrideState,DHW Override State,,,,5200,,,onoff,,,DHW Status überschreiben
-r;w,,DHWOverrideEndTime,DHW Override End Time,,,,5300,,,DTM,,,DHW Endzeit überschreiben (Format - Anzahl der Minuten von 00:00 bis 01.01.2009)
+r;w,,DHWOverrideEndTime,DHW Override End Time,,,,5300,,,DTM,,,DHW Endzeit überschreiben
 r;w,,VacationEnable,Vacation Enable,,,,5400,,,onoff,,,Urlaub aktivieren
-r;w,,VacationStartTime,Vacation Start Time,,,,5500,,,DTM,,,Urlaubsstartzeit (Format - Anzahl der Minuten von 00:00 bis 01.01.2009)
-r;w,,VacationEndTime,Vacation End Time,,,,5700,,,DTM,,,Urlaubsendzeit (Format - Anzahl der Minuten von 00:00 bis 01.01.2009)
+r;w,,VacationStartTime,Vacation Start Time,,,,5500,,,DTM,,,Urlaubsstartzeit
+r;w,,VacationEndTime,Vacation End Time,,,,5700,,,DTM,,,Urlaubsendzeit
 r;w,,VacationTempSet,Vacation Temp Manual Set,,,,5800,,,temp,,,Urlaubstemperatur manuell eingestellt
 r;w,,HeatingTemp1,Heating Temp 1,,,,7300,,,temp,,,Heiztemperatur 1
 r;w,,HeatingTemp2,Heating Temp 2,,,,7400,,,temp,,,Heiztemperatur 2
@@ -103,7 +103,7 @@ r;wi,,DHWOptEnable,DHW Option Enable,,,,6000,,,onoff,,,WW-Option aktivieren
 r;wi,,AutoTimeCorr,Auto Time Correction,,,,7200,,,onoff,,,Automatische Zeitkorrektur
 r,,PrevHeatCurve,Prev Heat Curve,,,,7500,,,UIN,100,,Vorherige Heizkurveneinstellung
 r;wi,,MaintenanceAlarm,Maintenance Alarm,,,,6f00,,,onoff,,,Wartungsalarm
-r;wi,,MaintenanceAlarmDate,Maintenance Alarm Date,,,,7000,,,DTM,,,Wartungsalarmdatum (Format - Anzahl der Minuten von 00:00 bis 01.01.2009)
+r;wi,,MaintenanceAlarmDate,Maintenance Alarm Date,,,,7000,,,DTM,,,Wartungsalarmdatum
 r;wi,,AutoHeatCurveRegulation,Auto Heat Curve Regulation,,,,6e00,,,onoff,,,Automatische Heizkurvenregelung
 r;wi,,Preheat,Preheat,,,,6c00,,,onoff,,,vorheizen
 r;wi,,RecirculationOptEnable,Recirculation Option Enable,,,,6d00,,,onoff,,,Umluftoption aktivieren
