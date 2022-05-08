@@ -1,0 +1,112 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,E7C00,Thermolink P (New),,,,,,,,,,,
+*r,,,,,,B509,0D,,,,,,
+*w,,,,,,B509,0E,,,,,,
+*wi,#install,,,,,B509,0E,,,,,,
+*[SW],scan,,,SW,,,,,,,,,
+# ##### general #####,,,,,,,,,,,,,
+r;w,,HeatingScheduleEnable,Heating Schedule Enable,,,,0200,,,onoff,,,Heating Schedule Enable
+r;w,,HeatingEnable,Heating Enable,,,,0300,,,onoff,,,Heating Enable
+r;w,,HeatingTempSet,Heating Temp Manual Set,,,,2200,,,temp,,,Heating Temp Manual Set
+r;w,,HeatingOverrideEnable,Heating Override Enable,,,,2300,,,onoff,,,Heating Override Enable
+r;w,,HeatingOverrideTemp,Heating Override Temp,,,,2400,,,temp,,,Heating Override Temp
+r;w,,HeatingOverrideEndTime,Heating Override End Time,,,,2500,,,DTM,,,Heating Override End Time
+r;w,,KeyboardLockEnable,Keyboard Lock Enable,,,,2a00,,,onoff,,,Keyboard Lock Enable
+r;w,,Contrast,Contrast,,,,2b00,,,UCH,,,Contrast
+r;w,,Brightness,Brightness,,,,2c00,,,UCH,,,Brightness
+r;w,,Time&Date,Time & Date,,,,2e00,,,DTM,,,Time & Date
+r;w,,DateFormat,Date Format,,,,2d00,,,UCH,,,Date format 1-dd.mm.yyyy 2-yyyy.mm.dd
+r;w,,Weekday,Weekday,,,,2f00,,,bday,,,Weekday
+r;w,,RoomName,Room Name,,,,3000,,,STR:14,,,Room Name
+r;w,,Language,Language,,,,3100,,,UCH,0=german;1=english;2=french;3=italian;4=flemish;5=dutch;6=spanish;7=catalan;8=basque;9=galician;10=hungarian;11=russian;12=ukrainian;13=polish;14=czech;15=croatian;16=slovakian;17=romanian;18=slovenian;19=Portuguese;20=dutch (AT),,Language
+r,,RoomTemp,Room Temp,,,,3a00,,,tempsensor,,,Room Temp
+r,,DisplayedRoomTemp,Displayed Room Temp,,,,3b00,,,temp,,,Displayed Room Temp
+r,,OutsideTemp,Outside Temp,,,,3c00,,,tempsensor,,,Outside Temp
+r;w,,DHWTempSet,DHW Temp Manual Set,,,,4000,,,temp,,,DHW Temp Manual Set
+r;w,,DHWEnable,DHW Enable,,,,4100,,,onoff,,,DHW Enable
+r;w,,DHWScheduleEnable,DHW Schedule Enable,,,,4200,,,onoff,,,DHW Schedule Enable
+r;w,,DHWOverrideEnable,DHW Override Enable,,,,5100,,,onoff,,,DHW Override Enable
+r;w,,DHWOverrideState,DHW Override State,,,,5200,,,onoff,,,DHW Override State
+r;w,,DHWOverrideEndTime,DHW Override End Time,,,,5300,,,DTM,,,DHW Override End Time
+r;w,,VacationEnable,Vacation Enable,,,,5400,,,onoff,,,Vacation Enable
+r;w,,VacationStartTime,Vacation Start Time,,,,5500,,,DTM,,,Vacation Start Time
+r;w,,VacationEndTime,Vacation End Time,,,,5700,,,DTM,,,Vacation End Time
+r;w,,VacationTempSet,Vacation Temp Manual Set,,,,5800,,,temp,,,Vacation Temp Manual Set
+r;w,,HeatingTemp1,Heating Temp 1,,,,7300,,,temp,,,Heating Temp 1
+r;w,,HeatingTemp2,Heating Temp 2,,,,7400,,,temp,,,Heating Temp 2
+# ##### schedules #####,,,,,,,,,,,,,
+r;w,,MondayHeatingTime,Monday Heating Time,,,,0500,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Monday heating time
+r;w,,TuesdayHeatingTime,Tuesday Heating Time,,,,0600,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Tuesday heating time
+r;w,,WednesdayHeatingTime,Wednesday Heating Time,,,,0700,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Wednesday heating time
+r;w,,ThursdayHeatingTime,Thursday Heating Time,,,,0800,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Thursday heating time
+r;w,,FridayHeatingTime,Friday Heating Time,,,,0900,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Friday heating time
+r;w,,SaturdayHeatingTime,Saturday Heating Time,,,,0a00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Saturday heating time
+r;w,,SundayHeatingTime,Sunday Heating Time,,,,0b00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Sunday heating time
+r;w,,MondayHeatingTemp,Monday Heating Temp,,,,0c00,,,temp;temp;temp;temp;temp;temp;temp,,,Monday heating temperatures
+r;w,,TuesdayHeatingTemp,Tuesday Heating Temp,,,,0d00,,,temp;temp;temp;temp;temp;temp;temp,,,Tuesday heating temperatures
+r;w,,WednesdayHeatingTemp,Wednesday Heating Temp,,,,0e00,,,temp;temp;temp;temp;temp;temp;temp,,,Wednesday heating temperatures
+r;w,,ThursdayHeatingTemp,Thursday Heating Temp,,,,0f00,,,temp;temp;temp;temp;temp;temp;temp,,,Thursday heating temperatures
+r;w,,FridayHeatingTemp,Friday Heating Temp,,,,1000,,,temp;temp;temp;temp;temp;temp;temp,,,Friday heating temperatures
+r;w,,SaturdayHeatingTemp,Saturday Heating Temp,,,,1100,,,temp;temp;temp;temp;temp;temp;temp,,,Saturday heating temperatures
+r;w,,SundayHeatingTemp,Sunday Heating Temp,,,,1200,,,temp;temp;temp;temp;temp;temp;temp,,,Sunday heating temperatures
+r;w,,MondayDHWTime,Monday DHW Time,,,,4300,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Monday DHW time
+r;w,,TuesdayDHWTime,Tuesday DHW Time,,,,4400,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Tuesday DHW time
+r;w,,WednesdayDHWTime,Wednesday DHW Time,,,,4500,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Wednesday DHW time
+r;w,,ThursdayDHWTime,Thursday DHW Time,,,,4600,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Thursday DHW time
+r;w,,FridayDHWTime,Friday DHW Time,,,,4700,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Friday DHW time
+r;w,,SaturdayDHWTime,Saturday DHW Time,,,,4800,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Saturday DHW time
+r;w,,SundayDHWTime,Sunday DHW Time,,,,4900,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Sunday DHW time
+r;w,,MondayDHWState,Monday DHW State,,,,4a00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Monday DHW state
+r;w,,TuesdayDHWState,Tuesday DHW State,,,,4b00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Tuesday DHW state
+r;w,,WednesdayDHWState,Wednesday DHW State,,,,4c00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Wednesday DHW state
+r;w,,ThursdayDHWState,Thursday DHW State,,,,4d00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Thursday DHW state
+r;w,,FridayDHWState,Friday DHW State,,,,4e00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Friday DHW state
+r;w,,SaturdayDHWState,Saturday DHW State,,,,4f00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Saturday DHW state
+r;w,,SundayDHWState,Sunday DHW State,,,,5000,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Sunday DHW state
+r;wi,,MondayRecirculationTime,Monday Recirculation Time,,,,7a00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Monday recirculation time
+r;wi,,TuesdayRecirculationTime,Tuesday Recirculation Time,,,,7b00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Tuesday recirculation time
+r;wi,,WednesdayRecirculationTime,Wednesday Recirculation Time,,,,7c00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Wednesday recirculation time
+r;wi,,ThursdayRecirculationTime,Thursday Recirculation Time,,,,7d00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Thursday recirculation time
+r;wi,,FridayRecirculationTime,Friday Recirculation Time,,,,7e00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Friday recirculation time
+r;wi,,SaturdayRecirculationTime,Saturday Recirculation Time,,,,7f00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Saturday recirculation time
+r;wi,,SundayRecirculationTime,Sunday Recirculation Time,,,,8000,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Sunday recirculation time
+r;wi,,MondayRecirculationState,Monday Recirculation State,,,,8100,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Monday recirculation state
+r;wi,,TuesdayRecirculationState,Tuesday Recirculation State,,,,8200,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Tuesday recirculation state
+r;wi,,WednesdayRecirculationState,Wednesday Recirculation State,,,,8300,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Wednesday recirculation state
+r;wi,,ThursdayRecirculationState,Thursday Recirculation State,,,,8400,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Thursday recirculation state
+r;wi,,FridayRecirculationState,Friday Recirculation State,,,,8500,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Friday recirculation state
+r;wi,,SaturdayRecirculationState,Saturday Recirculation State,,,,8600,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Saturday recirculation state
+r;wi,,SundayRecirculationState,Sunday Recirculation State,,,,8700,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Sunday recirculation state
+#r;wi,,MondayVentTime,Monday Vent Time,,,,1400,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Monday Vent Time
+#r;wi,,TuesdayVentTime,Tuesday Vent Time,,,,1500,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Tuesday Vent Time
+#r;wi,,WednesdayVentTime,Wednesday Vent Time,,,,1600,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Wednesday Vent Time
+#r;wi,,ThursdayVentTime,Thursday Vent Time,,,,1700,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Thursday Vent Time
+#r;wi,,FridayVentTime,Friday Vent Time,,,,1800,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Friday Vent Time
+#r;wi,,SaturdayVentTime,Saturday Vent Time,,,,1900,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Saturday Vent Time
+#r;wi,,SundayVentTime,Sunday Vent Time,,,,1a00,,,TTM;TTM;TTM;TTM;TTM;TTM;TTM,,,Sunday Vent Time
+#r;wi,,MondayVentState,Monday Vent State,,,,1b00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Monday Vent State
+#r;wi,,TuesdayVentState,Tuesday Vent State,,,,1c00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Tuesday Vent State
+#r;wi,,WednesdayVentState,Wednesday Vent State,,,,1d00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Wednesday Vent State
+#r;wi,,ThursdayVentState,Thursday Vent State,,,,1.00E+00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Thursday Vent State
+#r;wi,,FridayVentState,Friday Vent State,,,,1f00,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Friday Vent State
+#r;wi,,SaturdayVentState,Saturday Vent State,,,,2000,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Saturday Vent State
+#r;wi,,SundayVentState,Sunday Vent State,,,,2100,,,onoff;onoff;onoff;onoff;onoff;onoff;onoff,,,Sunday Vent State
+# ##### extra #####,,,,,,,,,,,,,
+r;wi,,RoomTempMaxAllowed,Max Allowed Room Temp,,,,3200,,,temp,,,Max Allowed Room Temp
+r;wi,,RoomTempCorr,Room Temp Correction,,,,3300,,,temp,,,Room Temp Correction
+r;wi,,OutsideTempCorr,Outside Temp Correction,,,,3600,,,temp,,,Outside Temp Correction
+r;wi,,RoomTempCorrFact,Room Temp Factory Correction,,,,3900,,,temp,,,Room Temp Correction (factory calibrated)
+r;wi,,HeatCurve,Heat Curve,,,,5c00,,,UIN,100,,Heat Curv
+r;wi,,DHWTempMaxAllowed,Max Allowed DHW Temp,,,,5e00,,,temp,,,Max Allowed DHW Temp
+r;wi,,DHWScheduleOptEnable,DHWScheduleOptEnable,,,,5f00,,,onoff,,,DHW Schedule Opt Enable
+r;wi,,DHWOptEnable,DHW Option Enable,,,,6000,,,onoff,,,DHW Option Enable
+r;wi,,AutoTimeCorr,Auto Time Correction,,,,7200,,,onoff,,,Auto Time Correction
+r,,PrevHeatCurve,Prev Heat Curve,,,,7500,,,UIN,100,,Previous Heat Curve Setting
+r;wi,,MaintenanceAlarm,Maintenance Alarm,,,,6f00,,,onoff,,,Maintenance Alarm
+r;wi,,MaintenanceAlarmDate,Maintenance Alarm Date,,,,7000,,,ULG,,,Maintance Alarm Date
+r;wi,,AutoHeatCurveRegulation,Auto Heat Curve Regulation,,,,6e00,,,onoff,,,Auto Heat Curve Regulation
+r;wi,,Preheat,Preheat,,,,6c00,,,onoff,,,Preheat
+r;wi,,RecirculationOptEnable,Recirculation Option Enable,,,,6d00,,,onoff,,,Recirculation Option Enable
+r;wi,,MaintenanceTel,Maintenance Telephone,,,,6100,,,STR:13,,,Maintenance Telephone
+r;wi,,RoomTempOptEnable,Room Temp Option Enable,,,,6b00,,,onoff,,,Room Temp Option Enable
+!include,errors.inc,,,,,,,,,,,,
