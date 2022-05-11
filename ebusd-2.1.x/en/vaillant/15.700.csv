@@ -138,7 +138,7 @@ r;w,,Hc3RoomTempSwitchOn,RoomTempSwitchOn heating circuit 3,,,,1500,,,rcmode,,,r
 r,,Hc3MixerMovement,MixerMovement heating circuit 3,,,,1A00,,,EXP,,,"status of mixer (<0 closing, >0 opening)"
 r,,Hc3HeatCurveAdaption,HeatCurveAdaption heating circuit 3,,,,1C00,,,EXP,,,adaption applied to heating curve of Hc3
 r;w,,Hc3Status,Status heating circuit 3,,,,1B00,,,UCH,,,status of zone 2
-r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of zone 3,,,,,,,,,,,,,
+r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of zone 3
 # ##### zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
@@ -204,7 +204,7 @@ r;w,,z3ActualRoomTempDesired,room temperature desired zone 3,,,,1400,,,tempv,,,c
 #r;w,,z3Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 3,,,,1500,,,tempv,,,unknown value for zone 3
 r;w,,z3Shortname,shortlabel zone 3,,,,1600,,,shortname,,,short name of zone 3
 r;w,,z3Name1,label zone 3 part 1,,,,1700,,,zname,,,name of zone 3
-r;w,,z3Name2,label zone 3 part 2,,,,1800,,,zname,,,name of zone 3,,,,,,,,,,,,,
+r;w,,z3Name2,label zone 3 part 2,,,,1800,,,zname,,,name of zone 3
 # ##### timers #####,,,,,,,,,,,,,
 # air,,,,,,,,,,,,,
 *r,,,,,,B524,03000001,,,IGN:1,,,whether timeslot is valid
