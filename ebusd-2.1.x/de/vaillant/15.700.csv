@@ -3,6 +3,8 @@
 # ##### Generell #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000000,,,IGN:4,,,
 *w,,,,,,B524,02010000,,,,,,
+r,,ManualCooling,Manuell kuehlen,,,,0600,,,UIN,,,
+w,,ManualCooling,Manuell kuehlen,,,,0600,,m,UIN,,,number of days of manual cooling. Max. days = 99. 0 days = off. Set temp via z1CoolingTemp.
 r;w,,ContinuosHeating,Durchgehendes Heizen,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,Frostschutz-Verzögerung,,,,0300,,,hoursum2,,,delay before frost protection is activated
 r;w,,HwcParallelLoading,Parallele Ladung Warmwasserkreis,,,,0A00,,,onoff,,,Heizbetrieb und Speicherladung parallel
@@ -21,6 +23,8 @@ r;w,,HydraulicScheme,Systemschema,,,,3600,,,UIN,,,Systemschema
 r,,WaterPressure,Wasserdruck,,,,3900,,,pressv,,,Wasserdruck
 r;w,,SolarYieldTotal,TotalSolarYield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,TotalEnvironmentalYield,,,,3E00,,,energy4,,,Umweltertrag gesamt
+r;w,,VentilationDay,SollLüftung,,,,4200,,,UIN,,,Ventilation speed during day
+r;w,,VentilationNight,AbsenktLüftung,,,,4300,,,UIN,,,Ventilation speed during night
 r;w,,HwcMaxFlowTempDesired,HwcMaxFlowTempDesired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Hwc
 r,,SystemFlowTemp,Systemvorlauf,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,Multifunktionsausgang,,,,4D00,,,mamode,,,
@@ -51,6 +55,8 @@ r,,DisplayedOutsideTemp,Außentemperatur,,,,7300,,,tempv,,,Außentemperatur
 r;w,,SFMode,SFMode,,,,7400,,,sfmode,,,
 r;w,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,7600,,,UIN,,,000-999; code for the installer's menues
 r;w,,OpMode,OpMode,,,,7b00,,,opmode,,,operation mode of all/configured zone(s) matching OpModeEffect
+r;w,,OpModeCooling,,,,,7c00,,,opmode,,,operation mode for cooling of all/configured zone(s)
+r;w,,OpModeVentilation,,,,,1600,,,opmode,,,operation mode for cooling of all/configured zone(s)
 r;w,,HolidayTemp,HolidayTemp,,,,8200,,,tempv,,,holiday setpoint
 r;w,,BankHolidayStartPeriod,BankHolidayStartPeriod,,,,8300,,,hfrom,,,start date of bank holidays
 r;w,,BankHolidayEndPeriod,BankHolidayEndPeriod,,,,8400,,,hto,,,end date of bank holidays
