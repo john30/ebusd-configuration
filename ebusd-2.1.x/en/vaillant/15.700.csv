@@ -301,5 +301,5 @@ r;w,,z2CoolingTimer.Thursday,timer cooling thursday,,,,03,,,slot1-3,,,
 r;w,,z2CoolingTimer.Friday,timer cooling friday,,,,04,,,slot1-3,,,
 r;w,,z2CoolingTimer.Saturday,timer cooling saturday,,,,05,,,slot1-3,,,
 r;w,,z2CoolingTimer.Sunday,timer cooling sunday,,,,06,,,slot1-3,,,
-# includes
+# includes,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

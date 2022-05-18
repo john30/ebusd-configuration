@@ -294,5 +294,5 @@ r;w,,z2CoolingTimer.Thursday,Zeitfenster Kühlen Donnerstag,,,,03,,,slot1-3,,,
 r;w,,z2CoolingTimer.Friday,Zeitfenster Kühlen Freitag,,,,04,,,slot1-3,,,
 r;w,,z2CoolingTimer.Saturday,Zeitfenster Kühlen Samstag,,,,05,,,slot1-3,,,
 r;w,,z2CoolingTimer.Sunday,Zeitfenster Kühlen Sonntag,,,,06,,,slot1-3,,,
-# includes
+# includes,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
