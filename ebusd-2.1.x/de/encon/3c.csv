@@ -1,9 +1,6 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates
-### BRINK RENOVENT SKY 300
 *r,brsky,,,,3c,4050,,,,,,,
 *w,brsky,,,,3c,4050,,,,,,,
-
-#### AKTUELLE KONFIGDATEN ####
 r,,volstufe0,,,,,21,data,,UIR,,m³/h
 r,,volstufe1,,,,,01,data,,UIR,,m³/h
 r,,volstufe2,,,,,02,data,,UIR,,m³/h
@@ -16,15 +13,11 @@ r,,bypasskonfig,,,,,1b,data,,UIR,0=auto;1=geschlossen;2=geöffnet
 r,,bypasshyst,,,,,30,data,,UIR,10,°C
 r,,vorheizregister_inst,,,,,31,data,,UIR,1=ja;0=nein,,
 r,,aktstufe,402201,,,4022,01,data,,UIR,,,
-
-#### FILTER UND LAUFZEITEN ####
 r,,tagemitfilter,01,,,,22,data,,UIR,,bei 90 Tagen kommt Filterwarnung
 r,,luftmengemitfilter,01,,,,23,data,,UIR,,
 r,,luftmengefilterschwellwert,01,,,,1c,data,,UIR,-1000,cbm
 r,,betriebsstunden,01,,,,24,data,,UIR,-5,d,Tage
 r,,luftmengetotal,01,,,,25,data,,UIR,-1000,cbm
-
-#### KONFIGURATION AENDERN ####
 w,,w_volstufe0,408001,,,4080,21,data,,UIR,,m³/h
 w,,w_volstufe1,408001,,,4080,01,data,,UIR,,m³/h
 w,,w_volstufe3,408001,,,4080,03,data,,UIR,,m³/h
@@ -37,8 +30,6 @@ w,,w_zus_wrg,408007,,,4080,07,data,,UIR,0=AUS;1=EIN
 w,,w_druckungl_zul,408008,,,4080,08,data,,UIR,0=NICHT ZULÄSSIG;1=ZULÄSSIG
 w,,w_druckungleichgewicht,408009,,,4080,09,data,,SIR,,m³/h
 w,,w_aktstufe,40a1000200,,,"40a1",00,data,m,UCH,,,,byp,s,BI4,0=BYPASS AUS;1=BYPASS EIN,,,frost,s,BI2,0=FROST AUS;1=FROST EIN
-
-#### SENSORDATEN ####
 r,,tempabluft,402207,,,"4022",07,data,,UIR,10,°C
 r,,tempaussenluft,402208,,,"4022",08,data,,SIR,10,°C
 r,,zuluftmenge,40220b,,,"4022",0b,data,,UIR,,m³/h
@@ -48,12 +39,8 @@ r,,abluftdruck,402215,,,"4022",15,data,,UIR,10,Pa
 r,,feuchte,402220,,,"4022",20,data,,UIR,10,%
 r,,zuluftdrehzahl,402202,,,"4022",02,data,,UIR,,rpm
 r,,abluftdrehzahl,402203,,,"4022",03,data,,UIR,,rpm
-
-#### SONSTIGES ####
 r,,errors,409000,,,"4090",00,undef,s,UCH,,,,ign,,IGN:2,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,code,,UCH,,,,
 r,,softwareversion,Software Version,,,"4022",00,data,,STR:13
-#w,,reseterrors,409103FFFFFF,,,"4091",3c0001,data,m,HEX:3,,,,result,s,UIR,0=ResetNotRequestet;1=ResetSuccessful;2=ResetRelayed;3=NoErrorsFound;4=ResetFailed;5=BlockingErrors;6=UnknownResult
-#w,,resetfilter,409103FFFFFF,,,"4091",3c0100,data,,,,,,result,s,UIR,0=ResetNotRequestet;1=ResetSuccessful;2=ResetRelayed;3=FilterWarningWasNotSet;4=ResetFailed;5=UnknownResult
 r,,dipschalterwert,undef,,,4022,04,data,,UIR,,,dipswitchvalue
 r,,pos_stufenschalter,undef,,,4022,06,data,,UIR,,,switchposition
 r,,luefterstatus,undef,,,4022,11,data,,UIR,0=Initialize;1=Const. Flow;2=Const. RPM;3=Off;4=Error,,lueferstatus
@@ -67,8 +54,6 @@ r,,froststatus,undef,,,4022,16,data,,UIR,0=Initialize;1=No Frost;2=Defrost Wait;
 r,,filterstatus,undef,,,4022,18,data,,UIR,0=Clean;1=Dirty,,filterstatus
 r,,feuchtigkeitssteigerung,undef,,,4022,21,data,,UIR,0=Error;1=Not Initialized;2=Sensor Not Active;3=PowerUp Delay;4=Normal RH;5=Boost Rising;6=Boost Stable;7=Boost Decending,,humiditybooststate
 r,,ebussyncerrors,undef,,,4022,64,data,,UIR,,,ebussyncgenerrors
-
-#### UNDEFINIERT ####
 r,,undef_01,undef,,,,0a,data,,HEX:10
 r,,undef_02,undef,,,,0b,data,,HEX:10
 r,,undef_03,undef,,,,0c,data,,HEX:10
