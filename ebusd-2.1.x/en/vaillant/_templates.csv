@@ -97,3 +97,12 @@ shortphone,STR:6,,,phone number
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
+slotIndex,UCH,,,array index for the zones. Array Index start at 0 for the first element
+slotCount,UCH,,,Number of total slots in the array. May be Zero.
+slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,Number of total slots in the array for a week. Mon-Sun
+slotTimeFrame,HTM;HTM,,,Timeslot from/until
+slotTemp,UIN,,,Numbers are 10 times higher than the actual temp (e.g. 225 = real 22.5)
+wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for writing the time table settings.
+wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;IGN:2,,,Complete slot for writing the time table settings without a temperature.
+rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
+rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.

@@ -1,5 +1,5 @@
-# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,70000,VRC 700,700 110,,,,,,,,,,
+# type (r[1-9]wu),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,,CTLV2, sensoCOMFORT VRC 720/2 (SW 0514),,,,,,,,,,
 # ##### Generell #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000000,,,IGN:4,,,
 *w,,,,,,B524,02010000,,,,,,
@@ -40,20 +40,20 @@ r;w,,PrEnergySum,TotalEConsumption,,,,5C00,,,energy4,,,Dieses Jahr Stromverbrauc
 r;w,,PrFuelSum,TotalFConsumption,,,,5D00,,,energy4,,,Dieses Jahr Brennstoffverbrauch gesamt
 #r;w,,Unknown67,(VR70 konfig 1),,,,6700,,,tempv,,,unknown value
 #r;w,,Unknown68,(VR70 konfig 1),,,,6800,,,tempv,,,unknown value
-r;w,,OpModeEffect,OpModeEffect,,,,6900,,,zonesel,,,selection which heating circuit is affected by changing parameters in the basic display
+#r;w,,OpModeEffect,OpModeEffect (Fehler),,,,6900,,,zonesel,,,selection which heating circuit is affected by changing parameters in the basic display
 r;w,,Installer1,Installationsfirma Teil 1,,,,6C00,,,shortname,,,installer's name
 r;w,,Installer2,Installationsfirma Teil 2,,,,6D00,,,shortname,,,installer's name
 r;w,,PhoneNumber1,Telefonnummer,,,,6F00,,,shortphone,,,installer's telephone number
 r;w,,PhoneNumber2,Telefonnummer,,,,7000,,,shortphone,,,installer's telephone number
-r;w,,HolidayStartPeriod,HolidayStartPeriod,,,,7100,,,hfrom,,,start date of holidays
-r;w,,HolidayEndPeriod,HolidayEndPeriod,,,,7200,,,hto,,,end date of holidays
+#r;w,,HolidayStartPeriod,HolidayStartPeriod,,,,7100,,,hfrom,,,start date of holidays
+#r;w,,HolidayEndPeriod,HolidayEndPeriod,,,,7200,,,hto,,,end date of holidays
 r,,DisplayedOutsideTemp,Außentemperatur,,,,7300,,,tempv,,,Außentemperatur
-r;w,,SFMode,SFMode,,,,7400,,,sfmode,,,
+#r;w,,SFMode,SFMode,,,,7400,,,sfmode,,,
 r;w,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,7600,,,UIN,,,000-999; code for the installer's menues
-r;w,,OpMode,OpMode,,,,7b00,,,opmode,,,operation mode of all/configured zone(s) matching OpModeEffect
-r;w,,HolidayTemp,HolidayTemp,,,,8200,,,tempv,,,holiday setpoint
-r;w,,BankHolidayStartPeriod,BankHolidayStartPeriod,,,,8300,,,hfrom,,,start date of bank holidays
-r;w,,BankHolidayEndPeriod,BankHolidayEndPeriod,,,,8400,,,hto,,,end date of bank holidays
+#r;w,,OpMode,OpMode,,,,7b00,,,opmode,,,operation mode of all/configured zone(s) matching OpModeEffect
+#r;w,,HolidayTemp,HolidayTemp,,,,8200,,,tempv,,,holiday setpoint
+#r;w,,BankHolidayStartPeriod,BankHolidayStartPeriod,,,,8300,,,hfrom,,,start date of bank holidays
+#r;w,,BankHolidayEndPeriod,BankHolidayEndPeriod,,,,8400,,,hto,,,end date of bank holidays
 #r;w,,Unknown85,(konstant 0/inf),,,,8500,,,tempv,,,unknown value
 r;w,,OutsideTempAvg,mittlere Außentemperatur,,,,9500,,,tempv,,,gerundete mittlere Außentemperatur (alle 3h aktualisiert)
 r,,MaintenanceDue,Wartung fällig,,,,9600,,,yesno,,,zeigt an ob die Wartung fällig ist
@@ -78,6 +78,7 @@ r;w,,HwcSFMode,HwcSFMode,,,,0D00,,,sfmode,,,
 *w,,,,,,B524,02010200,,,,,,
 r,,Hc1CircuitType,CircuitType Heizkreis 1,,,,0200,,,mctype;IGN:1,,,
 #r;w,,Hc1Unknown04,(konstant 30) Temperatur Heizkreis 1,,,,0400,,,tempv,,,unknown value for Hc1
+#r,,Hc1Unknown06,,,,,600,,,HEX:5,,,unknown value for Hc1
 r,,Hc1ActualFlowTempDesired,ActualFlowTempDesired Heizkreis 1,,,,0700,,,tempv,,,current flow temperature setpoint of Hc1
 r,,Hc1FlowTemp,FlowTemp Heizkreis 1,,,,0800,,,tempv,,,current flow temperature of Hc1
 #r;w,,Hc1Unknown09,(konstant 60) Temperatur,,,,0900,,,tempv,,,unknown value for Hc1
@@ -100,6 +101,7 @@ r;w,,Hc1PumpStatus,PumpStatus Heizkreis 1,,,,1E00,,,UIN,,,pump status of zone 1
 *w,,,,,,B524,02010201,,,,,,
 r,,Hc2CircuitType,CircuitType Heizkreis 2,,,,0200,,,mctype;IGN:1,,,
 #r;w,,Hc2Unknown04,(konstant 30) Temperatur Heizkreis 2,,,,0400,,,tempv,,,unknown value for Hc2
+#r,,Hc2Unknown06,,,,,600,,,HEX:5,,,unknown value for Hc2
 r,,Hc2ActualFlowTempDesired,ActualFlowTempDesired Heizkreis 2,,,,0700,,,tempv,,,current flow temperature setpoint of Hc2
 r,,Hc2FlowTemp,FlowTemp Heizkreis 2,,,,0800,,,tempv,,,current flow temperature of Hc2
 #r;w,,Hc2Unknown09,(konstant 60) Temperatur,,,,0900,,,tempv,,,unknown value for Hc2
@@ -122,6 +124,7 @@ r;w,,Hc2PumpStatus,PumpStatus Heizkreis 2,,,,1E00,,,UIN,,,pump status of zone 2
 *w,,,,,,B524,02010202,,,,,,
 r,,Hc3CircuitType,CircuitType Heizkreis 3,,,,0200,,,mctype;IGN:1,,,
 #r;w,,Hc3Unknown04,(konstant 30) Temperatur Heizkreis 3,,,,0400,,,tempv,,,unknown value for Hc3
+#r,,Hc3Unknown06,,,,,600,,,HEX:5,,,unknown value for Hc3
 r,,Hc3ActualFlowTempDesired,ActualFlowTempDesired Heizkreis 3,,,,0700,,,tempv,,,current flow temperature setpoint of Hc3
 r,,Hc3FlowTemp,FlowTemp Heizkreis 3,,,,0800,,,tempv,,,current flow temperature of Hc3
 #r;w,,Hc3Unknown09,(konstant 60) Temperatur,,,,0900,,,tempv,,,unknown value for Hc3
@@ -161,6 +164,7 @@ r;w,,z1ActualRoomTempDesired,Raumsolltemperatur Zone 1,,,,1400,,,tempv,,,current
 r;w,,z1Shortname,Kurzbezeichnung Zone 1,,,,1600,,,shortname,,,short name of zone 1
 r;w,,z1Name1,Bezeichnung Zone 1 Teil 1,,,,1700,,,zname,,,name of zone 1
 r;w,,z1Name2,Bezeichnung Zone 1 Teil 2,,,,1800,,,zname,,,name of zone 1
+#r,,z1Unknown23,Temperatur Unbekannt,,,,2300,,,IGN:4;tempv,,,
 # ##### Zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
@@ -206,93 +210,174 @@ r;w,,z3Shortname,Kurzbezeichnung Zone 3,,,,1600,,,shortname,,,short name of zone
 r;w,,z3Name1,Bezeichnung Zone 3 Teil 1,,,,1700,,,zname,,,name of zone 3
 r;w,,z3Name2,Bezeichnung Zone 3 Teil 2,,,,1800,,,zname,,,name of zone 3
 # ##### Zeitprogramme #####,,,,,,,,,,,,,
-# Lüftung,,,,,,,,,,,,,
-*r,,,,,,B524,03000001,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04000001,,,,,,
-r;w,,ventilationTimer.Monday,Zeitfenster Lüftung Montag,,,,00,,,slot1-3,,,
-r;w,,ventilationTimer.Tuesday,Zeitfenster Lüftung Dienstag,,,,01,,,slot1-3,,,
-r;w,,ventilationTimer.Wednesday,Zeitfenster Lüftung Mittwoch,,,,02,,,slot1-3,,,
-r;w,,ventilationTimer.Thursday,Zeitfenster Lüftung Donnerstag,,,,03,,,slot1-3,,,
-r;w,,ventilationTimer.Friday,Zeitfenster Lüftung Freitag,,,,04,,,slot1-3,,,
-r;w,,ventilationTimer.Saturday,Zeitfenster Lüftung Samstag,,,,05,,,slot1-3,,,
-r;w,,ventilationTimer.Sunday,Zeitfenster Lüftung Sonntag,,,,06,,,slot1-3,,,
-# Flüsterbetrieb,,,,,,,,,,,,,
-*r,,,,,,B524,03000002,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04000002,,,,,,
-r;w,,noiseReductionTimer.Monday,Zeitfenster Flüsterbetrieb Montag,,,,00,,,slot1-3,,,
-r;w,,noiseReductionTimer.Tuesday,Zeitfenster Flüsterbetrieb Dienstag,,,,01,,,slot1-3,,,
-r;w,,noiseReductionTimer.Wednesday,Zeitfenster Flüsterbetrieb Mittwoch,,,,02,,,slot1-3,,,
-r;w,,noiseReductionTimer.Thursday,Zeitfenster Flüsterbetrieb Donnerstag,,,,03,,,slot1-3,,,
-r;w,,noiseReductionTimer.Friday,Zeitfenster Flüsterbetrieb Freitag,,,,04,,,slot1-3,,,
-r;w,,noiseReductionTimer.Saturday,Zeitfenster Flüsterbetrieb Samstag,,,,05,,,slot1-3,,,
-r;w,,noiseReductionTimer.Sunday,Zeitfenster Flüsterbetrieb Sonntag,,,,06,,,slot1-3,,,
-# Hochtarif,,,,,,,,,,,,,
-*r,,,,,,B524,03000003,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04000003,,,,,,
-r;w,,tariffTimer.Monday,Zeitfenster Hochtarif Montag,,,,00,,,slot1-3,,,
-r;w,,tariffTimer.Tuesday,Zeitfenster Hochtarif Dienstag,,,,01,,,slot1-3,,,
-r;w,,tariffTimer.Wednesday,Zeitfenster Hochtarif Mittwoch,,,,02,,,slot1-3,,,
-r;w,,tariffTimer.Thursday,Zeitfenster Hochtarif Donnerstag,,,,03,,,slot1-3,,,
-r;w,,tariffTimer.Friday,Zeitfenster Hochtarif Freitag,,,,04,,,slot1-3,,,
-r;w,,tariffTimer.Saturday,Zeitfenster Hochtarif Samstag,,,,05,,,slot1-3,,,
-r;w,,tariffTimer.Sunday,Zeitfenster Hochtarif Sonntag,,,,06,,,slot1-3,,,
+*r,,,,,,,,,,,,,
+r,,unknownValue.a0,(3Zonen;HWC&CC = konstanter Wert. Generelle Konfiguration?),,,B555,a0,,,HEX:8,,,Erstes Byte = Zonenanzahl?
+#r,,unknownValue.a1,(3Zonen;HWC&CC = Leerer Wert. Lüftung;Pumpe;etc oder Fehler?),,,B555,a1,,,,,,
+#r,,unknownValue.a2,(3Zonen;HWC&CC = Leerer Wert. Lüftung;Pumpe;etc oder Fehler?),,,B555,a2,,,,,,
 # Schaltzeiten Warmwasser,,,,,,,,,,,,,
-*r,,,,,,B524,03010001,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04010001,,,,,,
-r;w,,hwcTimer.Monday,Zeitfenster Montag,,,,00,,,slot1-3,,,
-r;w,,hwcTimer.Tuesday,Zeitfenster Dienstag,,,,01,,,slot1-3,,,
-r;w,,hwcTimer.Wednesday,Zeitfenster Mittwoch,,,,02,,,slot1-3,,,
-r;w,,hwcTimer.Thursday,Zeitfenster Donnerstag,,,,03,,,slot1-3,,,
-r;w,,hwcTimer.Friday,Zeitfenster Freitag,,,,04,,,slot1-3,,,
-r;w,,hwcTimer.Saturday,Zeitfenster Samstag,,,,05,,,slot1-3,,,
-r;w,,hwcTimer.Sunday,Zeitfenster Sonntag,,,,06,,,slot1-3,,,
+*r,,,,,,B555,a50002,,,,,,
+*w,,,,,,B555,a60002,,,,,,
+r,,hwcTimer.Config,Zeitfenster Konfiguration(aktuell statisch? Beschreibt eine Art Funktionalitätsumfang),,,B555,a30002,,,HEX:9,,,Konfiguration
+r,,hwcTimer.Timeframes,Zeitfenster Anzahl,,,B555,a40002,,,slotCountWeek,,,Anzahl der eingestellten Slots pro Wochentag
+r,,hwcTimer.Monday0,Zeitfenster Montag 1,,,,0000,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Monday1,Zeitfenster Montag 2,,,,0001,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Monday2,Zeitfenster Montag 3,,,,0002,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Tuesday0,Zeitfenster Dienstag 1,,,,0100,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Tuesday1,Zeitfenster Dienstag 2,,,,0101,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Tuesday2,Zeitfenster Dienstag 3,,,,0102,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Wednesday0,Zeitfenster Mittwoch 1,,,,0200,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Wednesday1,Zeitfenster Mittwoch 2,,,,0201,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Wednesday2,Zeitfenster Mittwoch 3,,,,0202,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Thursday0,Zeitfenster Donnerstag 1,,,,0300,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Thursday1,Zeitfenster Donnerstag 2,,,,0301,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Thursday2,Zeitfenster Donnerstag 3,,,,0302,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Friday0,Zeitfenster Freitag 1,,,,0400,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Friday1,Zeitfenster Freitag 2,,,,0401,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Friday2,Zeitfenster Freitag 3,,,,0402,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Saturday0,Zeitfenster Samstag 1,,,,0500,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Saturday1,Zeitfenster Samstag 2,,,,0501,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Saturday2,Zeitfenster Samstag 3,,,,0502,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Sunday0,Zeitfenster Sonntag 1,,,,0600,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Sunday1,Zeitfenster Sonntag 2,,,,0601,,,rTimeSlotWithTemp,,,
+r,,hwcTimer.Sunday2,Zeitfenster Sonntag 3,,,,0602,,,rTimeSlotWithTemp,,,
+w,,hwcTimer.Monday,Zeitfenster Montag,,,,00,,,wTimeSlotWithoutTemp,,,
+w,,hwcTimer.Tuesday,Zeitfenster Dienstag,,,,01,,,wTimeSlotWithoutTemp,,,
+w,,hwcTimer.Wednesday,Zeitfenster Mittwoch,,,,02,,,wTimeSlotWithoutTemp,,,
+w,,hwcTimer.Thursday,Zeitfenster Donnerstag,,,,03,,,wTimeSlotWithoutTemp,,,
+w,,hwcTimer.Friday,Zeitfenster Freitag,,,,04,,,wTimeSlotWithoutTemp,,,
+w,,hwcTimer.Saturday,Zeitfenster Samstag,,,,05,,,wTimeSlotWithoutTemp,,,
+w,,hwcTimer.Sunday,Zeitfenster Sonntag,,,,06,,,wTimeSlotWithoutTemp,,,
 # Zeitprogramm Zirkulationspumpe,,,,,,,,,,,,,
-*r,,,,,,B524,03010002,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04010002,,,,,,
-r;w,,ccTimer.Monday,Zeitfenster Montag,,,,00,,,slot1-3,,,
-r;w,,ccTimer.Tuesday,Zeitfenster Dienstag,,,,01,,,slot1-3,,,
-r;w,,ccTimer.Wednesday,Zeitfenster Mittwoch,,,,02,,,slot1-3,,,
-r;w,,ccTimer.Thursday,Zeitfenster Donnerstag,,,,03,,,slot1-3,,,
-r;w,,ccTimer.Friday,Zeitfenster Freitag,,,,04,,,slot1-3,,,
-r;w,,ccTimer.Saturday,Zeitfenster Samstag,,,,05,,,slot1-3,,,
-r;w,,ccTimer.Sunday,Zeitfenster Sonntag,,,,06,,,slot1-3,,,
+*r,,,,,,B555,a50003,,,,,,
+*w,,,,,,B555,a60003,,,,,,
+r,,ccTimer.Config,Zeitfenster Konfiguration(aktuell statisch? Beschreibt eine Art Funktionalitätsumfang),,,B555,a30003,,,HEX:9,,,Konfiguration
+r,,ccTimer.Timeframes,Zeitfenster Anzahl,,,B555,a40003,,,slotCountWeek,,,Anzahl der eingestellten Slots pro Wochentag
+r,,ccTimer.Monday0,Zeitfenster Montag 1,,,,0000,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Monday1,Zeitfenster Montag 2,,,,0001,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Monday2,Zeitfenster Montag 3,,,,0002,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Tuesday0,Zeitfenster Dienstag 1,,,,0100,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Tuesday1,Zeitfenster Dienstag 2,,,,0101,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Tuesday2,Zeitfenster Dienstag 3,,,,0102,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Wednesday0,Zeitfenster Mittwoch 1,,,,0200,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Wednesday1,Zeitfenster Mittwoch 2,,,,0201,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Wednesday2,Zeitfenster Mittwoch 3,,,,0202,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Thursday0,Zeitfenster Donnerstag 1,,,,0300,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Thursday1,Zeitfenster Donnerstag 2,,,,0301,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Thursday2,Zeitfenster Donnerstag 3,,,,0302,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Friday0,Zeitfenster Freitag 1,,,,0400,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Friday1,Zeitfenster Freitag 2,,,,0401,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Friday2,Zeitfenster Freitag 3,,,,0402,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Saturday0,Zeitfenster Samstag 1,,,,0500,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Saturday1,Zeitfenster Samstag 2,,,,0501,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Saturday2,Zeitfenster Samstag 3,,,,0502,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Sunday0,Zeitfenster Sonntag 1,,,,0600,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Sunday1,Zeitfenster Sonntag 2,,,,0601,,,rTimeSlotWithoutTemp,,,
+r,,ccTimer.Sunday2,Zeitfenster Sonntag 3,,,,0602,,,rTimeSlotWithoutTemp,,,
+w,,ccTimer.Monday,Zeitfenster Montag,,,,00,,,wTimeSlotWithoutTemp,,,
+w,,ccTimer.Tuesday,Zeitfenster Dienstag,,,,01,,,wTimeSlotWithoutTemp,,,
+w,,ccTimer.Wednesday,Zeitfenster Mittwoch,,,,02,,,wTimeSlotWithoutTemp,,,
+w,,ccTimer.Thursday,Zeitfenster Donnerstag,,,,03,,,wTimeSlotWithoutTemp,,,
+w,,ccTimer.Friday,Zeitfenster Freitag,,,,04,,,wTimeSlotWithoutTemp,,,
+w,,ccTimer.Saturday,Zeitfenster Samstag,,,,05,,,wTimeSlotWithoutTemp,,,
+w,,ccTimer.Sunday,Zeitfenster Sonntag,,,,06,,,wTimeSlotWithoutTemp,,,
 # Zeitprogramme Zone 1,,,,,,,,,,,,,
-*r,,,,,,B524,03030002,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04030002,,,,,,
-r;w,,z1Timer.Monday,Zeitfenster Heizen Montag,,,,00,,,slot1-3,,,
-r;w,,z1Timer.Tuesday,Zeitfenster Heizen Dienstag,,,,01,,,slot1-3,,,
-r;w,,z1Timer.Wednesday,Zeitfenster Heizen Mittwoch,,,,02,,,slot1-3,,,
-r;w,,z1Timer.Thursday,Zeitfenster Heizen Donnerstag,,,,03,,,slot1-3,,,
-r;w,,z1Timer.Friday,Zeitfenster Heizen Freitag,,,,04,,,slot1-3,,,
-r;w,,z1Timer.Saturday,Zeitfenster Heizen Samstag,,,,05,,,slot1-3,,,
-r;w,,z1Timer.Sunday,Zeitfenster Heizen Sonntag,,,,06,,,slot1-3,,,
-*r,,,,,,B524,03030001,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04030001,,,,,,
-r;w,,z1CoolingTimer.Monday,Zeitfenster Kühlen Montag,,,,00,,,slot1-3,,,
-r;w,,z1CoolingTimer.Tuesday,Zeitfenster Kühlen Dienstag,,,,01,,,slot1-3,,,
-r;w,,z1CoolingTimer.Wednesday,Zeitfenster Kühlen Mittwoch,,,,02,,,slot1-3,,,
-r;w,,z1CoolingTimer.Thursday,Zeitfenster Kühlen Donnerstag,,,,03,,,slot1-3,,,
-r;w,,z1CoolingTimer.Friday,Zeitfenster Kühlen Freitag,,,,04,,,slot1-3,,,
-r;w,,z1CoolingTimer.Saturday,Zeitfenster Kühlen Samstag,,,,05,,,slot1-3,,,
-r;w,,z1CoolingTimer.Sunday,Zeitfenster Kühlen Sonntag,,,,06,,,slot1-3,,,
+*r,,,,,,B555,a50000,,,,,,
+*w,,,,,,B555,a60000,,,,,,
+r,,z1Timer.Config,Zeitfenster Konfiguration(aktuell statisch? Beschreibt eine Art Funktionalitätsumfang),,,B555,a30000,,,HEX:9,,,Konfiguration
+r,,z1Timer.Timeframes,Zeitfenster Anzahl,,,B555,a40000,,,slotCountWeek,,,Anzahl der eingestellten Slots pro Wochentag
+r,,z1Timer.Monday0,Zeitfenster Heizen Montag 1,,,,0000,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Monday1,Zeitfenster Heizen Montag 2,,,,0001,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Monday2,Zeitfenster Heizen Montag 3,,,,0002,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Tuesday0,Zeitfenster Heizen Dienstag 1,,,,0100,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Tuesday1,Zeitfenster Heizen Dienstag 2,,,,0101,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Tuesday2,Zeitfenster Heizen Dienstag 3,,,,0102,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Wednesday0,Zeitfenster Heizen Mittwoch 1,,,,0200,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Wednesday1,Zeitfenster Heizen Mittwoch 2,,,,0201,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Wednesday2,Zeitfenster Heizen Mittwoch 3,,,,0202,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Thursday0,Zeitfenster Heizen Donnerstag 1,,,,0300,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Thursday1,Zeitfenster Heizen Donnerstag 2,,,,0301,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Thursday2,Zeitfenster Heizen Donnerstag 3,,,,0302,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Friday0,Zeitfenster Heizen Freitag 1,,,,0400,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Friday1,Zeitfenster Heizen Freitag 2,,,,0401,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Friday2,Zeitfenster Heizen Freitag 3,,,,0402,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Saturday0,Zeitfenster Heizen Samstag 1,,,,0500,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Saturday1,Zeitfenster Heizen Samstag 2,,,,0501,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Saturday2,Zeitfenster Heizen Samstag 3,,,,0502,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Sunday0,Zeitfenster Heizen Sonntag 1,,,,0600,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Sunday1,Zeitfenster Heizen Sonntag 2,,,,0601,,,rTimeSlotWithTemp,,,
+r,,z1Timer.Sunday2,Zeitfenster Heizen Sonntag 3,,,,0602,,,rTimeSlotWithTemp,,,
+w,,z1Timer.Monday,Zeitfenster Heizen Montag,,,,00,,,wTimeSlotWithTemp,,,
+w,,z1Timer.Tuesday,Zeitfenster Heizen Dienstag,,,,01,,,wTimeSlotWithTemp,,,
+w,,z1Timer.Wednesday,Zeitfenster Heizen Mittwoch,,,,02,,,wTimeSlotWithTemp,,,
+w,,z1Timer.Thursday,Zeitfenster Heizen Donnerstag,,,,03,,,wTimeSlotWithTemp,,,
+w,,z1Timer.Friday,Zeitfenster Heizen Freitag,,,,04,,,wTimeSlotWithTemp,,,
+w,,z1Timer.Saturday,Zeitfenster Heizen Samstag,,,,05,,,wTimeSlotWithTemp,,,
+w,,z1Timer.Sunday,Zeitfenster Heizen Sonntag,,,,06,,,wTimeSlotWithTemp,,,
 # Zeitprogramme Zone 2,,,,,,,,,,,,,
-*r,,,,,,B524,03030102,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04030102,,,,,,
-r;w,,z2Timer.Monday,Zeitfenster Heizen Montag,,,,00,,,slot1-3,,,
-r;w,,z2Timer.Tuesday,Zeitfenster Heizen Dienstag,,,,01,,,slot1-3,,,
-r;w,,z2Timer.Wednesday,Zeitfenster Heizen Mittwoch,,,,02,,,slot1-3,,,
-r;w,,z2Timer.Thursday,Zeitfenster Heizen Donnerstag,,,,03,,,slot1-3,,,
-r;w,,z2Timer.Friday,Zeitfenster Heizen Freitag,,,,04,,,slot1-3,,,
-r;w,,z2Timer.Saturday,Zeitfenster Heizen Samstag,,,,05,,,slot1-3,,,
-r;w,,z2Timer.Sunday,Zeitfenster Heizen Sonntag,,,,06,,,slot1-3,,,
-*r,,,,,,B524,03030101,,,IGN:1,,,whether timeslot is valid
-*w,,,,,,B524,04030101,,,,,,
-r;w,,z2CoolingTimer.Monday,Zeitfenster Kühlen Montag,,,,00,,,slot1-3,,,
-r;w,,z2CoolingTimer.Tuesday,Zeitfenster Kühlen Dienstag,,,,01,,,slot1-3,,,
-r;w,,z2CoolingTimer.Wednesday,Zeitfenster Kühlen Mittwoch,,,,02,,,slot1-3,,,
-r;w,,z2CoolingTimer.Thursday,Zeitfenster Kühlen Donnerstag,,,,03,,,slot1-3,,,
-r;w,,z2CoolingTimer.Friday,Zeitfenster Kühlen Freitag,,,,04,,,slot1-3,,,
-r;w,,z2CoolingTimer.Saturday,Zeitfenster Kühlen Samstag,,,,05,,,slot1-3,,,
-r;w,,z2CoolingTimer.Sunday,Zeitfenster Kühlen Sonntag,,,,06,,,slot1-3,,,
+*r,,,,,,B555,a50100,,,,,,
+*w,,,,,,B555,a60100,,,,,,
+r,,z2Timer.Config,Zeitfenster Konfiguration(aktuell statisch? Beschreibt eine Art Funktionalitätsumfang),,,B555,a30100,,,HEX:9,,,Konfiguration
+r,,z2Timer.Timeframes,Zeitfenster Anzahl,,,B555,a40100,,,slotCountWeek,,,Anzahl der eingestellten Slots pro Wochentag
+r,,z2Timer.Monday0,Zeitfenster Heizen Montag 1,,,,0000,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Monday1,Zeitfenster Heizen Montag 2,,,,0001,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Monday2,Zeitfenster Heizen Montag 3,,,,0002,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Tuesday0,Zeitfenster Heizen Dienstag 1,,,,0100,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Tuesday1,Zeitfenster Heizen Dienstag 2,,,,0101,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Tuesday2,Zeitfenster Heizen Dienstag 3,,,,0102,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Wednesday0,Zeitfenster Heizen Mittwoch 1,,,,0200,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Wednesday1,Zeitfenster Heizen Mittwoch 2,,,,0201,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Wednesday2,Zeitfenster Heizen Mittwoch 3,,,,0202,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Thursday0,Zeitfenster Heizen Donnerstag 1,,,,0300,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Thursday1,Zeitfenster Heizen Donnerstag 2,,,,0301,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Thursday2,Zeitfenster Heizen Donnerstag 3,,,,0302,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Friday0,Zeitfenster Heizen Freitag 1,,,,0400,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Friday1,Zeitfenster Heizen Freitag 2,,,,0401,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Friday2,Zeitfenster Heizen Freitag 3,,,,0402,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Saturday0,Zeitfenster Heizen Samstag 1,,,,0500,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Saturday1,Zeitfenster Heizen Samstag 2,,,,0501,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Saturday2,Zeitfenster Heizen Samstag 3,,,,0502,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Sunday0,Zeitfenster Heizen Sonntag 1,,,,0600,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Sunday1,Zeitfenster Heizen Sonntag 2,,,,0601,,,rTimeSlotWithTemp,,,
+r,,z2Timer.Sunday2,Zeitfenster Heizen Sonntag 3,,,,0602,,,rTimeSlotWithTemp,,,
+w,,z2Timer.Monday,Zeitfenster Heizen Montag,,,,00,,,wTimeSlotWithTemp,,,
+w,,z2Timer.Tuesday,Zeitfenster Heizen Dienstag,,,,01,,,wTimeSlotWithTemp,,,
+w,,z2Timer.Wednesday,Zeitfenster Heizen Mittwoch,,,,02,,,wTimeSlotWithTemp,,,
+w,,z2Timer.Thursday,Zeitfenster Heizen Donnerstag,,,,03,,,wTimeSlotWithTemp,,,
+w,,z2Timer.Friday,Zeitfenster Heizen Freitag,,,,04,,,wTimeSlotWithTemp,,,
+w,,z2Timer.Saturday,Zeitfenster Heizen Samstag,,,,05,,,wTimeSlotWithTemp,,,
+w,,z2Timer.Sunday,Zeitfenster Heizen Sonntag,,,,06,,,wTimeSlotWithTemp,,,
+# Zeitprogramme Zone 3,,,,,,,,,,,,,
+*r,,,,,,B555,a50200,,,,,,
+*w,,,,,,B555,a60200,,,,,,
+r,,z3Timer.Config,Zeitfenster Konfiguration(aktuell statisch? Beschreibt eine Art Funktionalitätsumfang),,,B555,a30200,,,HEX:9,,,Konfiguration
+r,,z3Timer.Timeframes,Zeitfenster Anzahl,,,B555,a40200,,,slotCountWeek,,,Anzahl der eingestellten Slots pro Wochentag
+r,,z3Timer.Monday0,Zeitfenster Heizen Montag 1,,,,0000,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Monday1,Zeitfenster Heizen Montag 2,,,,0001,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Monday2,Zeitfenster Heizen Montag 3,,,,0002,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Tuesday0,Zeitfenster Heizen Dienstag 1,,,,0100,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Tuesday1,Zeitfenster Heizen Dienstag 2,,,,0101,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Tuesday2,Zeitfenster Heizen Dienstag 3,,,,0102,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Wednesday0,Zeitfenster Heizen Mittwoch 1,,,,0200,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Wednesday1,Zeitfenster Heizen Mittwoch 2,,,,0201,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Wednesday2,Zeitfenster Heizen Mittwoch 3,,,,0202,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Thursday0,Zeitfenster Heizen Donnerstag 1,,,,0300,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Thursday1,Zeitfenster Heizen Donnerstag 2,,,,0301,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Thursday2,Zeitfenster Heizen Donnerstag 3,,,,0302,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Friday0,Zeitfenster Heizen Freitag 1,,,,0400,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Friday1,Zeitfenster Heizen Freitag 2,,,,0401,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Friday2,Zeitfenster Heizen Freitag 3,,,,0402,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Saturday0,Zeitfenster Heizen Samstag 1,,,,0500,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Saturday1,Zeitfenster Heizen Samstag 2,,,,0501,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Saturday2,Zeitfenster Heizen Samstag 3,,,,0502,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Sunday0,Zeitfenster Heizen Sonntag 1,,,,0600,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Sunday1,Zeitfenster Heizen Sonntag 2,,,,0601,,,rTimeSlotWithTemp,,,
+r,,z3Timer.Sunday2,Zeitfenster Heizen Sonntag 3,,,,0602,,,rTimeSlotWithTemp,,,
+w,,z3Timer.Monday,Zeitfenster Heizen Montag,,,,00,,,wTimeSlotWithTemp,,,
+w,,z3Timer.Tuesday,Zeitfenster Heizen Dienstag,,,,01,,,wTimeSlotWithTemp,,,
+w,,z3Timer.Wednesday,Zeitfenster Heizen Mittwoch,,,,02,,,wTimeSlotWithTemp,,,
+w,,z3Timer.Thursday,Zeitfenster Heizen Donnerstag,,,,03,,,wTimeSlotWithTemp,,,
+w,,z3Timer.Friday,Zeitfenster Heizen Freitag,,,,04,,,wTimeSlotWithTemp,,,
+w,,z3Timer.Saturday,Zeitfenster Heizen Samstag,,,,05,,,wTimeSlotWithTemp,,,
+w,,z3Timer.Sunday,Zeitfenster Heizen Sonntag,,,,06,,,wTimeSlotWithTemp,,,
 # includes,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

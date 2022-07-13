@@ -97,3 +97,12 @@ shortphone,STR:6,,,Telefonnummer
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
+slotIndex,UCH,,,Index eines Zeitslots. Start by 0 für den ersten Zeitslot.
+slotCount,UCH,,,Anzahl der aktiven Zeitslots an einem Tag. Kann 0 sein,
+slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,Anzahl der aktiven Zeitslots pro Wochentag. Mo-So
+slotTimeFrame,HTM;HTM,,,Zeitslot von/bis
+slotTemp,UIN,,,Temperatur die in einem Zeitslot gesetzt ist. 10 mal höher als eigentlicher Wert (225 = 22.5°C)
+wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Index des Slot; gesamt Anzahl der aktiven Slots und einzelner Zeitslot mit Temperatur
+wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;IGN:2,,,Index des Slot; gesamt Anzahl der aktiven Slots und einzelner Zeitslot ohne Temperatur
+rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Einzelner Zeitslot mit Temperatur
+rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Einzelner Zeitslot ohne Temperatur
