@@ -98,7 +98,7 @@ mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
 slotIndex,UCH,,,Index eines Zeitslots. Start by 0 für den ersten Zeitslot.
-slotCount,UCH,,,Anzahl der aktiven Zeitslots an einem Tag. Kann 0 sein,
+slotCount,UCH,,,Anzahl der aktiven Zeitslots an einem Tag. Kann 0 sein.
 slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,Anzahl der aktiven Zeitslots pro Wochentag. Mo-So
 slotTimeFrame,HTM;HTM,,,Zeitslot von/bis
 slotTemp,UIN,,,Temperatur die in einem Zeitslot gesetzt ist. 10 mal höher als eigentlicher Wert (225 = 22.5°C)
