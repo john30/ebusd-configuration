@@ -6,7 +6,7 @@
 *wi,#install,,,,,B524,02010000,,,,,,
 r;w,,ContinuosHeating,continuos heating,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,frost delay time,,,,0300,,,hoursum2,,,delay before frost protection is activated
-r;w,,ManualCooling,Manual cooling,,,,0600,,,UIN,,,number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp).
+r;w,,ManualCooling,Manual cooling,,,,0600,,,UIN,,,"number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp)"
 r;wi,,GlobalSystemOff,Global System OFF,,,,0700,,,yesno,,,For switching system off
 r;w,,HwcParallelLoading,hwc parallel loading,,,,0A00,,,onoff,,,heating and hot water parallel
 r;w,,MaxRoomHumidity,max room humidity,,,,0E00,,,UIN,,,maximum room humidity

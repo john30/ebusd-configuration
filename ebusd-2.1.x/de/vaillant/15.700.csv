@@ -6,7 +6,7 @@
 *wi,#install,,,,,B524,02010000,,,,,,
 r;w,,ContinuosHeating,Durchgehendes Heizen,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,Frostschutz-Verzögerung,,,,0300,,,hoursum2,,,delay before frost protection is activated
-r;w,,ManualCooling,Manuell kühlen,,,,0600,,,UIN,,,Anzahl Tage manueller Kühlung (max. 99, 0=aus, Temperatur via z1CoolingTemp).
+r;w,,ManualCooling,Manuell kühlen,,,,0600,,,UIN,,,"Anzahl Tage manueller Kühlung (max. 99, 0=aus, Temperatur via z1CoolingTemp)"
 r;wi,,GlobalSystemOff,Global System Aus,,,,0700,,,yesno,,,Zum Ausschalten des Systems
 r;w,,HwcParallelLoading,Parallele Ladung Warmwasserkreis,,,,0A00,,,onoff,,,Heizbetrieb und Speicherladung parallel
 r;w,,MaxRoomHumidity,maxRoomHumidity,,,,0E00,,,UIN,,,maximale Raumluftfeuchte
