@@ -3,8 +3,11 @@
 # ##### Generell #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000000,,,IGN:4,,,
 *w,,,,,,B524,02010000,,,,,,
+*wi,#install,,,,,B524,02010000,,,,,,
 r;w,,ContinuosHeating,continuos heating,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,frost delay time,,,,0300,,,hoursum2,,,delay before frost protection is activated
+r;w,,ManualCooling,Manual cooling,,,,0600,,,UIN,,,"number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp)"
+r;wi,,GlobalSystemOff,Global System OFF,,,,0700,,,yesno,,,For switching system off
 r;w,,HwcParallelLoading,hwc parallel loading,,,,0A00,,,onoff,,,heating and hot water parallel
 r;w,,MaxRoomHumidity,max room humidity,,,,0E00,,,UIN,,,maximum room humidity
 r;w,,AdaptHeatCurve,adaptive heat curve,,,,1400,,,yesno,,,automatic correction of configured heat curve
@@ -21,6 +24,8 @@ r;w,,HydraulicScheme,system schema,,,,3600,,,UIN,,,Systemschema
 r,,WaterPressure,water pressure,,,,3900,,,pressv,,,Wasserdruck
 r;w,,SolarYieldTotal,total solar yield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,total environmental yield,,,,3E00,,,energy4,,,Umweltertrag gesamt
+r;w,,VentilationDay,day ventilation speed,,,,4200,,,UIN,,,Ventilation speed during day
+r;w,,VentilationNight,night ventilation,,,,4300,,,UIN,,,Ventilation speed during night
 r;w,,HwcMaxFlowTempDesired,hwc max flow temp desired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Hwc
 r,,SystemFlowTemp,system flow temp,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,multifunction relay setting,,,,4D00,,,mamode,,,
@@ -51,6 +56,8 @@ r,,DisplayedOutsideTemp,outside temperature,,,,7300,,,tempv,,,Außentemperatur
 r;w,,SFMode,SF mode,,,,7400,,,sfmode,,,
 r;w,,KeyCodeforConfigMenu,code for installer menu,,,,7600,,,UIN,,,000-999; code for the installer's menues
 r;w,,OpMode,operation mode,,,,7b00,,,opmode,,,operation mode of all/configured zone(s) matching OpModeEffect
+r;w,,OpModeCooling,operation mode for cooling,,,,7c00,,,opmode,,,operation mode for cooling of all/configured zone(s)
+r;w,,OpModeVentilation,operation mode for ventilation,,,,1600,,,opmode,,,operation mode for ventilation of all/configured zone(s)
 r;w,,HolidayTemp,holiday temperature,,,,8200,,,tempv,,,holiday setpoint
 r;w,,BankHolidayStartPeriod,bank holiday start period,,,,8300,,,hfrom,,,start date of bank holidays
 r;w,,BankHolidayEndPeriod,bank holiday end period,,,,8400,,,hto,,,end date of bank holidays
@@ -138,10 +145,11 @@ r;w,,Hc3RoomTempSwitchOn,RoomTempSwitchOn heating circuit 3,,,,1500,,,rcmode,,,r
 r,,Hc3MixerMovement,MixerMovement heating circuit 3,,,,1A00,,,EXP,,,"status of mixer (<0 closing, >0 opening)"
 r,,Hc3HeatCurveAdaption,HeatCurveAdaption heating circuit 3,,,,1C00,,,EXP,,,adaption applied to heating curve of Hc3
 r;w,,Hc3Status,Status heating circuit 3,,,,1B00,,,UCH,,,status of zone 2
-r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of zone 3,,,,,,,,,,,,,
+r;w,,Hc3PumpStatus,PumpStatus heating circuit 3,,,,1E00,,,UIN,,,pump status of zone 3
 # ##### zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
+r;w,,z1OpModeCooling,cooling operation mode zone 1,,,,0100,,,opmode,,,operation mode for cooling of zone 1
 r;w,,z1CoolingTemp,cooling setpoint zone 1,,,,0200,,,tempv,,,desired cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,holiday period start zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,holiday period end zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
@@ -164,6 +172,7 @@ r;w,,z1Name2,zone 1 label (second part),,,,1800,,,zname,,,name of zone 1
 # ##### zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
+r;w,,z2OpModeCooling,cooling operation mode zone 2,,,,0100,,,opmode,,,operation mode for cooling of zone 2
 r;w,,z2CoolingTemp,cooling setpoint zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 2
 r;w,,z2HolidayStartPeriod,holiday period start zone 2,,,,0300,,,hfrom,,,start date of holidays for zone 2
 r;w,,z2HolidayEndPeriod,holiday period end zone 2,,,,0400,,,hto,,,end date of holidays for zone 2
@@ -186,7 +195,8 @@ r;w,,z2Name2,zone 2 label (second part),,,,1800,,,zname,,,name of zone 2
 # ##### zone 3 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000302,,,IGN:4,,,
 *w,,,,,,B524,02010302,,,,,,
-#r;w,,z3Unknown02,(constant 24 - air level?) temperature zone 3,,,,0200,,,tempv,,,unknown value for zone 3
+r;w,,z3OpModeCooling,cooling operation mode zone 3,,,,0100,,,opmode,,,operation mode for cooling of zone 3
+r;w,,z3CoolingTemp,cooling setpoint zone 3,,,,0200,,,tempv,,,desired cooling setpoint for zone 3
 r;w,,z3HolidayStartPeriod,holiday period start zone 3,,,,0300,,,hfrom,,,start date of holidays for zone 3
 r;w,,z3HolidayEndPeriod,holiday period end zone 3,,,,0400,,,hto,,,end date of holidays for zone 3
 r;w,,z3HolidayTemp,room setpoint holiday period zone 3,,,,0500,,,tempv,,,holiday setpoint for zone 3
@@ -204,14 +214,14 @@ r;w,,z3ActualRoomTempDesired,room temperature desired zone 3,,,,1400,,,tempv,,,c
 #r;w,,z3Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 3,,,,1500,,,tempv,,,unknown value for zone 3
 r;w,,z3Shortname,shortlabel zone 3,,,,1600,,,shortname,,,short name of zone 3
 r;w,,z3Name1,label zone 3 part 1,,,,1700,,,zname,,,name of zone 3
-r;w,,z3Name2,label zone 3 part 2,,,,1800,,,zname,,,name of zone 3,,,,,,,,,,,,,
+r;w,,z3Name2,label zone 3 part 2,,,,1800,,,zname,,,name of zone 3
 # ##### timers #####,,,,,,,,,,,,,
 # air,,,,,,,,,,,,,
 *r,,,,,,B524,03000001,,,IGN:1,,,whether timeslot is valid
 *w,,,,,,B524,04000001,,,,,,
 r;w,,ventilationTimer.Monday,timer air monday,,,,00,,,slot1-3,,,
 r;w,,ventilationTimer.Tuesday,timer air tuesday,,,,01,,,slot1-3,,,
-r;w,,ventilationTimer.Wednesday,timer air wednsday,,,,02,,,slot1-3,,,
+r;w,,ventilationTimer.Wednesday,timer air wednesday,,,,02,,,slot1-3,,,
 r;w,,ventilationTimer.Thursday,timer air thursday,,,,03,,,slot1-3,,,
 r;w,,ventilationTimer.Friday,timer air friday,,,,04,,,slot1-3,,,
 r;w,,ventilationTimer.Saturday,timer air saturday,,,,05,,,slot1-3,,,
@@ -221,7 +231,7 @@ r;w,,ventilationTimer.Sunday,timer air sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04000002,,,,,,
 r;w,,noiseReductionTimer.Monday,timer noise reduction monday,,,,00,,,slot1-3,,,
 r;w,,noiseReductionTimer.Tuesday,timer noise reduction tuesday,,,,01,,,slot1-3,,,
-r;w,,noiseReductionTimer.Wednesday,timer noise reduction wednsday,,,,02,,,slot1-3,,,
+r;w,,noiseReductionTimer.Wednesday,timer noise reduction wednesday,,,,02,,,slot1-3,,,
 r;w,,noiseReductionTimer.Thursday,timer noise reduction thursday,,,,03,,,slot1-3,,,
 r;w,,noiseReductionTimer.Friday,timer noise reduction friday,,,,04,,,slot1-3,,,
 r;w,,noiseReductionTimer.Saturday,timer noise reduction saturday,,,,05,,,slot1-3,,,
@@ -231,7 +241,7 @@ r;w,,noiseReductionTimer.Sunday,timer noise reduction sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04000003,,,,,,
 r;w,,tariffTimer.Monday,timer tariff monday,,,,00,,,slot1-3,,,
 r;w,,tariffTimer.Tuesday,timer tariff tuesday,,,,01,,,slot1-3,,,
-r;w,,tariffTimer.Wednesday,timer tariff wednsday,,,,02,,,slot1-3,,,
+r;w,,tariffTimer.Wednesday,timer tariff wednesday,,,,02,,,slot1-3,,,
 r;w,,tariffTimer.Thursday,timer tariff thursday,,,,03,,,slot1-3,,,
 r;w,,tariffTimer.Friday,timer tariff friday,,,,04,,,slot1-3,,,
 r;w,,tariffTimer.Saturday,timer tariff saturday,,,,05,,,slot1-3,,,
@@ -241,7 +251,7 @@ r;w,,tariffTimer.Sunday,timer tariff sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04010001,,,,,,
 r;w,,hwcTimer.Monday,timer hwc monday,,,,00,,,slot1-3,,,
 r;w,,hwcTimer.Tuesday,timer hwc tuesday,,,,01,,,slot1-3,,,
-r;w,,hwcTimer.Wednesday,timer hwc wednsday,,,,02,,,slot1-3,,,
+r;w,,hwcTimer.Wednesday,timer hwc wednesday,,,,02,,,slot1-3,,,
 r;w,,hwcTimer.Thursday,timer hwc thursday,,,,03,,,slot1-3,,,
 r;w,,hwcTimer.Friday,timer hwc friday,,,,04,,,slot1-3,,,
 r;w,,hwcTimer.Saturday,timer hwc saturday,,,,05,,,slot1-3,,,
@@ -251,7 +261,7 @@ r;w,,hwcTimer.Sunday,timer hwc sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04010002,,,,,,
 r;w,,ccTimer.Monday,timer cc monday,,,,00,,,slot1-3,,,
 r;w,,ccTimer.Tuesday,timer cc tuesday,,,,01,,,slot1-3,,,
-r;w,,ccTimer.Wednesday,timer cc wednsday,,,,02,,,slot1-3,,,
+r;w,,ccTimer.Wednesday,timer cc wednesday,,,,02,,,slot1-3,,,
 r;w,,ccTimer.Thursday,timer cc thursday,,,,03,,,slot1-3,,,
 r;w,,ccTimer.Friday,timer cc friday,,,,04,,,slot1-3,,,
 r;w,,ccTimer.Saturday,timer cc saturday,,,,05,,,slot1-3,,,
@@ -261,7 +271,7 @@ r;w,,ccTimer.Sunday,timer cc sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04030002,,,,,,
 r;w,,z1Timer.Monday,timer heating monday,,,,00,,,slot1-3,,,
 r;w,,z1Timer.Tuesday,timer heating tuesday,,,,01,,,slot1-3,,,
-r;w,,z1Timer.Wednesday,timer heating wednsday,,,,02,,,slot1-3,,,
+r;w,,z1Timer.Wednesday,timer heating wednesday,,,,02,,,slot1-3,,,
 r;w,,z1Timer.Thursday,timer heating thursday,,,,03,,,slot1-3,,,
 r;w,,z1Timer.Friday,timer heating friday,,,,04,,,slot1-3,,,
 r;w,,z1Timer.Saturday,timer heating saturday,,,,05,,,slot1-3,,,
@@ -270,7 +280,7 @@ r;w,,z1Timer.Sunday,timer heating sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04030001,,,,,,
 r;w,,z1CoolingTimer.Monday,timer cooling monday,,,,00,,,slot1-3,,,
 r;w,,z1CoolingTimer.Tuesday,timer cooling tuesday,,,,01,,,slot1-3,,,
-r;w,,z1CoolingTimer.Wednesday,timer cooling wednsday,,,,02,,,slot1-3,,,
+r;w,,z1CoolingTimer.Wednesday,timer cooling wednesday,,,,02,,,slot1-3,,,
 r;w,,z1CoolingTimer.Thursday,timer cooling thursday,,,,03,,,slot1-3,,,
 r;w,,z1CoolingTimer.Friday,timer cooling friday,,,,04,,,slot1-3,,,
 r;w,,z1CoolingTimer.Saturday,timer cooling saturday,,,,05,,,slot1-3,,,
@@ -280,7 +290,7 @@ r;w,,z1CoolingTimer.Sunday,timer cooling sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04030102,,,,,,
 r;w,,z2Timer.Monday,timer heating monday,,,,00,,,slot1-3,,,
 r;w,,z2Timer.Tuesday,timer heating tuesday,,,,01,,,slot1-3,,,
-r;w,,z2Timer.Wednesday,timer heating wednsday,,,,02,,,slot1-3,,,
+r;w,,z2Timer.Wednesday,timer heating wednesday,,,,02,,,slot1-3,,,
 r;w,,z2Timer.Thursday,timer heating thursday,,,,03,,,slot1-3,,,
 r;w,,z2Timer.Friday,timer heating friday,,,,04,,,slot1-3,,,
 r;w,,z2Timer.Saturday,timer heating saturday,,,,05,,,slot1-3,,,
@@ -289,7 +299,7 @@ r;w,,z2Timer.Sunday,timer heating sunday,,,,06,,,slot1-3,,,
 *w,,,,,,B524,04030101,,,,,,
 r;w,,z2CoolingTimer.Monday,timer cooling monday,,,,00,,,slot1-3,,,
 r;w,,z2CoolingTimer.Tuesday,timer cooling tuesday,,,,01,,,slot1-3,,,
-r;w,,z2CoolingTimer.Wednesday,timer cooling wednsday,,,,02,,,slot1-3,,,
+r;w,,z2CoolingTimer.Wednesday,timer cooling wednesday,,,,02,,,slot1-3,,,
 r;w,,z2CoolingTimer.Thursday,timer cooling thursday,,,,03,,,slot1-3,,,
 r;w,,z2CoolingTimer.Friday,timer cooling friday,,,,04,,,slot1-3,,,
 r;w,,z2CoolingTimer.Saturday,timer cooling saturday,,,,05,,,slot1-3,,,
