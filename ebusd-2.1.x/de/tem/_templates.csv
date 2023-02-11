@@ -2,35 +2,35 @@
 # Bartl TEM,,,,
 type,UCH,0x00=none;0x02=on-off;0x04=Zeit;0x09=selection;0x0d=Temperatur;0x40=Dauer;0x4d=TemperaturSchwelle;0x8d=TemperaturSoll;0xc0=range,,Datentyp
 unit,UCH,0x00=none;0x02=°C;0x04=K;0x08=%;0x0a=h;0x0c=min;0x10=kW;0x2a=hh:mm,,Einheit
-maxs,SIN,,,Maximum
-mins,SIN,,,Minimum
-maxs_10,SIN,10,,Maximum (Teiler 10)
-mins_10,SIN,10,,Minimum (Teiler 10)
+maxs:max,SIN,,,Maximum
+mins:min,SIN,,,Minimum
+maxs_10:max,SIN,10,,Maximum (Teiler 10)
+mins_10:min,SIN,10,,Minimum (Teiler 10)
 wd,BDY,,,Weekday
 range,SCH,,,Range
 command,TEM_P;type;unit,,,Kommando
-temp1,SIN,,°C,Temperatur
-temp1_1b,SCH;IGN:1,,°C,Temperatur
-temp10,SIN,10,°C,Temperatur (Teiler 10)
-temp10K,SIN,10,K,Temperatur (Teiler 10K)
-temp2,SIN,2,°C,Temperatur (Teiler 2)
-temp256,D2B,,°C,Temperatur (Teiler 256)
-max_temp1,temp1,,,Maximum
-min_temp1,temp1,,,Minimum
-max_temp1_1b,temp1_1b,,,Maximum
-min_temp1_1b,temp1_1b,,,Minimum
-max_temp10,temp10,,,Maximum
-min_temp10,temp10,,,Minimum
-max_temp10K,temp10K,,,Maximum
-min_temp10K,temp10K,,,Minimum
-max_temp2,temp2,,,Maximum
-min_temp2,temp2,,,Minimum
-max_time,MIN,,,Maximum
-min_time,MIN,,,Minimum
-max_wd,wd;IGN:1,,,Maximum
-min_wd,wd;IGN:1,,,Minimum
-max_range,range;IGN:1,,,Maximum
-min_range,range;IGN:1,,,Minimum
+temp1:temp,SIN,,°C,Temperatur
+temp1_1b:temp,SCH;IGN:1,,°C,Temperatur
+temp10:temp,SIN,10,°C,Temperatur (Teiler 10)
+temp10K:temp,SIN,10,K,Temperatur (Teiler 10K)
+temp2:temp,SIN,2,°C,Temperatur (Teiler 2)
+temp256:temp,D2B,,°C,Temperatur (Teiler 256)
+max_temp1:max,temp1,,,Maximum
+min_temp1:min,temp1,,,Minimum
+max_temp1_1b:max,SCH;IGN:1,,,Maximum
+min_temp1_1b:min,SCH;IGN:1,,,Minimum
+max_temp10:max,temp10,,,Maximum
+min_temp10:min,temp10,,,Minimum
+max_temp10K:max,temp10K,,,Maximum
+min_temp10K:min,temp10K,,,Minimum
+max_temp2:max,temp2,,,Maximum
+min_temp2:min,temp2,,,Minimum
+max_time:max,MIN,,,Maximum
+min_time:min,MIN,,,Minimum
+max_wd:max,wd;IGN:1,,,Maximum
+min_wd:min,wd;IGN:1,,,Minimum
+max_range:max,range;IGN:1,,,Maximum
+min_range:max,range;IGN:1,,,Minimum
 parameter1,command;maxs;mins,,,Parameter
 parameter1_10,command;maxs_10;mins_10,,,Parameter10
 parameter2,command;UCH;UCH,,,Parameter
