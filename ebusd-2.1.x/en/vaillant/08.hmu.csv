@@ -34,7 +34,8 @@ r,,YieldHwc,,,,,16,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
 r,,CopHwc,,,,,17,,,UIN,10,,,,,,,,,,,,,,,,,,,,
 r,,ch_18,,,,,18,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,TargetTempHc,,,,,1C,,,D2C,,°C,Target temperature Hc (°C),,,,,,,,,,,,,,,,,,
-w,hmu,TargetTempHc,,,08,B51A,06B5321C,,,D2C,,°C,Target temperature Hc(°C),,,,,,,,,,,,,,,,,,
+# Uncomment the next line if you want to be able to change TargetTempHc (from Home Assistant for example)
+#w,hmu,TargetTempHc,,,08,B51A,06B5321C,,,D2C,,°C,Target temperature Hc(°C),,,,,,,,,,,,,,,,,,
 r,,ch_1e,,,,,1e,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,SupplyTempWeighted,,,,,1F,,,D2C,10,°C,,,,,,,,,,,,,,,,,,,
 r,,FlowTemp,,,,,20,,,D2C,,°C,,,,,,,,,,,,,,,,,,,
@@ -62,6 +63,8 @@ r,,ch_63,,,,,63,,,UIN,,,,,,,,,,,,,,,,,,,,,
 # Heat pump configuration menu values
 *r,,,,,,"B51A","058F35",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 r,,HeatCurve,,,,,2D,,,BCD,10,,heat curve 0.1 to 4.0,,,,,,,,,,,,,,,,,,
+# Uncomment the next line if you want to be able to change HeatCurve (from Home Assistant for example)
+#w,hmu,HeatCurve,,,08,B51A,06CD352D,,,BCD,10,,,,,,,,,,,,,,,,,,,,
 r,,SummerSwitchOffTemp,,,,,2E,,,D2C,,°C,Switch-off temperature summer (°C),,,,,,,,,,,,,,,,,,
 r,,HcBivalencePoint,,,,,2F,,,D2C,,°C,Central heating bivalence point (°C),,,,,,,,,,,,,,,,,,
 r,,HwcBivalencePoint,,,,,30,,,D2C,,°C,Bivalence point domestic hot water (°C),,,,,,,,,,,,,,,,,,
@@ -80,7 +83,8 @@ r,,CompressorHysteresisCooling,,,,,3F,,,D2C,,,Compressor hysteresis cooling (°K
 r,,HwcMode,,,,,44,,,UCH,0=eco;1=normal;2=balance,,Domestic hot water mod (eco/normal/balance),,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05C632",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 r,,TargetTempHwc,,,,,07,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,,,,,,,
-w,hmu,TargetTempHwc,,,08,B51A,06783207,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,,,,,,,
+# Uncomment the next line if you want to be able to change TargetTempHwc (from Home Assistant for example)
+#w,hmu,TargetTempHwc,,,08,B51A,06783207,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,,,,,,,
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B516","18",,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,YieldTotal,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
