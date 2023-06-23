@@ -1,3 +1,8 @@
+# 2023-01-02
+* added cooling, global off, and ventilation to vaillant/15.700
+* added vaillant/15.160
+* added another vaillant/08.bai 0010015600 variant: 0010021929 
+
 # 2022-05-08
 * added vaillant/15.e7c and 15.e7f_2
 * fix wrong assignment of vaillant/08.bai 0010014917 in en folder

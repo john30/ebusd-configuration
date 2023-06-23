@@ -1,0 +1,17 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,35000,VTS 160,173 173,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*wi,#install,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+*[SW],scan,,,SW,,,,,,,,,
+r;w,,Date,System Date,,,,"6100",,,date,,,current date
+r;w,,Time,System Time,,,,"6000",,,time,,,current time
+r;w,,SystemOnOff,System OnOFF,,,,"0100",,,UCH,0=on;1=off,,
+r;w,,OperatingMode,Operation mode,,,,"2F00",,,UCH,2=Auto;3=Comfort,,
+r;w,,OverrideMode,Override mode,,,,"5D00",,,UCH,0=None;1=Party;4=Holiday,,
+r;w,,HolidayStartPeriod,HolidayStartPeriod,,,,"1100",,,date,,,start date of holiday
+r;w,,HolidayEndPeriod,HolidayEndPeriod,,,,"1200",,,date,,,end date of holiday
+r;w,,LcdContrastValue,LcdContrastValue,,,,"5A00",,,UCH,,,setting of the LCD contrast
+!include,timerhwc.inc,,,,,,,,,,,,
+!include,timerhc.inc,,,,,,,,,,,,

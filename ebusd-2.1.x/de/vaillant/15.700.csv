@@ -3,8 +3,11 @@
 # ##### Generell #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000000,,,IGN:4,,,
 *w,,,,,,B524,02010000,,,,,,
+*wi,#install,,,,,B524,02010000,,,,,,
 r;w,,ContinuosHeating,Durchgehendes Heizen,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,Frostschutz-Verzögerung,,,,0300,,,hoursum2,,,delay before frost protection is activated
+r;w,,ManualCooling,Manuell kühlen,,,,0600,,,UIN,,,"Anzahl Tage manueller Kühlung (max. 99, 0=aus, Temperatur via z1CoolingTemp)"
+r;wi,,GlobalSystemOff,Global System Aus,,,,0700,,,yesno,,,Zum Ausschalten des Systems
 r;w,,HwcParallelLoading,Parallele Ladung Warmwasserkreis,,,,0A00,,,onoff,,,Heizbetrieb und Speicherladung parallel
 r;w,,MaxRoomHumidity,maxRoomHumidity,,,,0E00,,,UIN,,,maximale Raumluftfeuchte
 r;w,,AdaptHeatCurve,Adaptive Heizkurve,,,,1400,,,yesno,,,automatic correction of configured heat curve
@@ -21,6 +24,8 @@ r;w,,HydraulicScheme,Systemschema,,,,3600,,,UIN,,,Systemschema
 r,,WaterPressure,Wasserdruck,,,,3900,,,pressv,,,Wasserdruck
 r;w,,SolarYieldTotal,TotalSolarYield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,TotalEnvironmentalYield,,,,3E00,,,energy4,,,Umweltertrag gesamt
+r;w,,VentilationDay,SollLüftung,,,,4200,,,UIN,,,Lüftergeschwindigkeit tagsüber
+r;w,,VentilationNight,Absenklüftung,,,,4300,,,UIN,,,Lüftergeschwindigkeit nachts
 r;w,,HwcMaxFlowTempDesired,HwcMaxFlowTempDesired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Hwc
 r,,SystemFlowTemp,Systemvorlauf,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,Multifunktionsausgang,,,,4D00,,,mamode,,,
@@ -51,6 +56,8 @@ r,,DisplayedOutsideTemp,Außentemperatur,,,,7300,,,tempv,,,Außentemperatur
 r;w,,SFMode,SFMode,,,,7400,,,sfmode,,,
 r;w,,KeyCodeforConfigMenu,Passwort für das Konfigurationsmenü,,,,7600,,,UIN,,,000-999; code for the installer's menues
 r;w,,OpMode,OpMode,,,,7b00,,,opmode,,,operation mode of all/configured zone(s) matching OpModeEffect
+r;w,,OpModeCooling,,,,,7c00,,,opmode,,,Betriebsart für Kühlung aller/konfigurierter Zonen
+r;w,,OpModeVentilation,,,,,1600,,,opmode,,,Betriebsart für Lüftung aller/konfigurierter Zonen
 r;w,,HolidayTemp,HolidayTemp,,,,8200,,,tempv,,,holiday setpoint
 r;w,,BankHolidayStartPeriod,BankHolidayStartPeriod,,,,8300,,,hfrom,,,start date of bank holidays
 r;w,,BankHolidayEndPeriod,BankHolidayEndPeriod,,,,8400,,,hto,,,end date of bank holidays
@@ -142,6 +149,7 @@ r;w,,Hc3PumpStatus,PumpStatus Heizkreis 3,,,,1E00,,,UIN,,,pump status of zone 3
 # ##### Zone 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000300,,,IGN:4,,,
 *w,,,,,,B524,02010300,,,,,,
+r;w,,z1OpModeCooling,Betriebsart für Kühlung Zone 1,,,,0100,,,opmode,,,operation mode for cooling of zone 1
 r;w,,z1CoolingTemp,Kühlsolltemperatur Zone 1,,,,0200,,,tempv,,,desired cooling setpoint for zone 1
 r;w,,z1HolidayStartPeriod,Ferienzeitraum Start Zone 1,,,,0300,,,hfrom,,,start date of holidays for zone 1
 r;w,,z1HolidayEndPeriod,Ferienzeitraum Ende Zone 1,,,,0400,,,hto,,,end date of holidays for zone 1
@@ -164,6 +172,7 @@ r;w,,z1Name2,Bezeichnung Zone 1 Teil 2,,,,1800,,,zname,,,name of zone 1
 # ##### Zone 2 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000301,,,IGN:4,,,
 *w,,,,,,B524,02010301,,,,,,
+r;w,,z2OpModeCooling,Betriebsart für Kühlung Zone 2,,,,0100,,,opmode,,,operation mode for cooling of zone 2
 r;w,,z2CoolingTemp,Kühlsolltemperatur Zone 2,,,,0200,,,tempv,,,desired cooling setpoint for zone 2
 r;w,,z2HolidayStartPeriod,Ferienzeitraum Start Zone 2,,,,0300,,,hfrom,,,start date of holidays for zone 2
 r;w,,z2HolidayEndPeriod,Ferienzeitraum Ende Zone 2,,,,0400,,,hto,,,end date of holidays for zone 2
@@ -186,7 +195,8 @@ r;w,,z2Name2,Bezeichnung Zone 2 Teil 2,,,,1800,,,zname,,,name of zone 2
 # ##### Zone 3 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000302,,,IGN:4,,,
 *w,,,,,,B524,02010302,,,,,,
-#r;w,,z3Unknown02,(konstant 24 - Lüfterstufe?) Temperatur Zone 3,,,,0200,,,tempv,,,unknown value for zone 3
+r;w,,z3OpModeCooling,Betriebsart für Kühlung Zone 3,,,,0100,,,opmode,,,operation mode for cooling of zone 3
+r;w,,z3CoolingTemp,Kühlsolltemperatur Zone 3,,,,0200,,,tempv,,,desired cooling setpoint for zone 3
 r;w,,z3HolidayStartPeriod,Ferienzeitraum Start Zone 3,,,,0300,,,hfrom,,,start date of holidays for zone 3
 r;w,,z3HolidayEndPeriod,Ferienzeitraum Ende Zone 3,,,,0400,,,hto,,,end date of holidays for zone 3
 r;w,,z3HolidayTemp,Raumsollwert Ferienbetrieb Zone 3,,,,0500,,,tempv,,,holiday setpoint for zone 3
