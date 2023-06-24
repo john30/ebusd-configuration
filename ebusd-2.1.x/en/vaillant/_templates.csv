@@ -103,6 +103,6 @@ slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;
 slotTimeFrame,HTM;HTM,,,Timeslot from/until
 slotTemp,UIN,,,Numbers are 10 times higher than the actual temp (e.g. 225 = real 22.5)
 wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for writing the time table settings.
-wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;IGN:2,,,Complete slot for writing the time table settings without a temperature.
+wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;HEX:2,,,Complete slot for writing the time table settings without a temperature. FF FF has to be appended.
 rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
 rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.
