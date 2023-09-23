@@ -1,3 +1,10 @@
+# 2023-09-23
+* added energyintegral for vailant/08.hmu
+* extended sfmode for vaillant/15.700+720+b7v+basv
+* added further vaillant/08.bai 0010015600 variants: 0010021875+0010021887
+* added vaillant/15.450+f45
+* added special hardware variant of vaillant/15.350
+
 # 2023-01-02
 * added cooling, global off, and ventilation to vaillant/15.700
 * added vaillant/15.160
