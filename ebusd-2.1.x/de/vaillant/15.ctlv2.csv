@@ -61,6 +61,7 @@ r,,HwcStorageTempTop,"Temp.fühler WW, oben",,,,9D00,,,tempv,,,"Temp.fühler WW,
 r,,HwcStorageTempBottom,"Temp.fühler WW, unten",,,,9E00,,,tempv,,,"Temp.fühler WW, unten"
 r,,HcStorageTempTop,"Temp.fühler Hz, oben",,,,9F00,,,tempv,,,"Temp.fühler Hz, oben"
 r,,HcStorageTempBottom,"Temp.fühler Hz, unten",,,,A000,,,tempv,,,"Temp.fühler Hz, unten"
+#r,,UnknownF8,,,,,F800,,,HEX:5,,,Unknown value
 # ##### Warmwasserkreis #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000100,,,IGN:4,,,
 *w,,,,,,B524,02010100,,,,,,
@@ -73,6 +74,7 @@ r;w,,HwcHolidayEndPeriod,HwcHolidayEndPeriod,,,,0A00,,,hto,,,end date of holiday
 r;w,,HwcBankHolidayStartPeriod,HwcHolidayStartPeriod,,,,0B00,,,hfrom,,,start date of bank holidays
 r;w,,HwcBankHolidayEndPeriod,HwcHolidayEndPeriod,,,,0C00,,,hto,,,end date of bank holidays
 r;w,,HwcSFMode,HwcSFMode,,,,0D00,,,sfmode,,,
+#r,,UnknownValue0f,HwcSFMode,,,,0F00,,,HEX:6,,,Unknown value for hwc
 # ##### Heizkreis 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000200,,,IGN:4,,,
 *w,,,,,,B524,02010200,,,,,,
