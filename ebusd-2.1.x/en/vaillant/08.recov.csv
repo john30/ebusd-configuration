@@ -4,7 +4,7 @@
 *r,,,,,,B513,,,,IGN:2,,,
 *w,,,,,,B509,,,,,,,
 r,recov,VentIntensity,Read Ventilation Intensity,,,,048a03,,,UCH,,,
-r,recov,VentHeatRecovery,Read Heat Recovery,,,,048c03,,,UCH,0=auto;1=an;2=aus,,
+r,recov,VentHeatRecovery,Read Heat Recovery,,,,048c03,,,UCH,0=auto;1=on;2=off,,
 w,recov,SetVentIntensityDay1,Set Ventilation Intensity 1,,,,0e8a0301,,,,,,
 w,recov,SetVentIntensityDay2,Set Ventilation Intensity 2,,,,0e8a0302,,,,,,
 w,recov,SetVentIntensityDay3,Set Ventilation Intensity 3,,,,0e8a0303,,,,,,
