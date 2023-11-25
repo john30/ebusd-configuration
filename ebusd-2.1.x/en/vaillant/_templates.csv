@@ -97,3 +97,4 @@ shortphone,STR:6,,,phone number
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
+appliancecode,UCH,0=Heating mode: No requirement;1=Heating mode: Fan prerun;2=Heating mode: Pump prerun;3=Heating mode: Burner ignition;4=Heating mode: Burner on;5=Heating mode: Pump/fan overrun;6=Heating mode: Fan overrun;7=Heating mode: Pump overrun;8=Heating mode: Temporary shutdown after heating procedure;9=Heating mode: Messprogramm;10=DHW mode: Requirement;11=DHW mode: Fan prerun;12=DHW mode: Pump prerun;13=DHW mode: Burner ignition;14=DHW mode: Burner on;15=DHW mode: Pump/fan overrun;16=DHW mode: Fan overrun;17=DHW mode: Pump overrun;18=DHW mode: Temporary shutdown of the burner;34=Frost protection active,,Status code

@@ -66,7 +66,7 @@ r,,TestFan,Test_Fan,,,,"3A00",,,UCH,,,
 r,,FanIsRunning,FanIsRunning,,,,"3B00",,,yesno,,,fan started successful
 r,,HotSummer,HotSummer,,,,"3C00",,,yesno,,,air inlet too hot to run compressor
 r,,Pumin,Pumin,,,,"3D00",,,UCH,,,reserved
-r,,IDUApplianceCode,IDU_appliance_code,,,,"3E00",,,UCH,,,"appliance code, copy from AMU"
+r,,IDUApplianceCode,IDU_appliance_code,,,,"3E00",,,appliancecode,,,"appliance code, copy from AMU"
 [SW>=104]r;wi,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,percent0,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
 r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,percent0,,,noise reduction factor to reduce fan speed
 [SW>=104]r,,FrostProtection,FrostProtection,,,,"4100",,,temp,,,copy from AMU: frost protection
