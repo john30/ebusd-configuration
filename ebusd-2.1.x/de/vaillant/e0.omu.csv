@@ -1,5 +1,6 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
 #,OMU00,OMU_no_serial,OMU00 252,,,,,,,,,,
+# B509 service commands
 *r,,,,,,"B509","0D",,,,,,
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
@@ -100,6 +101,11 @@ r,,SourceFlowReversed,BrineFlowReversed,,,,"4400",,,onoff,,,
 [SW>=130]r;wi,,CoolingTest,CoolingTest,,,,"5D00",,,UCH,,,reserved
 r,,omu_5e00,unknown,,,,"5E00",,s,UCH,,, # usually 18
 r,,omu_5f00,unknown,,,,"5F00",,s,UIN,,, # usually 160
+# B521 service commands
+*r,,,,,,"B521","0D",,,,,,
+*w,,,,,,"B521","0E",,,,,,
+[SW<131]w,,OMUControl,Control command from HMU to OMU,03,E0,"B521","00",NewStatus,m,appliancecode,,,Neuer Statuscode,unknown1,m,UCH,,,meistens 07 oder 08,reserved1,m,UCH,,,immer 00,reserved2,m,UCH,,,immer E7,Status,s,appliancecode,,,Aktueller Statuscode,LastStatus,s,appliancecode,,,Vorheriger Statuscode,TempBrineOutlet,s,D2C,16,°C,Temperatur Sole Rücklauf,TempAirInlet,s,D2C,16,°C,Temperatur Luft Einlass,unknown2,s,UCH,,,unbekannt,FanSpeed,s,UCH,-10,/min,Lüfterdrehzahl,FanPower,s,UCH,,%,Lüfteransteuerung
+[SW>=131]w,,OMUControl,Control command from HMU to OMU,03,E0,"B521","00",NewStatus,m,appliancecode,,,Neuer Statuscode,reserved1,m,UCH,,,immer 22,reserved2,m,UCH,,,immer 00,reserved3,m,UCH,,,immer E6,reserved4,m,SCH,,,immer FF,reserved5,m,SCH,,,immer FF,reserved6,m,UCH,,,immer 46,reserved7,m,UCH,,,immer 00,Status,s,appliancecode,,,Aktueller Statuscode,LastStatus,s,appliancecode,,,Vorheriger Statuscode,TempBrineOutlet,s,D2C,16,°C,Temperatur Sole Rücklauf,TempAirInlet,s,D2C,16,°C,Temperatur Luft Einlass,unknown1,s,UCH,,,unbekannt,FanSpeed,s,UCH,-10,/min,Lüfterdrehzahl,FanPower,s,UCH,,%,Lüfteransteuerung,unknown2,s,UCH,,,unbekannt,reserved5,s,UCH,,,immer 00
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
