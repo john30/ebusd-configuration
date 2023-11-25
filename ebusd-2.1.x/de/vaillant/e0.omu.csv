@@ -24,7 +24,7 @@ r,,omu_1000,unknown,,,,"1000",,s,UCH,,, # always 0
 r,,defroster,defroster,,,,"1100",,,onoff,,,defroster is running
 r,,omu_1200,unknown,,,,"1200",,s,UCH,,, # usually 1
 r,,omu_1300,unknown,,,,"1300",,s,UCH,,, # always 0
-r,,fanPWM,fan_PWM,,,,"1400",,,UIN,,,PWM value from hardware
+r,,fanPWM,fan_PWM,,,,"1400",,,UCH,,,PWM value from hardware
 r,,omu_1500,unknown,,,,"1500",,s,UCH,,, # usually 1
 r,,omu_1600,unknown,,,,"1600",,s,UCH,,, # always 0
 r,,CompActive,CompressorActive,,,,"1700",,,onoff,,,compressor is running or pre or post running
@@ -35,10 +35,10 @@ r,,DeiceRequest,DeiceRequest,,,,"1B00",,,yesno,,,defrosting requested
 r,,DeiceError,DeiceError,,,,"1C00",,,yesno,,,timeout while defrost process
 r,,PollutionDetect,PollutionDetect,,,,"1D00",,,yesno,,,unusual low brine temperaure at high air inlet temperature
 r,,RelaisOut,RelaisOut,,,,"1E00",,,onoff,,,reserved
-r,,OffsetFanSpeed,OffsetFanSpeed,,,,"1F00",,,UIN,,,reserved
-r,,FanstableTime,FanstableTime,,,,"2000",,,UIN,,,reserved
+r,,OffsetFanSpeed,OffsetFanSpeed,,,,"1F00",,,UCH,,,reserved
+r,,FanstableTime,FanstableTime,,,,"2000",,,minutes0,,,reserved
 r,,Free2,Free2,,,,"2100",,,UIN,,,reserved
-r,,FanStartSpeed,FanStartSpeed,,,,"2200",,,UIN,,,reserved
+r,,FanStartSpeed,FanStartSpeed,,,,"2200",,,percent0,,,reserved
 [SW>=104]r;wi,,DeiceRequestHyst,DeiceRequestHyst,,,,"2300",,,temp,,,for stable frost detection
 [SW>=104]r;wi,,DeiceWFanHyst,DeiceWFanHyst,,,,"2400",,,temp,,,remaining temperature difference to air inlet while fan defrosting
 [SW>=104]r,,SourceTempMin,T_AirMin,,,,"2500",,,temp,,,minimum allowed air temperature
@@ -59,7 +59,7 @@ r,,DeicingReleased,DeicingReleased,,,,"3300",,,yesno,,,compressor is not running
 r,,SourceOK,BrineOK,,,,"3400",,,yesno,,,brine pressure is ok and pump is running
 r,,NoiseReduction,NoiseReduction,,,,"3500",,,yesno,,,noise reduction is active
 r,,FanMode,FanMode,,,,"3600",,,yesno,,,future use
-r;wi,,OAWControlPumpPWM,OAW_Control_Pump_PWM,,,,"3700",,,UIN,,,reserved
+r;wi,,OAWControlPumpPWM,OAW_Control_Pump_PWM,,,,"3700",,,UCH,,,reserved
 r,,STBOK,STB_OK,,,,"3800",,,yesno,,,STB is closed
 r,,FanSpeedIs,Fan_Speed_Is,,,,"3900",,,UCH,-10,/min,actual fan speed
 r,,TestFan,Test_Fan,,,,"3A00",,,UCH,,,
