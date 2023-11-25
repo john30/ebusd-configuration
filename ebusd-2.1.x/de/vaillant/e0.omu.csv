@@ -4,10 +4,29 @@
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
 *[SW],scan,,,SW,,,,,,,,,
+r,,omu_0000,unknown,,,,"0000",,s,UIN,,, # usually around ~649
+r,,omu_0100,unknown,,,,"0100",,s,UIN,,, # usually around ~670
+r,,omu_0200,unknown,,,,"0200",,s,UIN,,, # always 0
+r,,omu_0300,unknown,,,,"0300",,s,UIN,,, # always 0
+r,,omu_0400,unknown,,,,"0400",,s,UIN,,, # always 0
 r,,ODUSourceInput,ODU_air_inlet,,,,"0500",,,tempsensor,,,air inlet sensor on ODU
 r,,Parametersandinformation_ODUSourceInput,ODU_brine_Warm,,,,"0600",,,tempsensor,,,brine_warm sensor on ODU
+r,,omu_0700,unknown,,,,"0700",,s,UIN,,, # always 0
+r,,omu_0800,unknown,,,,"0800",,s,UIN,,, # always 0
+r,,omu_0900,unknown,,,,"0900",,s,UIN,,, # always 0
+r,,omu_0a00,unknown,,,,"0A00",,s,UCH,,, # always 0
+r,,omu_0b00,unknown,,,,"0B00",,s,UCH,,, # always 0
+r,,omu_0c00,unknown,,,,"0C00",,s,UIN,,, # always 0
+r,,omu_0d00,unknown,,,,"0D00",,s,UIN,,, # usually 2500
+r,,omu_0e00,unknown,,,,"0E00",,s,UCH,,, # always 0
+r,,omu_0f00,unknown,,,,"0F00",,s,UCH,,, # always 0
+r,,omu_1000,unknown,,,,"1000",,s,UCH,,, # always 0
 r,,defroster,defroster,,,,"1100",,,onoff,,,defroster is running
+r,,omu_1200,unknown,,,,"1200",,s,UCH,,, # usually 1
+r,,omu_1300,unknown,,,,"1300",,s,UCH,,, # always 0
 r,,fanPWM,fan_PWM,,,,"1400",,,UIN,,,PWM value from hardware
+r,,omu_1500,unknown,,,,"1500",,s,UCH,,, # usually 1
+r,,omu_1600,unknown,,,,"1600",,s,UCH,,, # always 0
 r,,CompActive,CompressorActive,,,,"1700",,,onoff,,,compressor is running or pre or post running
 r,,Out1230V,Out1_230V,,,,"1800",,,onoff,,,
 r,,PumpSpeedControl,PumpSpeedControl,,,,"1900",,,UIN,,,reserved
@@ -33,6 +52,7 @@ r,,DeicingActive,DeicingActive,,,,"2C00",,,yesno,,,defrosting is active
 r,,CleaningRequest,CleaningRequest,,,,"2D00",,,yesno,,,problems in air flow detected
 r,,FanError,FanError,,,,"2E00",,,yesno,,,fan did not start
 r,,STBError,STBError,,,,"2F00",,,yesno,,,defroster STB was interrupted
+r,,omu_3000,unknown,,,,"3000",,s,UCH,,, # always 0
 r,,BadWeather,BadWeather,,,,"3100",,,yesno,,,too cold to start compressor
 r,,CompDemand,CompressorDemand,,,,"3200",,,yesno,,,compressor wants to start or is running
 r,,DeicingReleased,DeicingReleased,,,,"3300",,,yesno,,,compressor is not running
@@ -50,6 +70,7 @@ r,,IDUApplianceCode,IDU_appliance_code,,,,"3E00",,,UCH,,,"appliance code, copy f
 [SW>=104]r;wi,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,percent0,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
 r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,percent0,,,noise reduction factor to reduce fan speed
 [SW>=104]r,,FrostProtection,FrostProtection,,,,"4100",,,temp,,,copy from AMU: frost protection
+r,,omu_4200,unknown,,,,"4200",,s,UIN,,, # usually 240
 r;wi,,SourceMAXTemp,T_AirMAX,,,,"4300",,,temp,,,maximum allowed air inlet temperature
 r,,SourceFlowReversed,BrineFlowReversed,,,,"4400",,,onoff,,,
 [SW>=104]r;wi,,DeiceTimeMax,MaxDeiceTime,,,,"4500",,,minutes2,,,"max. deicing time. By exceeding this value, message unsuccessful deicing is released"
@@ -77,6 +98,8 @@ r,,SourceFlowReversed,BrineFlowReversed,,,,"4400",,,onoff,,,
 [SW>=130]r;wi,,CoolingFanStopTemp,CoolingFanStopTemp,,,,"5B00",,,temp0,,,reserved
 [SW>=130]r;wi,,CoolingMaxFanSpeed,CoolingMaxFanSpeed,,,,"5C00",,,percent0,,,max. fan speed while cooling
 [SW>=130]r;wi,,CoolingTest,CoolingTest,,,,"5D00",,,UCH,,,reserved
+r,,omu_5e00,unknown,,,,"5E00",,s,UCH,,, # usually 18
+r,,omu_5f00,unknown,,,,"5F00",,s,UIN,,, # usually 160
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
