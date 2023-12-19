@@ -195,6 +195,4 @@ r,,HwcChargeHysteresis,(with intergrated System thermostat),,,,FF3539,,,D2C,,K,(
 r;w,,CompressorModulationType,,,,,FF353D,,,UCH,0=hard;1=soft,,Compressor Modulation type (soft/hard),,,,,,,,,,,,,,,,,,
 r,,CompressorHysteresisCooling,,,,,FF353F,,,D2C,,K,Compressor hysteresis cooling (K),,,,,,,,,,,,,,,,,,
 
-!include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-!include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-!include,08.hmu.csv
+!include,08.hmu.csv,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
