@@ -209,7 +209,6 @@ r,,CompressorHysteresisCooling,,,,,FF353F,,,D2C,,K,Compressor hysteresis cooling
 # B5 1A 34 Fachhandwerker Konfiguration,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF34",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 *w,,,,,,"B51A","06FF34",,,,,,,,,,,,,,,,,,,,,,,,
-r,,KompressorStunden,,,,,00,,,UIN,,h,,,,,,,,,,,,,,,,,,,
 r,,KompressorStarts,,,,,01,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,HKPumpeStunden,,,,,02,,,UIN,,h,,,,,,,,,,,,,,,,,,,
 r,,HKPumpeStarts,,,,,03,,,UIN,,,,,,,,,,,,,,,,,,,,,
