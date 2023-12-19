@@ -1,7 +1,7 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
 # START Unknown messages every 10 seconds,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,vwz,unknownMPoll10sB512h,,,76,B512,0f0001,,,HEX:7,,,Unknown poll every 10 seconds from CTLV2 to VWZ,,,,,,,,,,,,,,,,,,
-# END Unknown messages every 10 seconds,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# End Unknown messages every 10 seconds,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 # B5 03 Status Live Monitor
 *r,,,,,,"B503","00",,,,,,,,,,,,,,,,,,,,,,,,
