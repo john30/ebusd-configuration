@@ -207,7 +207,6 @@ r,,CompressorHysteresisCooling,,,,,FF353F,,,D2C,,K,Compressor hysteresis cooling
 
 # B5 1A 32 Heatpump statistics Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF32",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
-r,,EnergyHcDay,,,,,00,,,UIN,10,,,,,,,,,,,,,,,,,,,,
 r,,EnergyHwcDay,,,,,02,,,UIN,10,,,,,,,,,,,,,,,,,,,,
 r,,EnergyCool,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
 r,,Hours,,,,,40,,,energy,,,,,,,,,,,,,,,,,,,,,
