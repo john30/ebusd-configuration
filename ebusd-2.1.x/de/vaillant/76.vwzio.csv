@@ -29,7 +29,6 @@ r;w,,HeizstabLeistungsgrenze,,,,,1a,,,UIN,,kW,,,,,,,,,,,,,,,,,,,
 # B5 14
 *r,,,,,,B514,,,,IGN:2,,,,,,,,,,,,,,,,,,,,,,
 #r2,,HE_Vorrangumschaltventil_Warmwasser,T.1.02,,,,050203ffff,,,vuv,,,Vorrangumschaltventil Warmwasser,,,,,,,,,,,,,,,,,,,
-r1,,HE_Vorlauftemperatur_Heizstab,T.1.130,,,,058203ffff,,,UIN,10,tempv,Vorlauftemperatur Heizstab,,,,,,,,,,,,,,,,,,,
 r1,,Heizstab_Vorlauftemperatur,T.1.130,,,,058203ffff,,,UIN,10,tempv,Vorlauftemperatur Heizstab,,,,,,,,,,,,,,,,,,,
 
 !include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
