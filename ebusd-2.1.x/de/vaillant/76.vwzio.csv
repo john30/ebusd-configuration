@@ -88,7 +88,6 @@ r1,,HeizstabTemp,,,,,5c,,,D2C,,,,,,,,,,,,,,,,,,,,,
 #*r,,,,,,"B51A","05FF34",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 #*w,,,,,,"B51A","06FF34",,,,,,,,,,,,,,,,,,,,,,,,
 #r;w,,hwcBetriebsart,,,,,44,,,UCH,,,,,,,,,,,,,,,,,,,,,
-# B5 14
 *r,,,,,,B514,,,,IGN:2,,,,,,,,,,,,,,,,,,,,,,
 #r2,,HE_Vorrangumschaltventil_Warmwasser,T.1.02,,,,050203ffff,,,VUV,,,Vorrangumschaltventil Warmwasser,,,,,,,,,,,,,,,,,,,
 #r1,,HE_Vorlauftemperatur_Heizstab,T.1.130,,,,058203ffff,,,UIN,10,tempv,Vorlauftemperatur Heizstab,,,,,,,,,,,,,,,,,,,
