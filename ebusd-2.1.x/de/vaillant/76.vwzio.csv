@@ -7,7 +7,7 @@ r,vwz,unknownMPoll10sB512h,,,76,B512,0f0001,,,HEX:7,,,Unknown poll every 10 seco
 r1,,Statuscode,,,,,03,,,UIN,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B511",,,,,,,,,,,,,,,,,,,,,,,,,
 r,,State,,,,,07,energy,,UCH,,,,,,energy,,kWh,,onoff,,UCH,0=off;1=on,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
-r,,State,,,,,07,field1,,UCH,,,,field2,,UIN,,,,field3,,UCH,,,,field4,,UCH,,,,field5,,UIN,,,,field6,,UCH,,,
+#r,,State,,,,,07,field1,,UCH,,,,field2,,UIN,,,,field3,,UCH,,,,field4,,UCH,,,,field5,,UIN,,,,field6,,UCH,,,
 *r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
 # removed all messages that yielded ffff,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,BuildingCircuitPumpPower,,,,,0103FFFF,,,UIN,,%,Building circuit pump power (% of maximum),,,,,,,,,,,,,,,,,,
