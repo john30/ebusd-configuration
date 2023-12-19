@@ -209,10 +209,6 @@ r,,CompressorHysteresisCooling,,,,,FF353F,,,D2C,,K,Compressor hysteresis cooling
 # B5 1A 34 Fachhandwerker Konfiguration,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF34",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 *w,,,,,,"B51A","06FF34",,,,,,,,,,,,,,,,,,,,,,,,
-r,,ExpansiuonsventilSchritte,,,,,0D,,,UIN,,,,,,,,,,,,,,,,,,,,,
-r;w,,Restfoerderhoehe,,,,,1f,,,UIN,,mbar,,,,,,,,,,,,,,,,,,,
-r;w,,hwcBetriebsart,,,,,44,,,UIN,,,Betriebsart Warmwasser 0=eco 1=normal 2=balance,,,,,,,,,,,,,,,,,,
-r;w,,FluesterBetrieb,,,,,28,,,UIN,,,Flüsterbetrieb,,,,,,,,,,,,,,,,,,
 
 # B5 1A Statistic Hydraulikstation - Live Monitor Bedienebene Betreiber
 *r,,,,,,"B51A","0405",,,IGN:4,,,,,,,,,,,,,,,,,,,,,
