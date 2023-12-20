@@ -1,6 +1,5 @@
 #type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s)_1,datatypes/templates_2,divider/values_3,unit_4,comment_5,field3,part (m/s)_6,datatypes/templates_7,divider/values_8,unit_9,comment_10,field4,part (m/s)_11,datatypes/templates_12,divider/values_13,unit_14,comment_15,Column1
 r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
-
 # START Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu,unknownMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 r,hmu,unknownPowerModulationLevel,,,08,B507,0931,,,D1C,,%,Heatpump power modulation level (%)
@@ -17,7 +16,6 @@ r,,unknownMB51Ah0532,,,08,,0532,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,
 r,,unknownMB513h0528,,,08,B513,0528,,,HEX:*,,,Unknown from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 r,,unknownMB509h2802,,,08,B509,2802,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,,,,
 # END Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-
 # Values from VWZ AI Plus Test Menu,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #(queried from WP entries Installer level/Test Menu/Sensor test),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
@@ -202,8 +200,6 @@ r,,HwcModeActive,(with intergrated System thermostat),,,,FF3535,,,UCH,0=no;1=yes
 r,,HwcChargeHysteresis,(with intergrated System thermostat),,,,FF3539,,,D2C,,K,(8F)Hysteresis Hwc charging (K),,,,,,,,,,,,,,,,,,
 r;w,,CompressorModulationType,,,,,FF353D,,,UCH,0=hard;1=soft,,Compressor Modulation type (soft/hard),,,,,,,,,,,,,,,,,,
 r,,CompressorHysteresisCooling,,,,,FF353F,,,D2C,,K,Compressor hysteresis cooling (K),,,,,,,,,,,,,,,,,,
-
-
 
 # B5 1A 34 Fachhandwerker Konfiguration,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF34",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
