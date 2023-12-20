@@ -225,9 +225,6 @@ r,,Kompressormodulation,,,,,433225,,,UIN,10,%,,,,,,,,,,,,,,,,,,,
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B516","18",,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 
-# Total electric power consumption,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-r,,ConsumptionTotal,,,,,02,,,energy,,,,,,,,,,,,,,,,,,,,,
-
 *r,,,,,,"B516","1A01",,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,UmweltErtrag1,,,,,0100,month,,D1B,,,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,UmweltErtrag2,,,,,0200,month,,D1B,,,,,,IGN:1,,,,,,energy,,,,,,,,,
