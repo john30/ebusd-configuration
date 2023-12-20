@@ -12,18 +12,3 @@ r,,unknownMPoll60sB51Ah3,,,08,,33,,,HEX:*,,,Unknown poll every 60 seconds from V
 r,,unknownMPoll60sB51Ah4,,,08,,34,,,HEX:*,,,Unknown poll every 60 seconds from VWZ to HMU,,,,,,,,,,,,,,,,,,
 r,,unknownMPoll60sB51Ah5,,,08,,35,,,HEX:*,,,Unknown poll every 60 seconds from VWZ to HMU,,,,,,,,,,,,,,,,,,
 r,,unknownMPoll60sB51Ah6,,,08,,36,,,HEX:*,,,Unknown poll every 60 seconds from VWZ to HMU,,,,,,,,,,,,,,,,,,
-
-*r,,,,,,B51A,04,,,,,,,,,,,,,,,,,,,,,,,,
-r,,unknownMB51Ah2634,,,08,,2634,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,,,,
-r,,unknownMB51Ah0532,,,08,,0532,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,,,,
-r,,unknownMB513h0528,,,08,B513,0528,,,HEX:*,,,Unknown from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
-r,,unknownMB509h2802,,,08,B509,2802,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,,,,
-# END Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-
-# Values from VWZ AI Plus Test Menu,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-# removed all messages that yielded ffff,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-*r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
-
-*r,,,,,,"B511",,,,,,,,,,,,,,,,,,,,,,,,,
-#r,,State,,,,,07,energy,,UCH,,,,,,energy,,kWh,,onoff,,UCH,0=off;1=on,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
-r,,State,,,,,07,field1,,UCH,,,,field2,,UIN,,,,field3,,UCH,,,,field4,,UCH,,,,field5,,UIN,,,,field6,,UCH,,,
