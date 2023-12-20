@@ -224,7 +224,6 @@ r,,Kompressormodulation,,,,,433225,,,UIN,10,%,,,,,,,,,,,,,,,,,,,
 # some more statistics from Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B516","18",,,IGN:1,,,,,,,,,,,,,,,,,,,,,
-r,,YieldTotal,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
 
 # Total electric power consumption,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,ConsumptionTotal,,,,,02,,,energy,,,,,,,,,,,,,,,,,,,,,
