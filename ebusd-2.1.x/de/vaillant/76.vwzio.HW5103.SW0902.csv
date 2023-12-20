@@ -22,7 +22,7 @@ r,Hydraulikstation,HeizstabSchaltvorg,,,,,05FF324A,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,Hydraulikstation,SchaltvorgängeVUV_WW,,,,,05FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,Hydraulikstation,Heizstab_Leistung,,,,,05FF324C,,,D1B,10,kW,in kW,,,,,,,,,,,,,,,,,,
 r,Hydraulikstation,HeizstabTemp,,,,,05FF325C,,,D2C,,°C,,,,,,,,,,,,,,,,,,,
-r;w,Hydraulikstation,HeizstabLeistungsgrenze,,,,,06FF331A,,,UIN,,kW,,,,,,,,,,,,,,,,,,,
+r;w,Hydraulikstation,HeizstabLeistungsgrenze,,,,,05FF331A,,,UIN,,kW,,,,,,,,,,,,,,,,,,,
 
 # B5 1A 34 Fachhandwerker Konfiguration,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,Hydraulikstation,,,,,"B51A","05FF33",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
