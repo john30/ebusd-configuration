@@ -3,7 +3,6 @@ r,hmu00,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 
 # Start Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu00,unknownMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
-r,hmu,unknownPowerModulationLevel,,,08,B507,0931,,,D1C,,%,Heatpump power modulation level (%)
 #r,hmu00,unknownMPoll60sB511h,,,08,B511,00,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B51A,,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
