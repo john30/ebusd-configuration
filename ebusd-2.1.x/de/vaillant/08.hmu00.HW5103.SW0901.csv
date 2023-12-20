@@ -1,6 +1,6 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
 r,                         ,State,        ,    ,  ,    ,  07,field1,          ,                UCH,              ,    ,       ,field2,          ,                UIN,              ,   ,        ,field3,          ,                UCH,              ,    ,       ,field4,          ,                UCH,              ,    ,       ,field5,          ,                UIN,              ,    ,       ,field6,          ,                UCH,              ,    ,
-r,hmu00,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,hmu00,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # Start Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu00,unknownMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 #r,hmu00,unknownMPoll60sB511h,,,08,B511,00,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
