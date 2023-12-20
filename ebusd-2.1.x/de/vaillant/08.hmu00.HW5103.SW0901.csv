@@ -218,11 +218,6 @@ r,,Kompressormodulation,,,,,433225,,,UIN,10,%,,,,,,,,,,,,,,,,,,,
 
 # Heatpump statistics,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF32",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
-r,,EnergyHc,,,,,00,,,energy,,,,,,,,,,,,,,,,,,,,,
-r,,EnergyCool,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
-r,,Hours,,,,,40,,,energy,,,,,,,,,,,,,,,,,,,,,
-r,,HoursHc,,,,,41,,,energy,,,,,,,,,,,,,,,,,,,,,
-r,,HoursCool,,,,,43,,,energy,,,,,,,,,,,,,,,,,,,,,
 
 # some more statistics from Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,EnergyIntegral,,,,,21,,,integral,,°min,aktuelles Energieintegral in °min,,,,,,,,,,,,,,,,,,
