@@ -4,4 +4,3 @@
 # Start Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu,unknownMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 r,hmu,unknownPowerModulationLevel,,,08,B507,0931,,,D1C,,%,Heatpump power modulation level (%)
-#r,hmu,unknownMPoll60sB511h,,,08,B511,00,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
