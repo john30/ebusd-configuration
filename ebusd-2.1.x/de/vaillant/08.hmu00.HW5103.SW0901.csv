@@ -227,9 +227,5 @@ r,,Kompressormodulation,,,,,433225,,,UIN,10,%,,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,"B516","1A02",,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 
-# Values from UniTower Test Menu,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-*r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
-r,,WaterThroughput,,,,,2B03FFFF,,,UIN,,l/h,Aktuelle Heizwasser Durchflussrate der Wärmepumpe in Liter pro Stunde,,,,,,,,,,,,,,,,,,
-
 !include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
