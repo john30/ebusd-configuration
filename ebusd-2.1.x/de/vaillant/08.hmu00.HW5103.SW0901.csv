@@ -1,4 +1,4 @@
-# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit
 r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 
 # START Unbekannte Nachrichten,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -24,7 +24,7 @@ r,,UnbekannteB509h2802,,,08,B509,2802,,,HEX:*,,,Unbekannte Abfrage von Hydraulik
 #(queried von WP entries Installer level/Test Menu/Sensor test),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
-# Alles entfernt, was nur ffff erzeugte,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# Alles entfernt, was nur ffff erzeugte,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 r,,HeizungUmwaelzpumpe,,,,,0103FFFF,,,UIN,,%,HeizungUmwaelzpumpe Leistung (% von Maximum),,,,,,,,,,,,,,,,,,
 r,,VorrangumschaltventilWarmwasser,,,,,0203FFFF,,,UCH,0=Waerme;1=Warmwasser,,Dreiwegeventil (Waerme/Warmwasser),,,,,,,,,,,,,,,,,,
