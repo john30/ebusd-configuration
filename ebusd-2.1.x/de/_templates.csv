@@ -27,4 +27,9 @@ bdate,BDA,,,Datum
 bday,BDY,,,Wochentag
 id,STR:5,,,Geräte-ID
 version,PIN,,,Version
+temps2,SIN,,°C,Temperatur
+onoff,UCH,0=off;1=on,,
+energy,UIN,,kWh,
+integral,SIN,,°min,
+yesno,UCH,0=no;1=yes,,
 skip,IGN:1,,,
