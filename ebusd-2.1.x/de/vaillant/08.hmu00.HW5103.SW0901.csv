@@ -2,7 +2,7 @@
 r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 # START Unbekannt messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu,UnbekanntMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unbekannt poll every 60 Sekunden from Sensocomfort to ArothermPlus,,,,,,,,,,,,,,,,,,
-r,,WärmepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WärmepumpeLeistungsstufe (%)
+r,hmu00,WärmepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WärmepumpeLeistungsstufe (%)
 #r,hmu,UnbekanntMPoll60sB511h,,,08,B511,00,,,HEX:*,,,Unbekannt poll every 60 Sekunden from Sensocomfort to ArothermPlus,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B51A,,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
