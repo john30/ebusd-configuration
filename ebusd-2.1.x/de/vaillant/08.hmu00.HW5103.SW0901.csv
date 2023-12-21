@@ -21,6 +21,7 @@ r,,UnbekanntMB509h2802,,,08,B509,2802,,,HEX:*,,,Unbekannt from Hydraulikstation 
 
 # Values from Hydraulikstation AI Plus Test Menu,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #(queried from WP entries Installer level/Test Menu/Sensor test),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
 *r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
 # removed all messages that yielded ffff,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
@@ -74,11 +75,14 @@ r,,MA_Ausgang,,,,,7F03FFFF,,,onoff,,,Multifunction output 0,,,,,,,,,,,,,,,,,,
 r,,xUnbekannt80,,,,,8003FFFF,,,HEX:*,,,,,,,,,,,,,,,,,,,,,
 r,,VerflüssigerEingangstemperatur,,,,,8103FFFF,,,temps2,10,°C,VerflüssigerEingangstemperatur (°C),,,,,,,,,,,,,,,,,,
 r,,VorlauftemperaturHeizstab,,,,,8203FFFF,,,temps2,10,°C,Supply temperature electric heater (°C),,,,,,,,,,,,,,,,,,
+
 # Total heating Etrags,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B516,18,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,ErtragGesamt,,,,,01,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
+
 # Total electric power consumption,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,VerbrauchGesamt,,,,,02,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
+
 # Ecologic energy Etrags,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B516,1A,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,UmweltErtragJahr1,,,,,010100,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
@@ -93,6 +97,7 @@ r,,UmweltErtragJahr9,,,,,010900,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,UmweltErtragJahr10,,,,,010A00,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,UmweltErtragJahr11,,,,,010B00,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,UmweltErtragJahr12,,,,,010C00,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
+
 # Verbrauch Elektrische Energie,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,EnergieVerbrauchJahr1,,,,,020100,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,EnergieVerbrauchJahr2,,,,,020200,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
@@ -106,6 +111,7 @@ r,,EnergieVerbrauchJahr9,,,,,020900,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,
 r,,EnergieVerbrauchJahr10,,,,,020A00,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,EnergieVerbrauchJahr11,,,,,020B00,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
 r,,EnergieVerbrauchJahr12,,,,,020C00,month,,D1B,,kWh,,,,IGN:1,,,,,,energy,,,,,,,,,
+
 *r,,,,,,B51A,05,,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 *w,,,,,,B51A,06,,,,,,,,,,,,,,,,,,,,,,,,
 r,,EtragWaermeDay,,,,,FF3200,,,energy,10,kWh,,,,,,,,,,,,,,,,,,,
@@ -155,11 +161,13 @@ r,,ch_4b,,,,,FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,ch_4c,,,,,FF324C,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,TotalEnergyUsage,,,,,FF324D,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
 r,,ch_63,,,,,FF3263,,,UIN,,,,,,,,,,,,,,,,,,,,,
+
 # FF33xx: ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r;w,,MainsBlocktimeMinDuration,,,,,FF3319,,,UCH,,min,Minimum block time duration (in minutes),,,,,,,,,,,,,,,,,,
 r;w,,ActiveKühlungEnabled,,,,,FF331B,,,yesno,,,Active Kühlung technology enabled,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterMode,,,,,FF331E,,,UCH,0=off;1=on,,Immersion heater mode (on/off),,,,,,,,,,,,,,,,,,
 r;w,,KompressorCurrentLimit,,,,,FF331F,,,UCH,,A,Kompressor Electric Current limitation (A),,,,,,,,,,,,,,,,,,
+
 # FF34xx: ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,Kompressorstunden,,,,,FF3400,,,UIN,,stunden,,,,,,,,,,,,,,,,,,,
 r,,KompressorStarts,,,,,FF3401,,,UIN,,,,,,,,,,,,,,,,,,,,,
@@ -180,6 +188,7 @@ r,,Fan1Betriebsstunden,,,,,FF3451,,,UIN,,stunden,,,,,,,,,,,,,,,,,,,
 r,,Fan1Starts,,,,,FF3452,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,Fan2Betriebsstunden,,,,,FF345E,,,UIN,,stunden,,,,,,,,,,,,,,,,,,,
 r,,Fan2Starts,,,,,FF345F,,,UIN,,,,,,,,,,,,,,,,,,,,,
+
 # FF35xx: ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 # Heat pump configuration menu values,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r;w,,HeatCurve,(with intergrated System thermostat),,,,FF352D,,,BCD,10,,(8F)Heat curve 0.1 to 4.0,,,,,,,,,,,,,,,,,,
@@ -193,5 +202,6 @@ r,,WarmwasserModeActive,(with intergrated System thermostat),,,,FF3535,,,UCH,0=n
 r,,WarmwasserChargeHysterese,(with intergrated System thermostat),,,,FF3539,,,D2C,,K,(8F)Hysterese Warmwasser charging (K),,,,,,,,,,,,,,,,,,
 r;w,,KompressorModulationType,,,,,FF353D,,,UCH,0=hard;1=soft,,Kompressor Modulation type (soft/hard),,,,,,,,,,,,,,,,,,
 r,,KompressorHystereseKühlung,,,,,FF353F,,,D2C,,K,Kompressor Hysterese Kühlung (K),,,,,,,,,,,,,,,,,,
+
 !include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
