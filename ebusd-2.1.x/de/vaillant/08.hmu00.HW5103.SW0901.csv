@@ -2,7 +2,7 @@
 r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 # START Unbekannte Nachrichten,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu,UnbekannteAbfrage60sB507h,,,08,B507,0900,,,HEX:*,,,Unbekannte Abfrage alle 60 Sekunden von Sensocomfort an ArothermPlus,,,,,,,,,,,,,,,,,,
-r,hmu,WaermepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WaermepumpeLeistungsstufe (%)
+r,hmu,WaermepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WaermepumpeLeistungsstufe (%),,,,,,,,,,,,,,,,,,
 #r,hmu,UnbekannteAbfrage60sB511h,,,08,B511,00,,,HEX:*,,,Unbekannte Abfrage alle 60 Sekunden von Sensocomfort an ArothermPlus,,,,,,,,,,,,,,,,,,
 *r,,,,,,B51A,,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,UnbekannteAbfrage60sB51Ah2,,,08,,32,,,HEX:*,,,Unbekannte Abfrage alle 60 Sekunden von Hydraulikstation an ArothermPlus,,,,,,,,,,,,,,,,,,
