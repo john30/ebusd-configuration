@@ -1,9 +1,9 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
 r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 # START Unbekannt messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-r,hmu,UnbekanntMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unbekannt poll every 60 seconds from CTLV2 to ArothermPlus,,,,,,,,,,,,,,,,,,
-r,hmu,UnbekanntPowerModulationLevel,,,08,B507,0931,,,D1C,,%,Heatpump power modulation level (%)
-#r,hmu,UnbekanntMPoll60sB511h,,,08,B511,00,,,HEX:*,,,Unbekannt poll every 60 seconds from CTLV2 to ArothermPlus,,,,,,,,,,,,,,,,,,
+r,hmu,UnbekanntMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unbekannt poll every 60 seconds from Sensocomfort to ArothermPlus,,,,,,,,,,,,,,,,,,
+r,,WärmepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WärmepumpeLeistungsstufe (%)
+#r,hmu,UnbekanntMPoll60sB511h,,,08,B511,00,,,HEX:*,,,Unbekannt poll every 60 seconds from Sensocomfort to ArothermPlus,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B51A,,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,UnbekanntMPoll60sB51Ah2,,,08,,32,,,HEX:*,,,Unbekannt poll every 60 seconds from Hydraulikstation to ArothermPlus,,,,,,,,,,,,,,,,,,
@@ -15,7 +15,7 @@ r,,UnbekanntMPoll60sB51Ah6,,,08,,36,,,HEX:*,,,Unbekannt poll every 60 seconds fr
 *r,,,,,,B51A,04,,,,,,,,,,,,,,,,,,,,,,,,
 r,,UnbekanntMB51Ah2634,,,08,,2634,,,HEX:*,,,Unbekannt from Hydraulikstation to ArothermPlus,,,,,,,,,,,,,,,,,,
 r,,UnbekanntMB51Ah0532,,,08,,0532,,,HEX:*,,,Unbekannt from Hydraulikstation to ArothermPlus,,,,,,,,,,,,,,,,,,
-r,,UnbekanntMB513h0528,,,08,B513,0528,,,HEX:*,,,Unbekannt from CTLV2 to ArothermPlus,,,,,,,,,,,,,,,,,,
+r,,UnbekanntMB513h0528,,,08,B513,0528,,,HEX:*,,,Unbekannt from Hydraulikstation to ArothermPlus,,,,,,,,,,,,,,,,,,
 r,,UnbekanntMB509h2802,,,08,B509,2802,,,HEX:*,,,Unbekannt from Hydraulikstation to ArothermPlus,,,,,,,,,,,,,,,,,,
 # END Unbekannt messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
