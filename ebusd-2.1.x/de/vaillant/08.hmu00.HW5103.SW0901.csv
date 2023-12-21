@@ -1,9 +1,9 @@
-# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit
 r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 
 # START Unbekannte Nachrichten,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu,UnbekannteAbfrage60sB507h,,,08,B507,0900,,,HEX:*,,,Unbekannte Abfrage all 60 Sekunden vom Sensocomfort an ArothermPlus,,,,,,,,,,,,,,,,,,
-r,hmu00,WaermepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WaermepumpeLeistungsstufe (%)
+r,hmu00,WaermepumpeLeistungsstufe,,,08,B507,0931,,,D1C,,%,WaermepumpeLeistungsstufe (%),,,,,,,,,,,,,,,,,,
 #r,hmu,UnbekannteAbfrage60sB511h,,,08,B511,00,,,HEX:*,,,Unbekannte Abfrage alle 60 Sekunden von Sensocomfort an ArothermPlus,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B51A,,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
