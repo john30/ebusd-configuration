@@ -81,9 +81,7 @@ r,,VorlauftemperaturHeizstab,,,,,8203FFFF,,,temps2,10,°C,VorlaufTemperatur Heiz
 # Summe WaermeErtrag,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B516,18,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,WaermeErtragGesamt,,,,,01,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
-
-# Summe Verbrauch Elektrische Energie,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-r,,VerbrauchGesamt,,,,,02,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
+r,,EnergieVerbrauchGesamt,,,,,02,,,energy,,kWh,,,,,,,,,,,,,,,,,,,
 
 # Umweltertrag,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B516,1A,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
