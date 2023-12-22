@@ -13,7 +13,7 @@ r;w,,WarmwasserParallelLoading,Parallele Ladung Warmwasserkreis,,,,0A00,,,onoff,
 r;w,,MaxRoomHumidity,maxRoomHumidity,,,,0E00,,,UIN,,,maximale Raumluftfeuchte
 r;w,,AdaptHeatCurve,Adaptive Heizkurve,,,,1400,,,yesno,,,automatic correction of configured heat curve
 r;w,,MaxCylinderChargeTime,maximale Speicherladezeit,,,,1700,,,minutes2,,,maximum cylinder charging time
-r;w,,WarmwasserLockTime,lockTimeHwc,,,,1800,,,minutes2,,,Sperrzeit WW-Bedarf
+r;w,,WarmwasserLockTime,lockTimeWarmwasser,,,,1800,,,minutes2,,,Sperrzeit WW-Bedarf
 r;w,,PumpAdditionalTime,pumpAdditionalTime,,,,1B00,,,minutes2,,,Ladepumpe Nachlaufzeit
 r;w,,CylinderChargeHyst,hystCylinderCharge,,,,2700,,,calibrationv,,,Hysterese Speicherladung
 r;w,,CylinderChargeOffset,offsetCylinderCharge,,,,2900,,,calibrationv,,,Speicherlad. Offset
@@ -27,21 +27,21 @@ r;w,,SolarYieldTotal,TotalSolarYield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,TotalEnvironmentalYield,,,,3E00,,,energy4,,,Umweltertrag gesamt
 r;w,,VentilationDay,SollLueftung,,,,4200,,,UIN,,,Lueftergeschwindigkeit tagsueber
 r;w,,VentilationNight,Absenklueftung,,,,4300,,,UIN,,,Lueftergeschwindigkeit nachts
-r;w,,WarmwasserMaxFlowTempDesired,HwcMaxFlowTempDesired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Warmwasser
+r;w,,WarmwasserMaxFlowTempDesired,WarmwasserMaxFlowTempDesired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Warmwasser
 r,,SystemFlowTemp,Systemvorlauf,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,Multifunktionsausgang,,,,4D00,,,mamode,,,
 r;w,,PrFuelSumHcThisMonth,ThisMonthsFConsumptionHc,,,,4E00,,,energy4,,,Aktueller Monat Brennstoffverbrauch Heizung
 r;w,,PrEnergySumHcThisMonth,ThisMonthsEConsumptionHc,,,,4F00,,,energy4,,,Aktueller Monat Stromverbrauch Heizung
-r;w,,PrEnergySumWarmwasserThisMonth,ThisMonthsEConsumptionHwc,,,,5000,,,energy4,,,Aktueller Monat Stromverbrauch Warmwasser
-r;w,,PrFuelSumWarmwasserThisMonth,ThisMonthsFConsumptionHwc,,,,5100,,,energy4,,,Aktueller Monat Brennstoffverbrauch Warmwasser
+r;w,,PrEnergySumWarmwasserThisMonth,ThisMonthsEConsumptionWarmwasser,,,,5000,,,energy4,,,Aktueller Monat Stromverbrauch Warmwasser
+r;w,,PrFuelSumWarmwasserThisMonth,ThisMonthsFConsumptionWarmwasser,,,,5100,,,energy4,,,Aktueller Monat Brennstoffverbrauch Warmwasser
 r;w,,PrFuelSumHcLastMonth,LastMonthsFConsumptionHc,,,,5200,,,energy4,,,Letzter Monat Brennstoffverbrauch Heizung
 r;w,,PrEnergySumHcLastMonth,LastMonthsEConsumptionHc,,,,5300,,,energy4,,,Letzter Monat Stromverbrauch Heizung
-r;w,,PrEnergySumWarmwasserLastMonth,LastMonthsEConsumptionHwc,,,,5400,,,energy4,,,Letzter Monat Stromverbrauch Warmwasser
-r;w,,PrFuelSumWarmwasserLastMonth,LastMonthsFConsumptionHwc,,,,5500,,,energy4,,,Letzter Monat Brennstoffverbrauch Warmwasser
+r;w,,PrEnergySumWarmwasserLastMonth,LastMonthsEConsumptionWarmwasser,,,,5400,,,energy4,,,Letzter Monat Stromverbrauch Warmwasser
+r;w,,PrFuelSumWarmwasserLastMonth,LastMonthsFConsumptionWarmwasser,,,,5500,,,energy4,,,Letzter Monat Brennstoffverbrauch Warmwasser
 r;w,,PrFuelSumHc,TotalFConsumptionHc,,,,5600,,,energy4,,,Brennstoffverbrauch Heizung gesamt
 r;w,,PrEnergySumHc,TotalEConsumptionHc,,,,5700,,,energy4,,,Stromverbrauch Heizung gesamt
-r;w,,PrEnergySumWarmwasser,TotalEConsumptionHwc,,,,5800,,,energy4,,,Stromverbrauch Warmwasser gesamt
-r;w,,PrFuelSumWarmwasser,TotalFConsumptionHwc,,,,5900,,,energy4,,,Brennstoffverbrauch Warmwasser gesamt
+r;w,,PrEnergySumWarmwasser,TotalEConsumptionWarmwasser,,,,5800,,,energy4,,,Stromverbrauch Warmwasser gesamt
+r;w,,PrFuelSumWarmwasser,TotalFConsumptionWarmwasser,,,,5900,,,energy4,,,Brennstoffverbrauch Warmwasser gesamt
 r;w,,PrEnergySum,TotalEConsumption,,,,5C00,,,energy4,,,Dieses Jahr Stromverbrauch gesamt
 r;w,,PrFuelSum,TotalFConsumption,,,,5D00,,,energy4,,,Dieses Jahr Brennstoffverbrauch gesamt
 #r;w,,Unknown67,(VR70 konfig 1),,,,6700,,,tempv,,,unknown value
@@ -73,15 +73,15 @@ r,,HcStorageTempBottom,"Temp.fuehler Hz, unten",,,,A000,,,tempv,,,"Temp.fuehler 
 # ##### Warmwasserkreis #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000100,,,IGN:4,,,
 *w,,,,,,B524,02010100,,,,,,
-r;w,,WarmwasserOpMode,HwcOpMode,,,,0300,,,opmode,,,operation mode of Warmwasser
+r;w,,WarmwasserOpMode,WarmwasserOpMode,,,,0300,,,opmode,,,operation mode of Warmwasser
 r;w,,WarmwasserTempDesired,gewuenschte Temperatur Warmwasserkreis,,,,0400,,,tempv,,,setpoint of domestic hot water circuit
-r,,WarmwasserStorageTemp,HwcStorageTemp,,,,0500,,,tempv,,,Speicheristtemperatur
-r,,WarmwasserFlowTemp,HwcFlowTemp,,,,0800,,,tempv,,,desired flow temp for Warmwasser
-r;w,,WarmwasserHolidayStartPeriod,HwcHolidayStartPeriod,,,,0900,,,hfrom,,,start date of holidays
-r;w,,WarmwasserHolidayEndPeriod,HwcHolidayEndPeriod,,,,0A00,,,hto,,,end date of holidays
-r;w,,WarmwasserBankHolidayStartPeriod,HwcHolidayStartPeriod,,,,0B00,,,hfrom,,,start date of bank holidays
-r;w,,WarmwasserBankHolidayEndPeriod,HwcHolidayEndPeriod,,,,0C00,,,hto,,,end date of bank holidays
-r;w,,WarmwasserSFMode,HwcSFMode,,,,0D00,,,sfmode,,,
+r,,WarmwasserStorageTemp,WarmwasserStorageTemp,,,,0500,,,tempv,,,Speicheristtemperatur
+r,,WarmwasserFlowTemp,WarmwasserFlowTemp,,,,0800,,,tempv,,,desired flow temp for Warmwasser
+r;w,,WarmwasserHolidayStartPeriod,WarmwasserHolidayStartPeriod,,,,0900,,,hfrom,,,start date of holidays
+r;w,,WarmwasserHolidayEndPeriod,WarmwasserHolidayEndPeriod,,,,0A00,,,hto,,,end date of holidays
+r;w,,WarmwasserBankHolidayStartPeriod,WarmwasserHolidayStartPeriod,,,,0B00,,,hfrom,,,start date of bank holidays
+r;w,,WarmwasserBankHolidayEndPeriod,WarmwasserHolidayEndPeriod,,,,0C00,,,hto,,,end date of bank holidays
+r;w,,WarmwasserSFMode,WarmwasserSFMode,,,,0D00,,,sfmode,,,
 
 # ##### Heizkreis 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000200,,,IGN:4,,,
