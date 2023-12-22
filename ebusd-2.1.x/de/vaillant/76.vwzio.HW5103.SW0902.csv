@@ -7,7 +7,7 @@ r,vwz,unknownMPoll10sB512h,,,76,B512,0f0001,,,HEX:7,,,Unknown poll every 10 seco
 *r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
 # removed all messages that yielded ffff,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
-r,,BuildingCircuitPumpPower,,,,,0103FFFF,,,UIN,,%,Building circuit pump power (% of maximum),,,,,,,,,,,,,,,,,,
+r,,BuildingCircuitPumpPowerSensor,,,,,0103FFFF,,,UIN,,,Building circuit pump power (percent of maximum),,,,,,,,,,,,,,,,,,
 r,,ThreeWayValveStatus,,,,,0203FFFF,,,UCH,0=heating;1=dhw,,Three way valve (heating/warm water),,,,,,,,,,,,,,,,,,
 r,,xUnknown11,,,,,1103FFFF,,,HEX:*,,,,,,,,,,,,,,,,,,,,,
 r,,xUnknown12,,,,,1203FFFF,,,HEX:*,,,,,,,,,,,,,,,,,,,,,
@@ -64,7 +64,7 @@ r,,EnergyConsumptionTotal,,,,,02,,,energy,,,,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B51A,05,,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 *w,,,,,,B51A,06,,,,,,,,,,,,,,,,,,,,,,,,
-r,,RunningHoursImmersionHeater,,,,,FF3246,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RuntimeImmersionHeater,,,,,FF3246,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
 r,,TotalEnergyUsageImmersionHeater,,,,,FF3249,,,UIN,,kWh,,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterStarts,,,,,FF324A,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,PrioritySwitchingValveCount,,,,,FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
