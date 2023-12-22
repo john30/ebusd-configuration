@@ -9,11 +9,11 @@ r;w,,ContinuosHeating,Durchgehendes Heizen,,,,0200,,,tempv,,,"-26=off, when the 
 r;w,,FrostOverRideTime,Frostschutz-VerzOegerung,,,,0300,,,hoursum2,,,delay before frost protection is activated
 r;w,,ManualCooling,Manuell kuehlen,,,,0600,,,UIN,,,"Anzahl Tage manueller Kuehlung (max. 99, 0=aus, Temperatur via z1CoolingTemp)"
 r;wi,,GlobalSystemOff,Global System Aus,,,,0700,,,yesno,,,Zum Ausschalten des Systems
-r;w,,WaremwasserParallelLoading,Parallele Ladung Warmwasserkreis,,,,0A00,,,onoff,,,Heizbetrieb und Speicherladung parallel
+r;w,,WarmwasserParallelLoading,Parallele Ladung Warmwasserkreis,,,,0A00,,,onoff,,,Heizbetrieb und Speicherladung parallel
 r;w,,MaxRoomHumidity,maxRoomHumidity,,,,0E00,,,UIN,,,maximale Raumluftfeuchte
 r;w,,AdaptHeatCurve,Adaptive Heizkurve,,,,1400,,,yesno,,,automatic correction of configured heat curve
 r;w,,MaxCylinderChargeTime,maximale Speicherladezeit,,,,1700,,,minutes2,,,maximum cylinder charging time
-r;w,,WaremwasserLockTime,lockTimeHwc,,,,1800,,,minutes2,,,Sperrzeit WW-Bedarf
+r;w,,WarmwasserLockTime,lockTimeHwc,,,,1800,,,minutes2,,,Sperrzeit WW-Bedarf
 r;w,,PumpAdditionalTime,pumpAdditionalTime,,,,1B00,,,minutes2,,,Ladepumpe Nachlaufzeit
 r;w,,CylinderChargeHyst,hystCylinderCharge,,,,2700,,,calibrationv,,,Hysterese Speicherladung
 r;w,,CylinderChargeOffset,offsetCylinderCharge,,,,2900,,,calibrationv,,,Speicherlad. Offset
@@ -27,21 +27,21 @@ r;w,,SolarYieldTotal,TotalSolarYield,,,,3D00,,,energy4,,,Solarertrag gesamt
 r;w,,YieldTotal,TotalEnvironmentalYield,,,,3E00,,,energy4,,,Umweltertrag gesamt
 r;w,,VentilationDay,SollLueftung,,,,4200,,,UIN,,,Lueftergeschwindigkeit tagsueber
 r;w,,VentilationNight,Absenklueftung,,,,4300,,,UIN,,,Lueftergeschwindigkeit nachts
-r;w,,WaremwasserMaxFlowTempDesired,HwcMaxFlowTempDesired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Waremwasser
+r;w,,WarmwasserMaxFlowTempDesired,HwcMaxFlowTempDesired,,,,4600,,,tempv,,,maximum flow temperature setpoint of Warmwasser
 r,,SystemFlowTemp,Systemvorlauf,,,,4B00,,,tempv,,,Systemvorlauf
 r;w,,MultiRelaySetting,Multifunktionsausgang,,,,4D00,,,mamode,,,
 r;w,,PrFuelSumHcThisMonth,ThisMonthsFConsumptionHc,,,,4E00,,,energy4,,,Aktueller Monat Brennstoffverbrauch Heizung
 r;w,,PrEnergySumHcThisMonth,ThisMonthsEConsumptionHc,,,,4F00,,,energy4,,,Aktueller Monat Stromverbrauch Heizung
-r;w,,PrEnergySumWaremwasserThisMonth,ThisMonthsEConsumptionHwc,,,,5000,,,energy4,,,Aktueller Monat Stromverbrauch Warmwasser
-r;w,,PrFuelSumWaremwasserThisMonth,ThisMonthsFConsumptionHwc,,,,5100,,,energy4,,,Aktueller Monat Brennstoffverbrauch Warmwasser
+r;w,,PrEnergySumWarmwasserThisMonth,ThisMonthsEConsumptionHwc,,,,5000,,,energy4,,,Aktueller Monat Stromverbrauch Warmwasser
+r;w,,PrFuelSumWarmwasserThisMonth,ThisMonthsFConsumptionHwc,,,,5100,,,energy4,,,Aktueller Monat Brennstoffverbrauch Warmwasser
 r;w,,PrFuelSumHcLastMonth,LastMonthsFConsumptionHc,,,,5200,,,energy4,,,Letzter Monat Brennstoffverbrauch Heizung
 r;w,,PrEnergySumHcLastMonth,LastMonthsEConsumptionHc,,,,5300,,,energy4,,,Letzter Monat Stromverbrauch Heizung
-r;w,,PrEnergySumWaremwasserLastMonth,LastMonthsEConsumptionHwc,,,,5400,,,energy4,,,Letzter Monat Stromverbrauch Warmwasser
-r;w,,PrFuelSumWaremwasserLastMonth,LastMonthsFConsumptionHwc,,,,5500,,,energy4,,,Letzter Monat Brennstoffverbrauch Warmwasser
+r;w,,PrEnergySumWarmwasserLastMonth,LastMonthsEConsumptionHwc,,,,5400,,,energy4,,,Letzter Monat Stromverbrauch Warmwasser
+r;w,,PrFuelSumWarmwasserLastMonth,LastMonthsFConsumptionHwc,,,,5500,,,energy4,,,Letzter Monat Brennstoffverbrauch Warmwasser
 r;w,,PrFuelSumHc,TotalFConsumptionHc,,,,5600,,,energy4,,,Brennstoffverbrauch Heizung gesamt
 r;w,,PrEnergySumHc,TotalEConsumptionHc,,,,5700,,,energy4,,,Stromverbrauch Heizung gesamt
-r;w,,PrEnergySumWaremwasser,TotalEConsumptionHwc,,,,5800,,,energy4,,,Stromverbrauch Warmwasser gesamt
-r;w,,PrFuelSumWaremwasser,TotalFConsumptionHwc,,,,5900,,,energy4,,,Brennstoffverbrauch Warmwasser gesamt
+r;w,,PrEnergySumWarmwasser,TotalEConsumptionHwc,,,,5800,,,energy4,,,Stromverbrauch Warmwasser gesamt
+r;w,,PrFuelSumWarmwasser,TotalFConsumptionHwc,,,,5900,,,energy4,,,Brennstoffverbrauch Warmwasser gesamt
 r;w,,PrEnergySum,TotalEConsumption,,,,5C00,,,energy4,,,Dieses Jahr Stromverbrauch gesamt
 r;w,,PrFuelSum,TotalFConsumption,,,,5D00,,,energy4,,,Dieses Jahr Brennstoffverbrauch gesamt
 #r;w,,Unknown67,(VR70 konfig 1),,,,6700,,,tempv,,,unknown value
@@ -65,23 +65,23 @@ r;w,,BankHolidayEndPeriod,BankHolidayEndPeriod,,,,8400,,,hto,,,end date of bank 
 #r;w,,Unknown85,(konstant 0/inf),,,,8500,,,tempv,,,unknown value
 r;w,,OutsideTempAvg,mittlere Aussentemperatur,,,,9500,,,tempv,,,gerundete mittlere Aussentemperatur (alle 3h aktualisiert)
 r,,MaintenanceDue,Wartung faellig,,,,9600,,,yesno,,,zeigt an ob die Wartung faellig ist
-r,,WaremwasserStorageTempTop,"Temp.fuehler WW, oben",,,,9D00,,,tempv,,,"Temp.fuehler WW, oben"
-r,,WaremwasserStorageTempBottom,"Temp.fuehler WW, unten",,,,9E00,,,tempv,,,"Temp.fuehler WW, unten"
+r,,WarmwasserStorageTempTop,"Temp.fuehler WW, oben",,,,9D00,,,tempv,,,"Temp.fuehler WW, oben"
+r,,WarmwasserStorageTempBottom,"Temp.fuehler WW, unten",,,,9E00,,,tempv,,,"Temp.fuehler WW, unten"
 r,,HcStorageTempTop,"Temp.fuehler Hz, oben",,,,9F00,,,tempv,,,"Temp.fuehler Hz, oben"
 r,,HcStorageTempBottom,"Temp.fuehler Hz, unten",,,,A000,,,tempv,,,"Temp.fuehler Hz, unten"
 
 # ##### Warmwasserkreis #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000100,,,IGN:4,,,
 *w,,,,,,B524,02010100,,,,,,
-r;w,,WaremwasserOpMode,HwcOpMode,,,,0300,,,opmode,,,operation mode of Waremwasser
-r;w,,WaremwasserTempDesired,gewuenschte Temperatur Warmwasserkreis,,,,0400,,,tempv,,,setpoint of domestic hot water circuit
-r,,WaremwasserStorageTemp,HwcStorageTemp,,,,0500,,,tempv,,,Speicheristtemperatur
-r,,WaremwasserFlowTemp,HwcFlowTemp,,,,0800,,,tempv,,,desired flow temp for Waremwasser
-r;w,,WaremwasserHolidayStartPeriod,HwcHolidayStartPeriod,,,,0900,,,hfrom,,,start date of holidays
-r;w,,WaremwasserHolidayEndPeriod,HwcHolidayEndPeriod,,,,0A00,,,hto,,,end date of holidays
-r;w,,WaremwasserBankHolidayStartPeriod,HwcHolidayStartPeriod,,,,0B00,,,hfrom,,,start date of bank holidays
-r;w,,WaremwasserBankHolidayEndPeriod,HwcHolidayEndPeriod,,,,0C00,,,hto,,,end date of bank holidays
-r;w,,WaremwasserSFMode,HwcSFMode,,,,0D00,,,sfmode,,,
+r;w,,WarmwasserOpMode,HwcOpMode,,,,0300,,,opmode,,,operation mode of Warmwasser
+r;w,,WarmwasserTempDesired,gewuenschte Temperatur Warmwasserkreis,,,,0400,,,tempv,,,setpoint of domestic hot water circuit
+r,,WarmwasserStorageTemp,HwcStorageTemp,,,,0500,,,tempv,,,Speicheristtemperatur
+r,,WarmwasserFlowTemp,HwcFlowTemp,,,,0800,,,tempv,,,desired flow temp for Warmwasser
+r;w,,WarmwasserHolidayStartPeriod,HwcHolidayStartPeriod,,,,0900,,,hfrom,,,start date of holidays
+r;w,,WarmwasserHolidayEndPeriod,HwcHolidayEndPeriod,,,,0A00,,,hto,,,end date of holidays
+r;w,,WarmwasserBankHolidayStartPeriod,HwcHolidayStartPeriod,,,,0B00,,,hfrom,,,start date of bank holidays
+r;w,,WarmwasserBankHolidayEndPeriod,HwcHolidayEndPeriod,,,,0C00,,,hto,,,end date of bank holidays
+r;w,,WarmwasserSFMode,HwcSFMode,,,,0D00,,,sfmode,,,
 
 # ##### Heizkreis 1 #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000200,,,IGN:4,,,
@@ -261,13 +261,13 @@ r;w,,tariffTimer.Sunday,Zeitfenster Hochtarif Sonntag,,,,06,,,slot1-3,,,
 # Schaltzeiten Warmwasser,,,,,,,,,,,,,
 *r,,,,,,B524,03010001,,,IGN:1,,,whether timeslot is valid
 *w,,,,,,B524,04010001,,,,,,
-r;w,,WaremwasserTimer.Monday,Zeitfenster Montag,,,,00,,,slot1-3,,,
-r;w,,WaremwasserTimer.Tuesday,Zeitfenster Dienstag,,,,01,,,slot1-3,,,
-r;w,,WaremwasserTimer.Wednesday,Zeitfenster Mittwoch,,,,02,,,slot1-3,,,
-r;w,,WaremwasserTimer.Thursday,Zeitfenster Donnerstag,,,,03,,,slot1-3,,,
-r;w,,WaremwasserTimer.Friday,Zeitfenster Freitag,,,,04,,,slot1-3,,,
-r;w,,WaremwasserTimer.Saturday,Zeitfenster Samstag,,,,05,,,slot1-3,,,
-r;w,,WaremwasserTimer.Sunday,Zeitfenster Sonntag,,,,06,,,slot1-3,,,
+r;w,,WarmwasserTimer.Monday,Zeitfenster Montag,,,,00,,,slot1-3,,,
+r;w,,WarmwasserTimer.Tuesday,Zeitfenster Dienstag,,,,01,,,slot1-3,,,
+r;w,,WarmwasserTimer.Wednesday,Zeitfenster Mittwoch,,,,02,,,slot1-3,,,
+r;w,,WarmwasserTimer.Thursday,Zeitfenster Donnerstag,,,,03,,,slot1-3,,,
+r;w,,WarmwasserTimer.Friday,Zeitfenster Freitag,,,,04,,,slot1-3,,,
+r;w,,WarmwasserTimer.Saturday,Zeitfenster Samstag,,,,05,,,slot1-3,,,
+r;w,,WarmwasserTimer.Sunday,Zeitfenster Sonntag,,,,06,,,slot1-3,,,
 
 # Zeitprogramm Zirkulationspumpe,,,,,,,,,,,,,
 *r,,,,,,B524,03010002,,,IGN:1,,,whether timeslot is valid
