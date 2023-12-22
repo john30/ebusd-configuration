@@ -203,5 +203,5 @@ r,,WarmWaterChargeHysteresis,(with intergrated System thermostat),,,,FF3539,,,D2
 r;w,,CompressorModulationType,,,,,FF353D,,,UCH,0=hard;1=soft,,Compressor Modulation type (soft/hard),,,,,,,,,,,,,,,,,,
 r,,CompressorHysteresisCooling,,,,,FF353F,,,D2C,,K,Compressor hysteresis cooling (K),,,,,,,,,,,,,,,,,,
 
-!include,Heatingmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+!include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
