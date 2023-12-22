@@ -20,9 +20,8 @@ r,,unknownMB513h0528,,,08,B513,0528,,,HEX:*,,,Unknown from CTLV2 to HMU,,,,,,,,,
 r,,unknownMB509h2802,,,08,B509,2802,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,,,,
 # END Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
-
-r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
-r,hmu,HeatpumpLoad,,,08,B507,0931,,,D1C,,%,Heatpump Load (%),,,,,,,,,,,,,,,,,,
+r,,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
+r,,HeatpumpLoad,,,08,B507,0931,,,D1C,,%,Heatpump Load (%),,,,,,,,,,,,,,,,,,
 
 
 # Values from VWZ AI Plus Test Menu,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
