@@ -26,8 +26,8 @@ r,,UnbekanntMB509h2802,,,08,B509,2802,,,HEX:*,,,Unbekannte Abfrage von Hydraulik
 
 r,,HeizungUmwaelzpumpe,,,,,0103FFFF,,,UIN,,%,Heizungs Umwaelzpumpe (% Auslastung),,,,,,,,,,,,,,,,,,
 r,,VorrangumschaltventilWarmwasser,,,,,0203FFFF,,,UCH,0=Waerme;1=Warmwasser,,Drei Wege Ventil (Waerme/Warmwasser),,,,,,,,,,,,,,,,,,
-r,,Luefter1Leistung,,,,,1103FFFF,,,UIN,,%,Luefter 1 Drehzahl (% of max),,,,,,,,,,,,,,,,,,
-r,,Luefter2Leistung,,,,,1203FFFF,,,UIN,,%,Luefter 2 Drehzahl (% of max),,,,,,,,,,,,,,,,,,
+r,,Luefter1LeistungSensor,,,,,1103FFFF,,,UIN,,%,Luefter 1 Drehzahl (% of max),,,,,,,,,,,,,,,,,,
+r,,Luefter2LeistungSensor,,,,,1203FFFF,,,UIN,,%,Luefter 2 Drehzahl (% of max),,,,,,,,,,,,,,,,,,
 r,,Kondensatwannenheizung,,,,,1303FFFF,,,onoff,,,Condensate tray heater (on/off),,,,,,,,,,,,,,,,,,
 r,,VierWegeVentil,,,,,1403FFFF,,,onoff,,,Four way valve (on/off),,,,,,,,,,,,,,,,,,
 r,,PositionElektronischesExpansionsventil,,,,,1503FFFF,,,UIN,,%,Position ElektronischesExpansionsventil (%),,,,,,,,,,,,,,,,,,
@@ -203,4 +203,5 @@ r;w,,KompressorModulationModus,,,,,FF353D,,,UCH,0=hard;1=soft,,Kompressor Modula
 r,,KompressorHystereseKuehlung,,,,,FF353F,,,D2C,,K,Kompressor hysteresis cooling (K),,,,,,,,,,,,,,,,,,
 
 !include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+!include,hcwmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
