@@ -28,3 +28,4 @@ bday,BDY,,,Wochentag
 id,STR:5,,,Geräte-ID
 version,PIN,,,Version
 skip,IGN:1,,,
+daysel2,UCH,0=selected;1=Mo-So;2=Mo-Fr;3=Sa-So,,
