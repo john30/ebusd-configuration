@@ -1,6 +1,6 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
-r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 
+r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 # START Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,hmu,unknownMPoll60sB507h,,,08,B507,0900,,,HEX:*,,,Unknown poll every 60 seconds from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 r,hmu,HeatpumpLoad,,,08,B507,0931,,,D1C,,%,Heatpump Load (%),,,,,,,,,,,,,,,,,,
@@ -19,6 +19,11 @@ r,,unknownMB51Ah0532,,,08,,0532,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,
 r,,unknownMB513h0528,,,08,B513,0528,,,HEX:*,,,Unknown from CTLV2 to HMU,,,,,,,,,,,,,,,,,,
 r,,unknownMB509h2802,,,08,B509,2802,,,HEX:*,,,Unknown from VWZ to HMU,,,,,,,,,,,,,,,,,,
 # END Unknown messages,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+r,hmu,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
+r,hmu,HeatpumpLoad,,,08,B507,0931,,,D1C,,%,Heatpump Load (%),,,,,,,,,,,,,,,,,,
+
 
 # Values from VWZ AI Plus Test Menu,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #(queried from WP entries Installer level/Test Menu/Sensor test),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
