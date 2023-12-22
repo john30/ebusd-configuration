@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,70000,VRC 700,700 110,,,,,,,,,,
+#,70000,ctlv2,700 110,,,,,,,,,,
 
 # ##### Generell #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000000,,,IGN:4,,,
