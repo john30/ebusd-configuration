@@ -38,7 +38,7 @@ jobs:
           && (cd latest/de && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.de \
           && (cd latest/en && find . -name "*.csv" -exec wc -l \{\} \;) > wc.en \
           && (cd latest/en && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.en \
-          diff wc.de wc.en
+          && diff wc.de wc.en
       -
         name: check names
         run: |
