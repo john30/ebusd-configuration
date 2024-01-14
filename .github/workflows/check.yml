@@ -12,32 +12,38 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    env:
+      image: john30/ebusd:devel
+      folder: latest
     steps:
       -
         name: checkout
         uses: actions/checkout@v4
       -
+        name: pull image
+        run: docker pull $image
+      -
         name: check validity
         run: |
-          docker run -v $PWD:/cfg john30/ebusd --checkconfig -c /cfg/latest/de \
-          && docker run -v $PWD:/cfg john30/ebusd --checkconfig -c /cfg/latest/en
+          docker run -v $PWD:/cfg $image --checkconfig -c /cfg/$folder/de \
+          && docker run -v $PWD:/cfg $image --checkconfig -c /cfg/$folder/en
       -
         name: dump json
         run: |
-          docker run -v $PWD:/cfg john30/ebusd --dumpconfig=json --dumpconfigto=/cfg/de.json -c /cfg/latest/de \
-          && docker run -v $PWD:/cfg john30/ebusd --dumpconfig=json --dumpconfigto=/cfg/en.json -c /cfg/latest/en
+          docker run -v $PWD:/cfg $image --dumpconfig=json --dumpconfigto=/cfg/de.json -c /cfg/$folder/de \
+          && docker run -v $PWD:/cfg $image --dumpconfig=json --dumpconfigto=/cfg/en.json -c /cfg/$folder/en
       -
         name: dump csv
         run: |
-          docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/de | sed -e 's#.*main notice. *##' > dump.de \
-          && docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/en | sed -e 's#.*main notice. *##' > dump.en
+          docker run -v $PWD:/cfg $image --dumpconfig -c /cfg/$folder/de | sed -e 's#.*main notice. *##' > dump.de \
+          && docker run -v $PWD:/cfg $image --dumpconfig -c /cfg/$folder/en | sed -e 's#.*main notice. *##' > dump.en
       -
         name: check count
         run: |
-          (cd latest/de && find . -name "*.csv" -exec wc -l \{\} \;) > wc.de \
-          && (cd latest/de && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.de \
-          && (cd latest/en && find . -name "*.csv" -exec wc -l \{\} \;) > wc.en \
-          && (cd latest/en && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.en \
+          (cd $folder/de && find . -name "*.csv" -exec wc -l \{\} \;) > wc.de \
+          && (cd $folder/de && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.de \
+          && (cd $folder/en && find . -name "*.csv" -exec wc -l \{\} \;) > wc.en \
+          && (cd $folder/en && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.en \
           && diff wc.de wc.en
       -
         name: check names
