@@ -29,8 +29,8 @@ jobs:
       -
         name: dump csv
         run: |
-          docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/de | sed -e 's#.*main notice. *##' > /cfg/de.txt \
-          && docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/en | sed -e 's#.*main notice. *##' > /cfg/en.txt
+          docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/de | sed -e 's#.*main notice. *##' > dump.de \
+          && docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/en | sed -e 's#.*main notice. *##' > dump.en
       -
         name: check count
         run: |
@@ -45,3 +45,11 @@ jobs:
           sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.de|cut -d , -f 1,2,3,6,7,8 > norm.de \
           && sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.en|cut -d , -f 1,2,3,6,7,8 > norm.en \
           && diff norm.de norm.en
+      -
+        name: archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: |
+            de.json en.json dump.de dump.en
+          
