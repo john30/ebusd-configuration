@@ -1,0 +1,47 @@
+name: Check
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'latest/**'
+      - 'ebusd-2.1.x/**'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      -
+        name: checkout
+        uses: actions/checkout@v4
+      -
+        name: check validity
+        run: |
+          docker run -v $PWD:/cfg john30/ebusd --checkconfig -c /cfg/latest/de \
+          && docker run -v $PWD:/cfg john30/ebusd --checkconfig -c /cfg/latest/en
+      -
+        name: dump json
+        run: |
+          docker run -v $PWD:/cfg john30/ebusd --dumpconfig=json --dumpconfigto=/cfg/de.json -c /cfg/latest/de \
+          && docker run -v $PWD:/cfg john30/ebusd --dumpconfig=json --dumpconfigto=/cfg/en.json -c /cfg/latest/en
+      -
+        name: dump csv
+        run: |
+          docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/de | sed -e 's#.*main notice. *##' > /cfg/de.txt \
+          && docker run -v $PWD:/cfg john30/ebusd --dumpconfig -c /cfg/latest/en | sed -e 's#.*main notice. *##' > /cfg/en.txt
+      -
+        name: check count
+        run: |
+          (cd latest/de && find . -name "*.csv" -exec wc -l \{\} \;) > wc.de \
+          && (cd latest/de && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.de \
+          && (cd latest/en && find . -name "*.csv" -exec wc -l \{\} \;) > wc.en \
+          && (cd latest/en && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.en \
+          diff wc.de wc.en
+      -
+        name: check names
+        run: |
+          sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.de|cut -d , -f 1,2,3,6,7,8 > norm.de \
+          && sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.en|cut -d , -f 1,2,3,6,7,8 > norm.en \
+          && diff norm.de norm.en
