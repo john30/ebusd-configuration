@@ -3,8 +3,6 @@
 # ##### General #####,,,,,,,,,,,,,
 *r,,,,,,B524,02000000,,,IGN:4,,,
 *w,,,,,,B524,02010000,,,,,,
-*r,,,,,,B524,02000000,,,IGN:4,,,
-*w,,,,,,B524,02010000,,,,,,
 r;w,,ContinousHeating,continous heating,,,,0200,,,tempv,,,"-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)"
 r;w,,FrostOverRideTime,frost delay time,,,,0300,,,hoursum2,,,delay before frost protection is activated
 r;w,,HwcParallelLoading,hwc parallel loading,,,,0A00,,,onoff,,,heating and hot water parallel
