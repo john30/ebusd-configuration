@@ -65,7 +65,7 @@ r1;w,,TempOutgoingAir_EAO,Temperatur Fortluft,,,,0400,,,temp,,,
 r1;w,,Roomtemp,Zimmertemperatur,,,,0000,,,temp,,,
 r;w,,Unterdruckschutz,Unterdruckschutz,,,,4700,,,UCH,1=Ein;0=Aus,,
 r5;w,,Ertrag_Gesamt_kWh,Ertrag_Gesamt_kWh,,,,4d00,,,UIN,,,
-########### TEST #################
+########### TEST #################,,,,,,,,,,,,,
 r5;w,,Heatrecovery,Waermerueckgewinnung,,,,8c03,,,UCH,0=Automatik;1=Ein;2=Aus,,Aktuelle Uhrzeit
 r;w,,Desiredtemp,Wunschtemperatur,,,,140e,,,temp,,°C,
 
