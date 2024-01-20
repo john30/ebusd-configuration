@@ -1,3 +1,8 @@
+# 2024-01-20
+* added vaillant/15.bass
+* added vaillant/08.recov
+* extended vaillant/15.700 with zone 3 timers
+
 # 2023-09-23
 * added energyintegral for vailant/08.hmu
 * extended sfmode for vaillant/15.700+720+b7v+basv
