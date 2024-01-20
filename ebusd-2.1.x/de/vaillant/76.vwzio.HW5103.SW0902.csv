@@ -1,11 +1,11 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
 
-# START Unknown messages every 10 seconds,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-r,vwz,unknownMPoll10sB512h,,,76,B512,0f0001,,,HEX:7,,,Unknown poll every 10 seconds from CTLV2 to VWZ,,,,,,,,,,,,,,,,,,
-# END Unknown messages every 10 seconds,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# START Unbekannte Meldungen alle 10 Sekunden,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,vwz,unknownMPoll10sB512h,,,76,B512,0f0001,,,HEX:7,,,Unbekannte Abfrage alle 10 Sekunden von CTLV2 an VWZ,,,,,,,,,,,,,,,,,,
+# END Unbekannte Meldungen alle 10 Sekunden,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 *r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
-# removed all messages that yielded ffff,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# alle Nachrichten entfernt die ffff ergeben haben,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 r,,BuildingCircuitPumpPowerSensor,,,,,0103FFFF,,,UIN,,,Building circuit pump power (percent of maximum),,,,,,,,,,,,,,,,,,
 r,,ThreeWayValveStatus,,,,,0203FFFF,,,UCH,0=heating;1=dhw,,Three way valve (heating/warm water),,,,,,,,,,,,,,,,,,
