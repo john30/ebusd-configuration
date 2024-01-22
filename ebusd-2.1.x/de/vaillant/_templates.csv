@@ -97,3 +97,4 @@ shortphone,STR:6,,,Telefonnummer
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
+appliancecode,UCH,0=Heizung kein Wärmebedarf;1=Heizbetrieb Gebläseanlauf;2=Heizbetrieb Pumpenvorlauf;3=Heizbetrieb Zündung;4=Heizbetrieb Brenner an;5=Heizbetrieb Pumpen-/Gebläsenachlauf;6=Heizbetrieb Gebläsenachlauf;7=Heizbetrieb Pumpennachlauf;8=Heizbetrieb Sperrzeit;9=Heizbetrieb Messprogramm;10=Warmwasseranforderung;11=Warmwasserbetrieb Gebläseanlauf;12=Warmwasserbetrieb Pumpenvorlauf;13=Warmwasserbetrieb Zündung;14=Warmwasserbetrieb Brenner an;15=Warmwasserbetrieb Pumpen-/Gebläsenachlauf;16=Warmwasserbetrieb Gebläsenachlauf;17=Warmwasserbetrieb Pumpennachlauf;18=Warmwasserbetrieb Sperrzeit;34=Heizbetrieb Frostschutz,,Statuscode
