@@ -5,5 +5,5 @@ r,,currenterror,Current errors,,,,01,,,errors,,,,,,
 # Error history,,,,,,,,,,,,,,,,
 *r,,,,,,"B503","01",,,,,,,,,
 *wi,#install,,,,,"B503","02",,,,,,,,,
-r,,errorhistory,Error history,,,,01,index,m,UCH,,,,,,errorhistory
+#r,,errorhistory,Error history,,,,01,index,m,UCH,,,,,,errorhistory
 wi,,clearerrorhistory,Clear error history,,,,01,cleared,s,yesno,,,,,,
