@@ -8,8 +8,8 @@
 r;wi,,PartloadHcKW,d.00 Heizungsteillast,,,,"0704",,,power,,,Heizungsteillast
 r;wi,,WPPostrunTime,d.01 Pumpennachlaufzeit,,,,"F703",,,minutes0,,,Wasserpumpennachlaufzeit nach Heizbetrieb
 r;wi,,BlockTimeHcMax,d.02 Maximale Brennersperrzeit,,,,"0904",,,minutes0,,,Max. Brennersperrzeit bei einem Vorlaufsollwert von 20°C
-r,,HwcTemp,d.03 WW Vorlaufsolltemp,,,,"1600",,,tempsensor,,,hot water inlet temperature into tank
-r,,StorageTemp,d.04 Speicheristtemp,,,,"1700",,,tempsensor,,,Aktuelle Speichertemperatur und Sensorstatus
+r,,HwcTemp,d.03 Speicherladetemperatur,,,,"1600",,,tempsensor,,,Messwert der Speicherladetemperatur und Sensorstatus
+r,,StorageTemp,d.04 Speichertemperatur,,,,"1700",,,tempsensor,,,Messwert der Speichertemperatur und Sensorstatus
 r,,FlowTempDesired,d.05 Vorlaufsolltemperatur,,,,"3900",,,temp,,,Vorlaufsolltemperatur oder Rücklaufsolltemperatur (wenn Rücklaufregelung aktiviert wurde). Der Maximalwert wird über d.71 und einem eBUS Regler begrenzt.
 r,,HwcTempDesired,d.06 Brauchwassersollwert,,,,"EA03",,,temp,,,Gewünschte Warmwasser Solltemperatur
 r,,StorageTempDesired,d.07 Speichersolltemp,,,,"0400",,,temp,,,Storage temperature target value
