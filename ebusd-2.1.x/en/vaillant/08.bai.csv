@@ -25,7 +25,7 @@
 [HW=0702]!load,bai.0010010674.inc,,,
 [HW=9602]!load,bai.0010015600.inc,,,
 [HW=8701]!load,bai.0020066007.inc,,,
-[HW=7401]!load,bai.308523.inc,,,
+[HW=7401]!load,bai.0010003886.inc,,,
 [HW=4702]!load,bai.0010008045.inc,,,
 !load,bai.308523.inc,,,
 !include,hcmode.inc,,,
