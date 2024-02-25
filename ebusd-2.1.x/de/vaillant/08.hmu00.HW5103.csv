@@ -74,12 +74,13 @@ r,,TotalRunningHours,,,,,FF3240,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
 r,,RunningHoursCH,,,,,FF3241,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
 r,,RunningHoursCooling,,,,,FF3243,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
 r,,RunningHoursHwc,,,,,FF3244,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
-
-r,,ch_46,,,,,FF3246,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
+r,,ImmersionHeaterHours,,,,,FF3246,,,UIN,,hours,,,,,,,,,,,,,,,,,,,stability issues?
 r,,TotalEnergyUsageImmersionHeater,,,,,FF3249,,,UIN,,kWh,,,,,,,,,,,,,,,,,,,stability issues?
-r,,ch_4a,,,,,FF324a,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
+r,,ImmersionHeaterStarts,,,,,FF324A,,,UIN,,,,,,,,,,,,,,,,,,,,,stability issues?
+r,,PrioritySwitchingValveOps,ThreeWayValve?,,,,FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,ch_4b,,,,,FF324b,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
-r,,ch_4c,,,,,FF324c,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
+r,,ImmersionHeaterPower,,,,,FF324C,,,D1B,10,kW,in kW,,,,,,,,,,,,,,,,,,stability issues?
+r,,ImmersionHeaterTemp,,,,,FF325C,,,temps2,10,°C,,,,,,,,,,,,,,,,,,,stability issues?
 
 r,,TotalEnergyUsage,,,,,FF324D,,,IGN:3,,,,,,energy,,kWh,,,,,,,,,,,,,
 r,,ch_63,,,,,FF3263,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
