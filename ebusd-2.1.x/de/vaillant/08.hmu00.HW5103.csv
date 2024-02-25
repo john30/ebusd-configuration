@@ -3,7 +3,7 @@
 r,,State,,,,,07,energy,,UCH,,,,,,energy,,kWh,,onoff,,UCH,0=off;1=on,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
 
 r,,HeatpumpLoadSensor,,,08,B507,0931,,,percent1,,,Wärmepumpen-Lastsensor (Prozent),,,,,,,,,,,,,,,,,,
-r,,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
+#r,,Standby,,,,B503,020003,,,HEX:6,,,,,,,,,,,,,,,,,,,,,
 
 # Values from Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B51A,05,,,,,,,,,,,,,,,,,,,,,,,,
