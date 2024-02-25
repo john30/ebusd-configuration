@@ -40,6 +40,3 @@ r,,PrioritySwitchingValveCount,,,,,FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterPower,,,,,FF324C,,,D1B,10,kW,in kW,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterTemp,,,,,FF325C,,,D2C,,°C,,,,,,,,,,,,,,,,,,,
 r;w,,ImmersionHeaterPowerLimit,,,,,FF331A,,,UIN,,kW,,,,,,,,,,,,,,,,,,,
-
-!include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-!include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
