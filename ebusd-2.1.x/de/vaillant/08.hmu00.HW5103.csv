@@ -76,7 +76,7 @@ r,,RunningHoursCooling,,,,,FF3243,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
 r,,RunningHoursHwc,,,,,FF3244,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
 
 r,,ch_46,,,,,FF3246,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
-r,,ch_49,,,,,FF3249,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
+r,,TotalEnergyUsageImmersionHeater,,,,,FF3249,,,UIN,,kWh,,,,,,,,,,,,,,,,,,,stability issues?
 r,,ch_4a,,,,,FF324a,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
 r,,ch_4b,,,,,FF324b,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
 r,,ch_4c,,,,,FF324c,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
@@ -186,7 +186,7 @@ r,,MultifunctionConnectorOutput2Status,,,,,7E03FFFF,,,onoff,,,Multifunktionsausg
 r,,MultifunctionConnectorOutput0Status,,,,,7F03FFFF,,,onoff,,,Multifunktionsausgang 0,,,,,,,,,,,,,,,,,,
 
 r,,CondensorInletTemp,,,,,8103FFFF,,,temps2,10,°C,Verflüssiger-Eintrittstemperatur (°C),,,,,,,,,,,,,,,,,,
-r,,SupplyTempElectricHeater,,,,,8203FFFF,,,temps2,10,°C,Vorlauftemperatur Elektroheizung (°C),,,,,,,,,,,,,,,,,,
+r,,SupplyTempElectricHeater,,,,,7B03FFFF,,,temps2,10,°C,Vorlauftemperatur Elektroheizung (°C),,,,,,,,,,,,,,,,,,
 
 
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
