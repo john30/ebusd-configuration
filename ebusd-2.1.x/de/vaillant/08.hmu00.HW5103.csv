@@ -150,7 +150,14 @@ r,,OverheatingTargetValue,,,,,5703FFFF,,,IGN:2,,,,,,temps2,10,°K,Overheating ta
 r,,OverheatingActualValue,,,,,5803FFFF,,,IGN:2,,,,,,temps2,10,°K,Overheating temperature actual (°K),,,,,,,,,,,,
 r,,SubcoolingTargetValue,,,,,5903FFFF,,,IGN:2,,,,,,temps2,10,°K,Subcooling target temperaturee (°K),,,,,,,,,,,,
 r,,SubcoolingActualValue,,,,,5A03FFFF,,,IGN:2,,,,,,temps2,10,°K,Subcooling temperature actual (°K),,,,,,,,,,,,
+r,,MultifunctionConnectorOutput1Status,,,,,7703FFFF,,,onoff,,,Multifunktionsausgang 1: Zone valve; cooling signal; intermediate heat exchanger pump,,,,,,,,,,,,,,,,,,
 r,,TemperatureSwitchCompressorOutlet,,,,,7B03FFFF,,,IGN:2,,,,,,UCH,0=open;1=closed,,,,,,,,,,,,,,
+r,,TemperatureSwitchElectricHeaterStatus,,,,,7C03FFFF,,,UCH,0=offen;1=geschlossen,,,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorInput1Status,,,,,7D03FFFF,,,onoff,,,Multifunktionseingang 1 (ME or X41 terminals): Manual circulation switch-on; PV DHW Boost; Cooling Mode,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorOutput2Status,,,,,7E03FFFF,,,onoff,,,Multifunktionsausgang 2: Circulation pump; anti-legionella pump; zone valve; dehumidifying unit,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorOutput0Status,,,,,7F03FFFF,,,onoff,,,Multifunktionsausgang 0,,,,,,,,,,,,,,,,,,
+
+
 
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B516,18,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
