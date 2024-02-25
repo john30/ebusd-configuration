@@ -91,7 +91,6 @@ r,,HeatCurve,,,,,8F352D,,,IGN:3,,,,,,BCD,10,,heat curve 0.1 to 4.0,,,,,,,,,,,,
 #w,hmu,HeatCurve,,,08,B51A,06CD352D,,,BCD,10,,,,,,,,,,,,,,,,,,,,
 
 r,,SummerSwitchOffTemp,,,,,8F352E,,,IGN:3,,,,,,D2C,,°C,Switch-off temperature summer (°C),,,,,,,,,,,,
-r,,SummerSwitchOffTemp,(with intergrated System thermostat),,,,FF352E,,,D2C,,°C,(8F)Abschalttemperatur Sommer (°C),,,,,,,,,,,,,,,,,,
 
 r,,HcBivalencePoint,,,,,8F352F,,,IGN:3,,,,,,D2C,,°C,Central heating bivalence point (°C),,,,,,,,,,,,
 r,,HwcBivalencePoint,,,,,8F3530,,,IGN:3,,,,,,D2C,,°C,Bivalence point domestic hot water (°C),,,,,,,,,,,,
