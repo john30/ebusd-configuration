@@ -76,7 +76,7 @@ r,,CompressorHysteresisHc,,,,,F83443,,,IGN:3,,,,,,D2C,,°K,Compressor hysteresis
 r,,CompressorHysteresisCooling,,,,,86353F,,,IGN:3,,,,,,D2C,,,Compressor hysteresis cooling (°K),,,,,,,,,,,,
 r,,HwcMode,,,,,523444,,,IGN:3,,,,,,UCH,0=eco;1=normal;2=balance,,Domestic hot water mod (eco/normal/balance),,,,,,,,,,,,
 r,,TargetTempHwc,,,,,C63207,,,IGN:3,,,,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,
-# Uncomment the next line if you want to be able to change TargetTempHwc (from Home Assistant for example)
+# Uncomment the next line if you want to be able to change TargetTempHwc (from Home Assistant for example),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #w,hmu,TargetTempHwc,,,08,B51A,06783207,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,,,,,,,
 # Additional values from Live Monitor Main,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,B503,00,,,,,,,,,,,,,,,,,,,,,,,,
