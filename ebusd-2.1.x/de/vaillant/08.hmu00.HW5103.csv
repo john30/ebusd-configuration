@@ -157,6 +157,8 @@ r,,MultifunctionConnectorInput1Status,,,,,7D03FFFF,,,onoff,,,Multifunktionseinga
 r,,MultifunctionConnectorOutput2Status,,,,,7E03FFFF,,,onoff,,,Multifunktionsausgang 2: Circulation pump; anti-legionella pump; zone valve; dehumidifying unit,,,,,,,,,,,,,,,,,,
 r,,MultifunctionConnectorOutput0Status,,,,,7F03FFFF,,,onoff,,,Multifunktionsausgang 0,,,,,,,,,,,,,,,,,,
 
+r,,CondensorInletTemp,,,,,8103FFFF,,,temps2,10,°C,Verflüssiger-Eintrittstemperatur (°C),,,,,,,,,,,,,,,,,,
+r,,SupplyTempElectricHeater,,,,,8203FFFF,,,temps2,10,°C,Vorlauftemperatur Elektroheizung (°C),,,,,,,,,,,,,,,,,,
 
 
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
