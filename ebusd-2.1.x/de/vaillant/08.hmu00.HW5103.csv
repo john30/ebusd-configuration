@@ -28,6 +28,7 @@ r;w,,EnergyIntegralStartHeating,,,,,FF341E,,,integral,,°min,Energy Integral val
 r;w,,BuildingCircuitMaxPressureDifferenceSensor,,,,,FF341F,,,UIN,,mBar,Maximale Druckdifferenz im Gebäudekreislauf (mBar),,,,,,,,,,,,,,,,,,
 r;w,,EnergyIntegralStartCooling,,,,,FF3421,,,integral,,°min,Energy Integral value to start cooling (°min),,,,,,,,,,,,,,,,,,
 r;w,,CompressorSilentOperationLevelSensor,,,,,FF3428,,,percent0,,,Kompressor geräuscharme Betriebsstufe,,,,,,,,,,,,,,,,,,
+r;w,,MainsBlocktimeMaxDurationTimer,,,,,FF342D,,,UCH,,hrs,Maximale Dauer der Sperrung (in Stunden),,,,,,,,,,,,,,,,,,
 
 r,,NoOfSwitchingOps,,,,,FF3430,,,IGN:3,,,,,,UIN,,,,,,,,,,,,,,,
 r,,Fan1OperHours,,,,,FF3451,,,IGN:3,,,,,,UIN,,hours,,,,,,,,,,,,,
@@ -90,6 +91,8 @@ r,,HeatCurve,,,,,8F352D,,,IGN:3,,,,,,BCD,10,,heat curve 0.1 to 4.0,,,,,,,,,,,,
 #w,hmu,HeatCurve,,,08,B51A,06CD352D,,,BCD,10,,,,,,,,,,,,,,,,,,,,
 
 r,,SummerSwitchOffTemp,,,,,8F352E,,,IGN:3,,,,,,D2C,,°C,Switch-off temperature summer (°C),,,,,,,,,,,,
+r,,SummerSwitchOffTemp,(with intergrated System thermostat),,,,FF352E,,,D2C,,°C,(8F)Abschalttemperatur Sommer (°C),,,,,,,,,,,,,,,,,,
+
 r,,HcBivalencePoint,,,,,8F352F,,,IGN:3,,,,,,D2C,,°C,Central heating bivalence point (°C),,,,,,,,,,,,
 r,,HwcBivalencePoint,,,,,8F3530,,,IGN:3,,,,,,D2C,,°C,Bivalence point domestic hot water (°C),,,,,,,,,,,,
 r,,MaxFlowTemp,,,,,8F3532,,,IGN:3,,,,,,D2C,,°C,Maximum flow temperature (°C),,,,,,,,,,,,
@@ -101,10 +104,14 @@ r;w,,MainsBlocktimeMinDurationSensor,,,,,FF3319,,,UCH,,min,Mindestdauer der Sper
 r;w,,ActiveCoolingEnabledStatus,,,,,FF331B,,,yesno,,,Aktive Kühltechnologie aktiviert,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterMode,,,,,C4331E,,,IGN:3,,,,,,UCH,0=off;1=on,,Immersion heater mode (on/off),,,,,,,,,,,,
 r;w,,CompressorCurrentLimitSensor,,,,,FF331F,,,UCH,,A,Strombegrenzung des Kompressors (A),,,,,,,,,,,,,,,,,,
+r,,CompressorHysteresisHeatingSensor,,,,,FF3443,,,D2C,,K,Verdichter-Hysterese Zentralheizung (K),,,,,,,,,,,,,,,,,,
+
 
 r,,CompressorHysteresisHc,,,,,F83443,,,IGN:3,,,,,,D2C,,°K,Compressor hysteresis central heating (°K),,,,,,,,,,,,
 r,,CompressorHysteresisCooling,,,,,86353F,,,IGN:3,,,,,,D2C,,,Compressor hysteresis cooling (°K),,,,,,,,,,,,
 r,,HwcMode,,,,,523444,,,IGN:3,,,,,,UCH,0=eco;1=normal;2=balance,,Domestic hot water mod (eco/normal/balance),,,,,,,,,,,,
+r;w,,WarmWaterModusStatus,,,,,FF3444,,,UCH,0=eco;1=normal;2=balance,,Brauchwassermodus (eco/normal/balance),,,,,,,,,,,,,,,,,,
+
 r,,TargetTempHwc,,,,,C63207,,,IGN:3,,,,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,
 
 # Uncomment the next line if you want to be able to change TargetTempHwc (from Home Assistant for example),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
