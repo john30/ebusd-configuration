@@ -96,7 +96,7 @@ phone,STR:9,,,phone number
 shortphone,STR:6,,,phone number
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
-rcmode,UIN,0=off;1=modulating;2=thermostat,,
+rcmode,UIN,0=inactive;1=active;2=expanded,,
 slotIndex,UCH,,,array index for the zones. Array Index start at 0 for the first element
 slotCount,UCH,,,Number of total slots in the array. May be Zero.
 slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,,Number of total slots in the array for a week. Mon-Sun
