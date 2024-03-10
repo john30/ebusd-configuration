@@ -40,3 +40,11 @@ r,,PrioritySwitchingValveCount,,,,,FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterPower,,,,,FF324C,,,D1B,10,kW,in kW,,,,,,,,,,,,,,,,,,
 r,,ImmersionHeaterTemp,,,,,FF325C,,,D2C,,°C,,,,,,,,,,,,,,,,,,,
 r;w,,ImmersionHeaterPowerLimit,,,,,FF331A,,,UIN,,kW,,,,,,,,,,,,,,,,,,,
+
+
+# FF32xx: ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,,FlowPressure,,,,,FF323D,,,D2C,4,bar,,,,,,,,,,,,,,,,,,,
+r,,TotalRunningHours,,,,,FF3240,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+
+
+
