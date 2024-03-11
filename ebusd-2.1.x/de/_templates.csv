@@ -16,6 +16,7 @@ percent,D2C,,%,
 percent0,UCH,,%,
 percent1,D1C,,%,
 percent2,D2B,,%,
+percent3,UIN,,%,
 percents,SCH,,%,
 temp,D2C,,°C,Temperatur
 temp0,UCH,,°C,Temperatur
@@ -28,3 +29,4 @@ bday,BDY,,,Wochentag
 id,STR:5,,,Geräte-ID
 version,PIN,,,Version
 skip,IGN:1,,,
+daysel2,UCH,0=selected;1=Mo-So;2=Mo-Fr;3=Sa-So,,

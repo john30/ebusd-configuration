@@ -1,0 +1,10 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,recov,RecoVair 275,,,,,,,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
+*r,,,,,,B509,0D,,,,,,
+*w,,,,,,B509,0F,,,,,,
+r;w,,Lüftungsstufe,Lüftungsstufe,,,,2400,,,UCH,1=Tag;2=Aus;3=Auto;5=Nacht,,
+r;w,,Lüftung_HI,Lüftung_HI,,,,5800,,,BCD:2,,,
+r,,Uhrzeit,Uhrzeit,,,,2C00,,,VTI,,,
+#
+

@@ -1,0 +1,50 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+
+# START Unbekannte Meldungen alle 10 Sekunden,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+# r,vwz,unknownMPoll10sB512h,,,76,B512,0f0001,,,HEX:7,,,Unbekannte Abfrage alle 10 Sekunden von CTLV2 an VWZ,,,,,,,,,,,,,,,,,,
+# END Unbekannte Meldungen alle 10 Sekunden,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+*r,,,,,,B514,05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
+# alle Nachrichten entfernt die ffff ergeben haben,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+r,,BuildingCircuitPumpPowerSensor,,,,,0103FFFF,,,UIN,,,Pumpenleistung des Gebäudekreislaufs (Prozent des Maximum),,,,,,,,,,,,,,,,,,
+r,,ThreeWayValveStatus,,,,,0203FFFF,,,UCH,0=heating;1=dhw,,Dreiwegeventil (Heizung/Warmwasser),,,,,,,,,,,,,,,,,,
+r,,SupplyTemp,,,,,2803FFFF,,,temps2,10,°C,Vorlauftemperatur (°C),,,,,,,,,,,,,,,,,,
+r,,ReturnTemp,,,,,2903FFFF,,,temps2,10,°C,Ruecklauftemperatur (°C),,,,,,,,,,,,,,,,,,
+r,,BuildingCircuitWaterPressure,,,,,2A03FFFF,,,UIN,10,bar,Wasserdruck im Gebaeudekreislauf (bar),,,,,,,,,,,,,,,,,,
+r,,BuildingCircuitFlowSensor,,,,,2B03FFFF,,,UIN,,l/h,Aktueller Heizwasserdurchfluss (liter/hour),,,,,,,,,,,,,,,,,,
+r,,WarmWaterTemp,,,,,2C03FFFF,,,temps2,10,°C,SWW Temperatur des Tanks (°C),,,,,,,,,,,,,,,,,,
+r,,MaximumUnderfloorHeatingS20Status,,,,,2E03FFFF,,,UCH,0=offen;1=geschlossen,,,,,,,,,,,,,,,,,,,,
+r,,CondensorOutletTemp,,,,,3B03FFFF,,,temps2,10,°C,Verflüssigeraustrittstemperatur (°C),,,,,,,,,,,,,,,,,,
+r,,OutdoorTemp,,,,,4503FFFF,,,temps2,10,°C,Außentemperatur (°C),,,,,,,,,,,,,,,,,,
+r,,DCFSignalStatus,,,,,4703FFFF,,,dcfstate,,,DCF Signalstaerke,,,,,,,,,,,,,,,,,,
+r,,EnergySupplyCompanyBlockingS21Status,,,,,4803FFFF,,,UCH,0=offen;1=geschlossen,,,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorOutput1_X13Status,,,,,7703FFFF,,,onoff,,,Multifunktionsanschluss 1: Zone valve; cooling signal; intermediate heat exchanger pump,,,,,,,,,,,,,,,,,,
+r,,TemperatureSwitchElectricHeaterStatus,,,,,7C03FFFF,,,UCH,0=offen;1=geschlossen,,,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorInput1Status,,,,,7D03FFFF,,,onoff,,,Multifunktionseingang 1 (ME or X41 terminals): Manual circulation switch-on; PV Ready Warmwater; Cooling Mode,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorOutput2Status,,,,,7E03FFFF,,,onoff,,,Multifunktionsausgang 2: Circulation pump; anti-legionella pump; zone valve; dehumidifying unit,,,,,,,,,,,,,,,,,,
+r,,MultifunctionConnectorOutput0Status,,,,,7F03FFFF,,,onoff,,,Multifunktionsausgang 0,,,,,,,,,,,,,,,,,,
+r,,CondensorInletTemp,,,,,8103FFFF,,,temps2,10,°C,Verflüssiger-Eingangstemperatur (°C),,,,,,,,,,,,,,,,,,
+r,,SupplyTempElectricHeater,,,,,8203FFFF,,,temps2,10,°C,Vorlauftemperatur Elektroheizung (°C),,,,,,,,,,,,,,,,,,
+
+*r,,,,,,B516,18,,,IGN:1,,,,,,,,,,,,,,,,,,,,,
+r,,YieldTotal,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
+r,,EnergyConsumptionTotal,,,,,02,,,energy,,,,,,,,,,,,,,,,,,,,,
+
+*r,,,,,,B51A,05,,,IGN:3,,,,,,,,,,,,,,,,,,,,,
+*w,,,,,,B51A,06,,,,,,,,,,,,,,,,,,,,,,,,
+r,,RuntimeImmersionHeater,,,,,FF3246,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,TotalEnergyUsageImmersionHeater,,,,,FF3249,,,UIN,,kWh,,,,,,,,,,,,,,,,,,,
+r,,ImmersionHeaterStarts,,,,,FF324A,,,UIN,,,,,,,,,,,,,,,,,,,,,
+r,,PrioritySwitchingValveCount,,,,,FF324B,,,UIN,,,,,,,,,,,,,,,,,,,,,
+r,,ImmersionHeaterPower,,,,,FF324C,,,D1B,10,kW,in kW,,,,,,,,,,,,,,,,,,
+r,,ImmersionHeaterTemp,,,,,FF325C,,,D2C,,°C,,,,,,,,,,,,,,,,,,,
+r;w,,ImmersionHeaterPowerLimit,,,,,FF331A,,,UIN,,kW,,,,,,,,,,,,,,,,,,,
+
+
+# FF32xx: ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,,FlowPressure,,,,,FF323D,,,D2C,4,bar,,,,,,,,,,,,,,,,,,,
+r,,TotalRunningHours,,,,,FF3240,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+
+
+
