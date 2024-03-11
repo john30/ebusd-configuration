@@ -4,9 +4,12 @@ temps2,SIN,,°C,Temperatur
 tempv,EXP,,°C,Temperatur
 press,FLT,,bar,Druck
 pressv,EXP,,bar,Druck
+press10,UCH,10,bar,Druck
+flowrate,UIN,,l/h,flow rate
 date,HDA:3,,,Datum
 day,BDY,,,Wochentag
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-So;3=Mo-So,,Tage
+daysel2,UCH,0=off;1=Mon;2=Tue;3=Wed;4=Thu;5=Fri;6=Sat;7=Sun;8=Daily,,days
 days,UCH,,,Tage
 time,VTI,,,Zeit
 time2,VTM,,,Zeit
@@ -68,6 +71,8 @@ slot1-3,slot1;slot2;slot3,,,Slots 1-3
 timer,slot1-3;daysel,,,
 backtype,UCH,0=not present;1=externalheat;2=externalwater;3=externalheatandwater;4=internalheatandwater,,
 backmode,UCH,0=no backup;1=withbackup;2=onlybackup,,
+backmode2,UCH,0=off;1=heating circuit;2=warm water circuit;3=heating + warm water circuit,,
+escomode,UCH,0=HeatPump off;1=Backup Boiler off;2=HP+BB off;3=Heating off;4=Cooling off;5=Heating+Cooling off,,
 power,UCH,,kW,
 energy,UIN,,kWh,
 energyr,UIR,,kWh,
@@ -88,6 +93,7 @@ frequency,UIN,,Hz,Frequenz
 zonesel,UIN,0=alle;1=1;2=2;3=3;4=4;5=5;6=6,,Selektierte Zone
 sfmode,UCH,0=auto;1=ventilation;2=party;3=veto;4=onedayaway;5=onedayathome;6=load,,
 opmode,UIN,0=off;1=auto;2=day;3=night,,
+opmode2,UIN,0=off;1=time controlled;2=manual,,
 zmapping,UIN,0=none;1=VRC700;2=VR91.1;3=VR91.2;4=VR91.3,,
 hcname,STR:11,,,Name des Heizkreises
 zname,STR:5,,,Name der Zone
@@ -96,4 +102,19 @@ phone,STR:9,,,Telefonnummer
 shortphone,STR:6,,,Telefonnummer
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
+offmode2,UIN,0=eco;1=normal,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
+rcmode2,UIN,0=inactive;1=active;2=expanded,,
+slotIndex,UCH,,,array index for the zones. Array Index start at 0 for the first element
+slotCount,UCH,,,Number of total slots in the array. May be Zero.
+slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,,Number of total slots in the array for a week. Mon-Sun
+startTime,HTM,,,Starting time of the timeframe
+endTime,HTM,,,Ending time of the timeframe
+slotTimeFrame,startTime;endTime,,,Timeslot from/until
+slotTemp,UIN,10,,
+wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for writing the time table settings.
+wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;IGN:2,,,Complete slot for writing the time table settings without a temperature.
+rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
+rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.
+zoneStatus,UIN,0=auto;1=ventilation boost;3=party;4=quick veto;5=one day away from home;6=one day at home;7=holiday away;8=holiday at home;9=load hot water;10=off,,
+
