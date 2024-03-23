@@ -4,6 +4,8 @@ temps2,SIN,,°C,temperature
 tempv,EXP,,°C,temperature
 press,FLT,,bar,pressure
 pressv,EXP,,bar,pressure
+press10,UCH,10,bar,pressure
+flowrate,UIN,,l/h,flow rate
 date,HDA:3,,,date
 day,BDY,,,weekday
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-Su;3=Mo-Su,,days
