@@ -9,7 +9,7 @@ r,,Status16,Outside temperature,,,,16,,,temp,,,
 *uw,,,,,,"B510",,,,,,,
 uw,,SetMode,Operation Mode,,,,00,,,hcmode,,,,flowtempdesired,,temp1,,,,hwctempdesired,,temp1,,,,hwcflowtempdesired,,temp0,,,,,,IGN:1,,,,disablehc,,BI0,,,,disablehwctapping,,BI1,,,,disablehwcload,,BI2,,,,,,IGN:1,,,,remoteControlHcPump,,BI0,,,,releaseBackup,,BI1,,,,releaseCooling,,BI2,,,,
 #potential last byte: currentmode,s,UCH,0=off;1=standby;2=heat;3=water,,
-r,,Status01,Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW Temperatur/Speichertemperatur/Pumpenstatus,,,,01,,,temp1;temp1;temp2;temp1;temp1;pumpstate,,,
+r,,Status01,Supply Temperature/Return Temperature/Outside Temperature/HwC Temperature/Buffer Temperature/Pump status,,,,01,,,temp1;temp1;temp2;temp1;temp1;pumpstate,,,
 r,,Status02,Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp,,,,02,,,hwcmode;temp0;temp1;temp0;temp1,,,
 r,,Status,Status,,,,03,,,temp;press;press;hcmode2;HEX,,,
 
