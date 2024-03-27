@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/temp$
+### BRINK Zonenventil
+##
+## Diese ebus-Konfiguration basiert auf Informationen von https://gathering.tweakers.net/forum/list_messages/1979992
+## Sie ist ungetestet und wahrscheinlich unvollständig.
+
+## Brink Zonenventil
+*r,zkp,,,,09,4050,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*w,zkp,,,,09,4050,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+r,,VentilStatus,1f0940a10102,,,40a1,02,,,HEX:7,0x00040000000000=SchlafWohnzone;0x00040000020300=Schlafzone;0x0700040000010200=Wohnzone,,
