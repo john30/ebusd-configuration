@@ -4,9 +4,10 @@
 *[SW],scan,,,SW,,,,,,,,,
 
 *r,,,,,08,"B524","02000000",,,IGN:4,,,
+*w,,,,,08,"B524","02010000",,,,,,
 r,,SpecOpModeOff,Sonderbetriebsart Anlage aus,,,,"0700",,,UCH,00=Anlage EIN;01=Anlage AUS,,
 r,,SpecOpModeAbsentZone1Temp,Sonderbetriebsart Abwesenheit Zone 1 Temperatur,,,,"F600",,,IGN:4,,,,,,tempv,,,
-r,,Date,Datum,,,,"3400",,,HDA:3,,,
+r;w,,Date,Datum,,,,"3400",,,HDA:3,,,
 r,,Time,Zeit,,,,"3500",,,HTI,,,
 r,,WaterPressure,Wasserdruck,,,,3900,,,pressv,,,Wasserdruck
 r,,OutsideTemp,Außentemperatur,,,,"7300",,,tempv,,,
@@ -95,4 +96,4 @@ r,,HeatGeneratedHeating,Erzeugte Wärme Heizung,,,,"49030000",,,IGN:7,,,,,,ULG,,
 r,,ConsumedPrimaryEnergyHW,Gasverbrauch Warmwasser,,,,"84040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.0625 Wh in dem Zeitraum
 r,,ConsumedElectricalEnergyHW,Verbrauch elektrischer Energie Warmwasser,,,,"83040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.0005 Wh in dem Zeitraum
 r,,HeatGeneratedHW,Erzeugte Wärme Warmwasser,,,,"49040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.0625 Wh in dem Zeitraum
-#!include,15.emm.unknown.inc
+!include,15.emm.unknown.inc
