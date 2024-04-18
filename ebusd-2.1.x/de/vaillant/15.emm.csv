@@ -93,7 +93,7 @@ r,,TimerWP.Sunday.2,Zirkulationspumpe Zeitfenster 2 Sonntag,,,,"0601",,,,,,,
 r,,ConsumedPrimaryEnergyHeating,Gasverbrauch Heizung,,,,"84030000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.125 Wh in dem Zeitraum
 r,,ConsumedElectricalEnergyHeating,Verbrauch elektrischer Energie Heizung,,,,"83030000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.00185 Wh in dem Zeitraum
 r,,HeatGeneratedHeating,Erzeugte Wärme Heizung,,,,"49030000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.125 Wh in dem Zeitraum
-r,,ConsumedPrimaryEnergyHW,Gasverbrauch Warmwasser,,,,"84040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.0625 Wh in dem Zeitraum
+r,,ConsumedPrimaryEnergyHW,Gasverbrauch Warmwasser,,,,"84040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.125 Wh in dem Zeitraum
 r,,ConsumedElectricalEnergyHW,Verbrauch elektrischer Energie Warmwasser,,,,"83040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.0005 Wh in dem Zeitraum
 r,,HeatGeneratedHW,Erzeugte Wärme Warmwasser,,,,"49040000",,,IGN:7,,,,,,ULG,,Wh, Bedeutung des Absolutwertes unklar; Die Differenz zweier Werte entspricht ca. 0.0625 Wh in dem Zeitraum
 !include,15.emm.unknown.inc
