@@ -1,0 +1,36 @@
+{
+  "name": "ebusd-configuration",
+  "version": "0.1.0",
+  "description": "utilities for converting ebusd-configuration files",
+  "scripts": {
+    "csv2tsc": "npx ts-node ./utils/src/index.ts",
+    "build": "tsc -p utils",
+    "csv2tsc.js": "node ./utils/dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john30/ebusd-configuration.git"
+  },
+  "keywords": [
+    "ebusd",
+    "configuration"
+  ],
+  "author": "John Baier",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/john30/ebusd-configuration/issues"
+  },
+  "homepage": "https://github.com/john30/ebusd-configuration#readme",
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.12.13",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@typespec/compiler": "^0.56.0",
+    "csv-parser": "^3.0.0",
+    "ebus": "github:john30/ebus-tsplib",
+    "js-yaml": "^4.1.0",
+    "ts-node": "^10.9.2"
+  }
+}
