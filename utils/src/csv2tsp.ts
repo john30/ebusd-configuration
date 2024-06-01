@@ -148,7 +148,7 @@ type FieldOfLine = CsvLine & {
   5?: string,
 }
 const messageLineFieldLen = 6;
-const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>): OptStrs => {
+const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, valueLists: Map<string, string[]>): OptStrs => {
   if (!line) return;
   const comm = line[5] || line[0] || line[2];
   const types = line[2].split(';');
@@ -163,12 +163,24 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>): Opt
     });
     return ret;
   }
-  const id = normId(line[0]||types[0]);
+  const id = normId(line[0]||(types[0].split(':')[0]));
+  const divParts = line[3] && line[3].split(';');
+  const hasValues = divParts && divParts.length>1;
+  let divider: string|undefined;
+  let values: string|undefined;
+  if (hasValues) {
+    values = `values_`;
+    values += (comm||id||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
+    values += suffix(values, seen);
+    valueLists.set(values, divParts);
+  } else {
+    divider = line[3];
+  }
   return [
     (comm&&comm!=id)?`/** ${comm} */`:undefined,
     line[4]&&`@unit("${line[4]}")`||undefined,//todo nicer
-    line[3]&&`@divider("${line[3]}")`,
-    addLength(line[1]),
+    divider?`@divider("${line[3]}")`:values?`@values(${values})`:undefined,
+    addLength(types[0]),
     `${id}${suffix(id, seen)}: ${normType(types[0])},`,
   ]
 };
@@ -212,26 +224,47 @@ const objSlice = (line: CsvLine, from: number, len: number): CsvLine => {
   return used;
 };
 const defaultsByName = new Map<string, number>();
+const valueLists = new Map<string, string[]>();
 const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   if (header) return messageHeader;
-  if (header===false) return messageFooter;
+  if (header===false) {
+    const ret: ReqStrs = [];
+    for (const [name, values] of valueLists.entries()) {
+      ret.push(`enum ${name} {`);
+      const keys = new Map<string, number>();
+      values.forEach(v => {
+        const [k, n] = v.split('=');
+        const id = normId(n);
+        ret.push(`${id+suffix(id, keys)}: ${k},`);
+      });
+      ret.push('}');
+    }
+    return [...ret, ...messageFooter];
+  };
   if (!line) return;
   const fields: OptStrs = [];
   const seenFields = new Map<string, number>();
   for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+16*messageLineFieldLen; idx+=messageLineFieldLen) {
-    const field = fieldTrans(objSlice(line, idx, messageLineFieldLen) as FieldOfLine, seenFields);
+    const field = fieldTrans(objSlice(line, idx, messageLineFieldLen) as FieldOfLine, seenFields, valueLists);
     if (!field) {
       break;
     }
     fields.push(...field);
   }
   let dirsStr = line[0];
-  const isDefault = dirsStr[0]==='*';
+  if (dirsStr[0]==='!') return; // todo support include/load instruction
+  let isDefault: string|undefined = dirsStr[0]==='*'?`default ${dirsStr}`:undefined;
   if (isDefault) {
     // default line: convert to base models
     dirsStr = dirsStr.substring(1);
     dirsStr += suffix(dirsStr, defaultsByName);
+    if (line[1]?.startsWith('#')) {
+      // todo level
+      isDefault += ` for user level "${line[1].substring(1)}"`;
+    }
   }
+  const isCondition = dirsStr[0]==='[';
+  if (isCondition) return; // todo support conditions
   const dirs = dirsStr.split(';');
   // return dirs.map(dir=> (
   const idComb = fromHex(line[6], line[7]);
@@ -239,7 +272,7 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   const zz = fromHex(line[5]).join();
   return [
     // line[1]&&`namespace ${line[1]} {`, //todo block namespace as otherwise only once per file
-    (isDefault||line[3])&&`/** ${line[3]||`default ${line[0]}`} */`,
+    (line[3]||isDefault)&&`/** ${line[3]||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
       : `@inherit(${dirs.map(d=>d+getSuffix(d, defaultsByName)).join(', ')})`, // multi model
@@ -310,6 +343,7 @@ export const csv2tsp = async (args: string[] = []) => {
     console.log(`generating ${newFile}`);
     const isTemplates = name==='_templates.csv';
     defaultsByName.clear();
+    valueLists.clear();
     const trans = isTemplates
       ? subdir
         ? templateTransSubdir(subdir)
