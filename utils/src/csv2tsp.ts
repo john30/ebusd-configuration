@@ -4,19 +4,25 @@ import * as path from 'path';
 import {Transform} from "stream";
 import {pipeline} from "stream/promises";
 
+type ReqStrs = (string | undefined)[];
 
-type OptStrs = (string | undefined)[] | undefined;
+type OptStrs = ReqStrs | undefined;
 
 type CsvLine = OptStrs;
 
 type Trans<T extends CsvLine> = (line?: T, header?: boolean) => OptStrs;
 
 type TemplateLine = CsvLine & {
-  0: string, // name
-  1: string, // type / templates
-  2?: string, // divider / values
-  3?: string, // unit
-  4?: string, // comment
+  /** name */
+  0: string,
+  /** type / templates */
+  1: string,
+  /** divider / values */
+  2?: string,
+  /** unit */
+  3?: string,
+  /** comment */
+  4?: string,
 }
 const ebusImport = [
   'import "ebus";'
@@ -45,80 +51,217 @@ const normType = (t: string): string => {
   if (parts.length<2 || dynLengthTypes.has(parts[0])) return parts[0];
   return parts.join(parts[0].startsWith('BI')?'_':'')
 }
-const addLength = (t: string): string|undefined => {
+const addLength = (t?: string): string|undefined => {
+  if (!t) return;
   const parts = t.split(':');
-  if (parts.length<2 || !dynLengthTypes.has(parts[0])) return '';
+  if (parts.length<2 || !dynLengthTypes.has(parts[0])) return;
   return `@maxLength(${parts[1]}) `;
 }
+const suffix = (t: string, seen: Map<string, number>) => {
+  let idx = seen.get(t);
+  if (idx===undefined) {
+    seen.set(t, 0);
+    return '';
+  }
+  seen.set(t, ++idx);
+  return `_${idx}`;
+}
+const getSuffix = (t: string, seen: Map<string, number>) => {
+  let idx = seen.get(t);
+  if (idx===undefined || idx===0) {
+    return '';
+  }
+  return `_${idx}`;
+}
 const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
-  if (header===true) return templateHeader;
+  if (header) return templateHeader;
   if (header===false) return templateFooter;
   if (!line) return;
   const types = line[1].split(';');
   if (types.length>1) {
     const seen = new Map<string, number>();
-    const suffix = (t: string) => {
-      let idx = seen.get(t);
-      if (idx===undefined) {
-        seen.set(t, 0);
-        return '';
-      }
-      seen.set(t, ++idx);
-      return `_${idx}`;
-    }
     return [
       line[4]&&`/** ${line[4]} */`,
       `model ${normId(line[0])} {`,
-      ...types.map(t => `${addLength(t)}${normId(t)}${suffix(t)}: ${normType(t)},`),
+      ...types.map(t => `${addLength(t)??''}${normId(t)}${suffix(t, seen)}: ${normType(t)},`),
        '}',
-      ];
+    ];
   }
   return [
     line[4]&&`/** ${line[4]} */`,
-    line[3]&&`@unit("${line[3]}")`,
+    line[3]&&`@unit("${line[3]}")`||undefined,//todo nicer
     addLength(types[0]),
     `scalar ${normId(line[0])} extends ${normType(types[0])}`,
   ]
 }
+const knownManufacturers = new Map<string, [number, string]>([
+  ['vaillant', [0xb5, 'Vaillant']],
+])
+const setSubdirManuf = (subdir: string): string|undefined => {
+  const [id, name] = knownManufacturers.get(subdir)||[];
+  subdirManuf = name;
+  subdirManufId = id!;
+  return name;
+}
 const templateTransSubdir = (subdir: string): Trans<TemplateLine> => (line?, header?): OptStrs => {
-  if (header===true) return [...templateHeaderSubdir, '', `namespace ${subdir};`];
+  if (header) return [
+    ...templateHeaderSubdir,
+    '',
+    `namespace ${subdir};`,
+    setSubdirManuf(subdir)&&`alias MF = ${hex(subdirManufId||0)}; // Ebus.id.manufacturers.${subdirManuf}`,
+  ];
   return templateTrans(line, header);
 }
 
 type MessageLine = CsvLine & {
-  0: string, // type (r[1-9];w;u)
-  1?: string, // class
-  2: string, // name (not required for default)
-  3?: string, // comment
-  4?: string, // QQ
-  5?: string, // ZZ
-  6?: string, // PBSB
-  7?: string, // ID
+  /** type (r[1-9];w;u) */
+  0: string,
+  /** class */
+  1?: string,
+  /** name (not required for default) */
+  2: string,
+  /** comment */
+  3?: string,
+  /** QQ */
+  4?: string,
+  /** ZZ */
+  5?: string,
+  /** PBSB */
+  6?: string,
+  /** ID */
+  7?: string,
   // ...fields
 }
-type FieldOfLine = {
-  0?: string, // name
-  1?: string, // part (m/s)
-  2: string, // type / templates
-  3?: string, // divider / values
-  4?: string, // unit
-  5?: string, // comment
+const messageLinePrefixLen = 8;
+type FieldOfLine = CsvLine & {
+  /** name */
+  0?: string,
+  /** part (m/s) */
+  1?: string,
+  /** type / templates */
+  2: string,
+  /** divider / values */
+  3?: string,
+  /** unit */
+  4?: string,
+  /** comment */
+  5?: string,
 }
+const messageLineFieldLen = 6;
+const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>): OptStrs => {
+  if (!line) return;
+  const comm = line[5] || line[0] || line[2];
+  const types = line[2].split(';');
+  if (types.length>1) {
+    const ret: ReqStrs = [];
+    types.forEach(t => {
+      const id = normId(t);
+      ret.push(...[
+        (comm&&comm!=id)?`/** ${comm} */`:undefined,
+        `${addLength(t)??''}${id}${suffix(id, seen)}: ${normType(t)},`,
+      ]);
+    });
+    return ret;
+  }
+  const id = normId(line[0]||types[0]);
+  return [
+    (comm&&comm!=id)?`/** ${comm} */`:undefined,
+    line[4]&&`@unit("${line[4]}")`||undefined,//todo nicer
+    line[3]&&`@divider("${line[3]}")`,
+    addLength(line[1]),
+    `${id}${suffix(id, seen)}: ${normType(types[0])},`,
+  ]
+};
 const messageHeader = [
   ...ebusImport,
-  'import "_templates.tsp";',
+  'import "./_templates.tsp";',
   ...ebusUsing,
 ];
 const messageFooter: string[] = [];
-const messageTrans: Trans<MessageLine> = (line?: MessageLine, header?: boolean): OptStrs => {
-  if (header===true) return messageHeader;
+const direction = (dir: string): string => dir[0]==='r' ? '' : dir[0]==='w' ? '@write ' : ((dir[1]==='w'?'@write ':'')+'@passive ');
+let subdirManufId: number|undefined;
+let subdirManuf: string|undefined;
+const hex = (n?: number) => n===undefined?undefined:`0x${(n|0x100).toString(16).substring(1)}`;
+const fromHex = (...strs: ReqStrs): (number|string)[] => Buffer.from(strs.filter(s=>s!==undefined).join(''))
+.reduce((p, c, i, all) => {
+  if (i%2) {
+    const n = Number.parseInt(String.fromCharCode(p.n, c), 16);
+    p.r.push(i===1 && all.length>=2*2 && n===subdirManufId ? 'MF' : n<2 ? n : `0x${n.toString(16)}`);
+    p.n = 0;
+  } else {
+    p.n = c;
+  }
+  return p;
+}, {n: 0, r: [] as (number|string)[]}).r;
+const objSlice = (line: CsvLine, from: number, len: number): CsvLine => {
+  if (!line) {
+    return;
+  }
+  const ret = {} as ReqStrs;
+  let used: CsvLine;
+  for (let i=0; i<len; i++) {
+    const str = line[from+i];
+    if (str===undefined) {
+      return used;
+    }
+    ret[i] = str;
+    if (str) {
+      used = ret;
+    }
+  }
+  return used;
+};
+const defaultsByName = new Map<string, number>();
+const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
+  if (header) return messageHeader;
   if (header===false) return messageFooter;
   if (!line) return;
+  const fields: OptStrs = [];
+  const seenFields = new Map<string, number>();
+  for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+16*messageLineFieldLen; idx+=messageLineFieldLen) {
+    const field = fieldTrans(objSlice(line, idx, messageLineFieldLen) as FieldOfLine, seenFields);
+    if (!field) {
+      break;
+    }
+    fields.push(...field);
+  }
+  let dirsStr = line[0];
+  const isDefault = dirsStr[0]==='*';
+  if (isDefault) {
+    // default line: convert to base models
+    dirsStr = dirsStr.substring(1);
+    dirsStr += suffix(dirsStr, defaultsByName);
+  }
+  const dirs = dirsStr.split(';');
+  // return dirs.map(dir=> (
+  const idComb = fromHex(line[6], line[7]);
+  const single = dirs.length===1 && (isDefault || !dirs.some(d=>defaultsByName.has(d)));
+  const zz = fromHex(line[5]).join();
   return [
-    line[3]&&`/** ${line[3]} */`,
-  ]
+    // line[1]&&`namespace ${line[1]} {`, //todo block namespace as otherwise only once per file
+    (isDefault||line[3])&&`/** ${line[3]||`default ${line[0]}`} */`,
+    single
+      ? direction(dirs[0]) // single model
+      : `@inherit(${dirs.map(d=>d+getSuffix(d, defaultsByName)).join(', ')})`, // multi model
+    line[4]&&`@qq(${fromHex(line[4]).join})`,
+    zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
+    single&&idComb.length>=2?`@${isDefault?'base':'id'}(${idComb.join(', ')})`:idComb.length?`@ext(${idComb.join(', ')})`:undefined,
+    `model ${normId(isDefault?dirsStr:line[2])} {`,
+    ...fields,
+    '}',
+    // line[1]&&`}`,
+  ];
+// )).reduce((p, c)=>{p.push(...c);return p;},[] as ReqStrs);
 }
-
+const messageTransSubdir = (subdir: string): Trans<MessageLine> => (line?, header?): OptStrs => {
+  header && setSubdirManuf(subdir);
+  if (header) return [
+    ...messageHeader,
+    '',
+    `namespace ${subdir};`,
+  ];
+  return messageTrans(line, header);
+}
 const joinNl = (inp?: OptStrs): string|undefined =>
   inp?.length ? (inp.filter(i=>i!==undefined).join('\n')+'\n\n') : undefined; // one extra for block separation
 
@@ -148,6 +291,7 @@ export const csv2tsp = async (args: string[] = []) => {
         break;
       default:
         files = args.slice(i);
+        i = args.length;
         break;
     }
   }
@@ -158,16 +302,21 @@ export const csv2tsp = async (args: string[] = []) => {
     try {
       await fs.promises.stat(todir); // throws if not exists
     } catch (_) {
+      console.log(`creating directory ${todir}`);
       await fs.promises.mkdir(todir, {recursive: true});
     }
     const name = path.basename(file);
     const newFile = path.join(todir, path.basename(name, path.extname(name))+'.tsp');
+    console.log(`generating ${newFile}`);
     const isTemplates = name==='_templates.csv';
+    defaultsByName.clear();
     const trans = isTemplates
       ? subdir
         ? templateTransSubdir(subdir)
         : templateTrans
-      : messageTrans;
+      : subdir
+        ? messageTransSubdir(subdir)
+        : messageTrans
     let first = true;
     let transform: Transform;
     const headerIfFirst = (inp: OptStrs): OptStrs => {
