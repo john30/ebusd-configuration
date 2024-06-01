@@ -10,7 +10,7 @@ type OptStrs = ReqStrs | undefined;
 
 type CsvLine = OptStrs;
 
-type Trans<T extends CsvLine> = (line?: T, header?: boolean) => OptStrs;
+type Trans<T extends CsvLine> = (line?: T, header?: string|false) => OptStrs;
 
 type TemplateLine = CsvLine & {
   /** name */
@@ -91,7 +91,7 @@ const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
     line[4]&&`/** ${line[4]} */`,
     line[3]&&`@unit("${line[3]}")`||undefined,//todo nicer
     addLength(types[0]),
-    `scalar ${normId(line[0])} extends ${normType(types[0])}`,
+    `scalar ${normId(line[0])} extends ${normType(types[0])};`,
   ]
 }
 const knownManufacturers = new Map<string, [number, string]>([
@@ -103,7 +103,7 @@ const setSubdirManuf = (subdir: string): string|undefined => {
   subdirManufId = id!;
   return name;
 }
-const templateTransSubdir = (subdir: string): Trans<TemplateLine> => (line?, header?): OptStrs => {
+const templateTransSub = (subdir: string): Trans<TemplateLine> => (line?, header?): OptStrs => {
   if (header) return [
     ...templateHeaderSubdir,
     '',
@@ -116,7 +116,7 @@ const templateTransSubdir = (subdir: string): Trans<TemplateLine> => (line?, hea
 type MessageLine = CsvLine & {
   /** type (r[1-9];w;u) */
   0: string,
-  /** class */
+  /** circuit */
   1?: string,
   /** name (not required for default) */
   2: string,
@@ -189,7 +189,7 @@ const messageHeader = [
   'import "./_templates.tsp";',
   ...ebusUsing,
 ];
-const messageFooter: string[] = [];
+const messageFooter: string[] = ['}'];
 const direction = (dir: string): string => dir[0]==='r' ? '' : dir[0]==='w' ? '@write ' : ((dir[1]==='w'?'@write ':'')+'@passive ');
 let subdirManufId: number|undefined;
 let subdirManuf: string|undefined;
@@ -225,8 +225,28 @@ const objSlice = (line: CsvLine, from: number, len: number): CsvLine => {
 };
 const defaultsByName = new Map<string, number>();
 const valueLists = new Map<string, string[]>();
+const namespaceWithZz = (header: string) => {
+  const parts = header.split('.');
+  let zz: string|undefined;
+  let circuit = header;
+  if (parts.length==2 && parts[0].length==2) {
+    // zz.circuit
+    zz = `0x${parts[0]}`;
+    circuit = parts[1]
+  }
+  return [
+    zz&&`@zz(${zz})`,
+    `namespace ${circuit} {`,
+  ];
+};
 const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
-  if (header) return messageHeader;
+  if (header) {
+    return [
+      ...messageHeader,
+      '',
+      ...namespaceWithZz(header),
+    ];
+  }
   if (header===false) {
     const ret: ReqStrs = [];
     for (const [name, values] of valueLists.entries()) {
@@ -254,13 +274,15 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   let dirsStr = line[0];
   if (dirsStr[0]==='!') return; // todo support include/load instruction
   let isDefault: string|undefined = dirsStr[0]==='*'?`default ${dirsStr}`:undefined;
+  let circuit: string|undefined = line[1];
   if (isDefault) {
     // default line: convert to base models
     dirsStr = dirsStr.substring(1);
     dirsStr += suffix(dirsStr, defaultsByName);
-    if (line[1]?.startsWith('#')) {
+    if (circuit?.startsWith('#')) {
       // todo level
-      isDefault += ` for user level "${line[1].substring(1)}"`;
+      isDefault += ` for user level "${circuit.substring(1)}"`;
+      circuit = '';
     }
   }
   const isCondition = dirsStr[0]==='[';
@@ -271,7 +293,7 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   const single = dirs.length===1 && (isDefault || !dirs.some(d=>defaultsByName.has(d)));
   const zz = fromHex(line[5]).join();
   return [
-    // line[1]&&`namespace ${line[1]} {`, //todo block namespace as otherwise only once per file
+    // circuit&&`namespace ${circuit} {`, // block namespace as otherwise only once per file
     (line[3]||isDefault)&&`/** ${line[3]||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
@@ -282,16 +304,17 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
     `model ${normId(isDefault?dirsStr:line[2])} {`,
     ...fields,
     '}',
-    // line[1]&&`}`,
+    // circuit&&`}`,
   ];
 // )).reduce((p, c)=>{p.push(...c);return p;},[] as ReqStrs);
 }
-const messageTransSubdir = (subdir: string): Trans<MessageLine> => (line?, header?): OptStrs => {
+const messageTransSub = (subdir: string): Trans<MessageLine> => (line?, header?): OptStrs => {
   header && setSubdirManuf(subdir);
   if (header) return [
     ...messageHeader,
-    '',
     `namespace ${subdir};`,
+    '',
+    ...namespaceWithZz(header),
   ];
   return messageTrans(line, header);
 }
@@ -339,33 +362,38 @@ export const csv2tsp = async (args: string[] = []) => {
       await fs.promises.mkdir(todir, {recursive: true});
     }
     const name = path.basename(file);
-    const newFile = path.join(todir, path.basename(name, path.extname(name))+'.tsp');
+    const nameNoExt = path.basename(name, path.extname(name));
+    const newFile = path.join(todir, nameNoExt+'.tsp');
     console.log(`generating ${newFile}`);
     const isTemplates = name==='_templates.csv';
+    const namespace = isTemplates ? nameNoExt
+    : path.extname(name)==='.inc' ? nameNoExt+'_inc'
+    : nameNoExt;
     defaultsByName.clear();
     valueLists.clear();
     const trans = isTemplates
       ? subdir
-        ? templateTransSubdir(subdir)
+        ? templateTransSub(subdir)
         : templateTrans
       : subdir
-        ? messageTransSubdir(subdir)
+        ? messageTransSub(subdir)
         : messageTrans
     let first = true;
     let transform: Transform;
     const headerIfFirst = (inp: OptStrs): OptStrs => {
       if (!inp?.length || !first || !transform) return inp;
       first = false;
-      transform.push(joinNl(trans(undefined, true)||[]));
+      transform.push(joinNl(trans(undefined, namespace)||[]));
       return inp;
     }
+    const empty = (line: OptStrs) => !line || !Object.keys(line).length;
     await pipeline(
       fs.createReadStream(file, 'utf-8'),
       csvParser({headers: false, skipComments: true}),
       transform = new Transform({
         objectMode: true,
         // construct: 
-        transform: (line, _, cb) => cb(null, joinNl(headerIfFirst(trans(line))||[])),
+        transform: (line, _, cb) => cb(null, empty(line)?undefined:joinNl(headerIfFirst(trans(line))||[])),
         flush: (cb) => cb(null, joinNl(headerIfFirst(trans(undefined, false))||[])),
       }),
       fs.createWriteStream(newFile),
