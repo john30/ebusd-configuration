@@ -4,6 +4,7 @@
   "description": "utilities for converting ebusd-configuration files",
   "scripts": {
     "csv2tsc": "npx ts-node ./utils/src/index.ts",
+    "format": "npx tsp format outdir/**/*.tsp",
     "build": "tsc -p utils",
     "csv2tsc.js": "node ./utils/dist/src/index.js"
   },

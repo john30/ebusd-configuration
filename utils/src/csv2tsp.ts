@@ -1,7 +1,7 @@
 import csvParser from "csv-parser";
 import * as fs from "fs";
 import * as path from 'path';
-import {Transform} from "stream";
+import {Transform, type TransformCallback} from "stream";
 import {pipeline} from "stream/promises";
 
 type ReqStrs = (string | undefined)[];
@@ -306,7 +306,7 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
     '}',
     // circuit&&`}`,
   ];
-// )).reduce((p, c)=>{p.push(...c);return p;},[] as ReqStrs);
+  // )).reduce((p, c)=>{p.push(...c);return p;},[] as ReqStrs);
 }
 const messageTransSub = (subdir: string): Trans<MessageLine> => (line?, header?): OptStrs => {
   header && setSubdirManuf(subdir);
@@ -380,21 +380,30 @@ export const csv2tsp = async (args: string[] = []) => {
         : messageTrans
     let first = true;
     let transform: Transform;
-    const headerIfFirst = (inp: OptStrs): OptStrs => {
-      if (!inp?.length || !first || !transform) return inp;
-      first = false;
-      transform.push(joinNl(trans(undefined, namespace)||[]));
-      return inp;
-    }
     const empty = (line: OptStrs) => !line || !Object.keys(line).length;
+    const content: (string|undefined)[] = [];
+    const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
+      if (!transform) return cb();
+      if (inp?.length) {
+        if (first) {
+          first = false;
+          content.push(...trans(undefined, namespace)||[]); // prepend header on first push
+        }
+        content.push(...inp);
+      }
+      if (!flush) return cb();
+      const contentStr = joinNl(content) as string;
+      // formatTypeSpec(contentStr)
+      // .then((d:string) => cb(null, d), cb);
+      cb(null, contentStr);
+    }
     await pipeline(
       fs.createReadStream(file, 'utf-8'),
       csvParser({headers: false, skipComments: true}),
       transform = new Transform({
         objectMode: true,
-        // construct: 
-        transform: (line, _, cb) => cb(null, empty(line)?undefined:joinNl(headerIfFirst(trans(line))||[])),
-        flush: (cb) => cb(null, joinNl(headerIfFirst(trans(undefined, false))||[])),
+        transform: (line, _, cb) => push(empty(line)?undefined:trans(line), cb),
+        flush: (cb) => push(trans(undefined, false), cb, true),
       }),
       fs.createWriteStream(newFile),
     );
