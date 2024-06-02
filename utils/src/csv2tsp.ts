@@ -61,7 +61,7 @@ const suffix = (t: string, seen: Map<string, number>) => {
   let idx = seen.get(t);
   if (idx===undefined) {
     seen.set(t, 0);
-    return '';
+    return t==='_'?'_0':'';
   }
   seen.set(t, ++idx);
   return `_${idx}`;
@@ -69,38 +69,46 @@ const suffix = (t: string, seen: Map<string, number>) => {
 const getSuffix = (t: string, seen: Map<string, number>) => {
   let idx = seen.get(t);
   if (idx===undefined || idx===0) {
-    return '';
+    return t==='_'?'_0':'';
   }
   return `_${idx}`;
 }
+const isBaseType = (t: string|undefined) => t && t.toUpperCase()===t;
+const removeTrailNum = (id: string) => id && id.replace(/[0-9]*$/, '');
+const normFieldName = (id: string) => id && (isBaseType(id)?id.toLowerCase():id);
 const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
     return [...addValueLists(), ...templateFooter];
   }
   if (!line) return;
-  const {id, comm, divisor, values}
+  const {id, typ, typLen, comm, divisor, values}
   = divisorValues(line[0], line[1], line[2], line[4]);
   const types = line[1].split(';');
   if (types.length>1) {
     const seen = new Map<string, number>();
     return [
-      comm&&`/** ${comm} */`,
+      (comm&&comm!==id&&comm!==line[1])?`/** ${comm} */`:undefined,
       `model ${id} {`,
-      ...types.map(t => `${addLength(t)??''}${normId(t)}${suffix(t, seen)}: ${normType(t)},`),
+      ...types.map(t => {
+          const {id, typ, typLen} = divisorValues('', t, '', '');
+          const name = removeTrailNum(normFieldName(id));
+          return `${typLen??''}${name}${suffix(name, seen)}: ${typ},`;
+        }),
        '}',
     ];
   }
+  const name = normalize && id===typ ? 'value' : normFieldName(id);
   return [
     (comm&&comm!=id)?`/** ${comm} */`:undefined,
     line[3]&&`@unit("${line[3]}")`||undefined,//todo nicer
     divisor||values||undefined,
-    addLength(types[0]),
-    `scalar ${id} extends ${normType(types[0])};`,
+    typLen,
+    `scalar ${name} extends ${typ};`,
   ]
 }
 const knownManufacturers = new Map<string, [number, string]>([
-  ['vaillant', [0xb5, 'Vaillant']],
+  ['vaillant', [0xb5, 'Vaillant']],//todo use enum from lib
 ])
 const setSubdirManuf = (subdir: string): string|undefined => {
   const [id, name] = knownManufacturers.get(subdir)||[];
@@ -154,10 +162,17 @@ type FieldOfLine = CsvLine & {
 }
 const messageLineFieldLen = 6;
 const valueLists = {list: new Map<string, string[]>(), seen: new Map<string, number>()};
-const divisorValues = (name: string|undefined, typ: string, divVal: string|undefined, comm: string|undefined,
-): {id: string, comm: string, divisor?: string, values?: string} => {
+const divisorValues = (name: string|undefined, typ: string, divVal: string|undefined,
+  comm: string|undefined,
+): {id: string, typ?: string, typLen?: string, comm: string, divisor?: string, values?: string} => {
   const id = normId(name||(typ.split(':')[0]));
-  comm = comm || name || typ;
+  comm = comm || name || '';
+  const typLen = addLength(typ);
+  const origTyp = typ;
+  typ = normType(typ);
+  if (!comm && origTyp && !isBaseType(origTyp)) {
+    comm = origTyp;
+  }
   const divParts = divVal && divVal.split(';');
   const hasValues = divParts && divParts.length>1;
   let divisor: string|undefined;
@@ -172,30 +187,36 @@ const divisorValues = (name: string|undefined, typ: string, divVal: string|undef
     const value = parseInt(divVal!, 10);
     divisor = `@${value<0?'factor':'divisor'}(${Math.abs(value)})`;
   }
-  return {id, comm, divisor, values};
+  return {id, typ, typLen, comm, divisor, values};
 };
-const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>): OptStrs => {
+// const toField = (line: FieldOfLine): Field => 
+const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, singleField: boolean): OptStrs => {
   if (!line) return;
-  const {id, comm, divisor, values}
+  // const fld = toField(line);
+  const {id, typ, typLen, comm, divisor, values}
   = divisorValues(line[0], line[2], line[3], line[5]);
   const types = line[2].split(';');
   if (types.length>1) {
     const ret: ReqStrs = [];
     types.forEach(t => {
-      const id = normId(t);
+      const {id, typ, typLen} = divisorValues('', t, '', '');
+      const name = removeTrailNum(normFieldName(id));
       ret.push(...[
-        (comm&&comm!=id)?`/** ${comm} */`:undefined,
-        `${addLength(t)??''}${id}${suffix(id, seen)}: ${normType(t)},`,
+        (comm&&comm!==id&&comm!==line[2])?`/** ${comm} */`:undefined,
+        `${typLen??''}${name}${suffix(name, seen)}: ${typ},`,
       ]);
     });
     return ret;
   }
-  return [//todo in/out
+  //todo flatten inlined models only in emit
+  const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
+  return [
     (comm&&comm!=id)?`/** ${comm} */`:undefined,
+    line[1]&&(line[1]==='m'?'@out':'@in'),
     line[4]&&`@unit("${line[4]}")`||undefined,//todo nicer
     divisor||values||undefined,
-    addLength(types[0]),
-    `${id}${suffix(id, seen)}: ${normType(types[0])},`,
+    typLen,
+    `${name}${suffix(name, seen)}: ${typ},`,
   ]
 };
 const messageHeader = [
@@ -281,26 +302,29 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
     return [...addValueLists(), ...messageFooter];
   };
   if (!line) return;
-  const fields: OptStrs = [];
+  const fieldLines: FieldOfLine[] = [];
   const seenFields = new Map<string, number>();
   for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+16*messageLineFieldLen; idx+=messageLineFieldLen) {
-    const field = fieldTrans(objSlice(line, idx, messageLineFieldLen) as FieldOfLine, seenFields);
-    if (!field) {
+    const fieldLine = objSlice(line, idx, messageLineFieldLen) as FieldOfLine;
+    if (!fieldLine) {
       break;
     }
-    fields.push(...field);
+    fieldLines.push(fieldLine);
   }
+  const fields: OptStrs = [];
+  fieldLines.forEach(fieldLine => fields.push(...fieldTrans(fieldLine, seenFields, fieldLines.length===1)||[]));
   let dirsStr = line[0];
   if (dirsStr[0]==='!') return; // todo support include/load instruction
   let isDefault: string|undefined = dirsStr[0]==='*'?`default ${dirsStr}`:undefined;
   let circuit: string|undefined = line[1];
+  let auth: string|undefined;
   if (isDefault) {
     // default line: convert to base models
     dirsStr = dirsStr.substring(1);
     dirsStr += suffix(dirsStr, defaultsByName);
     if (circuit?.startsWith('#')) {
-      // todo level
-      isDefault += ` for user level "${circuit.substring(1)}"`;
+      auth = circuit.substring(1);
+      isDefault += ` for user level "${auth}"`;
       circuit = '';
     }
   }
@@ -317,6 +341,7 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
     single
       ? direction(dirs[0]) // single model
       : `@inherit(${dirs.map(d=>d+getSuffix(d, defaultsByName)).join(', ')})`, // multi model
+    auth&&`@auth("${auth}")`,
     line[4]&&`@qq(${fromHex(line[4]).join})`,
     zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
     single&&idComb.length>=2?`@${isDefault?'base':'id'}(${idComb.join(', ')})`:idComb.length?`@ext(${idComb.join(', ')})`:undefined,
@@ -341,13 +366,16 @@ const joinNl = (inp?: OptStrs): string|undefined =>
   inp?.length ? (inp.filter(i=>i!==undefined).join('\n')+'\n\n') : undefined; // one extra for block separation
 
 const helpTxt = [
-  'usage: csv2tsp [-o outdir] [-b basedir] csvfile*',
+  'usage: csv2tsp [-k] [-o outdir] [-b basedir] csvfile*',
   'converts ebusd csv files to tsp for use with ebus typespec library.',
   'with:',
-  '  outdir   the output directory (default "outdir")',
-  '  basedir  the base directory for determining namespace of each csvfile',
-  '  casfile  the csv file(s) to transform'
+  '  -n          normalize names',
+  '  -o outdir   the output directory (default "outdir")',
+  '  -b basedir  the base directory for determining namespace of each csvfile',
+  '  csvfile     the csv file(s) to transform'
 ];
+let normalize = false;
+//todo write dictionary for translation or let emitter do that
 export const csv2tsp = async (args: string[] = []) => {
   let indir = '.';
   let outdir = 'outdir';
@@ -358,6 +386,9 @@ export const csv2tsp = async (args: string[] = []) => {
       case '-h':
         console.log(joinNl(helpTxt));
         return;
+      case '-n':
+        normalize = true;
+        break;
       case '-b':
         indir = args[++i];
         break;
