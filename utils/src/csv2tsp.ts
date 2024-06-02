@@ -17,7 +17,7 @@ type TemplateLine = CsvLine & {
   0: string,
   /** type / templates */
   1: string,
-  /** divider / values */
+  /** divisor / values */
   2?: string,
   /** unit */
   3?: string,
@@ -75,23 +75,28 @@ const getSuffix = (t: string, seen: Map<string, number>) => {
 }
 const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
   if (header) return templateHeader;
-  if (header===false) return templateFooter;
+  if (header===false) {
+    return [...addValueLists(), ...templateFooter];
+  }
   if (!line) return;
+  const {id, comm, divisor, values}
+  = divisorValues(line[0], line[1], line[2], line[4]);
   const types = line[1].split(';');
   if (types.length>1) {
     const seen = new Map<string, number>();
     return [
-      line[4]&&`/** ${line[4]} */`,
-      `model ${normId(line[0])} {`,
+      comm&&`/** ${comm} */`,
+      `model ${id} {`,
       ...types.map(t => `${addLength(t)??''}${normId(t)}${suffix(t, seen)}: ${normType(t)},`),
        '}',
     ];
   }
   return [
-    line[4]&&`/** ${line[4]} */`,
+    (comm&&comm!=id)?`/** ${comm} */`:undefined,
     line[3]&&`@unit("${line[3]}")`||undefined,//todo nicer
+    divisor||values||undefined,
     addLength(types[0]),
-    `scalar ${normId(line[0])} extends ${normType(types[0])};`,
+    `scalar ${id} extends ${normType(types[0])};`,
   ]
 }
 const knownManufacturers = new Map<string, [number, string]>([
@@ -140,7 +145,7 @@ type FieldOfLine = CsvLine & {
   1?: string,
   /** type / templates */
   2: string,
-  /** divider / values */
+  /** divisor / values */
   3?: string,
   /** unit */
   4?: string,
@@ -148,9 +153,31 @@ type FieldOfLine = CsvLine & {
   5?: string,
 }
 const messageLineFieldLen = 6;
-const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, valueLists: Map<string, string[]>): OptStrs => {
+const valueLists = {list: new Map<string, string[]>(), seen: new Map<string, number>()};
+const divisorValues = (name: string|undefined, typ: string, divVal: string|undefined, comm: string|undefined,
+): {id: string, comm: string, divisor?: string, values?: string} => {
+  const id = normId(name||(typ.split(':')[0]));
+  comm = comm || name || typ;
+  const divParts = divVal && divVal.split(';');
+  const hasValues = divParts && divParts.length>1;
+  let divisor: string|undefined;
+  let values: string|undefined;
+  if (hasValues) {
+    values = `values_`;
+    values += (comm||id||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
+    values += suffix(values, valueLists.seen);
+    valueLists.list.set(values, divParts);
+    values = `@values(${values})`;
+  } else if (divVal) {
+    const value = parseInt(divVal!, 10);
+    divisor = `@${value<0?'factor':'divisor'}(${Math.abs(value)})`;
+  }
+  return {id, comm, divisor, values};
+};
+const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>): OptStrs => {
   if (!line) return;
-  const comm = line[5] || line[0] || line[2];
+  const {id, comm, divisor, values}
+  = divisorValues(line[0], line[2], line[3], line[5]);
   const types = line[2].split(';');
   if (types.length>1) {
     const ret: ReqStrs = [];
@@ -163,23 +190,10 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, valu
     });
     return ret;
   }
-  const id = normId(line[0]||(types[0].split(':')[0]));
-  const divParts = line[3] && line[3].split(';');
-  const hasValues = divParts && divParts.length>1;
-  let divider: string|undefined;
-  let values: string|undefined;
-  if (hasValues) {
-    values = `values_`;
-    values += (comm||id||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
-    values += suffix(values, seen);
-    valueLists.set(values, divParts);
-  } else {
-    divider = line[3];
-  }
-  return [
+  return [//todo in/out
     (comm&&comm!=id)?`/** ${comm} */`:undefined,
     line[4]&&`@unit("${line[4]}")`||undefined,//todo nicer
-    divider?`@divider("${line[3]}")`:values?`@values(${values})`:undefined,
+    divisor||values||undefined,
     addLength(types[0]),
     `${id}${suffix(id, seen)}: ${normType(types[0])},`,
   ]
@@ -224,7 +238,6 @@ const objSlice = (line: CsvLine, from: number, len: number): CsvLine => {
   return used;
 };
 const defaultsByName = new Map<string, number>();
-const valueLists = new Map<string, string[]>();
 const namespaceWithZz = (header: string) => {
   const parts = header.split('.');
   let zz: string|undefined;
@@ -239,6 +252,23 @@ const namespaceWithZz = (header: string) => {
     `namespace ${circuit} {`,
   ];
 };
+const addValueLists = (): ReqStrs => {
+  const ret: ReqStrs = [];
+  for (const [name, values] of valueLists.list.entries()) {
+    ret.push(`enum ${name} {`);
+    const keys = new Map<string, number>();
+    values.forEach(v => {
+      const [k, n] = v.split('=');
+      let id = normId(n.replaceAll(/[^a-zA-Z0-9]/g, '_'));
+      if (id[0]>='0' && id[0]<='9') {
+        id = '_'+id;
+      }
+      ret.push(`${id+suffix(id, keys)}: ${k},`);
+    });
+    ret.push('}');
+  }
+  return ret;
+};
 const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   if (header) {
     return [
@@ -248,24 +278,13 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
     ];
   }
   if (header===false) {
-    const ret: ReqStrs = [];
-    for (const [name, values] of valueLists.entries()) {
-      ret.push(`enum ${name} {`);
-      const keys = new Map<string, number>();
-      values.forEach(v => {
-        const [k, n] = v.split('=');
-        const id = normId(n);
-        ret.push(`${id+suffix(id, keys)}: ${k},`);
-      });
-      ret.push('}');
-    }
-    return [...ret, ...messageFooter];
+    return [...addValueLists(), ...messageFooter];
   };
   if (!line) return;
   const fields: OptStrs = [];
   const seenFields = new Map<string, number>();
   for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+16*messageLineFieldLen; idx+=messageLineFieldLen) {
-    const field = fieldTrans(objSlice(line, idx, messageLineFieldLen) as FieldOfLine, seenFields, valueLists);
+    const field = fieldTrans(objSlice(line, idx, messageLineFieldLen) as FieldOfLine, seenFields);
     if (!field) {
       break;
     }
@@ -355,6 +374,7 @@ export const csv2tsp = async (args: string[] = []) => {
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
     const todir = path.join(outdir, subdir);
+    //todo models imported from _templates
     try {
       await fs.promises.stat(todir); // throws if not exists
     } catch (_) {
@@ -370,7 +390,8 @@ export const csv2tsp = async (args: string[] = []) => {
     : path.extname(name)==='.inc' ? nameNoExt+'_inc'
     : nameNoExt;
     defaultsByName.clear();
-    valueLists.clear();
+    valueLists.list.clear();
+    valueLists.seen.clear();
     const trans = isTemplates
       ? subdir
         ? templateTransSub(subdir)
