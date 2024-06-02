@@ -4,11 +4,11 @@ import * as path from 'path';
 import {Transform, type TransformCallback} from "stream";
 import {pipeline} from "stream/promises";
 
-type ReqStrs = (string | undefined)[];
+type ReqStrs = (string | undefined | false)[];
 
 type OptStrs = ReqStrs | undefined;
 
-type CsvLine = OptStrs;
+type CsvLine = Record<number, string|undefined>;
 
 type Trans<T extends CsvLine> = (line?: T, header?: string|false) => OptStrs;
 
@@ -81,6 +81,7 @@ const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
   if (header===false) {
     return [...addValueLists(), ...templateFooter];
   }
+  line = objSlice(line);
   if (!line) return;
   const {id, typ, typLen, comm, divisor, values}
   = divisorValues(line[0], line[1], line[2], line[4]);
@@ -88,7 +89,7 @@ const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
   if (types.length>1) {
     const seen = new Map<string, number>();
     return [
-      (comm&&comm!==id&&comm!==line[1])?`/** ${comm} */`:undefined,
+      comm&&comm!==id&&comm!==line[1]&&`/** ${comm} */`,
       `model ${id} {`,
       ...types.map(t => {
           const {id, typ, typLen} = divisorValues('', t, '', '');
@@ -100,9 +101,9 @@ const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
   }
   const name = normalize && id===typ ? 'value' : normFieldName(id);
   return [
-    (comm&&comm!=id)?`/** ${comm} */`:undefined,
-    line[3]&&`@unit("${line[3]}")`||undefined,//todo nicer
-    divisor||values||undefined,
+    comm&&comm!=id&&`/** ${comm} */`,
+    line[3]&&`@unit("${line[3]}")`,
+    divisor||values,
     typLen,
     `scalar ${name} extends ${typ};`,
   ]
@@ -161,6 +162,7 @@ type FieldOfLine = CsvLine & {
   5?: string,
 }
 const messageLineFieldLen = 6;
+const maxFields = 16;
 const valueLists = {list: new Map<string, string[]>(), seen: new Map<string, number>()};
 const divisorValues = (name: string|undefined, typ: string, divVal: string|undefined,
   comm: string|undefined,
@@ -189,16 +191,14 @@ const divisorValues = (name: string|undefined, typ: string, divVal: string|undef
   }
   return {id, typ, typLen, comm, divisor, values};
 };
-// const toField = (line: FieldOfLine): Field => 
 const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, singleField: boolean): OptStrs => {
   if (!line) return;
-  // const fld = toField(line);
   const {id, typ, typLen, comm, divisor, values}
   = divisorValues(line[0], line[2], line[3], line[5]);
   const types = line[2].split(';');
   if (types.length>1) {
     const ret: ReqStrs = [];
-    types.forEach(t => {
+    types.filter(t=>t).forEach(t => {
       const {id, typ, typLen} = divisorValues('', t, '', '');
       const name = removeTrailNum(normFieldName(id));
       ret.push(...[
@@ -211,10 +211,10 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, sing
   //todo flatten inlined models only in emit
   const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
   return [
-    (comm&&comm!=id)?`/** ${comm} */`:undefined,
+    comm&&comm!=id&&`/** ${comm} */`,
     line[1]&&(line[1]==='m'?'@out':'@in'),
-    line[4]&&`@unit("${line[4]}")`||undefined,//todo nicer
-    divisor||values||undefined,
+    line[4]&&`@unit("${line[4]}")`,
+    divisor||values,
     typLen,
     `${name}${suffix(name, seen)}: ${typ},`,
   ]
@@ -225,7 +225,7 @@ const messageHeader = [
   ...ebusUsing,
 ];
 const messageFooter: string[] = ['}'];
-const direction = (dir: string): string => dir[0]==='r' ? '' : dir[0]==='w' ? '@write ' : ((dir[1]==='w'?'@write ':'')+'@passive ');
+const direction = (dir: string): string|undefined => dir[0]==='r' ? undefined : dir[0]==='w' ? '@write ' : ((dir[1]==='w'?'@write ':'')+'@passive ');
 let subdirManufId: number|undefined;
 let subdirManuf: string|undefined;
 const hex = (n?: number) => n===undefined?undefined:`0x${(n|0x100).toString(16).substring(1)}`;
@@ -240,19 +240,19 @@ const fromHex = (...strs: ReqStrs): (number|string)[] => Buffer.from(strs.filter
   }
   return p;
 }, {n: 0, r: [] as (number|string)[]}).r;
-const objSlice = (line: CsvLine, from: number, len: number): CsvLine => {
+const objSlice = <T extends CsvLine>(line: T|undefined, from: number = 0, len: number = messageLinePrefixLen+maxFields*messageLineFieldLen): T|undefined => {
   if (!line) {
-    return;
+    return line;
   }
-  const ret = {} as ReqStrs;
-  let used: CsvLine;
+  const ret = {} as T;
+  let used = undefined as unknown as T;
   for (let i=0; i<len; i++) {
     const str = line[from+i];
     if (str===undefined) {
       return used;
     }
-    ret[i] = str;
     if (str) {
+      ret[i] = str;
       used = ret;
     }
   }
@@ -290,7 +290,7 @@ const addValueLists = (): ReqStrs => {
   }
   return ret;
 };
-const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
+const messageTrans: Trans<MessageLine> = (wholeLine?, header?): OptStrs => {
   if (header) {
     return [
       ...messageHeader,
@@ -301,11 +301,12 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   if (header===false) {
     return [...addValueLists(), ...messageFooter];
   };
+  const line = objSlice(wholeLine);
   if (!line) return;
   const fieldLines: FieldOfLine[] = [];
   const seenFields = new Map<string, number>();
-  for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+16*messageLineFieldLen; idx+=messageLineFieldLen) {
-    const fieldLine = objSlice(line, idx, messageLineFieldLen) as FieldOfLine;
+  for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+maxFields*messageLineFieldLen; idx+=messageLineFieldLen) {
+    const fieldLine = objSlice(wholeLine, idx, messageLineFieldLen) as FieldOfLine;
     if (!fieldLine) {
       break;
     }
@@ -334,7 +335,7 @@ const messageTrans: Trans<MessageLine> = (line?, header?): OptStrs => {
   // return dirs.map(dir=> (
   const idComb = fromHex(line[6], line[7]);
   const single = dirs.length===1 && (isDefault || !dirs.some(d=>defaultsByName.has(d)));
-  const zz = fromHex(line[5]).join();
+  const zz = line[5]&&fromHex(line[5]).join();
   return [
     // circuit&&`namespace ${circuit} {`, // block namespace as otherwise only once per file
     (line[3]||isDefault)&&`/** ${line[3]||isDefault} */`,
@@ -363,16 +364,16 @@ const messageTransSub = (subdir: string): Trans<MessageLine> => (line?, header?)
   return messageTrans(line, header);
 }
 const joinNl = (inp?: OptStrs): string|undefined =>
-  inp?.length ? (inp.filter(i=>i!==undefined).join('\n')+'\n\n') : undefined; // one extra for block separation
+  inp?.length ? (inp.filter(i=>i!==undefined&&i!==false).join('\n')+'\n\n') : undefined; // one extra for block separation
 
 const helpTxt = [
-  'usage: csv2tsp [-k] [-o outdir] [-b basedir] csvfile*',
+  'usage: csv2tsp [-k] [-o outdir] [-b basedir] [csvfile*]',
   'converts ebusd csv files to tsp for use with ebus typespec library.',
   'with:',
   '  -n          normalize names',
   '  -o outdir   the output directory (default "outdir")',
   '  -b basedir  the base directory for determining namespace of each csvfile',
-  '  csvfile     the csv file(s) to transform'
+  '  csvfile     the csv file(s) to transform (unless to traverse the whole basedir)'
 ];
 let normalize = false;
 //todo write dictionary for translation or let emitter do that
@@ -401,7 +402,12 @@ export const csv2tsp = async (args: string[] = []) => {
         break;
     }
   }
-  //todo whole tree in indir if no files
+  if (!files?.length) {
+    // whole tree in indir if no files
+    files = (await fs.promises.readdir(indir, {withFileTypes: true, recursive: true}))
+    .filter(e => e.isFile() && !e.isSymbolicLink() && (e.name.endsWith('.csv')||e.name.endsWith('.inc')))
+    .map(e => path.join(e.parentPath, e.name));
+  }
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
     const todir = path.join(outdir, subdir);
@@ -433,7 +439,7 @@ export const csv2tsp = async (args: string[] = []) => {
     let first = true;
     let transform: Transform;
     const empty = (line: OptStrs) => !line || !Object.keys(line).length;
-    const content: (string|undefined)[] = [];
+    const content: ReqStrs = [];
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
       if (inp?.length) {
