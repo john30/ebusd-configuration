@@ -10,7 +10,9 @@ type OptStrs = ReqStrs | undefined;
 
 type CsvLine = Record<number, string|undefined>;
 
-type Trans<T extends CsvLine> = (line?: T, header?: string|false) => OptStrs;
+type Additions = {imports: ReqStrs, models: ReqStrs, defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
+
+type Trans<T extends CsvLine> = (line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
 
 type TemplateLine = CsvLine & {
   /** name */
@@ -44,7 +46,7 @@ const templateHeaderSubdir = [
 ];
 const templateFooter: string[] = [];
 const dynLengthTypes = new Set<string>(['STR', 'NTS', 'IGN', 'HEX'])
-const normId = (id: string): string => id.replaceAll(/[-:]/g, '_');
+const normId = (id: string): string => id.replaceAll(/[^a-zA-Z0-9_]/g, '_');
 const normType = (t: string): string => {
   const parts = t.split(':');
   parts[0] = normId(parts[0]);
@@ -55,6 +57,11 @@ const addLength = (t?: string): string|undefined => {
   if (!t) return;
   const parts = t.split(':');
   if (parts.length<2 || !dynLengthTypes.has(parts[0])) return;
+  if (parts[1]==='*') {
+    // '* is the only way to allow dynamic length on a field as last one in request or response
+    // todo add to emitter
+    return `@minLength(0) @maxLength(16) `;
+  }
   return `@maxLength(${parts[1]}) `;
 }
 const suffix = (t: string, seen: Map<string, number>) => {
@@ -76,7 +83,7 @@ const getSuffix = (t: string, seen: Map<string, number>) => {
 const isBaseType = (t: string|undefined) => t && t.toUpperCase()===t;
 const removeTrailNum = (id: string) => id && id.replace(/[0-9]*$/, '');
 const normFieldName = (id: string) => id && (isBaseType(id)?id.toLowerCase():id);
-const templateTrans: Trans<TemplateLine> = (line?, header?): OptStrs => {
+const templateTrans: Trans<TemplateLine> = (line?, header?, additions?): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
     return [...addValueLists(), ...templateFooter];
@@ -117,14 +124,15 @@ const setSubdirManuf = (subdir: string): string|undefined => {
   subdirManufId = id!;
   return name;
 }
-const templateTransSub = (subdir: string): Trans<TemplateLine> => (line?, header?): OptStrs => {
+const templateTransSub = (subdir: string): Trans<TemplateLine> => (...args): OptStrs => {
+  const [,header] = args;
   if (header) return [
     ...templateHeaderSubdir,
     '',
     `namespace ${subdir};`,
     setSubdirManuf(subdir)&&`alias MF = ${hex(subdirManufId||0)}; // Ebus.id.manufacturers.${subdirManuf}`,
   ];
-  return templateTrans(line, header);
+  return templateTrans(...args);
 }
 
 type MessageLine = CsvLine & {
@@ -258,21 +266,22 @@ const objSlice = <T extends CsvLine>(line: T|undefined, from: number = 0, len: n
   }
   return used;
 };
-const defaultsByName = new Map<string, number>();
 const namespaceWithZz = (header: string) => {
   const parts = header.split('.');
   let zz: string|undefined;
   let circuit = header;
-  if (parts.length==2 && parts[0].length==2) {
+  if (parts.length>=2 && parts[0].length==2) {
     // zz.circuit
     zz = `0x${parts[0]}`;
-    circuit = parts[1]
+    parts.splice(0, 1);
   }
+  circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_':'')+p).join('.');
   return [
     zz&&`@zz(${zz})`,
     `namespace ${circuit} {`,
   ];
 };
+const reservedWords = ['unknown'];
 const addValueLists = (): ReqStrs => {
   const ret: ReqStrs = [];
   for (const [name, values] of valueLists.list.entries()) {
@@ -284,13 +293,16 @@ const addValueLists = (): ReqStrs => {
       if (id[0]>='0' && id[0]<='9') {
         id = '_'+id;
       }
+      if (reservedWords.includes(id)) {
+        id = '_'+id;
+      }
       ret.push(`${id+suffix(id, keys)}: ${k},`);
     });
     ret.push('}');
   }
   return ret;
 };
-const messageTrans: Trans<MessageLine> = (wholeLine?, header?): OptStrs => {
+const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs => {
   if (header) {
     return [
       ...messageHeader,
@@ -315,45 +327,109 @@ const messageTrans: Trans<MessageLine> = (wholeLine?, header?): OptStrs => {
   const fields: OptStrs = [];
   fieldLines.forEach(fieldLine => fields.push(...fieldTrans(fieldLine, seenFields, fieldLines.length===1)||[]));
   let dirsStr = line[0];
-  if (dirsStr[0]==='!') return; // todo support include/load instruction
   let isDefault: string|undefined = dirsStr[0]==='*'?`default ${dirsStr}`:undefined;
+  if (isDefault) {
+    dirsStr = dirsStr.substring(1);
+  }
+  const isCondition = dirsStr[0]==='[';
+  const conds: string[] = [];
+  let condNamespace: string|undefined;
+  if (isCondition) {
+    const parts = dirsStr.split(']');
+    dirsStr = parts.pop()!; // remainder
+    const conditions = parts.map(p => p.startsWith('[') ? p.substring(1, p.endsWith(']')?p.length-1:p.length) : p);
+    // support conditions
+    if (isDefault) {
+      // declared condition
+      const name = conditions[0];
+      let circuit = line[1];
+      const model = line[2];
+      let field = line[4];
+      let value = line[6]||'';
+      if (circuit==='scan') {
+        if (!model) {
+          // refers to Ebus.id.id
+          circuit = 'id.id';
+          field = field?.toLowerCase();
+        } else {
+          additions!.imports.push(`import "./${circuit}.tsp";`);
+        }
+      }
+      additions.conditions.set(name, [[circuit,model,field].filter(p=>p).join('.'), value]);
+      return;
+    }
+    // conditional
+    conditions.forEach(cond => {
+      // SW<1,SW>1,SW=1,SW<=1,SW>=1
+      let [,name, values] = cond.match(/^([^=<>]*)(.*)$/)||[,cond];
+      const [field, value] = additions.conditions.get(name)||[];
+      if (value && !values) {
+        values = value;
+      }
+      conds.push(`@cond(${field}${values?`, ${values.split(';').map(v=>v[0]==="'"?v.replaceAll("'", '"'):'"'+v+'"').join(',')}`:''})`);
+      let nsAdd;
+      if (value) {
+        nsAdd = name;
+      } else {
+        nsAdd = ((field.startsWith('id.id.')?field.substring('id.id.'.length):field)+values).replaceAll(/[^a-zA-Z0-9]/g, '_');
+      }
+      condNamespace = condNamespace?condNamespace+'_'+nsAdd:nsAdd;
+    });
+  }
+  if (dirsStr[0]==='!') {
+    // include/load instruction
+    const isLoad = dirsStr==='!load';
+    if (dirsStr==='!include' || isLoad) {
+      const fileNoExt = path.basename(line[1]!, path.extname(line[1]!));
+      // const file = line[1]!.replaceAll('.', '_');
+      additions!.imports.push(`import "./${fileNoExt}.tsp";`);
+      // if (isLoad) // todo how to make all models available? or rather emitter?
+    }
+    return;
+  }
   let circuit: string|undefined = line[1];
   let auth: string|undefined;
   if (isDefault) {
     // default line: convert to base models
-    dirsStr = dirsStr.substring(1);
-    dirsStr += suffix(dirsStr, defaultsByName);
+    dirsStr += suffix(dirsStr, additions!.defaultsByName);
     if (circuit?.startsWith('#')) {
       auth = circuit.substring(1);
       isDefault += ` for user level "${auth}"`;
       circuit = '';
     }
   }
-  const isCondition = dirsStr[0]==='[';
-  if (isCondition) return; // todo support conditions
-  const dirs = dirsStr.split(';');
+  const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
   // return dirs.map(dir=> (
-  const idComb = fromHex(line[6], line[7]);
-  const single = dirs.length===1 && (isDefault || !dirs.some(d=>defaultsByName.has(d)));
+  // todo support chain in emitter
+  const chain = (line[7]||'').split(';').map(i=>fromHex(line[6], i.split(':')[0])); // weird construct of limitling length omitted for now => todo rewrite the definition
+  const idComb = chain[0];
+  const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
   const zz = line[5]&&fromHex(line[5]).join();
   return [
     // circuit&&`namespace ${circuit} {`, // block namespace as otherwise only once per file
+    ...conds,
+    condNamespace&&`namespace ${condNamespace} {`,
     (line[3]||isDefault)&&`/** ${line[3]||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
-      : `@inherit(${dirs.map(d=>d+getSuffix(d, defaultsByName)).join(', ')})`, // multi model
+      : `@inherit(${dirs.map(d=>d+getSuffix(d, additions!.defaultsByName)).join(', ')})`, // multi model
     auth&&`@auth("${auth}")`,
     line[4]&&`@qq(${fromHex(line[4]).join})`,
     zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
-    single&&idComb.length>=2?`@${isDefault?'base':'id'}(${idComb.join(', ')})`:idComb.length?`@ext(${idComb.join(', ')})`:undefined,
+    single&&idComb.length>=2
+      ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
+      : idComb.length ? chain.map(i=>`@ext(${i.join(', ')})`).join(' ')
+      : undefined,
     `model ${normId(isDefault?dirsStr:line[2])} {`,
     ...fields,
     '}',
+    condNamespace&&`}`,
     // circuit&&`}`,
   ];
   // )).reduce((p, c)=>{p.push(...c);return p;},[] as ReqStrs);
 }
-const messageTransSub = (subdir: string): Trans<MessageLine> => (line?, header?): OptStrs => {
+const messageTransSub = (subdir: string): Trans<MessageLine> => (...args): OptStrs => {
+  const [,header] = args;
   header && setSubdirManuf(subdir);
   if (header) return [
     ...messageHeader,
@@ -361,7 +437,7 @@ const messageTransSub = (subdir: string): Trans<MessageLine> => (line?, header?)
     '',
     ...namespaceWithZz(header),
   ];
-  return messageTrans(line, header);
+  return messageTrans(...args);
 }
 const joinNl = (inp?: OptStrs): string|undefined =>
   inp?.length ? (inp.filter(i=>i!==undefined&&i!==false).join('\n')+'\n\n') : undefined; // one extra for block separation
@@ -426,7 +502,6 @@ export const csv2tsp = async (args: string[] = []) => {
     const namespace = isTemplates ? nameNoExt
     : path.extname(name)==='.inc' ? nameNoExt+'_inc'
     : nameNoExt;
-    defaultsByName.clear();
     valueLists.list.clear();
     valueLists.seen.clear();
     const trans = isTemplates
@@ -440,16 +515,35 @@ export const csv2tsp = async (args: string[] = []) => {
     let transform: Transform;
     const empty = (line: OptStrs) => !line || !Object.keys(line).length;
     const content: ReqStrs = [];
+    const additions: Additions = {
+      imports: [],
+      models: [],
+      defaultsByName: new Map<string, number>(),
+      conditions: new Map<string, string[]>(),
+    };
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
       if (inp?.length) {
         if (first) {
           first = false;
-          content.push(...trans(undefined, namespace)||[]); // prepend header on first push
+          content.push(...trans(undefined, namespace, additions)||[]); // prepend header on first push
         }
         content.push(...inp);
       }
       if (!flush) return cb();
+      if (additions.imports.length) {
+        const pos = content.map(l => l&&l.startsWith('import ')).lastIndexOf(true);
+        content.splice(pos+1, 0, ...additions.imports);
+      }
+      if (additions.models.length) {
+        const line = content[content.length-1];
+        if (line && line.startsWith('}')) {
+          // assumed end of namespace
+          content.splice(content.length-1, 0, ...additions.models);
+        } else {
+          content.push(...additions.models);
+        }
+      }
       const contentStr = joinNl(content) as string;
       // formatTypeSpec(contentStr)
       // .then((d:string) => cb(null, d), cb);
@@ -460,8 +554,8 @@ export const csv2tsp = async (args: string[] = []) => {
       csvParser({headers: false, skipComments: true}),
       transform = new Transform({
         objectMode: true,
-        transform: (line, _, cb) => push(empty(line)?undefined:trans(line), cb),
-        flush: (cb) => push(trans(undefined, false), cb, true),
+        transform: (line, _, cb) => push(empty(line)?undefined:trans(line, undefined, additions), cb),
+        flush: (cb) => push(trans(undefined, false, additions), cb, true),
       }),
       fs.createWriteStream(newFile),
     );

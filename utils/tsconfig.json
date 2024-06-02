@@ -6,10 +6,10 @@
     "rootDir": ".",
     "moduleResolution": "NodeNext",
     // "declaration": true,
-    // "sourceMap": true,
+    "sourceMap": true,
     "outDir": "dist",
-    // "esModuleInterop": true,
+    "esModuleInterop": true,
     "strict": true,
   },
-  "include": ["src"]
+  "include": ["src/*.ts"]
 }
