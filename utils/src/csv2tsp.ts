@@ -206,13 +206,15 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, sing
   const types = line[2].split(';');
   if (types.length>1) {
     const ret: ReqStrs = [];
+    let firstComm: string|undefined = comm;
     types.filter(t=>t).forEach(t => {
       const {id, typ, typLen} = divisorValues('', t, '', '');
       const name = removeTrailNum(normFieldName(id));
       ret.push(...[
-        (comm&&comm!==id&&comm!==line[2])?`/** ${comm} */`:undefined,
+        (firstComm&&firstComm!==id&&firstComm!==line[2])?`/** ${firstComm} */`:undefined,
         `${typLen??''}${name}${suffix(name, seen)}: ${typ},`,
       ]);
+      firstComm = undefined;
     });
     return ret;
   }
