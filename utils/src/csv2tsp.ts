@@ -354,7 +354,7 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
           circuit = 'id.id';
           field = field?.toLowerCase();
         } else {
-          additions!.imports.push(`import "./${circuit}_inc.tsp";`);
+          additions!.imports.push(`import "./${circuit}.tsp";`);
         }
       }
       const fname = field||(value&&normalize?'value':'');
@@ -369,7 +369,7 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
       if (value && !values) {
         values = value;
       }
-      conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>v[0]==="'"?v.replaceAll("'", '"'):'"'+v+'"').join(',')}`:''})`);
+      conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
       let nsAdd;
       if (value) {
         nsAdd = name;
