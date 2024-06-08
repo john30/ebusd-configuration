@@ -368,7 +368,7 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
       if (value && !values) {
         values = value;
       }
-      conds.push(`@cond(${field}${values?`, ${values.split(';').map(v=>v[0]==="'"?v.replaceAll("'", '"'):'"'+v+'"').join(',')}`:''})`);
+      conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>v[0]==="'"?v.replaceAll("'", '"'):'"'+v+'"').join(',')}`:''})`);
       let nsAdd;
       if (value) {
         nsAdd = name;
