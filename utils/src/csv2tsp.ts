@@ -10,7 +10,7 @@ type OptStrs = ReqStrs | undefined;
 
 type CsvLine = Record<number, string|undefined>;
 
-type Additions = {imports: ReqStrs, models: ReqStrs, includes: string[], defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
+type Additions = {imports: ReqStrs, models: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
 
 type Trans<T extends CsvLine> = (line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
 
@@ -386,7 +386,7 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
       // const file = line[1]!.replaceAll('.', '_');
       additions!.imports.push(`import "./${fileNoExt}_inc.tsp";`);
       // if (isLoad) // todo how to make all models available? or rather emitter?
-      additions!.includes.push(fileNoExt);
+      additions!.includes.push([fileNoExt, conds]);
     }
     return;
   }
@@ -553,7 +553,7 @@ export const csv2tsp = async (args: string[] = []) => {
         addToNamespace([
           '/** included parts */',
           'union _includes {',
-          ...additions.includes.map(i => `${i.split('.').map(i=>(i.match(/^[0-9]/)?'_':'')+i).join('.')}_inc,`),
+          ...additions.includes.map(([i,c]) => `${c.join('\n')}${i.split('.').map(i=>(i.match(/^[0-9]/)?'_':'')+i).join('.')}_inc,`),
           '}',
         ]);
       }
