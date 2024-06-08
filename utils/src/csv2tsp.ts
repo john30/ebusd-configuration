@@ -10,7 +10,7 @@ type OptStrs = ReqStrs | undefined;
 
 type CsvLine = Record<number, string|undefined>;
 
-type Additions = {imports: ReqStrs, models: ReqStrs, defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
+type Additions = {imports: ReqStrs, models: ReqStrs, includes: string[], defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
 
 type Trans<T extends CsvLine> = (line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
 
@@ -218,7 +218,6 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, sing
     });
     return ret;
   }
-  //todo flatten inlined models only in emit
   const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
   return [
     comm&&comm!=id&&`/** ${comm} */`,
@@ -354,10 +353,11 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
           circuit = 'id.id';
           field = field?.toLowerCase();
         } else {
-          additions!.imports.push(`import "./${circuit}.tsp";`);
+          additions!.imports.push(`import "./${circuit}_inc.tsp";`);
         }
       }
-      additions.conditions.set(name, [[circuit,model,field].filter(p=>p).join('.'), value]);
+      const fname = field||(value&&normalize?'value':'');
+      additions.conditions.set(name, [[circuit,model,fname].filter(p=>p).join('.'), value]);
       return;
     }
     // conditional
@@ -384,8 +384,9 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
     if (dirsStr==='!include' || isLoad) {
       const fileNoExt = path.basename(line[1]!, path.extname(line[1]!));
       // const file = line[1]!.replaceAll('.', '_');
-      additions!.imports.push(`import "./${fileNoExt}.tsp";`);
+      additions!.imports.push(`import "./${fileNoExt}_inc.tsp";`);
       // if (isLoad) // todo how to make all models available? or rather emitter?
+      additions!.includes.push(fileNoExt);
     }
     return;
   }
@@ -497,13 +498,12 @@ export const csv2tsp = async (args: string[] = []) => {
       await fs.promises.mkdir(todir, {recursive: true});
     }
     const name = path.basename(file);
-    const nameNoExt = path.basename(name, path.extname(name));
-    const newFile = path.join(todir, nameNoExt+'.tsp');
-    console.log(`generating ${newFile}`);
     const isTemplates = name==='_templates.csv';
-    const namespace = isTemplates ? nameNoExt
-    : path.extname(name)==='.inc' ? nameNoExt+'_inc'
-    : nameNoExt;
+    const isInclude = path.extname(name)==='.inc';
+    const nameNoExt = path.basename(name, path.extname(name));
+    const namespace = isInclude ? nameNoExt+'_inc' : nameNoExt;
+    const newFile = path.join(todir, namespace+'.tsp');
+    console.log(`generating ${newFile}`);
     valueLists.list.clear();
     valueLists.seen.clear();
     const trans = isTemplates
@@ -519,6 +519,7 @@ export const csv2tsp = async (args: string[] = []) => {
     const content: ReqStrs = [];
     const additions: Additions = {
       imports: [],
+      includes: [],
       models: [],
       defaultsByName: new Map<string, number>(),
       conditions: new Map<string, string[]>(),
@@ -537,14 +538,24 @@ export const csv2tsp = async (args: string[] = []) => {
         const pos = content.map(l => l&&l.startsWith('import ')).lastIndexOf(true);
         content.splice(pos+1, 0, ...additions.imports);
       }
-      if (additions.models.length) {
+      const addToNamespace = (lines: ReqStrs) => {
+        if (!lines?.length) return;
         const line = content[content.length-1];
         if (line && line.startsWith('}')) {
           // assumed end of namespace
-          content.splice(content.length-1, 0, ...additions.models);
+          content.splice(content.length-1, 0, ...lines);
         } else {
-          content.push(...additions.models);
+          content.push(...lines);
         }
+      };
+      addToNamespace(additions.models);
+      if (additions.includes.length) {
+        addToNamespace([
+          '/** included parts */',
+          'union _includes {',
+          ...additions.includes.map(i => `${i.split('.').map(i=>(i.match(/^[0-9]/)?'_':'')+i).join('.')}_inc,`),
+          '}',
+        ]);
       }
       const contentStr = joinNl(content) as string;
       // formatTypeSpec(contentStr)
