@@ -365,7 +365,7 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
     conditions.forEach(cond => {
       // SW<1,SW>1,SW=1,SW<=1,SW>=1
       let [,name, values] = cond.match(/^([^=<>]*)(.*)$/)||[,cond];
-      const [field, value] = additions.conditions.get(name)||[];
+      const [field, value] = additions.conditions.get(name)||additions.conditions.get(cond)||[];
       if (value && !values) {
         values = value;
       }
