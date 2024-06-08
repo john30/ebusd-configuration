@@ -83,6 +83,7 @@ const getSuffix = (t: string, seen: Map<string, number>) => {
 const isBaseType = (t: string|undefined) => t && t.toUpperCase()===t;
 const removeTrailNum = (id: string) => id && id.replace(/[0-9]*$/, '');
 const normFieldName = (id: string) => id && (isBaseType(id)?id.toLowerCase():id);
+const normComment = (str?: string) => str && str.replace(/@$/g, 'at').replaceAll('**', '^');
 const templateTrans: Trans<TemplateLine> = (line?, header?, additions?): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
@@ -211,7 +212,7 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, sing
       const {id, typ, typLen} = divisorValues('', t, '', '');
       const name = removeTrailNum(normFieldName(id));
       ret.push(...[
-        (firstComm&&firstComm!==id&&firstComm!==line[2])?`/** ${firstComm} */`:undefined,
+        (firstComm&&firstComm!==id&&firstComm!==line[2])?`/** ${normComment(firstComm)} */`:undefined,
         `${typLen??''}${name}${suffix(name, seen)}: ${typ},`,
       ]);
       firstComm = undefined;
@@ -220,7 +221,7 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, sing
   }
   const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
   return [
-    comm&&comm!=id&&`/** ${comm} */`,
+    comm&&comm!=id&&`/** ${normComment(comm)} */`,
     line[1]&&(line[1]==='m'?'@out':'@in'),
     line[4]&&`@unit("${line[4]}")`,
     divisor||values,
@@ -383,10 +384,11 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
     const isLoad = dirsStr==='!load';
     if (dirsStr==='!include' || isLoad) {
       const fileNoExt = path.basename(line[1]!, path.extname(line[1]!));
-      // const file = line[1]!.replaceAll('.', '_');
       additions!.imports.push(`import "./${fileNoExt}_inc.tsp";`);
-      // if (isLoad) // todo how to make all models available? or rather emitter?
-      additions!.includes.push([fileNoExt, conds]);
+      const fileComp = fileNoExt.split('.').reverse()[0];
+      let name = condNamespace || fileComp;
+      name = normId(name.replace(/(__[^_]+_?)+/, '_'+fileComp)); // reduce multiple product ids with filename instead
+      additions!.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
     }
     return;
   }
@@ -412,7 +414,7 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
     // circuit&&`namespace ${circuit} {`, // block namespace as otherwise only once per file
     ...conds,
     condNamespace&&`namespace ${condNamespace} {`,
-    (line[3]||isDefault)&&`/** ${line[3]||isDefault} */`,
+    (line[3]||isDefault)&&`/** ${normComment(line[3]||isDefault)} */`,
     single
       ? direction(dirs[0]) // single model
       : `@inherit(${dirs.map(d=>d+getSuffix(d, additions!.defaultsByName)).join(', ')})`, // multi model
