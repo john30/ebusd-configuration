@@ -15,7 +15,7 @@ r,ehp,SourceTemp,source temperature,,08,"B509","0D0F00",,,tempsensor,,,Source te
 ```
 would be written as TypeSpec file like this:
 ```typespec
-import "ebus";
+import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 
 /** source temperature */
@@ -36,6 +36,24 @@ The declarations are supposed to be written in English only and for translation 
 
 The top level directory may only contain message and template declarations common for any manufacturer where sub directories are supposed to contain only declarations specific for that manufacturer.
 
+
+## eBUS structure versus TypeSpec
+This is a list of associations from eBUS structures to the corresponding TypeSpec declaration:
+* circuit: `namespace`
+* message: `model`
+  in order to form an eBUS message, a TypeSpec `model` needs to carry an `@id` decorator, either directly or inherited via `@base`/`@ext`
+* field: `model property`
+* message/field comment: normal code comment before the entity, i.e.
+  ```typespec
+  /** comment goes here */
+  entity...
+  ```
+
+
+## File structure
+Each `.tsp` file basically looks similar, i.e. starts with imports and uses, followed by the manufacturer and circuit namespaces and carrying therein the circuit specific messages.
+
+
 ## Migrating from existing CSVs
 In order to ease the move to TypeSpec,the [`csv2tsp.ts` utility](utils/src/csv2tsp.ts) utility is available for converting existing CSV files.
 
@@ -44,8 +62,12 @@ Converting the latest CSV files prepared for i18n can be done with the npm tasks
 2. `npm run csv2tsp-combine`: generates German tsp files in directory `outtsp.de` including a helper file `i18n.yml` as well as i18n files `en.yaml` and `de.yaml` in `outtsp`
 3. `npm run maintsp`: generates the `main.tsp` file from the list of the other tsp files
 4. `npm run format`: reformats all generated tsp files
+5. `npm run lint`: checks for issues in all generated tsp files
+
+Alternatively, the `npm run csvall` performs all of these steps and also adjusts/excludes some top level items that rarely changed and emit warnings otherwise.
 
 From here, the changed declarations in `outtsp` can be compared against the current source folder in `src`, changes to it applied and reviewed beforw PR submission.
+
 
 ## Dos and Don'ts
 * embrace comments where reasonable
@@ -55,11 +77,33 @@ From here, the changed declarations in `outtsp` can be compared against the curr
 * use the formatter (see `npm run format`)
 * combine read/write active/passive messages where possible
 * mark incoming only fields as optional
+* name a single field in a message `value`
+* use a common top level namespace per manufacturer
+* use a unique namespace per circuit (under the manufacturer namespace)
+* use a unique name per message
+* reuse existing messages with the include schema (todo)
+* prefer predefined types instead of redefining them
+* only eBUS internal scalar definitions are allowed to be uppercase only (like `UCH`)
+
+
+## Style guide
+Follow the [TypeSpec style guide](https://typespec.io/docs/handbook/style-guide) with the following additions/exceptions:
+* name of value lists in `enum` always begins with `values_` followed by the name of the message or field referring to
+* due to absence of an option to include models in a namepsace from another namespace, the construct for includsion is putting these namespaces into a union named `_includes`:
+  ```typespec
+    union _includes {
+      namespaceName,
+      // etc.
+    }
+  ```
+* namespaces are allowed in camelCase.
+
 
 ## Converting to CSV
 The final step is to create the CSV needed by ebusd (for the time being):
 1. `npm run compile`: generates CSV files in directory `outcsv`
 2. this directory would then serve as the base for publishing to CDN for use by ebusd
+
 
 ## Converting to schema
 The good thing about TypeSpec is, that declarations can easily be emitted as e.g. JSON Schema or even OpenAPI. See the TypeSpec docs for details.

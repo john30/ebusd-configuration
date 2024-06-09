@@ -29,7 +29,7 @@ type TemplateLine = CsvLine & {
   4?: string,
 }
 const ebusImport = [
-  'import "ebus";'
+  'import "@ebusd/ebus-typespec";'
 ]
 const ebusUsing = [
   'using Ebus;',
