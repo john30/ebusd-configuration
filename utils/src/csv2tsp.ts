@@ -142,7 +142,7 @@ const addI18n = (location: string, str?: string): string|undefined => {
   i18n.set(key, {...add, first, [i18nLang]: str, locations});
   return first;
 };
-const normComment = (location: string, str?: string) => str && addI18n(location, str.replace(/@$/g, 'at').replaceAll('**', '^'));
+const normComment = (location: string, str?: string) => str && addI18n(location, str.replace(/@/g, 'at').replaceAll('**', '^'));
 const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
