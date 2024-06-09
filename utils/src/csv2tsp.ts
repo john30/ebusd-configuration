@@ -1,5 +1,7 @@
 import csvParser from "csv-parser";
 import * as fs from "fs";
+import {readFile, writeFile} from "fs/promises";
+import {dump, load} from "js-yaml";
 import * as path from 'path';
 import {Transform, type TransformCallback} from "stream";
 import {pipeline} from "stream/promises";
@@ -12,7 +14,7 @@ type CsvLine = Record<number, string|undefined>;
 
 type Additions = {imports: ReqStrs, models: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
 
-type Trans<T extends CsvLine> = (line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
+type Trans<T extends CsvLine> = (location: string, line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
 
 type TemplateLine = CsvLine & {
   /** name */
@@ -59,7 +61,6 @@ const addLength = (t?: string): string|undefined => {
   if (parts.length<2 || !dynLengthTypes.has(parts[0])) return;
   if (parts[1]==='*') {
     // '* is the only way to allow dynamic length on a field as last one in request or response
-    // todo add to emitter
     return `@minLength(0) @maxLength(16) `;
   }
   return `@maxLength(${parts[1]}) `;
@@ -83,8 +84,66 @@ const getSuffix = (t: string, seen: Map<string, number>) => {
 const isBaseType = (t: string|undefined) => t && t.toUpperCase()===t;
 const removeTrailNum = (id: string) => id && id.replace(/[0-9]*$/, '');
 const normFieldName = (id: string) => id && (isBaseType(id)?id.toLowerCase():id);
-const normComment = (str?: string) => str && str.replace(/@$/g, 'at').replaceAll('**', '^');
-const templateTrans: Trans<TemplateLine> = (line?, header?, additions?): OptStrs => {
+const addI18n = (location: string, str?: string): string|undefined => {
+  if (!i18n || !str) return str;
+  str = str.trim().replaceAll(/  /g, ' '); // normalize space
+  if (str.match(/^[^0-9a-zA-Z]*$/)) return ''; // only whitespace
+  let first = str;
+  let key = str!.toLowerCase().replaceAll(/[^a-z0-9]/g, '');
+  let add: Partial<I18n>|undefined;
+  if (i18nMap) {
+    const mapped = i18nMap.get(location);
+    if (mapped) {
+      key = mapped[0];
+      add = mapped[1];
+      first = add!.first!;
+    } else if (!i18n.has(key)) { // warn only once
+      if (warnI18n) {
+        console.warn(`missing map key ${location} for ${str}`);
+      }
+    }
+  }
+  const old = i18n.get(key);
+  if (old) {
+    if (add) {
+      Object.assign(old, add);
+    }
+    old.locations.add(location);
+    const oldStr = old[i18nLang];
+    if (oldStr && oldStr!==str) {
+      let warn = '';
+      if (str.toLowerCase()===oldStr.toLowerCase()) {
+        warn = 'different case';
+        // prefer the one with more upper case in german / more lower case in other languages
+        if ((oldStr.replaceAll(/[^A-Z]/g, '').length > str.replaceAll(/[^A-Z]/g, '').length) === (i18nLang==='de')) {
+          str = oldStr;
+        }
+      } else if (oldStr.length > str.length) {
+        warn = 'different length';
+        // prefer the longer one
+        str = oldStr;
+      } else if (oldStr.replaceAll(' ', '').length < str.replaceAll(' ', '').length) {
+        warn = 'different spaces';
+        // prefer the one with more spaces
+        str = oldStr;
+      } else {
+        warn = 'different length';
+        // prefer the longer one
+      }
+      if (warnI18n) {
+        console.warn(`${warn} for key ${location}: ${str} / ${oldStr}`);
+      }
+    }
+    old[i18nLang] = str;
+    return old.first;
+  }
+  const locations = new Set<string>();
+  locations.add(location);
+  i18n.set(key, {...add, first, [i18nLang]: str, locations});
+  return first;
+};
+const normComment = (location: string, str?: string) => str && addI18n(location, str.replace(/@$/g, 'at').replaceAll('**', '^'));
+const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
     return [...addValueLists(), ...templateFooter];
@@ -97,19 +156,21 @@ const templateTrans: Trans<TemplateLine> = (line?, header?, additions?): OptStrs
   if (types.length>1) {
     const seen = new Map<string, number>();
     return [
-      comm&&comm!==id&&comm!==line[1]&&`/** ${comm} */`,
+      '',
+      comm&&comm!==line[1]&&`/** ${normComment(`${location}:${id}`, comm)} */`,
       `model ${id} {`,
       ...types.map(t => {
           const {id, typ, typLen} = divisorValues('', t, '', '');
           const name = removeTrailNum(normFieldName(id));
-          return `${typLen??''}${name}${suffix(name, seen)}: ${typ},`;
+          return `  ${typLen??''}${name}${suffix(name, seen)}: ${typ},`;
         }),
        '}',
     ];
   }
   const name = normalize && id===typ ? 'value' : normFieldName(id);
   return [
-    comm&&comm!=id&&`/** ${comm} */`,
+    '',
+    comm&&comm!==line[1]&&`/** ${normComment(`${location}:${name}`, comm)} */`,
     line[3]&&`@unit("${line[3]}")`,
     divisor||values,
     typLen,
@@ -126,7 +187,7 @@ const setSubdirManuf = (subdir: string): string|undefined => {
   return name;
 }
 const templateTransSub = (subdir: string): Trans<TemplateLine> => (...args): OptStrs => {
-  const [,header] = args;
+  const [,,header] = args;
   if (header) return [
     ...templateHeaderSubdir,
     '',
@@ -173,9 +234,18 @@ type FieldOfLine = CsvLine & {
 const messageLineFieldLen = 6;
 const maxFields = 16;
 const valueLists = {list: new Map<string, string[]>(), seen: new Map<string, number>()};
-const divisorValues = (name: string|undefined, typ: string, divVal: string|undefined,
-  comm: string|undefined,
+const splitTypeName = (t?: string): string[] => {
+  if(!t) return [''];
+  const p = t.split(':');
+  if (p.length!==2) return [t];
+  if (p[1].match(/^[0-9]+/)) return [t];
+  return p;
+}
+const divisorValues = (name: string|undefined, typIn: string, divVal: string|undefined,
+  comm: string|undefined, singleField?: string
 ): {id: string, typ?: string, typLen?: string, comm: string, divisor?: string, values?: string} => {
+  let [typ, typName] = splitTypeName(typIn);
+  name = name || typName;
   const id = normId(name||(typ.split(':')[0]));
   comm = comm || name || '';
   const typLen = addLength(typ);
@@ -190,7 +260,7 @@ const divisorValues = (name: string|undefined, typ: string, divVal: string|undef
   let values: string|undefined;
   if (hasValues) {
     values = `values_`;
-    values += (comm||id||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
+    values += ((id&&!isBaseType(id)&&id)||singleField||comm||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
     values += suffix(values, valueLists.seen);
     valueLists.list.set(values, divParts);
     values = `@values(${values})`;
@@ -200,10 +270,10 @@ const divisorValues = (name: string|undefined, typ: string, divVal: string|undef
   }
   return {id, typ, typLen, comm, divisor, values};
 };
-const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, singleField: boolean): OptStrs => {
+const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, singleField?: string): OptStrs => {
   if (!line) return;
   const {id, typ, typLen, comm, divisor, values}
-  = divisorValues(line[0], line[2], line[3], line[5]);
+  = divisorValues(line[0], line[2], line[3], line[5], singleField);
   const types = line[2].split(';');
   if (types.length>1) {
     const ret: ReqStrs = [];
@@ -211,22 +281,24 @@ const fieldTrans = (line: FieldOfLine|undefined, seen: Map<string, number>, sing
     types.filter(t=>t).forEach(t => {
       const {id, typ, typLen} = divisorValues('', t, '', '');
       const name = removeTrailNum(normFieldName(id));
+      const suffName = `${name}${suffix(name, seen)}`;
       ret.push(...[
-        (firstComm&&firstComm!==id&&firstComm!==line[2])?`/** ${normComment(firstComm)} */`:undefined,
-        `${typLen??''}${name}${suffix(name, seen)}: ${typ},`,
+        (firstComm&&firstComm!==id&&firstComm!==line[2])?`/** ${normComment(`${location}:${suffName}`, firstComm)} */`:undefined,
+        `${typLen??''}${suffName}: ${typ},`,
       ]);
       firstComm = undefined;
     });
     return ret;
   }
   const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
+  const suffName = `${name}${suffix(name, seen)}`;
   return [
-    comm&&comm!=id&&`/** ${normComment(comm)} */`,
+    comm&&comm!=id&&`/** ${normComment(`${location}:${suffName}`, comm)} */`,
     line[1]&&(line[1]==='m'?'@out':'@in'),
     line[4]&&`@unit("${line[4]}")`,
     divisor||values,
     typLen,
-    `${name}${suffix(name, seen)}: ${typ},`,
+    `${suffName}: ${typ},`,
   ]
 };
 const messageHeader = [
@@ -287,6 +359,7 @@ const reservedWords = ['unknown'];
 const addValueLists = (): ReqStrs => {
   const ret: ReqStrs = [];
   for (const [name, values] of valueLists.list.entries()) {
+    ret.push('');
     ret.push(`enum ${name} {`);
     const keys = new Map<string, number>();
     values.forEach(v => {
@@ -298,13 +371,13 @@ const addValueLists = (): ReqStrs => {
       if (reservedWords.includes(id)) {
         id = '_'+id;
       }
-      ret.push(`${id+suffix(id, keys)}: ${k},`);
+      ret.push(`  ${id+suffix(id, keys)}: ${k},`);
     });
     ret.push('}');
   }
   return ret;
 };
-const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs => {
+const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions): OptStrs => {
   if (header) {
     return [
       ...messageHeader,
@@ -317,17 +390,6 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
   };
   const line = objSlice(wholeLine);
   if (!line) return;
-  const fieldLines: FieldOfLine[] = [];
-  const seenFields = new Map<string, number>();
-  for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+maxFields*messageLineFieldLen; idx+=messageLineFieldLen) {
-    const fieldLine = objSlice(wholeLine, idx, messageLineFieldLen) as FieldOfLine;
-    if (!fieldLine) {
-      break;
-    }
-    fieldLines.push(fieldLine);
-  }
-  const fields: OptStrs = [];
-  fieldLines.forEach(fieldLine => fields.push(...fieldTrans(fieldLine, seenFields, fieldLines.length===1)||[]));
   let dirsStr = line[0];
   let isDefault: string|undefined = dirsStr[0]==='*'?`default ${dirsStr}`:undefined;
   if (isDefault) {
@@ -404,17 +466,29 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
     }
   }
   const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
-  // return dirs.map(dir=> (
-  // todo support chain in emitter
   const chain = (line[7]||'').split(';').map(i=>fromHex(line[6], i.split(':')[0])); // weird construct of limitling length omitted for now => todo rewrite the definition
   const idComb = chain[0];
   const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
   const zz = line[5]&&fromHex(line[5]).join();
+  // adjust location before extracting fields
+  location += `:${condNamespace}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
+  const fieldLines: FieldOfLine[] = [];
+  const seenFields = new Map<string, number>();
+  for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+maxFields*messageLineFieldLen; idx+=messageLineFieldLen) {
+    const fieldLine = objSlice(wholeLine, idx, messageLineFieldLen) as FieldOfLine;
+    if (!fieldLine) {
+      break;
+    }
+    fieldLines.push(fieldLine);
+  }
+  const fields: OptStrs = [];
+  const modelName = normId(isDefault?dirsStr:line[2]);
+  fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
   return [
-    // circuit&&`namespace ${circuit} {`, // block namespace as otherwise only once per file
+    '',
     ...conds,
     condNamespace&&`namespace ${condNamespace} {`,
-    (line[3]||isDefault)&&`/** ${normComment(line[3]||isDefault)} */`,
+    (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
       : `@inherit(${dirs.map(d=>d+getSuffix(d, additions!.defaultsByName)).join(', ')})`, // multi model
@@ -425,16 +499,14 @@ const messageTrans: Trans<MessageLine> = (wholeLine, header, additions): OptStrs
       ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
       : idComb.length ? chain.map(i=>`@ext(${i.join(', ')})`).join(' ')
       : undefined,
-    `model ${normId(isDefault?dirsStr:line[2])} {`,
+    `model ${modelName} {`,
     ...fields,
     '}',
     condNamespace&&`}`,
-    // circuit&&`}`,
   ];
-  // )).reduce((p, c)=>{p.push(...c);return p;},[] as ReqStrs);
 }
 const messageTransSub = (subdir: string): Trans<MessageLine> => (...args): OptStrs => {
-  const [,header] = args;
+  const [,,header] = args;
   header && setSubdirManuf(subdir);
   if (header) return [
     ...messageHeader,
@@ -451,25 +523,41 @@ const helpTxt = [
   'usage: csv2tsp [-k] [-o outdir] [-b basedir] [csvfile*]',
   'converts ebusd csv files to tsp for use with ebus typespec library.',
   'with:',
-  '  -n          normalize names',
-  '  -o outdir   the output directory (default "outdir")',
-  '  -b basedir  the base directory for determining namespace of each csvfile',
-  '  csvfile     the csv file(s) to transform (unless to traverse the whole basedir)'
+  '  -N           do not normalize names',
+  '  -b basedir   the base directory for determining namespace of each csvfile (default "latest/en")',
+  '  -o outdir    the output directory (default "outtsp")',
+  '  -l langfile  the file name in which to store the multi-language mapping (default "i18n.yaml" in outdir)',
+  '  -L lang      the language code for -l option (default "en")',
+  '  -w           warn on different text for same key',
+  '  -m mapfile   the file name of a multi-language mapping to read for normalizing i18n',
+  '  -M lang      the language code for -m option (default "en")',
+  '  -s i18ndir   the directory in which to store i18n file(s) per language ("<lang>.yaml")',
+  '  csvfile      the csv file(s) to transform (unless to traverse the whole basedir)'
 ];
-let normalize = false;
-//todo write dictionary for translation or let emitter do that
+let normalize = true;
+type I18n = {first: string, en?: string, de?: string, locations: Set<string>}
+const i18n = new Map<string, I18n>(); // map from i18n key to src language text and locations as message/field/template key
+let i18nLang: keyof Omit<I18n, 'locations'> = 'en';
+let warnI18n = false;
+let i18nMap: Map<string, [string, Partial<I18n>]>; // map from message/field/template key to i18n key and language+text
 export const csv2tsp = async (args: string[] = []) => {
-  let indir = '.';
-  let outdir = 'outdir';
+  let indir = 'latest/en';
+  let outdir = 'outtsp';
   let files: string[] = [];
+  let langFile: string|undefined;
+  let normFile: string|undefined;
+  let normFileLang: keyof Omit<I18n, 'locations'> = 'en';
+  let storeI18nDir: string|undefined;
   for (let i=0; i<args.length; i++) {
     const arg = args[i];
     switch (arg) {
       case '-h':
+      case '--help':
+      case '-?':
         console.log(joinNl(helpTxt));
         return;
-      case '-n':
-        normalize = true;
+      case '-N':
+        normalize = false;
         break;
       case '-b':
         indir = args[++i];
@@ -477,22 +565,58 @@ export const csv2tsp = async (args: string[] = []) => {
       case '-o':
         outdir = args[++i];
         break;
+      case '-l':
+        langFile = args[++i];
+        break;
+      case '-L':
+        i18nLang = args[++i] as keyof Omit<I18n, 'locations'>;
+        break;
+      case '-w':
+        warnI18n = true;
+        break;
+      case '-m':
+        normFile = args[++i];
+        break;
+      case '-M':
+        normFileLang = args[++i] as keyof Omit<I18n, 'locations'>;
+        break;
+      case '-s':
+        storeI18nDir = args[++i];
+        break;
       default:
         files = args.slice(i);
         i = args.length;
         break;
     }
   }
+  if (!langFile) {
+    langFile = path.join(outdir, 'i18n.yaml');
+  }
+  if (normFile) {
+    let read: string|undefined;
+    try {
+      read = await readFile(normFile, 'utf-8');
+    } catch (e) {
+      console.error(`unable to read mapping file ${normFile}, ignoring it`);
+    }
+    if (read) {
+      i18nMap = new Map();
+      const normData = await load(read) as Record<string, I18n & {locations: string[]}>;
+      for (const [k, v] of Object.entries(normData)) {
+        v.locations.forEach(l => i18nMap.set(l, [k, {first: v.first, [normFileLang]: v[normFileLang] as string}]))
+      }
+    }
+  }
   if (!files?.length) {
     // whole tree in indir if no files
     files = (await fs.promises.readdir(indir, {withFileTypes: true, recursive: true}))
     .filter(e => e.isFile() && !e.isSymbolicLink() && (e.name.endsWith('.csv')||e.name.endsWith('.inc')))
+    .sort()
     .map(e => path.join(e.parentPath, e.name));
   }
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
     const todir = path.join(outdir, subdir);
-    //todo models imported from _templates
     try {
       await fs.promises.stat(todir); // throws if not exists
     } catch (_) {
@@ -526,12 +650,13 @@ export const csv2tsp = async (args: string[] = []) => {
       defaultsByName: new Map<string, number>(),
       conditions: new Map<string, string[]>(),
     };
+    const location = path.join(subdir, name);
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
       if (inp?.length) {
         if (first) {
           first = false;
-          content.push(...trans(undefined, namespace, additions)||[]); // prepend header on first push
+          content.push(...trans(location, undefined, namespace, additions)||[]); // prepend header on first push
         }
         content.push(...inp);
       }
@@ -553,6 +678,7 @@ export const csv2tsp = async (args: string[] = []) => {
       addToNamespace(additions.models);
       if (additions.includes.length) {
         addToNamespace([
+          '',
           '/** included parts */',
           'union _includes {',
           ...additions.includes.map(([i,c]) => `${c.join('\n')}${i.split('.').map(i=>(i.match(/^[0-9]/)?'_':'')+i).join('.')}_inc,`),
@@ -569,10 +695,46 @@ export const csv2tsp = async (args: string[] = []) => {
       csvParser({headers: false, skipComments: true}),
       transform = new Transform({
         objectMode: true,
-        transform: (line, _, cb) => push(empty(line)?undefined:trans(line, undefined, additions), cb),
-        flush: (cb) => push(trans(undefined, false, additions), cb, true),
+        transform: (line, _, cb) => push(empty(line)?undefined:trans(location, line, undefined, additions), cb),
+        flush: (cb) => push(trans('', undefined, false, additions), cb, true),
       }),
       fs.createWriteStream(newFile),
     );
+  }
+  if (langFile) {
+    const replacer = (key: string, value: any) => {
+      if (value instanceof Map) {
+        const ret: Record<string, any> = {};
+        value.forEach((v, k) => ret[k] = replacer(k, v));
+        return ret;
+      }
+      if (value instanceof Set) {
+        const ret: any[] = [];
+        value.forEach(v => ret.push(replacer(v, v)));
+        return ret;
+      }
+      return value;
+    };
+    console.log(`writing multi-language mapping to ${langFile}`);
+    await writeFile(langFile, dump(i18n, {replacer}), 'utf-8');
+    if (storeI18nDir) {
+      // const langs = new Set<string>();
+      // i18n.forEach(i => Object.keys(i).forEach(l => l!=='locations' && l!=='first' && langs.add(l)));
+      for (const lang of ['en', 'de']) { // langs) {
+        // if (!lang.match(/^[a-z][a-z]$/)) continue;
+        const data: Record<string, string> = {};
+        i18n.forEach(i => {
+          const src = i.first;
+          const str = i[lang as keyof I18n];
+          if (src && typeof str === 'string') {
+            data[src] = str;
+          }
+        });
+        if (!Object.keys(data).length) continue;
+        const file = path.join(storeI18nDir, lang+'.yaml');
+        console.log(`writing i18n file to ${file}`);
+        await writeFile(file, dump(data), 'utf-8');
+      }
+    }
   }
 };
