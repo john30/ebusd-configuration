@@ -532,6 +532,7 @@ const helpTxt = [
   '  -m mapfile   the file name of a multi-language mapping to read for normalizing i18n',
   '  -M lang      the language code for -m option (default "en")',
   '  -s i18ndir   the directory in which to store i18n file(s) per language ("<lang>.yaml")',
+  '  -i regex     pattern for file names (including relative dir) to ignore',
   '  csvfile      the csv file(s) to transform (unless to traverse the whole basedir)'
 ];
 let normalize = true;
@@ -548,6 +549,7 @@ export const csv2tsp = async (args: string[] = []) => {
   let normFile: string|undefined;
   let normFileLang: keyof Omit<I18n, 'locations'> = 'en';
   let storeI18nDir: string|undefined;
+  let ignorePattern: RegExp|undefined;
   for (let i=0; i<args.length; i++) {
     const arg = args[i];
     switch (arg) {
@@ -583,6 +585,9 @@ export const csv2tsp = async (args: string[] = []) => {
       case '-s':
         storeI18nDir = args[++i];
         break;
+      case '-i':
+        ignorePattern = new RegExp(args[++i]);
+        break;
       default:
         files = args.slice(i);
         i = args.length;
@@ -616,6 +621,11 @@ export const csv2tsp = async (args: string[] = []) => {
   }
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
+    const name = path.basename(file);
+    const location = path.join(subdir, name);
+    if (ignorePattern?.test(location)) {
+      continue;
+    }
     const todir = path.join(outdir, subdir);
     try {
       await fs.promises.stat(todir); // throws if not exists
@@ -623,7 +633,6 @@ export const csv2tsp = async (args: string[] = []) => {
       console.log(`creating directory ${todir}`);
       await fs.promises.mkdir(todir, {recursive: true});
     }
-    const name = path.basename(file);
     const isTemplates = name==='_templates.csv';
     const isInclude = path.extname(name)==='.inc';
     const nameNoExt = path.basename(name, path.extname(name));
@@ -650,7 +659,6 @@ export const csv2tsp = async (args: string[] = []) => {
       defaultsByName: new Map<string, number>(),
       conditions: new Map<string, string[]>(),
     };
-    const location = path.join(subdir, name);
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
       if (inp?.length) {
