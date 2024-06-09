@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "description": "utilities for converting ebusd-configuration files",
   "scripts": {
-    "csv2tsc": "npx ts-node ./utils/src/index.ts",
-    "format": "npx tsp format outdir/**/*.tsp",
-    "build": "tsc -p utils",
-    "csv2tsc.js": "node ./utils/dist/src/index.js"
+    "csv2tsp": "tsx ./utils/src/index.ts",
+    "csv2tsp-combine": "tsx ./utils/src/index.ts -b latest/de -L de -m outtsp/i18n.yaml -s outtsp -o outtsp.de",
+    "maintsp": "find outtsp/ -name '*.tsp'|grep -v 'main.tsp'|sort|grep -v '_inc.'|sed -e 's#outtsp/##' -e 's#^#import \"./#' -e 's#$#\";#' > outtsp/main.tsp",
+    "format": "npx tsp format outtsp/*.tsp outtsp/**/*.tsp outtsp.de/*.tsp outtsp.de/**/*.tsp",
+    "compile": "npx tsp compile --emit ebus definitions/main.tsp --output-dir outcsv"
   },
   "repository": {
     "type": "git",
@@ -24,14 +25,15 @@
   "homepage": "https://github.com/john30/ebusd-configuration#readme",
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.12.13",
+    "@types/node": "^20.14.2",
+    "@typespec/library-linter": "latest",
+    "js-yaml": "^4.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
     "@typespec/compiler": "^0.56.0",
     "csv-parser": "^3.0.0",
     "ebus": "github:john30/ebus-tsplib",
-    "js-yaml": "^4.1.0",
-    "ts-node": "^10.9.2"
+    "tsx": "^4.15.1"
   }
 }
