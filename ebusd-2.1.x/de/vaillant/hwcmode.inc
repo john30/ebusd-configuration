@@ -9,6 +9,6 @@ w,,SetMode,Betriebsart setzen,,,,02,,,hwcmode,,,
 w,,SetFlowTempMin,Minimalen Vorlaufsollwert setzen,,,,0e,,,temp0,,,
 w,,SetFlowTempMax,Maximalen Vorlaufsollwert setzen,,,,0f,,,temp0,,,
 r,,Params,Parameter,,,,09,,,temp0;IGN:3;mctype7;temps;IGN;temps;temps;IGN,,,
-r,,Status0a,Status Vorlauf Ist/Mixer/Pumpe/Vorlauf Soll,,,,0A,,,temp;mixer;onoff;onoff;temp0
+r,,Status0a,Status Vorlauf Ist/Mixer/Pumpe/Vorlauf Soll,,,,0A,,,temp:flowtemp;mixer;onoff:pump;onoff;temp0:flowtempdesired
 r,,Status,Soll/Status/Ist/Soll,,,,0D,,,temp0;onoff;temp;temp0,,,
 r,,Status16,Aussentemperatur,,,,16,,,temp,,,
