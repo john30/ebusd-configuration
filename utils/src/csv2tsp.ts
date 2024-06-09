@@ -641,7 +641,7 @@ export const csv2tsp = async (args: string[] = []) => {
         : messageTrans
     let first = true;
     let transform: Transform;
-    const empty = (line: OptStrs) => !line || !Object.keys(line).length;
+    const empty = (line: CsvLine) => !line || !Object.keys(line).length;
     const content: ReqStrs = [];
     const additions: Additions = {
       imports: [],
@@ -690,12 +690,31 @@ export const csv2tsp = async (args: string[] = []) => {
       // .then((d:string) => cb(null, d), cb);
       cb(null, contentStr);
     }
+    let firstLine = true;
     await pipeline(
       fs.createReadStream(file, 'utf-8'),
-      csvParser({headers: false, skipComments: true}),
+      csvParser({headers: false}),
       transform = new Transform({
         objectMode: true,
-        transform: (line, _, cb) => push(empty(line)?undefined:trans(location, line, undefined, additions), cb),
+        transform: (line: CsvLine, _, cb) => {
+          if (line[0]?.startsWith('#')) {
+            if (firstLine) {
+              firstLine = false;
+              return push(undefined, cb);
+            }
+            const parts = [];
+            for (let i=0; i<Object.keys(line).length; i++) {
+              const str = line[i];
+              if (str===undefined) {
+                break;
+              }
+              parts.push(str);
+            }
+            const str = parts.join().substring(1).trim().replaceAll(/,+/g, ',').replace(/,$/, '');
+            return push(empty(str)?undefined:[`// ${str}`], cb)
+          }
+          push(empty(line)?undefined:trans(location, line as any, undefined, additions), cb)
+        },
         flush: (cb) => push(trans('', undefined, false, additions), cb, true),
       }),
       fs.createWriteStream(newFile),
