@@ -471,7 +471,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
   const zz = line[5]&&fromHex(line[5]).join();
   // adjust location before extracting fields
-  location += `:${condNamespace}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
+  location += `:${condNamespace||''}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
   const fieldLines: FieldOfLine[] = [];
   const seenFields = new Map<string, number>();
   for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+maxFields*messageLineFieldLen; idx+=messageLineFieldLen) {
