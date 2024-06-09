@@ -77,6 +77,12 @@ circuit number appended, e.g. "mc2.4.csv" for heating circuit 4. For the
 primary heating circuit the number is not appended, though.
 
 
+## Working on the definitions
+For many years, the CSV file based definitions served a good purpose. However, these are rather hard to read and understand and as such, there is a new approach of working with message defintions.
+
+Please refer to the [guidelines for details](guidelines.md).
+
+
 ## Contact
 
 The author can be contacted at ebusd@ebusd.eu .
