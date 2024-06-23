@@ -27,15 +27,16 @@
   "homepage": "https://github.com/john30/ebusd-configuration#readme",
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20.14.2",
-    "@typespec/library-linter": "^0.56.0",
+    "@types/node": "^20.14.8",
+    "@typespec/json-schema": "~0.57.0",
+    "@typespec/library-linter": "~0.57.0",
     "csv-parser": "^3.0.0",
     "js-yaml": "^4.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@ebusd/ebus-typespec": "^0.1.0",
-    "@typespec/compiler": "^0.56.0",
-    "tsx": "^4.15.1"
+    "@ebusd/ebus-typespec": ">=0.4.0",
+    "@typespec/compiler": "~0.57.0",
+    "tsx": "^4.15.7"
   }
 }

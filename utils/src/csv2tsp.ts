@@ -466,8 +466,14 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     }
   }
   const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
-  const chain = (line[7]||'').split(';').map(i=>fromHex(line[6], i.split(':')[0])); // weird construct of limitling length omitted for now => todo rewrite the definition
+  const chain = (line[7]||'').split(';').map(i=>fromHex(line[6], i.split(':')[0]));
   const idComb = chain[0];
+  const chainLengths = chain.length>1 && (line[7]||'').split(';').map(i=>i.split(':')[1])
+    .filter(i=>i?.length)
+    .reduce((p,c)=>p.add(c)&&p, new Set<string>());
+  if (chainLengths && chainLengths.size>1) {
+    console.error(`different chain lengths in "${line[6]}", ignored`);
+  }
   const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
   const zz = line[5]&&fromHex(line[5]).join();
   // adjust location before extracting fields
@@ -497,7 +503,8 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
     single&&idComb.length>=2
       ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
-      : idComb.length ? chain.map(i=>`@ext(${i.join(', ')})`).join(' ')
+      : idComb.length ? `@ext(${idComb.join(', ')})`
+        +(chain.length>1?`\n@chain(${chainLengths&&chainLengths.size?chainLengths.values().next().value:'0'}, ${chain.slice(1).map(i=>`#[${i.join(', ')}]`).join(', ')})`:'')
       : undefined,
     `model ${modelName} {`,
     ...fields,
