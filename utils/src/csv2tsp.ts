@@ -12,7 +12,10 @@ type OptStrs = ReqStrs | undefined;
 
 type CsvLine = Record<number, string|undefined>;
 
-type Additions = {imports: ReqStrs, models: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
+type Additions = {
+  imports: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>,
+  conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
+};
 
 type Trans<T extends CsvLine> = (location: string, line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
 
@@ -492,10 +495,9 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   const fields: OptStrs = [];
   const modelName = normId(isDefault?dirsStr:line[2]);
   fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
-  return [
+  const ret = [
     '',
-    ...conds,
-    condNamespace&&`namespace ${pascalCase(condNamespace)} {`,
+    ...(condNamespace ? [] : conds),
     (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
@@ -511,8 +513,17 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     `model ${isDefault ? modelName : pascalCase(modelName)} {`, // expected to be PascalCase
     ...fields,
     '}',
-    condNamespace&&`}`,
   ];
+  if (condNamespace) {
+    let condBlock = additions.conditionBlocks.get(condNamespace);
+    if (!condBlock) {
+      condBlock = {header: [...conds, `namespace ${pascalCase(condNamespace)} {`,], lines: []};
+      additions.conditionBlocks.set(condNamespace, condBlock);
+    }
+    condBlock.lines.push(...ret);
+    return [];
+  }
+  return ret;
 }
 const messageTransSub = (subdir: string): Trans<MessageLine> => (...args): OptStrs => {
   const [,,header] = args;
@@ -664,9 +675,9 @@ export const csv2tsp = async (args: string[] = []) => {
     const additions: Additions = {
       imports: [],
       includes: [],
-      models: [],
       defaultsByName: new Map<string, number>(),
       conditions: new Map<string, string[]>(),
+      conditionBlocks: new Map(),
     };
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
@@ -692,7 +703,11 @@ export const csv2tsp = async (args: string[] = []) => {
           content.push(...lines);
         }
       };
-      addToNamespace(additions.models);
+      if (additions.conditionBlocks.size) {
+        for (const {header, lines} of additions.conditionBlocks.values()) {
+          addToNamespace([...header, ...lines, '}']);
+        }
+      }
       if (additions.includes.length) {
         addToNamespace([
           '',
