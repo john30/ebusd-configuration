@@ -33,9 +33,9 @@ const ebusImport = [
 ]
 const ebusUsing = [
   'using Ebus;',
-  'using Ebus.num;',
-  'using Ebus.dtm;',
-  'using Ebus.str;',
+  'using Ebus.Num;',
+  'using Ebus.Dtm;',
+  'using Ebus.Str;',
 ]
 const templateHeader = [
   ...ebusImport,
@@ -48,6 +48,7 @@ const templateHeaderSubdir = [
 ];
 const templateFooter: string[] = [];
 const dynLengthTypes = new Set<string>(['STR', 'NTS', 'IGN', 'HEX'])
+const pascalCase = (s?: string) => s ? s.substring(0,1).toUpperCase()+s.substring(1) : s;
 const normId = (id: string): string => id.replaceAll(/[^a-zA-Z0-9_]/g, '_');
 const normType = (t: string): string => {
   const parts = t.split(':');
@@ -158,7 +159,7 @@ const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?
     return [
       '',
       comm&&comm!==line[1]&&`/** ${normComment(`${location}:${id}`, comm)} */`,
-      `model ${id} {`,
+      `model ${id} {`, // expected to be lowercase in templates
       ...types.map(t => {
           const {id, typ, typLen} = divisorValues('', t, '', '');
           const name = removeTrailNum(normFieldName(id));
@@ -191,8 +192,8 @@ const templateTransSub = (subdir: string): Trans<TemplateLine> => (...args): Opt
   if (header) return [
     ...templateHeaderSubdir,
     '',
-    `namespace ${subdir};`,
-    setSubdirManuf(subdir)&&`alias MF = ${hex(subdirManufId||0)}; // Ebus.id.manufacturers.${subdirManuf}`,
+    `namespace ${pascalCase(subdir)};`, // expected to be PascalCase
+    setSubdirManuf(subdir)&&`alias MF = ${hex(subdirManufId||0)}; // Ebus.Id.Values_manufacturers.${subdirManuf}`,
   ];
   return templateTrans(...args);
 }
@@ -259,7 +260,7 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   let divisor: string|undefined;
   let values: string|undefined;
   if (hasValues) {
-    values = `values_`;
+    values = `Values_`;
     values += ((id&&!isBaseType(id)&&id)||singleField||comm||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
     values += suffix(values, valueLists.seen);
     valueLists.list.set(values, divParts);
@@ -349,7 +350,7 @@ const namespaceWithZz = (header: string) => {
     zz = `0x${parts[0]}`;
     parts.splice(0, 1);
   }
-  circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_':'')+p).join('.');
+  circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_'+p:pascalCase(p))).join('.');
   return [
     zz&&`@zz(${zz})`,
     `namespace ${circuit} {`,
@@ -412,15 +413,15 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       let value = line[6]||'';
       if (circuit==='scan') {
         if (!model) {
-          // refers to Ebus.id.id
-          circuit = 'id.id';
+          // refers to Ebus.Id.Id
+          circuit = 'Id.Id';
           field = field?.toLowerCase();
         } else {
           additions!.imports.push(`import "./${circuit}.tsp";`);
         }
       }
       const fname = field||(value&&normalize?'value':'');
-      additions.conditions.set(name, [[circuit,model,fname].filter(p=>p).join('.'), value]);
+      additions.conditions.set(name, [[pascalCase(circuit),pascalCase(model),fname].filter(p=>p).join('.'), value]);
       return;
     }
     // conditional
@@ -436,7 +437,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       if (value) {
         nsAdd = name;
       } else {
-        nsAdd = ((field.startsWith('id.id.')?field.substring('id.id.'.length):field)+values).replaceAll(/[^a-zA-Z0-9]/g, '_');
+        nsAdd = ((field.startsWith('Id.Id.')?field.substring('Id.Id.'.length):field)+values).replaceAll(/[^a-zA-Z0-9]/g, '_');
       }
       condNamespace = condNamespace?condNamespace+'_'+nsAdd:nsAdd;
     });
@@ -493,7 +494,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   return [
     '',
     ...conds,
-    condNamespace&&`namespace ${condNamespace} {`,
+    condNamespace&&`namespace ${pascalCase(condNamespace)} {`,
     (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
@@ -506,7 +507,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       : idComb.length ? `@ext(${idComb.join(', ')})`
         +(chain.length>1?`\n@chain(${chainLengths&&chainLengths.size?chainLengths.values().next().value:'0'}, ${chain.slice(1).map(i=>`#[${i.join(', ')}]`).join(', ')})`:'')
       : undefined,
-    `model ${modelName} {`,
+    `model ${isDefault ? modelName : pascalCase(modelName)} {`, // expected to be PascalCase
     ...fields,
     '}',
     condNamespace&&`}`,
@@ -517,7 +518,7 @@ const messageTransSub = (subdir: string): Trans<MessageLine> => (...args): OptSt
   header && setSubdirManuf(subdir);
   if (header) return [
     ...messageHeader,
-    `namespace ${subdir};`,
+    `namespace ${pascalCase(subdir)};`, // expected to be PascalCase
     '',
     ...namespaceWithZz(header),
   ];
@@ -696,7 +697,7 @@ export const csv2tsp = async (args: string[] = []) => {
           '',
           '/** included parts */',
           'union _includes {',
-          ...additions.includes.map(([i,c]) => `${c.join('\n')}${i.split('.').map(i=>(i.match(/^[0-9]/)?'_':'')+i).join('.')}_inc,`),
+          ...additions.includes.map(([i,c]) => `${c.join('\n')}${i.split('.').map(i=>(i.match(/^[0-9]/)?'_'+i:pascalCase(i))).join('.')}_inc,`),
           '}',
         ]);
       }
