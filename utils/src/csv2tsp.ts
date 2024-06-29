@@ -460,10 +460,11 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   if (isDefault) {
     // default line: convert to base models
     dirsStr += suffix(dirsStr, additions!.defaultsByName);
-    if (circuit?.startsWith('#')) {
-      auth = circuit.substring(1);
+    const circuitLevel = circuit?.split('#');
+    if (circuitLevel?.length===2) {
+      auth = circuitLevel[1];
+      circuit = circuitLevel[0];
       isDefault += ` for user level "${auth}"`;
-      circuit = '';
     }
   }
   const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
