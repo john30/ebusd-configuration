@@ -440,9 +440,11 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       if (value) {
         nsAdd = name;
       } else {
-        nsAdd = ((field.startsWith('Id.Id.')?field.substring('Id.Id.'.length):field)+values).replaceAll(/[^a-zA-Z0-9]/g, '_');
+        nsAdd = ((field.startsWith('Id.Id.')?field.substring('Id.Id.'.length):field)+values)
+          .replace('>=', '_ge').replace('<=', '_le').replace('>', '_gt').replace('<', '_lt').replace('==', '_eq')
+          .replaceAll(/[^a-zA-Z0-9]/g, '_');
       }
-      condNamespace = condNamespace?condNamespace+'_'+nsAdd:nsAdd;
+      condNamespace = (condNamespace?condNamespace+'_'+nsAdd:nsAdd).replaceAll('__', '_');
     });
   }
   if (dirsStr[0]==='!') {
