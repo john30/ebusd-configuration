@@ -252,13 +252,13 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   let [typ, typName] = splitTypeName(typIn);
   name = name || typName;
   const id = normId(name||(typ.split(':')[0]));
-  comm = comm || name || '';
+  comm = comm || '';
   const typLen = addLength(typ);
   const origTyp = typ;
   typ = normType(typ);
-  if (!comm && origTyp && !isBaseType(origTyp)) {
-    comm = origTyp;
-  }
+  // if (!comm && origTyp && !isBaseType(origTyp)) {
+  //   comm = origTyp;
+  // }
   const divParts = divVal && divVal.split(';');
   const hasValues = divParts && divParts.length>1;
   let divisor: string|undefined;
@@ -352,8 +352,11 @@ const namespaceWithZz = (header: string, additions: Additions) => {
   let circuit = header;
   if (parts.length>=2 && parts[0].length==2) {
     // zz.circuit
-    // if (!additions.nameNoExt.startsWith(parts[0]+'.')) // option to avoid unnecessary @zz
-    zz = `0x${parts[0]}`;
+    zz = `@zz(0x${parts[0]})`
+    if (additions.nameNoExt.startsWith(parts[0]+'.')) {
+      // comment unnecessary @zz
+      zz = '// '+zz;
+    }
     parts.splice(0, 1);
   }
   // note: these need to be kept for uniqueness as e.g. 52.mc2.mc.4 and 53.mc2.mc.5 would otherwise overlap
@@ -363,7 +366,7 @@ const namespaceWithZz = (header: string, additions: Additions) => {
   // }
   circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_'+p:pascalCase(p))).join('.');
   return [
-    zz&&`@zz(${zz})`,
+    zz,
     `namespace ${circuit} {`,
   ];
 };
