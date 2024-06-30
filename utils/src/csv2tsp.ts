@@ -13,6 +13,7 @@ type OptStrs = ReqStrs | undefined;
 type CsvLine = Record<number, string|undefined>;
 
 type Additions = {
+  file: string, nameNoExt: string,
   imports: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>,
   conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
 };
@@ -315,11 +316,12 @@ const direction = (dir: string): string|undefined => dir[0]==='r' ? undefined : 
 let subdirManufId: number|undefined;
 let subdirManuf: string|undefined;
 const hex = (n?: number) => n===undefined?undefined:`0x${(n|0x100).toString(16).substring(1)}`;
-const fromHex = (...strs: ReqStrs): (number|string)[] => Buffer.from(strs.filter(s=>s!==undefined).join(''))
+const fromHex = (...strs: ReqStrs): (number|string)[] => fromHexOpt(false, ...strs);
+const fromHexOpt = (allowMf: boolean, ...strs: ReqStrs): (number|string)[] => Buffer.from(strs.filter(s=>s!==undefined).join(''))
 .reduce((p, c, i, all) => {
   if (i%2) {
     const n = Number.parseInt(String.fromCharCode(p.n, c), 16);
-    p.r.push(i===1 && all.length>=2*2 && n===subdirManufId ? 'MF' : n<2 ? n : `0x${n.toString(16)}`);
+    p.r.push(allowMf && i===1 && all.length>=2*2 && n===subdirManufId ? 'MF' : n<2 ? n : `0x${n.toString(16)}`);
     p.n = 0;
   } else {
     p.n = c;
@@ -344,15 +346,21 @@ const objSlice = <T extends CsvLine>(line: T|undefined, from: number = 0, len: n
   }
   return used;
 };
-const namespaceWithZz = (header: string) => {
+const namespaceWithZz = (header: string, additions: Additions) => {
   const parts = header.split('.');
   let zz: string|undefined;
   let circuit = header;
   if (parts.length>=2 && parts[0].length==2) {
     // zz.circuit
+    // if (!additions.nameNoExt.startsWith(parts[0]+'.')) // option to avoid unnecessary @zz
     zz = `0x${parts[0]}`;
     parts.splice(0, 1);
   }
+  // note: these need to be kept for uniqueness as e.g. 52.mc2.mc.4 and 53.mc2.mc.5 would otherwise overlap
+  // if (parts.length>1 && parts[parts.length-1].match(/^[0-9]*$/)) {
+  //   // drop component index suffix
+  //   parts.splice(parts.length-1, 1);
+  // }
   circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_'+p:pascalCase(p))).join('.');
   return [
     zz&&`@zz(${zz})`,
@@ -386,7 +394,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     return [
       ...messageHeader,
       '',
-      ...namespaceWithZz(header),
+      ...namespaceWithZz(header, additions),
     ];
   }
   if (header===false) {
@@ -473,7 +481,8 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     }
   }
   const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
-  const chain = (line[7]||'').split(';').map(i=>fromHex(line[6], i.split(':')[0]));
+  const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
+  const chain = (line[7]||'').split(';').map((i,_,a)=>fromHexOpt(a.length<=1&&!!single&&!!line[6], line[6], i.split(':')[0]));
   const idComb = chain[0];
   const chainLengths = chain.length>1 && (line[7]||'').split(';').map(i=>i.split(':')[1])
     .filter(i=>i?.length)
@@ -481,7 +490,6 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   if (chainLengths && chainLengths.size>1) {
     console.error(`different chain lengths in "${line[6]}", ignored`);
   }
-  const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
   const zz = line[5]&&fromHex(line[5]).join();
   // adjust location before extracting fields
   location += `:${condNamespace||''}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
@@ -528,13 +536,13 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   return ret;
 }
 const messageTransSub = (subdir: string): Trans<MessageLine> => (...args): OptStrs => {
-  const [,,header] = args;
+  const [,,header,additions] = args;
   header && setSubdirManuf(subdir);
   if (header) return [
     ...messageHeader,
     `namespace ${pascalCase(subdir)};`, // expected to be PascalCase
     '',
-    ...namespaceWithZz(header),
+    ...namespaceWithZz(header, additions),
   ];
   return messageTrans(...args);
 }
@@ -675,6 +683,7 @@ export const csv2tsp = async (args: string[] = []) => {
     const empty = (line: CsvLine) => !line || !Object.keys(line).length;
     const content: ReqStrs = [];
     const additions: Additions = {
+      file, nameNoExt,
       imports: [],
       includes: [],
       defaultsByName: new Map<string, number>(),
