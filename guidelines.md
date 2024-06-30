@@ -87,16 +87,7 @@ From here, the changed declarations in `outtsp` can be compared against the curr
 
 
 ## Style guide
-Follow the [TypeSpec style guide](https://typespec.io/docs/handbook/style-guide) with the following additions/exceptions:
-* name of value lists in `enum` always begins with `values_` followed by the name of the message or field referring to
-* due to absence of an option to include models in a namepsace from another namespace, the construct for includsion is putting these namespaces into a union named `_includes`:
-  ```typespec
-    union _includes {
-      namespaceName,
-      // etc.
-    }
-  ```
-* namespaces are allowed in camelCase.
+See the [style guide in the eBUS TypeSpec library](https://github.com/john30/ebus-typespec#style-guide).
 
 
 ## Converting to CSV
