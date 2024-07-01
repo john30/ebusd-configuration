@@ -64,7 +64,7 @@ to,TTM,,,to
 slot1,from;to,,,slot 1 from/to
 slot2,from;to,,,slot 2 from/to
 slot3,from;to,,,slot 3 from/to
-slot1-3,slot1;slot2;slot3,,,
+slot1-3,slot1;slot2;slot3,,,slots 1-3
 timer,slot1-3;daysel,,,
 backtype,UCH,0=not present;1=externalheat;2=externalwater;3=externalheatandwater;4=internalheatandwater,,
 backmode,UCH,0=no backup;1=withbackup;2=onlybackup,,
