@@ -6,13 +6,13 @@ import "./iotesthp_inc.tsp";
 import "./errors_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x25)
-namespace ehp.hwc {
+// @zz(0x25)
+namespace Ehp.Hwc {
   // ,EHP00,Heat pump AMU,EHP00 172 DHW
 
   /** default *r */
@@ -63,8 +63,15 @@ namespace ehp.hwc {
     value: yesno;
   }
 
-  @condition(id.id.sw, ">=337")
-  namespace sw__337 {
+  /** Legionella_Start_Time */
+  @inherit(r, wi)
+  @ext(0x67, 0)
+  model LegionellaStartTime {
+    /** start time for legionella protection (different from BMR) */
+    value: time2;
+  }
+  @condition(Id.Id.sw, ">=337")
+  namespace Sw_ge337 {
     /** LegioProtectionDay */
     @inherit(r, wi)
     @ext(0x7c, 1)
@@ -73,17 +80,8 @@ namespace ehp.hwc {
       value: bday;
     }
   }
-
-  /** Legionella_Start_Time */
-  @inherit(r, wi)
-  @ext(0x67, 0)
-  model LegionellaStartTime {
-    /** start time for legionella protection (different from BMR) */
-    value: time2;
-  }
-
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
+  @condition(Id.Id.sw, ">=407")
+  namespace Sw_ge407 {
     /** CH1P_PumpSpeed_layered_tank */
     @inherit(r, wi)
     @ext(0xc1, 1)
@@ -91,10 +89,7 @@ namespace ehp.hwc {
       /** CH pump speed setpoint while shiftloading DHW tank [%] */
       value: percent0;
     }
-  }
 
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
     /** CH1P_PumpSpeed_coil_tank */
     @inherit(r, wi)
     @ext(0xc2, 1)
@@ -102,10 +97,7 @@ namespace ehp.hwc {
       /** CH pump speed setpoint while loading DHW tank with coils [%] */
       value: percent0;
     }
-  }
 
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
     /** DHW_Tank_is_coil */
     @inherit(r, wi)
     @ext(0xcd, 1)
@@ -114,9 +106,8 @@ namespace ehp.hwc {
       value: yesno;
     }
   }
-
-  @condition(id.id.sw, ">=415")
-  namespace sw__415 {
+  @condition(Id.Id.sw, ">=415")
+  namespace Sw_ge415 {
     /** TappingDetectionLimit */
     @inherit(r, wi)
     @ext(0xe8, 1)
@@ -128,10 +119,10 @@ namespace ehp.hwc {
 
   /** included parts */
   union _includes {
-    hwcmode_inc,
-    timer_inc,
-    iotesthp_inc,
-    errors_inc,
-    quick_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Iotesthp_inc,
+    Errors_inc,
+    Quick_inc,
   }
 }

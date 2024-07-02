@@ -3,12 +3,12 @@ import "./_templates.tsp";
 import "./timerhwc_inc.tsp";
 import "./timerhc_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
+// @zz(0x15)
 namespace _160 {
   // ,35000,VTS 160,173 173
 
@@ -53,7 +53,7 @@ namespace _160 {
   @inherit(r, w)
   @ext(1, 0)
   model SystemOnOff {
-    @values(values_SystemOnOff)
+    @values(Values_SystemOnOff)
     value: UCH;
   }
 
@@ -61,7 +61,7 @@ namespace _160 {
   @inherit(r, w)
   @ext(0x2f, 0)
   model OperatingMode {
-    @values(values_OperatingMode)
+    @values(Values_OperatingMode)
     value: UCH;
   }
 
@@ -69,7 +69,7 @@ namespace _160 {
   @inherit(r, w)
   @ext(0x5d, 0)
   model OverrideMode {
-    @values(values_OverrideMode)
+    @values(Values_OverrideMode)
     value: UCH;
   }
 
@@ -97,17 +97,17 @@ namespace _160 {
     value: UCH;
   }
 
-  enum values_SystemOnOff {
+  enum Values_SystemOnOff {
     on: 0,
     off: 1,
   }
 
-  enum values_OperatingMode {
+  enum Values_OperatingMode {
     Auto: 2,
     Comfort: 3,
   }
 
-  enum values_OverrideMode {
+  enum Values_OverrideMode {
     None: 0,
     Party: 1,
     Holiday: 4,
@@ -115,7 +115,7 @@ namespace _160 {
 
   /** included parts */
   union _includes {
-    timerhwc_inc,
-    timerhc_inc,
+    Timerhwc_inc,
+    Timerhc_inc,
   }
 }

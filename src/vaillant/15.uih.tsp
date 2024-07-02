@@ -4,13 +4,13 @@ import "./yield8485_inc.tsp";
 import "./yield8485r_inc.tsp";
 import "./yield8485_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace uih {
+// @zz(0x15)
+namespace Uih {
   // ,UIH00,CI,UIH00 169
 
   /** default *r */
@@ -34,16 +34,6 @@ namespace uih {
   @base(MF, 0x9, 0xe)
   model ws {}
   // ##### Earned energy #####
-
-  @condition(id.id.sw, ">=202")
-  namespace sw__202 {
-    /** EarnedEnergySum */
-    @inherit(r)
-    @ext(0x87, 0)
-    model YieldSum {
-      value: ULG;
-    }
-  }
   // ##### Parameters and information #####
 
   /** Aussentemperatur */
@@ -202,186 +192,6 @@ namespace uih {
     /** heat buffer is available */
     value: onoff;
   }
-
-  @condition(id.id.sw, "<=345")
-  namespace sw__345 {
-    /** child protection */
-    @inherit(r)
-    @ext(0x6e, 0)
-    model ChildProtection {
-      /** child protection */
-      value: yesno;
-    }
-  }
-
-  @condition(id.id.sw, ">=220")
-  namespace sw__220 {
-    /** CoolingDay */
-    @inherit(r)
-    @ext(0x7c, 0)
-    model CoolingDay {
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=220")
-  namespace sw__220 {
-    /** CoolingActive */
-    @inherit(r)
-    @ext(0x83, 0)
-    model CoolingActive {
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=202")
-  namespace sw__202 {
-    /** EarnedEnergyOld */
-    @inherit(r, wi)
-    @ext(0x86, 0)
-    model YieldOld {
-      /** Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs. */
-      value: ULG;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** DiagnoseMode */
-    @inherit(r)
-    @ext(0x8f, 0)
-    model DiagnoseMode {
-      /** _DiaMode_Not=0, _DiaMode_Off, _DiaMode_CH, _DiaMode_DhwLoading, _DiaMode_Cooling, _DiaMode_Deicing */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** EmState_WorkingMode */
-    @inherit(r)
-    @ext(0x90, 0)
-    model EmStateWorkingMode {
-      /** 0 = Standby1 = CH2 = Cooling */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** EmStateCooling */
-    @inherit(r)
-    @ext(0x91, 0)
-    model EmStateCooling {
-      /** 0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** EmStateStandby */
-    @inherit(r)
-    @ext(0x92, 0)
-    model EmStateStandby {
-      /** 0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** EmStateCH */
-    @inherit(r)
-    @ext(0x93, 0)
-    model EmStateHc {
-      /** 0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** DHW_Demand */
-    @inherit(r)
-    @ext(0x94, 0)
-    model HwcDemand {
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** CH_Demand */
-    @inherit(r)
-    @ext(0x95, 0)
-    model HcDemand {
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** Cooling_Demand */
-    @inherit(r)
-    @ext(0x96, 0)
-    model CoolingDemand {
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** EmSystemMode */
-    @inherit(r)
-    @ext(0x97, 0)
-    model EmSystemMode {
-      /** 0 = Off1 = Heating2 = Cooling3 = Dhw4 = DhwDuringCH5 = DhwDuringCooling */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** ParallelCoolingDhwPossible */
-    @inherit(r)
-    @ext(0x98, 0)
-    model ParallelCoolingHwcPossible {
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** DesiredWorkingMode */
-    @inherit(r)
-    @ext(0x9a, 0)
-    model DesiredWorkingMode {
-      /** 0 = Standby1 = CH2 = Cooling */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=250")
-  namespace sw__250 {
-    /** SysWithCoolingSupport */
-    @inherit(r)
-    @ext(0x9b, 0)
-    model SysWithCoolingSupport {
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=362")
-  namespace sw__362 {
-    /** reserve 1 */
-    @inherit(r)
-    @ext(0x9d, 0)
-    model reserve1 {
-      /** for future use */
-      value: UCH;
-    }
-  }
   // ##### HC Names and Tel No #####
 
   /** aaucHcNames CH2 */
@@ -536,16 +346,162 @@ namespace uih {
     @maxLength(9)
     value: STR;
   }
+  @condition(Id.Id.sw, ">=202")
+  namespace Sw_ge202 {
+    /** EarnedEnergySum */
+    @inherit(r)
+    @ext(0x87, 0)
+    model YieldSum {
+      value: ULG;
+    }
+
+    /** EarnedEnergyOld */
+    @inherit(r, wi)
+    @ext(0x86, 0)
+    model YieldOld {
+      /** Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs. */
+      value: ULG;
+    }
+  }
+  @condition(Id.Id.sw, "<=345")
+  namespace Sw_le345 {
+    /** child protection */
+    @inherit(r)
+    @ext(0x6e, 0)
+    model ChildProtection {
+      /** child protection */
+      value: yesno;
+    }
+  }
+  @condition(Id.Id.sw, ">=220")
+  namespace Sw_ge220 {
+    /** CoolingDay */
+    @inherit(r)
+    @ext(0x7c, 0)
+    model CoolingDay {
+      value: UCH;
+    }
+
+    /** CoolingActive */
+    @inherit(r)
+    @ext(0x83, 0)
+    model CoolingActive {
+      value: onoff;
+    }
+  }
+  @condition(Id.Id.sw, ">=250")
+  namespace Sw_ge250 {
+    /** DiagnoseMode */
+    @inherit(r)
+    @ext(0x8f, 0)
+    model DiagnoseMode {
+      /** _DiaMode_Not=0, _DiaMode_Off, _DiaMode_CH, _DiaMode_DhwLoading, _DiaMode_Cooling, _DiaMode_Deicing */
+      value: UCH;
+    }
+
+    /** EmState_WorkingMode */
+    @inherit(r)
+    @ext(0x90, 0)
+    model EmStateWorkingMode {
+      /** 0 = Standby1 = CH2 = Cooling */
+      value: UCH;
+    }
+
+    /** EmStateCooling */
+    @inherit(r)
+    @ext(0x91, 0)
+    model EmStateCooling {
+      /** 0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby */
+      value: UCH;
+    }
+
+    /** EmStateStandby */
+    @inherit(r)
+    @ext(0x92, 0)
+    model EmStateStandby {
+      /** 0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby */
+      value: UCH;
+    }
+
+    /** EmStateCH */
+    @inherit(r)
+    @ext(0x93, 0)
+    model EmStateHc {
+      /** 0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby */
+      value: UCH;
+    }
+
+    /** DHW_Demand */
+    @inherit(r)
+    @ext(0x94, 0)
+    model HwcDemand {
+      value: onoff;
+    }
+
+    /** CH_Demand */
+    @inherit(r)
+    @ext(0x95, 0)
+    model HcDemand {
+      value: onoff;
+    }
+
+    /** Cooling_Demand */
+    @inherit(r)
+    @ext(0x96, 0)
+    model CoolingDemand {
+      value: onoff;
+    }
+
+    /** EmSystemMode */
+    @inherit(r)
+    @ext(0x97, 0)
+    model EmSystemMode {
+      /** 0 = Off1 = Heating2 = Cooling3 = Dhw4 = DhwDuringCH5 = DhwDuringCooling */
+      value: UCH;
+    }
+
+    /** ParallelCoolingDhwPossible */
+    @inherit(r)
+    @ext(0x98, 0)
+    model ParallelCoolingHwcPossible {
+      value: onoff;
+    }
+
+    /** DesiredWorkingMode */
+    @inherit(r)
+    @ext(0x9a, 0)
+    model DesiredWorkingMode {
+      /** 0 = Standby1 = CH2 = Cooling */
+      value: UCH;
+    }
+
+    /** SysWithCoolingSupport */
+    @inherit(r)
+    @ext(0x9b, 0)
+    model SysWithCoolingSupport {
+      value: onoff;
+    }
+  }
+  @condition(Id.Id.sw, ">=362")
+  namespace Sw_ge362 {
+    /** reserve 1 */
+    @inherit(r)
+    @ext(0x9d, 0)
+    model Reserve1 {
+      /** for future use */
+      value: UCH;
+    }
+  }
 
   /** included parts */
   union _includes {
-    @condition(id.id.sw, "<=349")
-    yield8485_inc,
+    @condition(Id.Id.sw, "<=349")
+    Yield8485_inc,
 
-    @condition(id.id.sw, "=350-363")
-    yield8485r_inc,
+    @condition(Id.Id.sw, "=350-363")
+    Yield8485r_inc,
 
-    @condition(id.id.sw, ">=364")
-    yield8485_inc,
+    @condition(Id.Id.sw, ">=364")
+    Yield8485_inc,
   }
 }

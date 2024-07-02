@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./roomtempoffset_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x50)
-namespace zeo.mc {
+// @zz(0x50)
+namespace Zeo.Mc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Mixer
 
   /** default *r */
@@ -164,9 +164,9 @@ namespace zeo.mc {
 
   /** included parts */
   union _includes {
-    mcmode_inc,
-    timer_inc,
-    roomtempoffset_inc,
-    quick_inc,
+    Mcmode_inc,
+    Timer_inc,
+    Roomtempoffset_inc,
+    Quick_inc,
   }
 }

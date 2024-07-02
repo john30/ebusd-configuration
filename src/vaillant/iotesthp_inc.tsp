@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace iotesthp_inc {
+namespace Iotesthp_inc {
   // I/O Test: heat pump
 
   /** default *wi for user level "install" */
@@ -18,17 +18,17 @@ namespace iotesthp_inc {
   /** I/O test */
   @inherit(wi)
   @ext(0x2)
-  model iotest {
-    @values(values_iotest)
+  model Iotest {
+    @values(Values_iotest)
     value: UCH;
   }
 
   /** stop I/O test */
   @inherit(wi)
   @ext(1)
-  model ioteststop {}
+  model Ioteststop {}
 
-  enum values_iotest {
+  enum Values_iotest {
     off: 0,
     coolvalve: 1,
     sourcepump: 2,

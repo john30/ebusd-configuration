@@ -4,13 +4,13 @@ import "./yield3f40_inc.tsp";
 import "./errors_inc.tsp";
 import "./iotestbsol_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0xec)
-namespace sol.sc {
+// @zz(0xec)
+namespace Sol.Sc {
   // ,sol00,VR 68,sol 210 Solar
 
   /** default *r */
@@ -436,8 +436,8 @@ namespace sol.sc {
 
   /** included parts */
   union _includes {
-    yield3f40_inc,
-    errors_inc,
-    iotestbsol_inc,
+    Yield3f40_inc,
+    Errors_inc,
+    Iotestbsol_inc,
   }
 }

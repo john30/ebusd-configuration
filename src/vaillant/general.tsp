@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace general {
+namespace General {
   /** default *r */
   @base(MF, 0x13)
   model r {}
@@ -14,7 +14,7 @@ namespace general {
   /** register value range */
   @inherit(r)
   @ext(0x4)
-  model valuerange {
+  model Valuerange {
     /** register number */
     @out
     id: UIN;

@@ -3,12 +3,12 @@ import "./_templates.tsp";
 import "./errors_inc.tsp";
 import "./service_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace bai._0010004121_inc {
+namespace Bai._0010004121_inc {
   // ,BAI00,ecoTEC/4 eGAS,0010004121 209
 
   /** default *r */
@@ -133,7 +133,7 @@ namespace bai._0010004121_inc {
   /** d.11 external pump */
   @inherit(r)
   @ext(0x3f, 0)
-  model extWP {
+  model ExtWP {
     /** External heating pump */
     value: onoff;
   }
@@ -209,7 +209,7 @@ namespace bai._0010004121_inc {
   @ext(0xbb, 0)
   model Gasvalve {
     /** Gasvalve activation signal */
-    @values(values_Gasvalve)
+    @values(Values_Gasvalve)
     value: UCH;
   }
 
@@ -291,7 +291,7 @@ namespace bai._0010004121_inc {
   /** d.91 Status DCF 77 */
   @inherit(r)
   @ext(0x69, 0)
-  model dcfState {
+  model DcfState {
     /** dcfStatus */
     value: dcfstate;
   }
@@ -717,7 +717,7 @@ namespace bai._0010004121_inc {
   @ext(0x5, 0)
   model Flame {
     /** flame */
-    @values(values_Flame)
+    @values(Values_Flame)
     value: UCH;
   }
 
@@ -734,7 +734,7 @@ namespace bai._0010004121_inc {
   @ext(0xd, 0)
   model GasvalveUC {
     /** Activation signal of the gasvalve (activated via micrcontroller) */
-    @values(values_GasvalveUC)
+    @values(Values_GasvalveUC)
     value: UCH;
   }
 
@@ -743,7 +743,7 @@ namespace bai._0010004121_inc {
   @ext(0x10, 0)
   model VolatileLockout {
     /** TRUE: STB failures is volatileFALSE: STB failure is not volataile */
-    @values(values_VolatileLockout)
+    @values(Values_VolatileLockout)
     value: UCH;
   }
 
@@ -810,7 +810,7 @@ namespace bai._0010004121_inc {
   @ext(0x47, 0)
   model GasvalveASICFeedback {
     /** feedback gasvalve (from ASIC) */
-    @values(values_GasvalveASICFeedback)
+    @values(Values_GasvalveASICFeedback)
     value: UCH;
   }
 
@@ -819,7 +819,7 @@ namespace bai._0010004121_inc {
   @ext(0x48, 0)
   model GasvalveUCFeedback {
     /** feedback gasvalve (from Microcontroller) */
-    @values(values_GasvalveUCFeedback)
+    @values(Values_GasvalveUCFeedback)
     value: UCH;
   }
 
@@ -828,7 +828,7 @@ namespace bai._0010004121_inc {
   @ext(0x49, 0)
   model Ignitor {
     /** igniton activated */
-    @values(values_Ignitor)
+    @values(Values_Ignitor)
     value: UCH;
   }
 
@@ -867,7 +867,7 @@ namespace bai._0010004121_inc {
   /** ReturnTemperature_DK */
   @inherit(r)
   @ext(0x6b, 0)
-  model expertlevel_ReturnTemp {
+  model Expertlevel_ReturnTemp {
     /** external return sensor */
     value: tempsensor;
   }
@@ -885,7 +885,7 @@ namespace bai._0010004121_inc {
   @ext(0x77, 0)
   model Templimiter {
     /** feedback signal of the temperature limiter */
-    @values(values_Templimiter)
+    @values(Values_Templimiter)
     value: UCH;
   }
 
@@ -977,7 +977,7 @@ namespace bai._0010004121_inc {
   @ext(0xed, 0)
   model WPSecondStage {
     /** Second stage of the pump activated */
-    @values(values_WPSecondStage)
+    @values(Values_WPSecondStage)
     value: UCH;
   }
 
@@ -986,7 +986,7 @@ namespace bai._0010004121_inc {
   @ext(0xd2, 0)
   model TemplimiterWithNTC {
     /** Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact */
-    @values(values_TemplimiterWithNTC)
+    @values(Values_TemplimiterWithNTC)
     value: UCH;
   }
 
@@ -995,7 +995,7 @@ namespace bai._0010004121_inc {
   @ext(0xd3, 0)
   model VolatileLockoutIFCGV {
     /** all IFC faults are volataile */
-    @values(values_VolatileLockoutIFCGV)
+    @values(Values_VolatileLockoutIFCGV)
     value: UCH;
   }
 
@@ -1020,7 +1020,7 @@ namespace bai._0010004121_inc {
   @ext(0xdb, 0)
   model Gasvalve3UC {
     /** Gasvalve activation signal (from Microcontroller) */
-    @values(values_Gasvalve3UC)
+    @values(Values_Gasvalve3UC)
     value: UCH;
   }
 
@@ -1129,7 +1129,7 @@ namespace bai._0010004121_inc {
   @ext(0x49, 0x4)
   model HcPumpMode {
     /** Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend */
-    @values(values_HcPumpMode)
+    @values(Values_HcPumpMode)
     value: UCH;
   }
 
@@ -1146,7 +1146,7 @@ namespace bai._0010004121_inc {
   @ext(0xb8, 0)
   model OptionRelais {
     /** Option relais function */
-    @values(values_OptionRelais)
+    @values(Values_OptionRelais)
     value: UCH;
   }
 
@@ -1155,7 +1155,7 @@ namespace bai._0010004121_inc {
   @ext(0x4b, 0x4)
   model AccessoriesOne {
     /** Accesory relay 1 function */
-    @values(values_AccessoriesOne)
+    @values(Values_AccessoriesOne)
     value: UCH;
   }
 
@@ -1164,7 +1164,7 @@ namespace bai._0010004121_inc {
   @ext(0x4c, 0x4)
   model AccessoriesTwo {
     /** Accesory relay 2 function */
-    @values(values_AccessoriesTwo)
+    @values(Values_AccessoriesTwo)
     value: UCH;
   }
 
@@ -1205,7 +1205,7 @@ namespace bai._0010004121_inc {
   /** d.64 average ignition time */
   @inherit(r)
   @ext(0x2d, 0)
-  model averageIgnitiontime {
+  model AverageIgnitiontime {
     /** average ignition time */
     @unit("s")
     @divisor(10)
@@ -1215,7 +1215,7 @@ namespace bai._0010004121_inc {
   /** d.65 Max ignition time */
   @inherit(r)
   @ext(0x2c, 0)
-  model maxIgnitiontime {
+  model MaxIgnitiontime {
     /** maximum ignition time */
     @unit("s")
     @divisor(10)
@@ -1626,7 +1626,7 @@ namespace bai._0010004121_inc {
   /** min_Ignitiontime_DK */
   @inherit(r)
   @ext(0x2b, 0)
-  model minIgnitiontime {
+  model MinIgnitiontime {
     /** minimum ignition time */
     @unit("s")
     @divisor(10)
@@ -1636,7 +1636,7 @@ namespace bai._0010004121_inc {
   /** Temp DHW max */
   @inherit(r)
   @ext(0x35, 0)
-  model maintenancedata_HwcTempMax {
+  model Maintenancedata_HwcTempMax {
     /** maximum temperature measured by the domestic hot water outlet sensor */
     value: temp;
   }
@@ -1906,73 +1906,73 @@ namespace bai._0010004121_inc {
     value: ULG;
   }
 
-  enum values_Gasvalve {
+  enum Values_Gasvalve {
     off: 240,
     on: 15,
   }
 
-  enum values_Flame {
+  enum Values_Flame {
     off: 240,
     on: 15,
   }
 
-  enum values_GasvalveUC {
+  enum Values_GasvalveUC {
     off: 240,
     on: 15,
   }
 
-  enum values_VolatileLockout {
+  enum Values_VolatileLockout {
     no: 240,
     yes: 15,
   }
 
-  enum values_GasvalveASICFeedback {
+  enum Values_GasvalveASICFeedback {
     off: 240,
     on: 15,
   }
 
-  enum values_GasvalveUCFeedback {
+  enum Values_GasvalveUCFeedback {
     off: 240,
     on: 15,
   }
 
-  enum values_Ignitor {
+  enum Values_Ignitor {
     off: 240,
     on: 15,
   }
 
-  enum values_Templimiter {
+  enum Values_Templimiter {
     off: 240,
     on: 15,
   }
 
-  enum values_WPSecondStage {
+  enum Values_WPSecondStage {
     off: 240,
     on: 15,
   }
 
-  enum values_TemplimiterWithNTC {
+  enum Values_TemplimiterWithNTC {
     no: 240,
     yes: 15,
   }
 
-  enum values_VolatileLockoutIFCGV {
+  enum Values_VolatileLockoutIFCGV {
     no: 240,
     yes: 15,
   }
 
-  enum values_Gasvalve3UC {
+  enum Values_Gasvalve3UC {
     off: 240,
     on: 15,
   }
 
-  enum values_HcPumpMode {
+  enum Values_HcPumpMode {
     post_run: 0,
     permanent: 1,
     winter: 2,
   }
 
-  enum values_OptionRelais {
+  enum Values_OptionRelais {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1983,7 +1983,7 @@ namespace bai._0010004121_inc {
     remotecontrol: 8,
   }
 
-  enum values_AccessoriesOne {
+  enum Values_AccessoriesOne {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1994,7 +1994,7 @@ namespace bai._0010004121_inc {
     remotecontrol: 8,
   }
 
-  enum values_AccessoriesTwo {
+  enum Values_AccessoriesTwo {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -2007,7 +2007,7 @@ namespace bai._0010004121_inc {
 
   /** included parts */
   union _includes {
-    errors_inc,
-    service_inc,
+    Errors_inc,
+    Service_inc,
   }
 }

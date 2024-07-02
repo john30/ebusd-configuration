@@ -6,13 +6,13 @@ import "./timerhwc_inc.tsp";
 import "./timerhc_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace f47 {
+// @zz(0x15)
+namespace F47 {
   // ,F4700,VRC 470f,F47 261
 
   /** default *r */
@@ -100,7 +100,7 @@ namespace f47 {
   @ext(0x2f, 0)
   model Hc1OPMode {
     /** operation mode of the first heating circuit */
-    @values(values_Hc1OPMode)
+    @values(Values_Hc1OPMode)
     value: UCH;
   }
 
@@ -141,7 +141,7 @@ namespace f47 {
   @ext(0x5d, 0)
   model Hc1SFMode {
     /** activated special function of first heating circuit */
-    @values(values_Hc1SFMode)
+    @values(Values_Hc1SFMode)
     value: UCH;
   }
 
@@ -214,7 +214,7 @@ namespace f47 {
   @ext(0x1c, 0)
   model Hc2SFMode {
     /** activated special function of second heating circuit */
-    @values(values_Hc2SFMode)
+    @values(Values_Hc2SFMode)
     value: UCH;
   }
 
@@ -283,7 +283,7 @@ namespace f47 {
   @ext(0x53, 0)
   model SummerWinterTimeAdjust {
     /** enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON) */
-    @values(values_SummerWinterTimeAdjust)
+    @values(Values_SummerWinterTimeAdjust)
     value: UCH;
   }
 
@@ -292,7 +292,7 @@ namespace f47 {
   @ext(0x16, 0)
   model LanguageVariant {
     /** display language */
-    @values(values_LanguageVariant)
+    @values(Values_LanguageVariant)
     value: UCH;
   }
   // ##### extra #####
@@ -318,7 +318,7 @@ namespace f47 {
   @ext(0xb8, 0)
   model OpModeEffect {
     /** selection which heating circuit is affected by changing parameters in the basic display */
-    @values(values_OpModeEffect)
+    @values(Values_OpModeEffect)
     value: UCH;
   }
 
@@ -335,7 +335,7 @@ namespace f47 {
   @ext(0x7d, 0)
   model HcMc1ConfigCPLP {
     /** configuration of the VR61 relay-output */
-    @values(values_HcMc1ConfigCPLP)
+    @values(Values_HcMc1ConfigCPLP)
     value: UCH;
   }
 
@@ -352,7 +352,7 @@ namespace f47 {
   @ext(0x3a, 0)
   model Hc1HcType {
     /** type of the first heating circuit */
-    @values(values_Hc1HcType)
+    @values(Values_Hc1HcType)
     value: UCH;
   }
 
@@ -369,7 +369,7 @@ namespace f47 {
   @ext(0x34, 0)
   model Hc1RoomTempSwitchOn {
     /** room temperature modulation of the first heating circuit */
-    @values(values_Hc1RoomTempSwitchOn)
+    @values(Values_Hc1RoomTempSwitchOn)
     value: UCH;
   }
 
@@ -394,7 +394,7 @@ namespace f47 {
   @ext(0x4d, 0)
   model Hc1AutoOffMode {
     /** operation during the lowering time */
-    @values(values_Hc1AutoOffMode)
+    @values(Values_Hc1AutoOffMode)
     value: UCH;
   }
 
@@ -427,7 +427,7 @@ namespace f47 {
   @ext(0x85, 0)
   model Hc2HcType {
     /** type of the second heating circuit */
-    @values(values_Hc2HcType)
+    @values(Values_Hc2HcType)
     value: UCH;
   }
 
@@ -468,7 +468,7 @@ namespace f47 {
   @ext(0x49, 0)
   model HwcLegioStartDay {
     /** weekday on which legionella protection is started (may also be every day of the week) */
-    @values(values_HwcLegioStartDay)
+    @values(Values_HwcLegioStartDay)
     value: UCH;
   }
 
@@ -565,7 +565,7 @@ namespace f47 {
   @ext(0x2, 0)
   model StatusDcf {
     /** status of the DCF signal */
-    @values(values_StatusDcf)
+    @values(Values_StatusDcf)
     value: UCH;
   }
 
@@ -647,7 +647,7 @@ namespace f47 {
   @ext(0x1b, 0)
   model Hc2OPMode {
     /** operation mode of the second heating circuit */
-    @values(values_Hc2OPMode)
+    @values(Values_Hc2OPMode)
     value: UCH;
   }
 
@@ -966,7 +966,7 @@ namespace f47 {
   /** actoSTOR_OPMode */
   @inherit(r)
   @ext(0x94, 0)
-  model actoSTOROPMode {
+  model ActoSTOROPMode {
     /** state diagram actoSTOR control */
     value: UCH;
   }
@@ -1040,14 +1040,14 @@ namespace f47 {
     value: UIN;
   }
 
-  enum values_Hc1OPMode {
+  enum Values_Hc1OPMode {
     auto: 2,
     on: 3,
     night: 4,
     summer: 5,
   }
 
-  enum values_Hc1SFMode {
+  enum Values_Hc1SFMode {
     none: 0,
     party: 1,
     onedaybankholiday: 2,
@@ -1059,7 +1059,7 @@ namespace f47 {
     onetimewater: 8,
   }
 
-  enum values_Hc2SFMode {
+  enum Values_Hc2SFMode {
     none: 0,
     party: 1,
     onedaybankholiday: 2,
@@ -1071,12 +1071,12 @@ namespace f47 {
     onetimewater: 8,
   }
 
-  enum values_SummerWinterTimeAdjust {
+  enum Values_SummerWinterTimeAdjust {
     off: 0,
     auto: 1,
   }
 
-  enum values_LanguageVariant {
+  enum Values_LanguageVariant {
     german: 0,
     english: 1,
     french: 2,
@@ -1102,42 +1102,42 @@ namespace f47 {
     serbian: 22,
   }
 
-  enum values_OpModeEffect {
+  enum Values_OpModeEffect {
     HC1: 0,
     HC2: 1,
     HC1_HC2: 3,
   }
 
-  enum values_HcMc1ConfigCPLP {
+  enum Values_HcMc1ConfigCPLP {
     off: 0,
     CP: 1,
     LP: 2,
   }
 
-  enum values_Hc1HcType {
+  enum Values_Hc1HcType {
     disabled: 0,
     burnercircuit: 1,
   }
 
-  enum values_Hc1RoomTempSwitchOn {
+  enum Values_Hc1RoomTempSwitchOn {
     off: 0,
     modulating: 1,
     thermostat: 2,
   }
 
-  enum values_Hc1AutoOffMode {
+  enum Values_Hc1AutoOffMode {
     frostprotection: 0,
     lowering: 1,
     eco: 2,
   }
 
-  enum values_Hc2HcType {
+  enum Values_Hc2HcType {
     disabled: 0,
     mixing: 1,
     zone: 2,
   }
 
-  enum values_HwcLegioStartDay {
+  enum Values_HwcLegioStartDay {
     Mon: 0,
     Tue: 1,
     Wed: 2,
@@ -1149,7 +1149,7 @@ namespace f47 {
     Mon_Sun: 8,
   }
 
-  enum values_StatusDcf {
+  enum Values_StatusDcf {
     nosignal: 0,
     ok: 1,
     sync: 2,
@@ -1157,7 +1157,7 @@ namespace f47 {
     validRTC: 4,
   }
 
-  enum values_Hc2OPMode {
+  enum Values_Hc2OPMode {
     auto: 2,
     on: 3,
     night: 4,
@@ -1166,10 +1166,10 @@ namespace f47 {
 
   /** included parts */
   union _includes {
-    yield3d43_inc,
-    timercc_inc,
-    timerhwc_inc,
-    timerhc_inc,
-    errors_inc,
+    Yield3d43_inc,
+    Timercc_inc,
+    Timerhwc_inc,
+    Timerhc_inc,
+    Errors_inc,
   }
 }

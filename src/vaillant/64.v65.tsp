@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x64)
-namespace v65 {
+// @zz(0x64)
+namespace V65 {
   // ,V6500,VR 65,V65 199
 
   /** default *u */

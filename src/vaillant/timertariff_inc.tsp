@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace timertariff_inc {
+namespace Timertariff_inc {
   // Periods high tariff
 
   /** default *r */
@@ -24,49 +24,49 @@ namespace timertariff_inc {
   /** Periods Monday */
   @inherit(r, w)
   @ext(0, 0x4)
-  model tariffTimer_Monday {
+  model TariffTimer_Monday {
     value: timer;
   }
 
   /** Periods Tuesday */
   @inherit(r, w)
   @ext(1, 0x4)
-  model tariffTimer_Tuesday {
+  model TariffTimer_Tuesday {
     value: timer;
   }
 
   /** Periods Wednesday */
   @inherit(r, w)
   @ext(0x2, 0x4)
-  model tariffTimer_Wednesday {
+  model TariffTimer_Wednesday {
     value: timer;
   }
 
   /** Periods Thursday */
   @inherit(r, w)
   @ext(0x3, 0x4)
-  model tariffTimer_Thursday {
+  model TariffTimer_Thursday {
     value: timer;
   }
 
   /** Periods Friday */
   @inherit(r, w)
   @ext(0x4, 0x4)
-  model tariffTimer_Friday {
+  model TariffTimer_Friday {
     value: timer;
   }
 
   /** Periods Saturday */
   @inherit(r, w)
   @ext(0x5, 0x4)
-  model tariffTimer_Saturday {
+  model TariffTimer_Saturday {
     value: timer;
   }
 
   /** Periods Sunday */
   @inherit(r, w)
   @ext(0x6, 0x4)
-  model tariffTimer_Sunday {
+  model TariffTimer_Sunday {
     value: timer;
   }
 }

@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./errors_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x0a)
-namespace pmw.hwc {
+// @zz(0x0a)
+namespace Pmw.Hwc {
   // ,PMW00,VPM-W Fresh water Station,PMW 244 DHW
 
   /** default *r */
@@ -239,50 +239,6 @@ namespace pmw.hwc {
     /** Enable DHW Ooperation */
     value: onoff;
   }
-
-  @condition(id.id.sw, ">=38")
-  namespace sw__38 {
-    /** SingleTankCharge */
-    @inherit(r)
-    @ext(0x44, 0)
-    model SingleStorageCharge {
-      /** Enable SingleTankCharge */
-      value: onoff;
-    }
-  }
-
-  @condition(id.id.sw, ">=39")
-  namespace sw__39 {
-    /** TDurchfluss */
-    @inherit(r)
-    @ext(0x46, 0)
-    model DurchflussTemp {
-      /** flow in l/min */
-      value: temp;
-    }
-  }
-
-  @condition(id.id.sw, ">=112")
-  namespace sw__112 {
-    /** VPMW_Mode */
-    @inherit(r)
-    @ext(0x4b, 0)
-    model VPMWMode {
-      /** 1=VPM 20/25W, 2=VPM 30/35W */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=117")
-  namespace sw__117 {
-    /** Overheat_timer */
-    @inherit(r)
-    @ext(0x52, 0)
-    model OverheatTimer {
-      /** Overheat_timer */
-      value: seconds0;
-    }
-  }
   // ##### P-I-Regler #####
 
   /** Krm */
@@ -346,125 +302,6 @@ namespace pmw.hwc {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
     @unit("in 1/1000")
     value: SIN;
-  }
-
-  @condition(id.id.sw, ">=40")
-  namespace sw__40 {
-    /** HexMonitoringCounter */
-    @inherit(r)
-    @ext(0x47, 0)
-    model HexMonitoringCounter {
-      /** RO */
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=40")
-  namespace sw__40 {
-    /** HExThreshold */
-    @inherit(r)
-    @ext(0x48, 0)
-    model HExThreshold {
-      /** RO */
-      @unit("in 1/100")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=40")
-  namespace sw__40 {
-    /** BigHExThreshold */
-    @inherit(r)
-    @ext(0x49, 0)
-    model BigHExThreshold {
-      /** RW */
-      @unit("in 1/100")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=40")
-  namespace sw__40 {
-    /** HExIndex */
-    @inherit(r)
-    @ext(0x4a, 0)
-    model HExIndex {
-      /** RO */
-      @unit("in 1/100")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=113")
-  namespace sw__113 {
-    /** Actual_Krm */
-    @inherit(r)
-    @ext(0x4c, 0)
-    model ActualKrm {
-      /** Krm used for calculation (set in DynamicTnm), valid after 1. Tapping */
-      @unit("in 1/1000")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=113")
-  namespace sw__113 {
-    /** Actual_Tnm */
-    @inherit(r)
-    @ext(0x4d, 0)
-    model ActualTnm {
-      /** Tnm used for calculation (set in DynamicTnm), valid after 1. Tapping */
-      @unit("in 1/1000")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=114")
-  namespace sw__114 {
-    /** Krm_Faktor_Small */
-    @inherit(r)
-    @ext(0x4e, 0)
-    model KrmFaktorSmall {
-      /** Krm Verstärkungsfaktor Small (1/1000) */
-      @unit("in 1/1000")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=114")
-  namespace sw__114 {
-    /** Krm_Faktor_Middl */
-    @inherit(r)
-    @ext(0x4f, 0)
-    model KrmFaktorMiddl {
-      /** Krm Verstärkungsfaktor Middl (1/1000) */
-      @unit("in 1/1000")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=114")
-  namespace sw__114 {
-    /** Tnm_Faktor_Small */
-    @inherit(r)
-    @ext(0x50, 0)
-    model TnmFaktorSmall {
-      /** Tnm Verstärkungsfaktor Small (1/1000) */
-      @unit("in 1/1000")
-      value: SIN;
-    }
-  }
-
-  @condition(id.id.sw, ">=114")
-  namespace sw__114 {
-    /** Tnm_Faktor_Middl */
-    @inherit(r)
-    @ext(0x51, 0)
-    model TnmFaktorMiddl {
-      /** Tnm Verstärkungsfaktor Middl (1/1000) */
-      @unit("in 1/1000")
-      value: SIN;
-    }
   }
   // ##### Statemachine #####
 
@@ -548,9 +385,16 @@ namespace pmw.hwc {
     /** eBus Failed Counter */
     value: UIN;
   }
+  @condition(Id.Id.sw, ">=38")
+  namespace Sw_ge38 {
+    /** SingleTankCharge */
+    @inherit(r)
+    @ext(0x44, 0)
+    model SingleStorageCharge {
+      /** Enable SingleTankCharge */
+      value: onoff;
+    }
 
-  @condition(id.id.sw, ">=38")
-  namespace sw__38 {
     /** ZaehlerBetriebsStunden */
     @inherit(r)
     @ext(0x45, 0)
@@ -559,12 +403,137 @@ namespace pmw.hwc {
       value: UIN;
     }
   }
+  @condition(Id.Id.sw, ">=39")
+  namespace Sw_ge39 {
+    /** TDurchfluss */
+    @inherit(r)
+    @ext(0x46, 0)
+    model DurchflussTemp {
+      /** flow in l/min */
+      value: temp;
+    }
+  }
+  @condition(Id.Id.sw, ">=112")
+  namespace Sw_ge112 {
+    /** VPMW_Mode */
+    @inherit(r)
+    @ext(0x4b, 0)
+    model VPMWMode {
+      /** 1=VPM 20/25W, 2=VPM 30/35W */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=117")
+  namespace Sw_ge117 {
+    /** Overheat_timer */
+    @inherit(r)
+    @ext(0x52, 0)
+    model OverheatTimer {
+      /** Overheat_timer */
+      value: seconds0;
+    }
+  }
+  @condition(Id.Id.sw, ">=40")
+  namespace Sw_ge40 {
+    /** HexMonitoringCounter */
+    @inherit(r)
+    @ext(0x47, 0)
+    model HexMonitoringCounter {
+      /** RO */
+      value: SIN;
+    }
+
+    /** HExThreshold */
+    @inherit(r)
+    @ext(0x48, 0)
+    model HExThreshold {
+      /** RO */
+      @unit("in 1/100")
+      value: SIN;
+    }
+
+    /** BigHExThreshold */
+    @inherit(r)
+    @ext(0x49, 0)
+    model BigHExThreshold {
+      /** RW */
+      @unit("in 1/100")
+      value: SIN;
+    }
+
+    /** HExIndex */
+    @inherit(r)
+    @ext(0x4a, 0)
+    model HExIndex {
+      /** RO */
+      @unit("in 1/100")
+      value: SIN;
+    }
+  }
+  @condition(Id.Id.sw, ">=113")
+  namespace Sw_ge113 {
+    /** Actual_Krm */
+    @inherit(r)
+    @ext(0x4c, 0)
+    model ActualKrm {
+      /** Krm used for calculation (set in DynamicTnm), valid after 1. Tapping */
+      @unit("in 1/1000")
+      value: SIN;
+    }
+
+    /** Actual_Tnm */
+    @inherit(r)
+    @ext(0x4d, 0)
+    model ActualTnm {
+      /** Tnm used for calculation (set in DynamicTnm), valid after 1. Tapping */
+      @unit("in 1/1000")
+      value: SIN;
+    }
+  }
+  @condition(Id.Id.sw, ">=114")
+  namespace Sw_ge114 {
+    /** Krm_Faktor_Small */
+    @inherit(r)
+    @ext(0x4e, 0)
+    model KrmFaktorSmall {
+      /** Krm Verstärkungsfaktor Small (1/1000) */
+      @unit("in 1/1000")
+      value: SIN;
+    }
+
+    /** Krm_Faktor_Middl */
+    @inherit(r)
+    @ext(0x4f, 0)
+    model KrmFaktorMiddl {
+      /** Krm Verstärkungsfaktor Middl (1/1000) */
+      @unit("in 1/1000")
+      value: SIN;
+    }
+
+    /** Tnm_Faktor_Small */
+    @inherit(r)
+    @ext(0x50, 0)
+    model TnmFaktorSmall {
+      /** Tnm Verstärkungsfaktor Small (1/1000) */
+      @unit("in 1/1000")
+      value: SIN;
+    }
+
+    /** Tnm_Faktor_Middl */
+    @inherit(r)
+    @ext(0x51, 0)
+    model TnmFaktorMiddl {
+      /** Tnm Verstärkungsfaktor Middl (1/1000) */
+      @unit("in 1/1000")
+      value: SIN;
+    }
+  }
 
   /** included parts */
   union _includes {
-    hwcmode_inc,
-    timer_inc,
-    errors_inc,
-    quick_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Errors_inc,
+    Quick_inc,
   }
 }

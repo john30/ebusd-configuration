@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace sdr_p {
+// @zz(0x15)
+namespace Sdr_p {
   // ,SDR_P,auroMATIC 560,168 168 Disabled
 
   /** default *r */

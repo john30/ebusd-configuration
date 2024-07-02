@@ -7,13 +7,13 @@ import "./errors_inc.tsp";
 import "./roomtempoffset_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x50)
-namespace solsy.mc {
+// @zz(0x50)
+namespace Solsy.Mc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 Mixer
 
   /** default *r */
@@ -183,7 +183,7 @@ namespace solsy.mc {
   @ext(0x3c, 0)
   model CfgHeatSinkType {
     /** Type of the configurable mixer circuit */
-    @values(values_CfgHeatSinkType)
+    @values(Values_CfgHeatSinkType)
     value: UCH;
   }
 
@@ -235,29 +235,6 @@ namespace solsy.mc {
     value: curve;
   }
 
-  @condition(id.id.sw, ">=401")
-  namespace sw__401 {
-    /** HcMaxPreHeating1 */
-    @inherit(r, wi)
-    @ext(0x38, 0)
-    model HcMaxPreHeating {
-      /** maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature) */
-      @unit("min / 5")
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, "<=400")
-  namespace sw__400 {
-    /** HcMaxPreHeating1 */
-    @inherit(r, w)
-    @ext(0x38, 0)
-    model HcMaxPreHeating {
-      /** The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
-      value: hours;
-    }
-  }
-
   /** FloorPavingDryingDay1 */
   @inherit(r)
   @ext(0x3b, 0)
@@ -274,21 +251,42 @@ namespace solsy.mc {
     value: mcmode;
   }
 
-  enum values_CfgHeatSinkType {
+  enum Values_CfgHeatSinkType {
     disabled: 0,
     mixer: 1,
     water: 2,
     fixvalue: 3,
     backflow: 4,
   }
+  @condition(Id.Id.sw, ">=401")
+  namespace Sw_ge401 {
+    /** HcMaxPreHeating1 */
+    @inherit(r, wi)
+    @ext(0x38, 0)
+    model HcMaxPreHeating {
+      /** maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature) */
+      @unit("min / 5")
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, "<=400")
+  namespace Sw_le400 {
+    /** HcMaxPreHeating1 */
+    @inherit(r, w)
+    @ext(0x38, 0)
+    model HcMaxPreHeating {
+      /** The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
+      value: hours;
+    }
+  }
 
   /** included parts */
   union _includes {
-    mcmode_inc,
-    timer_inc,
-    iotest620_inc,
-    errors_inc,
-    roomtempoffset_inc,
-    quick_inc,
+    Mcmode_inc,
+    Timer_inc,
+    Iotest620_inc,
+    Errors_inc,
+    Roomtempoffset_inc,
+    Quick_inc,
   }
 }

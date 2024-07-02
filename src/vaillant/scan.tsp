@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace scan {
+namespace Scan {
   /** default *r */
   @base(MF, 0x9)
   model r {}
@@ -14,10 +14,8 @@ namespace scan {
   /** Scan ID */
   @inherit(r)
   @ext(0x24)
-  @ext(0x25)
-  @ext(0x26)
-  @ext(0x27)
-  model id {
+  @chain(0, #[0x25], #[0x26], #[0x27])
+  model Id {
     ign: IGN;
 
     @maxLength(2)

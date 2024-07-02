@@ -4,13 +4,13 @@ import "./iotesthp_inc.tsp";
 import "./errors_inc.tsp";
 import "./hcmode_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x08)
-namespace ehp {
+// @zz(0x08)
+namespace Ehp {
   // ,EHP00,Heat pump AMU,EHP00 172 Boiler
 
   /** default *r */
@@ -138,7 +138,7 @@ namespace ehp {
 
   /** Compressor_Cut_LP_No */
   @inherit(r)
-  @ext(MF, 0)
+  @ext(0xb5, 0)
   model CompCutPressLowCount {
     /** shows how often the compressor has been stopped by low pressure switch */
     value: ULG;
@@ -168,171 +168,6 @@ namespace ehp {
   model SourceTempInput {
     /** Brine inlet temperature sensor */
     value: tempsensor;
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** OutletTemperature */
-    @inherit(r, u)
-    @ext(0x8, 0)
-    model SourceTempOutput {
-      /** heat source outlet temperature for water to water machines */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** BrineOutlet */
-    @inherit(r, u)
-    @ext(0x8, 0)
-    model SourceTempOutput {
-      /** heat source outlet temperature for brine to water machines */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** AirOutlet */
-    @inherit(r, u)
-    @ext(0x8, 0)
-    model SourceTempOutput {
-      /** heat source outlet temperature for air to water machines */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** BrineOutlet */
-    @inherit(r, u)
-    @ext(0x8, 0)
-    model SourceTempOutput {
-      /** heat source outlet temperature for brine to water machines */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** P_Brine */
-    @inherit(r)
-    @ext(0x16, 0)
-    model SourcePress {
-      /** Brine pressure sensor */
-      value: presssensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** P_Brine */
-    @inherit(r)
-    @ext(0x16, 0)
-    model SourcePress {
-      /** Brine pressure sensor */
-      value: presssensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** Fan */
-    @inherit(r, u)
-    @ext(0x19, 0)
-    model Source {
-      /** Fan AW */
-      value: onoff;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** HeatSourcePump BW */
-    @inherit(r, u)
-    @ext(0x19, 0)
-    model Source {
-      /** Brine Pump BW */
-      value: onoff;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** HeatSourcePump BW */
-    @inherit(r, u)
-    @ext(0x19, 0)
-    model Source {
-      /** Brine Pump BW */
-      value: onoff;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** HeatSourcePump WW */
-    @inherit(r, u)
-    @ext(0x19, 0)
-    model Source {
-      /** Brine_Pump WW */
-      value: onoff;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** Brine2_P */
-    @inherit(r)
-    @ext(0x1a, 0)
-    model Source2Pump {
-      /** external Brine or water pump */
-      value: onoff;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** BrineSwitch */
-    @inherit(r, u)
-    @ext(0x26, 0)
-    model SourceSwitch {
-      /** brine pressure switch; 1 = switch has tripped */
-      value: errorok;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** FanContact */
-    @inherit(r, u)
-    @ext(0x26, 0)
-    model SourceSwitch {
-      /** Fan overheat thermostat; 1 = switch has tripped */
-      value: errorok;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** BrineSwitch */
-    @inherit(r, u)
-    @ext(0x26, 0)
-    model SourceSwitch {
-      /** brine pressure switch; 1 = switch has tripped */
-      value: errorok;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** FlowSwitch */
-    @inherit(r, u)
-    @ext(0x26, 0)
-    model SourceSwitch {
-      /** water flow switch; 1 = switch has tripped */
-      value: errorok;
-    }
   }
   // ***** Heat generator *****
 
@@ -392,50 +227,6 @@ namespace ehp {
     value: tempsensor;
   }
 
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** T_Condensor_BW */
-    @inherit(r, u)
-    @ext(0xd, 0)
-    model CondensorTemp {
-      /** Condensor temperature sensor BW */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** T_Condensor_WW */
-    @inherit(r, u)
-    @ext(0xd, 0)
-    model CondensorTemp {
-      /** Condensor temperature sensor WW */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** T_Evaporator */
-    @inherit(r)
-    @ext(0x5, 0)
-    model EvaporatorTemp {
-      /** Internal evaporator temperature sensor */
-      value: tempsensor;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** T_Condensor_BW */
-    @inherit(r, u)
-    @ext(0xd, 0)
-    model CondensorTemp {
-      /** Condensor temperature sensor BW */
-      value: tempsensor;
-    }
-  }
-
   /** P_Switch */
   @inherit(r, u)
   @ext(0x25, 0)
@@ -458,17 +249,6 @@ namespace ehp {
   model Backup {
     /** Backup heater output */
     value: onoff;
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** V_Cool */
-    @inherit(r)
-    @ext(0x1c, 0)
-    model CoolValve {
-      /** Refrigerant circuit reversion valve */
-      value: onoff;
-    }
   }
   // ***** Heat sink heating circuit *****
 
@@ -700,28 +480,6 @@ namespace ehp {
     /** contains the status of the heatpump shown to the installer. Values do not fit here. Please ask R&D for values. */
     value: hpstatus;
   }
-
-  @condition(id.id.sw, "=350-400")
-  namespace sw_350_400 {
-    /** CompressorRestartTimer */
-    @inherit(r)
-    @ext(0x9c, 1)
-    model CompRestartTimer {
-      /** Delay until next compressor start, only updated and displayed in UI if compressor demanded but locked by runtime conditions. */
-      value: minutes;
-    }
-  }
-
-  @condition(id.id.sw, ">=403")
-  namespace sw__403 {
-    /** CompressorRestartTimer */
-    @inherit(r)
-    @ext(0xc5, 1)
-    model CompRestartTimer {
-      /** Delay until next compressor start, only updated and displayed in UI if compressor demanded but locked by runtime conditions. */
-      value: minutes;
-    }
-  }
   // ***** Backup heater *****
 
   /** Ext_Backup */
@@ -746,28 +504,6 @@ namespace ehp {
   model BackupHysteresis {
     /** difference between actual flow temperature and setpoit at which backup heater should start */
     value: temp;
-  }
-
-  @condition(id.id.sw, ">=414")
-  namespace sw__414 {
-    /** hysteresis_time_delay */
-    @inherit(r, wi)
-    @ext(0xe0, 1)
-    model hysteresisTimeDelay {
-      /** defined time delay until backup heater hysteresis becomes valid */
-      value: minutes0;
-    }
-  }
-
-  @condition(id.id.sw, ">=415")
-  namespace sw__415 {
-    /** BrineLimitAtMaxFlow */
-    @inherit(r, ws)
-    @ext(0xe4, 1)
-    model SourceLimitAtMaxFlow {
-      /** lowest allowed brine temperature to achieve max. flow temperature */
-      value: SCH;
-    }
   }
 
   /** Integral_Backup_Start */
@@ -834,236 +570,8 @@ namespace ehp {
     /** if return temperature is higher than this, compressor stops or might not restart */
     value: temp;
   }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** Overpressure_BW */
-    @inherit(r, ws)
-    @ext(0x77, 1)
-    model OverpressureThreshold {
-      /** limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines) */
-      value: pressm;
-    }
-  }
   // ***** Heat source geothermal energy *****
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** Overpressure_Threshold_AW */
-    @inherit(r, ws)
-    @ext(0xfa, 0)
-    model OverpressureThreshold {
-      /** limit for high pressure when Overpressure should be indicated on A/W machines */
-      value: pressm;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** Overpressure_BW */
-    @inherit(r, ws)
-    @ext(0x77, 1)
-    model OverpressureThreshold {
-      /** limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines) */
-      value: pressm;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** Overpressure_WW */
-    @inherit(r, ws)
-    @ext(0x77, 1)
-    model OverpressureThreshold {
-      /** limit for compressor high pressure which is considered an overpressure situation (for Water/Water machines) */
-      value: pressm;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** Delta_T6_T7_BW */
-    @inherit(r, wi)
-    @ext(0x6e, 0)
-    model DeltaTempT6T7 {
-      /** Maximum temperature difference between heat source outlet and inlet - BW */
-      value: temp;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** Delta_T6_T7_BW */
-    @inherit(r, wi)
-    @ext(0x6e, 0)
-    model DeltaTempT6T7 {
-      /** Maximum temperature difference between heat source outlet and inlet - BW */
-      value: temp;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** Delta_T6_T7_WW */
-    @inherit(r, wi)
-    @ext(0x6e, 0)
-    model DeltaTempT6T7 {
-      /** Maximum temperature difference between heat source outlet and inlet - WW */
-      value: temp;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** Einfrierschutz */
-    @inherit(r, wi)
-    @ext(0x7a, 1)
-    model SourceTempOutputT8Min {
-      /** Minimum heat source outlet temperature BW (equal to WW) */
-      value: temps;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=400")
-  namespace airtobrinetowater_sw__400 {
-    /** Einfrierschutz */
-    @inherit(r, wi)
-    @ext(0xb0, 1)
-    model SourceTempOutputT8Min {
-      /** Minimum heat source outlet temperature VWLS */
-      value: temps;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** HS_Pump_Prerun_BW */
-    @inherit(r, wi)
-    @ext(0x76, 0)
-    model SourcePumpPrerunTime {
-      /** Heat source pump prerun in heat source circuit - BW */
-      value: minutes;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** HS_Pump_Prerun_BW */
-    @inherit(r, wi)
-    @ext(0x76, 0)
-    model SourcePumpPrerunTime {
-      /** Heat source pump prerun in heat source circuit - BW */
-      value: minutes;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** HS_Pump_Prerun_WW */
-    @inherit(r, wi)
-    @ext(0x76, 0)
-    model SourcePumpPrerunTime {
-      /** Heat source pump prerun in heat source circuit - WW */
-      value: minutes;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  @condition(id.id.sw, "=350-400")
-  namespace airtowater_sw_350_400 {
-    /** AW_Fan_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0x9d, 1)
-    model FanPrerunTime {
-      /** Prerun time of the fan in s */
-      value: seconds;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  @condition(id.id.sw, ">=403")
-  namespace airtowater_sw__403 {
-    /** AW_Fan_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0xc6, 1)
-    model FanPrerunTime {
-      /** Prerun time of the fan in s */
-      value: seconds;
-    }
-  }
   // ***** Heat sink heating circuit *****
-
-  @condition(id.id.sw, ">=370")
-  namespace sw__370 {
-    /** FirstCHEnergySavingPumpOffTime */
-    @inherit(r, wi)
-    @ext(0x99, 1)
-    model FirstHcEnergySavingPumpOffTime {
-      /** CH pump off time for pump switch off during heating operation with direct heating circuits. Function is off from factory but can be activated in service menus via Code1. */
-      value: minutes0;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  @condition(id.id.sw, "=350-400")
-  namespace airtowater_sw_350_400 {
-    /** AW_CH1P_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0x9e, 1)
-    model Hc1PumpPrerunTime {
-      /** Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time. */
-      value: seconds;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  @condition(id.id.sw, "=350-400")
-  namespace brinetowater_sw_350_400 {
-    /** BW_WW_CH1P_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0x9f, 1)
-    model Hc1PumpPrerunTime {
-      /** Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time. */
-      value: seconds;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  @condition(id.id.sw, ">=403")
-  namespace airtowater_sw__403 {
-    /** AW_CH1P_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0xc7, 1)
-    model Hc1PumpPrerunTime {
-      /** Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time. */
-      value: seconds;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  @condition(id.id.sw, ">=403")
-  namespace brinetowater_sw__403 {
-    /** BW_WW_CH1P_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0xc8, 1)
-    model Hc1PumpPrerunTime {
-      /** Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time. */
-      value: seconds;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=403")
-  namespace airtobrinetowater_sw__403 {
-    /** BW_WW_CH1P_Prerun_Time */
-    @inherit(r, wi)
-    @ext(0xc9, 1)
-    model Hc1PumpPrerunTime {
-      /** Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time. */
-      value: seconds;
-    }
-  }
   // ***** Operating data ****
 
   /** Compressor_Hours_CH */
@@ -1130,29 +638,6 @@ namespace ehp {
     value: cntstarts;
   }
   // ***** Cooling operation *****
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** MinFlowtempCooling */
-    @inherit(r, wi)
-    @ext(0x74, 1)
-    model FlowtempCoolingMin {
-      /** flow temperature that must be exceeded to start cooling */
-      value: temp0;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  @condition(id.id.sw, ">=350")
-  namespace brinetowater_sw__350 {
-    /** Brine_P_Cooling_Hours */
-    @inherit(r)
-    @ext(0x7d, 1)
-    model SourcePumpCoolingHours {
-      /** Brine pump run time during cooling */
-      value: hoursum;
-    }
-  }
   // ***** Installation menu *****
 
   /** appliance code */
@@ -1168,7 +653,7 @@ namespace ehp {
   @ext(0x76, 1)
   model HeatpumpType {
     /** heatpump type */
-    @values(values_HeatpumpType)
+    @values(Values_HeatpumpType)
     value: UCH;
   }
 
@@ -1197,39 +682,6 @@ namespace ehp {
     value: yesno;
   }
 
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** Bleeding */
-    @inherit(r, wi, u)
-    @ext(0x13, 0)
-    model Bleeding {
-      /** Initiates and indicates the bleeding function */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** Start_Deicing */
-    @inherit(r, wi)
-    @ext(0x71, 0)
-    model StartDeicing {
-      /** initiates/indicates a manual deicing process */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** Time_Before_Next_Deicing */
-    @inherit(r)
-    @ext(0x70, 0)
-    model TimeBeforeNextDeicing {
-      /** Time until next deicing in 0.5 secs */
-      value: seconds;
-    }
-  }
-
   /** Code1 */
   @inherit(r, wi)
   @ext(0x97, 0)
@@ -1252,17 +704,6 @@ namespace ehp {
   model Code1Code2Valid {
     /** changes of Code 1 /2 have to be commited by setting this flag */
     value: yesno;
-  }
-
-  @condition(id.id.sw, ">=415")
-  namespace sw__415 {
-    /** HysteresisTimerCountdown */
-    @inherit(r)
-    @ext(0xe7, 1)
-    model HysteresisTimerCountdown {
-      /** backup heater countdown timer */
-      value: UCH;
-    }
   }
 
   /** Hzdraulic plan */
@@ -1311,18 +752,6 @@ namespace ehp {
   model SoftwareCode {
     /** 4 Bytes holding several software status info */
     value: UCH;
-  }
-
-  @condition(id.id.sw, ">=414")
-  namespace sw__414 {
-    /** ActualEnvironmentPowerFine */
-    @inherit(r, u)
-    @ext(0xe2, 1)
-    model ActualEnvironmentPowerFine {
-      /** environment power in higher resolution (100W) */
-      @unit("hW")
-      value: UCH;
-    }
   }
 
   /** CH1_P_Hours */
@@ -1447,261 +876,7 @@ namespace ehp {
     value: onoff;
   }
   // ***** for high efficiency pumps only *****
-
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
-    /** BrinePumpStatus */
-    @inherit(r, u)
-    @ext(0xb8, 1)
-    model SourcePumpStatus {
-      /** 0=HEP_ok: 1= HEP_error; >=2=noHEP */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
-    /** BrinePumpPWM */
-    @inherit(r)
-    @ext(0xac, 1)
-    model SourcePumpPWM {
-      /** actual speed of brine pump (7%=off) */
-      value: percent0;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** Bleeding */
-    @inherit(r, wi, u)
-    @ext(0x13, 0)
-    model Bleeding {
-      /** Initiates and indicates the bleeding function */
-      value: yesno;
-    }
-  }
-
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
-    /** BrinePumpSpeedControlHeating */
-    @inherit(r, wi)
-    @ext(0xae, 1)
-    model SourcePumpSpeedControlHeating {
-      /** brine pump speed setpoint when compressor=on */
-      value: percent0;
-    }
-  }
   // ***** VWL-S only *****
-
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
-    /** BrinePumpSpeedControlDefrost */
-    @inherit(r, wi)
-    @ext(0xcc, 1)
-    model SourcePumpSpeedControlDefrost {
-      /** brine pump speed setpoint while defrosting */
-      value: percent0;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** DeicingActive */
-    @inherit(r)
-    @ext(0xce, 1)
-    model DeicingActive {
-      /** ODU is in defrosting mode */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** Selftest */
-    @inherit(r, ws)
-    @ext(0xd0, 1)
-    model Selftest {
-      /** selftest adjustable steps: 0=off; 1=StartSelfTest, 30=bleeding (Entlüftung brine circuit) */
-      value: UCH;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** BivalentPoint2_Temperature */
-    @inherit(r, wi)
-    @ext(0xbc, 1)
-    model BivalentPoint2Temp {
-      /** temperature to force backup heater even if it is disabled */
-      value: temp;
-    }
-  }
-
-  @condition(id.id.sw, ">=414")
-  namespace sw__414 {
-    /** BivalentMode */
-    @inherit(r, wi)
-    @ext(0xe3, 1)
-    model BivalentMode {
-      /** reserved for special bivalent setting */
-      value: UCH;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_NoiseReduction */
-    @inherit(r, w)
-    @ext(0xa9, 1)
-    model NoiseReduction {
-      /** noise reduction is activated by time schedule */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** NoiseReductionFactor */
-    @inherit(r, w)
-    @ext(0x24, 1)
-    model NoiseReductionFactor {
-      /** amount of noise reduction when activated by time schedule */
-      value: percent0;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_FanError */
-    @inherit(r)
-    @ext(0xa1, 1)
-    model FanError {
-      /** fan error OMU 1 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_FanError_OMU2 */
-    @inherit(r)
-    @ext(0xb6, 1)
-    model FanErrorOMU2 {
-      /** fan error OMU 2 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_STBError */
-    @inherit(r)
-    @ext(0xa2, 1)
-    model STBError {
-      /** defroster STB error OMU 1 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_STBError_OMU2 */
-    @inherit(r)
-    @ext(0xb7, 1)
-    model STBErrorOMU2 {
-      /** defroster STB error OMU 2 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_BadWeather */
-    @inherit(r)
-    @ext(0xa4, 1)
-    model BadWeather {
-      /** ambient too cold OMU 1 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_BadWeather_OMU2 */
-    @inherit(r, u)
-    @ext(0xb9, 1)
-    model BadWeatherOMU2 {
-      /** ambient too cold OMU 2 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_HotSummer */
-    @inherit(r)
-    @ext(MF, 1)
-    model HotSummer {
-      /** ambient too hot OMU 1 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  @condition(id.id.sw, ">=407")
-  namespace airtobrinetowater_sw__407 {
-    /** VWLS_HotSummer_OMU2 */
-    @inherit(r, u)
-    @ext(0xb8, 1)
-    model HotSummerOMU2 {
-      /** ambient too hot OMU 2 */
-      value: yesno;
-    }
-  }
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** Start Defrosting */
-    @inherit(r, wi)
-    @ext(0x71, 0)
-    model StartDeicing {
-      value: yesno;
-    }
-  }
-
-  @condition(id.id.sw, ">=415")
-  namespace sw__415 {
-    /** BrineLimitSlope */
-    @inherit(r, ws)
-    @ext(0xe5, 1)
-    model SourceLimitSlope {
-      /** Slope to calculate pressure switchpoint below lowest brine temperature */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=415")
-  namespace sw__415 {
-    /** maxNDPressure */
-    @inherit(r, ws)
-    @ext(0xe9, 1)
-    model maxNDPressure {
-      /** max. allowed low pressure for compressor protection */
-      value: ULG;
-    }
-  }
 
   /** HcParallelTankFillingEnabled */
   @inherit(r)
@@ -1711,17 +886,6 @@ namespace ehp {
     value: yesno;
   }
   // ##### EHP: Sensor calibration #####
-
-  @condition(HeatpumpType.value, "5")
-  namespace airtobrinetowater {
-    /** BrineOutlet */
-    @inherit(r, wi)
-    @ext(0xc9, 0)
-    model SourceTempOutputOffset {
-      /** Offset for heat source outlet temperature sensor - BW */
-      value: calibration;
-    }
-  }
 
   /** T_Outside_Offset */
   @inherit(r, wi)
@@ -1737,39 +901,6 @@ namespace ehp {
   model SourceTempInputOffset {
     /** Offset for calibrating temperature sensor */
     value: calibration;
-  }
-
-  @condition(HeatpumpType.value, "1")
-  namespace airtowater {
-    /** AirOutlet */
-    @inherit(r, wi)
-    @ext(0xc9, 0)
-    model SourceTempOutputOffset {
-      /** Offset for air outlet temperature sensor */
-      value: calibration;
-    }
-  }
-
-  @condition(HeatpumpType.value, "2")
-  namespace brinetowater {
-    /** BrineOutlet */
-    @inherit(r, wi)
-    @ext(0xc9, 0)
-    model SourceTempOutputOffset {
-      /** Offset for heat source outlet temperature sensor - BW */
-      value: calibration;
-    }
-  }
-
-  @condition(HeatpumpType.value, "3")
-  namespace watertowater {
-    /** OutletTemperature */
-    @inherit(r, wi)
-    @ext(0xc9, 0)
-    model SourceTempOutputOffset {
-      /** Offset for heat source outlet temperature sensor - WW */
-      value: calibration;
-    }
   }
 
   /** T_DHW_Offset */
@@ -1837,8 +968,87 @@ namespace ehp {
   }
   // ##### EHP: Sensor Check #####
 
+  enum Values_HeatpumpType {
+    airtowater: 1,
+    brinetowater: 2,
+    watertowater: 3,
+    indirectwatertowater: 4,
+    airtobrinetowater: 5,
+  }
   @condition(HeatpumpType.value, "3")
-  namespace watertowater {
+  namespace Watertowater {
+    /** OutletTemperature */
+    @inherit(r, u)
+    @ext(0x8, 0)
+    model SourceTempOutput {
+      /** heat source outlet temperature for water to water machines */
+      value: tempsensor;
+    }
+
+    /** HeatSourcePump WW */
+    @inherit(r, u)
+    @ext(0x19, 0)
+    model Source {
+      /** Brine_Pump WW */
+      value: onoff;
+    }
+
+    /** Brine2_P */
+    @inherit(r)
+    @ext(0x1a, 0)
+    model Source2Pump {
+      /** external Brine or water pump */
+      value: onoff;
+    }
+
+    /** FlowSwitch */
+    @inherit(r, u)
+    @ext(0x26, 0)
+    model SourceSwitch {
+      /** water flow switch; 1 = switch has tripped */
+      value: errorok;
+    }
+
+    /** T_Condensor_WW */
+    @inherit(r, u)
+    @ext(0xd, 0)
+    model CondensorTemp {
+      /** Condensor temperature sensor WW */
+      value: tempsensor;
+    }
+
+    /** Overpressure_WW */
+    @inherit(r, ws)
+    @ext(0x77, 1)
+    model OverpressureThreshold {
+      /** limit for compressor high pressure which is considered an overpressure situation (for Water/Water machines) */
+      value: pressm;
+    }
+
+    /** Delta_T6_T7_WW */
+    @inherit(r, wi)
+    @ext(0x6e, 0)
+    model DeltaTempT6T7 {
+      /** Maximum temperature difference between heat source outlet and inlet - WW */
+      value: temp;
+    }
+
+    /** HS_Pump_Prerun_WW */
+    @inherit(r, wi)
+    @ext(0x76, 0)
+    model SourcePumpPrerunTime {
+      /** Heat source pump prerun in heat source circuit - WW */
+      value: minutes;
+    }
+
+    /** OutletTemperature */
+    @inherit(r, wi)
+    @ext(0xc9, 0)
+    model SourceTempOutputOffset {
+      /** Offset for heat source outlet temperature sensor - WW */
+      value: calibration;
+    }
+
     /** T_Condensor_WW */
     @inherit(r)
     @ext(0x5, 0)
@@ -1847,19 +1057,597 @@ namespace ehp {
       value: temp;
     }
   }
+  @condition(HeatpumpType.value, "2")
+  namespace Brinetowater {
+    /** BrineOutlet */
+    @inherit(r, u)
+    @ext(0x8, 0)
+    model SourceTempOutput {
+      /** heat source outlet temperature for brine to water machines */
+      value: tempsensor;
+    }
 
-  enum values_HeatpumpType {
-    airtowater: 1,
-    brinetowater: 2,
-    watertowater: 3,
-    indirectwatertowater: 4,
-    brinetowater_1: 5,
+    /** P_Brine */
+    @inherit(r)
+    @ext(0x16, 0)
+    model SourcePress {
+      /** Brine pressure sensor */
+      value: presssensor;
+    }
+
+    /** HeatSourcePump BW */
+    @inherit(r, u)
+    @ext(0x19, 0)
+    model Source {
+      /** Brine Pump BW */
+      value: onoff;
+    }
+
+    /** BrineSwitch */
+    @inherit(r, u)
+    @ext(0x26, 0)
+    model SourceSwitch {
+      /** brine pressure switch; 1 = switch has tripped */
+      value: errorok;
+    }
+
+    /** T_Condensor_BW */
+    @inherit(r, u)
+    @ext(0xd, 0)
+    model CondensorTemp {
+      /** Condensor temperature sensor BW */
+      value: tempsensor;
+    }
+
+    /** Overpressure_BW */
+    @inherit(r, ws)
+    @ext(0x77, 1)
+    model OverpressureThreshold {
+      /** limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines) */
+      value: pressm;
+    }
+
+    /** Delta_T6_T7_BW */
+    @inherit(r, wi)
+    @ext(0x6e, 0)
+    model DeltaTempT6T7 {
+      /** Maximum temperature difference between heat source outlet and inlet - BW */
+      value: temp;
+    }
+
+    /** Einfrierschutz */
+    @inherit(r, wi)
+    @ext(0x7a, 1)
+    model SourceTempOutputT8Min {
+      /** Minimum heat source outlet temperature BW (equal to WW) */
+      value: temps;
+    }
+
+    /** HS_Pump_Prerun_BW */
+    @inherit(r, wi)
+    @ext(0x76, 0)
+    model SourcePumpPrerunTime {
+      /** Heat source pump prerun in heat source circuit - BW */
+      value: minutes;
+    }
+
+    /** MinFlowtempCooling */
+    @inherit(r, wi)
+    @ext(0x74, 1)
+    model FlowtempCoolingMin {
+      /** flow temperature that must be exceeded to start cooling */
+      value: temp0;
+    }
+
+    /** Bleeding */
+    @inherit(r, wi, u)
+    @ext(0x13, 0)
+    model Bleeding {
+      /** Initiates and indicates the bleeding function */
+      value: yesno;
+    }
+
+    /** BrineOutlet */
+    @inherit(r, wi)
+    @ext(0xc9, 0)
+    model SourceTempOutputOffset {
+      /** Offset for heat source outlet temperature sensor - BW */
+      value: calibration;
+    }
+  }
+  @condition(HeatpumpType.value, "1")
+  namespace Airtowater {
+    /** AirOutlet */
+    @inherit(r, u)
+    @ext(0x8, 0)
+    model SourceTempOutput {
+      /** heat source outlet temperature for air to water machines */
+      value: tempsensor;
+    }
+
+    /** Fan */
+    @inherit(r, u)
+    @ext(0x19, 0)
+    model Source {
+      /** Fan AW */
+      value: onoff;
+    }
+
+    /** FanContact */
+    @inherit(r, u)
+    @ext(0x26, 0)
+    model SourceSwitch {
+      /** Fan overheat thermostat; 1 = switch has tripped */
+      value: errorok;
+    }
+
+    /** T_Evaporator */
+    @inherit(r)
+    @ext(0x5, 0)
+    model EvaporatorTemp {
+      /** Internal evaporator temperature sensor */
+      value: tempsensor;
+    }
+
+    /** V_Cool */
+    @inherit(r)
+    @ext(0x1c, 0)
+    model CoolValve {
+      /** Refrigerant circuit reversion valve */
+      value: onoff;
+    }
+
+    /** Overpressure_Threshold_AW */
+    @inherit(r, ws)
+    @ext(0xfa, 0)
+    model OverpressureThreshold {
+      /** limit for high pressure when Overpressure should be indicated on A/W machines */
+      value: pressm;
+    }
+
+    /** Start_Deicing */
+    @inherit(r, wi)
+    @ext(0x71, 0)
+    model StartDeicing {
+      /** initiates/indicates a manual deicing process */
+      value: yesno;
+    }
+
+    /** Time_Before_Next_Deicing */
+    @inherit(r)
+    @ext(0x70, 0)
+    model TimeBeforeNextDeicing {
+      /** Time until next deicing in 0.5 secs */
+      value: seconds;
+    }
+
+    /** AirOutlet */
+    @inherit(r, wi)
+    @ext(0xc9, 0)
+    model SourceTempOutputOffset {
+      /** Offset for air outlet temperature sensor */
+      value: calibration;
+    }
+  }
+  @condition(HeatpumpType.value, "5")
+  namespace Airtobrinetowater {
+    /** BrineOutlet */
+    @inherit(r, u)
+    @ext(0x8, 0)
+    model SourceTempOutput {
+      /** heat source outlet temperature for brine to water machines */
+      value: tempsensor;
+    }
+
+    /** P_Brine */
+    @inherit(r)
+    @ext(0x16, 0)
+    model SourcePress {
+      /** Brine pressure sensor */
+      value: presssensor;
+    }
+
+    /** HeatSourcePump BW */
+    @inherit(r, u)
+    @ext(0x19, 0)
+    model Source {
+      /** Brine Pump BW */
+      value: onoff;
+    }
+
+    /** BrineSwitch */
+    @inherit(r, u)
+    @ext(0x26, 0)
+    model SourceSwitch {
+      /** brine pressure switch; 1 = switch has tripped */
+      value: errorok;
+    }
+
+    /** T_Condensor_BW */
+    @inherit(r, u)
+    @ext(0xd, 0)
+    model CondensorTemp {
+      /** Condensor temperature sensor BW */
+      value: tempsensor;
+    }
+
+    /** Overpressure_BW */
+    @inherit(r, ws)
+    @ext(0x77, 1)
+    model OverpressureThreshold {
+      /** limit for compressor high pressure which is considered an overpressure situation (for Brine/Water machines) */
+      value: pressm;
+    }
+
+    /** Delta_T6_T7_BW */
+    @inherit(r, wi)
+    @ext(0x6e, 0)
+    model DeltaTempT6T7 {
+      /** Maximum temperature difference between heat source outlet and inlet - BW */
+      value: temp;
+    }
+
+    /** HS_Pump_Prerun_BW */
+    @inherit(r, wi)
+    @ext(0x76, 0)
+    model SourcePumpPrerunTime {
+      /** Heat source pump prerun in heat source circuit - BW */
+      value: minutes;
+    }
+
+    /** Bleeding */
+    @inherit(r, wi, u)
+    @ext(0x13, 0)
+    model Bleeding {
+      /** Initiates and indicates the bleeding function */
+      value: yesno;
+    }
+
+    /** Start Defrosting */
+    @inherit(r, wi)
+    @ext(0x71, 0)
+    model StartDeicing {
+      value: yesno;
+    }
+
+    /** BrineOutlet */
+    @inherit(r, wi)
+    @ext(0xc9, 0)
+    model SourceTempOutputOffset {
+      /** Offset for heat source outlet temperature sensor - BW */
+      value: calibration;
+    }
+  }
+  @condition(Id.Id.sw, "=350-400")
+  namespace Sw_350_400 {
+    /** CompressorRestartTimer */
+    @inherit(r)
+    @ext(0x9c, 1)
+    model CompRestartTimer {
+      /** Delay until next compressor start, only updated and displayed in UI if compressor demanded but locked by runtime conditions. */
+      value: minutes;
+    }
+  }
+  @condition(Id.Id.sw, ">=403")
+  namespace Sw_ge403 {
+    /** CompressorRestartTimer */
+    @inherit(r)
+    @ext(0xc5, 1)
+    model CompRestartTimer {
+      /** Delay until next compressor start, only updated and displayed in UI if compressor demanded but locked by runtime conditions. */
+      value: minutes;
+    }
+  }
+  @condition(Id.Id.sw, ">=414")
+  namespace Sw_ge414 {
+    /** hysteresis_time_delay */
+    @inherit(r, wi)
+    @ext(0xe0, 1)
+    model HysteresisTimeDelay {
+      /** defined time delay until backup heater hysteresis becomes valid */
+      value: minutes0;
+    }
+
+    /** ActualEnvironmentPowerFine */
+    @inherit(r, u)
+    @ext(0xe2, 1)
+    model ActualEnvironmentPowerFine {
+      /** environment power in higher resolution (100W) */
+      @unit("hW")
+      value: UCH;
+    }
+
+    /** BivalentMode */
+    @inherit(r, wi)
+    @ext(0xe3, 1)
+    model BivalentMode {
+      /** reserved for special bivalent setting */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=415")
+  namespace Sw_ge415 {
+    /** BrineLimitAtMaxFlow */
+    @inherit(r, ws)
+    @ext(0xe4, 1)
+    model SourceLimitAtMaxFlow {
+      /** lowest allowed brine temperature to achieve max. flow temperature */
+      value: SCH;
+    }
+
+    /** HysteresisTimerCountdown */
+    @inherit(r)
+    @ext(0xe7, 1)
+    model HysteresisTimerCountdown {
+      /** backup heater countdown timer */
+      value: UCH;
+    }
+
+    /** BrineLimitSlope */
+    @inherit(r, ws)
+    @ext(0xe5, 1)
+    model SourceLimitSlope {
+      /** Slope to calculate pressure switchpoint below lowest brine temperature */
+      value: UCH;
+    }
+
+    /** maxNDPressure */
+    @inherit(r, ws)
+    @ext(0xe9, 1)
+    model MaxNDPressure {
+      /** max. allowed low pressure for compressor protection */
+      value: ULG;
+    }
+  }
+  @condition(HeatpumpType.value, "5")
+  @condition(Id.Id.sw, ">=400")
+  namespace Airtobrinetowater_sw_ge400 {
+    /** Einfrierschutz */
+    @inherit(r, wi)
+    @ext(0xb0, 1)
+    model SourceTempOutputT8Min {
+      /** Minimum heat source outlet temperature VWLS */
+      value: temps;
+    }
+  }
+  @condition(HeatpumpType.value, "1")
+  @condition(Id.Id.sw, "=350-400")
+  namespace Airtowater_sw_350_400 {
+    /** AW_Fan_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0x9d, 1)
+    model FanPrerunTime {
+      /** Prerun time of the fan in s */
+      value: seconds;
+    }
+
+    /** AW_CH1P_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0x9e, 1)
+    model Hc1PumpPrerunTime {
+      /** Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time. */
+      value: seconds;
+    }
+  }
+  @condition(HeatpumpType.value, "1")
+  @condition(Id.Id.sw, ">=403")
+  namespace Airtowater_sw_ge403 {
+    /** AW_Fan_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0xc6, 1)
+    model FanPrerunTime {
+      /** Prerun time of the fan in s */
+      value: seconds;
+    }
+
+    /** AW_CH1P_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0xc7, 1)
+    model Hc1PumpPrerunTime {
+      /** Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time. */
+      value: seconds;
+    }
+  }
+  @condition(Id.Id.sw, ">=370")
+  namespace Sw_ge370 {
+    /** FirstCHEnergySavingPumpOffTime */
+    @inherit(r, wi)
+    @ext(0x99, 1)
+    model FirstHcEnergySavingPumpOffTime {
+      /** CH pump off time for pump switch off during heating operation with direct heating circuits. Function is off from factory but can be activated in service menus via Code1. */
+      value: minutes0;
+    }
+  }
+  @condition(HeatpumpType.value, "2")
+  @condition(Id.Id.sw, "=350-400")
+  namespace Brinetowater_sw_350_400 {
+    /** BW_WW_CH1P_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0x9f, 1)
+    model Hc1PumpPrerunTime {
+      /** Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time. */
+      value: seconds;
+    }
+  }
+  @condition(HeatpumpType.value, "2")
+  @condition(Id.Id.sw, ">=403")
+  namespace Brinetowater_sw_ge403 {
+    /** BW_WW_CH1P_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0xc8, 1)
+    model Hc1PumpPrerunTime {
+      /** Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time. */
+      value: seconds;
+    }
+  }
+  @condition(HeatpumpType.value, "5")
+  @condition(Id.Id.sw, ">=403")
+  namespace Airtobrinetowater_sw_ge403 {
+    /** BW_WW_CH1P_Prerun_Time */
+    @inherit(r, wi)
+    @ext(0xc9, 1)
+    model Hc1PumpPrerunTime {
+      /** Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time. */
+      value: seconds;
+    }
+  }
+  @condition(HeatpumpType.value, "2")
+  @condition(Id.Id.sw, ">=350")
+  namespace Brinetowater_sw_ge350 {
+    /** Brine_P_Cooling_Hours */
+    @inherit(r)
+    @ext(0x7d, 1)
+    model SourcePumpCoolingHours {
+      /** Brine pump run time during cooling */
+      value: hoursum;
+    }
+  }
+  @condition(Id.Id.sw, ">=407")
+  namespace Sw_ge407 {
+    /** BrinePumpStatus */
+    @inherit(r, u)
+    @ext(0xb8, 1)
+    model SourcePumpStatus {
+      /** 0=HEP_ok: 1= HEP_error; >=2=noHEP */
+      value: UCH;
+    }
+
+    /** BrinePumpPWM */
+    @inherit(r)
+    @ext(0xac, 1)
+    model SourcePumpPWM {
+      /** actual speed of brine pump (7%=off) */
+      value: percent0;
+    }
+
+    /** BrinePumpSpeedControlHeating */
+    @inherit(r, wi)
+    @ext(0xae, 1)
+    model SourcePumpSpeedControlHeating {
+      /** brine pump speed setpoint when compressor=on */
+      value: percent0;
+    }
+
+    /** BrinePumpSpeedControlDefrost */
+    @inherit(r, wi)
+    @ext(0xcc, 1)
+    model SourcePumpSpeedControlDefrost {
+      /** brine pump speed setpoint while defrosting */
+      value: percent0;
+    }
+  }
+  @condition(HeatpumpType.value, "5")
+  @condition(Id.Id.sw, ">=407")
+  namespace Airtobrinetowater_sw_ge407 {
+    /** DeicingActive */
+    @inherit(r)
+    @ext(0xce, 1)
+    model DeicingActive {
+      /** ODU is in defrosting mode */
+      value: yesno;
+    }
+
+    /** Selftest */
+    @inherit(r, ws)
+    @ext(0xd0, 1)
+    model Selftest {
+      /** selftest adjustable steps: 0=off; 1=StartSelfTest, 30=bleeding (Entlüftung brine circuit) */
+      value: UCH;
+    }
+
+    /** BivalentPoint2_Temperature */
+    @inherit(r, wi)
+    @ext(0xbc, 1)
+    model BivalentPoint2Temp {
+      /** temperature to force backup heater even if it is disabled */
+      value: temp;
+    }
+
+    /** VWLS_NoiseReduction */
+    @inherit(r, w)
+    @ext(0xa9, 1)
+    model NoiseReduction {
+      /** noise reduction is activated by time schedule */
+      value: yesno;
+    }
+
+    /** NoiseReductionFactor */
+    @inherit(r, w)
+    @ext(0x24, 1)
+    model NoiseReductionFactor {
+      /** amount of noise reduction when activated by time schedule */
+      value: percent0;
+    }
+
+    /** VWLS_FanError */
+    @inherit(r)
+    @ext(0xa1, 1)
+    model FanError {
+      /** fan error OMU 1 */
+      value: yesno;
+    }
+
+    /** VWLS_FanError_OMU2 */
+    @inherit(r)
+    @ext(0xb6, 1)
+    model FanErrorOMU2 {
+      /** fan error OMU 2 */
+      value: yesno;
+    }
+
+    /** VWLS_STBError */
+    @inherit(r)
+    @ext(0xa2, 1)
+    model STBError {
+      /** defroster STB error OMU 1 */
+      value: yesno;
+    }
+
+    /** VWLS_STBError_OMU2 */
+    @inherit(r)
+    @ext(0xb7, 1)
+    model STBErrorOMU2 {
+      /** defroster STB error OMU 2 */
+      value: yesno;
+    }
+
+    /** VWLS_BadWeather */
+    @inherit(r)
+    @ext(0xa4, 1)
+    model BadWeather {
+      /** ambient too cold OMU 1 */
+      value: yesno;
+    }
+
+    /** VWLS_BadWeather_OMU2 */
+    @inherit(r, u)
+    @ext(0xb9, 1)
+    model BadWeatherOMU2 {
+      /** ambient too cold OMU 2 */
+      value: yesno;
+    }
+
+    /** VWLS_HotSummer */
+    @inherit(r)
+    @ext(0xb5, 1)
+    model HotSummer {
+      /** ambient too hot OMU 1 */
+      value: yesno;
+    }
+
+    /** VWLS_HotSummer_OMU2 */
+    @inherit(r, u)
+    @ext(0xb8, 1)
+    model HotSummerOMU2 {
+      /** ambient too hot OMU 2 */
+      value: yesno;
+    }
   }
 
   /** included parts */
   union _includes {
-    iotesthp_inc,
-    errors_inc,
-    hcmode_inc,
+    Iotesthp_inc,
+    Errors_inc,
+    Hcmode_inc,
   }
 }

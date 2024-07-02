@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace errors_inc {
+namespace Errors_inc {
   // Current errors
 
   /** default *r */
@@ -16,7 +16,7 @@ namespace errors_inc {
   /** Current errors */
   @inherit(r)
   @ext(1)
-  model currenterror {
+  model Currenterror {
     value: errors;
   }
   // Error history
@@ -34,7 +34,7 @@ namespace errors_inc {
   /** Error_History */
   @inherit(r_1)
   @ext(1)
-  model errorhistory {
+  model Errorhistory {
     @out
     index: UCH;
 
@@ -44,7 +44,7 @@ namespace errors_inc {
   /** Clear error history */
   @inherit(wi)
   @ext(1)
-  model clearerrorhistory {
+  model Clearerrorhistory {
     @in
     cleared: yesno;
   }

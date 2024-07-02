@@ -7,13 +7,13 @@ import "./errors_inc.tsp";
 import "./roomtempoffset_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x52)
-namespace mc2.mc._4 {
+// @zz(0x52)
+namespace Mc2.Mc._4 {
   // ,MC2,VR 60/3,306782<<<< 163 Mixer
 
   /** default *r */
@@ -175,7 +175,7 @@ namespace mc2.mc._4 {
   @ext(0x3c, 0)
   model CfgHeatSinkType {
     /** Type of the configurable mixer circuit */
-    @values(values_CfgHeatSinkType)
+    @values(Values_CfgHeatSinkType)
     value: UCH;
   }
 
@@ -277,7 +277,7 @@ namespace mc2.mc._4 {
 
   /** AutocoolTestModeActive */
   @inherit(r)
-  @ext(MF, 0)
+  @ext(0xb5, 0)
   model AutocoolTestModeActive {
     value: yesno;
   }
@@ -424,7 +424,7 @@ namespace mc2.mc._4 {
     value: yesno;
   }
 
-  enum values_CfgHeatSinkType {
+  enum Values_CfgHeatSinkType {
     disabled: 0,
     mixer: 1,
     water: 2,
@@ -434,11 +434,11 @@ namespace mc2.mc._4 {
 
   /** included parts */
   union _includes {
-    timercool_inc,
-    mcmode_inc,
-    timer_inc,
-    errors_inc,
-    roomtempoffset_inc,
-    quick_inc,
+    Timercool_inc,
+    Mcmode_inc,
+    Timer_inc,
+    Errors_inc,
+    Roomtempoffset_inc,
+    Quick_inc,
   }
 }

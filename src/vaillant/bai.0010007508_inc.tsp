@@ -3,12 +3,12 @@ import "./_templates.tsp";
 import "./errors_inc.tsp";
 import "./service_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace bai._0010007508_inc {
+namespace Bai._0010007508_inc {
   // ,BAI00,ecoVIT pneumatic/4,0010007508 207
 
   /** default *r */
@@ -118,7 +118,7 @@ namespace bai._0010007508_inc {
   /** d.11 external pump */
   @inherit(r)
   @ext(0x3f, 0)
-  model extWP {
+  model ExtWP {
     /** External heating pump */
     value: onoff;
   }
@@ -176,7 +176,7 @@ namespace bai._0010007508_inc {
   @ext(0xbb, 0)
   model Gasvalve {
     /** Gasvalve activation signal */
-    @values(values_Gasvalve)
+    @values(Values_Gasvalve)
     value: UCH;
   }
 
@@ -267,7 +267,7 @@ namespace bai._0010007508_inc {
   /** d.91 Status DCF 77 */
   @inherit(r)
   @ext(0x69, 0)
-  model dcfState {
+  model DcfState {
     /** dcfStatus */
     value: dcfstate;
   }
@@ -319,7 +319,7 @@ namespace bai._0010007508_inc {
   @ext(0xb7, 0)
   model HcPumpMode {
     /** Pump mode */
-    @values(values_HcPumpMode)
+    @values(Values_HcPumpMode)
     value: UCH;
   }
 
@@ -336,7 +336,7 @@ namespace bai._0010007508_inc {
   @ext(0xb8, 0)
   model OptionalRelais {
     /** Option relais function */
-    @values(values_OptionalRelais)
+    @values(Values_OptionalRelais)
     value: UCH;
   }
 
@@ -345,7 +345,7 @@ namespace bai._0010007508_inc {
   @ext(0xb9, 0)
   model AccessoriesOne {
     /** Accesory relay 1 function */
-    @values(values_AccessoriesOne)
+    @values(Values_AccessoriesOne)
     value: UCH;
   }
 
@@ -354,7 +354,7 @@ namespace bai._0010007508_inc {
   @ext(0xba, 0)
   model AccessoriesTwo {
     /** Accesory relay 2 function */
-    @values(values_AccessoriesTwo)
+    @values(Values_AccessoriesTwo)
     value: UCH;
   }
 
@@ -404,7 +404,7 @@ namespace bai._0010007508_inc {
   /** d.64 average ignition time */
   @inherit(r)
   @ext(0x2d, 0)
-  model averageIgnitiontime {
+  model AverageIgnitiontime {
     /** average ignition time */
     @unit("s")
     @divisor(10)
@@ -414,7 +414,7 @@ namespace bai._0010007508_inc {
   /** d.65 Max ignition time */
   @inherit(r)
   @ext(0x2c, 0)
-  model maxIgnitiontime {
+  model MaxIgnitiontime {
     /** maximum ignition time */
     @unit("s")
     @divisor(10)
@@ -538,7 +538,7 @@ namespace bai._0010007508_inc {
 
   /** d.93 Device specific number */
   @inherit(r, ws)
-  @ext(MF, 0)
+  @ext(0xb5, 0)
   model DSNOffset {
     /** DSN aplliance variant setting */
     value: UCH;
@@ -636,7 +636,7 @@ namespace bai._0010007508_inc {
   /** min_Ignitiontime_DK */
   @inherit(r)
   @ext(0x2b, 0)
-  model minIgnitiontime {
+  model MinIgnitiontime {
     /** minimum ignition time */
     @unit("s")
     @divisor(10)
@@ -646,7 +646,7 @@ namespace bai._0010007508_inc {
   /** Temp DHW max */
   @inherit(r)
   @ext(0x35, 0)
-  model maintenancedata_HwcTempMax {
+  model Maintenancedata_HwcTempMax {
     /** maximum temperature measured by the domestic hot water outlet sensor */
     value: temp;
   }
@@ -766,7 +766,7 @@ namespace bai._0010007508_inc {
   /** PrEnergySumDHW1_DK */
   @inherit(r)
   @ext(0xc7, 0)
-  model maintenancedata_PrEnergySumHwc1 {
+  model Maintenancedata_PrEnergySumHwc1 {
     /** Predictive maintenance data */
     value: ULG;
   }
@@ -872,7 +872,7 @@ namespace bai._0010007508_inc {
   /** external flowsetpoint */
   @inherit(r)
   @ext(0x25, 0)
-  model externalFlowTempDesired {
+  model ExternalFlowTempDesired {
     /** Flow target temperature from external regulator to terminal 7-8-9 */
     value: temp;
   }
@@ -880,7 +880,7 @@ namespace bai._0010007508_inc {
   /** DHWSwitch_DK */
   @inherit(r)
   @ext(0, 0)
-  model externalHwcSwitch {
+  model ExternalHwcSwitch {
     /** Demand external tank (via contact) */
     value: onoff;
   }
@@ -890,7 +890,7 @@ namespace bai._0010007508_inc {
   @ext(0x5, 0)
   model Flame {
     /** flame */
-    @values(values_Flame)
+    @values(Values_Flame)
     value: UCH;
   }
 
@@ -899,7 +899,7 @@ namespace bai._0010007508_inc {
   @ext(0x7, 0)
   model IFCFault {
     /** IFC error */
-    @values(values_IFCFault)
+    @values(Values_IFCFault)
     value: UCH;
   }
 
@@ -916,7 +916,7 @@ namespace bai._0010007508_inc {
   @ext(0xd, 0)
   model Brennstoffventil {
     /** Activation signal of the gasvalve (activated via micrcontroller) */
-    @values(values_Brennstoffventil)
+    @values(Values_Brennstoffventil)
     value: UCH;
   }
 
@@ -925,7 +925,7 @@ namespace bai._0010007508_inc {
   @ext(0x10, 0)
   model VolatileLockout {
     /** TRUE: STB failures is volatileFALSE: STB failure is not volataile */
-    @values(values_VolatileLockout)
+    @values(Values_VolatileLockout)
     value: UCH;
   }
 
@@ -1001,7 +1001,7 @@ namespace bai._0010007508_inc {
   @ext(0x47, 0)
   model R_ckmeldungBrennstoffventil1 {
     /** feedback gasvalve (from ASIC) */
-    @values(values_R_ckmeldungBrennstoffventil1)
+    @values(Values_R_ckmeldungBrennstoffventil1)
     value: UCH;
   }
 
@@ -1010,7 +1010,7 @@ namespace bai._0010007508_inc {
   @ext(0x48, 0)
   model R_ckmeldungBrennstoffventil2 {
     /** feedback gasvalve (from Microcontroller) */
-    @values(values_R_ckmeldungBrennstoffventil2)
+    @values(Values_R_ckmeldungBrennstoffventil2)
     value: UCH;
   }
 
@@ -1019,7 +1019,7 @@ namespace bai._0010007508_inc {
   @ext(0x49, 0)
   model Ignitor {
     /** igniton activated */
-    @values(values_Ignitor)
+    @values(Values_Ignitor)
     value: UCH;
   }
 
@@ -1044,7 +1044,7 @@ namespace bai._0010007508_inc {
   @ext(0x4d, 0)
   model TemplimiterFault {
     /** temperature limiter error */
-    @values(values_TemplimiterFault)
+    @values(Values_TemplimiterFault)
     value: UCH;
   }
 
@@ -1053,7 +1053,7 @@ namespace bai._0010007508_inc {
   @ext(0x4e, 0)
   model ADCOk {
     /** internal electronic error */
-    @values(values_ADCOk)
+    @values(Values_ADCOk)
     value: UCH;
   }
 
@@ -1062,7 +1062,7 @@ namespace bai._0010007508_inc {
   @ext(0x53, 0)
   model FanFault {
     /** Fan error */
-    @values(values_FanFault)
+    @values(Values_FanFault)
     value: UCH;
   }
 
@@ -1093,7 +1093,7 @@ namespace bai._0010007508_inc {
   /** ReturnTemperature_DK */
   @inherit(r)
   @ext(0x6b, 0)
-  model expertlevelMain_ReturnTemp {
+  model ExpertlevelMain_ReturnTemp {
     /** external return sensor */
     value: tempsensor;
   }
@@ -1111,7 +1111,7 @@ namespace bai._0010007508_inc {
   @ext(0x77, 0)
   model Templimiter {
     /** feedback signal of the temperature limiter */
-    @values(values_Templimiter)
+    @values(Values_Templimiter)
     value: UCH;
   }
 
@@ -1152,7 +1152,7 @@ namespace bai._0010007508_inc {
   @ext(0x84, 0)
   model SRTFINSDFeedback {
     /** Thermal fuse error */
-    @values(values_SRTFINSDFeedback)
+    @values(Values_SRTFINSDFeedback)
     value: UCH;
   }
 
@@ -1260,7 +1260,7 @@ namespace bai._0010007508_inc {
   @ext(0xcf, 0)
   model SRSyphonINSDSwitch {
     /** feedback of the syphon switch contact */
-    @values(values_SRSyphonINSDSwitch)
+    @values(Values_SRSyphonINSDSwitch)
     value: UCH;
   }
 
@@ -1269,7 +1269,7 @@ namespace bai._0010007508_inc {
   @ext(0xd2, 0)
   model TemplimiterWithNTC {
     /** Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact */
-    @values(values_TemplimiterWithNTC)
+    @values(Values_TemplimiterWithNTC)
     value: UCH;
   }
 
@@ -1278,7 +1278,7 @@ namespace bai._0010007508_inc {
   @ext(0xd3, 0)
   model VolatileLockoutIFCGV {
     /** all IFC faults are volataile */
-    @values(values_VolatileLockoutIFCGV)
+    @values(Values_VolatileLockoutIFCGV)
     value: UCH;
   }
 
@@ -1295,7 +1295,7 @@ namespace bai._0010007508_inc {
   @ext(0xdb, 0)
   model R_ckmeldungBrennstoffventil3 {
     /** Gasvalve activation signal (from Microcontroller) */
-    @values(values_R_ckmeldungBrennstoffventil3)
+    @values(Values_R_ckmeldungBrennstoffventil3)
     value: UCH;
   }
 
@@ -1369,7 +1369,7 @@ namespace bai._0010007508_inc {
   /** actoSTOR_EE_PreventiveCounter_DK */
   @inherit(r)
   @ext(0xec, 0)
-  model actoSTOREEPreventiveCounter {
+  model ActoSTOREEPreventiveCounter {
     /** Predictive maintenance date of the actoSTOR */
     uin: UIN;
 
@@ -1476,18 +1476,18 @@ namespace bai._0010007508_inc {
     value: SIN;
   }
 
-  enum values_Gasvalve {
+  enum Values_Gasvalve {
     off: 240,
     on: 15,
   }
 
-  enum values_HcPumpMode {
+  enum Values_HcPumpMode {
     post_run: 0,
     permanent: 1,
     winter: 2,
   }
 
-  enum values_OptionalRelais {
+  enum Values_OptionalRelais {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1498,7 +1498,7 @@ namespace bai._0010007508_inc {
     remotecontrol: 8,
   }
 
-  enum values_AccessoriesOne {
+  enum Values_AccessoriesOne {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1509,7 +1509,7 @@ namespace bai._0010007508_inc {
     remotecontrol: 8,
   }
 
-  enum values_AccessoriesTwo {
+  enum Values_AccessoriesTwo {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1520,89 +1520,89 @@ namespace bai._0010007508_inc {
     remotecontrol: 8,
   }
 
-  enum values_Flame {
+  enum Values_Flame {
     off: 240,
     on: 15,
   }
 
-  enum values_IFCFault {
+  enum Values_IFCFault {
     off: 240,
     on: 15,
   }
 
-  enum values_Brennstoffventil {
+  enum Values_Brennstoffventil {
     off: 240,
     on: 15,
   }
 
-  enum values_VolatileLockout {
+  enum Values_VolatileLockout {
     no: 240,
     yes: 15,
   }
 
-  enum values_R_ckmeldungBrennstoffventil1 {
+  enum Values_R_ckmeldungBrennstoffventil1 {
     off: 240,
     on: 15,
   }
 
-  enum values_R_ckmeldungBrennstoffventil2 {
+  enum Values_R_ckmeldungBrennstoffventil2 {
     off: 240,
     on: 15,
   }
 
-  enum values_Ignitor {
+  enum Values_Ignitor {
     off: 240,
     on: 15,
   }
 
-  enum values_TemplimiterFault {
+  enum Values_TemplimiterFault {
     off: 240,
     on: 15,
   }
 
-  enum values_ADCOk {
+  enum Values_ADCOk {
     off: 240,
     on: 15,
   }
 
-  enum values_FanFault {
+  enum Values_FanFault {
     off: 240,
     on: 15,
   }
 
-  enum values_Templimiter {
+  enum Values_Templimiter {
     off: 240,
     on: 15,
   }
 
-  enum values_SRTFINSDFeedback {
+  enum Values_SRTFINSDFeedback {
     off: 240,
     on: 15,
   }
 
-  enum values_SRSyphonINSDSwitch {
+  enum Values_SRSyphonINSDSwitch {
     no: 240,
     yes: 15,
   }
 
-  enum values_TemplimiterWithNTC {
+  enum Values_TemplimiterWithNTC {
     no: 240,
     yes: 15,
   }
 
-  enum values_VolatileLockoutIFCGV {
+  enum Values_VolatileLockoutIFCGV {
     no: 240,
     yes: 15,
   }
 
-  enum values_R_ckmeldungBrennstoffventil3 {
+  enum Values_R_ckmeldungBrennstoffventil3 {
     off: 240,
     on: 15,
   }
 
   /** included parts */
   union _includes {
-    errors_inc,
-    service_inc,
+    Errors_inc,
+    Service_inc,
   }
 }

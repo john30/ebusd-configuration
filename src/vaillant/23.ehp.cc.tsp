@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./iotesthp_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x23)
-namespace ehp.cc {
+// @zz(0x23)
+namespace Ehp.Cc {
   // ,EHP00,Heat pump AMU,EHP00 172 Circulation
 
   /** default *r */
@@ -34,9 +34,9 @@ namespace ehp.cc {
 
   /** included parts */
   union _includes {
-    hwcmode_inc,
-    timer_inc,
-    iotesthp_inc,
-    errors_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Iotesthp_inc,
+    Errors_inc,
   }
 }

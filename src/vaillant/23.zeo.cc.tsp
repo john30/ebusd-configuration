@@ -3,13 +3,13 @@ import "./_templates.tsp";
 import "./hwcmode_inc.tsp";
 import "./timer_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x23)
-namespace zeo.cc {
+// @zz(0x23)
+namespace Zeo.Cc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Circulation
 
   /** default *r */
@@ -93,7 +93,7 @@ namespace zeo.cc {
 
   /** included parts */
   union _includes {
-    hwcmode_inc,
-    timer_inc,
+    Hwcmode_inc,
+    Timer_inc,
   }
 }

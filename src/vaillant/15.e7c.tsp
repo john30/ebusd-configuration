@@ -2,13 +2,13 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace e7c {
+// @zz(0x15)
+namespace E7c {
   // ,E7C00,Thermolink P (New)
 
   /** default *r */
@@ -137,7 +137,7 @@ namespace e7c {
   @ext(0x31, 0)
   model Language {
     /** Language */
-    @values(values_Language)
+    @values(Values_Language)
     value: UCH;
   }
 
@@ -1046,7 +1046,7 @@ namespace e7c {
     value: onoff;
   }
 
-  enum values_Language {
+  enum Values_Language {
     german: 0,
     english: 1,
     french: 2,
@@ -1072,6 +1072,6 @@ namespace e7c {
 
   /** included parts */
   union _includes {
-    errors_inc,
+    Errors_inc,
   }
 }

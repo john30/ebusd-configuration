@@ -7,13 +7,13 @@ import "./errors_inc.tsp";
 import "./roomtempoffset_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x50)
-namespace ehp.mc {
+// @zz(0x50)
+namespace Ehp.Mc {
   // ,EHP00,Heat pump AMU,EHP00 172 Mixer
 
   /** default *r */
@@ -54,61 +54,6 @@ namespace ehp.mc {
   model CfgHeatSinkType {
     /** BMR: configuration of heating circuit; for heat pumps, only "mixer circuit" or "fix value circuit" possible */
     value: mctype;
-  }
-
-  @condition(mc.CfgHeatSinkType.value, "1")
-  namespace mixer {
-    /** DayRoomSetPoint_MC */
-    @inherit(r, w)
-    @ext(0x32, 0)
-    model TempDesired {
-      /** Room set point for day operation and mixer circuit */
-      value: temp1;
-    }
-  }
-
-  @condition(mc.CfgHeatSinkType.value, "2")
-  namespace fix {
-    /** FixValueDay */
-    @inherit(r, w)
-    @ext(0x32, 0)
-    model TempDesired {
-      /** Fix value day flow set point */
-      value: temp1;
-    }
-  }
-
-  @condition(mc.CfgHeatSinkType.value, "1")
-  namespace mixer {
-    /** NightRoomSetPoint_MC */
-    @inherit(r, w)
-    @ext(0x33, 0)
-    model TempDesiredLow {
-      /** Room set point for night operation and mixer circuit */
-      value: temp1;
-    }
-  }
-
-  @condition(mc.CfgHeatSinkType.value, "2")
-  namespace fix {
-    /** FixValueNight */
-    @inherit(r, w)
-    @ext(0x33, 0)
-    model TempDesiredLow {
-      /** Fix value night flow set point */
-      value: temp1;
-    }
-  }
-
-  @condition(mc.CfgHeatSinkType.value, "1")
-  namespace mixer {
-    /** Heating curve */
-    @inherit(r, w)
-    @ext(0x35, 0)
-    model HeatingCurve {
-      /** BMR:Heating curve for whole system */
-      value: curve;
-    }
   }
 
   /** OtShutdownLimit */
@@ -152,28 +97,6 @@ namespace ehp.mc {
     value: UCH;
   }
 
-  @condition(id.id.sw, "<=339")
-  namespace sw__339 {
-    /** Floor_Protection_Limit */
-    @inherit(r, wi)
-    @ext(0x7b, 1)
-    model FloorProtectionLimit {
-      /** Floor protection temperature at which the heat pump goes to error mode. */
-      value: desiredtemp;
-    }
-  }
-
-  @condition(id.id.sw, ">=340")
-  namespace sw__340 {
-    /** Floor_Protection_Limit */
-    @inherit(r)
-    @ext(0x7b, 1)
-    model FloorProtectionLimit {
-      /** Floor protection temperature at which the heat pump goes to error mode. */
-      value: desiredtemp;
-    }
-  }
-
   /** FloorPavingDryingDay */
   @inherit(r, wi)
   @ext(0x3b, 0)
@@ -182,9 +105,73 @@ namespace ehp.mc {
     value: UCH;
   }
   // ***** For cooling operation only *****
+  // ***** for high efficiency pumps only *****
+  @condition(Mc.CfgHeatSinkType.value, "1")
+  namespace Mixer {
+    /** DayRoomSetPoint_MC */
+    @inherit(r, w)
+    @ext(0x32, 0)
+    model TempDesired {
+      /** Room set point for day operation and mixer circuit */
+      value: temp1;
+    }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
+    /** NightRoomSetPoint_MC */
+    @inherit(r, w)
+    @ext(0x33, 0)
+    model TempDesiredLow {
+      /** Room set point for night operation and mixer circuit */
+      value: temp1;
+    }
+
+    /** Heating curve */
+    @inherit(r, w)
+    @ext(0x35, 0)
+    model HeatingCurve {
+      /** BMR:Heating curve for whole system */
+      value: curve;
+    }
+  }
+  @condition(Mc.CfgHeatSinkType.value, "2")
+  namespace Fix {
+    /** FixValueDay */
+    @inherit(r, w)
+    @ext(0x32, 0)
+    model TempDesired {
+      /** Fix value day flow set point */
+      value: temp1;
+    }
+
+    /** FixValueNight */
+    @inherit(r, w)
+    @ext(0x33, 0)
+    model TempDesiredLow {
+      /** Fix value night flow set point */
+      value: temp1;
+    }
+  }
+  @condition(Id.Id.sw, "<=339")
+  namespace Sw_le339 {
+    /** Floor_Protection_Limit */
+    @inherit(r, wi)
+    @ext(0x7b, 1)
+    model FloorProtectionLimit {
+      /** Floor protection temperature at which the heat pump goes to error mode. */
+      value: desiredtemp;
+    }
+  }
+  @condition(Id.Id.sw, ">=340")
+  namespace Sw_ge340 {
+    /** Floor_Protection_Limit */
+    @inherit(r)
+    @ext(0x7b, 1)
+    model FloorProtectionLimit {
+      /** Floor protection temperature at which the heat pump goes to error mode. */
+      value: desiredtemp;
+    }
+  }
+  @condition(Id.Id.sw, ">=350")
+  namespace Sw_ge350 {
     /** CoolingOperatingMode_HK2 */
     @inherit(r, w)
     @ext(0x8c, 1)
@@ -192,10 +179,7 @@ namespace ehp.mc {
       /** Cooling operating mode: Available options: 3=Auto, 1=On, 2=Off */
       value: hwcmode;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingSupported_HK2 */
     @inherit(r, wi)
     @ext(0x86, 1)
@@ -203,10 +187,7 @@ namespace ehp.mc {
       /** Defines if a specific circuit is allowed for cooling operation. In this case HK2. */
       value: yesno;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** Tot_24h_HK2 */
     @inherit(r)
     @ext(0x88, 1)
@@ -214,10 +195,7 @@ namespace ehp.mc {
       /** 24h outside temperature average. Circuit specific value. */
       value: temp;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingStartOffset_HK2 */
     @inherit(r, wi)
     @ext(0x87, 1)
@@ -225,10 +203,7 @@ namespace ehp.mc {
       /** Circuit specific offset to the adjusted outside temperature cut-off value for demanding cooling operation. HK2 value. */
       value: temp1;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** Tot_AverageTime_HK2 */
     @inherit(r)
     @ext(0x89, 1)
@@ -237,10 +212,7 @@ namespace ehp.mc {
       @unit("hour")
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** DWMOffToHeatingDelay_HK2 */
     @inherit(r, wi)
     @ext(0x84, 1)
@@ -249,10 +221,7 @@ namespace ehp.mc {
       @unit("hour")
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** DWMOffToCoolingDelay_HK2 */
     @inherit(r, wi)
     @ext(0x85, 1)
@@ -261,10 +230,7 @@ namespace ehp.mc {
       @unit("hour")
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** MinEfficiencyHysteresis_HK2 */
     @inherit(r, wi)
     @ext(0x8b, 1)
@@ -272,10 +238,7 @@ namespace ehp.mc {
       /** If remote control with room temperature measurement used, minimum general flow (VF2) to heat circuit room temperature difference to release cooling operation. */
       value: calibration1;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingWhileHolidaySupported_HK2 */
     @inherit(r, wi)
     @ext(0x95, 1)
@@ -283,10 +246,7 @@ namespace ehp.mc {
       /** Indicates if cooling while holiday is desired (can be used for source regeneration). */
       value: yesno;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingCircuitStates_HK2 */
     @inherit(r)
     @ext(0x97, 1)
@@ -294,10 +254,7 @@ namespace ehp.mc {
       /** Contains bits for different states in the cooling circuit. Helpfull for problem identification. Should be given to development department together with problem description. */
       value: UIN;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** DesiredWorkingMode_HK2 */
     @inherit(r)
     @ext(0x7e, 1)
@@ -305,10 +262,7 @@ namespace ehp.mc {
       /** f. Autocool : HeatingAutomatic, OffAutomatic, CoolingAutomatic; SM1 */
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** LastDesiredWorkingMode_HK2 */
     @inherit(r)
     @ext(0x80, 1)
@@ -316,10 +270,7 @@ namespace ehp.mc {
       /** f. Autocool : Standby, Heating or Cooling */
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingRequest_HK2 */
     @inherit(r)
     @ext(0x83, 1)
@@ -327,10 +278,7 @@ namespace ehp.mc {
       /** Circuit specific cooling demand, dependant on cooling operating mode and cooling time frames and so on… */
       value: yesno;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingEfficiencyState_HK2 */
     @inherit(r)
     @ext(0x8a, 1)
@@ -338,10 +286,7 @@ namespace ehp.mc {
       /** SM2 */
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** CoolingModeStateCounter_HK2 */
     @inherit(r)
     @ext(0x8d, 1)
@@ -349,10 +294,7 @@ namespace ehp.mc {
       /** Counts up if pump is runnig in cooling mode */
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** HCManualWorkingModeTriggeringActive_HK2 */
     @inherit(r)
     @ext(0x8f, 1)
@@ -360,10 +302,7 @@ namespace ehp.mc {
       /** f. Autocool :Automatic or Manual */
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=350")
-  namespace sw__350 {
     /** AutocoolTestModeActive_HK2 */
     @inherit(r)
     @ext(0x82, 1)
@@ -372,10 +311,8 @@ namespace ehp.mc {
       value: onoff;
     }
   }
-  // ***** for high efficiency pumps only *****
-
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
+  @condition(Id.Id.sw, ">=407")
+  namespace Sw_ge407 {
     /** CHPumpStatus */
     @inherit(r)
     @ext(0xb9, 1)
@@ -383,10 +320,7 @@ namespace ehp.mc {
       /** 0=HEP_ok: 1= HEP_error; >=2=noHEP */
       value: UCH;
     }
-  }
 
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
     /** CHPumpPWM */
     @inherit(r)
     @ext(0xba, 1)
@@ -394,10 +328,7 @@ namespace ehp.mc {
       /** actual speed of central heating CH pump (7%=off) */
       value: percent0;
     }
-  }
 
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
     /** CH1P_PumpSpeedControlHeatBuffer */
     @inherit(r, wi)
     @ext(0xbf, 1)
@@ -405,10 +336,7 @@ namespace ehp.mc {
       /** CH pump speed setpoint while buffer is loaded [%] */
       value: percent0;
     }
-  }
 
-  @condition(id.id.sw, ">=407")
-  namespace sw__407 {
     /** CH1P_PumpSpeedControlDirectCircuit */
     @inherit(r, wi)
     @ext(0xc0, 1)
@@ -417,9 +345,8 @@ namespace ehp.mc {
       value: percent0;
     }
   }
-
-  @condition(id.id.sw, ">=414")
-  namespace sw__414 {
+  @condition(Id.Id.sw, ">=414")
+  namespace Sw_ge414 {
     /** CH1P_PumpSpeedControlDirectCircuitWhileOff */
     @inherit(r, wi)
     @ext(0xe1, 1)
@@ -431,11 +358,11 @@ namespace ehp.mc {
 
   /** included parts */
   union _includes {
-    mcmode_inc,
-    timer_inc,
-    iotesthp_inc,
-    errors_inc,
-    roomtempoffset_inc,
-    quick_inc,
+    Mcmode_inc,
+    Timer_inc,
+    Iotesthp_inc,
+    Errors_inc,
+    Roomtempoffset_inc,
+    Quick_inc,
   }
 }

@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x05)
-namespace vd4 {
+// @zz(0x05)
+namespace Vd4 {
   // ,VD400,vrnetDIALOG 840/2,175 175
 
   /** default *r */
@@ -117,7 +117,7 @@ namespace vd4 {
   @ext(0xc, 0)
   model DeviceLayout {
     /** Type of Interface which will be used and definition of appliance */
-    @values(values_DeviceLayout)
+    @values(Values_DeviceLayout)
     value: UCH;
   }
 
@@ -142,7 +142,7 @@ namespace vd4 {
   @ext(0xf, 0)
   model LastConnectionError {
     /** Shows the last state where the connection has failed. */
-    @values(values_LastConnectionError)
+    @values(Values_LastConnectionError)
     value: UCH;
   }
 
@@ -396,7 +396,7 @@ namespace vd4 {
   @inherit(r, wi)
   @ext(0x36, 0)
   model CurrentPppProvider {
-    @values(values_CurrentPppProvider)
+    @values(Values_CurrentPppProvider)
     value: UCH;
   }
 
@@ -412,7 +412,7 @@ namespace vd4 {
   @inherit(r, wi)
   @ext(0x38, 0)
   model ModemType {
-    @values(values_ModemType)
+    @values(Values_ModemType)
     value: UCH;
   }
 
@@ -486,23 +486,13 @@ namespace vd4 {
     value: tempsensor;
   }
 
-  @condition(id.id.sw, ">=200")
-  namespace sw__200 {
-    @inherit(r, ws)
-    @ext(0x43, 0)
-    model ComErrorDelay {
-      @unit("Control interface")
-      value: UIN;
-    }
-  }
-
   @inherit(r, ws)
   @ext(0x46, 0)
   model RfWakeupCycle {
     value: UIN;
   }
 
-  enum values_DeviceLayout {
+  enum Values_DeviceLayout {
     _unknown: 0,
     JV_PC: 1,
     H2B: 2,
@@ -511,7 +501,7 @@ namespace vd4 {
     eBUSheater: 5,
   }
 
-  enum values_LastConnectionError {
+  enum Values_LastConnectionError {
     none: 0,
     connection: 1,
     PPP: 2,
@@ -520,15 +510,24 @@ namespace vd4 {
     TCPsend: 5,
   }
 
-  enum values_CurrentPppProvider {
+  enum Values_CurrentPppProvider {
     _1: 0,
     _2: 1,
     emergency_provider: 2,
   }
 
-  enum values_ModemType {
+  enum Values_ModemType {
     analogue: 0,
     GSM: 1,
     GPRS: 2,
+  }
+  @condition(Id.Id.sw, ">=200")
+  namespace Sw_ge200 {
+    @inherit(r, ws)
+    @ext(0x43, 0)
+    model ComErrorDelay {
+      @unit("Control interface")
+      value: UIN;
+    }
   }
 }

@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x84)
-namespace zeo {
+// @zz(0x84)
+namespace Zeo {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Boiler
 
   /** default *r */
@@ -124,7 +124,7 @@ namespace zeo {
   /** man_weiter */
   @inherit(r, ws)
   @ext(0x70, 0)
-  model manWeiter {
+  model ManWeiter {
     value: onoff;
   }
 
@@ -169,7 +169,7 @@ namespace zeo {
   /** testbetrieb */
   @inherit(r)
   @ext(0x7a, 0)
-  model testbetrieb {
+  model Testbetrieb {
     value: onoff;
   }
 
@@ -314,7 +314,7 @@ namespace zeo {
   /** tdes_um */
   @inherit(r)
   @ext(0xba, 0)
-  model tdesUm {
+  model TdesUm {
     value: temp;
   }
 
@@ -369,7 +369,7 @@ namespace zeo {
   /** dcfStatus */
   @inherit(r)
   @ext(0x3a, 0)
-  model dcfStatus {
+  model DcfStatus {
     value: UCH;
   }
 
@@ -648,7 +648,7 @@ namespace zeo {
   /** dt1_2 */
   @inherit(r, ws)
   @ext(0x1b, 0)
-  model dt12 {
+  model Dt12 {
     /** Kalibrierwert T1,T2 */
     value: temp;
   }
@@ -656,7 +656,7 @@ namespace zeo {
   /** dt5_6 */
   @inherit(r, ws)
   @ext(0x1c, 0)
-  model dt56 {
+  model Dt56 {
     /** Kalibrierwert T5,T6 */
     value: temp;
   }
@@ -716,7 +716,7 @@ namespace zeo {
 
   /** TwoPointRegulatorHysteresis_CH */
   @inherit(r, ws)
-  @ext(MF, 0)
+  @ext(0xb5, 0)
   model TwoPointRegulatorHysteresisHc {
     value: temp;
   }
@@ -801,7 +801,7 @@ namespace zeo {
   /** t1 */
   @inherit(r)
   @ext(0x6d, 0)
-  model timer1 {
+  model Timer1 {
     /** verbleibende Zeit mit Kleinstlast in s */
     value: ULG;
   }
@@ -809,7 +809,7 @@ namespace zeo {
   /** t2 */
   @inherit(r)
   @ext(0x6e, 0)
-  model timer2 {
+  model Timer2 {
     /** verbleibende Zeit mit mittlerer Leistung in s */
     value: ULG;
   }
@@ -817,7 +817,7 @@ namespace zeo {
   /** t3 */
   @inherit(r)
   @ext(0x6f, 0)
-  model timer3 {
+  model Timer3 {
     /** verbleibende Zeit bis Umschaltung in Direktheizbetrieb in s */
     value: ULG;
   }
@@ -897,7 +897,7 @@ namespace zeo {
   /** t1Dauer */
   @inherit(r, ws)
   @ext(0xac, 0)
-  model t1Dauer {
+  model T1Dauer {
     /** in Minuten */
     value: UCH;
   }
@@ -905,7 +905,7 @@ namespace zeo {
   /** t2Dauer */
   @inherit(r, ws)
   @ext(0xad, 0)
-  model t2Dauer {
+  model T2Dauer {
     /** in Minuten */
     value: UCH;
   }
@@ -913,7 +913,7 @@ namespace zeo {
   /** t3Dauer */
   @inherit(r, ws)
   @ext(0xae, 0)
-  model t3Dauer {
+  model T3Dauer {
     /** in Minuten */
     value: UCH;
   }
@@ -1041,7 +1041,7 @@ namespace zeo {
   /** P_c_starts */
   @inherit(r)
   @ext(0xef, 0)
-  model cPressStarts {
+  model CPressStarts {
     /** Einschaltungen P_c */
     value: ULG;
   }
@@ -1049,7 +1049,7 @@ namespace zeo {
   /** P_c_hours */
   @inherit(r)
   @ext(0xf0, 0)
-  model cPressHours {
+  model CPressHours {
     /** Laufzeit P_c */
     value: ULG;
   }
@@ -1057,7 +1057,7 @@ namespace zeo {
   /** P_s_starts */
   @inherit(r)
   @ext(0xf1, 0)
-  model sPressStarts {
+  model SPressStarts {
     /** Einschaltungen P_s */
     value: ULG;
   }
@@ -1065,7 +1065,7 @@ namespace zeo {
   /** P_s_hours */
   @inherit(r)
   @ext(0xf2, 0)
-  model sPressHours {
+  model SPressHours {
     /** Laufzeit P_s */
     value: ULG;
   }
@@ -1105,7 +1105,7 @@ namespace zeo {
   /** P_c */
   @inherit(r, ws)
   @ext(0x96, 0)
-  model cPress {
+  model CPress {
     /** circulation pump */
     value: onoff;
   }
@@ -1121,7 +1121,7 @@ namespace zeo {
   /** P_s */
   @inherit(r, ws)
   @ext(0x98, 0)
-  model sPress {
+  model SPress {
     /** Solarpumpe */
     value: onoff;
   }
@@ -1145,7 +1145,7 @@ namespace zeo {
   /** T_env */
   @inherit(r)
   @ext(0x9b, 0)
-  model envTemp {
+  model EnvTemp {
     /** Aussentemperatur */
     value: tempsensor;
   }
@@ -1153,7 +1153,7 @@ namespace zeo {
   /** T_coll_R */
   @inherit(r)
   @ext(0x9c, 0)
-  model collRTemp {
+  model CollRTemp {
     /** Kollektorrücklauftemperatur */
     value: tempsensor;
   }
@@ -1177,7 +1177,7 @@ namespace zeo {
   /** T_coll */
   @inherit(r)
   @ext(0x9f, 0)
-  model collTemp {
+  model CollTemp {
     /** Kollektortemperatur */
     value: tempsensor;
   }
@@ -1249,7 +1249,7 @@ namespace zeo {
   /** P_l */
   @inherit(r)
   @ext(0xc5, 0)
-  model lPress {
+  model LPress {
     /** Legionellenschutz-Pumpe */
     value: onoff;
   }
@@ -1376,7 +1376,7 @@ namespace zeo {
   /** d_um_3 */
   @inherit(r)
   @ext(0xe5, 0)
-  model dUm3 {
+  model DUm3 {
     /** Offset Desorptionsendtemperatur */
     value: temp;
   }
@@ -1485,7 +1485,7 @@ namespace zeo {
   /** dHR_aus */
   @inherit(r, ws)
   @ext(0xc, 1)
-  model dHRAus {
+  model DHRAus {
     /** delta-Rücklauftemp für SHU */
     value: temp;
   }
@@ -1500,7 +1500,7 @@ namespace zeo {
   /** not_tested_yet */
   @inherit(r, ws)
   @ext(0xe, 1)
-  model notTestedYet {
+  model NotTestedYet {
     /** Merker für erfolgreichen Selbsttest */
     value: onoff;
   }
@@ -1508,7 +1508,7 @@ namespace zeo {
   /** startup_test */
   @inherit(r)
   @ext(0xf, 1)
-  model startupTest {
+  model StartupTest {
     /** löst den selbsttest aus */
     value: onoff;
   }
@@ -1540,7 +1540,7 @@ namespace zeo {
   /** startup_test_fehler */
   @inherit(r, ws)
   @ext(0x13, 1)
-  model startupTestFehler {
+  model StartupTestFehler {
     /** zeigt Fehler im selbsttest an */
     value: onoff;
   }
@@ -1588,7 +1588,7 @@ namespace zeo {
   /** dHR_ein */
   @inherit(r, ws)
   @ext(0x19, 1)
-  model dHREin {
+  model DHREin {
     /** delta-Rücklauftemp für SHU */
     value: temp;
   }
@@ -1596,7 +1596,7 @@ namespace zeo {
   /** dT_schnell */
   @inherit(r, ws)
   @ext(0x1a, 1)
-  model dTSchnell {
+  model DTSchnell {
     /** Nötige Temp.differenz für sofortigen DHB (Mantis 8305) */
     value: UCH;
   }

@@ -8,21 +8,14 @@ type of meter: Zählerart
 cyclic transmission: zyklische Übertragung
 data transmission: Übertragung
 heat request: Wärmeanforderung
-opdataaction: opdataaction
 desired temperature: Solltemperatur
 outside temperature: Außentemperatur
-percent: percent
-percent0: percent0
-percent1: percent1
-percent2: percent2
-percents: percents
 temperature: Temperatur
 pressure: Druck
 time: Uhrzeit
 date: Datum
 weekday: Wochentag
 version: Version
-skip: skip
 date/time: Datum Uhrzeit
 device manufacturer: Geräte-Hersteller
 device id: Geräte-ID
@@ -1285,7 +1278,6 @@ configures which room temperature is assigned to zone 3: configures which room t
 room zone mapping zone 3: Raumregler Zuordnung Zone 3
 shortlabel zone 3: Kurzbezeichnung Zone 3
 whether timeslot is valid: whether timeslot is valid
-slot1-3: slot1-3
 timer cooling monday: Zeitfenster Lüftung Montag
 timer cooling tuesday: Zeitfenster Lüftung Dienstag
 timer cooling wednesday: Zeitfenster Lüftung Mittwoch
@@ -2634,11 +2626,6 @@ minutes: Minuten
 hours: Stunden
 hour: Stunde
 seconds: Sekunden
-calibration: calibration
-calibration0: calibration0
-calibration1: calibration1
-calibrations: calibrations
-calibrationv: calibrationv
 boiler mode: Boiler Modus
 mixer mode: Mischer Modus
 mixer type: Mischer Typ
@@ -2646,34 +2633,17 @@ hot water mode: Warmwasser Modus
 mixer State: Mixer Status
 day/night mode: Tag-/Nachtmodus
 Status: Status
-onoff: onoff
-yesno: yesno
-errorok: errorok
 sensor status: Fühlerstatus
-tempsensor: tempsensor
-tempmirror: tempmirror
-tempmirrorsensor: tempmirrorsensor
-presssensor: presssensor
-uin100: uin100
 phase 1 state: Status Phase 1
 phase 2 state: Status Phase 2
 phase 3 state: Status Phase 3
-phase: phase
-code: code
 error number: Fehlernummer
-errors: errors
 from: von
 to: bis
 slot 1 from/to: Slot 1 von/bis
 slot 2 from/to: Slot 2 von/bis
 slot 3 from/to: Slot 3 von/bis
-timer: timer
-backtype: backtype
-backmode: backmode
-power: power
-energy: energy
-energyr: energyr
-energy4: energy4
+slots 1-3: Slots 1-3
 start count: Anzahl Starts
 pump power: Pumpenleistung
 pump state: Pumpenstatus
@@ -2686,15 +2656,10 @@ holiday period 1 from; 2 from; 1 to; 2 to: Ferienzeitraum 1 von; 2 von; 1 bis; 2
 heating state: Heizstatus
 frequency: Frequenz
 selected zone: Selektierte Zone
-opmode: opmode
-zmapping: zmapping
 heat circuit name: Name des Heizkreises
 zone name: Name der Zone
 name: Name
 phone number: Telefonnummer
-mamode: mamode
-offmode: offmode
-rcmode: rcmode
 array index for the zones. Array Index start at 0 for the first element: Index eines Zeitslots. Start by 0 für den ersten Zeitslot.
 Number of total slots in the array. May be Zero.: Anzahl der aktiven Zeitslots an einem Tag. Kann 0 sein.
 Number of total slots in the array for a week. Mon-Sun: Anzahl der aktiven Zeitslots pro Wochentag. Mo-So
@@ -3941,12 +3906,12 @@ Temperatures Thursday: Temperaturen Donnerstag
 Temperatures Friday: Temperaturen Freitag
 Temperatures Saturday: Temperaturen Samstag
 Temperatures Sunday: Temperaturen Sonntag
+Periods Sunday: Zeitfenster Montag
 Periods Monday: Zeitfenster Montag
 Periods Tuesday: Zeitfenster Dienstag
 Periods Wednesday: Zeitfenster Mittwoch
 Periods Thursday: Zeitfenster Donnerstag
 Periods Friday: Zeitfenster Freitag
 Periods Saturday: Zeitfenster Samstag
-Periods Sunday: Zeitfenster Sonntag
 yield this year: Ertrag dieses Jahr
 yield last year: Ertrag letztes Jahr

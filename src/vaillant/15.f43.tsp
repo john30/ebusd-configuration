@@ -7,13 +7,13 @@ import "./timerhc_inc.tsp";
 import "./tempsetpoints_inc.tsp";
 import "./service_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace f43 {
+// @zz(0x15)
+namespace F43 {
   // ,F4300,VRC 430f,F43 221
 
   /** default *r */
@@ -101,7 +101,7 @@ namespace f43 {
   @ext(0x2f, 0)
   model Hc1OPMode {
     /** operation mode of the first heating circuit */
-    @values(values_Hc1OPMode)
+    @values(Values_Hc1OPMode)
     value: UCH;
   }
 
@@ -201,7 +201,7 @@ namespace f43 {
   @ext(0x42, 0)
   model HwcOPMode {
     /** operation mode of the domestic hot water circuit */
-    @values(values_HwcOPMode)
+    @values(Values_HwcOPMode)
     value: UCH;
   }
 
@@ -291,7 +291,7 @@ namespace f43 {
   @ext(0x2e, 0)
   model BaseDisplay {
     /** selection which heating circuit's parameters are shown in the basic display */
-    @values(values_BaseDisplay)
+    @values(Values_BaseDisplay)
     value: UCH;
   }
 
@@ -300,7 +300,7 @@ namespace f43 {
   @ext(0x34, 0)
   model Hc1RoomTempSwitchOn {
     /** room temperature modulation of the first heating circuit */
-    @values(values_Hc1RoomTempSwitchOn)
+    @values(Values_Hc1RoomTempSwitchOn)
     value: UCH;
   }
 
@@ -317,7 +317,7 @@ namespace f43 {
   @ext(0x3a, 0)
   model Hc1HcType {
     /** type of the first heating circuit */
-    @values(values_Hc1HcType)
+    @values(Values_Hc1HcType)
     value: UCH;
   }
 
@@ -366,7 +366,7 @@ namespace f43 {
   @ext(0x49, 0)
   model HwcLegioStartDay {
     /** weekday on which legionella protection is started (may also be every day of the week) */
-    @values(values_HwcLegioStartDay)
+    @values(Values_HwcLegioStartDay)
     value: UCH;
   }
 
@@ -391,7 +391,7 @@ namespace f43 {
   @ext(0x4d, 0)
   model AutoOffMode {
     /** operation during the lowering time */
-    @values(values_AutoOffMode)
+    @values(Values_AutoOffMode)
     value: UCH;
   }
 
@@ -470,34 +470,12 @@ namespace f43 {
     value: UCH;
   }
 
-  @condition(id.id.sw, ">=119")
-  namespace sw__119 {
-    /** HC1_FloorPavementDryingTemperature */
-    @inherit(r)
-    @ext(0x2a, 0)
-    model Hc1FloorPavementDryingTemp {
-      /** HC1's current flow temperature setpoint with activated floor pavement drying */
-      value: temp1;
-    }
-  }
-
-  @condition(id.id.sw, ">=119")
-  namespace sw__119 {
-    /** HC1_FloorPavementDryingDay */
-    @inherit(r)
-    @ext(0x38, 0)
-    model Hc1FloorPavementDryingDay {
-      /** HC1's current day of floor pavement drying */
-      value: UCH;
-    }
-  }
-
   /** BKMK1ConfigCPLPAsLP */
   @inherit(r, wi)
   @ext(0x7d, 0)
   model HcMc1ConfigCPLPAsLP {
     /** configuration of the VR61 relay-output */
-    @values(values_HcMc1ConfigCPLPAsLP)
+    @values(Values_HcMc1ConfigCPLPAsLP)
     value: UCH;
   }
 
@@ -530,7 +508,7 @@ namespace f43 {
   @ext(0x85, 0)
   model Hc2HcType {
     /** type of the second heating circuit */
-    @values(values_Hc2HcType)
+    @values(Values_Hc2HcType)
     value: UCH;
   }
 
@@ -767,61 +745,6 @@ namespace f43 {
     value: temp1;
   }
 
-  @condition(id.id.sw, ">=121")
-  namespace sw__121 {
-    /** B51000M7OpModeMonitor */
-    @inherit(r)
-    @ext(0x65, 0)
-    model B51000M7OpModeMonitor {
-      /** operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW) */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=121")
-  namespace sw__121 {
-    /** B51000M10DHWFlowSetMon */
-    @inherit(r)
-    @ext(0x66, 0)
-    model B51000M10HwcFlowSetMon {
-      /** flow setpoint DHW sent via B5 10 00 */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=121")
-  namespace sw__121 {
-    /** B51000M12DisableBitsMon */
-    @inherit(r)
-    @ext(0x67, 0)
-    model B51000M12DisableBitsMon {
-      /** bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7) */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=121")
-  namespace sw__121 {
-    /** B51000M14Monitor */
-    @inherit(r)
-    @ext(0x68, 0)
-    model B51000M14Monitor {
-      /** bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump) */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, "<=120")
-  namespace sw__120 {
-    /** B51000CHDisableMonitor */
-    @inherit(r)
-    @ext(0x8e, 0)
-    model B51000HcDisableMonitor {
-      /** copy of the M12 byte of the B5 10 00 service containing the disable bits */
-      value: UCH;
-    }
-  }
-
   /** FrostProtectDelayMonitor */
   @inherit(r)
   @ext(0x8f, 0)
@@ -865,7 +788,7 @@ namespace f43 {
   /** actoSTOR_OPMode */
   @inherit(r)
   @ext(0x94, 0)
-  model actoSTOROPMode {
+  model ActoSTOROPMode {
     /** Zustands-Automat actSTOR Ansteuerung */
     value: UCH;
   }
@@ -917,7 +840,7 @@ namespace f43 {
   /** actostorstate */
   @inherit(r)
   @ext(0xa4, 0)
-  model actostorstate {
+  model Actostorstate {
     /** state of the actoSTOR control (0 = off; 1 = DHW released; 2 = DHW loading; 3 = Pump overrun; 4 = stop pump overrun) */
     value: UCH;
   }
@@ -947,36 +870,36 @@ namespace f43 {
     value: UCH;
   }
 
-  enum values_Hc1OPMode {
+  enum Values_Hc1OPMode {
     off: 0,
     manual: 1,
     auto: 2,
   }
 
-  enum values_HwcOPMode {
+  enum Values_HwcOPMode {
     off: 0,
     manual: 1,
     auto: 2,
   }
 
-  enum values_BaseDisplay {
+  enum Values_BaseDisplay {
     off: 0,
     HC1: 1,
     HC2: 2,
   }
 
-  enum values_Hc1RoomTempSwitchOn {
+  enum Values_Hc1RoomTempSwitchOn {
     off: 0,
     modulating: 1,
     thermostat: 2,
   }
 
-  enum values_Hc1HcType {
+  enum Values_Hc1HcType {
     disabled: 0,
     burnercircuit: 1,
   }
 
-  enum values_HwcLegioStartDay {
+  enum Values_HwcLegioStartDay {
     Mon: 0,
     Tue: 1,
     Wed: 2,
@@ -988,30 +911,92 @@ namespace f43 {
     Mon_Sun: 8,
   }
 
-  enum values_AutoOffMode {
+  enum Values_AutoOffMode {
     frostprotection: 0,
     lowering: 1,
     eco: 2,
   }
 
-  enum values_HcMc1ConfigCPLPAsLP {
+  enum Values_HcMc1ConfigCPLPAsLP {
     CP: 0,
     LP: 1,
   }
 
-  enum values_Hc2HcType {
+  enum Values_Hc2HcType {
     disabled: 0,
     mixing: 1,
     zone: 2,
   }
+  @condition(Id.Id.sw, ">=119")
+  namespace Sw_ge119 {
+    /** HC1_FloorPavementDryingTemperature */
+    @inherit(r)
+    @ext(0x2a, 0)
+    model Hc1FloorPavementDryingTemp {
+      /** HC1's current flow temperature setpoint with activated floor pavement drying */
+      value: temp1;
+    }
+
+    /** HC1_FloorPavementDryingDay */
+    @inherit(r)
+    @ext(0x38, 0)
+    model Hc1FloorPavementDryingDay {
+      /** HC1's current day of floor pavement drying */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=121")
+  namespace Sw_ge121 {
+    /** B51000M7OpModeMonitor */
+    @inherit(r)
+    @ext(0x65, 0)
+    model B51000M7OpModeMonitor {
+      /** operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW) */
+      value: UCH;
+    }
+
+    /** B51000M10DHWFlowSetMon */
+    @inherit(r)
+    @ext(0x66, 0)
+    model B51000M10HwcFlowSetMon {
+      /** flow setpoint DHW sent via B5 10 00 */
+      value: UCH;
+    }
+
+    /** B51000M12DisableBitsMon */
+    @inherit(r)
+    @ext(0x67, 0)
+    model B51000M12DisableBitsMon {
+      /** bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7) */
+      value: UCH;
+    }
+
+    /** B51000M14Monitor */
+    @inherit(r)
+    @ext(0x68, 0)
+    model B51000M14Monitor {
+      /** bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump) */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, "<=120")
+  namespace Sw_le120 {
+    /** B51000CHDisableMonitor */
+    @inherit(r)
+    @ext(0x8e, 0)
+    model B51000HcDisableMonitor {
+      /** copy of the M12 byte of the B5 10 00 service containing the disable bits */
+      value: UCH;
+    }
+  }
 
   /** included parts */
   union _includes {
-    timercc_inc,
-    timerhwc_inc,
-    errors_inc,
-    timerhc_inc,
-    tempsetpoints_inc,
-    service_inc,
+    Timercc_inc,
+    Timerhwc_inc,
+    Errors_inc,
+    Timerhc_inc,
+    Tempsetpoints_inc,
+    Service_inc,
   }
 }

@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace broadcast {
+namespace Broadcast {
   /** default *b */
   @passive
   @zz(BROADCAST)
@@ -22,7 +22,7 @@ namespace broadcast {
   /** date/time */
   @inherit(b, wi)
   @ext(0)
-  model vdatetime {
+  model Vdatetime {
     time: BTI;
     date: BDA;
   }
@@ -30,7 +30,7 @@ namespace broadcast {
   /** outside temperature */
   @inherit(b)
   @ext(1)
-  model outsidetemp {
+  model Outsidetemp {
     value: temp2;
   }
 
@@ -43,7 +43,7 @@ namespace broadcast {
   /** state hot water */
   @inherit(b_1)
   @ext(0x27)
-  model hwcStatus {
+  model HwcStatus {
     onoff: onoff;
     vf1: temp0;
     onoff_1: onoff;
@@ -52,7 +52,7 @@ namespace broadcast {
   /** quick - hot water tank filling */
   @inherit(b_1)
   @ext(0x6)
-  model load {
+  model Load {
     value: onoff;
   }
 }

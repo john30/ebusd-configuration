@@ -5,13 +5,13 @@ import "./timerhc_inc.tsp";
 import "./tempsetpoints_inc.tsp";
 import "./iotestbmc_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x50)
-namespace v61.mc {
+// @zz(0x50)
+namespace V61.Mc {
   // ,V6100,VR 61,V61 219
 
   /** default *r */
@@ -29,30 +29,6 @@ namespace v61.mc {
   @base(MF, 0x9, 0xe)
   model wi {}
   // ##### general #####
-
-  @condition(id.id.sw, "<202")
-  namespace sw_202 {
-    /** InternalOperatingMode430 */
-    @inherit(r, w)
-    @ext(0x31, 0)
-    model InternalOperatingMode430 {
-      /** operation mode of the second heating circuit for 430 */
-      @values(values_InternalOperatingMode430)
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=202")
-  namespace sw__202 {
-    /** InternalOperatingMode470 */
-    @inherit(r, w)
-    @ext(0x31, 0)
-    model InternalOperatingMode470 {
-      /** operation mode of the second heating circuit for 470 */
-      @values(values_InternalOperatingMode470)
-      value: UCH;
-    }
-  }
 
   /** DesiredLowTemperature */
   @inherit(r, w)
@@ -171,7 +147,7 @@ namespace v61.mc {
   @ext(0x1e, 0)
   model Hc2CircuitType {
     /** type of the second heating circuit */
-    @values(values_Hc2CircuitType)
+    @values(Values_Hc2CircuitType)
     value: UCH;
   }
 
@@ -204,7 +180,7 @@ namespace v61.mc {
   @ext(0x35, 0)
   model Hc2RoomControlMode {
     /** room temperature modulation of the second heating circuit */
-    @values(values_Hc2RoomControlMode)
+    @values(Values_Hc2RoomControlMode)
     value: UCH;
   }
 
@@ -221,7 +197,7 @@ namespace v61.mc {
   @ext(0x1f, 0)
   model AutoOffMode {
     /** operation during the auto-off period */
-    @values(values_AutoOffMode)
+    @values(Values_AutoOffMode)
     value: UCH;
   }
 
@@ -519,42 +495,64 @@ namespace v61.mc {
     value: UCH;
   }
 
-  enum values_InternalOperatingMode430 {
+  enum Values_InternalOperatingMode430 {
     off: 0,
     manual: 1,
     auto: 2,
   }
 
-  enum values_InternalOperatingMode470 {
+  enum Values_InternalOperatingMode470 {
     auto: 2,
     on: 3,
     night: 4,
     summer: 5,
   }
 
-  enum values_Hc2CircuitType {
+  enum Values_Hc2CircuitType {
     disabled: 0,
     mixing: 1,
     zone: 2,
   }
 
-  enum values_Hc2RoomControlMode {
+  enum Values_Hc2RoomControlMode {
     off: 0,
     modulating: 1,
     thermostat: 2,
   }
 
-  enum values_AutoOffMode {
+  enum Values_AutoOffMode {
     frostprotection: 0,
     lowering: 1,
     eco: 2,
   }
+  @condition(Id.Id.sw, "<202")
+  namespace Sw_lt202 {
+    /** InternalOperatingMode430 */
+    @inherit(r, w)
+    @ext(0x31, 0)
+    model InternalOperatingMode430 {
+      /** operation mode of the second heating circuit for 430 */
+      @values(Values_InternalOperatingMode430)
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=202")
+  namespace Sw_ge202 {
+    /** InternalOperatingMode470 */
+    @inherit(r, w)
+    @ext(0x31, 0)
+    model InternalOperatingMode470 {
+      /** operation mode of the second heating circuit for 470 */
+      @values(Values_InternalOperatingMode470)
+      value: UCH;
+    }
+  }
 
   /** included parts */
   union _includes {
-    errors_inc,
-    timerhc_inc,
-    tempsetpoints_inc,
-    iotestbmc_inc,
+    Errors_inc,
+    Timerhc_inc,
+    Tempsetpoints_inc,
+    Iotestbmc_inc,
   }
 }

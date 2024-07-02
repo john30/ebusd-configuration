@@ -6,13 +6,13 @@ import "./timer_inc.tsp";
 import "./errors_inc.tsp";
 import "./iotestbsol_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0xa1)
-namespace sol.cc {
+// @zz(0xa1)
+namespace Sol.Cc {
   // ,sol00,VR 68,sol 210 Circulation
 
   /** default *r */
@@ -44,10 +44,10 @@ namespace sol.cc {
 
   /** included parts */
   union _includes {
-    yield3f40_inc,
-    hwcmode_inc,
-    timer_inc,
-    errors_inc,
-    iotestbsol_inc,
+    Yield3f40_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Errors_inc,
+    Iotestbsol_inc,
   }
 }
