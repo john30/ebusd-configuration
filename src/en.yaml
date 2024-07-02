@@ -8,21 +8,14 @@ type of meter: type of meter
 cyclic transmission: cyclic transmission
 data transmission: data transmission
 heat request: heat request
-opdataaction: opdataaction
 desired temperature: desired temperature
 outside temperature: outside temperature
-percent: percent
-percent0: percent0
-percent1: percent1
-percent2: percent2
-percents: percents
 temperature: temperature
 pressure: pressure
 time: time
 date: date
 weekday: weekday
 version: version
-skip: skip
 date/time: Date time
 device manufacturer: device manufacturer
 device id: device id
@@ -249,7 +242,7 @@ Superheat: Superheat
 subcooling of refrigerant circuit: subcooling of refrigerant circuit
 Subcooling: Subcooling
 actual energy balancing integral: actual energy balancing integral
-Integral: integral
+Integral: Integral
 Internal compressor inlet temperature sensor: Internal compressor inlet temperature sensor
 T_Inlet: T_Inlet
 Internal compressor outlet temperature sensor: Internal compressor outlet temperature sensor
@@ -1213,7 +1206,6 @@ configures which room temperature is assigned to zone 3: configures which room t
 room zone mapping zone 3: room zone mapping zone 3
 shortlabel zone 3: shortlabel zone 3
 whether timeslot is valid: whether timeslot is valid
-slot1-3: slot1-3
 timer cooling monday: timer cooling monday
 timer cooling tuesday: timer cooling tuesday
 timer cooling wednesday: timer cooling wednesday
@@ -2518,11 +2510,6 @@ minutes: minutes
 hours: hours
 hour: hour
 seconds: seconds
-calibration: calibration
-calibration0: calibration0
-calibration1: calibration1
-calibrations: calibrations
-calibrationv: calibrationv
 boiler mode: boiler mode
 mixer mode: mixer mode
 mixer type: mixer type
@@ -2530,34 +2517,17 @@ hot water mode: hot water mode
 mixer State: mixer State
 day/night mode: day/night mode
 Status: Status
-onoff: onoff
-yesno: yesno
-errorok: errorok
 sensor status: sensor status
-tempsensor: tempsensor
-tempmirror: tempmirror
-tempmirrorsensor: tempmirrorsensor
-presssensor: presssensor
-uin100: uin100
 phase 1 state: phase 1 state
 phase 2 state: phase 2 state
 phase 3 state: phase 3 state
-phase: phase
-code: code
 error number: error number
-errors: errors
 from: from
 to: to
 slot 1 from/to: slot 1 from/to
 slot 2 from/to: slot 2 from/to
 slot 3 from/to: slot 3 from/to
-timer: timer
-backtype: backtype
-backmode: backmode
-power: power
-energy: energy
-energyr: energyr
-energy4: energy4
+slots 1-3: slots 1-3
 start count: start count
 pump power: pump power
 pump state: pump state
@@ -2570,15 +2540,10 @@ holiday period 1 from; 2 from; 1 to; 2 to: holiday period 1 from; 2 from; 1 to; 
 heating state: heating state
 frequency: frequency
 selected zone: selected zone
-opmode: opmode
-zmapping: zmapping
 heat circuit name: heat circuit name
 zone name: zone name
 name: name
 phone number: phone number
-mamode: mamode
-offmode: offmode
-rcmode: rcmode
 array index for the zones. Array Index start at 0 for the first element: array index for the zones. Array Index start at 0 for the first element
 Number of total slots in the array. May be Zero.: Number of total slots in the array. May be Zero.
 Number of total slots in the array for a week. Mon-Sun: Number of total slots in the array for a week. Mon-Sun
@@ -3799,12 +3764,12 @@ Temperatures Thursday: Temperatures Thursday
 Temperatures Friday: Temperatures Friday
 Temperatures Saturday: Temperatures Saturday
 Temperatures Sunday: Temperatures Sunday
+Periods Sunday: Periods Sunday
 Periods Monday: Periods Monday
 Periods Tuesday: Periods Tuesday
 Periods Wednesday: Periods Wednesday
 Periods Thursday: Periods Thursday
 Periods Friday: Periods Friday
 Periods Saturday: Periods Saturday
-Periods Sunday: Periods Sunday
 yield this year: yield this year
 yield last year: yield last year

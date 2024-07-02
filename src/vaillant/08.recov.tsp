@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x08)
-namespace recov {
+// @zz(0x08)
+namespace Recov {
   // ,recov,recoVair 260
   // ##### Generell #####
 
@@ -41,7 +41,7 @@ namespace recov {
   @inherit(r)
   @ext(0x4, 0x8c, 0x3)
   model VentHeatRecovery {
-    @values(values_VentHeatRecovery)
+    @values(Values_VentHeatRecovery)
     value: UCH;
   }
 
@@ -92,17 +92,17 @@ namespace recov {
 
   /** Set Ventilation Day */
   @inherit(w)
-  @ext(MF, 0x22, 0, 0x2, 0, 0xff, 0xff)
+  @ext(0xb5, 0x22, 0, 0x2, 0, 0xff, 0xff)
   model SetVentDay {}
 
   /** Set Ventilation Night */
   @inherit(w)
-  @ext(MF, 0x22, 0, 1, 0, 0xff, 0xff)
+  @ext(0xb5, 0x22, 0, 1, 0, 0xff, 0xff)
   model SetVentNight {}
 
   /** Activate Boost Ventilation */
   @inherit(w)
-  @ext(MF, 0x22, 0, 0x3, 0, 0xff, 0xff)
+  @ext(0xb5, 0x22, 0, 0x3, 0, 0xff, 0xff)
   model SetVentBoost {}
   // ##### Weitere #####
 
@@ -183,7 +183,7 @@ namespace recov {
     value: UIN;
   }
 
-  enum values_VentHeatRecovery {
+  enum Values_VentHeatRecovery {
     auto: 0,
     on: 1,
     off: 2,

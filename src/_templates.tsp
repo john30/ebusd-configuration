@@ -1,8 +1,8 @@
 import "@ebusd/ebus-typespec";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
 
 /** start counter */
 scalar cntstarts extends BCD3;
@@ -19,31 +19,30 @@ scalar cnthours extends BCD3;
 scalar cntfuel extends BCD4;
 
 /** unit */
-@values(values_unit)
+@values(Values_unit)
 scalar unit extends UCH;
 
 /** fuel type */
-@values(values_fueltype)
+@values(Values_fueltype)
 scalar fueltype extends UCH;
 
 /** type of meter */
-@values(values_countertype)
+@values(Values_countertype)
 scalar countertype extends UCH;
 
 /** cyclic transmission */
-@values(values_opdatacyclic)
+@values(Values_opdatacyclic)
 scalar opdatacyclic extends UCH;
 
 /** data transmission */
-@values(values_opdatatransfer)
+@values(Values_opdatatransfer)
 scalar opdatatransfer extends UCH;
 
 /** heat request */
-@values(values_opdataheat)
+@values(Values_opdataheat)
 scalar opdataheat extends UCH;
 
-/** opdataaction */
-@values(values_opdataaction)
+@values(Values_opdataaction)
 scalar opdataaction extends UCH;
 
 /** desired temperature */
@@ -54,23 +53,18 @@ scalar desiredtemp extends UCH;
 @unit("°C")
 scalar outsidetemp extends SCH;
 
-/** percent */
 @unit("%")
 scalar percent extends D2C;
 
-/** percent0 */
 @unit("%")
 scalar percent0 extends UCH;
 
-/** percent1 */
 @unit("%")
 scalar percent1 extends D1C;
 
-/** percent2 */
 @unit("%")
 scalar percent2 extends D2B;
 
-/** percents */
 @unit("%")
 scalar percents extends SCH;
 
@@ -107,23 +101,22 @@ scalar bday extends BDY;
 /** version */
 scalar version extends PIN;
 
-/** skip */
 @maxLength(1)
 scalar skip extends IGN;
 
-enum values_unit {
+enum Values_unit {
   all: 0,
   l: 1,
   m_: 2,
 }
 
-enum values_fueltype {
+enum Values_fueltype {
   any: 0,
   oil: 1,
   gas: 2,
 }
 
-enum values_countertype {
+enum Values_countertype {
   starts: 0,
   hours1: 1,
   hours2: 2,
@@ -133,12 +126,12 @@ enum values_countertype {
   fuelquantity: 16,
 }
 
-enum values_opdatacyclic {
+enum Values_opdatacyclic {
   stop: 0x55,
   start: 0xaa,
 }
 
-enum values_opdatatransfer {
+enum Values_opdatatransfer {
   stop: 0,
   cyclic: 1,
   event: 2,
@@ -146,7 +139,7 @@ enum values_opdatatransfer {
   cyclicandevent: 3,
 }
 
-enum values_opdataheat {
+enum Values_opdataheat {
   off: 0x00,
   none: 0x01,
   hotwater: 0x55,
@@ -159,7 +152,7 @@ enum values_opdataheat {
   controlstopinstage: 0x44,
 }
 
-enum values_opdataaction {
+enum Values_opdataaction {
   none: 0x00,
   stoppump: 0x01,
   startpump: 0x02,

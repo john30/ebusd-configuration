@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace service_inc {
+namespace Service_inc {
   // Service message
 
   /** default *r */
@@ -16,7 +16,7 @@ namespace service_inc {
   /** Current service message */
   @inherit(r)
   @ext(0x2)
-  model currentservice {
+  model Currentservice {
     value: errors;
   }
   // Service message history
@@ -34,7 +34,7 @@ namespace service_inc {
   /** Service message history */
   @inherit(r_1)
   @ext(0x2)
-  model servicehistory {
+  model Servicehistory {
     @out
     index: UCH;
 
@@ -44,7 +44,7 @@ namespace service_inc {
   /** Clear service message history */
   @inherit(wi)
   @ext(0x2)
-  model clearservicehistory {
+  model Clearservicehistory {
     @in
     cleared: yesno;
   }

@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./iotest620_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x26)
-namespace solsy.hc {
+// @zz(0x26)
+namespace Solsy.Hc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 Burner
 
   /** default *r */
@@ -199,17 +199,6 @@ namespace solsy.hc {
     value: UCH;
   }
 
-  @condition(id.id.sw, ">=401")
-  namespace sw__401 {
-    /** EnergyDemandNotReachedDelay */
-    @inherit(r)
-    @ext(0x7b, 0)
-    model EnergyDemandNotReachedDelay {
-      /** Delay time for not reached temperature */
-      value: hours;
-    }
-  }
-
   /** EnergyDemandPercentage */
   @inherit(r)
   @ext(0x7e, 0)
@@ -282,19 +271,23 @@ namespace solsy.hc {
     value: curve;
   }
 
-  @condition(id.id.sw, "<=400")
-  namespace sw__400 {
-    /** HcMaxPreHeating */
-    @inherit(r, w)
-    @ext(0x38, 0)
-    model HcMaxPreHeating {
-      /** The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
+  /** TeleswitchOperatingMode */
+  @inherit(r, w)
+  @ext(0x3f, 0)
+  model TeleswitchOperatingMode {
+    /** If the tele switch port is activated the burner circuit operates in this mode */
+    value: mcmode;
+  }
+  @condition(Id.Id.sw, ">=401")
+  namespace Sw_ge401 {
+    /** EnergyDemandNotReachedDelay */
+    @inherit(r)
+    @ext(0x7b, 0)
+    model EnergyDemandNotReachedDelay {
+      /** Delay time for not reached temperature */
       value: hours;
     }
-  }
 
-  @condition(id.id.sw, ">=401")
-  namespace sw__401 {
     /** HcMaxPreHeating */
     @inherit(r, wi)
     @ext(0x38, 0)
@@ -304,20 +297,22 @@ namespace solsy.hc {
       value: UCH;
     }
   }
-
-  /** TeleswitchOperatingMode */
-  @inherit(r, w)
-  @ext(0x3f, 0)
-  model TeleswitchOperatingMode {
-    /** If the tele switch port is activated the burner circuit operates in this mode */
-    value: mcmode;
+  @condition(Id.Id.sw, "<=400")
+  namespace Sw_le400 {
+    /** HcMaxPreHeating */
+    @inherit(r, w)
+    @ext(0x38, 0)
+    model HcMaxPreHeating {
+      /** The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
+      value: hours;
+    }
   }
 
   /** included parts */
   union _includes {
-    hcmode_inc,
-    timer_inc,
-    iotest620_inc,
-    errors_inc,
+    Hcmode_inc,
+    Timer_inc,
+    Iotest620_inc,
+    Errors_inc,
   }
 }

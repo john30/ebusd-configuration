@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace hcmode_inc {
+namespace Hcmode_inc {
   // HC operation mode
 
   /** default *r */
@@ -110,11 +110,11 @@ namespace hcmode_inc {
   @inherit(uw_1)
   @ext(0)
   model StatusCirPump {
-    @values(values_StatusCirPump)
+    @values(Values_StatusCirPump)
     value: UCH;
   }
 
-  enum values_StatusCirPump {
+  enum Values_StatusCirPump {
     off: 0,
     on: 100,
   }

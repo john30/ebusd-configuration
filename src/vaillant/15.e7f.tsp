@@ -3,13 +3,13 @@ import "./_templates.tsp";
 import "./timerhc_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace e7f {
+// @zz(0x15)
+namespace E7f {
   // ,E7f00,ExaCONTROL E7 radio,E7f00 206
 
   /** default *r */
@@ -27,28 +27,6 @@ namespace e7f {
   @base(MF, 0x9, 0xe)
   model wi {}
   // ##### general #####
-
-  @condition(id.id.sw, ">=201")
-  namespace sw__201 {
-    /** DisplayedRoomTemp */
-    @inherit(r)
-    @ext(0x3e, 0)
-    model DisplayedRoomTemp {
-      /** displayed room temperature */
-      value: temp;
-    }
-  }
-
-  @condition(id.id.sw, "=102-131")
-  namespace sw_102_131 {
-    /** RaumtemperaturIst */
-    @inherit(r)
-    @ext(0, 0)
-    model RoomTemp {
-      /** raw value current room temperature */
-      value: tempsensor;
-    }
-  }
 
   /** OutsideTempSensor */
   @inherit(r)
@@ -180,7 +158,7 @@ namespace e7f {
   @ext(0x29, 0)
   model ZweipunktAnalogSlct {
     /** two-point / analogue control */
-    @values(values_ZweipunktAnalogSlct)
+    @values(Values_ZweipunktAnalogSlct)
     value: UCH;
   }
 
@@ -189,7 +167,7 @@ namespace e7f {
   @ext(0x2b, 0)
   model WeekDayProgSwitch {
     /** switch from weekly program over to a daily one */
-    @values(values_WeekDayProgSwitch)
+    @values(Values_WeekDayProgSwitch)
     value: UCH;
   }
   // ##### internal #####
@@ -221,7 +199,7 @@ namespace e7f {
   /** eBUSFifoDiffCntMax */
   @inherit(r)
   @ext(0x28, 0)
-  model eBUSFifoDiffCntMax {
+  model EBUSFifoDiffCntMax {
     /** max. eBUS-fifo level */
     value: UCH;
   }
@@ -317,24 +295,44 @@ namespace e7f {
   /** eBUSCommErrorPending */
   @inherit(r)
   @ext(0x39, 0)
-  model eBUSCommErrorPending {
+  model EBUSCommErrorPending {
     /** eBUS communication fails */
     value: onoff;
   }
 
-  enum values_ZweipunktAnalogSlct {
+  enum Values_ZweipunktAnalogSlct {
     two_point_control: 0,
     analogue_control: 1,
   }
 
-  enum values_WeekDayProgSwitch {
+  enum Values_WeekDayProgSwitch {
     daily: 1,
     weekly: 7,
+  }
+  @condition(Id.Id.sw, ">=201")
+  namespace Sw_ge201 {
+    /** DisplayedRoomTemp */
+    @inherit(r)
+    @ext(0x3e, 0)
+    model DisplayedRoomTemp {
+      /** displayed room temperature */
+      value: temp;
+    }
+  }
+  @condition(Id.Id.sw, "=102-131")
+  namespace Sw_102_131 {
+    /** RaumtemperaturIst */
+    @inherit(r)
+    @ext(0, 0)
+    model RoomTemp {
+      /** raw value current room temperature */
+      value: tempsensor;
+    }
   }
 
   /** included parts */
   union _includes {
-    timerhc_inc,
-    errors_inc,
+    Timerhc_inc,
+    Errors_inc,
   }
 }

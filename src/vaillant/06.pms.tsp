@@ -2,13 +2,13 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x06)
-namespace pms {
+// @zz(0x06)
+namespace Pms {
   // ,PMS00,VPM 20 S,0020071488 243
 
   /** default *r */
@@ -442,6 +442,6 @@ namespace pms {
 
   /** included parts */
   union _includes {
-    errors_inc,
+    Errors_inc,
   }
 }

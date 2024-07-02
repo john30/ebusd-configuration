@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
+// @zz(0x15)
 namespace _350 {
   // ,35000,VRT 350,173 173
 
@@ -33,31 +33,31 @@ namespace _350 {
 
   @inherit(r, wi)
   @ext(0, 0)
-  model resvdStorage1Sensor {
+  model ResvdStorage1Sensor {
     value: tempsensor;
   }
 
   @inherit(r, wi)
   @ext(1, 0)
-  model resvdStorage2Sensor {
+  model ResvdStorage2Sensor {
     value: tempsensor;
   }
 
   @inherit(r, wi)
   @ext(0x2, 0)
-  model resvdStorage3Sensor {
+  model ResvdStorage3Sensor {
     value: tempsensor;
   }
 
   @inherit(r, wi)
   @ext(0x3, 0)
-  model resvdColl1Sensor {
+  model ResvdColl1Sensor {
     value: tempsensor;
   }
 
   @inherit(r, wi)
   @ext(0x4, 0)
-  model resvdColl2Sensor {
+  model ResvdColl2Sensor {
     value: tempsensor;
   }
 
@@ -69,7 +69,7 @@ namespace _350 {
 
   @inherit(r, wi)
   @ext(0x6, 0)
-  model resvdCollPump1 {
+  model ResvdCollPump1 {
     value: UCH;
   }
 
@@ -82,7 +82,7 @@ namespace _350 {
 
   @inherit(r, wi)
   @ext(0x8, 0)
-  model resvdCollPump2 {
+  model ResvdCollPump2 {
     value: UCH;
   }
 
@@ -120,16 +120,6 @@ namespace _350 {
   @ext(0xe, 0)
   model BypassValve {
     value: onoff;
-  }
-
-  @condition(id.id.sw, "<=140")
-  namespace sw__140 {
-    /** actual room temperature [°C/Sensor state] */
-    @inherit(r, wi)
-    @ext(0xf, 0)
-    model RoomTemp {
-      value: tempsensor;
-    }
   }
 
   @inherit(r, wi)
@@ -208,7 +198,7 @@ namespace _350 {
   @inherit(r, wi)
   @ext(0x1c, 0)
   model YearCalendarActive {
-    @values(values_YearCalendarActive)
+    @values(Values_YearCalendarActive)
     value: UCH;
   }
 
@@ -240,7 +230,7 @@ namespace _350 {
   @inherit(r, wi)
   @ext(0x21, 0)
   model RoomTempSwitchOn {
-    @values(values_RoomTempSwitchOn)
+    @values(Values_RoomTempSwitchOn)
     value: UCH;
   }
 
@@ -368,7 +358,7 @@ namespace _350 {
   @inherit(r, wi)
   @ext(0x36, 0)
   model Variant {
-    @values(values_Variant)
+    @values(Values_Variant)
     value: ULG;
   }
 
@@ -380,7 +370,7 @@ namespace _350 {
 
   @inherit(r, wi)
   @ext(0x38, 0)
-  model eBUSCRC {
+  model EBUSCRC {
     value: UCH;
   }
 
@@ -559,7 +549,7 @@ namespace _350 {
 
   @inherit(r, wi)
   @ext(0x55, 0)
-  model eBUSFifoDiffCntMax {
+  model EBUSFifoDiffCntMax {
     value: UCH;
   }
 
@@ -636,31 +626,39 @@ namespace _350 {
     value: UCH;
   }
 
-  @condition(id.id.sw, ">=141")
-  namespace sw__141 {
-    @inherit(r, ws)
-    @ext(0x66, 0)
-    model DisplayedRoomTemp {
-      value: temp;
-    }
-  }
-
-  enum values_YearCalendarActive {
+  enum Values_YearCalendarActive {
     off: 0,
     on: 7,
   }
 
-  enum values_RoomTempSwitchOn {
+  enum Values_RoomTempSwitchOn {
     off: 0,
     modulating: 1,
     thermostat: 2,
   }
 
-  enum values_Variant {
+  enum Values_Variant {
     VRT_350: 0x0FF0F00F,
     VRT_360: 0x33CCCC33,
     SD_17: 0x3CC3C33C,
     SD_37: 0x66999966,
     VRT_360_: 0x69969669,
+  }
+  @condition(Id.Id.sw, "<=140")
+  namespace Sw_le140 {
+    /** actual room temperature [°C/Sensor state] */
+    @inherit(r, wi)
+    @ext(0xf, 0)
+    model RoomTemp {
+      value: tempsensor;
+    }
+  }
+  @condition(Id.Id.sw, ">=141")
+  namespace Sw_ge141 {
+    @inherit(r, ws)
+    @ext(0x66, 0)
+    model DisplayedRoomTemp {
+      value: temp;
+    }
   }
 }

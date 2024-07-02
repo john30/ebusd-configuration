@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "../_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
 
-namespace vaillant;
-alias MF = 0xb5; // Ebus.id.manufacturers.Vaillant
+namespace Vaillant;
+alias MF = 0xb5; // Ebus.Id.Values_manufacturers.Vaillant
 
 /** temperature */
 @unit("°C")
@@ -35,7 +35,7 @@ scalar date extends HDA3;
 scalar day extends BDY;
 
 /** days */
-@values(values_daysel)
+@values(Values_daysel)
 scalar daysel extends UCH;
 
 /** days */
@@ -102,103 +102,90 @@ scalar seconds2 extends UIN;
 @unit("s")
 scalar seconds4 extends ULG;
 
-/** calibration */
 @unit("K")
 scalar calibration extends D2C;
 
-/** calibration0 */
 @unit("K")
 scalar calibration0 extends UCH;
 
-/** calibration1 */
 @unit("K")
 scalar calibration1 extends D1C;
 
-/** calibrations */
 @unit("K")
 @divisor(2)
 scalar calibrations extends SCH;
 
-/** calibrationv */
 @unit("K")
 scalar calibrationv extends EXP;
 
-/** Integral */
 @unit("°min")
 scalar integral extends SIN;
 
 /** boiler mode */
-@values(values_hcmode)
+@values(Values_hcmode)
 scalar hcmode extends UCH;
 
 /** boiler mode */
-@values(values_hcmode2)
+@values(Values_hcmode2)
 scalar hcmode2 extends UCH;
 
 /** mixer mode */
-@values(values_mcmode)
+@values(Values_mcmode)
 scalar mcmode extends UCH;
 
 /** mixer type */
-@values(values_mctype)
+@values(Values_mctype)
 scalar mctype extends UCH;
 
 /** mixer type */
-@values(values_mctype7)
+@values(Values_mctype7)
 scalar mctype7 extends BI0_7;
 
 /** hot water mode */
-@values(values_hwcmode)
+@values(Values_hwcmode)
 scalar hwcmode extends UCH;
 
 /** hot water mode */
-@values(values_hwcmode2)
+@values(Values_hwcmode2)
 scalar hwcmode2 extends UCH;
 
 /** mixer State */
-@values(values_mixer)
+@values(Values_mixer)
 scalar mixer extends UCH;
 
 /** day/night mode */
-@values(values_daynight)
+@values(Values_daynight)
 scalar daynight extends UCH;
 
 /** Status */
 scalar status extends UCH;
 
-/** onoff */
-@values(values_onoff)
+@values(Values_onoff)
 scalar onoff extends UCH;
 
-/** yesno */
-@values(values_yesno)
+@values(Values_yesno)
 scalar yesno extends UCH;
 
-/** errorok */
-@values(values_errorok)
+@values(Values_errorok)
 scalar errorok extends UCH;
 
 /** sensor status */
-@values(values_sensor)
+@values(Values_sensor)
 scalar sensor extends UCH;
 
-/** tempsensor */
 model tempsensor {
   temp: temp;
   sensor: sensor;
 }
 
-/** tempmirror */
 scalar tempmirror extends UIN;
 
-/** tempmirrorsensor */
 model tempmirrorsensor {
   temp: temp;
   tempmirror: tempmirror;
   sensor: sensor;
 }
 
-/** presssensor */
 model presssensor {
   press: press;
   sensor: sensor;
@@ -212,7 +199,6 @@ scalar pressm extends ULG;
 @unit("mbar")
 scalar pressm2 extends UIN;
 
-/** uin100 */
 @divisor(100)
 scalar uin100 extends UIN;
 
@@ -221,31 +207,28 @@ scalar uin100 extends UIN;
 scalar curve extends UIN;
 
 /** phase 1 state */
-@values(values_phase1)
+@values(Values_phase1)
 scalar phase1 extends BI0;
 
 /** phase 2 state */
-@values(values_phase2)
+@values(Values_phase2)
 scalar phase2 extends BI1;
 
 /** phase 3 state */
-@values(values_phase3)
+@values(Values_phase3)
 scalar phase3 extends BI2;
 
-/** phase */
 model phase {
   phase: phase1;
   phase_1: phase2;
   phase_2: phase3;
 }
 
-/** code */
 scalar code extends PIN;
 
 /** error number */
 scalar error extends UIN;
 
-/** errors */
 model errors {
   error: error;
   error_1: error;
@@ -254,7 +237,6 @@ model errors {
   error_4: error;
 }
 
-/** Error_History */
 model errorhistory {
   status: status;
   time: time2;
@@ -286,40 +268,33 @@ model slot3 {
   to: to;
 }
 
-/** slot1-3 */
+/** slots 1-3 */
 model slot1_3 {
   slot: slot1;
   slot_1: slot2;
   slot_2: slot3;
 }
 
-/** timer */
 model timer {
   slot1_: slot1_3;
   daysel: daysel;
 }
 
-/** backtype */
-@values(values_backtype)
+@values(Values_backtype)
 scalar backtype extends UCH;
 
-/** backmode */
-@values(values_backmode)
+@values(Values_backmode)
 scalar backmode extends UCH;
 
-/** power */
 @unit("kW")
 scalar power extends UCH;
 
-/** energy */
 @unit("kWh")
 scalar energy extends UIN;
 
-/** energyr */
 @unit("kWh")
 scalar energyr extends UIR;
 
-/** energy4 */
 @unit("kWh")
 scalar energy4 extends ULG;
 
@@ -330,27 +305,27 @@ scalar cntstarts extends ULG;
 scalar cntstarts2 extends UIN;
 
 /** pump power */
-@values(values_pumppow)
+@values(Values_pumppow)
 scalar pumppow extends UCH;
 
 /** pump state */
-@values(values_pumpstate)
+@values(Values_pumpstate)
 scalar pumpstate extends UCH;
 
 /** DCF receiver state */
-@values(values_dcfstate)
+@values(Values_dcfstate)
 scalar dcfstate extends UCH;
 
 /** phase state */
-@values(values_phaseok)
+@values(Values_phaseok)
 scalar phaseok extends UCH;
 
 /** valve position */
-@values(values_switchvalve)
+@values(Values_switchvalve)
 scalar switchvalve extends UCH;
 
 /** valve position */
-@values(values_switchvalve2)
+@values(Values_switchvalve2)
 scalar switchvalve2 extends UCH;
 
 /** holiday period from */
@@ -368,7 +343,7 @@ model holiday {
 }
 
 /** heating state */
-@values(values_hpstatus)
+@values(Values_hpstatus)
 scalar hpstatus extends UCH;
 
 /** frequency */
@@ -376,19 +351,16 @@ scalar hpstatus extends UCH;
 scalar frequency extends UIN;
 
 /** selected zone */
-@values(values_zonesel)
+@values(Values_zonesel)
 scalar zonesel extends UIN;
 
-/** SF mode */
-@values(values_sfmode)
+@values(Values_sfmode)
 scalar sfmode extends UCH;
 
-/** opmode */
-@values(values_opmode)
+@values(Values_opmode)
 scalar opmode extends UIN;
 
-/** zmapping */
-@values(values_zmapping)
+@values(Values_zmapping)
 scalar zmapping extends UIN;
 
 /** heat circuit name */
@@ -411,16 +383,13 @@ scalar phone extends STR;
 @maxLength(6)
 scalar shortphone extends STR;
 
-/** mamode */
-@values(values_mamode)
+@values(Values_mamode)
 scalar mamode extends UIN;
 
-/** offmode */
-@values(values_offmode)
+@values(Values_offmode)
 scalar offmode extends UIN;
 
-/** rcmode */
-@values(values_rcmode)
+@values(Values_rcmode)
 scalar rcmode extends UIN;
 
 /** array index for the zones. Array Index start at 0 for the first element */
@@ -482,27 +451,27 @@ model rTimeSlotWithoutTemp {
   @maxLength(2) ign_1: IGN;
 }
 
-enum values_daysel {
+enum Values_daysel {
   selected: 0,
   Mo_Fr: 1,
   Sa_Su: 2,
   Mo_Su: 3,
 }
 
-enum values_hcmode {
+enum Values_hcmode {
   auto: 0,
   off: 1,
   heat: 2,
   water: 2,
 }
 
-enum values_hcmode2 {
+enum Values_hcmode2 {
   off: 0,
   heat: 3,
   water: 4,
 }
 
-enum values_mcmode {
+enum Values_mcmode {
   disabled: 0,
   on: 1,
   off: 2,
@@ -511,7 +480,7 @@ enum values_mcmode {
   low: 5,
 }
 
-enum values_mctype {
+enum Values_mctype {
   inactive: 0,
   mixer: 1,
   fixed: 2,
@@ -520,7 +489,7 @@ enum values_mctype {
   pool: 5,
 }
 
-enum values_mctype7 {
+enum Values_mctype7 {
   inactive: 0,
   mixer: 1,
   fixed: 2,
@@ -530,69 +499,69 @@ enum values_mctype7 {
   circulation: 6,
 }
 
-enum values_hwcmode {
+enum Values_hwcmode {
   disabled: 0,
   on: 1,
   off: 2,
   auto: 3,
 }
 
-enum values_hwcmode2 {
+enum Values_hwcmode2 {
   off: 0,
   on: 1,
   auto: 2,
   manual: 3,
 }
 
-enum values_mixer {
+enum Values_mixer {
   off: 0,
   open: 1,
   close: 2,
 }
 
-enum values_daynight {
+enum Values_daynight {
   night: 0,
   day: 1,
   floorpaving: 7,
 }
 
-enum values_onoff {
+enum Values_onoff {
   off: 0,
   on: 1,
 }
 
-enum values_yesno {
+enum Values_yesno {
   no: 0,
   yes: 1,
 }
 
-enum values_errorok {
+enum Values_errorok {
   ok: 0,
   error: 1,
 }
 
-enum values_sensor {
+enum Values_sensor {
   ok: 0,
   circuit: 85,
   cutoff: 170,
 }
 
-enum values_phase1 {
+enum Values_phase1 {
   missing: 0,
   present: 1,
 }
 
-enum values_phase2 {
+enum Values_phase2 {
   missing: 0,
   present: 1,
 }
 
-enum values_phase3 {
+enum Values_phase3 {
   missing: 0,
   present: 1,
 }
 
-enum values_backtype {
+enum Values_backtype {
   not_present: 0,
   externalheat: 1,
   externalwater: 2,
@@ -600,13 +569,13 @@ enum values_backtype {
   internalheatandwater: 4,
 }
 
-enum values_backmode {
+enum Values_backmode {
   no_backup: 0,
   withbackup: 1,
   onlybackup: 2,
 }
 
-enum values_pumppow {
+enum Values_pumppow {
   _0: 0,
   _1: 1,
   _2: 2,
@@ -617,38 +586,38 @@ enum values_pumppow {
   off: 7,
 }
 
-enum values_pumpstate {
+enum Values_pumpstate {
   off: 0,
   on: 1,
   overrun: 2,
   hwc: 4,
 }
 
-enum values_dcfstate {
+enum Values_dcfstate {
   nosignal: 0,
   ok: 1,
   sync: 2,
   valid: 3,
 }
 
-enum values_phaseok {
+enum Values_phaseok {
   error: 0,
   ok: 7,
 }
 
-enum values_switchvalve {
+enum Values_switchvalve {
   heat: 0,
   water: 1,
 }
 
-enum values_switchvalve2 {
+enum Values_switchvalve2 {
   heat: 0,
   both: 50,
   water: 100,
   standby: 254,
 }
 
-enum values_hpstatus {
+enum Values_hpstatus {
   off: 0,
   heat: 3,
   standby: 6,
@@ -656,7 +625,7 @@ enum values_hpstatus {
   water: 8,
 }
 
-enum values_zonesel {
+enum Values_zonesel {
   alle: 0,
   _1: 1,
   _2: 2,
@@ -666,7 +635,7 @@ enum values_zonesel {
   _6: 6,
 }
 
-enum values_sfmode {
+enum Values_sfmode {
   auto: 0,
   ventilation: 1,
   party: 2,
@@ -676,14 +645,14 @@ enum values_sfmode {
   load: 6,
 }
 
-enum values_opmode {
+enum Values_opmode {
   off: 0,
   auto: 1,
   day: 2,
   night: 3,
 }
 
-enum values_zmapping {
+enum Values_zmapping {
   none: 0,
   VRC700: 1,
   VR91_1: 2,
@@ -691,19 +660,19 @@ enum values_zmapping {
   VR91_3: 4,
 }
 
-enum values_mamode {
+enum Values_mamode {
   circulation: 0,
   dryer: 1,
   zone: 2,
   legiopump: 3,
 }
 
-enum values_offmode {
+enum Values_offmode {
   eco: 0,
   night: 1,
 }
 
-enum values_rcmode {
+enum Values_rcmode {
   off: 0,
   modulating: 1,
   thermostat: 2,

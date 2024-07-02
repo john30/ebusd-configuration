@@ -1,67 +1,58 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
 
-namespace memory {
+namespace Memory {
   /** default *r */
+  @base(0x9, 0)
   model r {}
 
-  /** default *wi */
+  /** default *wi for user level "install" */
   @write
+  @auth("install")
+  @base(0x9, 1)
   model wi {}
 
-  /** read RAM data */
-  @inherit(r)
-  @ext(0x9, 0)
-  model ram {
+  /** RAM data */
+  @inherit(r, wi)
+  @ext
+  model Ram {
     /** start address */
     @out
     address: UIN;
 
     /** number of bytes */
     @out
-    count: UCH;
+    count?: UCH;
 
     /** data bytes */
     data: HEX;
   }
 
-  /** write RAM data */
-  @inherit(wi)
-  @ext(0x9, 1)
-  model ram {
-    /** start address */
-    address: UIN;
+  /** default *r */
+  @base(0x9, 2)
+  model r_1 {}
 
-    /** data bytes */
-    data: HEX;
-  }
+  /** default *wi for user level "install" */
+  @write
+  @auth("install")
+  @base(0x9, 3)
+  model wi_1 {}
 
-  /** read EEPROM data */
-  @inherit(r)
-  @ext(0x9, 0x2)
-  model eeprom {
+  /** EEPROM data */
+  @inherit(r_1, wi_1)
+  @ext
+  model Eeprom {
     /** start address */
     @out
     address: UIN;
 
     /** number of bytes */
     @out
-    count: UCH;
-
-    /** data bytes */
-    data: HEX;
-  }
-
-  /** write EEPROM data */
-  @inherit(wi)
-  @ext(0x9, 0x3)
-  model eeprom {
-    /** start address */
-    address: UIN;
+    count?: UCH;
 
     /** data bytes */
     data: HEX;

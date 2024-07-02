@@ -6,13 +6,13 @@ import "./timer_inc.tsp";
 import "./errors_inc.tsp";
 import "./iotestbsol_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0xa0)
-namespace sol.hwc {
+// @zz(0xa0)
+namespace Sol.Hwc {
   // ,sol00,VR 68,sol 210 DHW
 
   /** default *r */
@@ -44,7 +44,7 @@ namespace sol.hwc {
   @ext(0x4e, 0)
   model LegioStartDay {
     /** Start day for legio protection */
-    @values(values_LegioStartDay)
+    @values(Values_LegioStartDay)
     value: UCH;
   }
 
@@ -88,28 +88,6 @@ namespace sol.hwc {
     value: yesno;
   }
   // ##### DHW: DHW #####
-
-  @condition(id.id.sw, "<201")
-  namespace sw_201 {
-    /** OperatingMode430 */
-    @inherit(r, w)
-    @ext(0xf, 0)
-    model OperatingMode430 {
-      /** Operating mode of solar DHW circuit for 430 (1 = auto, 2 = manual, 3 = off) */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=201")
-  namespace sw__201 {
-    /** OperatingMode470 */
-    @inherit(r)
-    @ext(0xf, 0)
-    model OperatingMode470 {
-      /** Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on) */
-      value: UCH;
-    }
-  }
 
   /** Flow setpoint */
   @inherit(r)
@@ -238,7 +216,7 @@ namespace sol.hwc {
     value: yesno;
   }
 
-  enum values_LegioStartDay {
+  enum Values_LegioStartDay {
     Mon: 0,
     Tue: 1,
     Wed: 2,
@@ -249,13 +227,33 @@ namespace sol.hwc {
     off: 7,
     Mon_Sun: 8,
   }
+  @condition(Id.Id.sw, "<201")
+  namespace Sw_lt201 {
+    /** OperatingMode430 */
+    @inherit(r, w)
+    @ext(0xf, 0)
+    model OperatingMode430 {
+      /** Operating mode of solar DHW circuit for 430 (1 = auto, 2 = manual, 3 = off) */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=201")
+  namespace Sw_ge201 {
+    /** OperatingMode470 */
+    @inherit(r)
+    @ext(0xf, 0)
+    model OperatingMode470 {
+      /** Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on) */
+      value: UCH;
+    }
+  }
 
   /** included parts */
   union _includes {
-    yield3f40_inc,
-    hwcmode_inc,
-    timer_inc,
-    errors_inc,
-    iotestbsol_inc,
+    Yield3f40_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Errors_inc,
+    Iotestbsol_inc,
   }
 }

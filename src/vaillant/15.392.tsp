@@ -6,12 +6,12 @@ import "./errors_inc.tsp";
 import "./timerhc_inc.tsp";
 import "./tempsetpoints_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
+// @zz(0x15)
 namespace _392 {
   // ,39200,VRT 392,39200 220
 
@@ -100,7 +100,7 @@ namespace _392 {
   @ext(0x2f, 0)
   model Hc1OPMode {
     /** operation mode of the heating circuit */
-    @values(values_Hc1OPMode)
+    @values(Values_Hc1OPMode)
     value: UCH;
   }
 
@@ -183,7 +183,7 @@ namespace _392 {
   @ext(0x42, 0)
   model HwcOPMode {
     /** operation mode of the domestic hot water circuit */
-    @values(values_HwcOPMode)
+    @values(Values_HwcOPMode)
     value: UCH;
   }
 
@@ -227,17 +227,6 @@ namespace _392 {
     value: onoff;
   }
 
-  @condition(id.id.sw, ">=125")
-  namespace sw__125 {
-    /** DisplayedDHWTankTemperature */
-    @inherit(r)
-    @ext(0x9e, 0)
-    model DisplayedHwcStorageTemp {
-      /** display of the storage's temperature in C4 (also in case of an SP1 error) */
-      value: temp1;
-    }
-  }
-
   /** DisplayedHK1RoomSetpoint */
   @inherit(r)
   @ext(0x96, 0)
@@ -260,7 +249,7 @@ namespace _392 {
   @ext(0x36, 0)
   model Hc12stepanalogCtrl {
     /** two-point / analogue control */
-    @values(values_Hc12stepanalogCtrl)
+    @values(Values_Hc12stepanalogCtrl)
     value: UCH;
   }
 
@@ -285,7 +274,7 @@ namespace _392 {
   @ext(0x49, 0)
   model HwcLegioStartDay {
     /** weekday on which legionella protection is started (may also be every day of the week) */
-    @values(values_HwcLegioStartDay)
+    @values(Values_HwcLegioStartDay)
     value: UCH;
   }
 
@@ -477,61 +466,6 @@ namespace _392 {
     value: temp1;
   }
 
-  @condition(id.id.sw, "<=209")
-  namespace sw__209 {
-    /** B51000CHDisableMonitor */
-    @inherit(r)
-    @ext(0x8e, 0)
-    model B51000HcDisableMonitor {
-      /** copy of the M12 byte of the B5 10 00 service containing the disable bits */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=210")
-  namespace sw__210 {
-    /** B51000M7OpModeMonitor */
-    @inherit(r)
-    @ext(0x65, 0)
-    model B51000M7OpModeMonitor {
-      /** operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW) */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=210")
-  namespace sw__210 {
-    /** B51000M10DHWFlowSetMon */
-    @inherit(r)
-    @ext(0x66, 0)
-    model B51000M10HwcFlowSetMon {
-      /** flow setpoint DHW sent via B5 10 00 */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=210")
-  namespace sw__210 {
-    /** B51000M12DisableBitsMon */
-    @inherit(r)
-    @ext(0x67, 0)
-    model B51000M12DisableBitsMon {
-      /** bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7) */
-      value: UCH;
-    }
-  }
-
-  @condition(id.id.sw, ">=210")
-  namespace sw__210 {
-    /** B51000M14Monitor */
-    @inherit(r)
-    @ext(0x68, 0)
-    model B51000M14Monitor {
-      /** bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump) */
-      value: UCH;
-    }
-  }
-
   /** ChimneySweepModeActive */
   @inherit(r)
   @ext(0x90, 0)
@@ -540,70 +474,24 @@ namespace _392 {
     value: yesno;
   }
 
-  @condition(id.id.sw, ">=125")
-  namespace sw__125 {
-    /** DHWLoadingInBMUActive */
-    @inherit(r)
-    @ext(0x9d, 0)
-    model HwcLoadingInBMUActive {
-      /** indicates that BMU is in DHW preparation */
-      value: yesno;
-    }
-  }
-
-  @condition(id.id.sw, ">=125")
-  namespace sw__125 {
-    /** MonitorEEpromInkonsiNumber */
-    @inherit(r)
-    @ext(0x9f, 0)
-    model MonitorEEpromInkonsiNumber {
-      /** identification of the last eight EEPROM inconsistencies */
-      @maxLength(8)
-      value: HEX;
-    }
-  }
-
-  @condition(id.id.sw, ">=126")
-  namespace sw__126 {
-    /** AssertFileName */
-    @inherit(r)
-    @ext(0xa0, 0)
-    model AssertFileName {
-      /** shows, if assert is enabled, the name of the module where the 'assert fail' occured */
-      @maxLength(10)
-      value: STR;
-    }
-  }
-
-  @condition(id.id.sw, ">=126")
-  namespace sw__126 {
-    /** AssertLineNumber */
-    @inherit(r)
-    @ext(0xa1, 0)
-    model AssertLineNumber {
-      /** assert fail occured in this line */
-      value: UIN;
-    }
-  }
-
-  enum values_Hc1OPMode {
+  enum Values_Hc1OPMode {
     off: 0,
     manual: 1,
     auto: 2,
   }
 
-  enum values_HwcOPMode {
+  enum Values_HwcOPMode {
     off: 0,
     manual: 1,
     auto: 2,
   }
 
-  enum values_Hc12stepanalogCtrl {
+  enum Values_Hc12stepanalogCtrl {
     two_point_control: 0,
     analogue_control: 1,
   }
 
-  enum values_HwcLegioStartDay {
+  enum Values_HwcLegioStartDay {
     Mon: 0,
     Tue: 1,
     Wed: 2,
@@ -614,13 +502,103 @@ namespace _392 {
     off: 7,
     Mon_Sun: 8,
   }
+  @condition(Id.Id.sw, ">=125")
+  namespace Sw_ge125 {
+    /** DisplayedDHWTankTemperature */
+    @inherit(r)
+    @ext(0x9e, 0)
+    model DisplayedHwcStorageTemp {
+      /** display of the storage's temperature in C4 (also in case of an SP1 error) */
+      value: temp1;
+    }
+
+    /** DHWLoadingInBMUActive */
+    @inherit(r)
+    @ext(0x9d, 0)
+    model HwcLoadingInBMUActive {
+      /** indicates that BMU is in DHW preparation */
+      value: yesno;
+    }
+
+    /** MonitorEEpromInkonsiNumber */
+    @inherit(r)
+    @ext(0x9f, 0)
+    model MonitorEEpromInkonsiNumber {
+      /** identification of the last eight EEPROM inconsistencies */
+      @maxLength(8)
+      value: HEX;
+    }
+  }
+  @condition(Id.Id.sw, "<=209")
+  namespace Sw_le209 {
+    /** B51000CHDisableMonitor */
+    @inherit(r)
+    @ext(0x8e, 0)
+    model B51000HcDisableMonitor {
+      /** copy of the M12 byte of the B5 10 00 service containing the disable bits */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=210")
+  namespace Sw_ge210 {
+    /** B51000M7OpModeMonitor */
+    @inherit(r)
+    @ext(0x65, 0)
+    model B51000M7OpModeMonitor {
+      /** operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW) */
+      value: UCH;
+    }
+
+    /** B51000M10DHWFlowSetMon */
+    @inherit(r)
+    @ext(0x66, 0)
+    model B51000M10HwcFlowSetMon {
+      /** flow setpoint DHW sent via B5 10 00 */
+      value: UCH;
+    }
+
+    /** B51000M12DisableBitsMon */
+    @inherit(r)
+    @ext(0x67, 0)
+    model B51000M12DisableBitsMon {
+      /** bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7) */
+      value: UCH;
+    }
+
+    /** B51000M14Monitor */
+    @inherit(r)
+    @ext(0x68, 0)
+    model B51000M14Monitor {
+      /** bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump) */
+      value: UCH;
+    }
+  }
+  @condition(Id.Id.sw, ">=126")
+  namespace Sw_ge126 {
+    /** AssertFileName */
+    @inherit(r)
+    @ext(0xa0, 0)
+    model AssertFileName {
+      /** shows, if assert is enabled, the name of the module where the 'assert fail' occured */
+      @maxLength(10)
+      value: STR;
+    }
+
+    /** AssertLineNumber */
+    @inherit(r)
+    @ext(0xa1, 0)
+    model AssertLineNumber {
+      /** assert fail occured in this line */
+      value: UIN;
+    }
+  }
 
   /** included parts */
   union _includes {
-    timercc_inc,
-    timerhwc_inc,
-    errors_inc,
-    timerhc_inc,
-    tempsetpoints_inc,
+    Timercc_inc,
+    Timerhwc_inc,
+    Errors_inc,
+    Timerhc_inc,
+    Tempsetpoints_inc,
   }
 }

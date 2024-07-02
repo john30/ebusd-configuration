@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./iotest630_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x26)
-namespace vr630.hc {
+// @zz(0x26)
+namespace Vr630.Hc {
   // ,VR630,calorMATIC 630/3,0020092435 163 Burner
 
   /** default *r */
@@ -207,8 +207,14 @@ namespace vr630.hc {
     value: curve;
   }
 
-  @condition(id.id.sw, "<=400")
-  namespace sw__400 {
+  /** TeleSwitch */
+  @inherit(r, w)
+  @ext(0x3f, 0)
+  model TeleswitchOperatingMode {
+    value: mcmode;
+  }
+  @condition(Id.Id.sw, "<=400")
+  namespace Sw_le400 {
     /** Max. Voraufheizung */
     @inherit(r, w)
     @ext(0x38, 0)
@@ -216,9 +222,8 @@ namespace vr630.hc {
       value: hours;
     }
   }
-
-  @condition(id.id.sw, ">=401")
-  namespace sw__401 {
+  @condition(Id.Id.sw, ">=401")
+  namespace Sw_ge401 {
     /** Max. Voraufheizung */
     @inherit(r, wi)
     @ext(0x38, 0)
@@ -228,18 +233,11 @@ namespace vr630.hc {
     }
   }
 
-  /** TeleSwitch */
-  @inherit(r, w)
-  @ext(0x3f, 0)
-  model TeleswitchOperatingMode {
-    value: mcmode;
-  }
-
   /** included parts */
   union _includes {
-    hcmode_inc,
-    timer_inc,
-    iotest630_inc,
-    errors_inc,
+    Hcmode_inc,
+    Timer_inc,
+    Iotest630_inc,
+    Errors_inc,
   }
 }

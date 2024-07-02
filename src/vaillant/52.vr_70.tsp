@@ -2,13 +2,13 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x52)
-namespace vr_70 {
+// @zz(0x52)
+namespace Vr_70 {
   // ,VR_70,VR 70,109 109
 
   /** default *r */
@@ -23,25 +23,25 @@ namespace vr_70 {
   @inherit(w)
   @ext(1)
   model SetActorState {
-    @values(values_R1)
+    @values(Values_)
     r1: UCH;
 
-    @values(values_R2)
+    @values(Values__1)
     r2: UCH;
 
-    @values(values_R3)
+    @values(Values__2)
     r3: UCH;
 
-    @values(values_R4)
+    @values(Values__3)
     r4: UCH;
 
-    @values(values_R5)
+    @values(Values__4)
     r5: UCH;
 
-    @values(values_R6)
+    @values(Values__5)
     r6: UCH;
 
-    @values(values_S7)
+    @values(Values__6)
     s7: UCH;
   }
 
@@ -85,43 +85,43 @@ namespace vr_70 {
     ignore: HEX;
   }
 
-  enum values_R1 {
+  enum Values_ {
     off: 0,
     on: 20,
   }
 
-  enum values_R2 {
+  enum Values__1 {
     off: 0,
     on: 20,
   }
 
-  enum values_R3 {
+  enum Values__2 {
     off: 0,
     on: 20,
   }
 
-  enum values_R4 {
+  enum Values__3 {
     off: 0,
     on: 20,
   }
 
-  enum values_R5 {
+  enum Values__4 {
     off: 0,
     on: 20,
   }
 
-  enum values_R6 {
+  enum Values__5 {
     off: 0,
     on: 20,
   }
 
-  enum values_S7 {
+  enum Values__6 {
     off: 0,
     on: 20,
   }
 
   /** included parts */
   union _includes {
-    errors_inc,
+    Errors_inc,
   }
 }

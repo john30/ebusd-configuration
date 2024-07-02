@@ -7,13 +7,13 @@ import "./errors_inc.tsp";
 import "./roomtempoffset_inc.tsp";
 import "./quick_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x51)
-namespace vr630.mc._3 {
+// @zz(0x51)
+namespace Vr630.Mc._3 {
   // ,VR630,calorMATIC 630/3,0020092435 163 Mixer
 
   /** default *r */
@@ -178,7 +178,7 @@ namespace vr630.mc._3 {
   @inherit(r, wi)
   @ext(0x3c, 0)
   model CfgHeatSinkType {
-    @values(values_CfgHeatSinkType)
+    @values(Values_CfgHeatSinkType)
     value: UCH;
   }
 
@@ -217,27 +217,6 @@ namespace vr630.mc._3 {
     value: curve;
   }
 
-  @condition(id.id.sw, "<=400")
-  namespace sw__400 {
-    /** Max. Voraufheizung */
-    @inherit(r, w)
-    @ext(0x38, 0)
-    model HcMaxPreHeating {
-      value: hours;
-    }
-  }
-
-  @condition(id.id.sw, ">=401")
-  namespace sw__401 {
-    /** Max. Voraufheizung */
-    @inherit(r, wi)
-    @ext(0x38, 0)
-    model HcMaxPreHeating {
-      @unit("min / 5")
-      value: UCH;
-    }
-  }
-
   /** FloorPavingDryingDay3 */
   @inherit(r)
   @ext(0x3b, 0)
@@ -253,21 +232,40 @@ namespace vr630.mc._3 {
     value: mcmode;
   }
 
-  enum values_CfgHeatSinkType {
+  enum Values_CfgHeatSinkType {
     disabled: 0,
     mixer: 1,
     water: 2,
     fixvalue: 3,
     backflow: 4,
   }
+  @condition(Id.Id.sw, "<=400")
+  namespace Sw_le400 {
+    /** Max. Voraufheizung */
+    @inherit(r, w)
+    @ext(0x38, 0)
+    model HcMaxPreHeating {
+      value: hours;
+    }
+  }
+  @condition(Id.Id.sw, ">=401")
+  namespace Sw_ge401 {
+    /** Max. Voraufheizung */
+    @inherit(r, wi)
+    @ext(0x38, 0)
+    model HcMaxPreHeating {
+      @unit("min / 5")
+      value: UCH;
+    }
+  }
 
   /** included parts */
   union _includes {
-    mcmode_inc,
-    timer_inc,
-    iotest630_inc,
-    errors_inc,
-    roomtempoffset_inc,
-    quick_inc,
+    Mcmode_inc,
+    Timer_inc,
+    Iotest630_inc,
+    Errors_inc,
+    Roomtempoffset_inc,
+    Quick_inc,
   }
 }

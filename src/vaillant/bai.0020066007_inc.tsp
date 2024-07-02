@@ -2,12 +2,12 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace bai._0020066007_inc {
+namespace Bai._0020066007_inc {
   // ,BAI00,zeoTHERM (BMU),0020066007 187
 
   /** default *r */
@@ -53,7 +53,7 @@ namespace bai._0020066007_inc {
   @ext(0xbb, 0)
   model Gasvalve {
     /** Gasvalve activation signal */
-    @values(values_Gasvalve)
+    @values(Values_Gasvalve)
     value: UCH;
   }
 
@@ -145,7 +145,7 @@ namespace bai._0020066007_inc {
   /** d.64 average ignition time */
   @inherit(r)
   @ext(0x2d, 0)
-  model averageIgnitiontime {
+  model AverageIgnitiontime {
     /** average ignition time */
     @unit("s")
     @divisor(10)
@@ -155,7 +155,7 @@ namespace bai._0020066007_inc {
   /** d.65 Max ignition time */
   @inherit(r)
   @ext(0x2c, 0)
-  model maxIgnitiontime {
+  model MaxIgnitiontime {
     /** maximum ignition time */
     @unit("s")
     @divisor(10)
@@ -180,7 +180,7 @@ namespace bai._0020066007_inc {
 
   /** d.93 Device specific number */
   @inherit(r, ws)
-  @ext(MF, 0)
+  @ext(0xb5, 0)
   model DSNOffset {
     /** DSN aplliance variant setting */
     value: UCH;
@@ -192,7 +192,7 @@ namespace bai._0020066007_inc {
   @ext(0x5, 0)
   model Flame {
     /** flame */
-    @values(values_Flame)
+    @values(Values_Flame)
     value: UCH;
   }
 
@@ -209,7 +209,7 @@ namespace bai._0020066007_inc {
   @ext(0xd, 0)
   model GasvalveUC {
     /** Activation signal of the gasvalve (activated via micrcontroller) */
-    @values(values_GasvalveUC)
+    @values(Values_GasvalveUC)
     value: UCH;
   }
 
@@ -218,7 +218,7 @@ namespace bai._0020066007_inc {
   @ext(0x10, 0)
   model VolatileLockout {
     /** TRUE: STB failures is volatileFALSE: STB failure is not volataile */
-    @values(values_VolatileLockout)
+    @values(Values_VolatileLockout)
     value: UCH;
   }
 
@@ -334,7 +334,7 @@ namespace bai._0020066007_inc {
   @ext(0xd2, 0)
   model TemplimiterWithNTC {
     /** Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact */
-    @values(values_TemplimiterWithNTC)
+    @values(Values_TemplimiterWithNTC)
     value: UCH;
   }
 
@@ -343,7 +343,7 @@ namespace bai._0020066007_inc {
   @ext(0xd3, 0)
   model VolatileLockoutIFCGV {
     /** all IFC faults are volataile */
-    @values(values_VolatileLockoutIFCGV)
+    @values(Values_VolatileLockoutIFCGV)
     value: UCH;
   }
 
@@ -352,7 +352,7 @@ namespace bai._0020066007_inc {
   @ext(0xdb, 0)
   model Gasvalve3UC {
     /** Gasvalve activation signal (from Microcontroller) */
-    @values(values_Gasvalve3UC)
+    @values(Values_Gasvalve3UC)
     value: UCH;
   }
 
@@ -443,7 +443,7 @@ namespace bai._0020066007_inc {
   /** min_Ignitiontime_DK */
   @inherit(r)
   @ext(0x2b, 0)
-  model minIgnitiontime {
+  model MinIgnitiontime {
     /** minimum ignition time */
     @unit("s")
     @divisor(10)
@@ -482,43 +482,43 @@ namespace bai._0020066007_inc {
     value: temp;
   }
 
-  enum values_Gasvalve {
+  enum Values_Gasvalve {
     off: 240,
     on: 15,
   }
 
-  enum values_Flame {
+  enum Values_Flame {
     off: 240,
     on: 15,
   }
 
-  enum values_GasvalveUC {
+  enum Values_GasvalveUC {
     off: 240,
     on: 15,
   }
 
-  enum values_VolatileLockout {
+  enum Values_VolatileLockout {
     no: 240,
     yes: 15,
   }
 
-  enum values_TemplimiterWithNTC {
+  enum Values_TemplimiterWithNTC {
     no: 240,
     yes: 15,
   }
 
-  enum values_VolatileLockoutIFCGV {
+  enum Values_VolatileLockoutIFCGV {
     no: 240,
     yes: 15,
   }
 
-  enum values_Gasvalve3UC {
+  enum Values_Gasvalve3UC {
     off: 240,
     on: 15,
   }
 
   /** included parts */
   union _includes {
-    errors_inc,
+    Errors_inc,
   }
 }

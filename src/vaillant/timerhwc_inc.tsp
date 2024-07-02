@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace timerhwc_inc {
+namespace Timerhwc_inc {
   // DHW: Periods
 
   /** default *r */
@@ -24,49 +24,49 @@ namespace timerhwc_inc {
   /** Periods Monday */
   @inherit(r, w)
   @ext(0, 1)
-  model hwcTimer_Monday {
+  model HwcTimer_Monday {
     value: timer;
   }
 
   /** Periods Tuesday */
   @inherit(r, w)
   @ext(1, 1)
-  model hwcTimer_Tuesday {
+  model HwcTimer_Tuesday {
     value: timer;
   }
 
   /** Periods Wednesday */
   @inherit(r, w)
   @ext(0x2, 1)
-  model hwcTimer_Wednesday {
+  model HwcTimer_Wednesday {
     value: timer;
   }
 
   /** Periods Thursday */
   @inherit(r, w)
   @ext(0x3, 1)
-  model hwcTimer_Thursday {
+  model HwcTimer_Thursday {
     value: timer;
   }
 
   /** Periods Friday */
   @inherit(r, w)
   @ext(0x4, 1)
-  model hwcTimer_Friday {
+  model HwcTimer_Friday {
     value: timer;
   }
 
   /** Periods Saturday */
   @inherit(r, w)
   @ext(0x5, 1)
-  model hwcTimer_Saturday {
+  model HwcTimer_Saturday {
     value: timer;
   }
 
   /** Periods Sunday */
   @inherit(r, w)
   @ext(0x6, 1)
-  model hwcTimer_Sunday {
+  model HwcTimer_Sunday {
     value: timer;
   }
 }

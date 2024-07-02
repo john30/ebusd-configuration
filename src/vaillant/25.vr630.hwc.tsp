@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./iotest630_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x25)
-namespace vr630.hwc {
+// @zz(0x25)
+namespace Vr630.Hwc {
   // ,VR630,calorMATIC 630/3,0020092435 163 DHW
 
   /** default *r */
@@ -197,9 +197,9 @@ namespace vr630.hwc {
 
   /** included parts */
   union _includes {
-    hwcmode_inc,
-    timer_inc,
-    iotest630_inc,
-    errors_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Iotest630_inc,
+    Errors_inc,
   }
 }

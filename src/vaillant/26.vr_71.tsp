@@ -2,13 +2,13 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x26)
-namespace vr_71 {
+// @zz(0x26)
+namespace Vr_71 {
   // ,VR_71,VR 71,104 104
 
   /** default *r */
@@ -23,40 +23,40 @@ namespace vr_71 {
   @inherit(w)
   @ext(0x5)
   model SetActorState {
-    @values(values_R1)
+    @values(Values_)
     r1: UCH;
 
-    @values(values_R2)
+    @values(Values__1)
     r2: UCH;
 
-    @values(values_R3)
+    @values(Values__2)
     r3: UCH;
 
-    @values(values_R4)
+    @values(Values__3)
     r4: UCH;
 
-    @values(values_R5)
+    @values(Values__4)
     r5: UCH;
 
-    @values(values_R6)
+    @values(Values__5)
     r6: UCH;
 
-    @values(values_R7)
+    @values(Values__6)
     r7: UCH;
 
-    @values(values_R8)
+    @values(Values__7)
     r8: UCH;
 
-    @values(values_R9)
+    @values(Values__8)
     r9: UCH;
 
-    @values(values_R10)
+    @values(Values__9)
     r10: UCH;
 
-    @values(values_R11)
+    @values(Values__10)
     r11: UCH;
 
-    @values(values_R12)
+    @values(Values__11)
     r12: UCH;
 
     @maxLength(2)
@@ -131,68 +131,68 @@ namespace vr_71 {
     ignore: HEX;
   }
 
-  enum values_R1 {
+  enum Values_ {
     off: 0,
     on: 20,
   }
 
-  enum values_R2 {
+  enum Values__1 {
     off: 0,
     on: 20,
   }
 
-  enum values_R3 {
+  enum Values__2 {
     off: 0,
     on: 20,
   }
 
-  enum values_R4 {
+  enum Values__3 {
     off: 0,
     on: 20,
   }
 
-  enum values_R5 {
+  enum Values__4 {
     off: 0,
     on: 20,
   }
 
-  enum values_R6 {
+  enum Values__5 {
     off: 0,
     on: 20,
   }
 
-  enum values_R7 {
+  enum Values__6 {
     off: 0,
     on: 20,
   }
 
-  enum values_R8 {
+  enum Values__7 {
     off: 0,
     on: 20,
   }
 
-  enum values_R9 {
+  enum Values__8 {
     off: 0,
     on: 20,
   }
 
-  enum values_R10 {
+  enum Values__9 {
     off: 0,
     on: 20,
   }
 
-  enum values_R11 {
+  enum Values__10 {
     off: 0,
     on: 20,
   }
 
-  enum values_R12 {
+  enum Values__11 {
     off: 0,
     on: 20,
   }
 
   /** included parts */
   union _includes {
-    errors_inc,
+    Errors_inc,
   }
 }

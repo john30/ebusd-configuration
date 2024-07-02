@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace timercool_inc {
+namespace Timercool_inc {
   // MC: Cooling periods
 
   /** default *r */
@@ -24,49 +24,49 @@ namespace timercool_inc {
   /** Periods Monday */
   @inherit(r, w)
   @ext(0, 0x3)
-  model coolingTimer_Monday {
+  model CoolingTimer_Monday {
     value: timer;
   }
 
   /** Periods Tuesday */
   @inherit(r, w)
   @ext(1, 0x3)
-  model coolingTimer_Tuesday {
+  model CoolingTimer_Tuesday {
     value: timer;
   }
 
   /** Periods Wednesday */
   @inherit(r, w)
   @ext(0x2, 0x3)
-  model coolingTimer_Wednesday {
+  model CoolingTimer_Wednesday {
     value: timer;
   }
 
   /** Periods Thursday */
   @inherit(r, w)
   @ext(0x3, 0x3)
-  model coolingTimer_Thursday {
+  model CoolingTimer_Thursday {
     value: timer;
   }
 
   /** Periods Friday */
   @inherit(r, w)
   @ext(0x4, 0x3)
-  model coolingTimer_Friday {
+  model CoolingTimer_Friday {
     value: timer;
   }
 
   /** Periods Saturday */
   @inherit(r, w)
   @ext(0x5, 0x3)
-  model coolingTimer_Saturday {
+  model CoolingTimer_Saturday {
     value: timer;
   }
 
   /** Periods Sunday */
   @inherit(r, w)
   @ext(0x6, 0x3)
-  model coolingTimer_Sunday {
+  model CoolingTimer_Sunday {
     value: timer;
   }
 }

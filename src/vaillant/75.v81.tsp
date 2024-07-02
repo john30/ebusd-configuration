@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x75)
-namespace v81 {
+// @zz(0x75)
+namespace V81 {
   // ,V8100,VR 81,V81 225
 
   /** default *r */
@@ -65,7 +65,7 @@ namespace v81 {
   @ext(0x4, 0)
   model OperatingMode430 {
     /** operation mode of the heating circuit for 430 */
-    @values(values_OperatingMode430)
+    @values(Values_OperatingMode430)
     value: UCH;
   }
   // ##### extra #####
@@ -132,7 +132,7 @@ namespace v81 {
   /** eBUS_CRC */
   @inherit(r)
   @ext(0x10, 0)
-  model eBUSCRC {
+  model EBUSCRC {
     /** last calculated eBUS CRC */
     value: UCH;
   }
@@ -140,7 +140,7 @@ namespace v81 {
   /** eBUSFifoDiffCntMax */
   @inherit(r)
   @ext(0x11, 0)
-  model eBUSFifoDiffCntMax {
+  model EBUSFifoDiffCntMax {
     /** max. eBUS-fifo level */
     value: UCH;
   }
@@ -209,7 +209,7 @@ namespace v81 {
     value: UCH;
   }
 
-  enum values_OperatingMode430 {
+  enum Values_OperatingMode430 {
     off: 0,
     manual: 1,
     auto: 2,

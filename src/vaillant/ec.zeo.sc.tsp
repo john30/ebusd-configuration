@@ -1,13 +1,13 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0xec)
-namespace zeo.sc {
+// @zz(0xec)
+namespace Zeo.Sc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Solar
 
   /** default *r */

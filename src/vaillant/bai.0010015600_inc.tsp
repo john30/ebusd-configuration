@@ -2,12 +2,12 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace bai._0010015600_inc {
+namespace Bai._0010015600_inc {
   // ,BAI00,ecoCompact (euro),0010015600 296
 
   /** default *r */
@@ -108,7 +108,7 @@ namespace bai._0010015600_inc {
   /** d.11 External heating pump */
   @inherit(r)
   @ext(0x3f, 0)
-  model extWP {
+  model ExtWP {
     /** External central heating pump */
     value: onoff;
   }
@@ -135,7 +135,7 @@ namespace bai._0010015600_inc {
   model PumpPowerDesired {
     /** PWM-Desired central heating pump power */
     @unit("%")
-    @values(values_PumpPowerDesired)
+    @values(Values_PumpPowerDesired)
     value: UCH;
   }
 
@@ -252,7 +252,7 @@ namespace bai._0010015600_inc {
   /** d.91 DCF Status */
   @inherit(r)
   @ext(0x69, 0)
-  model dcfState {
+  model DcfState {
     /** dcfStatus */
     value: dcfstate;
   }
@@ -261,7 +261,7 @@ namespace bai._0010015600_inc {
   /** External HWC tank */
   @inherit(r)
   @ext(0, 0)
-  model externalHwcSwitch {
+  model ExternalHwcSwitch {
     /** Demand external HWC tank (via contact) */
     value: onoff;
   }
@@ -279,7 +279,7 @@ namespace bai._0010015600_inc {
   @ext(0x5, 0)
   model Flame {
     /** flame */
-    @values(values_Flame)
+    @values(Values_Flame)
     value: UCH;
   }
 
@@ -296,7 +296,7 @@ namespace bai._0010015600_inc {
   @ext(0xd, 0)
   model GasvalveUC {
     /** Activation signal of the gasvalve (activated via micrcontroller) */
-    @values(values_GasvalveUC)
+    @values(Values_GasvalveUC)
     value: UCH;
   }
 
@@ -305,7 +305,7 @@ namespace bai._0010015600_inc {
   @ext(0x10, 0)
   model VolatileLockout {
     /** TRUE: STB errors are locking */
-    @values(values_VolatileLockout)
+    @values(Values_VolatileLockout)
     value: UCH;
   }
 
@@ -372,7 +372,7 @@ namespace bai._0010015600_inc {
   @ext(0x47, 0)
   model GasvalveASICFeedback {
     /** Gas valve feedback (from ASIC) */
-    @values(values_GasvalveASICFeedback)
+    @values(Values_GasvalveASICFeedback)
     value: UCH;
   }
 
@@ -381,7 +381,7 @@ namespace bai._0010015600_inc {
   @ext(0x48, 0)
   model GasvalveUCFeedback {
     /** Gas valve feedback (from micro controller) */
-    @values(values_GasvalveUCFeedback)
+    @values(Values_GasvalveUCFeedback)
     value: UCH;
   }
 
@@ -390,7 +390,7 @@ namespace bai._0010015600_inc {
   @ext(0x49, 0)
   model Ignitor {
     /** Ignition status */
-    @values(values_Ignitor)
+    @values(Values_Ignitor)
     value: UCH;
   }
 
@@ -455,7 +455,7 @@ namespace bai._0010015600_inc {
   @ext(0x77, 0)
   model Templimiter {
     /** Feedback of the temperature limiter sensor */
-    @values(values_Templimiter)
+    @values(Values_Templimiter)
     value: UCH;
   }
 
@@ -563,7 +563,7 @@ namespace bai._0010015600_inc {
   @ext(0xd2, 0)
   model TemplimiterWithNTC {
     /** Temperature limiter (1 = NTC; 0 = switching contact) */
-    @values(values_TemplimiterWithNTC)
+    @values(Values_TemplimiterWithNTC)
     value: UCH;
   }
 
@@ -572,7 +572,7 @@ namespace bai._0010015600_inc {
   @ext(0xd3, 0)
   model VolatileLockoutIFCGV {
     /** All IFC errors are non-volatile */
-    @values(values_VolatileLockoutIFCGV)
+    @values(Values_VolatileLockoutIFCGV)
     value: UCH;
   }
 
@@ -589,7 +589,7 @@ namespace bai._0010015600_inc {
   @ext(0xdb, 0)
   model Gasvalve3UC {
     /** Gas valve switching signal (from the processor) */
-    @values(values_Gasvalve3UC)
+    @values(Values_Gasvalve3UC)
     value: UCH;
   }
 
@@ -683,7 +683,7 @@ namespace bai._0010015600_inc {
   @ext(0xb7, 0)
   model HcPumpMode {
     /** Pump mode for central heating */
-    @values(values_HcPumpMode)
+    @values(Values_HcPumpMode)
     value: UCH;
   }
 
@@ -700,7 +700,7 @@ namespace bai._0010015600_inc {
   @ext(0xb8, 0)
   model OptionalRelais {
     /** Function of optional relay */
-    @values(values_OptionalRelais)
+    @values(Values_OptionalRelais)
     value: UCH;
   }
 
@@ -709,7 +709,7 @@ namespace bai._0010015600_inc {
   @ext(0xb9, 0)
   model AccessoriesOne {
     /** Function of accessory relay 1 */
-    @values(values_AccessoriesOne)
+    @values(Values_AccessoriesOne)
     value: UCH;
   }
 
@@ -718,7 +718,7 @@ namespace bai._0010015600_inc {
   @ext(0xba, 0)
   model AccessoriesTwo {
     /** Function of accessory relay 2 */
-    @values(values_AccessoriesTwo)
+    @values(Values_AccessoriesTwo)
     value: UCH;
   }
 
@@ -759,7 +759,7 @@ namespace bai._0010015600_inc {
   /** d.64 average ignition time */
   @inherit(r)
   @ext(0x2d, 0)
-  model averageIgnitiontime {
+  model AverageIgnitiontime {
     /** average ignition time */
     @unit("s")
     @divisor(10)
@@ -769,7 +769,7 @@ namespace bai._0010015600_inc {
   /** d.65 Maximum ignition time */
   @inherit(r)
   @ext(0x2c, 0)
-  model maxIgnitiontime {
+  model MaxIgnitiontime {
     /** maximum ignition time */
     @unit("s")
     @divisor(10)
@@ -798,17 +798,6 @@ namespace bai._0010015600_inc {
   model FlowsetHcMax {
     /** Setting the maximum flow setpoint in heating mode (with left-hand stop of the potentiometer) */
     value: temp;
-  }
-
-  @condition(id.id.sw, ">=413")
-  namespace SW {
-    /** d.74 APC_LegioProtection */
-    @inherit(r, wi)
-    @ext(0x97, 0x4)
-    model APCLegioProtection {
-      /** Legionella protection for internal storage */
-      value: UCH;
-    }
   }
 
   /** d.75 Maximum storage time */
@@ -1009,7 +998,7 @@ namespace bai._0010015600_inc {
   /** minimum ignition time */
   @inherit(r)
   @ext(0x2b, 0)
-  model minIgnitiontime {
+  model MinIgnitiontime {
     /** minimum ignition time */
     @unit("s")
     @divisor(10)
@@ -1019,7 +1008,7 @@ namespace bai._0010015600_inc {
   /** Maximum DHW temperature */
   @inherit(r)
   @ext(0x35, 0)
-  model maintenancedata_HwcTempMax {
+  model Maintenancedata_HwcTempMax {
     /** Maximum temperature measured at the tap water outlet sensor */
     value: temp;
   }
@@ -1289,7 +1278,7 @@ namespace bai._0010015600_inc {
     value: ULG;
   }
 
-  enum values_PumpPowerDesired {
+  enum Values_PumpPowerDesired {
     auto: 0,
     _53: 1,
     _60: 2,
@@ -1298,63 +1287,63 @@ namespace bai._0010015600_inc {
     _100: 5,
   }
 
-  enum values_Flame {
+  enum Values_Flame {
     off: 240,
     on: 15,
   }
 
-  enum values_GasvalveUC {
+  enum Values_GasvalveUC {
     off: 240,
     on: 15,
   }
 
-  enum values_VolatileLockout {
+  enum Values_VolatileLockout {
     no: 240,
     yes: 15,
   }
 
-  enum values_GasvalveASICFeedback {
+  enum Values_GasvalveASICFeedback {
     off: 240,
     on: 15,
   }
 
-  enum values_GasvalveUCFeedback {
+  enum Values_GasvalveUCFeedback {
     off: 240,
     on: 15,
   }
 
-  enum values_Ignitor {
+  enum Values_Ignitor {
     off: 240,
     on: 15,
   }
 
-  enum values_Templimiter {
+  enum Values_Templimiter {
     off: 240,
     on: 15,
   }
 
-  enum values_TemplimiterWithNTC {
+  enum Values_TemplimiterWithNTC {
     no: 240,
     yes: 15,
   }
 
-  enum values_VolatileLockoutIFCGV {
+  enum Values_VolatileLockoutIFCGV {
     no: 240,
     yes: 15,
   }
 
-  enum values_Gasvalve3UC {
+  enum Values_Gasvalve3UC {
     off: 240,
     on: 15,
   }
 
-  enum values_HcPumpMode {
+  enum Values_HcPumpMode {
     post_run: 0,
     permanent: 1,
     winter: 2,
   }
 
-  enum values_OptionalRelais {
+  enum Values_OptionalRelais {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1365,7 +1354,7 @@ namespace bai._0010015600_inc {
     remotecontrol: 8,
   }
 
-  enum values_AccessoriesOne {
+  enum Values_AccessoriesOne {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1376,7 +1365,7 @@ namespace bai._0010015600_inc {
     remotecontrol: 8,
   }
 
-  enum values_AccessoriesTwo {
+  enum Values_AccessoriesTwo {
     circulationpump: 1,
     extheatingpump: 2,
     storagechargingpump: 3,
@@ -1385,10 +1374,20 @@ namespace bai._0010015600_inc {
     externalerrormessage: 6,
     solarpump: 7,
     remotecontrol: 8,
+  }
+  @condition(Id.Id.sw, ">=413")
+  namespace SW {
+    /** d.74 APC_LegioProtection */
+    @inherit(r, wi)
+    @ext(0x97, 0x4)
+    model APCLegioProtection {
+      /** Legionella protection for internal storage */
+      value: UCH;
+    }
   }
 
   /** included parts */
   union _includes {
-    errors_inc,
+    Errors_inc,
   }
 }

@@ -3,13 +3,13 @@ import "./_templates.tsp";
 import "./yield4445_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace ui {
+// @zz(0x15)
+namespace Ui {
   // ,UI,CI of VRS 620/3,0020040141 162
 
   /** default *r */
@@ -65,7 +65,7 @@ namespace ui {
   @ext(0x4b, 0)
   model StateEM {
     /** OFF=0, CH=1, DHW=2, DHW-Overrun=3 */
-    @values(values_StateEM)
+    @values(Values_StateEM)
     value: UCH;
   }
 
@@ -185,7 +185,7 @@ namespace ui {
   @ext(0x4e, 0)
   model SourceType {
     /** noSystem=0, SSR=1, VRC=2, eSys=3, mixedSys=4 */
-    @values(values_SourceType)
+    @values(Values_SourceType)
     value: UCH;
   }
   // ##### controler internal #####
@@ -488,7 +488,7 @@ namespace ui {
   @ext(0x6e, 0)
   model SystemModeStream1 {
     /** Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5 */
-    @values(values_SystemModeStream1)
+    @values(Values_SystemModeStream1)
     value: UCH;
   }
 
@@ -497,7 +497,7 @@ namespace ui {
   @ext(0x6f, 0)
   model SystemModeStream2 {
     /** Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5 */
-    @values(values_SystemModeStream2)
+    @values(Values_SystemModeStream2)
     value: UCH;
   }
 
@@ -506,7 +506,7 @@ namespace ui {
   @ext(0x70, 0)
   model SystemModeStream3 {
     /** Off=0, Heating=1, Cooling=2, Dhw=3, DhwDuringCH=4, DhwDuringCooling=5 */
-    @values(values_SystemModeStream3)
+    @values(Values_SystemModeStream3)
     value: UCH;
   }
 
@@ -595,7 +595,7 @@ namespace ui {
   @ext(0x7a, 0)
   model ASCStatus {
     /** ASC_OFF=0, ASC_CH=1, ASC_DHW=2 */
-    @values(values_ASCStatus)
+    @values(Values_ASCStatus)
     value: UCH;
   }
 
@@ -746,7 +746,7 @@ namespace ui {
   @ext(0x4a, 0x8)
   model DesiredStateB1 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB1)
+    @values(Values_DesiredStateB1)
     value: UCH;
   }
 
@@ -755,7 +755,7 @@ namespace ui {
   @ext(0x4a, 0x10)
   model DesiredStateB2 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB2)
+    @values(Values_DesiredStateB2)
     value: UCH;
   }
 
@@ -764,7 +764,7 @@ namespace ui {
   @ext(0x4a, 0x18)
   model DesiredStateB3 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB3)
+    @values(Values_DesiredStateB3)
     value: UCH;
   }
 
@@ -773,7 +773,7 @@ namespace ui {
   @ext(0x4a, 0x20)
   model DesiredStateB4 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB4)
+    @values(Values_DesiredStateB4)
     value: UCH;
   }
 
@@ -782,7 +782,7 @@ namespace ui {
   @ext(0x4a, 0x28)
   model DesiredStateB5 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB5)
+    @values(Values_DesiredStateB5)
     value: UCH;
   }
 
@@ -791,7 +791,7 @@ namespace ui {
   @ext(0x4a, 0x30)
   model DesiredStateB6 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB6)
+    @values(Values_DesiredStateB6)
     value: UCH;
   }
 
@@ -800,7 +800,7 @@ namespace ui {
   @ext(0x4a, 0x38)
   model DesiredStateB7 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB7)
+    @values(Values_DesiredStateB7)
     value: UCH;
   }
 
@@ -809,7 +809,7 @@ namespace ui {
   @ext(0x4a, 0x40)
   model DesiredStateB8 {
     /** service B5 10 00: 0=auto, 1=force_off, 2=force_ch, 3=forced_dhwservice 05 01: 0=off, 85(0x55)=dhw, 170(0xAA)=ch, 238(0xEE)=modulation */
-    @values(values_DesiredStateB8)
+    @values(Values_DesiredStateB8)
     value: UCH;
   }
 
@@ -1133,14 +1133,14 @@ namespace ui {
     value: STR;
   }
 
-  enum values_StateEM {
+  enum Values_StateEM {
     off: 0,
     heat: 1,
     water: 2,
     wateroverrun: 3,
   }
 
-  enum values_SourceType {
+  enum Values_SourceType {
     noSystem: 0,
     SSR: 1,
     VRC: 2,
@@ -1148,7 +1148,7 @@ namespace ui {
     mixedSys: 4,
   }
 
-  enum values_SystemModeStream1 {
+  enum Values_SystemModeStream1 {
     off: 0,
     heat: 1,
     cool: 2,
@@ -1157,7 +1157,7 @@ namespace ui {
     waterduringcool: 5,
   }
 
-  enum values_SystemModeStream2 {
+  enum Values_SystemModeStream2 {
     off: 0,
     heat: 1,
     cool: 2,
@@ -1166,7 +1166,7 @@ namespace ui {
     waterduringcool: 5,
   }
 
-  enum values_SystemModeStream3 {
+  enum Values_SystemModeStream3 {
     off: 0,
     heat: 1,
     cool: 2,
@@ -1175,13 +1175,13 @@ namespace ui {
     waterduringcool: 5,
   }
 
-  enum values_ASCStatus {
+  enum Values_ASCStatus {
     off: 0,
     heat: 1,
     water: 2,
   }
 
-  enum values_DesiredStateB1 {
+  enum Values_DesiredStateB1 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1191,7 +1191,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB2 {
+  enum Values_DesiredStateB2 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1201,7 +1201,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB3 {
+  enum Values_DesiredStateB3 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1211,7 +1211,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB4 {
+  enum Values_DesiredStateB4 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1221,7 +1221,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB5 {
+  enum Values_DesiredStateB5 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1231,7 +1231,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB6 {
+  enum Values_DesiredStateB6 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1241,7 +1241,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB7 {
+  enum Values_DesiredStateB7 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1251,7 +1251,7 @@ namespace ui {
     modulation: 238,
   }
 
-  enum values_DesiredStateB8 {
+  enum Values_DesiredStateB8 {
     off_auto: 0,
     forceoff: 1,
     forceheat: 2,
@@ -1263,9 +1263,9 @@ namespace ui {
 
   /** included parts */
   union _includes {
-    @condition(id.id.sw, ">=400")
-    yield4445_inc,
+    @condition(Id.Id.sw, ">=400")
+    Yield4445_inc,
 
-    errors_inc,
+    Errors_inc,
   }
 }

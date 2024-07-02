@@ -3,13 +3,13 @@ import "./_templates.tsp";
 import "./iotest620_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0xec)
-namespace solsy.sc {
+// @zz(0xec)
+namespace Solsy.Sc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 Solar
 
   /** default *r */
@@ -375,7 +375,7 @@ namespace solsy.sc {
   @ext(0x99, 0)
   model SolPriority {
     /** Priority of water tanks for solar loading algorithms. 1 = SP2 2 = SP3 */
-    @values(values_SolPriority)
+    @values(Values_SolPriority)
     value: UCH;
   }
 
@@ -411,14 +411,14 @@ namespace solsy.sc {
     value: temp0;
   }
 
-  enum values_SolPriority {
+  enum Values_SolPriority {
     _1_2: 16,
     _2_1: 4,
   }
 
   /** included parts */
   union _includes {
-    iotest620_inc,
-    errors_inc,
+    Iotest620_inc,
+    Errors_inc,
   }
 }

@@ -3,13 +3,13 @@ import "./_templates.tsp";
 import "./hcmode_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x08)
-namespace hmu {
+// @zz(0x08)
+namespace Hmu {
   /** default *r */
   @base(MF, 0x11)
   model r {}
@@ -22,10 +22,10 @@ namespace hmu {
     @unit("kWh")
     energy_1: energy;
 
-    @values(values_onoff)
+    @values(Values_onoff)
     onoff: UCH;
 
-    @values(values_state)
+    @values(Values_state)
     state: UCH;
   }
   // Heatpump statistics
@@ -419,12 +419,12 @@ namespace hmu {
     value: UIN;
   }
 
-  enum values_onoff {
+  enum Values_onoff {
     off: 0,
     on: 1,
   }
 
-  enum values_state {
+  enum Values_state {
     ready: 0x01,
     error: 0x0b,
     heating: 0x09,
@@ -434,7 +434,7 @@ namespace hmu {
 
   /** included parts */
   union _includes {
-    hcmode_inc,
-    errors_inc,
+    Hcmode_inc,
+    Errors_inc,
   }
 }

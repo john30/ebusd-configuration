@@ -1,12 +1,12 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-namespace quick_inc {
+namespace Quick_inc {
   // MC: quick commands
 
   /** default *w */
@@ -17,21 +17,21 @@ namespace quick_inc {
   /** Quick - party */
   @inherit(w)
   @ext(0x5)
-  model party {
+  model Party {
     value: onoff;
   }
 
   /** quick - hot water tank filling */
   @inherit(w)
   @ext(0x6)
-  model load {
+  model Load {
     value: onoff;
   }
 
   /** Quick - cleaning lady */
   @inherit(w)
   @ext(0x7)
-  model save {
+  model Save {
     value: TTH;
   }
 }

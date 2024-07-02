@@ -5,13 +5,13 @@ import "./timer_inc.tsp";
 import "./iotest620_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x25)
-namespace solsy.hwc {
+// @zz(0x25)
+namespace Solsy.Hwc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 DHW
 
   /** default *r */
@@ -240,9 +240,9 @@ namespace solsy.hwc {
 
   /** included parts */
   union _includes {
-    hwcmode_inc,
-    timer_inc,
-    iotest620_inc,
-    errors_inc,
+    Hwcmode_inc,
+    Timer_inc,
+    Iotest620_inc,
+    Errors_inc,
   }
 }

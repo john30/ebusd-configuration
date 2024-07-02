@@ -5,13 +5,13 @@ import "./timerhwc_inc.tsp";
 import "./timerhc_inc.tsp";
 import "./errors_inc.tsp";
 using Ebus;
-using Ebus.num;
-using Ebus.dtm;
-using Ebus.str;
-namespace vaillant;
+using Ebus.Num;
+using Ebus.Dtm;
+using Ebus.Str;
+namespace Vaillant;
 
-@zz(0x15)
-namespace f37 {
+// @zz(0x15)
+namespace F37 {
   // ,F3700,VRT 370f,F37 260
 
   /** default *r */
@@ -83,7 +83,7 @@ namespace f37 {
   @ext(0x2f, 0)
   model Hc1OPMode {
     /** operation mode of the first heating circuit */
-    @values(values_Hc1OPMode)
+    @values(Values_Hc1OPMode)
     value: UCH;
   }
 
@@ -124,7 +124,7 @@ namespace f37 {
   @ext(0x5d, 0)
   model Hc1SFMode {
     /** activated special function of first heating circuit */
-    @values(values_Hc1SFMode)
+    @values(Values_Hc1SFMode)
     value: UCH;
   }
 
@@ -216,7 +216,7 @@ namespace f37 {
   @ext(0x53, 0)
   model SummerWinterTimeAdjust {
     /** enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON) */
-    @values(values_SummerWinterTimeAdjust)
+    @values(Values_SummerWinterTimeAdjust)
     value: UCH;
   }
 
@@ -225,7 +225,7 @@ namespace f37 {
   @ext(0x16, 0)
   model LanguageVariant {
     /** display language */
-    @values(values_LanguageVariant)
+    @values(Values_LanguageVariant)
     value: UCH;
   }
   // ##### extra #####
@@ -251,7 +251,7 @@ namespace f37 {
   @ext(0x36, 0)
   model Hc12stepanalogCtrl {
     /** two-point / analogue control */
-    @values(values_Hc12stepanalogCtrl)
+    @values(Values_Hc12stepanalogCtrl)
     value: UCH;
   }
 
@@ -292,7 +292,7 @@ namespace f37 {
   @ext(0x49, 0)
   model HwcLegioStartDay {
     /** weekday on which legionella protection is started (may also be every day of the week) */
-    @values(values_HwcLegioStartDay)
+    @values(Values_HwcLegioStartDay)
     value: UCH;
   }
 
@@ -341,7 +341,7 @@ namespace f37 {
   @ext(0x2, 0)
   model StatusDcf {
     /** status of the DCF signal */
-    @values(values_StatusDcf)
+    @values(Values_StatusDcf)
     value: UCH;
   }
 
@@ -565,7 +565,7 @@ namespace f37 {
   /** actoSTOR_OPMode */
   @inherit(r)
   @ext(0x94, 0)
-  model actoSTOROPMode {
+  model ActoSTOROPMode {
     /** state diagram actoSTOR control */
     value: UCH;
   }
@@ -639,14 +639,14 @@ namespace f37 {
     value: UIN;
   }
 
-  enum values_Hc1OPMode {
+  enum Values_Hc1OPMode {
     auto: 2,
     on: 3,
     night: 4,
     summer: 5,
   }
 
-  enum values_Hc1SFMode {
+  enum Values_Hc1SFMode {
     none: 0,
     party: 1,
     onedaybankholiday: 2,
@@ -658,12 +658,12 @@ namespace f37 {
     onetimewater: 8,
   }
 
-  enum values_SummerWinterTimeAdjust {
+  enum Values_SummerWinterTimeAdjust {
     off: 0,
     auto: 1,
   }
 
-  enum values_LanguageVariant {
+  enum Values_LanguageVariant {
     german: 0,
     english: 1,
     french: 2,
@@ -689,12 +689,12 @@ namespace f37 {
     serbian: 22,
   }
 
-  enum values_Hc12stepanalogCtrl {
+  enum Values_Hc12stepanalogCtrl {
     two_point_control: 0,
     analogue_control: 1,
   }
 
-  enum values_HwcLegioStartDay {
+  enum Values_HwcLegioStartDay {
     Mon: 0,
     Tue: 1,
     Wed: 2,
@@ -706,7 +706,7 @@ namespace f37 {
     Mon_Sun: 8,
   }
 
-  enum values_StatusDcf {
+  enum Values_StatusDcf {
     nosignal: 0,
     ok: 1,
     sync: 2,
@@ -716,9 +716,9 @@ namespace f37 {
 
   /** included parts */
   union _includes {
-    timercc_inc,
-    timerhwc_inc,
-    timerhc_inc,
-    errors_inc,
+    Timercc_inc,
+    Timerhwc_inc,
+    Timerhc_inc,
+    Errors_inc,
   }
 }
