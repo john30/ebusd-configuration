@@ -28,11 +28,12 @@ namespace Broadcast {
     date: bdate;
   }
 
-  // model Id is Ebus.Id.Id;
+  model Id is Ebus.Id.Id;
+  model IdQuery is Ebus.Id.IdQuery;
+  model IdAnswer is Ebus.Id.IdAnswer;
 
   /** Inquiry of existence */
   @inherit(w)
-  @zz(BROADCAST)
   @ext(0x7, 0xfe)
   model Queryexistence {}
 
