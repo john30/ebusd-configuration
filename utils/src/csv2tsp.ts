@@ -5,6 +5,7 @@ import {dump, load} from "js-yaml";
 import * as path from 'path';
 import {Transform, type TransformCallback} from "stream";
 import {pipeline} from "stream/promises";
+import {isDeepStrictEqual} from "util";
 
 type ReqStrs = (string | undefined | false)[];
 
@@ -13,8 +14,9 @@ type OptStrs = ReqStrs | undefined;
 type CsvLine = Record<number, string|undefined>;
 
 type Additions = {
-  file: string, nameNoExt: string,
-  imports: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>,
+  subdir: string, file: string, nameNoExt: string,
+  imports: ReqStrs, includes: [string, string[]][],
+  defaultsByName: Map<string, number>, baseModels: Map<string, KnownModel>, renamedDefaults: Record<string, string>,
   conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
 };
 
@@ -41,6 +43,50 @@ const ebusUsing = [
   'using Ebus.Dtm;',
   'using Ebus.Str;',
 ]
+type KnownModel = {
+  isDefault?: true,
+  dd: number[],
+  ddw?: number[],
+  ddu?: number[],
+  auth?: string,
+}
+const knownBaseModels: Record<string, Record<string, KnownModel>> = {vaillant: {
+  r: {isDefault: true, dd: [0xb5, 0x09, 0x0d]},
+  w: {isDefault: true, dd: [0xb5, 0x09, 0x0e]},
+  u: {isDefault: true, dd: [0xb5, 0x09, 0x29]},
+  wi: {isDefault: true, dd: [0xb5, 0x09, 0x0e], auth: 'install'},
+  ws: {isDefault: true, dd: [0xb5, 0x09, 0x0e], auth: 'service'},
+}};
+const knownbaseModelTemplates: Record<string, string> = {vaillant: `
+/** default *r */
+@base(MF, 0x9, 0xd)
+model r {}
+
+/** default *w */
+@write
+@base(MF, 0x9, 0xe)
+model w {}
+
+/** default *u */
+@passive 
+@base(MF, 0x9, 0x29)
+model u {
+  @maxLength(2) 
+  value: IGN,
+}
+
+/** default *wi for user level "install" */
+@write
+@auth("install")
+@base(MF, 0x9, 0xe)
+model wi {}
+
+/** default *ws for user level "service" */
+@write
+@auth("service")
+@base(MF, 0x9, 0xe)
+model ws {}
+`};
 const templateHeader = [
   ...ebusImport,
   ...ebusUsing,
@@ -148,10 +194,15 @@ const addI18n = (location: string, str?: string): string|undefined => {
   return first;
 };
 const normComment = (location: string, str?: string) => str && addI18n(location, str.replace(/@/g, 'at').replaceAll('**', '^'));
-const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?): OptStrs => {
+const templateTrans: Trans<TemplateLine> = (location, line, header, additions): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
-    return [...addValueLists(), ...templateFooter];
+    const base = knownbaseModelTemplates[additions.subdir || ''] || '';
+    return [
+      ...addValueLists(),
+      ...(base ? [base] : []),
+      ...templateFooter,
+    ];
   }
   line = objSlice(line);
   if (!line) return;
@@ -431,7 +482,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
           circuit = 'Id.Id';
           field = field?.toLowerCase();
         } else {
-          additions!.imports.push(`import "./${circuit}.tsp";`);
+          additions.imports.push(`import "./${circuit}.tsp";`);
         }
       }
       const fname = field||(value&&normalize?'value':'');
@@ -463,19 +514,27 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     const isLoad = dirsStr==='!load';
     if (dirsStr==='!include' || isLoad) {
       const fileNoExt = path.basename(line[1]!, path.extname(line[1]!));
-      additions!.imports.push(`import "./${fileNoExt}_inc.tsp";`);
+      additions.imports.push(`import "./${fileNoExt}_inc.tsp";`);
       const fileComp = fileNoExt.split('.').reverse()[0];
       let name = condNamespace || fileComp;
       name = normId(name.replace(/(__[^_]+_?)+/, '_'+fileComp)); // reduce multiple product ids with filename instead
-      additions!.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
+      additions.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
     }
     return;
   }
   let circuit: string|undefined = line[1];
   let auth: string|undefined;
   if (isDefault) {
+    const baseModels = knownBaseModels[additions.subdir || ''] || '';
+    if (baseModels && !additions.baseModels.size) {
+      for (const [name, baseModel] of Object.entries(baseModels)) {
+        if (baseModel.isDefault) {
+          additions.defaultsByName.set(name, 0);
+        }
+        additions.baseModels.set(name, baseModel);
+      }
+    }
     // default line: convert to base models
-    dirsStr += suffix(dirsStr, additions!.defaultsByName);
     const circuitLevel = circuit?.split('#');
     if (circuitLevel?.length===2) {
       auth = circuitLevel[1];
@@ -483,10 +542,31 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       isDefault += ` for user level "${auth}"`;
     }
   }
-  const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
-  const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
+  let dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
+  const single = dirs.length===1 && (isDefault || !additions.defaultsByName.has(dirs[0]));//todo why
   const chain = (line[7]||'').split(';').map((i,_,a)=>fromHexOpt(a.length<=1&&!!single&&!!line[6], line[6], i.split(':')[0]));
   const idComb = chain[0];
+  if (isDefault) {
+    if (additions.baseModels.size && !line[5]) {
+      let renamedDefault;
+      const numId = idComb.map(i => (i==='MF' ? subdirManufId : typeof i === 'string' ? parseInt(i, 16) : i) as number);
+      for (const [name, b] of additions.baseModels.entries()) {
+        if (b.isDefault && (auth ? auth===b.auth : !b.auth)) {
+          if (isDeepStrictEqual(numId, b.dd)) {
+            renamedDefault = name;
+            break;
+          }
+        }
+      }
+      if (renamedDefault) {
+        additions.renamedDefaults[dirs[0]] = renamedDefault;
+        return; // do not emit as part of base models
+      }
+      delete additions.renamedDefaults[dirs[0]];
+    }
+    const suff = suffix(dirsStr, additions.defaultsByName);
+    dirs[0] += suff;
+  }
   const chainLengths = chain.length>1 && (line[7]||'').split(';').map(i=>i.split(':')[1])
     .filter(i=>i?.length)
     .reduce((p,c)=>p.add(c)&&p, new Set<string>());
@@ -506,7 +586,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     fieldLines.push(fieldLine);
   }
   const fields: OptStrs = [];
-  const modelName = normId(isDefault?dirsStr:line[2]);
+  const modelName = normId(isDefault?dirs[0]:line[2]);
   fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
   const ret = [
     '',
@@ -514,7 +594,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
     single
       ? direction(dirs[0]) // single model
-      : `@inherit(${dirs.map(d=>d+getSuffix(d, additions!.defaultsByName)).join(', ')})`, // multi model
+      : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
     auth&&`@auth("${auth}")`,
     line[4]&&`@qq(${fromHex(line[4]).join})`,
     zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
@@ -686,11 +766,13 @@ export const csv2tsp = async (args: string[] = []) => {
     const empty = (line: CsvLine) => !line || !Object.keys(line).length;
     const content: ReqStrs = [];
     const additions: Additions = {
-      file, nameNoExt,
+      subdir, file, nameNoExt,
       imports: [],
       includes: [],
-      defaultsByName: new Map<string, number>(),
-      conditions: new Map<string, string[]>(),
+      defaultsByName: new Map(),
+      baseModels: new Map(),
+      renamedDefaults: {},
+      conditions: new Map(),
       conditionBlocks: new Map(),
     };
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
