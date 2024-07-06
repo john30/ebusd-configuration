@@ -16,7 +16,8 @@ type CsvLine = Record<number, string|undefined>;
 type Additions = {
   subdir: string, file: string, nameNoExt: string,
   imports: ReqStrs, includes: [string, string[]][],
-  defaultsByName: Map<string, number>, baseModels: Map<string, KnownModel>, renamedDefaults: Record<string, string>,
+  defaultsByName: Map<string, number>, renamedDefaults: Record<string, string>,
+  baseModels: Map<string, KnownModel>, complexModels: Map<string, string>,
   conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
 };
 
@@ -44,30 +45,41 @@ const ebusUsing = [
   'using Ebus.Str;',
 ]
 type KnownModel = {
-  isDefault?: true,
   dd: number[],
-  ddw?: number[],
-  ddu?: number[],
+  dir?: string,
   auth?: string,
 }
 const knownBaseModels: Record<string, Record<string, KnownModel>> = {vaillant: {
-  r: {isDefault: true, dd: [0xb5, 0x09, 0x0d]},
-  w: {isDefault: true, dd: [0xb5, 0x09, 0x0e]},
-  u: {isDefault: true, dd: [0xb5, 0x09, 0x29]},
-  wi: {isDefault: true, dd: [0xb5, 0x09, 0x0e], auth: 'install'},
-  ws: {isDefault: true, dd: [0xb5, 0x09, 0x0e], auth: 'service'},
+  r: {dd: [0xb5, 0x09, 0x0d]},
+  w: {dd: [0xb5, 0x09, 0x0e], dir: 'w'},
+  u: {dd: [0xb5, 0x09, 0x29], dir: 'u'},
+  wi: {dd: [0xb5, 0x09, 0x0e], dir: 'w', auth: 'install'},
+  ws: {dd: [0xb5, 0x09, 0x0e], dir: 'w', auth: 'service'},
+  rt: {dd: [0xb5, 0x15]},
+  wt: {dd: [0xb5, 0x15], dir: 'w'},
+}};
+const knownComplexModels: Record<string, Record<string, string>> = {vaillant: {
+  'r': 'ReadonlyRegister',
+  'r,w': 'Register',
+  'r,wi': 'InstallRegister',
+  'r,ws': 'ServiceRegister',
+  'r,u': 'ReadonlyUpdateRegister',
+  'r,u,w': 'UpdateRegister',
+  'r,u,wi': 'InstallUpdateRegister',
+  'r,u,ws': 'ServiceUpdateRegister',
+  'rt,wt': 'Timer',
 }};
 const knownbaseModelTemplates: Record<string, string> = {vaillant: `
-/** default *r */
+/** default *r for register */
 @base(MF, 0x9, 0xd)
 model r {}
 
-/** default *w */
+/** default *w for register */
 @write
 @base(MF, 0x9, 0xe)
 model w {}
 
-/** default *u */
+/** default *u for register */
 @passive 
 @base(MF, 0x9, 0x29)
 model u {
@@ -75,17 +87,92 @@ model u {
   value: IGN,
 }
 
-/** default *wi for user level "install" */
+/** default *wi for register with user level "install" */
 @write
 @auth("install")
 @base(MF, 0x9, 0xe)
 model wi {}
 
-/** default *ws for user level "service" */
+/** default *ws for register with user level "service" */
 @write
 @auth("service")
 @base(MF, 0x9, 0xe)
 model ws {}
+
+/** read/write register */
+@inherit(r, w)
+model Register<T> {
+  /** register value */
+  value: T;
+}
+
+/** read only register */
+@inherit(r)
+model ReadonlyRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** installer level register */
+@inherit(r, wi)
+model InstallRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** service level register */
+@inherit(r, ws)
+model ServiceRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** read/write updated register */
+@inherit(r, w, u)
+model UpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** read only updated register */
+@inherit(r, u)
+model ReadonlyUpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** installer level updated register */
+@inherit(r, wi, u)
+model InstallUpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** service level updated register */
+@inherit(r, ws, u)
+model ServiceUpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** default *r for timer */
+@base(MF, 0x15)
+model rt {
+  @maxLength(1)
+  value: IGN;
+}
+
+/** default *w for timer */
+@write
+@base(MF, 0x15)
+model wt {}
+
+/** timer */
+@inherit(rt, wt)
+model Timer<T> {
+  /** timer value */
+  value: T;
+}
 `};
 const templateHeader = [
   ...ebusImport,
@@ -305,7 +392,7 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   const id = normId(name||(typ.split(':')[0]));
   comm = comm || '';
   const typLen = addLength(typ);
-  const origTyp = typ;
+  // const origTyp = typ;
   typ = normType(typ);
   // if (!comm && origTyp && !isBaseType(origTyp)) {
   //   comm = origTyp;
@@ -326,6 +413,19 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   }
   return {id, typ, typLen, comm, divisor, values};
 };
+const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string, typ: string}|undefined => {
+  if (!line || !singleField) return;
+  const types = line[2].split(';');
+  if (types.length>1 || line[1] || line[4] || line[3]) return;
+  // similar to divisorValues() but without incrementing any suffix
+  let [typ] = splitTypeName(line[2]);
+  const typLen = addLength(typ);
+  typ = normType(typ);
+  if (typLen || !typ) {
+    return;
+  }
+  return {comm: line[5], typ};
+}
 const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, singleField?: string): OptStrs => {
   if (!line) return;
   const {id, typ, typLen, comm, divisor, values}
@@ -363,6 +463,7 @@ const messageHeader = [
   ...ebusUsing,
 ];
 const messageFooter: string[] = ['}'];
+const directionNorm = (dir: string): string|undefined => dir[0]==='r' ? undefined : dir[0]==='w' ? 'w' : ((dir[1]==='w'?'uw':'')+'u');
 const direction = (dir: string): string|undefined => dir[0]==='r' ? undefined : dir[0]==='w' ? '@write ' : ((dir[1]==='w'?'@write ':'')+'@passive ');
 let subdirManufId: number|undefined;
 let subdirManuf: string|undefined;
@@ -528,10 +629,14 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     const baseModels = knownBaseModels[additions.subdir || ''] || '';
     if (baseModels && !additions.baseModels.size) {
       for (const [name, baseModel] of Object.entries(baseModels)) {
-        if (baseModel.isDefault) {
-          additions.defaultsByName.set(name, 0);
-        }
+        additions.defaultsByName.set(name, 0);
         additions.baseModels.set(name, baseModel);
+      }
+    }
+    const complexModels = knownComplexModels[additions.subdir || ''] || '';
+    if (complexModels && !additions.complexModels.size) {
+      for (const [key, complexModel] of Object.entries(complexModels)) {
+        additions.complexModels.set(key, complexModel);
       }
     }
     // default line: convert to base models
@@ -550,12 +655,13 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     if (additions.baseModels.size && !line[5]) {
       let renamedDefault;
       const numId = idComb.map(i => (i==='MF' ? subdirManufId : typeof i === 'string' ? parseInt(i, 16) : i) as number);
+      const dir = directionNorm(dirs[0]);
       for (const [name, b] of additions.baseModels.entries()) {
-        if (b.isDefault && (auth ? auth===b.auth : !b.auth)) {
-          if (isDeepStrictEqual(numId, b.dd)) {
-            renamedDefault = name;
-            break;
-          }
+        if ((auth ? auth===b.auth : !b.auth)
+          && (dir ? b.dir===dir : !b.dir)
+          && isDeepStrictEqual(numId, b.dd)) {
+          renamedDefault = name;
+          break;
         }
       }
       if (renamedDefault) {
@@ -585,27 +691,52 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     }
     fieldLines.push(fieldLine);
   }
-  const fields: OptStrs = [];
   const modelName = normId(isDefault?dirs[0]:line[2]);
-  fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
+  let model: OptStrs;
+  if (!single && additions.complexModels.size && fieldLines.length===1) {
+    // check for complex known model
+    const key = dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).sort().join();
+    const name = additions.complexModels.get(key);
+    let {comm, typ} = isSimpleField(fieldLines[0], modelName) || {};
+    if (name && typ) {
+      const msgComm = line[3];
+      if (!comm || msgComm?.toLowerCase().includes(comm.toLowerCase())) {
+        comm = msgComm;
+      } else if (msgComm && !comm.toLowerCase().includes(msgComm.toLowerCase())) {
+        comm = msgComm+': '+comm;
+      }
+      model = [
+        comm&&`/** ${normComment(location, comm)} */`,
+        `@ext(${idComb.join(', ')})`,
+        `model ${pascalCase(modelName)} is ${name}<${typ}>;`,
+      ]
+    };
+  }
+  if (!model) {
+    const fields: OptStrs = [];
+    fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
+      model = [
+      (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
+      single
+        ? direction(dirs[0]) // single model
+        : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
+      auth&&`@auth("${auth}")`,
+      line[4]&&`@qq(${fromHex(line[4]).join})`,
+      zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
+      single&&idComb.length>=2
+        ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
+        : idComb.length ? `@ext(${idComb.join(', ')})`
+          +(chain.length>1?`\n@chain(${chainLengths&&chainLengths.size?chainLengths.values().next().value:'0'}, ${chain.slice(1).map(i=>`#[${i.join(', ')}]`).join(', ')})`:'')
+        : undefined,
+      `model ${isDefault ? modelName : pascalCase(modelName)} {`, // expected to be PascalCase
+      ...fields,
+      '}',
+    ];
+  }
   const ret = [
     '',
     ...(condNamespace ? [] : conds),
-    (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
-    single
-      ? direction(dirs[0]) // single model
-      : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
-    auth&&`@auth("${auth}")`,
-    line[4]&&`@qq(${fromHex(line[4]).join})`,
-    zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
-    single&&idComb.length>=2
-      ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
-      : idComb.length ? `@ext(${idComb.join(', ')})`
-        +(chain.length>1?`\n@chain(${chainLengths&&chainLengths.size?chainLengths.values().next().value:'0'}, ${chain.slice(1).map(i=>`#[${i.join(', ')}]`).join(', ')})`:'')
-      : undefined,
-    `model ${isDefault ? modelName : pascalCase(modelName)} {`, // expected to be PascalCase
-    ...fields,
-    '}',
+    ...model,
   ];
   if (condNamespace) {
     let condBlock = additions.conditionBlocks.get(condNamespace);
@@ -770,8 +901,9 @@ export const csv2tsp = async (args: string[] = []) => {
       imports: [],
       includes: [],
       defaultsByName: new Map(),
-      baseModels: new Map(),
       renamedDefaults: {},
+      baseModels: new Map(),
+      complexModels: new Map(),
       conditions: new Map(),
       conditionBlocks: new Map(),
     };
