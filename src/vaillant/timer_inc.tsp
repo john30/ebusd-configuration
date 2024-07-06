@@ -11,105 +11,105 @@ namespace Timer_inc {
 
   /** default *r */
   @base(MF, 0x4, 0x2)
-  model r {}
+  model r_1 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 1)
-  model w {}
+  model w_1 {}
 
   /** Periods Monday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   model Timer_Monday {
     value: timer;
   }
 
   /** default *r */
   @base(MF, 0x4, 0x3)
-  model r_1 {}
+  model r_2 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 0x2)
-  model w_1 {}
+  model w_2 {}
 
   /** Periods Tuesday */
-  @inherit(r_1, w_1)
+  @inherit(r_2, w_2)
   model Timer_Tuesday {
     value: timer;
   }
 
   /** default *r */
   @base(MF, 0x4, 0x4)
-  model r_2 {}
+  model r_3 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 0x3)
-  model w_2 {}
+  model w_3 {}
 
   /** Periods Wednesday */
-  @inherit(r_2, w_2)
+  @inherit(r_3, w_3)
   model Timer_Wednesday {
     value: timer;
   }
 
   /** default *r */
   @base(MF, 0x4, 0x5)
-  model r_3 {}
+  model r_4 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 0x4)
-  model w_3 {}
+  model w_4 {}
 
   /** Periods Thursday */
-  @inherit(r_3, w_3)
+  @inherit(r_4, w_4)
   model Timer_Thursday {
     value: timer;
   }
 
   /** default *r */
   @base(MF, 0x4, 0x6)
-  model r_4 {}
+  model r_5 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 0x5)
-  model w_4 {}
+  model w_5 {}
 
   /** Periods Friday */
-  @inherit(r_4, w_4)
+  @inherit(r_5, w_5)
   model Timer_Friday {
     value: timer;
   }
 
   /** default *r */
   @base(MF, 0x4, 0x7)
-  model r_5 {}
+  model r_6 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 0x6)
-  model w_5 {}
+  model w_6 {}
 
   /** Periods Saturday */
-  @inherit(r_5, r_5)
+  @inherit(r_6, r_6)
   model Timer_Saturday {
     value: timer;
   }
 
   /** default *r */
   @base(MF, 0x4, 0x8)
-  model r_6 {}
+  model r_7 {}
 
   /** default *w */
   @write
   @base(MF, 0x5, 0x9, 0x7)
-  model w_6 {}
+  model w_7 {}
 
   /** Periods Sunday */
-  @inherit(r_6, w_6)
+  @inherit(r_7, w_7)
   model Timer_Sunday {
     value: timer;
   }

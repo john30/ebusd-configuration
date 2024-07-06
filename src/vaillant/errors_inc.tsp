@@ -11,10 +11,10 @@ namespace Errors_inc {
 
   /** default *r */
   @base(MF, 0x3, 0)
-  model r {}
+  model r_1 {}
 
   /** Current errors */
-  @inherit(r)
+  @inherit(r_1)
   @ext(1)
   model Currenterror {
     value: errors;
@@ -23,16 +23,16 @@ namespace Errors_inc {
 
   /** default *r */
   @base(MF, 0x3, 1)
-  model r_1 {}
+  model r_2 {}
 
   /** default *wi for user level "install" */
   @write
   @auth("install")
   @base(MF, 0x3, 0x2)
-  model wi {}
+  model wi_1 {}
 
   /** Error_History */
-  @inherit(r_1)
+  @inherit(r_2)
   @ext(1)
   model Errorhistory {
     @out
@@ -42,7 +42,7 @@ namespace Errors_inc {
   }
 
   /** Clear error history */
-  @inherit(wi)
+  @inherit(wi_1)
   @ext(1)
   model Clearerrorhistory {
     @in

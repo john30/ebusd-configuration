@@ -14,107 +14,52 @@ namespace Vaillant;
 // @zz(0x25)
 namespace Ehp.Hwc {
   // ,EHP00,Heat pump AMU,EHP00 172 DHW
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### DHW: Parameters and information #####
 
-  /** OperatingMode */
-  @inherit(r, w)
+  /** OperatingMode: Operating mode for the DHWcircuit */
   @ext(0x2b, 0)
-  model OperatingMode {
-    /** Operating mode for the DHWcircuit */
-    value: hwcmode;
-  }
+  model OperatingMode is Register<hwcmode>;
 
-  /** Tank_Setpoint_Stop */
-  @inherit(r, wi)
+  /** Tank_Setpoint_Stop: DHW temperature at which loading stops */
   @ext(0x82, 0)
-  model StorageTempDesiredStop {
-    /** DHW temperature at which loading stops */
-    value: temp;
-  }
+  model StorageTempDesiredStop is InstallRegister<temp>;
 
-  /** Tank_Setpoint_Start */
-  @inherit(r, wi)
+  /** Tank_Setpoint_Start: DHW temperature at which loading starts */
   @ext(0x83, 0)
-  model StorageTempDesiredStart {
-    /** DHW temperature at which loading starts */
-    value: temp;
-  }
+  model StorageTempDesiredStart is InstallRegister<temp>;
 
-  /** LegioProtectionEnabled */
-  @inherit(r, wi)
+  /** LegioProtectionEnabled: BMR:enables/disables the anti-legionella feature */
   @ext(0x40, 0)
-  model LegioProtectionEnabled {
-    /** BMR:enables/disables the anti-legionella feature */
-    value: yesno;
-  }
+  model LegioProtectionEnabled is InstallRegister<yesno>;
 
-  /** Legionella_Start_Time */
-  @inherit(r, wi)
+  /** Legionella_Start_Time: start time for legionella protection (different from BMR) */
   @ext(0x67, 0)
-  model LegionellaStartTime {
-    /** start time for legionella protection (different from BMR) */
-    value: time2;
-  }
+  model LegionellaStartTime is InstallRegister<time2>;
   @condition(Id.Id.sw, ">=337")
   namespace Sw_ge337 {
-    /** LegioProtectionDay */
-    @inherit(r, wi)
+    /** LegioProtectionDay: Legionella protection day (0-6:mo-so, 7:off). Displayed as abbreviations. Additional parameter has to be set for activation or deactivation. */
     @ext(0x7c, 1)
-    model LegioProtectionDay {
-      /** Legionella protection day (0-6:mo-so, 7:off). Displayed as abbreviations. Additional parameter has to be set for activation or deactivation. */
-      value: bday;
-    }
+    model LegioProtectionDay is InstallRegister<bday>;
   }
   @condition(Id.Id.sw, ">=407")
   namespace Sw_ge407 {
-    /** CH1P_PumpSpeed_layered_tank */
-    @inherit(r, wi)
+    /** CH1P_PumpSpeed_layered_tank: CH pump speed setpoint while shiftloading DHW tank [%] */
     @ext(0xc1, 1)
-    model Hc1PumpSpeedLayeredStorage {
-      /** CH pump speed setpoint while shiftloading DHW tank [%] */
-      value: percent0;
-    }
+    model Hc1PumpSpeedLayeredStorage is InstallRegister<percent0>;
 
-    /** CH1P_PumpSpeed_coil_tank */
-    @inherit(r, wi)
+    /** CH1P_PumpSpeed_coil_tank: CH pump speed setpoint while loading DHW tank with coils [%] */
     @ext(0xc2, 1)
-    model Hc1PumpSpeedCoilStorage {
-      /** CH pump speed setpoint while loading DHW tank with coils [%] */
-      value: percent0;
-    }
+    model Hc1PumpSpeedCoilStorage is InstallRegister<percent0>;
 
-    /** DHW_Tank_is_coil */
-    @inherit(r, wi)
+    /** DHW_Tank_is_coil: DHW tank is shift loading type if no */
     @ext(0xcd, 1)
-    model HwcStorageIsCoil {
-      /** DHW tank is shift loading type if no */
-      value: yesno;
-    }
+    model HwcStorageIsCoil is InstallRegister<yesno>;
   }
   @condition(Id.Id.sw, ">=415")
   namespace Sw_ge415 {
-    /** TappingDetectionLimit */
-    @inherit(r, wi)
+    /** TappingDetectionLimit: turns on backup heater, if temperature drops below this value; 0=function is off */
     @ext(0xe8, 1)
-    model TappingDetectionLimit {
-      /** turns on backup heater, if temperature drops below this value; 0=function is off */
-      value: UCH;
-    }
+    model TappingDetectionLimit is InstallRegister<UCH>;
   }
 
   /** included parts */

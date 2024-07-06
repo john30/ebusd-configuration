@@ -9,56 +9,27 @@ namespace Vaillant;
 // @zz(0x75)
 namespace V81 {
   // ,V8100,VR 81,V81 225
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### general #####
 
-  /** DisplayedRoomTemp */
-  @inherit(r)
+  /** DisplayedRoomTemp: displayed room temperature */
   @ext(0x1b, 0)
-  model DisplayedRoomTemp {
-    /** displayed room temperature */
-    value: temp;
-  }
+  model DisplayedRoomTemp is ReadonlyRegister<temp>;
 
-  /** RaumtemperaturIst */
-  @inherit(r)
+  /** RaumtemperaturIst: raw value current room temperature and sensorstate (without any correction) */
   @ext(0, 0)
-  model RoomTemp {
-    /** raw value current room temperature and sensorstate (without any correction) */
-    value: tempsensor;
-  }
+  model RoomTemp is ReadonlyRegister<tempsensor>;
 
-  /** DesiredHCRoomSetPoint */
-  @inherit(r)
+  /** DesiredHCRoomSetPoint: current room setpoint */
   @ext(0x1d, 0)
-  model DesiredHcRoomTempDesired {
-    /** current room setpoint */
-    value: temp;
-  }
+  model DesiredHcRoomTempDesired is ReadonlyRegister<temp>;
 
-  /** HCRoomSetPointAdjustable */
-  @inherit(r)
+  /** HCRoomSetPointAdjustable: room temperature setpoint is currently adjustable */
   @ext(0x1e, 0)
-  model HcRoomTempDesiredAdjustable {
-    /** room temperature setpoint is currently adjustable */
-    value: yesno;
-  }
+  model HcRoomTempDesiredAdjustable is ReadonlyRegister<yesno>;
 
-  /** HCActiveSpecialFunction */
-  @inherit(r)
+  /** HCActiveSpecialFunction: if unequal zero a special function (e.g. holidays, floor pavement drying …) has been activated */
   @ext(0x1f, 0)
-  model HcActiveSpecialFunction {
-    /** if unequal zero a special function (e.g. holidays, floor pavement drying …) has been activated */
-    value: UCH;
-  }
+  model HcActiveSpecialFunction is ReadonlyRegister<UCH>;
 
   /** OperatingMode430 */
   @inherit(r, w)
@@ -70,54 +41,30 @@ namespace V81 {
   }
   // ##### extra #####
 
-  /** SelectedHeatCircuit */
-  @inherit(r)
+  /** SelectedHeatCircuit: number of heating circuit to which this remote control is assigned */
   @ext(0x1c, 0)
-  model SelectedHc {
-    /** number of heating circuit to which this remote control is assigned */
-    value: UCH;
-  }
+  model SelectedHc is ReadonlyRegister<UCH>;
 
-  /** RaumtemperaturIstOffset */
-  @inherit(r, w)
+  /** RaumtemperaturIstOffset: room temperature correction */
   @ext(0x2, 0)
-  model RoomTempOffset {
-    /** room temperature correction */
-    value: temp;
-  }
+  model RoomTempOffset is Register<temp>;
   // ##### developer's info #####
 
-  /** RaumTempOffsetEigenErwaerm */
-  @inherit(r)
+  /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(1, 0)
-  model RoomTempOffsetSelfWarming {
-    /** room temperature intrinsic heating offset */
-    value: temp;
-  }
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
 
-  /** MaxStackeBUSTask */
-  @inherit(r)
+  /** MaxStackeBUSTask: maximum number of bytes needed for the eBUS task stack */
   @ext(0xc, 0)
-  model StackeBUSTaskMax {
-    /** maximum number of bytes needed for the eBUS task stack */
-    value: UCH;
-  }
+  model StackeBUSTaskMax is ReadonlyRegister<UCH>;
 
-  /** MaxStackMainTask */
-  @inherit(r)
+  /** MaxStackMainTask: maximum number of bytes needed for the main task stack */
   @ext(0xd, 0)
-  model StackMainTaskMax {
-    /** maximum number of bytes needed for the main task stack */
-    value: UCH;
-  }
+  model StackMainTaskMax is ReadonlyRegister<UCH>;
 
-  /** MaxStackLifeCheckTask */
-  @inherit(r)
+  /** MaxStackLifeCheckTask: maximum number of bytes needed for the life check task stack */
   @ext(0xe, 0)
-  model StackLifeCheckTaskMax {
-    /** maximum number of bytes needed for the life check task stack */
-    value: UCH;
-  }
+  model StackLifeCheckTaskMax is ReadonlyRegister<UCH>;
 
   /** Variant */
   @inherit(r)
@@ -129,85 +76,45 @@ namespace V81 {
     uin_1: UIN;
   }
 
-  /** eBUS_CRC */
-  @inherit(r)
+  /** eBUS_CRC: last calculated eBUS CRC */
   @ext(0x10, 0)
-  model EBUSCRC {
-    /** last calculated eBUS CRC */
-    value: UCH;
-  }
+  model EBUSCRC is ReadonlyRegister<UCH>;
 
-  /** eBUSFifoDiffCntMax */
-  @inherit(r)
+  /** eBUSFifoDiffCntMax: max. eBUS-fifo level */
   @ext(0x11, 0)
-  model EBUSFifoDiffCntMax {
-    /** max. eBUS-fifo level */
-    value: UCH;
-  }
+  model EBUSFifoDiffCntMax is ReadonlyRegister<UCH>;
 
-  /** EEpromMaxInkonsCnt */
-  @inherit(r)
+  /** EEpromMaxInkonsCnt: EEPROM inconsistency counter */
   @ext(0x13, 0)
-  model EEpromMaxInkonsCnt {
-    /** EEPROM inconsistency counter */
-    value: UIN;
-  }
+  model EEpromMaxInkonsCnt is ReadonlyRegister<UIN>;
 
-  /** POCResetCnt */
-  @inherit(r)
+  /** POCResetCnt: power on resets */
   @ext(0x14, 0)
-  model POCResetCnt {
-    /** power on resets */
-    value: UIN;
-  }
+  model POCResetCnt is ReadonlyRegister<UIN>;
 
-  /** WDResetCnt */
-  @inherit(r)
+  /** WDResetCnt: watchdog resets */
   @ext(0x15, 0)
-  model WDResetCnt {
-    /** watchdog resets */
-    value: UIN;
-  }
+  model WDResetCnt is ReadonlyRegister<UIN>;
 
-  /** LVResetCnt */
-  @inherit(r)
+  /** LVResetCnt: low voltage resets */
   @ext(0x16, 0)
-  model LVResetCnt {
-    /** low voltage resets */
-    value: UIN;
-  }
+  model LVResetCnt is ReadonlyRegister<UIN>;
 
-  /** CMResetCnt */
-  @inherit(r)
+  /** CMResetCnt: clock monitor resets */
   @ext(0x17, 0)
-  model CMResetCnt {
-    /** clock monitor resets */
-    value: UIN;
-  }
+  model CMResetCnt is ReadonlyRegister<UIN>;
 
-  /** COMErrorCnt */
-  @inherit(r)
+  /** COMErrorCnt: eBUS-communication errors */
   @ext(0x18, 0)
-  model COMErrorCnt {
-    /** eBUS-communication errors */
-    value: UIN;
-  }
+  model COMErrorCnt is ReadonlyRegister<UIN>;
 
-  /** VariantDKRefreshCnt */
-  @inherit(r)
+  /** VariantDKRefreshCnt: counts how often variant ID has been corrected */
   @ext(0x19, 0)
-  model VariantDKRefreshCnt {
-    /** counts how often variant ID has been corrected */
-    value: UCH;
-  }
+  model VariantDKRefreshCnt is ReadonlyRegister<UCH>;
 
-  /** FiFoResetCnt */
-  @inherit(r)
+  /** FiFoResetCnt: counter how often eBUS Fifo was cleared */
   @ext(0x1a, 0)
-  model FiFoResetCnt {
-    /** counter how often eBUS Fifo was cleared */
-    value: UCH;
-  }
+  model FiFoResetCnt is ReadonlyRegister<UCH>;
 
   enum Values_OperatingMode430 {
     off: 0,

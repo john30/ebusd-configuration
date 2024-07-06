@@ -12,10 +12,10 @@ namespace Roomtempoffset_inc {
   /** default *w */
   @write
   @base(MF, 0x5, 0x2d)
-  model w {}
+  model w_1 {}
 
   /** Room offset calculation */
-  @inherit(w)
+  @inherit(w_1)
   model RoomTempOffset {
     value: temp;
   }

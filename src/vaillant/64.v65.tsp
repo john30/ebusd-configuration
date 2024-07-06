@@ -13,9 +13,9 @@ namespace V65 {
   /** default *u */
   @passive
   @base(MF, 0x12, 0x2)
-  model u {}
+  model u_1 {}
 
-  @inherit(u)
+  @inherit(u_1)
   model State {
     @out
     setvalve: switchvalve2;

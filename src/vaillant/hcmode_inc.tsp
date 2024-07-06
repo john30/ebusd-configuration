@@ -11,10 +11,10 @@ namespace Hcmode_inc {
 
   /** default *r */
   @base(MF, 0x4)
-  model r {}
+  model r_1 {}
 
   /** date/time */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0)
   model DateTime {
     dcfstate: dcfstate;
@@ -24,7 +24,7 @@ namespace Hcmode_inc {
   }
 
   /** outside temperature */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x16)
   model Status16 {
     value: temp;
@@ -33,7 +33,7 @@ namespace Hcmode_inc {
 
   /** default *r */
   @base(MF, 0x11)
-  model r_1 {}
+  model r_2 {}
 
   /** default *uw */
   @write
@@ -67,7 +67,7 @@ namespace Hcmode_inc {
   // potential last byte: currentmode,s,UCH,0=off;1=standby;2=heat;3=water
 
   /** Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW Temperatur/Speichertemperatur/Pumpenstatus */
-  @inherit(r_1)
+  @inherit(r_2)
   @ext(1)
   model Status01 {
     temp: temp1;
@@ -79,7 +79,7 @@ namespace Hcmode_inc {
   }
 
   /** Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp */
-  @inherit(r_1)
+  @inherit(r_2)
   @ext(0x2)
   model Status02 {
     hwcmode: hwcmode;
@@ -90,7 +90,7 @@ namespace Hcmode_inc {
   }
 
   /** Status */
-  @inherit(r_1)
+  @inherit(r_2)
   @ext(0x3)
   model Status {
     temp: temp;

@@ -9,64 +9,31 @@ namespace Vaillant;
 namespace Timertariff_inc {
   // Periods high tariff
 
-  /** default *r */
-  @base(MF, 0x15)
-  model r {
-    @maxLength(1)
-    value: IGN;
-  }
-
-  /** default *w */
-  @write
-  @base(MF, 0x15)
-  model w {}
-
   /** Periods Monday */
-  @inherit(r, w)
   @ext(0, 0x4)
-  model TariffTimer_Monday {
-    value: timer;
-  }
+  model TariffTimer_Monday is Timer<timer>;
 
   /** Periods Tuesday */
-  @inherit(r, w)
   @ext(1, 0x4)
-  model TariffTimer_Tuesday {
-    value: timer;
-  }
+  model TariffTimer_Tuesday is Timer<timer>;
 
   /** Periods Wednesday */
-  @inherit(r, w)
   @ext(0x2, 0x4)
-  model TariffTimer_Wednesday {
-    value: timer;
-  }
+  model TariffTimer_Wednesday is Timer<timer>;
 
   /** Periods Thursday */
-  @inherit(r, w)
   @ext(0x3, 0x4)
-  model TariffTimer_Thursday {
-    value: timer;
-  }
+  model TariffTimer_Thursday is Timer<timer>;
 
   /** Periods Friday */
-  @inherit(r, w)
   @ext(0x4, 0x4)
-  model TariffTimer_Friday {
-    value: timer;
-  }
+  model TariffTimer_Friday is Timer<timer>;
 
   /** Periods Saturday */
-  @inherit(r, w)
   @ext(0x5, 0x4)
-  model TariffTimer_Saturday {
-    value: timer;
-  }
+  model TariffTimer_Saturday is Timer<timer>;
 
   /** Periods Sunday */
-  @inherit(r, w)
   @ext(0x6, 0x4)
-  model TariffTimer_Sunday {
-    value: timer;
-  }
+  model TariffTimer_Sunday is Timer<timer>;
 }

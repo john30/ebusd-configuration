@@ -14,86 +14,39 @@ namespace Vaillant;
 // @zz(0x15)
 namespace _392 {
   // ,39200,VRT 392,39200 220
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### general #####
 
-  /** DisplayedRoomTemp */
-  @inherit(r)
+  /** DisplayedRoomTemp: displayed room temperature */
   @ext(0x80, 0)
-  model DisplayedRoomTemp {
-    /** displayed room temperature */
-    value: temp;
-  }
+  model DisplayedRoomTemp is ReadonlyRegister<temp>;
 
-  /** RaumtemperaturIst */
-  @inherit(r)
+  /** RaumtemperaturIst: raw value current room temperature and sensorstate (without any correction) */
   @ext(0, 0)
-  model RoomTemp {
-    /** raw value current room temperature and sensorstate (without any correction) */
-    value: tempsensor;
-  }
+  model RoomTemp is ReadonlyRegister<tempsensor>;
 
-  /** OutsideTempSensor */
-  @inherit(r)
+  /** OutsideTempSensor: current outdoor temperature and sensorstate */
   @ext(0x62, 0)
-  model OutsideTemp {
-    /** current outdoor temperature and sensorstate */
-    value: tempsensor;
-  }
+  model OutsideTemp is ReadonlyRegister<tempsensor>;
 
-  /** Actual Weekday */
-  @inherit(r, w)
+  /** ActualWeekday: current day of week */
   @ext(0x5f, 0)
-  model ActualWeekday {
-    /** current day of week */
-    value: bday;
-  }
+  model ActualWeekday is Register<bday>;
 
-  /** time */
-  @inherit(r, w)
+  /** current time */
   @ext(0x60, 0)
-  model Time {
-    /** current time */
-    value: time;
-  }
+  model Time is Register<time>;
 
-  /** date */
-  @inherit(r, w)
+  /** current date */
   @ext(0x61, 0)
-  model Date {
-    /** current date */
-    value: date;
-  }
+  model Date is Register<date>;
 
-  /** StatusDcf */
-  @inherit(r)
+  /** StatusDcf: status of the DCF signal (0x00 = no DCF-Signal detected / no RTC value; 0x01 = DCF-signal detected; 0x02 = DCF-signal is being interpreted; 0x03 = DCF-data valid; 0x04 = RTC-data is valid) */
   @ext(0x2, 0)
-  model StatusDcf {
-    /** status of the DCF signal (0x00 = no DCF-Signal detected / no RTC value; 0x01 = DCF-signal detected; 0x02 = DCF-signal is being interpreted; 0x03 = DCF-data valid; 0x04 = RTC-data is valid) */
-    value: dcfstate;
-  }
+  model StatusDcf is ReadonlyRegister<dcfstate>;
 
-  /** Holiday function active */
-  @inherit(r)
+  /** Holiday function active: holidays active */
   @ext(0xb, 0)
-  model IsInHoliday {
-    /** holidays active */
-    value: yesno;
-  }
+  model IsInHoliday is ReadonlyRegister<yesno>;
 
   /** HC1_OPMode */
   @inherit(r, w)
@@ -104,37 +57,21 @@ namespace _392 {
     value: UCH;
   }
 
-  /** HC1_NightSetTemp */
-  @inherit(r, w)
+  /** HC1_NightSetTemp: lowering temperature setpoint of the heating circuit */
   @ext(0x30, 0)
-  model Hc1NightTemp {
-    /** lowering temperature setpoint of the heating circuit */
-    value: temp1;
-  }
+  model Hc1NightTemp is Register<temp1>;
 
-  /** HC1_ManualOPRoomSetpoint */
-  @inherit(r, w)
+  /** HC1_ManualOPRoomSetpoint: room setpoint in operation mode manual of the heating circuit */
   @ext(0x32, 0)
-  model Hc1ManualOPRoomTempDesired {
-    /** room setpoint in operation mode manual of the heating circuit */
-    value: temp1;
-  }
+  model Hc1ManualOPRoomTempDesired is Register<temp1>;
 
-  /** HC1_QuickVetoTemp */
-  @inherit(r)
+  /** HC1_QuickVetoTemp: manual override setpoint of the heating circuit */
   @ext(0x3c, 0)
-  model Hc1QuickVetoTemp {
-    /** manual override setpoint of the heating circuit */
-    value: temp1;
-  }
+  model Hc1QuickVetoTemp is ReadonlyRegister<temp1>;
 
-  /** HC1_QuickVetoActive */
-  @inherit(r)
+  /** HC1_QuickVetoActive: manual override of the heating circuit enabled */
   @ext(0x3d, 0)
-  model Hc1QuickVetoActive {
-    /** manual override of the heating circuit enabled */
-    value: yesno;
-  }
+  model Hc1QuickVetoActive is ReadonlyRegister<yesno>;
 
   /** Circuits_Name_HC */
   @inherit(r, w)
@@ -154,29 +91,17 @@ namespace _392 {
     value: STR;
   }
 
-  /** HolidayRoomSetTemp */
-  @inherit(r, w)
+  /** HolidayRoomSetTemp: 4.5=frostprotect, room setpoint during holidays */
   @ext(0x40, 0)
-  model HolidayRoomTemp {
-    /** 4.5=frostprotect, room setpoint during holidays */
-    value: D1C;
-  }
+  model HolidayRoomTemp is Register<D1C>;
 
-  /** HolidayStartPeriod */
-  @inherit(r, w)
+  /** HolidayStartPeriod: start date of holidays */
   @ext(0x11, 0)
-  model HolidayStartPeriod {
-    /** start date of holidays */
-    value: date;
-  }
+  model HolidayStartPeriod is Register<date>;
 
-  /** HolidayEndPeriod */
-  @inherit(r, w)
+  /** HolidayEndPeriod: end date of holidays */
   @ext(0x12, 0)
-  model HolidayEndPeriod {
-    /** end date of holidays */
-    value: date;
-  }
+  model HolidayEndPeriod is Register<date>;
 
   /** DHW_OPMode */
   @inherit(r, w)
@@ -187,62 +112,34 @@ namespace _392 {
     value: UCH;
   }
 
-  /** DHW_DesiredTemp */
-  @inherit(r, w)
+  /** DHW_DesiredTemp: setpoint of domestic hot water circuit */
   @ext(0x44, 0)
-  model HwcTempDesired {
-    /** setpoint of domestic hot water circuit */
-    value: temp1;
-  }
+  model HwcTempDesired is Register<temp1>;
 
-  /** DHW_QuickVetoTemp */
-  @inherit(r)
+  /** DHW_QuickVetoTemp: manual override setpoint for the domestic hot water circuit */
   @ext(0x45, 0)
-  model HwcQuickVetoTemp {
-    /** manual override setpoint for the domestic hot water circuit */
-    value: temp1;
-  }
+  model HwcQuickVetoTemp is ReadonlyRegister<temp1>;
 
-  /** DHW_QuickVetoActive */
-  @inherit(r)
+  /** DHW_QuickVetoActive: manual override of the domestic hot water circuit enabled */
   @ext(0x43, 0)
-  model HwcQuickVetoActive {
-    /** manual override of the domestic hot water circuit enabled */
-    value: yesno;
-  }
+  model HwcQuickVetoActive is ReadonlyRegister<yesno>;
 
-  /** DHW_ManualOPSetpoint */
-  @inherit(r, w)
+  /** DHW_ManualOPSetpoint: setpoint of domestic hot water circuit in manual operation mode */
   @ext(0x4c, 0)
-  model HwcManualOPTempDesired {
-    /** setpoint of domestic hot water circuit in manual operation mode */
-    value: temp1;
-  }
+  model HwcManualOPTempDesired is Register<temp1>;
 
-  /** SummerWinterTimeAdjust */
-  @inherit(r, w)
+  /** SummerWinterTimeAdjust: enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON) */
   @ext(0x53, 0)
-  model SummerWinterTimeAdjust {
-    /** enable automatic switching over to daylight saving's time (when a DCF receiver is connected to the BMU the value is set fix to ON) */
-    value: onoff;
-  }
+  model SummerWinterTimeAdjust is Register<onoff>;
 
-  /** DisplayedHK1RoomSetpoint */
-  @inherit(r)
+  /** DisplayedHK1RoomSetpoint: 0= >5°C, currently displayed room temperature setpoint */
   @ext(0x96, 0)
-  model DisplayedHc1RoomTempDesired {
-    /** 0= >5°C, currently displayed room temperature setpoint */
-    value: temp1;
-  }
+  model DisplayedHc1RoomTempDesired is ReadonlyRegister<temp1>;
   // ##### extra #####
 
-  /** RoomTempCorrection */
-  @inherit(r, wi)
+  /** RoomTempCorrection: room temperature correction */
   @ext(0x57, 0)
-  model RoomTempCorrection {
-    /** room temperature correction */
-    value: calibrations;
-  }
+  model RoomTempCorrection is InstallRegister<calibrations>;
 
   /** HC1_2stepanalogCtrl */
   @inherit(r, wi)
@@ -253,21 +150,13 @@ namespace _392 {
     value: UCH;
   }
 
-  /** HC1_LineMatchingAdaption */
-  @inherit(r, wi)
+  /** HC1_LineMatchingAdaption: adjustment of closed loop control */
   @ext(0x37, 0)
-  model Hc1LineMatchingAdaption {
-    /** adjustment of closed loop control */
-    value: SCH;
-  }
+  model Hc1LineMatchingAdaption is InstallRegister<SCH>;
 
-  /** HC1ActualFlowSetPoint */
-  @inherit(r)
+  /** HC1ActualFlowSetPoint: calculated flow temperature setpoint of the heating circuit */
   @ext(0x3e, 0)
-  model Hc1ActualFlowTempDesired {
-    /** calculated flow temperature setpoint of the heating circuit */
-    value: temp1;
-  }
+  model Hc1ActualFlowTempDesired is ReadonlyRegister<temp1>;
 
   /** DHW_LegioStartDay */
   @inherit(r, wi)
@@ -278,39 +167,21 @@ namespace _392 {
     value: UCH;
   }
 
-  /** DHW_LegioStartTime */
-  @inherit(r, wi)
+  /** DHW_LegioStartTime: time on which legionella protection is started */
   @ext(0x4a, 0)
-  model HwcLegioStartTime {
-    /** time on which legionella protection is started */
-    value: time;
-  }
+  model HwcLegioStartTime is InstallRegister<time>;
 
-  /** DHW_CircuitActive */
-  @inherit(r, wi)
+  /** DHW_CircuitActive: domestic hot water circuit is enabled */
   @ext(0x4b, 0)
-  model HwcCircuitActive {
-    /** domestic hot water circuit is enabled */
-    value: yesno;
-  }
+  model HwcCircuitActive is InstallRegister<yesno>;
 
-  /** aucPhoneNumber_1 */
-  @inherit(r, wi)
+  /** aucPhoneNumber_1: first part of the installer's telephone number */
   @ext(0x54, 0)
-  model PhoneNumber1 {
-    /** first part of the installer's telephone number */
-    @maxLength(9)
-    value: STR;
-  }
+  model PhoneNumber1 is InstallRegister<phone>;
 
-  /** aucPhoneNumber_2 */
-  @inherit(r, wi)
+  /** aucPhoneNumber_2: second part of the installer's telephone number */
   @ext(0x54, 0x8)
-  model PhoneNumber2 {
-    /** second part of the installer's telephone number */
-    @maxLength(9)
-    value: STR;
-  }
+  model PhoneNumber2 is InstallRegister<phone>;
 
   /** KeyCodeforConfigMenue */
   @inherit(r, wi)
@@ -321,158 +192,82 @@ namespace _392 {
     value: HEX;
   }
 
-  /** MaintenanceDate */
-  @inherit(r, wi)
+  /** MaintenanceDate: date of the next maintenance service */
   @ext(0x59, 0)
-  model MaintenanceDate {
-    /** date of the next maintenance service */
-    value: date;
-  }
+  model MaintenanceDate is InstallRegister<date>;
 
-  /** LcdContrastValue */
-  @inherit(r, wi)
+  /** LcdContrastValue: setting of the LCD contrast */
   @ext(0x5a, 0)
-  model LcdContrastValue {
-    /** setting of the LCD contrast */
-    value: UCH;
-  }
+  model LcdContrastValue is InstallRegister<UCH>;
 
-  /** CircuPumpRunning */
-  @inherit(r)
+  /** CircuPumpRunning: circulation pump's state */
   @ext(0x81, 0)
-  model CirPump {
-    /** circulation pump's state */
-    value: onoff;
-  }
+  model CirPump is ReadonlyRegister<onoff>;
 
-  /** DHW_ActualDesired_Setpoint */
-  @inherit(r)
+  /** DHW_ActualDesired_Setpoint: current domestic hot water setpoint */
   @ext(0x86, 0)
-  model HwcActualTempDesired {
-    /** current domestic hot water setpoint */
-    value: temp1;
-  }
+  model HwcActualTempDesired is ReadonlyRegister<temp1>;
   // ##### developer's info #####
 
-  /** StarteEepromAktualisierung */
-  @inherit(r)
+  /** StarteEepromAktualisierung: update of the EEPROM is to be started */
   @ext(0xe, 0)
-  model StartEepromUpdate {
-    /** update of the EEPROM is to be started */
-    value: onoff;
-  }
+  model StartEepromUpdate is ReadonlyRegister<onoff>;
 
-  /** EepromAktualisierungAktiv */
-  @inherit(r)
+  /** EepromAktualisierungAktiv: update of the EEPROM has been started */
   @ext(0xf, 0)
-  model EepromUpdateActive {
-    /** update of the EEPROM has been started */
-    value: onoff;
-  }
+  model EepromUpdateActive is ReadonlyRegister<onoff>;
 
-  /** RaumTempOffsetEigenErwaerm */
-  @inherit(r)
+  /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(0x15, 0)
-  model RoomTempOffsetSelfWarming {
-    /** room temperature intrinsic heating offset */
-    value: temp;
-  }
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
 
-  /** CountryVariant */
-  @inherit(r)
+  /** CountryVariant: country variant (0 = west, 1 = east) */
   @ext(0x17, 0)
-  model CountryVariant {
-    /** country variant (0 = west, 1 = east) */
-    value: UCH;
-  }
+  model CountryVariant is ReadonlyRegister<UCH>;
 
-  /** ActualRoomTempSetpointHC1 */
-  @inherit(r)
+  /** ActualRoomTempSetpointHC1: current room setpoint considering all basic conditions passed to the control algorithms */
   @ext(0x63, 0)
-  model ActualRoomTempDesiredHc1 {
-    /** current room setpoint considering all basic conditions passed to the control algorithms */
-    value: temp;
-  }
+  model ActualRoomTempDesiredHc1 is ReadonlyRegister<temp>;
 
-  /** HRUDetected */
-  @inherit(r)
+  /** HRUDetected: indicates that an airvent module / a heat recovery unit has been detected */
   @ext(0x6e, 0)
-  model HRUDetected {
-    /** indicates that an airvent module / a heat recovery unit has been detected */
-    value: yesno;
-  }
+  model HRUDetected is ReadonlyRegister<yesno>;
 
-  /** ACTOstorDetected */
-  @inherit(r)
+  /** ACTOstorDetected: indicates that an ACTOstor has been detected */
   @ext(0x6f, 0)
-  model ACTOstorDetected {
-    /** indicates that an ACTOstor has been detected */
-    value: yesno;
-  }
+  model ACTOstorDetected is ReadonlyRegister<yesno>;
 
-  /** BMUB51101_ErrorStatus */
-  @inherit(r)
+  /** BMUB51101_ErrorStatus: error state of BMU received via eBUS service B51101 */
   @ext(0x70, 0)
-  model BMUB51101ErrorStatus {
-    /** error state of BMU received via eBUS service B51101 */
-    value: UCH;
-  }
+  model BMUB51101ErrorStatus is ReadonlyRegister<UCH>;
 
-  /** BMUB51101_TankTemp */
-  @inherit(r)
+  /** BMUB51101_TankTemp: hot water storage temperature received via eBUS service B5 11 01 */
   @ext(0x71, 0)
-  model BMUB51101StorageTemp {
-    /** hot water storage temperature received via eBUS service B5 11 01 */
-    value: temp1;
-  }
+  model BMUB51101StorageTemp is ReadonlyRegister<temp1>;
 
-  /** LegioProtectActive */
-  @inherit(r)
+  /** LegioProtectActive: legionella protection is active */
   @ext(0x73, 0)
-  model LegioProtectActive {
-    /** legionella protection is active */
-    value: yesno;
-  }
+  model LegioProtectActive is ReadonlyRegister<yesno>;
 
-  /** BMUB51101_DHWState */
-  @inherit(r)
+  /** BMUB51101_DHWState: flame is on because of either tapping or tank loading */
   @ext(0x75, 0)
-  model BMUB51101HwcState {
-    /** flame is on because of either tapping or tank loading */
-    value: onoff;
-  }
+  model BMUB51101HwcState is ReadonlyRegister<onoff>;
 
-  /** EnermanState */
-  @inherit(r)
+  /** EnermanState: current energy-manager-state (Off = 0, Heating = 1, DHW = 2, DHW pump lag = 3) */
   @ext(0x7a, 0)
-  model EnermanState {
-    /** current energy-manager-state (Off = 0, Heating = 1, DHW = 2, DHW pump lag = 3) */
-    value: UCH;
-  }
+  model EnermanState is ReadonlyRegister<UCH>;
 
-  /** CP_LPLast24started */
-  @inherit(r)
+  /** CP_LPLast24started: circulation respectively loading pump has been started during the last 24h */
   @ext(0x83, 0)
-  model CPLPLast24started {
-    /** circulation respectively loading pump has been started during the last 24h */
-    value: yesno;
-  }
+  model CPLPLast24started is ReadonlyRegister<yesno>;
 
-  /** B51000FlowSetMonitor */
-  @inherit(r)
+  /** B51000FlowSetMonitor: flow temperature setpoint sent via B5 10 00 to the BMU */
   @ext(0x8d, 0)
-  model B51000FlowSetMonitor {
-    /** flow temperature setpoint sent via B5 10 00 to the BMU */
-    value: temp1;
-  }
+  model B51000FlowSetMonitor is ReadonlyRegister<temp1>;
 
-  /** ChimneySweepModeActive */
-  @inherit(r)
+  /** ChimneySweepModeActive: chimney sweep mode has been enabled by the BMU */
   @ext(0x90, 0)
-  model ChimneySweepModeActive {
-    /** chimney sweep mode has been enabled by the BMU */
-    value: yesno;
-  }
+  model ChimneySweepModeActive is ReadonlyRegister<yesno>;
 
   enum Values_Hc1OPMode {
     off: 0,
@@ -504,21 +299,13 @@ namespace _392 {
   }
   @condition(Id.Id.sw, ">=125")
   namespace Sw_ge125 {
-    /** DisplayedDHWTankTemperature */
-    @inherit(r)
+    /** DisplayedDHWTankTemperature: display of the storage's temperature in C4 (also in case of an SP1 error) */
     @ext(0x9e, 0)
-    model DisplayedHwcStorageTemp {
-      /** display of the storage's temperature in C4 (also in case of an SP1 error) */
-      value: temp1;
-    }
+    model DisplayedHwcStorageTemp is ReadonlyRegister<temp1>;
 
-    /** DHWLoadingInBMUActive */
-    @inherit(r)
+    /** DHWLoadingInBMUActive: indicates that BMU is in DHW preparation */
     @ext(0x9d, 0)
-    model HwcLoadingInBMUActive {
-      /** indicates that BMU is in DHW preparation */
-      value: yesno;
-    }
+    model HwcLoadingInBMUActive is ReadonlyRegister<yesno>;
 
     /** MonitorEEpromInkonsiNumber */
     @inherit(r)
@@ -531,47 +318,27 @@ namespace _392 {
   }
   @condition(Id.Id.sw, "<=209")
   namespace Sw_le209 {
-    /** B51000CHDisableMonitor */
-    @inherit(r)
+    /** B51000CHDisableMonitor: copy of the M12 byte of the B5 10 00 service containing the disable bits */
     @ext(0x8e, 0)
-    model B51000HcDisableMonitor {
-      /** copy of the M12 byte of the B5 10 00 service containing the disable bits */
-      value: UCH;
-    }
+    model B51000HcDisableMonitor is ReadonlyRegister<UCH>;
   }
   @condition(Id.Id.sw, ">=210")
   namespace Sw_ge210 {
-    /** B51000M7OpModeMonitor */
-    @inherit(r)
+    /** B51000M7OpModeMonitor: operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW) */
     @ext(0x65, 0)
-    model B51000M7OpModeMonitor {
-      /** operation mode sent via B5 10 00 (0 = auto, 1 = forced off, 2 = forced CH, 3 = forced DHW) */
-      value: UCH;
-    }
+    model B51000M7OpModeMonitor is ReadonlyRegister<UCH>;
 
-    /** B51000M10DHWFlowSetMon */
-    @inherit(r)
+    /** B51000M10DHWFlowSetMon: flow setpoint DHW sent via B5 10 00 */
     @ext(0x66, 0)
-    model B51000M10HwcFlowSetMon {
-      /** flow setpoint DHW sent via B5 10 00 */
-      value: UCH;
-    }
+    model B51000M10HwcFlowSetMon is ReadonlyRegister<UCH>;
 
-    /** B51000M12DisableBitsMon */
-    @inherit(r)
+    /** B51000M12DisableBitsMon: bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7) */
     @ext(0x67, 0)
-    model B51000M12DisableBitsMon {
-      /** bits 0-7: disable CH/disable DHW tapping/disable DHW tank loading/not used/clear burner blocking DHW/dis, disable bits sent via B5 10 00 (leftmost bit 0, rightmost bit 7) */
-      value: UCH;
-    }
+    model B51000M12DisableBitsMon is ReadonlyRegister<UCH>;
 
-    /** B51000M14Monitor */
-    @inherit(r)
+    /** B51000M14Monitor: bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump) */
     @ext(0x68, 0)
-    model B51000M14Monitor {
-      /** bits 0-7: remote control CH pump/release backup heater/release cooling/not used/left stop position DHW o, bits sent in M14 of B5 10 00 (leftmost bit 0, rightmost bit 7; relevant is bit 0: remote control of CH pump) */
-      value: UCH;
-    }
+    model B51000M14Monitor is ReadonlyRegister<UCH>;
   }
   @condition(Id.Id.sw, ">=126")
   namespace Sw_ge126 {
@@ -584,13 +351,9 @@ namespace _392 {
       value: STR;
     }
 
-    /** AssertLineNumber */
-    @inherit(r)
+    /** AssertLineNumber: assert fail occured in this line */
     @ext(0xa1, 0)
-    model AssertLineNumber {
-      /** assert fail occured in this line */
-      value: UIN;
-    }
+    model AssertLineNumber is ReadonlyRegister<UIN>;
   }
 
   /** included parts */

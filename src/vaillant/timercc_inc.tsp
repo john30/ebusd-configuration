@@ -9,64 +9,31 @@ namespace Vaillant;
 namespace Timercc_inc {
   // CC: Periods
 
-  /** default *r */
-  @base(MF, 0x15)
-  model r {
-    @maxLength(1)
-    value: IGN;
-  }
-
-  /** default *w */
-  @write
-  @base(MF, 0x15)
-  model w {}
-
   /** Periods Monday */
-  @inherit(r, w)
   @ext(0, 0x2)
-  model CcTimer_Monday {
-    value: timer;
-  }
+  model CcTimer_Monday is Timer<timer>;
 
   /** Periods Tuesday */
-  @inherit(r, w)
   @ext(1, 0x2)
-  model CcTimer_Tuesday {
-    value: timer;
-  }
+  model CcTimer_Tuesday is Timer<timer>;
 
   /** Periods Wednesday */
-  @inherit(r, w)
   @ext(0x2, 0x2)
-  model CcTimer_Wednesday {
-    value: timer;
-  }
+  model CcTimer_Wednesday is Timer<timer>;
 
   /** Periods Thursday */
-  @inherit(r, w)
   @ext(0x3, 0x2)
-  model CcTimer_Thursday {
-    value: timer;
-  }
+  model CcTimer_Thursday is Timer<timer>;
 
   /** Periods Friday */
-  @inherit(r, w)
   @ext(0x4, 0x2)
-  model CcTimer_Friday {
-    value: timer;
-  }
+  model CcTimer_Friday is Timer<timer>;
 
   /** Periods Saturday */
-  @inherit(r, w)
   @ext(0x5, 0x2)
-  model CcTimer_Saturday {
-    value: timer;
-  }
+  model CcTimer_Saturday is Timer<timer>;
 
   /** Periods Sunday */
-  @inherit(r, w)
   @ext(0x6, 0x2)
-  model CcTimer_Sunday {
-    value: timer;
-  }
+  model CcTimer_Sunday is Timer<timer>;
 }

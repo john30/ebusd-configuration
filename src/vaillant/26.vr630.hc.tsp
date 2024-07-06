@@ -13,214 +13,118 @@ namespace Vaillant;
 // @zz(0x26)
 namespace Vr630.Hc {
   // ,VR630,calorMATIC 630/3,0020092435 163 Burner
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### Statistics #####
 
   /** StatPowerOn */
-  @inherit(r)
   @ext(0xcc, 0)
-  model StatPowerOn {
-    value: UIN;
-  }
+  model StatPowerOn is ReadonlyRegister<UIN>;
 
   /** StatOperatingHours */
-  @inherit(r)
   @ext(0xcd, 0)
-  model StatOperatingHours {
-    value: UIN;
-  }
+  model StatOperatingHours is ReadonlyRegister<UIN>;
 
   /** StatMonthOfInstallation */
-  @inherit(r)
   @ext(0xce, 0)
-  model StatMonthOfInstallation {
-    value: UCH;
-  }
+  model StatMonthOfInstallation is ReadonlyRegister<UCH>;
 
   /** StatYearOfInstallation */
-  @inherit(r)
   @ext(0xcf, 0)
-  model StatYearOfInstallation {
-    value: UCH;
-  }
+  model StatYearOfInstallation is ReadonlyRegister<UCH>;
 
   /** Stat15MinBusTimeout */
-  @inherit(r)
   @ext(0xd0, 0)
-  model Stat15MinBusTimeout {
-    value: UCH;
-  }
+  model Stat15MinBusTimeout is ReadonlyRegister<UCH>;
 
   /** StatRTOSErrorcode */
-  @inherit(r)
   @ext(0xd1, 0)
-  model StatRTOSErrorcode {
-    value: UIN;
-  }
+  model StatRTOSErrorcode is ReadonlyRegister<UIN>;
 
   /** StatRestarts */
-  @inherit(r)
   @ext(0xd2, 0)
-  model StatRestarts {
-    value: UIN;
-  }
+  model StatRestarts is ReadonlyRegister<UIN>;
 
   /** StatRTOSErrorCounter */
-  @inherit(r)
   @ext(0xd3, 0)
-  model StatRTOSErrorCounter {
-    value: UIN;
-  }
+  model StatRTOSErrorCounter is ReadonlyRegister<UIN>;
   // ##### BK1: Data #####
 
   /** Vorlauftemp. IST */
-  @inherit(r)
   @ext(0x4, 0)
-  model SumFlowSensor {
-    value: tempsensor;
-  }
+  model SumFlowSensor is ReadonlyRegister<tempsensor>;
 
   /** Außentemperatur */
-  @inherit(r)
   @ext(0x6, 0)
-  model OutsideTemp {
-    value: tempsensor;
-  }
+  model OutsideTemp is ReadonlyRegister<tempsensor>;
 
   /** Vorlauftemp. SOLL */
-  @inherit(r)
   @ext(0x46, 0)
-  model FlowTempDesired {
-    value: temp1;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp1>;
 
   /** TeleSwitch */
-  @inherit(r)
   @ext(0xa, 0)
-  model TeleSwitch {
-    value: onoff;
-  }
+  model TeleSwitch is ReadonlyRegister<onoff>;
 
   /** Ferienmodus aktiv */
-  @inherit(r)
   @ext(0x27, 0)
-  model IsInHoliday {
-    value: UCH;
-  }
+  model IsInHoliday is ReadonlyRegister<UCH>;
 
   /** Abschaltung wegen Speicherladung */
-  @inherit(r)
   @ext(0x47, 0)
-  model IsInStorageFilling {
-    value: yesno;
-  }
+  model IsInStorageFilling is ReadonlyRegister<yesno>;
 
   /** Sparfunktion */
-  @inherit(r)
   @ext(0x4b, 0)
-  model CleaningLady {
-    value: UCH;
-  }
+  model CleaningLady is ReadonlyRegister<UCH>;
 
   /** Partymodus aktiv */
-  @inherit(r)
   @ext(0x4e, 0)
-  model IsInParty {
-    value: UCH;
-  }
+  model IsInParty is ReadonlyRegister<UCH>;
 
   /** Pump Status */
-  @inherit(r)
   @ext(0x8e, 0)
-  model Hc1PumpPort {
-    value: onoff;
-  }
+  model Hc1PumpPort is ReadonlyRegister<onoff>;
   // ##### BK1: Configuration #####
 
   /** AT-Abschaltgrenze */
-  @inherit(r, w)
   @ext(0x36, 0)
-  model OtShutdownLimit {
-    value: desiredtemp;
-  }
+  model OtShutdownLimit is Register<desiredtemp>;
 
   /** Minimaltemperatur */
-  @inherit(r, w)
   @ext(0x30, 0)
-  model FlowTempMin {
-    value: temp0;
-  }
+  model FlowTempMin is Register<temp0>;
 
   /** Absenktemperatur */
-  @inherit(r, w)
   @ext(0x33, 0)
-  model TempDesiredLow {
-    value: temp1;
-  }
+  model TempDesiredLow is Register<temp1>;
 
   /** Kreis deaktivieren */
-  @inherit(r, wi)
   @ext(0xaa, 0)
-  model BoilerCircuitDisabled {
-    value: yesno;
-  }
+  model BoilerCircuitDisabled is InstallRegister<yesno>;
 
   /** Operation mode */
-  @inherit(r, w)
   @ext(0x2b, 0)
-  model OperatingMode {
-    value: mcmode;
-  }
+  model OperatingMode is Register<mcmode>;
 
   /** Maximaltemperatur */
-  @inherit(r, w)
   @ext(0x31, 0)
-  model FlowTempMax {
-    value: temp0;
-  }
+  model FlowTempMax is Register<temp0>;
 
   /** Solltemperatur */
-  @inherit(r, w)
   @ext(0x32, 0)
-  model TempDesired {
-    value: temp1;
-  }
+  model TempDesired is Register<temp1>;
 
   /** Heating curve */
-  @inherit(r, w)
   @ext(0x35, 0)
-  model HeatingCurve {
-    value: curve;
-  }
+  model HeatingCurve is Register<curve>;
 
   /** TeleSwitch */
-  @inherit(r, w)
   @ext(0x3f, 0)
-  model TeleswitchOperatingMode {
-    value: mcmode;
-  }
+  model TeleswitchOperatingMode is Register<mcmode>;
   @condition(Id.Id.sw, "<=400")
   namespace Sw_le400 {
     /** Max. Voraufheizung */
-    @inherit(r, w)
     @ext(0x38, 0)
-    model HcMaxPreHeating {
-      value: hours;
-    }
+    model HcMaxPreHeating is Register<hours>;
   }
   @condition(Id.Id.sw, ">=401")
   namespace Sw_ge401 {

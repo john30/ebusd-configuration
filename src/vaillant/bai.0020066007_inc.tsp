@@ -9,44 +9,15 @@ namespace Vaillant;
 
 namespace Bai._0020066007_inc {
   // ,BAI00,zeoTHERM (BMU),0020066007 187
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
   // ##### dia level 1 #####
 
-  /** d.05 T3_Setpoint */
-  @inherit(r)
+  /** d.05 T3_Setpoint: Sollwert PWT-Ausgang */
   @ext(0x39, 0)
-  model T3TempDesired {
-    /** Sollwert PWT-Ausgang */
-    value: temp;
-  }
+  model T3TempDesired is ReadonlyRegister<temp>;
 
-  /** d.08 Thermostatkontakt_an_Kl_3_4 */
-  @inherit(r)
+  /** d.08 Thermostatkontakt_an_Kl_3_4: External controls heat demand (Clamp 3-4) */
   @ext(0x2a, 0)
-  model ThermostatkontaktAnKl34 {
-    /** External controls heat demand (Clamp 3-4) */
-    value: onoff;
-  }
+  model ThermostatkontaktAnKl34 is ReadonlyRegister<onoff>;
 
   /** d.30 Gasvalve */
   @inherit(r)
@@ -75,29 +46,17 @@ namespace Bai._0020066007_inc {
     value: UIN;
   }
 
-  /** d.35 Position TWV */
-  @inherit(r)
+  /** d.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
   @ext(0x54, 0)
-  model PositionValveSet {
-    /** Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
-    value: UCH;
-  }
+  model PositionValveSet is ReadonlyRegister<UCH>;
 
-  /** d.40 T3 */
-  @inherit(r)
+  /** d.40 T3: PWT-Ausgangstemperatur */
   @ext(0x18, 0)
-  model T3 {
-    /** PWT-Ausgangstemperatur */
-    value: tempsensor;
-  }
+  model T3 is ReadonlyRegister<tempsensor>;
 
-  /** d.41 T4 */
-  @inherit(r)
+  /** d.41 T4: PWT-Eingangstemperatur */
   @ext(0x98, 0)
-  model T4 {
-    /** PWT-Eingangstemperatur */
-    value: tempmirrorsensor;
-  }
+  model T4 is ReadonlyRegister<tempmirrorsensor>;
 
   /** d.44 Dig. ionisation voltage */
   @inherit(r)
@@ -126,21 +85,13 @@ namespace Bai._0020066007_inc {
     value: SIN;
   }
 
-  /** d.60 Number STL cut off */
-  @inherit(r)
+  /** d.60 Number STL cut off: Number of safety temperature limiter cut offs */
   @ext(0x20, 0)
-  model DeactivationsTemplimiter {
-    /** Number of safety temperature limiter cut offs */
-    value: UCH;
-  }
+  model DeactivationsTemplimiter is ReadonlyRegister<UCH>;
 
-  /** d.61 Number ignition device cut off */
-  @inherit(r)
+  /** d.61 Number ignition device cut off: number of lock outs (unsuccessfull ignitons in the last attempt, flame failure) */
   @ext(0x1f, 0)
-  model DeactivationsIFC {
-    /** number of lock outs (unsuccessfull ignitons in the last attempt, flame failure) */
-    value: UCH;
-  }
+  model DeactivationsIFC is ReadonlyRegister<UCH>;
 
   /** d.64 average ignition time */
   @inherit(r)
@@ -162,29 +113,17 @@ namespace Bai._0020066007_inc {
     value: UCH;
   }
 
-  /** d.68 ignition attempts 1 */
-  @inherit(r)
+  /** d.68 ignition attempts 1: unsuccessfull ignitions in the first attempt */
   @ext(0x6e, 0)
-  model CounterStartattempts1 {
-    /** unsuccessfull ignitions in the first attempt */
-    value: temp0;
-  }
+  model CounterStartattempts1 is ReadonlyRegister<temp0>;
 
-  /** d.69 ignition attempts 2 */
-  @inherit(r)
+  /** d.69 ignition attempts 2: unsuccessfull ignitions in the second attempt */
   @ext(0x6f, 0)
-  model CounterStartattempts2 {
-    /** unsuccessfull ignitions in the second attempt */
-    value: temp0;
-  }
+  model CounterStartattempts2 is ReadonlyRegister<temp0>;
 
-  /** d.93 Device specific number */
-  @inherit(r, ws)
+  /** d.93 Device specific number: DSN aplliance variant setting */
   @ext(0xb5, 0)
-  model DSNOffset {
-    /** DSN aplliance variant setting */
-    value: UCH;
-  }
+  model DSNOffset is ServiceRegister<UCH>;
   // ##### expert level #####
 
   /** flame */
@@ -196,13 +135,9 @@ namespace Bai._0020066007_inc {
     value: UCH;
   }
 
-  /** Changes_DSN_DK */
-  @inherit(r)
+  /** Changes_DSN_DK: Numbers adjusting (storing) the DSN */
   @ext(0xc, 0)
-  model ChangesDSN {
-    /** Numbers adjusting (storing) the DSN */
-    value: UCH;
-  }
+  model ChangesDSN is ReadonlyRegister<UCH>;
 
   /** SD_Gasvalve_uC_DK */
   @inherit(r)
@@ -222,69 +157,37 @@ namespace Bai._0020066007_inc {
     value: UCH;
   }
 
-  /** SD_Flame_Sensing_ASIC_DK */
-  @inherit(r)
+  /** SD_Flame_Sensing_ASIC_DK: ioni/adc value from the flame control circuit */
   @ext(0x2f, 0)
-  model FlameSensingASIC {
-    /** ioni/adc value from the flame control circuit */
-    value: UIN;
-  }
+  model FlameSensingASIC is ReadonlyRegister<UIN>;
 
-  /** BoilerType_DK */
-  @inherit(r)
+  /** BoilerType_DK: Boiler typ of the bmu */
   @ext(0x5e, 0)
-  model BoilerType {
-    /** Boiler typ of the bmu */
-    value: UCH;
-  }
+  model BoilerType is ReadonlyRegister<UCH>;
 
-  /** ReturnTemperature_DK */
-  @inherit(r)
+  /** ReturnTemperature_DK: external return sensor */
   @ext(0x6b, 0)
-  model ReturnTemp {
-    /** external return sensor */
-    value: tempsensor;
-  }
+  model ReturnTemp is ReadonlyRegister<tempsensor>;
 
   /** Floor heating contact */
-  @inherit(r)
   @ext(0x70, 0)
-  model FloorHeatingContact {
-    /** Floor heating contact */
-    value: onoff;
-  }
+  model FloorHeatingContact is ReadonlyRegister<onoff>;
 
-  /** EbusVoltage_DK */
-  @inherit(r)
+  /** EbusVoltage_DK: feedback signal of the eBus source */
   @ext(0x7f, 0)
-  model EbusVoltage {
-    /** feedback signal of the eBus source */
-    value: onoff;
-  }
+  model EbusVoltage is ReadonlyRegister<onoff>;
 
-  /** FluegasvalveOpen_DK */
-  @inherit(r)
+  /** FluegasvalveOpen_DK: feedback of the flue gas valve */
   @ext(0x89, 0)
-  model FluegasvalveOpen {
-    /** feedback of the flue gas valve */
-    value: onoff;
-  }
+  model FluegasvalveOpen is ReadonlyRegister<onoff>;
 
-  /** Testbyte_DK */
-  @inherit(r)
+  /** Testbyte_DK: Testbyte (relevant for the Tester) */
   @ext(0x99, 0)
-  model Testbyte {
-    /** Testbyte (relevant for the Tester) */
-    value: UCH;
-  }
+  model Testbyte is ReadonlyRegister<UCH>;
 
-  /** DSN_DK */
-  @inherit(r)
+  /** DSN_DK: DSN: Device Specific number */
   @ext(0x9a, 0)
-  model DSN {
-    /** DSN: Device Specific number */
-    value: UIN;
-  }
+  model DSN is ReadonlyRegister<UIN>;
 
   /** TargetFan_Speed_Output_DK */
   @inherit(r)
@@ -304,21 +207,13 @@ namespace Bai._0020066007_inc {
     value: HEX;
   }
 
-  /** Statenumber_DK */
-  @inherit(r)
+  /** Statenumber_DK: status number */
   @ext(0xab, 0)
-  model Statenumber {
-    /** status number */
-    value: UCH;
-  }
+  model Statenumber is ReadonlyRegister<UCH>;
 
-  /** DSN start */
-  @inherit(r)
+  /** DSN Start adress */
   @ext(0xbc, 0)
-  model DSNStart {
-    /** DSN Start adress */
-    value: UIN;
-  }
+  model DSNStart is ReadonlyRegister<UIN>;
 
   /** Partnumber_Box */
   @inherit(r)
@@ -356,21 +251,13 @@ namespace Bai._0020066007_inc {
     value: UCH;
   }
 
-  /** InitialisationEEPROM */
-  @inherit(r)
+  /** InitialisationEEPROM: Initialisation off all EEPROM values (done in the production) */
   @ext(0xdc, 0)
-  model InitialisationEEPROM {
-    /** Initialisation off all EEPROM values (done in the production) */
-    value: yesno;
-  }
+  model InitialisationEEPROM is ReadonlyRegister<yesno>;
 
-  /** TimerInputCH_DK */
-  @inherit(r)
+  /** TimerInputCH_DK: timer input (block heatdemand) */
   @ext(0xde, 0)
-  model TimerInputHc {
-    /** timer input (block heatdemand) */
-    value: onoff;
-  }
+  model TimerInputHc is ReadonlyRegister<onoff>;
 
   /** FanMinSpeedOperation */
   @inherit(r)
@@ -400,45 +287,25 @@ namespace Bai._0020066007_inc {
   }
   // ##### maintenance data #####
 
-  /** TempDiffBlock_DK */
-  @inherit(r)
+  /** TempDiffBlock_DK: Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures */
   @ext(0x12, 0)
-  model TempDiffBlock {
-    /** Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures */
-    value: temp0;
-  }
+  model TempDiffBlock is ReadonlyRegister<temp0>;
 
-  /** TempDiffFailure_DK */
-  @inherit(r)
+  /** TempDiffFailure_DK: Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures */
   @ext(0x13, 0)
-  model TempDiffFailure {
-    /** Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures */
-    value: temp0;
-  }
+  model TempDiffFailure is ReadonlyRegister<temp0>;
 
-  /** TWV_Communt_DK */
-  @inherit(r)
+  /** TWV_Communt_DK: commutations of the three way valve */
   @ext(0x1a, 0)
-  model ValveStarts {
-    /** commutations of the three way valve */
-    value: cntstarts2;
-  }
+  model ValveStarts is ReadonlyRegister<cntstarts2>;
 
-  /** fan operation hours */
-  @inherit(r)
+  /** Fan operation hours */
   @ext(0x1b, 0)
-  model FanHours {
-    /** fan operation hours */
-    value: hoursum2;
-  }
+  model FanHours is ReadonlyRegister<hoursum2>;
 
-  /** FanCommunt_DK */
-  @inherit(r)
+  /** FanCommunt_DK: commutations of the fan */
   @ext(0x1c, 0)
-  model FanStarts {
-    /** commutations of the fan */
-    value: cntstarts2;
-  }
+  model FanStarts is ReadonlyRegister<cntstarts2>;
 
   /** min_Ignitiontime_DK */
   @inherit(r)
@@ -450,37 +317,21 @@ namespace Bai._0020066007_inc {
     value: UCH;
   }
 
-  /** T3_max */
-  @inherit(r)
+  /** T3_max: Maximaltemperatur am PWT-Ausgang */
   @ext(0x37, 0)
-  model T3Max {
-    /** Maximaltemperatur am PWT-Ausgang */
-    value: temp;
-  }
+  model T3Max is ReadonlyRegister<temp>;
 
-  /** CounterStartAttempts3_DK */
-  @inherit(r)
+  /** CounterStartAttempts3_DK: unsuccessfull ignitions in the third attempt */
   @ext(0x81, 0)
-  model CounterStartAttempts3 {
-    /** unsuccessfull ignitions in the third attempt */
-    value: temp0;
-  }
+  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
 
-  /** CounterStartAttempts4_DK */
-  @inherit(r)
+  /** CounterStartAttempts4_DK: unsuccessfull ignitions in the fourth attempt */
   @ext(0x82, 0)
-  model CounterStartAttempts4 {
-    /** unsuccessfull ignitions in the fourth attempt */
-    value: temp0;
-  }
+  model CounterStartAttempts4 is ReadonlyRegister<temp0>;
 
-  /** T4_max */
-  @inherit(r)
+  /** T4_max: Maximaltemperatur am PWT-Eingang */
   @ext(0xbe, 0)
-  model T4Max {
-    /** Maximaltemperatur am PWT-Eingang */
-    value: temp;
-  }
+  model T4Max is ReadonlyRegister<temp>;
 
   enum Values_Gasvalve {
     off: 240,

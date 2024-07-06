@@ -10,113 +10,55 @@ namespace Vaillant;
 // @zz(0x06)
 namespace Pms {
   // ,PMS00,VPM 20 S,0020071488 243
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### general #####
 
   /** Ntc1RawData */
-  @inherit(r)
   @ext(0, 0)
-  model Ntc1RawData {
-    value: UIN;
-  }
+  model Ntc1RawData is ReadonlyRegister<UIN>;
 
   /** Ntc2RawData */
-  @inherit(r)
   @ext(1, 0)
-  model Ntc2RawData {
-    value: UIN;
-  }
+  model Ntc2RawData is ReadonlyRegister<UIN>;
 
   /** Ntc3RawData */
-  @inherit(r)
   @ext(0x2, 0)
-  model Ntc3RawData {
-    value: UIN;
-  }
+  model Ntc3RawData is ReadonlyRegister<UIN>;
 
   /** Ntc4RawData */
-  @inherit(r)
   @ext(0x3, 0)
-  model Ntc4RawData {
-    value: UIN;
-  }
+  model Ntc4RawData is ReadonlyRegister<UIN>;
 
-  /** Ntc1Sensor */
-  @inherit(r)
+  /** Ntc1Sensor: Temperature in solar flow (from solar collector) */
   @ext(0x5, 0)
-  model Ntc1Sensor {
-    /** Temperature in solar flow (from solar collector) */
-    value: tempsensor;
-  }
+  model Ntc1Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Ntc2Sensor */
-  @inherit(r)
+  /** Ntc2Sensor: Temperature in solar back flow (to solar collector) */
   @ext(0x6, 0)
-  model Ntc2Sensor {
-    /** Temperature in solar back flow (to solar collector) */
-    value: tempsensor;
-  }
+  model Ntc2Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Ntc3Sensor */
-  @inherit(r)
+  /** Ntc3Sensor: Temperature in buffer flow (to buffer) */
   @ext(0x7, 0)
-  model Ntc3Sensor {
-    /** Temperature in buffer flow (to buffer) */
-    value: tempsensor;
-  }
+  model Ntc3Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Ntc4Sensor */
-  @inherit(r)
+  /** Ntc4Sensor: Temperature in buffer back flow (from buffer) */
   @ext(0x8, 0)
-  model Ntc4Sensor {
-    /** Temperature in buffer back flow (from buffer) */
-    value: tempsensor;
-  }
+  model Ntc4Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Relais Solarpumpe */
-  @inherit(r, wi)
+  /** Relais Solarpumpe: Solar pump relay: 0: OFF; 1: ON */
   @ext(0xf, 0)
-  model SolPumpRelay {
-    /** Solar pump relay: 0: OFF; 1: ON */
-    value: onoff;
-  }
+  model SolPumpRelay is InstallRegister<onoff>;
 
-  /** SolarPumpPower */
-  @inherit(r, wi)
+  /** SolarPumpPower: Performance of solar pump: (7 - 100 %) */
   @ext(0x10, 0)
-  model SolPumpPower {
-    /** Performance of solar pump: (7 - 100 %) */
-    value: power;
-  }
+  model SolPumpPower is InstallRegister<power>;
 
-  /** BufferPumpPower */
-  @inherit(r, wi)
+  /** BufferPumpPower: Performance of buffer pump: (15 - 100%) */
   @ext(0x11, 0)
-  model BufferPumpPower {
-    /** Performance of buffer pump: (15 - 100%) */
-    value: power;
-  }
+  model BufferPumpPower is InstallRegister<power>;
 
   /** MonitorMatlab_Last5minSolarAverage */
-  @inherit(r)
   @ext(0x17, 0)
-  model MonitorMatlabLast5minSolAverage {
-    value: SIN;
-  }
+  model MonitorMatlabLast5minSolAverage is ReadonlyRegister<SIN>;
 
   /** CurrentSolarSetpoint */
   @inherit(r)
@@ -127,162 +69,89 @@ namespace Pms {
     value: UIN;
   }
 
-  /** CurrentVPM_LoadingMode */
-  @inherit(r)
+  /** CurrentVPM_LoadingMode: 1. DHW-Support (stand alone), 2. CH-Support (stand alone), 3. +10K (stand alone), 4. SwimmingPool, 5.DHW-Support (with external control), 6. CH-Support (with external control), 7. +10K (with external control) */
   @ext(0x19, 0)
-  model CurrentVPMLoadingMode {
-    /** 1. DHW-Support (stand alone), 2. CH-Support (stand alone), 3. +10K (stand alone), 4. SwimmingPool, 5.DHW-Support (with external control), 6. CH-Support (with external control), 7. +10K (with external control) */
-    value: UCH;
-  }
+  model CurrentVPMLoadingMode is ReadonlyRegister<UCH>;
 
-  /** RunTimePump1_Minutes */
-  @inherit(r)
+  /** RunTimePump1_Minutes: Runtime of solar pump in minutes */
   @ext(0x1a, 0)
-  model RunTimePump1Minutes {
-    /** Runtime of solar pump in minutes */
-    value: minutes0;
-  }
+  model RunTimePump1Minutes is ReadonlyRegister<minutes0>;
 
-  /** RunTimePump1_Hours */
-  @inherit(r)
+  /** RunTimePump1_Hours: Runtime of solar pump in hours */
   @ext(0x1b, 0)
-  model RunTimePump1Hours {
-    /** Runtime of solar pump in hours */
-    value: hoursum2;
-  }
+  model RunTimePump1Hours is ReadonlyRegister<hoursum2>;
 
-  /** ExternalDHWRequest */
-  @inherit(r)
+  /** ExternalDHWRequest: 0: No request; 1: Request */
   @ext(0x1c, 0)
-  model ExternalHwcRequest {
-    /** 0: No request; 1: Request */
-    value: onoff;
-  }
+  model ExternalHwcRequest is ReadonlyRegister<onoff>;
 
-  /** ExternalCHRequest */
-  @inherit(r)
+  /** ExternalCHRequest: 0: No request; 1: Request */
   @ext(0x1d, 0)
-  model ExternalHcRequest {
-    /** 0: No request; 1: Request */
-    value: onoff;
-  }
+  model ExternalHcRequest is ReadonlyRegister<onoff>;
 
-  /** ExternalDHWSetpoint */
-  @inherit(r)
+  /** ExternalDHWSetpoint: Requested temperature for DHW */
   @ext(0x1e, 0)
-  model ExternalHwcTempDesired {
-    /** Requested temperature for DHW */
-    value: desiredtemp;
-  }
+  model ExternalHwcTempDesired is ReadonlyRegister<desiredtemp>;
 
-  /** ExternalCHSetpoint */
-  @inherit(r)
+  /** ExternalCHSetpoint: Requested temperature for CH */
   @ext(0x1f, 0)
-  model ExternalHcTempDesired {
-    /** Requested temperature for CH */
-    value: desiredtemp;
-  }
+  model ExternalHcTempDesired is ReadonlyRegister<desiredtemp>;
 
-  /** CurrentASCStateforExternals */
-  @inherit(r)
+  /** CurrentASCStateforExternals: 1:OFF 2: Proofing 3:DHWLoading 4:CHLoading 5:Overtemperature */
   @ext(0x20, 0)
-  model CurrentASCStateforExternals {
-    /** 1:OFF 2: Proofing 3:DHWLoading 4:CHLoading 5:Overtemperature */
-    value: UCH;
-  }
+  model CurrentASCStateforExternals is ReadonlyRegister<UCH>;
 
-  /** CurrentASCStateforASI */
-  @inherit(r)
+  /** CurrentASCStateforASI: 1: Standby 2:Proofing 3:StorageLoading 4:Error_System_blocked */
   @ext(0x21, 0)
-  model CurrentASCStateforASI {
-    /** 1: Standby 2:Proofing 3:StorageLoading 4:Error_System_blocked */
-    value: UCH;
-  }
+  model CurrentASCStateforASI is ReadonlyRegister<UCH>;
 
-  /** DateAndTimeIsSet */
-  @inherit(r)
+  /** DateAndTimeIsSet: 0: Date and Time is not set; 1: Date and Time is set */
   @ext(0x22, 0)
-  model DateAndTimeIsSet {
-    /** 0: Date and Time is not set; 1: Date and Time is set */
-    value: onoff;
-  }
+  model DateAndTimeIsSet is ReadonlyRegister<onoff>;
 
   /** time */
-  @inherit(r, wi)
   @ext(0x23, 0)
-  model Time {
-    value: time;
-  }
+  model Time is InstallRegister<time>;
 
   /** date */
-  @inherit(r, wi)
   @ext(0x24, 0)
-  model Date {
-    value: date;
-  }
+  model Date is InstallRegister<date>;
 
   /** P_BufferControl */
-  @inherit(r)
   @ext(0x25, 0)
-  model BufferControlPress {
-    value: SIN;
-  }
+  model BufferControlPress is ReadonlyRegister<SIN>;
 
   /** I_BufferControl */
-  @inherit(r)
   @ext(0x26, 0)
-  model BufferControlInt {
-    value: SIN;
-  }
+  model BufferControlInt is ReadonlyRegister<SIN>;
 
   /** D_BufferControl */
-  @inherit(r)
   @ext(0x27, 0)
-  model BufferControlDiff {
-    value: SIN;
-  }
+  model BufferControlDiff is ReadonlyRegister<SIN>;
 
   /** P_SolarControl */
-  @inherit(r)
   @ext(0x28, 0)
-  model SolControlPress {
-    value: SIN;
-  }
+  model SolControlPress is ReadonlyRegister<SIN>;
 
   /** I_SolarControl */
-  @inherit(r)
   @ext(0x29, 0)
-  model SolControlInt {
-    value: SIN;
-  }
+  model SolControlInt is ReadonlyRegister<SIN>;
 
   /** D_SolarControl */
-  @inherit(r)
   @ext(0x2a, 0)
-  model SolControlDiff {
-    value: SIN;
-  }
+  model SolControlDiff is ReadonlyRegister<SIN>;
 
   /** MonitorBufferPIDValue */
-  @inherit(r)
   @ext(0x2b, 0)
-  model MonitorBufferPIDValue {
-    value: SIN;
-  }
+  model MonitorBufferPIDValue is ReadonlyRegister<SIN>;
 
   /** MonitorSolarPIDValue */
-  @inherit(r)
   @ext(0x2c, 0)
-  model MonitorSolPIDValue {
-    value: SIN;
-  }
+  model MonitorSolPIDValue is ReadonlyRegister<SIN>;
 
   /** FlowSensorFrequency */
-  @inherit(r)
   @ext(0x2d, 0)
-  model FlowSensorFrequency {
-    value: UIN;
-  }
+  model FlowSensorFrequency is ReadonlyRegister<UIN>;
 
   /** CurrentFlow */
   @inherit(r)
@@ -293,152 +162,81 @@ namespace Pms {
     value: UIN;
   }
 
-  /** Variante */
-  @inherit(r)
+  /** Variante: 1: VMS 30 2: VPM 20 S 3: VPM 60 S (identified by resistor in harness) */
   @ext(0x30, 0)
-  model Variante {
-    /** 1: VMS 30 2: VPM 20 S 3: VPM 60 S (identified by resistor in harness) */
-    value: UCH;
-  }
+  model Variante is ReadonlyRegister<UCH>;
 
-  /** CurrentSystemMode */
-  @inherit(r)
+  /** CurrentSystemMode: 1: Standalone, 3: With external control */
   @ext(0x33, 0)
-  model CurrentSystemMode {
-    /** 1: Standalone, 3: With external control */
-    value: UCH;
-  }
+  model CurrentSystemMode is ReadonlyRegister<UCH>;
 
-  /** InternalDHWSetpoint */
-  @inherit(r)
+  /** InternalDHWSetpoint: Temperature target for DHW loading if solar module is in stand alone appliccation without external control */
   @ext(0x35, 0)
-  model InternalHwcTempDesired {
-    /** Temperature target for DHW loading if solar module is in stand alone appliccation without external control */
-    value: UCH;
-  }
+  model InternalHwcTempDesired is ReadonlyRegister<UCH>;
 
-  /** InternalCHSetpoint */
-  @inherit(r)
+  /** InternalCHSetpoint: Temperature target for CW loading if solar module is in stand alone appliccation without external control */
   @ext(0x36, 0)
-  model InternalHcTempDesired {
-    /** Temperature target for CW loading if solar module is in stand alone appliccation without external control */
-    value: UCH;
-  }
+  model InternalHcTempDesired is ReadonlyRegister<UCH>;
 
   /** ASIDetected */
-  @inherit(r)
   @ext(0x38, 0)
-  model ASIDetected {
-    value: onoff;
-  }
+  model ASIDetected is ReadonlyRegister<onoff>;
 
-  /** CountryZone */
-  @inherit(r, wi)
+  /** CountryZone: Location for calculation of sun calender. See list in control manual (default = 2: Germany) */
   @ext(0x39, 0)
-  model CountryZone {
-    /** Location for calculation of sun calender. See list in control manual (default = 2: Germany) */
-    value: UCH;
-  }
+  model CountryZone is InstallRegister<UCH>;
 
-  /** RequestForExternalDateTimeSetting */
-  @inherit(r)
+  /** RequestForExternalDateTimeSetting: 0: Time and Date is set; 1: Time and Date is not set */
   @ext(0x3a, 0)
-  model RequestForExternalDateTimeSetting {
-    /** 0: Time and Date is set; 1: Time and Date is not set */
-    value: onoff;
-  }
+  model RequestForExternalDateTimeSetting is ReadonlyRegister<onoff>;
 
-  /** SolarYieldCurrentDay */
-  @inherit(r, wi)
+  /** SolarYieldCurrentDay: Accumulated solar gain from 00:00 to 24:00 if time is set */
   @ext(0x3b, 0)
-  model YieldCurrentDay {
-    /** Accumulated solar gain from 00:00 to 24:00 if time is set */
-    value: energy;
-  }
+  model YieldCurrentDay is InstallRegister<energy>;
 
   /** PowerOnCounter */
-  @inherit(r)
   @ext(0x3f, 0)
-  model PowerOnCounter {
-    value: UIN;
-  }
+  model PowerOnCounter is ReadonlyRegister<UIN>;
 
   /** RTCLowVoltageCounter */
-  @inherit(r)
   @ext(0x40, 0)
-  model RTCLowVoltageCounter {
-    value: UIN;
-  }
+  model RTCLowVoltageCounter is ReadonlyRegister<UIN>;
 
-  /** ForceStartSolarPumpKick */
-  @inherit(r)
+  /** ForceStartSolarPumpKick: Start solar pump for max. 5min to check collector temperature 0: OFF, 1: ON */
   @ext(0x47, 0)
-  model ForceStartSolPumpKick {
-    /** Start solar pump for max. 5min to check collector temperature 0: OFF, 1: ON */
-    value: onoff;
-  }
+  model ForceStartSolPumpKick is ReadonlyRegister<onoff>;
 
-  /** MonitorMatlabState */
-  @inherit(r)
+  /** MonitorMatlabState: main states: 201: Waiting; 209: Loading; 41: Night Modus */
   @ext(0x48, 0)
-  model MonitorMatlabState {
-    /** main states: 201: Waiting; 209: Loading; 41: Night Modus */
-    value: UCH;
-  }
+  model MonitorMatlabState is ReadonlyRegister<UCH>;
 
-  /** CurrentBufferSetpoint */
-  @inherit(r)
+  /** CurrentBufferSetpoint: Temperature target in buffer circuit at sensor Ntc3Sensor */
   @ext(0x49, 0)
-  model CurrentBufferTempDesired {
-    /** Temperature target in buffer circuit at sensor Ntc3Sensor */
-    value: SIN;
-  }
+  model CurrentBufferTempDesired is ReadonlyRegister<SIN>;
 
-  /** RunTimeBufferPump_Minutes */
-  @inherit(r)
+  /** RunTimeBufferPump_Minutes: Runtime of buffer pump in minutes */
   @ext(0x4b, 0)
-  model RunTimeBufferPumpMinutes {
-    /** Runtime of buffer pump in minutes */
-    value: minutes0;
-  }
+  model RunTimeBufferPumpMinutes is ReadonlyRegister<minutes0>;
 
-  /** RunTimeBufferPump_Hours */
-  @inherit(r)
+  /** RunTimeBufferPump_Hours: Runtime of buffer pump in hours */
   @ext(0x4c, 0)
-  model RunTimeBufferPumpHours {
-    /** Runtime of buffer pump in hours */
-    value: hoursum2;
-  }
+  model RunTimeBufferPumpHours is ReadonlyRegister<hoursum2>;
 
-  /** MonitorOverheatState */
-  @inherit(r)
+  /** MonitorOverheatState: 111: Waiting; 112 and 113: Temperature to high; 220 and 221: In Overheat protection */
   @ext(0x4f, 0)
-  model MonitorOverheatState {
-    /** 111: Waiting; 112 and 113: Temperature to high; 220 and 221: In Overheat protection */
-    value: UCH;
-  }
+  model MonitorOverheatState is ReadonlyRegister<UCH>;
 
   /** Monitor_Matlab_DHW_Calculation */
-  @inherit(r)
   @ext(0x53, 0)
-  model MonitorMatlabHwcCalculation {
-    value: SIN;
-  }
+  model MonitorMatlabHwcCalculation is ReadonlyRegister<SIN>;
 
   /** Monitor_Matlab_CH_Calculation */
-  @inherit(r)
   @ext(0x54, 0)
-  model MonitorMatlabHcCalculation {
-    value: SIN;
-  }
+  model MonitorMatlabHcCalculation is ReadonlyRegister<SIN>;
 
-  /** SolarYieldTotal */
-  @inherit(r, wi)
+  /** SolarYieldTotal: Accumulated solar gain since installation */
   @ext(0x56, 0)
-  model YieldTotal {
-    /** Accumulated solar gain since installation */
-    value: energy4;
-  }
+  model YieldTotal is InstallRegister<energy4>;
 
   /** included parts */
   union _includes {

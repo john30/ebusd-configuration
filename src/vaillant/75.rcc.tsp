@@ -9,44 +9,19 @@ namespace Vaillant;
 // @zz(0x75)
 namespace Rcc {
   // ,RC C,VR 90/3,0020040079 162
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### remote control #####
 
-  /** RaumtemperaturIst */
-  @inherit(r)
+  /** RaumtemperaturIst: room temperature */
   @ext(0, 0)
-  model RoomTemp {
-    /** room temperature */
-    value: tempsensor;
-  }
+  model RoomTemp is ReadonlyRegister<tempsensor>;
 
   /** RaumtemperaturIstOffset */
-  @inherit(r, wi)
   @ext(0x1f, 0)
-  model RoomTempOffset {
-    value: temp;
-  }
+  model RoomTempOffset is InstallRegister<temp>;
 
   /** RaumTempOffsetEigenErwaerm */
-  @inherit(r)
   @ext(0x20, 0)
-  model RoomTempOffsetSelfWarming {
-    value: temp;
-  }
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
 
   /** HolidayPeriod */
   @inherit(r, w)
@@ -59,17 +34,10 @@ namespace Rcc {
   }
 
   /** RoomSetTempHoliday */
-  @inherit(r, w)
   @ext(0x22, 0)
-  model RoomTempHoliday {
-    value: temp;
-  }
+  model RoomTempHoliday is Register<temp>;
 
-  /** LcdContrastPwmValue */
-  @inherit(r, wi)
+  /** LcdContrastPwmValue: contrast for the display */
   @ext(0x36, 0)
-  model LcdContrastPwmValue {
-    /** contrast for the display */
-    value: UCH;
-  }
+  model LcdContrastPwmValue is InstallRegister<UCH>;
 }

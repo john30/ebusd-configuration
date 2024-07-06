@@ -11,76 +11,39 @@ namespace Vaillant;
 // @zz(0x25)
 namespace Zeo.Hwc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 DHW
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### DHW: #####
 
-  /** OperatingMode */
-  @inherit(r)
+  /** OperatingMode: 1=Ein 2=Aus 3=Auto */
   @ext(0x6, 0)
-  model OperatingMode {
-    /** 1=Ein 2=Aus 3=Auto */
-    value: mcmode;
-  }
+  model OperatingMode is ReadonlyRegister<mcmode>;
 
-  /** desired temperature */
-  @inherit(r)
+  /** DesiredTemperature: 1/2 °C resolution */
   @ext(0xd, 0)
-  model TempDesired {
-    /** 1/2 °C resolution */
-    value: temp1;
-  }
+  model TempDesired is ReadonlyRegister<temp1>;
 
   /** CircuitDiaState */
-  @inherit(r)
   @ext(0x18, 0)
-  model CircuitDiaState {
-    value: UCH;
-  }
+  model CircuitDiaState is ReadonlyRegister<UCH>;
 
   /** CircuitsStates */
-  @inherit(r)
   @ext(0x1e, 0)
-  model CircuitsStates {
-    value: UCH;
-  }
+  model CircuitsStates is ReadonlyRegister<UCH>;
 
-  /** CleaningLady */
-  @inherit(r)
+  /** CleaningLady: 0,5h */
   @ext(0x23, 0)
-  model CleaningLady {
-    /** 0,5h */
-    value: UCH;
-  }
+  model CleaningLady is ReadonlyRegister<UCH>;
 
   /** DhwLegioProtectionMaxTimer */
-  @inherit(r)
   @ext(0x2d, 0)
-  model HwcLegioProtectionMaxTimer {
-    value: UCH;
-  }
+  model HwcLegioProtectionMaxTimer is ReadonlyRegister<UCH>;
 
-  /** ActualDesiredTemp */
-  @inherit(r)
+  /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0)
-  model ActualTempDesired {
-    /** 1/2°C Auflösung */
-    value: temp1;
-  }
+  model ActualTempDesired is ReadonlyRegister<temp1>;
 
   /** DhwLegioTempOkTimer */
-  @inherit(r)
   @ext(0x34, 0)
-  model HwcLegioTempOkTimer {
-    value: temp0;
-  }
+  model HwcLegioTempOkTimer is ReadonlyRegister<temp0>;
 
   /** included parts */
   union _includes {

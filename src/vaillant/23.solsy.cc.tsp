@@ -13,72 +13,39 @@ namespace Vaillant;
 // @zz(0x23)
 namespace Solsy.Cc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 Circulation
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### Statistics #####
 
   /** StatPowerOn */
-  @inherit(r)
   @ext(0xcc, 0)
-  model StatPowerOn {
-    value: UIN;
-  }
+  model StatPowerOn is ReadonlyRegister<UIN>;
 
   /** StatOperatingHours */
-  @inherit(r)
   @ext(0xcd, 0)
-  model StatOperatingHours {
-    value: UIN;
-  }
+  model StatOperatingHours is ReadonlyRegister<UIN>;
 
   /** StatMonthOfInstallation */
-  @inherit(r)
   @ext(0xce, 0)
-  model StatMonthOfInstallation {
-    value: UCH;
-  }
+  model StatMonthOfInstallation is ReadonlyRegister<UCH>;
 
   /** StatYearOfInstallation */
-  @inherit(r)
   @ext(0xcf, 0)
-  model StatYearOfInstallation {
-    value: UCH;
-  }
+  model StatYearOfInstallation is ReadonlyRegister<UCH>;
 
   /** Stat15MinBusTimeout */
-  @inherit(r)
   @ext(0xd0, 0)
-  model Stat15MinBusTimeout {
-    value: UCH;
-  }
+  model Stat15MinBusTimeout is ReadonlyRegister<UCH>;
 
   /** StatRTOSErrorcode */
-  @inherit(r)
   @ext(0xd1, 0)
-  model StatRTOSErrorcode {
-    value: UIN;
-  }
+  model StatRTOSErrorcode is ReadonlyRegister<UIN>;
 
   /** StatRestarts */
-  @inherit(r)
   @ext(0xd2, 0)
-  model StatRestarts {
-    value: UIN;
-  }
+  model StatRestarts is ReadonlyRegister<UIN>;
 
   /** StatRTOSErrorCounter */
-  @inherit(r)
   @ext(0xd3, 0)
-  model StatRTOSErrorCounter {
-    value: UIN;
-  }
+  model StatRTOSErrorCounter is ReadonlyRegister<UIN>;
 
   /** included parts */
   union _includes {

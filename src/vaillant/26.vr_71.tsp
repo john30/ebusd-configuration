@@ -13,14 +13,14 @@ namespace Vr_71 {
 
   /** default *r */
   @base(MF, 0x23)
-  model r {}
+  model r_1 {}
 
   /** default *w */
   @write
   @base(MF, 0x23)
-  model w {}
+  model w_1 {}
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x5)
   model SetActorState {
     @values(Values_)
@@ -63,7 +63,7 @@ namespace Vr_71 {
     Rx: HEX;
   }
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x2, 0)
   model Mc1FlowTempDesired {
     FTStatus: onoff;
@@ -76,7 +76,7 @@ namespace Vr_71 {
     MixerMovement: percents;
   }
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x2, 1)
   model Mc2FlowTempDesired {
     FTStatus: onoff;
@@ -89,7 +89,7 @@ namespace Vr_71 {
     MixerMovement: percents;
   }
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x2, 0x2)
   model Mc3FlowTempDesired {
     FTStatus: onoff;
@@ -102,7 +102,7 @@ namespace Vr_71 {
     MixerMovement: percents;
   }
 
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x6)
   model SensorData1 {
     s1: temp;
@@ -117,7 +117,7 @@ namespace Vr_71 {
     ignore: HEX;
   }
 
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x7)
   model SensorData2 {
     s8: temp;
