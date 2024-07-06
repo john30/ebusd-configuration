@@ -8,7 +8,7 @@
     "maintsp": "find outtsp/ -name '*.tsp'|grep -v 'main.tsp'|sort|grep -v '_inc.'|sed -e 's#outtsp/##' -e 's#^#import \"./#' -e 's#$#\";#' > outtsp/main.tsp",
     "format": "npx tsp format outtsp/*.tsp outtsp/**/*.tsp outtsp.de/*.tsp outtsp.de/**/*.tsp",
     "lint": "npx tsp compile outtsp/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
-    "csvall": "sed -i -e 's/^id,/#id,/' latest/en/_templates.csv latest/de/_templates.csv && npm run csv2tsp && npm run csv2tsp-combine && mv outtsp.de/i18n.yaml outtsp/i18n.yaml && cp normalized/*.tsp outtsp/ && npm run maintsp && npm run format && npm run lint",
+    "csvall": "./csvall.sh",
     "compile": "npx tsp compile --emit @ebusd/ebus-typespec src/main.tsp --output-dir outcsv",
     "compile-de": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/de.yaml src/main.tsp --output-dir outcsv.de"
   },
