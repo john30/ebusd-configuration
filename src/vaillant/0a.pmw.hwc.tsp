@@ -13,76 +13,31 @@ namespace Vaillant;
 // @zz(0x0a)
 namespace Pmw.Hwc {
   // ,PMW00,VPM-W Fresh water Station,PMW 244 DHW
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
   // ##### Generell #####
 
-  /** Ntc1Sensor */
-  @inherit(r)
+  /** Ntc1Sensor: T1 Temperature */
   @ext(0, 0)
-  model Ntc1Sensor {
-    /** T1 Temperature */
-    value: tempsensor;
-  }
+  model Ntc1Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Ntc2Sensor */
-  @inherit(r)
+  /** Ntc2Sensor: T2 Temperature */
   @ext(1, 0)
-  model Ntc2Sensor {
-    /** T2 Temperature */
-    value: tempsensor;
-  }
+  model Ntc2Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Ntc3Sensor */
-  @inherit(r)
+  /** Ntc3Sensor: T3 Temperature */
   @ext(0x2, 0)
-  model Ntc3Sensor {
-    /** T3 Temperature */
-    value: tempsensor;
-  }
+  model Ntc3Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Vortex */
-  @inherit(r)
+  /** Vortex: Frequency in Hz ( 1: y [l/min] = 0,0835 * x [Hz] - 0,03, 2: y [l/min] = 0,185 * x [Hz] ) */
   @ext(0x3, 0)
-  model Vortex {
-    /** Frequency in Hz ( 1: y [l/min] = 0,0835 * x [Hz] - 0,03, 2: y [l/min] = 0,185 * x [Hz] ) */
-    value: frequency;
-  }
+  model Vortex is ReadonlyRegister<frequency>;
 
-  /** CircoPump */
-  @inherit(r)
+  /** CircoPump: Power in % */
   @ext(0x4, 0)
-  model CircoPump {
-    /** Power in % */
-    value: percent0;
-  }
+  model CircoPump is ReadonlyRegister<percent0>;
 
-  /** Pump_ED */
-  @inherit(r)
+  /** Pump_ED: Power in % */
   @ext(0x5, 0)
-  model PumpED {
-    /** Power in % */
-    value: percent0;
-  }
+  model PumpED is ReadonlyRegister<percent0>;
 
   /** CalculatedMixerPosition */
   @inherit(r)
@@ -94,61 +49,36 @@ namespace Pmw.Hwc {
   }
 
   /** ElectricalHeater */
-  @inherit(r)
   @ext(0x8, 0)
-  model ElectricalHeater {
-    value: onoff;
-  }
+  model ElectricalHeater is ReadonlyRegister<onoff>;
 
   /** HeatDemand */
-  @inherit(r)
   @ext(0x9, 0)
-  model HeatDemand {
-    value: temp;
-  }
+  model HeatDemand is ReadonlyRegister<temp>;
 
-  /** OperatingMode */
-  @inherit(r, wi)
+  /** OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL */
   @ext(0xa, 0)
-  model OperatingMode {
-    /** 0=OFF, 1=ON, 2=AUTO, 3=MANUAL */
-    value: mcmode;
-  }
+  model OperatingMode is InstallRegister<mcmode>;
 
   /** ManualTappingSetpoint */
-  @inherit(r, wi)
   @ext(0xb, 0)
-  model ManualTappingTempDesired {
-    value: temp;
-  }
+  model ManualTappingTempDesired is InstallRegister<temp>;
 
   /** AutoTappingSetpoint */
-  @inherit(r)
   @ext(0xc, 0)
-  model AutoTappingTempDesired {
-    value: temp;
-  }
+  model AutoTappingTempDesired is ReadonlyRegister<temp>;
 
   /** QuickVetoSetpoint */
-  @inherit(r)
   @ext(0xd, 0)
-  model QuickVetoTempDesired {
-    value: temp;
-  }
+  model QuickVetoTempDesired is ReadonlyRegister<temp>;
 
   /** ActualTappingSetpoint */
-  @inherit(r)
   @ext(0xe, 0)
-  model ActualTappingTempDesired {
-    value: temp;
-  }
+  model ActualTappingTempDesired is ReadonlyRegister<temp>;
 
   /** QuickVetoStart */
-  @inherit(r)
   @ext(0xf, 0)
-  model QuickVetoStart {
-    value: onoff;
-  }
+  model QuickVetoStart is ReadonlyRegister<onoff>;
 
   /** LegioStartDay */
   @inherit(r)
@@ -159,61 +89,33 @@ namespace Pmw.Hwc {
     value: UCH;
   }
 
-  /** LegioStartTime */
-  @inherit(r)
+  /** LegioStartTime: Time when LegioProtect starts on specific day */
   @ext(0x11, 0)
-  model LegioStartTime {
-    /** Time when LegioProtect starts on specific day */
-    value: time;
-  }
+  model LegioStartTime is ReadonlyRegister<time>;
 
-  /** PartyStart */
-  @inherit(r)
+  /** PartyStart: Start Party Mode */
   @ext(0x12, 0)
-  model PartyStart {
-    /** Start Party Mode */
-    value: onoff;
-  }
+  model PartyStart is ReadonlyRegister<onoff>;
 
-  /** HolidayStart */
-  @inherit(r)
+  /** HolidayStart: Start Holiday Mode */
   @ext(0x13, 0)
-  model HolidayStart {
-    /** Start Holiday Mode */
-    value: onoff;
-  }
+  model HolidayStart is ReadonlyRegister<onoff>;
 
-  /** ActorFernsteuerung */
-  @inherit(r)
+  /** ActorFernsteuerung: TRUE -> RemoteControl of actors */
   @ext(0x1b, 0)
-  model ActorFernsteuerung {
-    /** TRUE -> RemoteControl of actors */
-    value: onoff;
-  }
+  model ActorFernsteuerung is ReadonlyRegister<onoff>;
 
-  /** time */
-  @inherit(r)
+  /** System Time */
   @ext(0x2c, 0)
-  model Time {
-    /** System Time */
-    value: time;
-  }
+  model Time is ReadonlyRegister<time>;
 
-  /** date */
-  @inherit(r)
+  /** System Date */
   @ext(0x2d, 0)
-  model Date {
-    /** System Date */
-    value: date;
-  }
+  model Date is ReadonlyRegister<date>;
 
-  /** weekday */
-  @inherit(r)
+  /** System Weekday (0=Monday, 5=Saturday, 6=Sunday) */
   @ext(0x2e, 0)
-  model Weekday {
-    /** System Weekday (0=Monday, 5=Saturday, 6=Sunday) */
-    value: bday;
-  }
+  model Weekday is ReadonlyRegister<bday>;
 
   /** TeleSwitch */
   @inherit(r)
@@ -224,21 +126,13 @@ namespace Pmw.Hwc {
     value: UCH;
   }
 
-  /** TeleSwitchState */
-  @inherit(r)
+  /** TeleSwitchState: Teleswitch port state (On / Off) */
   @ext(0x3a, 0)
-  model TeleSwitchState {
-    /** Teleswitch port state (On / Off) */
-    value: onoff;
-  }
+  model TeleSwitchState is ReadonlyRegister<onoff>;
 
-  /** EnableDHWOperation */
-  @inherit(r)
+  /** EnableDHWOperation: Enable DHW Ooperation */
   @ext(0x43, 0)
-  model EnableHwcOperation {
-    /** Enable DHW Ooperation */
-    value: onoff;
-  }
+  model EnableHwcOperation is ReadonlyRegister<onoff>;
   // ##### P-I-Regler #####
 
   /** Krm */
@@ -305,143 +199,79 @@ namespace Pmw.Hwc {
   }
   // ##### Statemachine #####
 
-  /** State_MainControl */
-  @inherit(r)
+  /** State_MainControl: Aktuelle Zustandsnummer MainControl */
   @ext(0x2f, 0)
-  model StateMainControl {
-    /** Aktuelle Zustandsnummer MainControl */
-    value: UCH;
-  }
+  model StateMainControl is ReadonlyRegister<UCH>;
 
-  /** State_MixerPumpControl */
-  @inherit(r)
+  /** State_MixerPumpControl: Aktuelle Zustandsnummer MixerPumpControl */
   @ext(0x30, 0)
-  model StateMixerPumpControl {
-    /** Aktuelle Zustandsnummer MixerPumpControl */
-    value: UCH;
-  }
+  model StateMixerPumpControl is ReadonlyRegister<UCH>;
 
-  /** State_CircoKick */
-  @inherit(r)
+  /** State_CircoKick: Aktuelle Zustandsnummer CircoKickControl */
   @ext(0x31, 0)
-  model StateCircoKick {
-    /** Aktuelle Zustandsnummer CircoKickControl */
-    value: UCH;
-  }
+  model StateCircoKick is ReadonlyRegister<UCH>;
 
-  /** State_HExMonitoring */
-  @inherit(r)
+  /** State_HExMonitoring: Aktuelle Zustandsnummer HExMonitoring */
   @ext(0x32, 0)
-  model StateHExMonitoring {
-    /** Aktuelle Zustandsnummer HExMonitoring */
-    value: UCH;
-  }
+  model StateHExMonitoring is ReadonlyRegister<UCH>;
 
-  /** TimeTicker */
-  @inherit(r)
+  /** TimeTicker: Sekunden des Tages */
   @ext(0x33, 0)
-  model TimeTicker {
-    /** Sekunden des Tages */
-    value: seconds4;
-  }
+  model TimeTicker is ReadonlyRegister<seconds4>;
   // ##### Statistik #####
 
-  /** StLegioStopTimeCounter */
-  @inherit(r, ws)
+  /** StLegioStopTimeCounter: End LegioProtect with Stop */
   @ext(0x3e, 0)
-  model StLegioStopTimeCounter {
-    /** End LegioProtect with Stop */
-    value: UIN;
-  }
+  model StLegioStopTimeCounter is ServiceRegister<UIN>;
 
-  /** StLegioAbortTimeCounter */
-  @inherit(r, ws)
+  /** StLegioAbortTimeCounter: End LegioProtect with Abort */
   @ext(0x3f, 0)
-  model StLegioAbortTimeCounter {
-    /** End LegioProtect with Abort */
-    value: UIN;
-  }
+  model StLegioAbortTimeCounter is ServiceRegister<UIN>;
 
-  /** StFrostProtCounter */
-  @inherit(r, ws)
+  /** StFrostProtCounter: FrostProtectCounter */
   @ext(0x40, 0)
-  model StFrostProtCounter {
-    /** FrostProtectCounter */
-    value: UIN;
-  }
+  model StFrostProtCounter is ServiceRegister<UIN>;
 
-  /** StInstallationDate */
-  @inherit(r, ws)
+  /** StInstallationDate: Installation Date */
   @ext(0x41, 0)
-  model StInstallationDate {
-    /** Installation Date */
-    value: date;
-  }
+  model StInstallationDate is ServiceRegister<date>;
 
-  /** SteBusCheckFailedCounter */
-  @inherit(r, ws)
+  /** SteBusCheckFailedCounter: eBus Failed Counter */
   @ext(0x42, 0)
-  model SteBusCheckFailedCounter {
-    /** eBus Failed Counter */
-    value: UIN;
-  }
+  model SteBusCheckFailedCounter is ServiceRegister<UIN>;
   @condition(Id.Id.sw, ">=38")
   namespace Sw_ge38 {
-    /** SingleTankCharge */
-    @inherit(r)
+    /** Enable SingleTankCharge */
     @ext(0x44, 0)
-    model SingleStorageCharge {
-      /** Enable SingleTankCharge */
-      value: onoff;
-    }
+    model SingleStorageCharge is ReadonlyRegister<onoff>;
 
-    /** ZaehlerBetriebsStunden */
-    @inherit(r)
+    /** ZaehlerBetriebsStunden: Working Hours */
     @ext(0x45, 0)
-    model ZaehlerBetriebsStunden {
-      /** Working Hours */
-      value: UIN;
-    }
+    model ZaehlerBetriebsStunden is ReadonlyRegister<UIN>;
   }
   @condition(Id.Id.sw, ">=39")
   namespace Sw_ge39 {
-    /** TDurchfluss */
-    @inherit(r)
+    /** TDurchfluss: flow in l/min */
     @ext(0x46, 0)
-    model DurchflussTemp {
-      /** flow in l/min */
-      value: temp;
-    }
+    model DurchflussTemp is ReadonlyRegister<temp>;
   }
   @condition(Id.Id.sw, ">=112")
   namespace Sw_ge112 {
-    /** VPMW_Mode */
-    @inherit(r)
+    /** VPMW_Mode: 1=VPM 20/25W, 2=VPM 30/35W */
     @ext(0x4b, 0)
-    model VPMWMode {
-      /** 1=VPM 20/25W, 2=VPM 30/35W */
-      value: UCH;
-    }
+    model VPMWMode is ReadonlyRegister<UCH>;
   }
   @condition(Id.Id.sw, ">=117")
   namespace Sw_ge117 {
     /** Overheat_timer */
-    @inherit(r)
     @ext(0x52, 0)
-    model OverheatTimer {
-      /** Overheat_timer */
-      value: seconds0;
-    }
+    model OverheatTimer is ReadonlyRegister<seconds0>;
   }
   @condition(Id.Id.sw, ">=40")
   namespace Sw_ge40 {
-    /** HexMonitoringCounter */
-    @inherit(r)
+    /** HexMonitoringCounter: RO */
     @ext(0x47, 0)
-    model HexMonitoringCounter {
-      /** RO */
-      value: SIN;
-    }
+    model HexMonitoringCounter is ReadonlyRegister<SIN>;
 
     /** HExThreshold */
     @inherit(r)

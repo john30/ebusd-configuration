@@ -9,12 +9,9 @@ namespace Vaillant;
 namespace Yield8485_inc {
   // yield
 
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
   /** yield this year */
   @inherit(r)
+  @poll(9)
   @ext(0x84, 0)
   @chain(
     2,

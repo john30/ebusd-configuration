@@ -12,24 +12,24 @@ namespace Quick_inc {
   /** default *w */
   @write
   @base(MF, 0x5)
-  model w {}
+  model w_1 {}
 
   /** Quick - party */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x5)
   model Party {
     value: onoff;
   }
 
   /** quick - hot water tank filling */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x6)
   model Load {
     value: onoff;
   }
 
   /** Quick - cleaning lady */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x7)
   model Save {
     value: TTH;

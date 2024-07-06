@@ -677,3 +677,107 @@ enum Values_rcmode {
   modulating: 1,
   thermostat: 2,
 }
+
+/** default *r for register */
+@base(MF, 0x9, 0xd)
+model r {}
+
+/** default *w for register */
+@write
+@base(MF, 0x9, 0xe)
+model w {}
+
+/** default *u for register */
+@passive
+@base(MF, 0x9, 0x29)
+model u {
+  @maxLength(2)
+  value: IGN;
+}
+
+/** default *wi for register with user level "install" */
+@write
+@auth("install")
+@base(MF, 0x9, 0xe)
+model wi {}
+
+/** default *ws for register with user level "service" */
+@write
+@auth("service")
+@base(MF, 0x9, 0xe)
+model ws {}
+
+/** read/write register */
+@inherit(r, w)
+model Register<T> {
+  /** register value */
+  value: T;
+}
+
+/** read only register */
+@inherit(r)
+model ReadonlyRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** installer level register */
+@inherit(r, wi)
+model InstallRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** service level register */
+@inherit(r, ws)
+model ServiceRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** read/write updated register */
+@inherit(r, w, u)
+model UpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** read only updated register */
+@inherit(r, u)
+model ReadonlyUpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** installer level updated register */
+@inherit(r, wi, u)
+model InstallUpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** service level updated register */
+@inherit(r, ws, u)
+model ServiceUpdateRegister<T> {
+  /** register value */
+  value: T;
+}
+
+/** default *r for timer */
+@base(MF, 0x15)
+model rt {
+  @maxLength(1)
+  value: IGN;
+}
+
+/** default *w for timer */
+@write
+@base(MF, 0x15)
+model wt {}
+
+/** timer */
+@inherit(rt, wt)
+model Timer<T> {
+  /** timer value */
+  value: T;
+}

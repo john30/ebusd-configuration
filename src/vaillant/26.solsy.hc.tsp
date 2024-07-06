@@ -13,280 +13,142 @@ namespace Vaillant;
 // @zz(0x26)
 namespace Solsy.Hc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 Burner
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### Statistics #####
 
   /** StatPowerOn */
-  @inherit(r)
   @ext(0xcc, 0)
-  model StatPowerOn {
-    value: UIN;
-  }
+  model StatPowerOn is ReadonlyRegister<UIN>;
 
   /** StatOperatingHours */
-  @inherit(r)
   @ext(0xcd, 0)
-  model StatOperatingHours {
-    value: UIN;
-  }
+  model StatOperatingHours is ReadonlyRegister<UIN>;
 
   /** StatMonthOfInstallation */
-  @inherit(r)
   @ext(0xce, 0)
-  model StatMonthOfInstallation {
-    value: UCH;
-  }
+  model StatMonthOfInstallation is ReadonlyRegister<UCH>;
 
   /** StatYearOfInstallation */
-  @inherit(r)
   @ext(0xcf, 0)
-  model StatYearOfInstallation {
-    value: UCH;
-  }
+  model StatYearOfInstallation is ReadonlyRegister<UCH>;
 
   /** Stat15MinBusTimeout */
-  @inherit(r)
   @ext(0xd0, 0)
-  model Stat15MinBusTimeout {
-    value: UCH;
-  }
+  model Stat15MinBusTimeout is ReadonlyRegister<UCH>;
 
   /** StatRTOSErrorcode */
-  @inherit(r)
   @ext(0xd1, 0)
-  model StatRTOSErrorcode {
-    value: UIN;
-  }
+  model StatRTOSErrorcode is ReadonlyRegister<UIN>;
 
   /** StatRestarts */
-  @inherit(r)
   @ext(0xd2, 0)
-  model StatRestarts {
-    value: UIN;
-  }
+  model StatRestarts is ReadonlyRegister<UIN>;
 
   /** StatRTOSErrorCounter */
-  @inherit(r)
   @ext(0xd3, 0)
-  model StatRTOSErrorCounter {
-    value: UIN;
-  }
+  model StatRTOSErrorCounter is ReadonlyRegister<UIN>;
   // ##### BK1: Data #####
 
-  /** SumFlowSensor_DK */
-  @inherit(r)
+  /** SumFlowSensor_DK: Temperature measured on VF1 */
   @ext(0x4, 0)
-  model SumFlowSensor {
-    /** Temperature measured on VF1 */
-    value: tempsensor;
-  }
+  model SumFlowSensor is ReadonlyRegister<tempsensor>;
 
-  /** OutsideTempSensor_DK */
-  @inherit(r)
+  /** OutsideTempSensor_DK: Outside temperature */
   @ext(0x6, 0)
-  model OutsideTemp {
-    /** outside temperature */
-    value: tempsensor;
-  }
+  model OutsideTemp is ReadonlyRegister<tempsensor>;
 
-  /** Flow setpoint */
-  @inherit(r)
+  /** Flow setpoint: Flow temperature BK1 want to have to fullfill the actual heat demand */
   @ext(0x46, 0)
-  model FlowTempDesired {
-    /** Flow temperature BK1 want to have to fullfill the actual heat demand */
-    value: temp1;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp1>;
 
-  /** TeleSwitch */
-  @inherit(r)
+  /** State of the Teleswitch */
   @ext(0xa, 0)
-  model TeleSwitch {
-    /** State of the Teleswitch */
-    value: onoff;
-  }
+  model TeleSwitch is ReadonlyRegister<onoff>;
 
-  /** Holiday function active */
-  @inherit(r)
+  /** Holiday function active: Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit */
   @ext(0x27, 0)
-  model IsInHoliday {
-    /** Every bit of this byte represents a heating circuit; holiday function can be started by setting the HC's corresponding bit */
-    value: UCH;
-  }
+  model IsInHoliday is ReadonlyRegister<UCH>;
 
-  /** IsInTankFilling */
-  @inherit(r)
+  /** IsInTankFilling: burner circuit is locked because of ongoing tank loading */
   @ext(0x47, 0)
-  model IsInStorageFilling {
-    /** burner circuit is locked because of ongoing tank loading */
-    value: yesno;
-  }
+  model IsInStorageFilling is ReadonlyRegister<yesno>;
 
-  /** CleaningLady */
-  @inherit(r)
+  /** CleaningLady: saving function is activated until read value * 1/2 h */
   @ext(0x4b, 0)
-  model CleaningLady {
-    /** saving function is activated until read value * 1/2 h */
-    value: UCH;
-  }
+  model CleaningLady is ReadonlyRegister<UCH>;
 
-  /** IsInParty */
-  @inherit(r)
+  /** IsInParty: Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC */
   @ext(0x4e, 0)
-  model IsInParty {
-    /** Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC */
-    value: UCH;
-  }
+  model IsInParty is ReadonlyRegister<UCH>;
 
-  /** Hk1P_Port */
-  @inherit(r)
+  /** Hk1P_Port: State of burner cicuit pump on HK1P */
   @ext(0x8e, 0)
-  model Hc1PumpPort {
-    /** State of burner cicuit pump on HK1P */
-    value: onoff;
-  }
+  model Hc1PumpPort is ReadonlyRegister<onoff>;
   // ##### BK1: Configuration #####
 
-  /** OutsideTempSensorCorrection */
-  @inherit(r)
+  /** OutsideTempSensorCorrection: Correction for outside temperature sensor */
   @ext(0x2d, 0)
-  model OutsideTempCorrection {
-    /** Correction for outside temperature sensor */
-    value: temps;
-  }
+  model OutsideTempCorrection is ReadonlyRegister<temps>;
 
-  /** BoilerMaxPreShutdown */
-  @inherit(r)
+  /** BoilerMaxPreShutdown: Maximal Boiler preshutdown time */
   @ext(0x39, 0)
-  model BoilerMaxPreShutdown {
-    /** Maximal Boiler preshutdown time */
-    value: minutes0;
-  }
+  model BoilerMaxPreShutdown is ReadonlyRegister<minutes0>;
 
-  /** HcFlowIncrease */
-  @inherit(r)
+  /** HcFlowIncrease: Offset added to flow temperature */
   @ext(0x3a, 0)
-  model HcFlowIncrease {
-    /** Offset added to flow temperature */
-    value: calibration0;
-  }
+  model HcFlowIncrease is ReadonlyRegister<calibration0>;
 
-  /** FrostProtectDelay */
-  @inherit(r)
+  /** FrostProtectDelay: Delay time of frost protection */
   @ext(0x49, 0)
-  model FrostProtectDelay {
-    /** Delay time of frost protection */
-    value: hours;
-  }
+  model FrostProtectDelay is ReadonlyRegister<hours>;
 
   /** Hzdraulic plan */
-  @inherit(r)
   @ext(0x60, 0)
-  model HydraulicScheme {
-    value: UCH;
-  }
+  model HydraulicScheme is ReadonlyRegister<UCH>;
 
-  /** EnergyDemandPercentage */
-  @inherit(r)
+  /** EnergyDemandPercentage: Flow temperature's maximum deviation from setpoint for set delay time */
   @ext(0x7e, 0)
-  model EnergyDemandPercentage {
-    /** Flow temperature's maximum deviation from setpoint for set delay time */
-    value: percent0;
-  }
+  model EnergyDemandPercentage is ReadonlyRegister<percent0>;
 
-  /** OtShutdownLimit */
-  @inherit(r, w)
+  /** OtShutdownLimit: For outside temperatures higher than this, there is no heat demand generated anymore */
   @ext(0x36, 0)
-  model OtShutdownLimit {
-    /** For outside temperatures higher than this, there is no heat demand generated anymore */
-    value: desiredtemp;
-  }
+  model OtShutdownLimit is Register<desiredtemp>;
 
-  /** MinFlowTemp */
-  @inherit(r, w)
+  /** MinFlowTemp: For a heat demand the desired flow temperature will at least be this value */
   @ext(0x30, 0)
-  model FlowTempMin {
-    /** For a heat demand the desired flow temperature will at least be this value */
-    value: temp0;
-  }
+  model FlowTempMin is Register<temp0>;
 
-  /** DesiredLowTemperature */
-  @inherit(r, w)
+  /** DesiredLowTemperature: Night temperature setpoint of the burner circuit */
   @ext(0x33, 0)
-  model TempDesiredLow {
-    /** Night temperature setpoint of the burner circuit */
-    value: temp1;
-  }
+  model TempDesiredLow is Register<temp1>;
 
-  /** BurnerCircuitDisabled */
-  @inherit(r, wi)
+  /** BurnerCircuitDisabled: Disable the burner circuit? */
   @ext(0xaa, 0)
-  model BoilerCircuitDisabled {
-    /** Disable the burner circuit? */
-    value: yesno;
-  }
+  model BoilerCircuitDisabled is InstallRegister<yesno>;
 
-  /** OperatingMode */
-  @inherit(r, w)
+  /** OperatingMode: Operating mode of burner circuit */
   @ext(0x2b, 0)
-  model OperatingMode {
-    /** Operating mode of burner circuit */
-    value: mcmode;
-  }
+  model OperatingMode is Register<mcmode>;
 
-  /** MaxFlowTemp */
-  @inherit(r, w)
+  /** MaxFlowTemp: For a heat demand the desired flow temperature will maximal be this value */
   @ext(0x31, 0)
-  model FlowTempMax {
-    /** For a heat demand the desired flow temperature will maximal be this value */
-    value: temp0;
-  }
+  model FlowTempMax is Register<temp0>;
 
-  /** desired temperature */
-  @inherit(r, w)
+  /** DesiredTemperature: Day temperature setpoint of the burner circuit */
   @ext(0x32, 0)
-  model TempDesired {
-    /** Day temperature setpoint of the burner circuit */
-    value: temp1;
-  }
+  model TempDesired is Register<temp1>;
 
   /** Heating curve */
-  @inherit(r, w)
   @ext(0x35, 0)
-  model HeatingCurve {
-    /** Heating curve */
-    value: curve;
-  }
+  model HeatingCurve is Register<curve>;
 
-  /** TeleswitchOperatingMode */
-  @inherit(r, w)
+  /** TeleswitchOperatingMode: If the tele switch port is activated the burner circuit operates in this mode */
   @ext(0x3f, 0)
-  model TeleswitchOperatingMode {
-    /** If the tele switch port is activated the burner circuit operates in this mode */
-    value: mcmode;
-  }
+  model TeleswitchOperatingMode is Register<mcmode>;
   @condition(Id.Id.sw, ">=401")
   namespace Sw_ge401 {
-    /** EnergyDemandNotReachedDelay */
-    @inherit(r)
+    /** EnergyDemandNotReachedDelay: Delay time for not reached temperature */
     @ext(0x7b, 0)
-    model EnergyDemandNotReachedDelay {
-      /** Delay time for not reached temperature */
-      value: hours;
-    }
+    model EnergyDemandNotReachedDelay is ReadonlyRegister<hours>;
 
     /** HcMaxPreHeating */
     @inherit(r, wi)
@@ -299,13 +161,9 @@ namespace Solsy.Hc {
   }
   @condition(Id.Id.sw, "<=400")
   namespace Sw_le400 {
-    /** HcMaxPreHeating */
-    @inherit(r, w)
+    /** HcMaxPreHeating: The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
     @ext(0x38, 0)
-    model HcMaxPreHeating {
-      /** The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
-      value: hours;
-    }
+    model HcMaxPreHeating is Register<hours>;
   }
 
   /** included parts */

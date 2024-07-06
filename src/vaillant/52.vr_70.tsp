@@ -13,14 +13,14 @@ namespace Vr_70 {
 
   /** default *r */
   @base(MF, 0x23)
-  model r {}
+  model r_1 {}
 
   /** default *w */
   @write
   @base(MF, 0x23)
-  model w {}
+  model w_1 {}
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(1)
   model SetActorState {
     @values(Values_)
@@ -45,7 +45,7 @@ namespace Vr_70 {
     s7: UCH;
   }
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x2, 0)
   model Mc1FlowTempDesired {
     FTStatus: onoff;
@@ -58,7 +58,7 @@ namespace Vr_70 {
     MixerMovement: percents;
   }
 
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x2, 1)
   model Mc2FlowTempDesired {
     FTStatus: onoff;
@@ -71,7 +71,7 @@ namespace Vr_70 {
     MixerMovement: percents;
   }
 
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x3)
   model SensorData {
     s1: temp;

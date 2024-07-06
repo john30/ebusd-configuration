@@ -10,118 +10,55 @@ namespace Vaillant;
 // @zz(0x15)
 namespace E7c {
   // ,E7C00,Thermolink P (New)
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### general #####
 
   /** Heating Schedule Enable */
-  @inherit(r, w)
   @ext(0x2, 0)
-  model HeatingScheduleEnable {
-    /** Heating Schedule Enable */
-    value: onoff;
-  }
+  model HeatingScheduleEnable is Register<onoff>;
 
   /** Heating Enable */
-  @inherit(r, w)
   @ext(0x3, 0)
-  model HeatingEnable {
-    /** Heating Enable */
-    value: onoff;
-  }
+  model HeatingEnable is Register<onoff>;
 
   /** Heating Temp Manual Set */
-  @inherit(r, w)
   @ext(0x22, 0)
-  model HeatingTempSet {
-    /** Heating Temp Manual Set */
-    value: temp;
-  }
+  model HeatingTempSet is Register<temp>;
 
   /** Heating Override Enable */
-  @inherit(r, w)
   @ext(0x23, 0)
-  model HeatingOverrideEnable {
-    /** Heating Override Enable */
-    value: onoff;
-  }
+  model HeatingOverrideEnable is Register<onoff>;
 
   /** Heating Override Temp */
-  @inherit(r, w)
   @ext(0x24, 0)
-  model HeatingOverrideTemp {
-    /** Heating Override Temp */
-    value: temp;
-  }
+  model HeatingOverrideTemp is Register<temp>;
 
   /** Heating Override End Time */
-  @inherit(r, w)
   @ext(0x25, 0)
-  model HeatingOverrideEndTime {
-    /** Heating Override End Time */
-    value: DTM;
-  }
+  model HeatingOverrideEndTime is Register<DTM>;
 
   /** Keyboard Lock Enable */
-  @inherit(r, w)
   @ext(0x2a, 0)
-  model KeyboardLockEnable {
-    /** Keyboard Lock Enable */
-    value: onoff;
-  }
+  model KeyboardLockEnable is Register<onoff>;
 
   /** Contrast */
-  @inherit(r, w)
   @ext(0x2b, 0)
-  model Contrast {
-    /** Contrast */
-    value: UCH;
-  }
+  model Contrast is Register<UCH>;
 
   /** Brightness */
-  @inherit(r, w)
   @ext(0x2c, 0)
-  model Brightness {
-    /** Brightness */
-    value: UCH;
-  }
+  model Brightness is Register<UCH>;
 
   /** Time & Date */
-  @inherit(r, w)
   @ext(0x2e, 0)
-  model Time_Date {
-    /** Time & Date */
-    value: DTM;
-  }
+  model Time_Date is Register<DTM>;
 
-  /** Date Format */
-  @inherit(r, w)
+  /** Date format 1-dd.mm.yyyy 2-yyyy.mm.dd */
   @ext(0x2d, 0)
-  model DateFormat {
-    /** Date format 1-dd.mm.yyyy 2-yyyy.mm.dd */
-    value: UCH;
-  }
+  model DateFormat is Register<UCH>;
 
   /** weekday */
-  @inherit(r, w)
   @ext(0x2f, 0)
-  model Weekday {
-    /** weekday */
-    value: bday;
-  }
+  model Weekday is Register<bday>;
 
   /** Room Name */
   @inherit(r, w)
@@ -142,124 +79,64 @@ namespace E7c {
   }
 
   /** Room Temp */
-  @inherit(r)
   @ext(0x3a, 0)
-  model RoomTemp {
-    /** Room Temp */
-    value: tempsensor;
-  }
+  model RoomTemp is ReadonlyRegister<tempsensor>;
 
-  /** DisplayedRoomTemp */
-  @inherit(r)
+  /** Displayed Room Temp */
   @ext(0x3b, 0)
-  model DisplayedRoomTemp {
-    /** DisplayedRoomTemp */
-    value: temp;
-  }
+  model DisplayedRoomTemp is ReadonlyRegister<temp>;
 
   /** Outside Temp */
-  @inherit(r)
   @ext(0x3c, 0)
-  model OutsideTemp {
-    /** Outside Temp */
-    value: tempsensor;
-  }
+  model OutsideTemp is ReadonlyRegister<tempsensor>;
 
   /** DHW Temp Manual Set */
-  @inherit(r, w)
   @ext(0x40, 0)
-  model DHWTempSet {
-    /** DHW Temp Manual Set */
-    value: temp;
-  }
+  model DHWTempSet is Register<temp>;
 
   /** DHW Enable */
-  @inherit(r, w)
   @ext(0x41, 0)
-  model DHWEnable {
-    /** DHW Enable */
-    value: onoff;
-  }
+  model DHWEnable is Register<onoff>;
 
   /** DHW Schedule Enable */
-  @inherit(r, w)
   @ext(0x42, 0)
-  model DHWScheduleEnable {
-    /** DHW Schedule Enable */
-    value: onoff;
-  }
+  model DHWScheduleEnable is Register<onoff>;
 
   /** DHW Override Enable */
-  @inherit(r, w)
   @ext(0x51, 0)
-  model DHWOverrideEnable {
-    /** DHW Override Enable */
-    value: onoff;
-  }
+  model DHWOverrideEnable is Register<onoff>;
 
   /** DHW Override State */
-  @inherit(r, w)
   @ext(0x52, 0)
-  model DHWOverrideState {
-    /** DHW Override State */
-    value: onoff;
-  }
+  model DHWOverrideState is Register<onoff>;
 
   /** DHW Override End Time */
-  @inherit(r, w)
   @ext(0x53, 0)
-  model DHWOverrideEndTime {
-    /** DHW Override End Time */
-    value: DTM;
-  }
+  model DHWOverrideEndTime is Register<DTM>;
 
   /** Vacation Enable */
-  @inherit(r, w)
   @ext(0x54, 0)
-  model VacationEnable {
-    /** Vacation Enable */
-    value: onoff;
-  }
+  model VacationEnable is Register<onoff>;
 
   /** Vacation Start Time */
-  @inherit(r, w)
   @ext(0x55, 0)
-  model VacationStartTime {
-    /** Vacation Start Time */
-    value: DTM;
-  }
+  model VacationStartTime is Register<DTM>;
 
   /** Vacation End Time */
-  @inherit(r, w)
   @ext(0x57, 0)
-  model VacationEndTime {
-    /** Vacation End Time */
-    value: DTM;
-  }
+  model VacationEndTime is Register<DTM>;
 
   /** Vacation Temp Manual Set */
-  @inherit(r, w)
   @ext(0x58, 0)
-  model VacationTempSet {
-    /** Vacation Temp Manual Set */
-    value: temp;
-  }
+  model VacationTempSet is Register<temp>;
 
   /** Heating Temp 1 */
-  @inherit(r, w)
   @ext(0x73, 0)
-  model HeatingTemp1 {
-    /** Heating Temp 1 */
-    value: temp;
-  }
+  model HeatingTemp1 is Register<temp>;
 
   /** Heating Temp 2 */
-  @inherit(r, w)
   @ext(0x74, 0)
-  model HeatingTemp2 {
-    /** Heating Temp 2 */
-    value: temp;
-  }
+  model HeatingTemp2 is Register<temp>;
   // ##### schedules #####
 
   /** Monday heating time */
@@ -908,36 +785,20 @@ namespace E7c {
   // ##### extra #####
 
   /** Max Allowed Room Temp */
-  @inherit(r, wi)
   @ext(0x32, 0)
-  model RoomTempMaxAllowed {
-    /** Max Allowed Room Temp */
-    value: temp;
-  }
+  model RoomTempMaxAllowed is InstallRegister<temp>;
 
-  /** RoomTempCorrection */
-  @inherit(r, wi)
+  /** Room Temp Correction */
   @ext(0x33, 0)
-  model RoomTempCorr {
-    /** RoomTempCorrection */
-    value: temp;
-  }
+  model RoomTempCorr is InstallRegister<temp>;
 
   /** Outside Temp Correction */
-  @inherit(r, wi)
   @ext(0x36, 0)
-  model OutsideTempCorr {
-    /** Outside Temp Correction */
-    value: temp;
-  }
+  model OutsideTempCorr is InstallRegister<temp>;
 
-  /** Room Temp Factory Correction */
-  @inherit(r, wi)
+  /** Room Temp Factory Correction: Room Temp Correction (factory calibrated) */
   @ext(0x39, 0)
-  model RoomTempCorrFact {
-    /** Room Temp Correction (factory calibrated) */
-    value: temp;
-  }
+  model RoomTempCorrFact is InstallRegister<temp>;
 
   /** Heat Curve */
   @inherit(r, wi)
@@ -949,36 +810,20 @@ namespace E7c {
   }
 
   /** Max Allowed DHW Temp */
-  @inherit(r, wi)
   @ext(0x5e, 0)
-  model DHWTempMaxAllowed {
-    /** Max Allowed DHW Temp */
-    value: temp;
-  }
+  model DHWTempMaxAllowed is InstallRegister<temp>;
 
-  /** DHW Schedule Opt Enable */
-  @inherit(r, wi)
+  /** DHWScheduleOptEnable: DHW Schedule Opt Enable */
   @ext(0x5f, 0)
-  model DHWScheduleOptEnable {
-    /** DHW Schedule Opt Enable */
-    value: onoff;
-  }
+  model DHWScheduleOptEnable is InstallRegister<onoff>;
 
   /** DHW Option Enable */
-  @inherit(r, wi)
   @ext(0x60, 0)
-  model DHWOptEnable {
-    /** DHW Option Enable */
-    value: onoff;
-  }
+  model DHWOptEnable is InstallRegister<onoff>;
 
   /** Auto Time Correction */
-  @inherit(r, wi)
   @ext(0x72, 0)
-  model AutoTimeCorr {
-    /** Auto Time Correction */
-    value: onoff;
-  }
+  model AutoTimeCorr is InstallRegister<onoff>;
 
   /** Prev Heat Curve */
   @inherit(r)
@@ -990,44 +835,24 @@ namespace E7c {
   }
 
   /** Maintenance Alarm */
-  @inherit(r, wi)
   @ext(0x6f, 0)
-  model MaintenanceAlarm {
-    /** Maintenance Alarm */
-    value: onoff;
-  }
+  model MaintenanceAlarm is InstallRegister<onoff>;
 
-  /** Maintenance Alarm Date */
-  @inherit(r, wi)
+  /** Maintenance Alarm Date: Maintance Alarm Date */
   @ext(0x70, 0)
-  model MaintenanceAlarmDate {
-    /** Maintance Alarm Date */
-    value: ULG;
-  }
+  model MaintenanceAlarmDate is InstallRegister<ULG>;
 
   /** Auto Heat Curve Regulation */
-  @inherit(r, wi)
   @ext(0x6e, 0)
-  model AutoHeatCurveRegulation {
-    /** Auto Heat Curve Regulation */
-    value: onoff;
-  }
+  model AutoHeatCurveRegulation is InstallRegister<onoff>;
 
   /** Preheat */
-  @inherit(r, wi)
   @ext(0x6c, 0)
-  model Preheat {
-    /** Preheat */
-    value: onoff;
-  }
+  model Preheat is InstallRegister<onoff>;
 
   /** Recirculation Option Enable */
-  @inherit(r, wi)
   @ext(0x6d, 0)
-  model RecirculationOptEnable {
-    /** Recirculation Option Enable */
-    value: onoff;
-  }
+  model RecirculationOptEnable is InstallRegister<onoff>;
 
   /** Maintenance Telephone */
   @inherit(r, wi)
@@ -1039,12 +864,8 @@ namespace E7c {
   }
 
   /** Room Temp Option Enable */
-  @inherit(r, wi)
   @ext(0x6b, 0)
-  model RoomTempOptEnable {
-    /** Room Temp Option Enable */
-    value: onoff;
-  }
+  model RoomTempOptEnable is InstallRegister<onoff>;
 
   enum Values_Language {
     german: 0,

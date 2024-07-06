@@ -13,187 +13,105 @@ namespace Vaillant;
 // @zz(0x25)
 namespace Vr630.Hwc {
   // ,VR630,calorMATIC 630/3,0020092435 163 DHW
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### Statistics #####
 
   /** StatPowerOn */
-  @inherit(r)
   @ext(0xcc, 0)
-  model StatPowerOn {
-    value: UIN;
-  }
+  model StatPowerOn is ReadonlyRegister<UIN>;
 
   /** StatOperatingHours */
-  @inherit(r)
   @ext(0xcd, 0)
-  model StatOperatingHours {
-    value: UIN;
-  }
+  model StatOperatingHours is ReadonlyRegister<UIN>;
 
   /** StatMonthOfInstallation */
-  @inherit(r)
   @ext(0xce, 0)
-  model StatMonthOfInstallation {
-    value: UCH;
-  }
+  model StatMonthOfInstallation is ReadonlyRegister<UCH>;
 
   /** StatYearOfInstallation */
-  @inherit(r)
   @ext(0xcf, 0)
-  model StatYearOfInstallation {
-    value: UCH;
-  }
+  model StatYearOfInstallation is ReadonlyRegister<UCH>;
 
   /** Stat15MinBusTimeout */
-  @inherit(r)
   @ext(0xd0, 0)
-  model Stat15MinBusTimeout {
-    value: UCH;
-  }
+  model Stat15MinBusTimeout is ReadonlyRegister<UCH>;
 
   /** StatRTOSErrorcode */
-  @inherit(r)
   @ext(0xd1, 0)
-  model StatRTOSErrorcode {
-    value: UIN;
-  }
+  model StatRTOSErrorcode is ReadonlyRegister<UIN>;
 
   /** StatRestarts */
-  @inherit(r)
   @ext(0xd2, 0)
-  model StatRestarts {
-    value: UIN;
-  }
+  model StatRestarts is ReadonlyRegister<UIN>;
 
   /** StatRTOSErrorCounter */
-  @inherit(r)
   @ext(0xd3, 0)
-  model StatRTOSErrorCounter {
-    value: UIN;
-  }
+  model StatRTOSErrorCounter is ReadonlyRegister<UIN>;
   // ##### DHW: Data #####
 
   /** Current cylinder temp. */
-  @inherit(r)
   @ext(0, 0)
-  model Storage1Sensor2 {
-    value: tempsensor;
-  }
+  model Storage1Sensor2 is ReadonlyRegister<tempsensor>;
 
-  /** circulation pump */
-  @inherit(r)
+  /** Circulation pump */
   @ext(0xc, 0)
-  model CirPump2 {
-    value: onoff;
-  }
+  model CirPump2 is ReadonlyRegister<onoff>;
 
   /** Loading pump status */
-  @inherit(r)
   @ext(0x10, 0)
-  model ThreeWayValveLoadingPump1 {
-    value: onoff;
-  }
+  model ThreeWayValveLoadingPump1 is ReadonlyRegister<onoff>;
 
   /** Legionellenpumpe */
-  @inherit(r)
   @ext(0x11, 0)
-  model LegioPump2 {
-    value: onoff;
-  }
+  model LegioPump2 is ReadonlyRegister<onoff>;
 
   /** TeleSwitch */
-  @inherit(r)
   @ext(0xa, 0)
-  model TeleSwitch {
-    value: onoff;
-  }
+  model TeleSwitch is ReadonlyRegister<onoff>;
 
-  /** OneTimeCirculationSwitch */
-  @inherit(r)
+  /** OneTimeCirculationSwitch: non-recurring circulation pump running period */
   @ext(0xb, 0)
-  model OneTimeCirSwitch {
-    /** non-recurring circulation pump running period */
-    value: onoff;
-  }
+  model OneTimeCirSwitch is ReadonlyRegister<onoff>;
 
   /** Ferienmodus aktiv */
-  @inherit(r)
   @ext(0x27, 0)
-  model IsInHoliday {
-    value: UCH;
-  }
+  model IsInHoliday is ReadonlyRegister<UCH>;
 
   /** Partymodus aktiv */
-  @inherit(r)
   @ext(0x4e, 0)
-  model IsInParty {
-    value: UCH;
-  }
+  model IsInParty is ReadonlyRegister<UCH>;
   // ##### DHW: Configuration #####
 
   /** Ladepumpennachlauf */
-  @inherit(r, w)
   @ext(0x61, 0)
-  model HwcLaggingTime2 {
-    value: minutes0;
-  }
+  model HwcLaggingTime2 is Register<minutes0>;
 
   /** Vorlauftemp. SOLL */
-  @inherit(r)
   @ext(0x46, 0)
-  model FlowTempDesired2 {
-    value: temp1;
-  }
+  model FlowTempDesired2 is ReadonlyRegister<temp1>;
 
   /** Parallel loading */
-  @inherit(r, w)
   @ext(0x55, 0)
-  model HcParallelStorageFillingEnabled2 {
-    value: yesno;
-  }
+  model HcParallelStorageFillingEnabled2 is Register<yesno>;
 
   /** Re-charge delay */
-  @inherit(r, w)
   @ext(0x62, 0)
-  model HwcLoadingDelay2 {
-    value: minutes0;
-  }
+  model HwcLoadingDelay2 is Register<minutes0>;
 
   /** Legionellenschutz Starttag */
-  @inherit(r, w)
   @ext(0x8a, 0)
-  model LegioStartDay2 {
-    value: UCH;
-  }
+  model LegioStartDay2 is Register<UCH>;
 
   /** Operation mode */
-  @inherit(r, w)
   @ext(0x2b, 0)
-  model OperatingMode2 {
-    value: mcmode;
-  }
+  model OperatingMode2 is Register<mcmode>;
 
   /** Speichersoll */
-  @inherit(r, w)
   @ext(0x32, 0)
-  model TempDesired2 {
-    value: temp1;
-  }
+  model TempDesired2 is Register<temp1>;
 
   /** TeleSwitch */
-  @inherit(r, w)
   @ext(0x3f, 0)
-  model TeleswitchOperatingMode2 {
-    value: mcmode;
-  }
+  model TeleswitchOperatingMode2 is Register<mcmode>;
 
   /** included parts */
   union _includes {

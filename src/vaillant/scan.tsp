@@ -9,10 +9,10 @@ namespace Vaillant;
 namespace Scan {
   /** default *r */
   @base(MF, 0x9)
-  model r {}
+  model r_1 {}
 
   /** Scan ID */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x24)
   @chain(0, #[0x25], #[0x26], #[0x27])
   model Id {

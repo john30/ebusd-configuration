@@ -13,10 +13,10 @@ namespace Iotest620_inc {
   @write
   @auth("install")
   @base(MF, 0x6)
-  model wi {}
+  model wi_1 {}
 
   /** I/O test */
-  @inherit(wi)
+  @inherit(wi_1)
   @ext(0x2)
   model Iotest {
     @values(Values_iotest)
@@ -24,7 +24,7 @@ namespace Iotest620_inc {
   }
 
   /** stop I/O test */
-  @inherit(wi)
+  @inherit(wi_1)
   @ext(1)
   model Ioteststop {}
 

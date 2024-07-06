@@ -11,15 +11,15 @@ namespace Mcmode_inc {
 
   /** default *r */
   @base(MF, 0x4)
-  model r {}
+  model r_1 {}
 
   /** default *w */
   @write
   @base(MF, 0x5)
-  model w {}
+  model w_1 {}
 
   /** date/time */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0)
   model DateTime {
     dcfstate: dcfstate;
@@ -29,7 +29,7 @@ namespace Mcmode_inc {
   }
 
   /** Operation mode */
-  @inherit(r)
+  @inherit(r_1)
   @ext(1)
   model Mode {
     tempdesired: temp0;
@@ -43,35 +43,35 @@ namespace Mcmode_inc {
   }
 
   /** Set desired temperature */
-  @inherit(w)
+  @inherit(w_1)
   @ext(1)
   model SetTempDesired {
     value: temp0;
   }
 
   /** Set operation mode */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x2)
   model SetMode {
     value: mcmode;
   }
 
   /** Set floor paving drying day */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x3)
   model SetFloorPavingDryingDay {
     value: days;
   }
 
   /** Set floor paving drying temperature */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x4)
   model SetFloorPavingDryingTemp {
     value: temp0;
   }
 
   /** Set type */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x8)
   model SetType {
     value: mctype;
@@ -80,56 +80,56 @@ namespace Mcmode_inc {
   // w 9: timer
 
   /** Set desired low temperature */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0xa)
   model SetTempDesiredLow {
     value: temp0;
   }
 
   /** Set heating curve */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0xb)
   model SetHeatingCurve {
     value: curve;
   }
 
   /** Set outside shutdown temperature */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0xc)
   model SetShutdownTemp {
     value: temp0;
   }
 
   /** Set pump idle period */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0xd)
   model SetPumpIdlePeriod {
     value: minutes0;
   }
 
   /** Set min flow temperature */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0xe)
   model SetFlowTempMin {
     value: temp0;
   }
 
   /** Set max flow temperature */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0xf)
   model SetFlowTempMax {
     value: temp0;
   }
 
   /** Set max pre-heating */
-  @inherit(w)
+  @inherit(w_1)
   @ext(0x10)
   model SetMaxPreHeating {
     value: hours12;
   }
 
   /** Parameters */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x9)
   model Params {
     tempdesired: temp0;
@@ -144,7 +144,7 @@ namespace Mcmode_inc {
   }
 
   /** Status flow temperature/mixer/pump/desired flow temperature */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0xa)
   model Status0a {
     flowtemp: temp;
@@ -155,7 +155,7 @@ namespace Mcmode_inc {
   }
 
   /** Status flow desired/current */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0xd)
   model Status {
     flowtempdesired: temp0;
@@ -165,7 +165,7 @@ namespace Mcmode_inc {
   }
 
   /** outside temperature */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x16)
   model Status16 {
     value: temp;

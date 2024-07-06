@@ -10,27 +10,6 @@ namespace Vaillant;
 namespace Vd4 {
   // ,VD400,vrnetDIALOG 840/2,175 175
 
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
-
   @inherit(r, wi)
   @ext(0, 0)
   model SoftwareVersion {
@@ -52,37 +31,21 @@ namespace Vd4 {
     value: HEX;
   }
 
-  @inherit(r, wi)
   @ext(0x3, 0)
-  model DataCollectionRequest {
-    value: UCH;
-  }
+  model DataCollectionRequest is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x4, 0)
-  model DataCollectionBuffer {
-    value: UCH;
-  }
+  model DataCollectionBuffer is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x5, 0)
-  model DataCollCycle {
-    value: ULG;
-  }
+  model DataCollCycle is InstallRegister<ULG>;
 
-  @inherit(r, wi)
   @ext(0x6, 0)
-  model DataCollBufSize {
-    value: ULG;
-  }
+  model DataCollBufSize is InstallRegister<ULG>;
 
-  /** Enable broadcast error messages */
-  @inherit(r, wi)
+  /** Enable broadcast error messages: Brodcast error messages on the eBUS will be send to the server */
   @ext(0x7, 0)
-  model EnableBcErrMsg {
-    /** Brodcast error messages on the eBUS will be send to the server */
-    value: yesno;
-  }
+  model EnableBcErrMsg is InstallRegister<yesno>;
 
   @inherit(r, wi)
   @ext(0x8, 0)
@@ -121,21 +84,13 @@ namespace Vd4 {
     value: UCH;
   }
 
-  /** Layout Checksum */
-  @inherit(r, wi)
+  /** Layout Checksum: Checksum over all devives connected to vrnetDIALOG. Will be used from the server to find out if new devices added or devices are deleted */
   @ext(0xd, 0)
-  model DeviceLayoutCRC {
-    /** Checksum over all devives connected to vrnetDIALOG. Will be used from the server to find out if new devices added or devices are deleted */
-    value: UCH;
-  }
+  model DeviceLayoutCRC is InstallRegister<UCH>;
 
-  /** AutoSync enabled */
-  @inherit(r, wi)
+  /** AutoSync enabled: Enabling or disabling of the AutoYync on the eBUS. Only usefull if there problems with outher AutoSync devices on the eBUS. */
   @ext(0xe, 0)
-  model AutoSyncEnable {
-    /** Enabling or disabling of the AutoYync on the eBUS. Only usefull if there problems with outher AutoSync devices on the eBUS. */
-    value: onoff;
-  }
+  model AutoSyncEnable is InstallRegister<onoff>;
 
   /** Last connection error */
   @inherit(r, wi)
@@ -146,35 +101,20 @@ namespace Vd4 {
     value: UCH;
   }
 
-  /** Connection error retry delay [minutes] */
-  @inherit(r, wi)
+  /** Connection error retry delay [minutes]: Delay between two connection tries in case of a connection error */
   @ext(0x10, 0)
-  model ConnErrorRetryDelay {
-    /** Delay between two connection tries in case of a connection error */
-    value: UCH;
-  }
+  model ConnErrorRetryDelay is InstallRegister<UCH>;
 
-  /** Connection Delay [minutes] */
-  @inherit(r, wi)
+  /** Connection Delay [minutes]: Minimum delay between two server connections established by the dialog box. */
   @ext(0x11, 0)
-  model ConnectionDelay {
-    /** Minimum delay between two server connections established by the dialog box. */
-    value: UCH;
-  }
+  model ConnectionDelay is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x12, 0)
-  model ErrorMessage {
-    value: UCH;
-  }
+  model ErrorMessage is InstallRegister<UCH>;
 
-  /** Connection error counter */
-  @inherit(r, wi)
+  /** Connection error counter: Number of connection tries. Will be reset to zero after a successful connection */
   @ext(0x13, 0)
-  model ConnErrorCnt {
-    /** Number of connection tries. Will be reset to zero after a successful connection */
-    value: UCH;
-  }
+  model ConnErrorCnt is InstallRegister<UCH>;
 
   /** PPP phone number 1 */
   @inherit(r, wi)
@@ -257,69 +197,37 @@ namespace Vd4 {
     value: STR;
   }
 
-  /** Call back delay GSM/GPRS [s] */
-  @inherit(r, wi)
+  /** Call back delay GSM/GPRS [s]: Time between the last ring and the call back. */
   @ext(0x1e, 0)
-  model RingTimeGsmCB {
-    /** Time between the last ring and the call back. */
-    value: UCH;
-  }
+  model RingTimeGsmCB is InstallRegister<UCH>;
 
-  /** Rings before pickup */
-  @inherit(r, wi)
+  /** Rings before pickup: Only for analog modems used. 0 = will never pick up. */
   @ext(0x1f, 0)
-  model RingsBeforePickup {
-    /** Only for analog modems used. 0 = will never pick up. */
-    value: UCH;
-  }
+  model RingsBeforePickup is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x20, 0)
-  model RingTimeTSM1 {
-    value: UCH;
-  }
+  model RingTimeTSM1 is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x21, 0)
-  model RingTimeTSM2 {
-    value: UCH;
-  }
+  model RingTimeTSM2 is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x22, 0)
-  model MessageThreshold {
-    value: UCH;
-  }
+  model MessageThreshold is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x23, 0)
-  model ConnectionCycle {
-    value: UCH;
-  }
+  model ConnectionCycle is InstallRegister<UCH>;
 
-  /** Max. signal strength GSM/GPRS */
-  @inherit(r, wi)
+  /** Max. signal strength GSM/GPRS: Max value since last power on (0..31) */
   @ext(0x24, 0)
-  model FieldStrengthMax {
-    /** Max value since last power on (0..31) */
-    value: UCH;
-  }
+  model FieldStrengthMax is InstallRegister<UCH>;
 
-  /** Min. signal strength GSM/GPRS */
-  @inherit(r, wi)
+  /** Min. signal strength GSM/GPRS: Min. value since last power on (0..31) */
   @ext(0x25, 0)
-  model FieldStrengthMin {
-    /** Min. value since last power on (0..31) */
-    value: UCH;
-  }
+  model FieldStrengthMin is InstallRegister<UCH>;
 
-  /** Enable OK message */
-  @inherit(r, wi)
+  /** Enable OK message: If on a error free message will be sent to the server. */
   @ext(0x26, 0)
-  model EnableDisErrorMsg {
-    /** If on a error free message will be sent to the server. */
-    value: onoff;
-  }
+  model EnableDisErrorMsg is InstallRegister<onoff>;
 
   /** Relay outputs */
   @inherit(r, wi)
@@ -329,19 +237,12 @@ namespace Vd4 {
     bi_1: BI1;
   }
 
-  @inherit(r, wi)
   @ext(0x2b, 0)
-  model StandbySignal {
-    value: UCH;
-  }
+  model StandbySignal is InstallRegister<UCH>;
 
-  /** Power on alarm */
-  @inherit(r, wi)
+  /** Power on alarm: If on a alarm message is sent after power on */
   @ext(0x2c, 0)
-  model PowerOnMessage {
-    /** If on a alarm message is sent after power on */
-    value: onoff;
-  }
+  model PowerOnMessage is InstallRegister<onoff>;
 
   @inherit(r, wi)
   @ext(0x2e, 0)
@@ -357,41 +258,23 @@ namespace Vd4 {
     uin_1: UIN;
   }
 
-  @inherit(r, wi)
   @ext(0x30, 0)
-  model ScanLayoutCycle {
-    value: UCH;
-  }
+  model ScanLayoutCycle is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x31, 0)
-  model PredMaintConnectionCycle {
-    value: UCH;
-  }
+  model PredMaintConnectionCycle is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x32, 0)
-  model LastKnownEbusAddr {
-    value: UCH;
-  }
+  model LastKnownEbusAddr is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x33, 0)
-  model Time {
-    value: time;
-  }
+  model Time is InstallRegister<time>;
 
-  @inherit(r, wi)
   @ext(0x34, 0)
-  model Date {
-    value: date;
-  }
+  model Date is InstallRegister<date>;
 
-  @inherit(r, wi)
   @ext(0x35, 0)
-  model Weekday {
-    value: bday;
-  }
+  model Weekday is InstallRegister<bday>;
 
   @inherit(r, wi)
   @ext(0x36, 0)
@@ -416,11 +299,8 @@ namespace Vd4 {
     value: UCH;
   }
 
-  @inherit(r, wi)
   @ext(0x39, 0)
-  model H2BusLayout {
-    value: UCH;
-  }
+  model H2BusLayout is InstallRegister<UCH>;
 
   /** Digital input actual values */
   @inherit(r, wi)
@@ -455,42 +335,24 @@ namespace Vd4 {
     value: STR;
   }
 
-  @inherit(r, wi)
   @ext(0x3e, 0)
-  model DebugFlags {
-    value: ULG;
-  }
+  model DebugFlags is InstallRegister<ULG>;
 
   /** Modem country code */
-  @inherit(r, wi)
   @ext(0x3f, 0)
-  model ModemCountryCode {
-    value: UCH;
-  }
+  model ModemCountryCode is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x40, 0)
-  model DoReset {
-    value: UCH;
-  }
+  model DoReset is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x41, 0)
-  model DataCollectionLimit {
-    value: ULG;
-  }
+  model DataCollectionLimit is InstallRegister<ULG>;
 
-  @inherit(r, wi)
   @ext(0x42, 0)
-  model Temp3WayValve {
-    value: tempsensor;
-  }
+  model Temp3WayValve is InstallRegister<tempsensor>;
 
-  @inherit(r, ws)
   @ext(0x46, 0)
-  model RfWakeupCycle {
-    value: UIN;
-  }
+  model RfWakeupCycle is ServiceRegister<UIN>;
 
   enum Values_DeviceLayout {
     _unknown: 0,

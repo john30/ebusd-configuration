@@ -13,24 +13,11 @@ namespace Vaillant;
 // @zz(0x23)
 namespace Ehp.Cc {
   // ,EHP00,Heat pump AMU,EHP00 172 Circulation
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### CC: Parameters and information #####
 
-  /** CirculationPumpED */
-  @inherit(r, w)
+  /** CirculationPumpED: defines the percentage of a 10 minutes period to power the pump */
   @ext(0xe6, 1)
-  model CirPumpED {
-    /** defines the percentage of a 10 minutes period to power the pump */
-    value: UCH;
-  }
+  model CirPumpED is Register<UCH>;
 
   /** included parts */
   union _includes {

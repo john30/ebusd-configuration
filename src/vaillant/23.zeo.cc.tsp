@@ -11,85 +11,43 @@ namespace Vaillant;
 // @zz(0x23)
 namespace Zeo.Cc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Circulation
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### CC: #####
 
   /** OperatingMode */
-  @inherit(r)
   @ext(0x6, 0x2)
-  model OperatingMode {
-    value: mcmode;
-  }
+  model OperatingMode is ReadonlyRegister<mcmode>;
 
-  /** MinFlowTemp */
-  @inherit(r)
+  /** MinFlowTemp: 1 °C resolution */
   @ext(0xb, 0x2)
-  model FlowTempMin {
-    /** 1 °C resolution */
-    value: temp0;
-  }
+  model FlowTempMin is ReadonlyRegister<temp0>;
 
-  /** MaxFlowTemp */
-  @inherit(r)
+  /** MaxFlowTemp: 1 °C resolution */
   @ext(0xc, 0x2)
-  model FlowTempMax {
-    /** 1 °C resolution */
-    value: temp0;
-  }
+  model FlowTempMax is ReadonlyRegister<temp0>;
 
-  /** desired temperature */
-  @inherit(r)
+  /** DesiredTemperature: 1/2 °C resolution */
   @ext(0xd, 0x2)
-  model TempDesired {
-    /** 1/2 °C resolution */
-    value: temp1;
-  }
+  model TempDesired is ReadonlyRegister<temp1>;
 
   /** CircuitDiaState */
-  @inherit(r)
   @ext(0x18, 0x2)
-  model CircuitDiaState {
-    value: UCH;
-  }
+  model CircuitDiaState is ReadonlyRegister<UCH>;
 
   /** CircuitsStates */
-  @inherit(r)
   @ext(0x1e, 0x2)
-  model CircuitsStates {
-    value: UCH;
-  }
+  model CircuitsStates is ReadonlyRegister<UCH>;
 
-  /** Flow setpoint */
-  @inherit(r)
+  /** Flow setpoint: 1/2 °C resolution */
   @ext(0x1f, 0x2)
-  model FlowTempDesired {
-    /** 1/2 °C resolution */
-    value: temp1;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp1>;
 
-  /** CleaningLady */
-  @inherit(r)
+  /** CleaningLady: 0,5h */
   @ext(0x23, 0x2)
-  model CleaningLady {
-    /** 0,5h */
-    value: UCH;
-  }
+  model CleaningLady is ReadonlyRegister<UCH>;
 
-  /** ActualDesiredTemp */
-  @inherit(r)
+  /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0x2)
-  model ActualTempDesired {
-    /** 1/2°C Auflösung */
-    value: temp1;
-  }
+  model ActualTempDesired is ReadonlyRegister<temp1>;
 
   /** included parts */
   union _includes {

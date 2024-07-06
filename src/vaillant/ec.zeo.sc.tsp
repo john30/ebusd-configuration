@@ -9,107 +9,49 @@ namespace Vaillant;
 // @zz(0xec)
 namespace Zeo.Sc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Solar
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
   // ##### SOL: #####
 
-  /** SolarCollPumpDcIntegrator */
-  @inherit(r)
+  /** SolarCollPumpDcIntegrator: -50..50 */
   @ext(0xcb, 0)
-  model SolCollPumpDcIntegrator {
-    /** -50..50 */
-    value: SIN;
-  }
+  model SolCollPumpDcIntegrator is ReadonlyRegister<SIN>;
 
-  /** SolEnableDiffTemp */
-  @inherit(r, ws)
+  /** SolEnableDiffTemp: 5..12K / 1K Auflösung */
   @ext(0xcd, 0)
-  model SolEnableDiffTemp {
-    /** 5..12K / 1K Auflösung */
-    value: temp0;
-  }
+  model SolEnableDiffTemp is ServiceRegister<temp0>;
 
-  /** SolDisableDiffTemp */
-  @inherit(r, ws)
+  /** SolDisableDiffTemp: 1..10K / 1K Auflösung */
   @ext(0xce, 0)
-  model SolDisableDiffTemp {
-    /** 1..10K / 1K Auflösung */
-    value: temp0;
-  }
+  model SolDisableDiffTemp is ServiceRegister<temp0>;
 
-  /** SolDhwMaxLoadTemp */
-  @inherit(r, ws)
+  /** SolDhwMaxLoadTemp: 35..80°C / 1°C */
   @ext(0xcf, 0)
-  model SolHwcMaxLoadTemp {
-    /** 35..80°C / 1°C */
-    value: temp0;
-  }
+  model SolHwcMaxLoadTemp is ServiceRegister<temp0>;
 
   /** SolarConfigFlags */
-  @inherit(r)
   @ext(0xd0, 0)
-  model SolConfigFlags {
-    value: UCH;
-  }
+  model SolConfigFlags is ReadonlyRegister<UCH>;
 
-  /** SolarCollectorPumpED */
-  @inherit(r)
+  /** SolarCollectorPumpED: 0..100% */
   @ext(0xd1, 0)
-  model SolCollPumpED {
-    /** 0..100% */
-    value: UCH;
-  }
+  model SolCollPumpED is ReadonlyRegister<UCH>;
 
-  /** CollectorPumpSRuntime */
-  @inherit(r, ws)
+  /** CollectorPumpSRuntime: runtime in seconds base for runtime in hours */
   @ext(0xd2, 0)
-  model CollPumpSRuntime {
-    /** runtime in seconds base for runtime in hours */
-    value: UIN;
-  }
+  model CollPumpSRuntime is ServiceRegister<UIN>;
 
-  /** CollectorPumpHRuntime */
-  @inherit(r, ws)
+  /** CollectorPumpHRuntime: runtime in hours */
   @ext(0xd3, 0)
-  model CollPumpHRuntime {
-    /** runtime in hours */
-    value: UIN;
-  }
+  model CollPumpHRuntime is ServiceRegister<UIN>;
 
-  /** SolarYieldMinute */
-  @inherit(r, ws)
+  /** SolarYieldMinute: nur Summe von dT ohne Volumenstrom nur mit PWM */
   @ext(0xd4, 0)
-  model YieldMinute {
-    /** nur Summe von dT ohne Volumenstrom nur mit PWM */
-    value: UIN;
-  }
+  model YieldMinute is ServiceRegister<UIN>;
 
-  /** SolarYieldKw */
-  @inherit(r, ws)
+  /** SolarYieldKw: um den Wert in KW zu bekommenmuß gerechnet werden:kW=x*SolarVolumnFlowUser*c */
   @ext(0xd5, 0)
-  model Yield {
-    /** um den Wert in KW zu bekommenmuß gerechnet werden:kW=x*SolarVolumnFlowUser*c */
-    value: UIN;
-  }
+  model Yield is ServiceRegister<UIN>;
 
-  /** SolarFlowRate */
-  @inherit(r, ws)
+  /** SolarFlowRate: 0..20l/h Wert des Taco-Setters für Ertragsermittlung */
   @ext(0xd6, 0)
-  model SolFlowRate {
-    /** 0..20l/h Wert des Taco-Setters für Ertragsermittlung */
-    value: UIN;
-  }
+  model SolFlowRate is ServiceRegister<UIN>;
 }

@@ -12,42 +12,13 @@ namespace Vaillant;
 namespace _160 {
   // ,35000,VTS 160,173 173
 
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
-
-  /** System Date */
-  @inherit(r, w)
+  /** System Date: current date */
   @ext(0x61, 0)
-  model Date {
-    /** current date */
-    value: date;
-  }
+  model Date is Register<date>;
 
-  /** System Time */
-  @inherit(r, w)
+  /** System Time: current time */
   @ext(0x60, 0)
-  model Time {
-    /** current time */
-    value: time;
-  }
+  model Time is Register<time>;
 
   /** System OnOFF */
   @inherit(r, w)
@@ -73,29 +44,17 @@ namespace _160 {
     value: UCH;
   }
 
-  /** HolidayStartPeriod */
-  @inherit(r, w)
+  /** HolidayStartPeriod: start date of holiday */
   @ext(0x11, 0)
-  model HolidayStartPeriod {
-    /** start date of holiday */
-    value: date;
-  }
+  model HolidayStartPeriod is Register<date>;
 
-  /** HolidayEndPeriod */
-  @inherit(r, w)
+  /** HolidayEndPeriod: end date of holiday */
   @ext(0x12, 0)
-  model HolidayEndPeriod {
-    /** end date of holiday */
-    value: date;
-  }
+  model HolidayEndPeriod is Register<date>;
 
-  /** LcdContrastValue */
-  @inherit(r, w)
+  /** LcdContrastValue: setting of the LCD contrast */
   @ext(0x5a, 0)
-  model LcdContrastValue {
-    /** setting of the LCD contrast */
-    value: UCH;
-  }
+  model LcdContrastValue is Register<UCH>;
 
   enum Values_SystemOnOff {
     on: 0,

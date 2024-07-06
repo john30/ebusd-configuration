@@ -13,154 +13,75 @@ namespace Vaillant;
 // @zz(0x50)
 namespace Zeo.Mc {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Mixer
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
   // ##### MK: #####
 
-  /** OperatingMode */
-  @inherit(r)
+  /** OperatingMode: 1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken */
   @ext(0x6, 0x4)
-  model OperatingMode {
-    /** 1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken */
-    value: mcmode;
-  }
+  model OperatingMode is ReadonlyRegister<mcmode>;
 
-  /** MinFlowTemp */
-  @inherit(r)
+  /** MinFlowTemp: 1 °C resolution */
   @ext(0xb, 0x4)
-  model FlowTempMin {
-    /** 1 °C resolution */
-    value: temp0;
-  }
+  model FlowTempMin is ReadonlyRegister<temp0>;
 
-  /** MaxFlowTemp */
-  @inherit(r)
+  /** MaxFlowTemp: 1 °C resolution */
   @ext(0xc, 0x4)
-  model FlowTempMax {
-    /** 1 °C resolution */
-    value: temp0;
-  }
+  model FlowTempMax is ReadonlyRegister<temp0>;
 
-  /** desired temperature */
-  @inherit(r)
+  /** DesiredTemperature: 1/2 °C resolution */
   @ext(0xd, 0x4)
-  model TempDesired {
-    /** 1/2 °C resolution */
-    value: temp1;
-  }
+  model TempDesired is ReadonlyRegister<temp1>;
 
-  /** DesiredLowTemperature */
-  @inherit(r)
+  /** DesiredLowTemperature: 1/2 °C resolution */
   @ext(0xe, 0)
-  model TempDesiredLow {
-    /** 1/2 °C resolution */
-    value: temp1;
-  }
+  model TempDesiredLow is ReadonlyRegister<temp1>;
 
-  /** HcMaxPreHeating */
-  @inherit(r)
+  /** HcMaxPreHeating: 0..5h */
   @ext(0x13, 0)
-  model HcMaxPreHeating {
-    /** 0,5h */
-    value: UCH;
-  }
+  model HcMaxPreHeating is ReadonlyRegister<UCH>;
 
   /** FloorPavingDryingDay */
-  @inherit(r)
   @ext(0x16, 0)
-  model FloorPavingDryingDay {
-    value: UCH;
-  }
+  model FloorPavingDryingDay is ReadonlyRegister<UCH>;
 
-  /** Kreisart */
-  @inherit(r, ws)
+  /** Kreisart: 1=Brennerkreis 2=BrennerFestwert */
   @ext(0x17, 0)
-  model Kreisart {
-    /** 1=Brennerkreis 2=BrennerFestwert */
-    value: UCH;
-  }
+  model Kreisart is ServiceRegister<UCH>;
 
   /** CircuitDiaState */
-  @inherit(r)
   @ext(0x18, 0x4)
-  model CircuitDiaState {
-    value: UCH;
-  }
+  model CircuitDiaState is ReadonlyRegister<UCH>;
 
-  /** CleaningLady */
-  @inherit(r)
+  /** CleaningLady: 0,5h */
   @ext(0x23, 0x4)
-  model CleaningLady {
-    /** 0,5h */
-    value: UCH;
-  }
+  model CleaningLady is ReadonlyRegister<UCH>;
 
   /** RemoteControlMode */
-  @inherit(r)
   @ext(0x24, 0)
-  model RemoteControlMode {
-    value: UCH;
-  }
+  model RemoteControlMode is ReadonlyRegister<UCH>;
 
-  /** RemoteControlRtOffset */
-  @inherit(r)
+  /** RemoteControlRtOffset: 0,5°C */
   @ext(0x25, 0)
-  model RemoteControlRtOffset {
-    /** 0,5°C */
-    value: SCH;
-  }
+  model RemoteControlRtOffset is ReadonlyRegister<SCH>;
 
-  /** ActualDesiredTemp */
-  @inherit(r)
+  /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0x4)
-  model ActualTempDesired {
-    /** 1/2°C Auflösung */
-    value: temp1;
-  }
+  model ActualTempDesired is ReadonlyRegister<temp1>;
 
-  /** Regelungsart */
-  @inherit(r, ws)
+  /** Regelungsart: 1 : Rücklaufregelung 2 : Vorlaufregelung */
   @ext(0x35, 0)
-  model Regelungsart {
-    /** 1 : Rücklaufregelung 2 : Vorlaufregelung */
-    value: UCH;
-  }
+  model Regelungsart is ServiceRegister<UCH>;
 
   /** Configuration */
-  @inherit(r, ws)
   @ext(0xc4, 0)
-  model Konfiguration {
-    value: UCH;
-  }
+  model Konfiguration is ServiceRegister<UCH>;
 
-  /** T_Hz */
-  @inherit(r)
+  /** T_Hz: Vorlauf- oder Rücklauftemperatur je nach gewählter Regelungsart */
   @ext(0xd8, 0)
-  model HzTemp {
-    /** Vorlauf- oder Rücklauftemperatur je nach gewählter Regelungsart */
-    value: temp;
-  }
+  model HzTemp is ReadonlyRegister<temp>;
 
-  /** HT_Soll */
-  @inherit(r)
+  /** HT_Soll: °C */
   @ext(0xd9, 0)
-  model HTSoll {
-    /** °C */
-    value: temp;
-  }
+  model HTSoll is ReadonlyRegister<temp>;
 
   /** included parts */
   union _includes {

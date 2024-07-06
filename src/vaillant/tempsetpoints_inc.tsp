@@ -11,7 +11,7 @@ namespace Tempsetpoints_inc {
 
   /** default *r */
   @base(MF, 0x4, 0x19)
-  model r {
+  model r_1 {
     @maxLength(1)
     value: IGN;
   }
@@ -19,10 +19,10 @@ namespace Tempsetpoints_inc {
   /** default *w */
   @write
   @base(MF, 0x5, 0x2e)
-  model w {}
+  model w_1 {}
 
   /** Temperatures Monday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(1)
   model Setpoints_Monday {
     temp: temp1;
@@ -31,7 +31,7 @@ namespace Tempsetpoints_inc {
   }
 
   /** Temperatures Tuesday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(0x2)
   model Setpoints_Tuesday {
     temp: temp1;
@@ -40,7 +40,7 @@ namespace Tempsetpoints_inc {
   }
 
   /** Temperatures Wednesday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(0x3)
   model Setpoints_Wednesday {
     temp: temp1;
@@ -49,7 +49,7 @@ namespace Tempsetpoints_inc {
   }
 
   /** Temperatures Thursday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(0x4)
   model Setpoints_Thursday {
     temp: temp1;
@@ -58,7 +58,7 @@ namespace Tempsetpoints_inc {
   }
 
   /** Temperatures Friday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(0x5)
   model Setpoints_Friday {
     temp: temp1;
@@ -67,7 +67,7 @@ namespace Tempsetpoints_inc {
   }
 
   /** Temperatures Saturday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(0x6)
   model Setpoints_Saturday {
     temp: temp1;
@@ -76,7 +76,7 @@ namespace Tempsetpoints_inc {
   }
 
   /** Temperatures Sunday */
-  @inherit(r, w)
+  @inherit(r_1, w_1)
   @ext(0x7)
   model Setpoints_Sunday {
     temp: temp1;

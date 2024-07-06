@@ -13,134 +13,64 @@ namespace Vaillant;
 // @zz(0x50)
 namespace V61.Mc {
   // ,V6100,VR 61,V61 219
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### general #####
 
-  /** DesiredLowTemperature */
-  @inherit(r, w)
+  /** DesiredLowTemperature: lowering temperature setpoint of the second heating circuit */
   @ext(0x13, 0)
-  model TempDesiredLow {
-    /** lowering temperature setpoint of the second heating circuit */
-    value: temp1;
-  }
+  model TempDesiredLow is Register<temp1>;
 
-  /** DesiredHighTemperature */
-  @inherit(r, w)
+  /** DesiredHighTemperature: day temperature setpoint of the second heating circuit */
   @ext(0x38, 0)
-  model TempDesiredHigh {
-    /** day temperature setpoint of the second heating circuit */
-    value: temp1;
-  }
+  model TempDesiredHigh is Register<temp1>;
 
-  /** DesiredHolidayTemperature */
-  @inherit(r, w)
+  /** DesiredHolidayTemperature: 4.5=frostprotect, holiday temperature of the second heating circuit */
   @ext(0x14, 0)
-  model HolidayTempDesired {
-    /** 4.5=frostprotect, holiday temperature of the second heating circuit */
-    value: D1C;
-  }
+  model HolidayTempDesired is Register<D1C>;
 
-  /** HC2_ManualOPRoomSetpoint */
-  @inherit(r, w)
+  /** HC2_ManualOPRoomSetpoint: room setpoint in operation mode manual of the second heating circuit */
   @ext(0x34, 0)
-  model Hc2ManualOPRoomTempDesired {
-    /** room setpoint in operation mode manual of the second heating circuit */
-    value: temp1;
-  }
+  model Hc2ManualOPRoomTempDesired is Register<temp1>;
 
-  /** HC2_QuickVetoTemp */
-  @inherit(r)
+  /** HC2_QuickVetoTemp: manual override setpoint of the second heating circuit */
   @ext(0x32, 0)
-  model Hc2QuickVetoTemp {
-    /** manual override setpoint of the second heating circuit */
-    value: temp1;
-  }
+  model Hc2QuickVetoTemp is ReadonlyRegister<temp1>;
 
   /** DisplayedRoomSetpoint */
-  @inherit(r)
   @ext(0x48, 0)
-  model DisplayedRoomTempDesired {
-    value: temp;
-  }
+  model DisplayedRoomTempDesired is ReadonlyRegister<temp>;
 
-  /** SunMoonInfo */
-  @inherit(r)
+  /** SunMoonInfo: (2 = sun, 4 = moon) */
   @ext(0x47, 0)
-  model SunMoonInfo {
-    /** (2 = sun, 4 = moon) */
-    value: UCH;
-  }
+  model SunMoonInfo is ReadonlyRegister<UCH>;
   // ##### extra #####
 
-  /** Flow1Sensor */
-  @inherit(r)
+  /** Flow1Sensor: second heating circuit's flow temperature and sensorstate */
   @ext(0, 0)
-  model Flow1Sensor {
-    /** second heating circuit's flow temperature and sensorstate */
-    value: tempsensor;
-  }
+  model Flow1Sensor is ReadonlyRegister<tempsensor>;
 
-  /** BurnerCircuitPump */
-  @inherit(r)
+  /** BurnerCircuitPump: first heating circuit (burner circuit) pump's state */
   @ext(0x20, 0)
-  model BoilerCircuitPump {
-    /** first heating circuit (burner circuit) pump's state */
-    value: onoff;
-  }
+  model BoilerCircuitPump is ReadonlyRegister<onoff>;
 
-  /** circulation pump */
-  @inherit(r)
+  /** CirculationPump: control state of the circulation respectively loading pump (functionality of the pump depends on the configuration) */
   @ext(1, 0)
-  model CirPump {
-    /** control state of the circulation respectively loading pump (functionality of the pump depends on the configuration) */
-    value: onoff;
-  }
+  model CirPump is ReadonlyRegister<onoff>;
 
-  /** Hk1P_Kol1P_P1_Port */
-  @inherit(r)
+  /** Hk1P_Kol1P_P1_Port: first heating circuit pump's state */
   @ext(0x42, 0)
-  model Hc1PumpKol1PP1Port {
-    /** first heating circuit pump's state */
-    value: onoff;
-  }
+  model Hc1PumpKol1PP1Port is ReadonlyRegister<onoff>;
 
-  /** Hk2P_Al_Port */
-  @inherit(r)
+  /** Hk2P_Al_Port: second heating circuit (mixer circuit) pump's state */
   @ext(0x43, 0)
-  model Hc2PumpAlPort {
-    /** second heating circuit (mixer circuit) pump's state */
-    value: onoff;
-  }
+  model Hc2PumpAlPort is ReadonlyRegister<onoff>;
 
-  /** Mixer1DutyCycle */
-  @inherit(r)
+  /** Mixer1DutyCycle: velocity by which the mixer is driven to its end position (positive value: end position is open, negative value: end position is shut) */
   @ext(0x2, 0)
-  model Mixer1DutyCycle {
-    /** velocity by which the mixer is driven to its end position (positive value: end position is open, negative value: end position is shut) */
-    value: percents;
-  }
+  model Mixer1DutyCycle is ReadonlyRegister<percents>;
 
-  /** Mixer1State */
-  @inherit(r)
+  /** Mixer1State: mixer's state */
   @ext(0x3, 0)
-  model Mixer1State {
-    /** mixer's state */
-    value: UCH;
-  }
+  model Mixer1State is ReadonlyRegister<UCH>;
 
   /** HC2_CircuitType */
   @inherit(r)
@@ -151,29 +81,17 @@ namespace V61.Mc {
     value: UCH;
   }
 
-  /** MinFlowTemp */
-  @inherit(r, wi)
+  /** MinFlowTemp: lower limitation of the second heating circuit's flow temperature */
   @ext(0x10, 0)
-  model FlowTempMin {
-    /** lower limitation of the second heating circuit's flow temperature */
-    value: temp1;
-  }
+  model FlowTempMin is InstallRegister<temp1>;
 
-  /** MaxFlowTemp */
-  @inherit(r, wi)
+  /** MaxFlowTemp: upper limitation of the second heating circuit's flow temperature */
   @ext(0x11, 0)
-  model FlowTempMax {
-    /** upper limitation of the second heating circuit's flow temperature */
-    value: temp1;
-  }
+  model FlowTempMax is InstallRegister<temp1>;
 
-  /** Heating curve */
-  @inherit(r, wi)
+  /** heating curve of the second heating circuit */
   @ext(0x15, 0)
-  model HeatingCurve {
-    /** heating curve of the second heating circuit */
-    value: curve;
-  }
+  model HeatingCurve is InstallRegister<curve>;
 
   /** HC2_RoomControlMode */
   @inherit(r, wi)
@@ -184,13 +102,9 @@ namespace V61.Mc {
     value: UCH;
   }
 
-  /** HC2_SummerOffset */
-  @inherit(r, wi)
+  /** HC2_SummerOffset: summer offset of the second heating circuit (if outside temperature > room setpoint + summer offset => heating is OFF; applies to comfort and night setback setpoint; no influence if room temperature modulation is set to "thermostat") */
   @ext(0x37, 0)
-  model Hc2SummerOffset {
-    /** summer offset of the second heating circuit (if outside temperature > room setpoint + summer offset => heating is OFF; applies to comfort and night setback setpoint; no influence if room temperature modulation is set to "thermostat") */
-    value: calibration1;
-  }
+  model Hc2SummerOffset is InstallRegister<calibration1>;
 
   /** AutoOFF_Mode */
   @inherit(r, wi)
@@ -201,212 +115,110 @@ namespace V61.Mc {
     value: UCH;
   }
 
-  /** HcParallelTankFillingEnabled */
-  @inherit(r)
+  /** HcParallelTankFillingEnabled: enable parallel tank loading */
   @ext(0x2d, 0)
-  model HcParallelStorageFillingEnabled {
-    /** enable parallel tank loading */
-    value: onoff;
-  }
+  model HcParallelStorageFillingEnabled is ReadonlyRegister<onoff>;
 
-  /** Flow setpoint */
-  @inherit(r)
+  /** Flow setpoint: flow temperature setpoint of the second heating circuit */
   @ext(0x22, 0)
-  model FlowTempDesired {
-    /** flow temperature setpoint of the second heating circuit */
-    value: temp1;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp1>;
 
-  /** FloorPavingDryingDay */
-  @inherit(r, wi)
+  /** FloorPavingDryingDay: active day of the floor pavement drying function */
   @ext(0x1a, 0)
-  model FloorPavingDryingDay {
-    /** active day of the floor pavement drying function */
-    value: UCH;
-  }
+  model FloorPavingDryingDay is InstallRegister<UCH>;
 
-  /** FloorPavingDryingTemperature */
-  @inherit(r)
+  /** FloorPavingDryingTemperature: flow temperature setpoint for the current day of floor pavement drying */
   @ext(0x4, 0)
-  model FloorPavingDryingTemp {
-    /** flow temperature setpoint for the current day of floor pavement drying */
-    value: temp1;
-  }
+  model FloorPavingDryingTemp is ReadonlyRegister<temp1>;
   // ##### developer's info #####
 
-  /** weekday */
-  @inherit(r)
+  /** Weekday: current day of week */
   @ext(0xb, 0)
-  model Weekday {
-    /** current day of week */
-    value: bday;
-  }
+  model Weekday is ReadonlyRegister<bday>;
 
-  /** date */
-  @inherit(r)
+  /** current date */
   @ext(0xa, 0)
-  model Date {
-    /** current date */
-    value: date;
-  }
+  model Date is ReadonlyRegister<date>;
 
-  /** time */
-  @inherit(r)
+  /** current time */
   @ext(0x9, 0)
-  model Time {
-    /** current time */
-    value: time;
-  }
+  model Time is ReadonlyRegister<time>;
 
-  /** ActualDesiredTemp */
-  @inherit(r)
+  /** ActualDesiredTemp: current setpoint for the second heating circuit considering all basic conditions passed to the control algorithms */
   @ext(0x2f, 0)
-  model ActualTempDesired {
-    /** current setpoint for the second heating circuit considering all basic conditions passed to the control algorithms */
-    value: temp1;
-  }
+  model ActualTempDesired is ReadonlyRegister<temp1>;
 
-  /** DayNightState */
-  @inherit(r)
+  /** DayNightState: 0 = day, 1 = night */
   @ext(0x50, 0)
-  model DayNightState {
-    /** 0 = day, 1 = night */
-    value: UCH;
-  }
+  model DayNightState is ReadonlyRegister<UCH>;
 
-  /** FrostProtectDelay */
-  @inherit(r)
+  /** FrostProtectDelay: delay before frost protection is activated */
   @ext(0x25, 0)
-  model FrostProtectDelay {
-    /** delay before frost protection is activated */
-    value: hours;
-  }
+  model FrostProtectDelay is ReadonlyRegister<hours>;
 
-  /** HcPumpIdlePeriod */
-  @inherit(r)
+  /** HcPumpIdlePeriod: 0=off, heating circuit pump's maximum blocking time for pump's energy saving function */
   @ext(0x28, 0)
-  model HcPumpIdlePeriod {
-    /** 0=off, heating circuit pump's maximum blocking time for pump's energy saving function */
-    value: UCH;
-  }
+  model HcPumpIdlePeriod is ReadonlyRegister<UCH>;
 
-  /** MaxPreheatingMinutes */
-  @inherit(r)
+  /** MaxPreheatingMinutes: in steps of 10, maximum time of enabling the heating before the heating time window starts */
   @ext(0x24, 0)
-  model PreheatingMinutesMax {
-    /** in steps of 10, maximum time of enabling the heating before the heating time window starts */
-    value: UIN;
-  }
+  model PreheatingMinutesMax is ReadonlyRegister<UIN>;
 
-  /** BoilerMaxPreShutdown */
-  @inherit(r)
+  /** BoilerMaxPreShutdown: in steps of 10, maximum time of starting the lowering operation before the heating time window ends */
   @ext(0x18, 0)
-  model BoilerMaxPreShutdown {
-    /** in steps of 10, maximum time of starting the lowering operation before the heating time window ends */
-    value: UCH;
-  }
+  model BoilerMaxPreShutdown is ReadonlyRegister<UCH>;
 
-  /** HC2_ContinuosHeating */
-  @inherit(r)
+  /** HC2_ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
   @ext(0x36, 0)
-  model Hc2ContinuosHeating {
-    /** -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
-    value: SCH;
-  }
+  model Hc2ContinuosHeating is ReadonlyRegister<SCH>;
 
-  /** HcFlowIncrease */
-  @inherit(r)
+  /** HcFlowIncrease: excess temperature (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range) */
   @ext(0x19, 0)
-  model HcFlowIncrease {
-    /** excess temperature (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range) */
-    value: calibration1;
-  }
+  model HcFlowIncrease is ReadonlyRegister<calibration1>;
 
   /** Holiday function active */
-  @inherit(r)
   @ext(0x8, 0)
-  model IsInHoliday {
-    value: yesno;
-  }
+  model IsInHoliday is ReadonlyRegister<yesno>;
 
-  /** IsInOneDayHoliday */
-  @inherit(r)
+  /** IsInOneDayHoliday: indicates that the VR61 is in one day holiday mode */
   @ext(0x56, 0)
-  model IsInOneDayHoliday {
-    /** indicates that the VR61 is in one day holiday mode */
-    value: yesno;
-  }
+  model IsInOneDayHoliday is ReadonlyRegister<yesno>;
 
-  /** IsInBankHoliday */
-  @inherit(r)
+  /** IsInBankHoliday: indicates that the VR61 is in bank holiday mode */
   @ext(0x53, 0)
-  model IsInBankHoliday {
-    /** indicates that the VR61 is in bank holiday mode */
-    value: yesno;
-  }
+  model IsInBankHoliday is ReadonlyRegister<yesno>;
 
-  /** IsInOneDayBankHoliday */
-  @inherit(r)
+  /** IsInOneDayBankHoliday: indicates that the VR61 is in one day bank holiday mode */
   @ext(0x52, 0)
-  model IsInOneDayBankHoliday {
-    /** indicates that the VR61 is in one day bank holiday mode */
-    value: yesno;
-  }
+  model IsInOneDayBankHoliday is ReadonlyRegister<yesno>;
 
   /** IsInParty */
-  @inherit(r)
   @ext(0x55, 0)
-  model IsInParty {
-    value: yesno;
-  }
+  model IsInParty is ReadonlyRegister<yesno>;
 
-  /** IsInImpactVentilation */
-  @inherit(r)
+  /** IsInImpactVentilation: indicates that the VR61 is in impact ventilation mode */
   @ext(0x57, 0)
-  model IsInImpactVentilation {
-    /** indicates that the VR61 is in impact ventilation mode */
-    value: yesno;
-  }
+  model IsInImpactVentilation is ReadonlyRegister<yesno>;
 
-  /** IsInSystemOff */
-  @inherit(r)
+  /** IsInSystemOff: indicates that the VR61 is in system off mode */
   @ext(0x54, 0)
-  model IsInSystemOff {
-    /** indicates that the VR61 is in system off mode */
-    value: yesno;
-  }
+  model IsInSystemOff is ReadonlyRegister<yesno>;
 
-  /** HC2_QuickVetoActive */
-  @inherit(r)
+  /** HC2_QuickVetoActive: manual override of the second heating circuit enabled */
   @ext(0x33, 0)
-  model Hc2QuickVetoActive {
-    /** manual override of the second heating circuit enabled */
-    value: yesno;
-  }
+  model Hc2QuickVetoActive is ReadonlyRegister<yesno>;
 
-  /** HcPreHeatingActive */
-  @inherit(r)
+  /** HcPreHeatingActive: bit-array where a set bit indicates that preheating is active for the corresponding heating circuit */
   @ext(0x2a, 0)
-  model HcPreHeatingActive {
-    /** bit-array where a set bit indicates that preheating is active for the corresponding heating circuit */
-    value: yesno;
-  }
+  model HcPreHeatingActive is ReadonlyRegister<yesno>;
 
-  /** HcPreShutdownActive */
-  @inherit(r)
+  /** HcPreShutdownActive: bit-array where a set bit indicates that early cut off is active for the corresponding heating circuit */
   @ext(0x29, 0)
-  model HcPreShutdownActive {
-    /** bit-array where a set bit indicates that early cut off is active for the corresponding heating circuit */
-    value: yesno;
-  }
+  model HcPreShutdownActive is ReadonlyRegister<yesno>;
 
-  /** HcPumpIdlePeriodActive */
-  @inherit(r)
+  /** HcPumpIdlePeriodActive: bit-array where a set bit indicates that pump's energy saving function is active for the corresponding heating circuit */
   @ext(0x2b, 0)
-  model HcPumpIdlePeriodActive {
-    /** bit-array where a set bit indicates that pump's energy saving function is active for the corresponding heating circuit */
-    value: yesno;
-  }
+  model HcPumpIdlePeriodActive is ReadonlyRegister<yesno>;
 
   /** MonitorEEpromInkonsiNumber */
   @inherit(r)
@@ -417,83 +229,45 @@ namespace V61.Mc {
     value: HEX;
   }
 
-  /** Hk2a_LegP_P2_Port */
-  @inherit(r)
+  /** Hk2a_LegP_P2_Port: port: open mixer */
   @ext(0x44, 0)
-  model Hc2aLegPumpP2Port {
-    /** port: open mixer */
-    value: onoff;
-  }
+  model Hc2aLegPumpP2Port is ReadonlyRegister<onoff>;
 
-  /** Hk2z_Port */
-  @inherit(r)
+  /** Hk2z_Port: port: close mixer */
   @ext(0x45, 0)
-  model Hc2zPort {
-    /** port: close mixer */
-    value: onoff;
-  }
+  model Hc2zPort is ReadonlyRegister<onoff>;
 
   /** Hk2pDemand */
-  @inherit(r)
   @ext(0x49, 0)
-  model Hc2pDemand {
-    value: onoff;
-  }
+  model Hc2pDemand is ReadonlyRegister<onoff>;
 
-  /** SfState */
-  @inherit(r)
+  /** SfState: 0 = _SfsNone, 1 = _SfsForceConsumption, 2 = _SfsFloorPavingDrying, 3 = _SfsSummerSwitchOff, 4 =_SfsTankFilling */
   @ext(0x4a, 0)
-  model SfState {
-    /** 0 = _SfsNone, 1 = _SfsForceConsumption, 2 = _SfsFloorPavingDrying, 3 = _SfsSummerSwitchOff, 4 =_SfsTankFilling */
-    value: UCH;
-  }
+  model SfState is ReadonlyRegister<UCH>;
 
   /** PsSetpoint */
-  @inherit(r)
   @ext(0x4c, 0)
-  model PsTempDesired {
-    value: temp;
-  }
+  model PsTempDesired is ReadonlyRegister<temp>;
 
-  /** PumpSavingState */
-  @inherit(r)
+  /** PumpSavingState: 0 = _PssInactive, 1 = _PssMonitoring, 2 = _PssCounting, 3 = _PssPostrun, 4 = _PssSaving */
   @ext(0x4d, 0)
-  model PumpSavingState {
-    /** 0 = _PssInactive, 1 = _PssMonitoring, 2 = _PssCounting, 3 = _PssPostrun, 4 = _PssSaving */
-    value: UCH;
-  }
+  model PumpSavingState is ReadonlyRegister<UCH>;
 
-  /** OffConfig */
-  @inherit(r)
+  /** 0 = _OffConfig_Off, 1 = _OffConfig_Low */
   @ext(0x4e, 0)
-  model OffConfig {
-    /** 0 = _OffConfig_Off, 1 = _OffConfig_Low */
-    value: UCH;
-  }
+  model OffConfig is ReadonlyRegister<UCH>;
 
-  /** FrostProtConfig */
-  @inherit(r)
+  /** 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick */
   @ext(0x4f, 0)
-  model FrostProtConfig {
-    /** 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick */
-    value: UCH;
-  }
+  model FrostProtConfig is ReadonlyRegister<UCH>;
 
-  /** FrostProtState */
-  @inherit(r)
+  /** FrostProtState: 0 = _Fps_NoFrost, 1 = _Fps_Delay, 2 = _Fps_PumpKick, 3 = _Fps_KickOff, 4 = _Fps_Active */
   @ext(0x4b, 0)
-  model FrostProtState {
-    /** 0 = _Fps_NoFrost, 1 = _Fps_Delay, 2 = _Fps_PumpKick, 3 = _Fps_KickOff, 4 = _Fps_Active */
-    value: UCH;
-  }
+  model FrostProtState is ReadonlyRegister<UCH>;
 
-  /** ThermostatState */
-  @inherit(r)
+  /** ThermostatState: 0 = _ThermOn, 1 =_ThermOff */
   @ext(0x51, 0)
-  model ThermostatState {
-    /** 0 = _ThermOn, 1 =_ThermOff */
-    value: UCH;
-  }
+  model ThermostatState is ReadonlyRegister<UCH>;
 
   enum Values_InternalOperatingMode430 {
     off: 0,

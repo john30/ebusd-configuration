@@ -11,54 +11,23 @@ namespace Vaillant;
 // @zz(0x15)
 namespace Ui {
   // ,UI,CI of VRS 620/3,0020040141 162
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### MainPage #####
 
-  /** Aussentemperatur */
-  @inherit(r)
+  /** Aussentemperatur: out door temperature */
   @ext(1, 0)
-  model OutsideTemp {
-    /** out door temperature */
-    value: tempsensor;
-  }
+  model OutsideTemp is ReadonlyRegister<tempsensor>;
 
-  /** system flow temp */
-  @inherit(r)
+  /** SystemFlowTemp: system temperature at the hydraulic diverter (VF1) */
   @ext(0x2, 0)
-  model FlowTemp {
-    /** system temperature at the hydraulic diverter (VF1) */
-    value: tempsensor;
-  }
+  model FlowTemp is ReadonlyRegister<tempsensor>;
 
-  /** SystemTempGradient */
-  @inherit(r)
+  /** SystemTempGradient: gradient of the system temperature (VF1) */
   @ext(0x8c, 0)
-  model SystemTempGradient {
-    /** gradient of the system temperature (VF1) */
-    value: temp;
-  }
+  model SystemTempGradient is ReadonlyRegister<temp>;
 
-  /** SystemDesiredFlowTemp */
-  @inherit(r)
+  /** SystemDesiredFlowTemp: system desired flow temperature */
   @ext(0x5, 0)
-  model FlowTempDesired {
-    /** system desired flow temperature */
-    value: temp;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp>;
 
   /** StateEM */
   @inherit(r)
@@ -69,20 +38,13 @@ namespace Ui {
     value: UCH;
   }
 
-  /** SolarHydraulicMap */
-  @inherit(r)
+  /** SolarHydraulicMap: hydraulic scheme (1..9); this parameter has to change at the IO-pcb */
   @ext(0x1e, 0)
-  model HydraulicMap {
-    /** hydraulic scheme (1..9); this parameter has to change at the IO-pcb */
-    value: UCH;
-  }
+  model HydraulicMap is ReadonlyRegister<UCH>;
 
   /** PreShutDownTime */
-  @inherit(r, w)
   @ext(0x2d, 0)
-  model PreShutDownTime {
-    value: minutes0;
-  }
+  model PreShutDownTime is Register<minutes0>;
 
   /** FrostOverRideTime */
   @inherit(r, w)
@@ -93,92 +55,49 @@ namespace Ui {
   }
 
   /** TempIncrease */
-  @inherit(r, w)
   @ext(0x2f, 0)
-  model TempIncrease {
-    value: temp;
-  }
+  model TempIncrease is Register<temp>;
 
-  /** ContinuousHeatingLimit */
-  @inherit(r, w)
+  /** ContinuousHeatingLimit: -128=off, (0x80, -128 = off) */
   @ext(0x64, 0)
-  model ContinuousHeatingLimit {
-    /** -128=off, (0x80, -128 = off) */
-    value: SCH;
-  }
+  model ContinuousHeatingLimit is Register<SCH>;
   // ##### SystemComponets #####
 
-  /** Mk2Detected */
-  @inherit(r)
+  /** Mk2Detected: detected VR60 (bit counted) */
   @ext(0x18, 0)
-  model MixerDetected {
-    /** detected VR60 (bit counted) */
-    value: UCH;
-  }
+  model MixerDetected is ReadonlyRegister<UCH>;
 
-  /** BkDetected */
-  @inherit(r)
+  /** BkDetected: detected bus coppler e.g. VR30,31,32 (bit counted) */
   @ext(0x19, 0)
-  model BoilerDetected {
-    /** detected bus coppler e.g. VR30,31,32 (bit counted) */
-    value: UCH;
-  }
+  model BoilerDetected is ReadonlyRegister<UCH>;
 
-  /** FbgDetected */
-  @inherit(r)
+  /** FbgDetected: detected VR80 or VR90 (bit counted) */
   @ext(0x1a, 0)
-  model RemoteDetected {
-    /** detected VR80 or VR90 (bit counted) */
-    value: UCH;
-  }
+  model RemoteDetected is ReadonlyRegister<UCH>;
 
-  /** ActoStorModulDetected */
-  @inherit(r)
+  /** ActoStorModulDetected: detected VLR (bit counted) */
   @ext(0x5a, 0)
-  model ActoStorModulDetected {
-    /** detected VLR (bit counted) */
-    value: UCH;
-  }
+  model ActoStorModulDetected is ReadonlyRegister<UCH>;
 
-  /** AscBigModulDetected */
-  @inherit(r)
+  /** AscBigModulDetected: detected VPM-S (bit counted) */
   @ext(0x7f, 0)
-  model AscBigModulDetected {
-    /** detected VPM-S (bit counted) */
-    value: UCH;
-  }
+  model AscBigModulDetected is ReadonlyRegister<UCH>;
 
-  /** AscSmallModulDetected */
-  @inherit(r)
+  /** AscSmallModulDetected: detected VMS (bit counted) */
   @ext(0x80, 0)
-  model AscSmallModulDetected {
-    /** detected VMS (bit counted) */
-    value: UCH;
-  }
+  model AscSmallModulDetected is ReadonlyRegister<UCH>;
 
-  /** FwsModulDetected */
-  @inherit(r)
+  /** FwsModulDetected: detected VPM-W (bit counted) */
   @ext(0x81, 0)
-  model WaterstationModulDetected {
-    /** detected VPM-W (bit counted) */
-    value: UCH;
-  }
+  model WaterstationModulDetected is ReadonlyRegister<UCH>;
 
-  /** NumberOfBoiler */
-  @inherit(r)
+  /** NumberOfBoiler: active boiler in the system */
   @ext(0x1c, 0)
-  model BoilerCount {
-    /** active boiler in the system */
-    value: UCH;
-  }
+  model BoilerCount is ReadonlyRegister<UCH>;
 
-  /** BoilerSwitchSteps */
-  @inherit(r, wi)
+  /** BoilerSwitchSteps: set of the steps from the switching boiler */
   @ext(0x35, 0)
-  model BoilerSwitchSteps {
-    /** set of the steps from the switching boiler */
-    value: UCH;
-  }
+  model BoilerSwitchSteps is InstallRegister<UCH>;
 
   /** SourceType */
   @inherit(r)
@@ -190,41 +109,25 @@ namespace Ui {
   }
   // ##### controler internal #####
 
-  /** RaumtemperaturIst */
-  @inherit(r)
+  /** RaumtemperaturIst: room temperature */
   @ext(0, 0)
-  model RoomTemp {
-    /** room temperature */
-    value: tempsensor;
-  }
+  model RoomTemp is ReadonlyRegister<tempsensor>;
 
   /** RaumtemperaturIstOffset */
-  @inherit(r, wi)
   @ext(0x1f, 0)
-  model RoomTempOffset {
-    value: temp;
-  }
+  model RoomTempOffset is InstallRegister<temp>;
 
   /** RaumTempOffsetEigenErwaerm */
-  @inherit(r)
   @ext(0x20, 0)
-  model RoomTempOffsetSelfWarming {
-    value: temp;
-  }
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
 
   /** OutDoorTempCorr */
-  @inherit(r, wi)
   @ext(0x21, 0)
-  model OutsideTempOffset {
-    value: temp;
-  }
+  model OutsideTempOffset is InstallRegister<temp>;
 
   /** RoomSetTempHoliday */
-  @inherit(r, w)
   @ext(0x22, 0)
-  model RoomTempHoliday {
-    value: temp;
-  }
+  model RoomTempHoliday is Register<temp>;
 
   /** HolidayPeriod */
   @inherit(r, w)
@@ -237,27 +140,16 @@ namespace Ui {
   }
 
   /** ServicePeriod */
-  @inherit(r, wi)
   @ext(0x2b, 0)
-  model ServicePeriod {
-    value: date;
-  }
+  model ServicePeriod is InstallRegister<date>;
 
   /** aucPhoneNumber_part1 */
-  @inherit(r, wi)
   @ext(0x42, 0)
-  model PhoneNumberPart1 {
-    @maxLength(9)
-    value: STR;
-  }
+  model PhoneNumberPart1 is InstallRegister<phone>;
 
   /** aucPhoneNumber_part2 */
-  @inherit(r, wi)
   @ext(0x42, 0x8)
-  model PhoneNumberPart2 {
-    @maxLength(9)
-    value: STR;
-  }
+  model PhoneNumberPart2 is InstallRegister<phone>;
 
   /** KeyCodeforConfigMenue */
   @inherit(r, wi)
@@ -268,137 +160,77 @@ namespace Ui {
   }
 
   /** TempFailDetectTime */
-  @inherit(r, wi)
   @ext(0x33, 0)
-  model TempFailDetectTime {
-    value: temp0;
-  }
+  model TempFailDetectTime is InstallRegister<temp0>;
 
-  /** LcdContrastPwmValue */
-  @inherit(r, wi)
+  /** LcdContrastPwmValue: contrast for the display */
   @ext(0x36, 0)
-  model LcdContrastPwmValue {
-    /** contrast for the display */
-    value: UCH;
-  }
+  model LcdContrastPwmValue is InstallRegister<UCH>;
 
   /** time */
-  @inherit(r)
   @ext(0x5f, 0)
-  model Time {
-    value: time;
-  }
+  model Time is ReadonlyRegister<time>;
 
   /** Day of week */
-  @inherit(r)
   @ext(0x60, 0)
-  model Day {
-    value: bday;
-  }
+  model Day is ReadonlyRegister<bday>;
 
   /** date */
-  @inherit(r)
   @ext(0x61, 0)
-  model Date {
-    value: date;
-  }
+  model Date is ReadonlyRegister<date>;
 
   /** SummerWinterTimeAdjust */
-  @inherit(r, w)
   @ext(0x67, 0)
-  model SummerWinterTimeAdjust {
-    value: onoff;
-  }
+  model SummerWinterTimeAdjust is Register<onoff>;
 
   /** ClockSwitchSummerWinterDone */
-  @inherit(r)
   @ext(0x68, 0)
-  model ClockSwitchSummerWinterDone {
-    value: onoff;
-  }
+  model ClockSwitchSummerWinterDone is ReadonlyRegister<onoff>;
 
-  /** InstallationCompleted */
-  @inherit(r)
+  /** InstallationCompleted: Installation assistant is done */
   @ext(0x69, 0)
-  model InstallationCompleted {
-    /** Installation assistant is done */
-    value: yesno;
-  }
+  model InstallationCompleted is ReadonlyRegister<yesno>;
 
-  /** DisplayTyp */
-  @inherit(r)
+  /** DisplayTyp: display misubishi=0x07, mtek=0x70 */
   @ext(0x8d, 0)
-  model DisplayType {
-    /** display misubishi=0x07, mtek=0x70 */
-    value: UCH;
-  }
+  model DisplayType is ReadonlyRegister<UCH>;
 
-  /** ScanPrevention */
-  @inherit(r)
+  /** ScanPrevention: cyclic scan are started */
   @ext(0x84, 0)
-  model ScanPrevention {
-    /** cyclic scan are started */
-    value: onoff;
-  }
+  model ScanPrevention is ReadonlyRegister<onoff>;
   // ##### cascade parameter #####
 
   /** BoilerSwitchHyster */
-  @inherit(r, wi)
   @ext(0x23, 0)
-  model BoilerSwitchHyster {
-    value: temp;
-  }
+  model BoilerSwitchHyster is InstallRegister<temp>;
 
   /** BoilerMaxTemp */
-  @inherit(r, wi)
   @ext(0x24, 0)
-  model BoilerTempMax {
-    value: temp;
-  }
+  model BoilerTempMax is InstallRegister<temp>;
 
   /** BoilerMinTemp */
-  @inherit(r, wi)
   @ext(0x25, 0)
-  model BoilerTempMin {
-    value: temp;
-  }
+  model BoilerTempMin is InstallRegister<temp>;
 
-  /** StartPowerVantage */
-  @inherit(r, wi)
+  /** StartPowerVantage: start power for DHW loading (x boiler) */
   @ext(0x28, 0)
-  model StartPowerVantage {
-    /** start power for DHW loading (x boiler) */
-    value: UCH;
-  }
+  model StartPowerVantage is InstallRegister<UCH>;
 
   /** SeparationShift */
-  @inherit(r, wi)
   @ext(0x2a, 0)
-  model SeparationShift {
-    value: onoff;
-  }
+  model SeparationShift is InstallRegister<onoff>;
 
   /** TurnOnDelay */
-  @inherit(r, wi)
   @ext(0x30, 0)
-  model TurnOnDelay {
-    value: UCH;
-  }
+  model TurnOnDelay is InstallRegister<UCH>;
 
   /** TurnOffDelay */
-  @inherit(r, wi)
   @ext(0x31, 0)
-  model TurnOffDelay {
-    value: UCH;
-  }
+  model TurnOffDelay is InstallRegister<UCH>;
 
-  /** BoilerSequence */
-  @inherit(r, wi)
+  /** BoilerSequence: activation of boiler sequence */
   @ext(0x32, 0)
-  model BoilerSequence {
-    /** activation of boiler sequence */
-    value: onoff;
-  }
+  model BoilerSequence is InstallRegister<onoff>;
 
   /** BoilerSequenceChangeTime */
   @inherit(r, wi)
@@ -519,76 +351,45 @@ namespace Ui {
     value: HEX;
   }
 
-  /** HcForceMode */
-  @inherit(r)
+  /** HcForceMode: ForceComsumDisable=0, ForceComsumNoHeating=1, ForceComsumMaxHeating=2 */
   @ext(0x71, 0)
-  model HcForceMode {
-    /** ForceComsumDisable=0, ForceComsumNoHeating=1, ForceComsumMaxHeating=2 */
-    value: UCH;
-  }
+  model HcForceMode is ReadonlyRegister<UCH>;
 
   /** DhwRequestAsc */
-  @inherit(r)
   @ext(0x72, 0)
-  model HwcRequestAsc {
-    value: onoff;
-  }
+  model HwcRequestAsc is ReadonlyRegister<onoff>;
 
   /** ChRequestAsc */
-  @inherit(r)
   @ext(0x73, 0)
-  model HcRequestAsc {
-    value: onoff;
-  }
+  model HcRequestAsc is ReadonlyRegister<onoff>;
 
   /** FlowSetpointAscDhw */
-  @inherit(r)
   @ext(0x74, 0)
-  model FlowTempDesiredAscHwc {
-    value: temp;
-  }
+  model FlowTempDesiredAscHwc is ReadonlyRegister<temp>;
 
   /** FlowSetpointAscCh */
-  @inherit(r)
   @ext(0x75, 0)
-  model FlowTempDesiredAscHc {
-    value: temp;
-  }
+  model FlowTempDesiredAscHc is ReadonlyRegister<temp>;
 
   /** SolarLoadingDelay_Dhw */
-  @inherit(r)
   @ext(0x76, 0)
-  model SolLoadingDelayHwc {
-    value: minutes0;
-  }
+  model SolLoadingDelayHwc is ReadonlyRegister<minutes0>;
 
   /** SolarLoadingDelay_Ch */
-  @inherit(r)
   @ext(0x89, 0)
-  model SolLoadingDelayHc {
-    value: minutes0;
-  }
+  model SolLoadingDelayHc is ReadonlyRegister<minutes0>;
 
   /** BufferFlowThreshold_On */
-  @inherit(r)
   @ext(0x77, 0)
-  model BufferFlowThresholdOn {
-    value: temp;
-  }
+  model BufferFlowThresholdOn is ReadonlyRegister<temp>;
 
   /** BufferFlowThreshold_Off */
-  @inherit(r)
   @ext(0x78, 0)
-  model BufferFlowThresholdOff {
-    value: temp;
-  }
+  model BufferFlowThresholdOff is ReadonlyRegister<temp>;
 
   /** OffsetFlowSetpointBufToBoiler */
-  @inherit(r)
   @ext(0x79, 0)
-  model OffsetFlowTempDesiredBufToBoiler {
-    value: temp;
-  }
+  model OffsetFlowTempDesiredBufToBoiler is ReadonlyRegister<temp>;
 
   /** ASC_Status */
   @inherit(r)
@@ -600,146 +401,81 @@ namespace Ui {
   }
 
   /** TankSensorAbove */
-  @inherit(r)
   @ext(0x7b, 0)
-  model StorageSensorTop {
-    value: temp;
-  }
+  model StorageSensorTop is ReadonlyRegister<temp>;
 
   /** TankSensorMittel */
-  @inherit(r)
   @ext(0x7c, 0)
-  model StorageSensorMiddle {
-    value: temp;
-  }
+  model StorageSensorMiddle is ReadonlyRegister<temp>;
 
   /** TankSensorBottom */
-  @inherit(r)
   @ext(0x7d, 0)
-  model StorageSensorBottom {
-    value: temp;
-  }
+  model StorageSensorBottom is ReadonlyRegister<temp>;
   // ##### boiler output #####
 
   /** DesiredFlowTempBoiler_1 */
-  @inherit(r)
   @ext(0x48, 0x8)
-  model FlowTempDesiredB1 {
-    value: temp0;
-  }
+  model FlowTempDesiredB1 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_2 */
-  @inherit(r)
   @ext(0x48, 0x10)
-  model FlowTempDesiredB2 {
-    value: temp0;
-  }
+  model FlowTempDesiredB2 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_3 */
-  @inherit(r)
   @ext(0x48, 0x18)
-  model FlowTempDesiredB3 {
-    value: temp0;
-  }
+  model FlowTempDesiredB3 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_4 */
-  @inherit(r)
   @ext(0x48, 0x20)
-  model FlowTempDesiredB4 {
-    value: temp0;
-  }
+  model FlowTempDesiredB4 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_5 */
-  @inherit(r)
   @ext(0x48, 0x28)
-  model FlowTempDesiredB5 {
-    value: temp0;
-  }
+  model FlowTempDesiredB5 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_6 */
-  @inherit(r)
   @ext(0x48, 0x30)
-  model FlowTempDesiredB6 {
-    value: temp0;
-  }
+  model FlowTempDesiredB6 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_7 */
-  @inherit(r)
   @ext(0x48, 0x38)
-  model FlowTempDesiredB7 {
-    value: temp0;
-  }
+  model FlowTempDesiredB7 is ReadonlyRegister<temp0>;
 
   /** DesiredFlowTempBoiler_8 */
-  @inherit(r)
   @ext(0x48, 0x40)
-  model FlowTempDesiredB8 {
-    value: temp0;
-  }
+  model FlowTempDesiredB8 is ReadonlyRegister<temp0>;
 
-  /** DesiredDegreeBoiler_1 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_1: modulation in percent */
   @ext(0x49, 0x8)
-  model DesiredDegreeB1 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB1 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_2 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_2: modulation in percent */
   @ext(0x49, 0x10)
-  model DesiredDegreeB2 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB2 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_3 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_3: modulation in percent */
   @ext(0x49, 0x18)
-  model DesiredDegreeB3 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB3 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_4 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_4: modulation in percent */
   @ext(0x49, 0x20)
-  model DesiredDegreeB4 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB4 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_5 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_5: modulation in percent */
   @ext(0x49, 0x28)
-  model DesiredDegreeB5 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB5 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_6 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_6: modulation in percent */
   @ext(0x49, 0x30)
-  model DesiredDegreeB6 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB6 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_7 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_7: modulation in percent */
   @ext(0x49, 0x38)
-  model DesiredDegreeB7 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB7 is ReadonlyRegister<percent0>;
 
-  /** DesiredDegreeBoiler_8 */
-  @inherit(r)
+  /** DesiredDegreeBoiler_8: modulation in percent */
   @ext(0x49, 0x40)
-  model DesiredDegreeB8 {
-    /** modulation in percent */
-    value: percent0;
-  }
+  model DesiredDegreeB8 is ReadonlyRegister<percent0>;
 
   /** DesiredStateBoiler_1 */
   @inherit(r)
@@ -813,325 +549,162 @@ namespace Ui {
     value: UCH;
   }
 
-  /** LoadingPumpBoiler_1 */
-  @inherit(r)
+  /** LoadingPumpBoiler_1: Off=0, On=100 */
   @ext(0x85, 0x8)
-  model LoadingPumpB1 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB1 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_2 */
-  @inherit(r)
+  /** LoadingPumpBoiler_2: Off=0, On=100 */
   @ext(0x85, 0x10)
-  model LoadingPumpB2 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB2 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_3 */
-  @inherit(r)
+  /** LoadingPumpBoiler_3: Off=0, On=100 */
   @ext(0x85, 0x18)
-  model LoadingPumpB3 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB3 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_4 */
-  @inherit(r)
+  /** LoadingPumpBoiler_4: Off=0, On=100 */
   @ext(0x85, 0x20)
-  model LoadingPumpB4 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB4 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_5 */
-  @inherit(r)
+  /** LoadingPumpBoiler_5: Off=0, On=100 */
   @ext(0x85, 0x28)
-  model LoadingPumpB5 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB5 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_6 */
-  @inherit(r)
+  /** LoadingPumpBoiler_6: Off=0, On=100 */
   @ext(0x85, 0x30)
-  model LoadingPumpB6 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB6 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_7 */
-  @inherit(r)
+  /** LoadingPumpBoiler_7: Off=0, On=100 */
   @ext(0x85, 0x38)
-  model LoadingPumpB7 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB7 is ReadonlyRegister<UCH>;
 
-  /** LoadingPumpBoiler_8 */
-  @inherit(r)
+  /** LoadingPumpBoiler_8: Off=0, On=100 */
   @ext(0x85, 0x40)
-  model LoadingPumpB8 {
-    /** Off=0, On=100 */
-    value: UCH;
-  }
+  model LoadingPumpB8 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_1 */
-  @inherit(r)
+  /** ChPumpBoiler_1: Off=0, On=1 */
   @ext(0x86, 0x8)
-  model HcPumpB1 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB1 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_2 */
-  @inherit(r)
+  /** ChPumpBoiler_2: Off=0, On=1 */
   @ext(0x86, 0x10)
-  model HcPumpB2 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB2 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_3 */
-  @inherit(r)
+  /** ChPumpBoiler_3: Off=0, On=1 */
   @ext(0x86, 0x18)
-  model HcPumpB3 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB3 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_4 */
-  @inherit(r)
+  /** ChPumpBoiler_4: Off=0, On=1 */
   @ext(0x86, 0x20)
-  model HcPumpB4 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB4 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_5 */
-  @inherit(r)
+  /** ChPumpBoiler_5: Off=0, On=1 */
   @ext(0x86, 0x28)
-  model HcPumpB5 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB5 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_6 */
-  @inherit(r)
+  /** ChPumpBoiler_6: Off=0, On=1 */
   @ext(0x86, 0x30)
-  model HcPumpB6 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB6 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_7 */
-  @inherit(r)
+  /** ChPumpBoiler_7: Off=0, On=1 */
   @ext(0x86, 0x38)
-  model HcPumpB7 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB7 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_8 */
-  @inherit(r)
+  /** ChPumpBoiler_8: Off=0, On=1 */
   @ext(0x86, 0x40)
-  model HcPumpB8 {
-    /** Off=0, On=1 */
-    value: UCH;
-  }
+  model HcPumpB8 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_1 */
-  @inherit(r)
   @ext(0x87, 0x8)
-  model FlagsB1 {
-    value: UCH;
-  }
+  model FlagsB1 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_2 */
-  @inherit(r)
   @ext(0x87, 0x10)
-  model FlagsB2 {
-    value: UCH;
-  }
+  model FlagsB2 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_3 */
-  @inherit(r)
   @ext(0x87, 0x18)
-  model FlagsB3 {
-    value: UCH;
-  }
+  model FlagsB3 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_4 */
-  @inherit(r)
   @ext(0x87, 0x20)
-  model FlagsB4 {
-    value: UCH;
-  }
+  model FlagsB4 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_5 */
-  @inherit(r)
   @ext(0x87, 0x28)
-  model FlagsB5 {
-    value: UCH;
-  }
+  model FlagsB5 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_6 */
-  @inherit(r)
   @ext(0x87, 0x30)
-  model FlagsB6 {
-    value: UCH;
-  }
+  model FlagsB6 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_7 */
-  @inherit(r)
   @ext(0x87, 0x38)
-  model FlagsB7 {
-    value: UCH;
-  }
+  model FlagsB7 is ReadonlyRegister<UCH>;
 
   /** FlagsBoiler_8 */
-  @inherit(r)
   @ext(0x87, 0x40)
-  model FlagsB8 {
-    value: UCH;
-  }
+  model FlagsB8 is ReadonlyRegister<UCH>;
   // ##### heating circuit name #####
 
-  /** aaucHcNames_1 */
-  @inherit(r, w)
+  /** aaucHcNames_1: name of heating circuit No 1 */
   @ext(0x41, 0)
-  model HcName1 {
-    /** name of heating circuit No 1 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName1 is Register<hcname>;
 
-  /** aaucHcNames_2 */
-  @inherit(r, w)
+  /** aaucHcNames_2: name of heating circuit No 2 */
   @ext(0x41, 0x8)
-  model HcName2 {
-    /** name of heating circuit No 2 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName2 is Register<hcname>;
 
-  /** aaucHcNames_3 */
-  @inherit(r, w)
+  /** aaucHcNames_3: name of heating circuit No 3 */
   @ext(0x41, 0x10)
-  model HcName3 {
-    /** name of heating circuit No 3 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName3 is Register<hcname>;
 
-  /** aaucHcNames_4 */
-  @inherit(r, w)
+  /** aaucHcNames_4: name of heating circuit No 4 */
   @ext(0x41, 0x18)
-  model HcName4 {
-    /** name of heating circuit No 4 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName4 is Register<hcname>;
 
-  /** aaucHcNames_5 */
-  @inherit(r, w)
+  /** aaucHcNames_5: name of heating circuit No 5 */
   @ext(0x41, 0x20)
-  model HcName5 {
-    /** name of heating circuit No 5 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName5 is Register<hcname>;
 
-  /** aaucHcNames_6 */
-  @inherit(r, w)
+  /** aaucHcNames_6: name of heating circuit No 6 */
   @ext(0x41, 0x28)
-  model HcName6 {
-    /** name of heating circuit No 6 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName6 is Register<hcname>;
 
-  /** aaucHcNames_7 */
-  @inherit(r, w)
+  /** aaucHcNames_7: name of heating circuit No 7 */
   @ext(0x41, 0x30)
-  model HcName7 {
-    /** name of heating circuit No 7 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName7 is Register<hcname>;
 
-  /** aaucHcNames_8 */
-  @inherit(r, w)
+  /** aaucHcNames_8: name of heating circuit No 8 */
   @ext(0x41, 0x38)
-  model HcName8 {
-    /** name of heating circuit No 8 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName8 is Register<hcname>;
 
-  /** aaucHcNames_9 */
-  @inherit(r, w)
+  /** aaucHcNames_9: name of heating circuit No 9 */
   @ext(0x41, 0x40)
-  model HcName9 {
-    /** name of heating circuit No 9 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName9 is Register<hcname>;
 
-  /** aaucHcNames_10 */
-  @inherit(r, w)
+  /** aaucHcNames_10: name of heating circuit No 10 */
   @ext(0x41, 0x48)
-  model HcName10 {
-    /** name of heating circuit No 10 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName10 is Register<hcname>;
 
-  /** aaucHcNames_11 */
-  @inherit(r, w)
+  /** aaucHcNames_11: name of heating circuit No 11 */
   @ext(0x41, 0x50)
-  model HcName11 {
-    /** name of heating circuit No 11 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName11 is Register<hcname>;
 
-  /** aaucHcNames_12 */
-  @inherit(r, w)
+  /** aaucHcNames_12: name of heating circuit No 12 */
   @ext(0x41, 0x58)
-  model HcName12 {
-    /** name of heating circuit No 12 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName12 is Register<hcname>;
 
-  /** aaucHcNames_13 */
-  @inherit(r, w)
+  /** aaucHcNames_13: name of heating circuit No 13 */
   @ext(0x41, 0x60)
-  model HcName13 {
-    /** name of heating circuit No 13 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName13 is Register<hcname>;
 
-  /** aaucHcNames_14 */
-  @inherit(r, w)
+  /** aaucHcNames_14: name of heating circuit No 14 */
   @ext(0x41, 0x68)
-  model HcName14 {
-    /** name of heating circuit No 14 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName14 is Register<hcname>;
 
-  /** aaucHcNames_15 */
-  @inherit(r, w)
+  /** aaucHcNames_15: name of heating circuit No 15 */
   @ext(0x41, 0x70)
-  model HcName15 {
-    /** name of heating circuit No 15 */
-    @maxLength(11)
-    value: STR;
-  }
+  model HcName15 is Register<hcname>;
 
   enum Values_StateEM {
     off: 0,

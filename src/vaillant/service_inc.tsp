@@ -11,10 +11,10 @@ namespace Service_inc {
 
   /** default *r */
   @base(MF, 0x3, 0)
-  model r {}
+  model r_1 {}
 
   /** Current service message */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x2)
   model Currentservice {
     value: errors;
@@ -23,16 +23,16 @@ namespace Service_inc {
 
   /** default *r */
   @base(MF, 0x3, 1)
-  model r_1 {}
+  model r_2 {}
 
   /** default *wi for user level "install" */
   @write
   @auth("install")
   @base(MF, 0x3, 0x2)
-  model wi {}
+  model wi_1 {}
 
   /** Service message history */
-  @inherit(r_1)
+  @inherit(r_2)
   @ext(0x2)
   model Servicehistory {
     @out
@@ -42,7 +42,7 @@ namespace Service_inc {
   }
 
   /** Clear service message history */
-  @inherit(wi)
+  @inherit(wi_1)
   @ext(0x2)
   model Clearservicehistory {
     @in

@@ -13,51 +13,22 @@ namespace Vaillant;
 namespace Omu {
   // ,OMU00,OMU_no_serial,OMU00 252
 
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
   /** Out1_230V */
-  @inherit(r)
   @ext(0x18, 0)
-  model Out1230V {
-    value: onoff;
-  }
+  model Out1230V is ReadonlyRegister<onoff>;
 
   /** BrineFlowReversed */
-  @inherit(r)
   @ext(0x44, 0)
-  model SourceFlowReversed {
-    value: onoff;
-  }
+  model SourceFlowReversed is ReadonlyRegister<onoff>;
   // ##### Parameters and information #####
 
-  /** ODU_air_inlet */
-  @inherit(r)
+  /** ODU_air_inlet: air inlet sensor on ODU */
   @ext(0x5, 0)
-  model ODUSourceInput {
-    /** air inlet sensor on ODU */
-    value: tempsensor;
-  }
+  model ODUSourceInput is ReadonlyRegister<tempsensor>;
 
-  /** ODU_brine_Warm */
-  @inherit(r)
+  /** ODU_brine_Warm: brine_warm sensor on ODU */
   @ext(0x6, 0)
-  model Parametersandinformation_ODUSourceInput {
-    /** brine_warm sensor on ODU */
-    value: tempsensor;
-  }
+  model Parametersandinformation_ODUSourceInput is ReadonlyRegister<tempsensor>;
 
   /** Fan_Speed_Is */
   @inherit(r)
@@ -69,447 +40,229 @@ namespace Omu {
     value: UCH;
   }
 
-  /** FanIsRunning */
-  @inherit(r)
+  /** FanIsRunning: fan started successful */
   @ext(0x3b, 0)
-  model FanIsRunning {
-    /** fan started successful */
-    value: yesno;
-  }
+  model FanIsRunning is ReadonlyRegister<yesno>;
 
-  /** DeiceRequest */
-  @inherit(r)
+  /** DeiceRequest: defrosting requested */
   @ext(0x1b, 0)
-  model DeiceRequest {
-    /** defrosting requested */
-    value: yesno;
-  }
+  model DeiceRequest is ReadonlyRegister<yesno>;
 
-  /** ManualDeiceRequest */
-  @inherit(r, wi)
+  /** ManualDeiceRequest: start manual defrosting */
   @ext(0x1a, 0)
-  model ManualDeiceRequest {
-    /** start manual defrosting */
-    value: yesno;
-  }
+  model ManualDeiceRequest is InstallRegister<yesno>;
 
-  /** DeicingActive */
-  @inherit(r)
+  /** DeicingActive: defrosting is active */
   @ext(0x2c, 0)
-  model DeicingActive {
-    /** defrosting is active */
-    value: yesno;
-  }
+  model DeicingActive is ReadonlyRegister<yesno>;
 
-  /** defroster */
-  @inherit(r)
+  /** defroster is running */
   @ext(0x11, 0)
-  model Defroster {
-    /** defroster is running */
-    value: onoff;
-  }
+  model Defroster is ReadonlyRegister<onoff>;
 
-  /** CleaningRequest */
-  @inherit(r)
+  /** CleaningRequest: problems in air flow detected */
   @ext(0x2d, 0)
-  model CleaningRequest {
-    /** problems in air flow detected */
-    value: yesno;
-  }
+  model CleaningRequest is ReadonlyRegister<yesno>;
 
-  /** DeiceError */
-  @inherit(r)
+  /** DeiceError: timeout while defrost process */
   @ext(0x1c, 0)
-  model DeiceError {
-    /** timeout while defrost process */
-    value: yesno;
-  }
+  model DeiceError is ReadonlyRegister<yesno>;
 
-  /** PollutionDetect */
-  @inherit(r)
+  /** PollutionDetect: unusual low brine temperaure at high air inlet temperature */
   @ext(0x1d, 0)
-  model PollutionDetect {
-    /** unusual low brine temperaure at high air inlet temperature */
-    value: yesno;
-  }
+  model PollutionDetect is ReadonlyRegister<yesno>;
 
-  /** Fan error */
-  @inherit(r)
+  /** FanError: fan did not start */
   @ext(0x2e, 0)
-  model FanError {
-    /** fan did not start */
-    value: yesno;
-  }
+  model FanError is ReadonlyRegister<yesno>;
 
-  /** STBError */
-  @inherit(r)
+  /** STBError: defroster STB was interrupted */
   @ext(0x2f, 0)
-  model STBError {
-    /** defroster STB was interrupted */
-    value: yesno;
-  }
+  model STBError is ReadonlyRegister<yesno>;
 
-  /** STB_OK */
-  @inherit(r)
+  /** STB_OK: STB is closed */
   @ext(0x38, 0)
-  model STBOK {
-    /** STB is closed */
-    value: yesno;
-  }
+  model STBOK is ReadonlyRegister<yesno>;
 
-  /** BadWeather */
-  @inherit(r)
+  /** BadWeather: too cold to start compressor */
   @ext(0x31, 0)
-  model BadWeather {
-    /** too cold to start compressor */
-    value: yesno;
-  }
+  model BadWeather is ReadonlyRegister<yesno>;
 
-  /** HotSummer */
-  @inherit(r)
+  /** HotSummer: air inlet too hot to run compressor */
   @ext(0x3c, 0)
-  model HotSummer {
-    /** air inlet too hot to run compressor */
-    value: yesno;
-  }
+  model HotSummer is ReadonlyRegister<yesno>;
 
-  /** NoiseReduction */
-  @inherit(r)
+  /** NoiseReduction: noise reduction is active */
   @ext(0x35, 0)
-  model NoiseReduction {
-    /** noise reduction is active */
-    value: yesno;
-  }
+  model NoiseReduction is ReadonlyRegister<yesno>;
 
-  /** NoiseReductionFactor */
-  @inherit(r, w)
+  /** NoiseReductionFactor: noise reduction factor to reduce fan speed */
   @ext(0x40, 0)
-  model NoiseReductionFactor {
-    /** noise reduction factor to reduce fan speed */
-    value: percent0;
-  }
+  model NoiseReductionFactor is Register<percent0>;
 
-  /** T_AirMAX */
-  @inherit(r, wi)
+  /** T_AirMAX: maximum allowed air inlet temperature */
   @ext(0x43, 0)
-  model SourceMAXTemp {
-    /** maximum allowed air inlet temperature */
-    value: temp;
-  }
+  model SourceMAXTemp is InstallRegister<temp>;
   // ##### testing #####
 
-  /** ZustandOAWLogic */
-  @inherit(r)
+  /** ZustandOAWLogic: Output of "OAW_control" statemachine */
   @ext(0x2a, 0)
-  model ZustandOAWLogic {
-    /** Output of "OAW_control" statemachine */
-    value: UIN;
-  }
+  model ZustandOAWLogic is ReadonlyRegister<UIN>;
 
-  /** IDU_appliance_code */
-  @inherit(r)
+  /** IDU_appliance_code: appliance code, copy from AMU */
   @ext(0x3e, 0)
-  model IDUApplianceCode {
-    /** appliance code, copy from AMU */
-    value: UCH;
-  }
+  model IDUApplianceCode is ReadonlyRegister<UCH>;
 
-  /** CompressorActive */
-  @inherit(r)
+  /** CompressorActive: compressor is running or pre or post running */
   @ext(0x17, 0)
-  model CompActive {
-    /** compressor is running or pre or post running */
-    value: onoff;
-  }
+  model CompActive is ReadonlyRegister<onoff>;
 
-  /** Compressor_Demand */
-  @inherit(r)
+  /** CompressorDemand: compressor wants to start or is running */
   @ext(0x32, 0)
-  model CompDemand {
-    /** compressor wants to start or is running */
-    value: yesno;
-  }
+  model CompDemand is ReadonlyRegister<yesno>;
 
-  /** DeicingReleased */
-  @inherit(r)
+  /** DeicingReleased: compressor is not running */
   @ext(0x33, 0)
-  model DeicingReleased {
-    /** compressor is not running */
-    value: yesno;
-  }
+  model DeicingReleased is ReadonlyRegister<yesno>;
 
-  /** BrineOK */
-  @inherit(r)
+  /** BrineOK: brine pressure is ok and pump is running */
   @ext(0x34, 0)
-  model SourceOK {
-    /** brine pressure is ok and pump is running */
-    value: yesno;
-  }
+  model SourceOK is ReadonlyRegister<yesno>;
 
-  /** FanMode */
-  @inherit(r)
+  /** FanMode: future use */
   @ext(0x36, 0)
-  model FanMode {
-    /** future use */
-    value: yesno;
-  }
+  model FanMode is ReadonlyRegister<yesno>;
 
-  /** OAW_Control_Pump_PWM */
-  @inherit(r, wi)
+  /** OAW_Control_Pump_PWM: reserved */
   @ext(0x37, 0)
-  model OAWControlPumpPWM {
-    /** reserved */
-    value: UIN;
-  }
+  model OAWControlPumpPWM is InstallRegister<UIN>;
 
   /** Test_Fan */
-  @inherit(r)
   @ext(0x3a, 0)
-  model TestFan {
-    value: UCH;
-  }
+  model TestFan is ReadonlyRegister<UCH>;
 
-  /** Pumin */
-  @inherit(r)
+  /** Pumin: reserved */
   @ext(0x3d, 0)
-  model Pumin {
-    /** reserved */
-    value: UCH;
-  }
+  model Pumin is ReadonlyRegister<UCH>;
 
-  /** ODUReady */
-  @inherit(r)
+  /** ODUReady: start-up test of ODU was successful */
   @ext(0x2b, 0)
-  model ODUReady {
-    /** start-up test of ODU was successful */
-    value: yesno;
-  }
+  model ODUReady is ReadonlyRegister<yesno>;
 
-  /** FanStartSpeed */
-  @inherit(r)
+  /** FanStartSpeed: reserved */
   @ext(0x22, 0)
-  model FanStartSpeed {
-    /** reserved */
-    value: UIN;
-  }
+  model FanStartSpeed is ReadonlyRegister<UIN>;
 
-  /** Free2 */
-  @inherit(r)
+  /** Free2: reserved */
   @ext(0x21, 0)
-  model Free2 {
-    /** reserved */
-    value: UIN;
-  }
+  model Free2 is ReadonlyRegister<UIN>;
 
-  /** FanstableTime */
-  @inherit(r)
+  /** FanstableTime: reserved */
   @ext(0x20, 0)
-  model FanstableTime {
-    /** reserved */
-    value: UIN;
-  }
+  model FanstableTime is ReadonlyRegister<UIN>;
 
-  /** OffsetFanSpeed */
-  @inherit(r)
+  /** OffsetFanSpeed: reserved */
   @ext(0x1f, 0)
-  model OffsetFanSpeed {
-    /** reserved */
-    value: UIN;
-  }
+  model OffsetFanSpeed is ReadonlyRegister<UIN>;
 
-  /** RelaisOut */
-  @inherit(r)
+  /** RelaisOut: reserved */
   @ext(0x1e, 0)
-  model RelaisOut {
-    /** reserved */
-    value: onoff;
-  }
+  model RelaisOut is ReadonlyRegister<onoff>;
 
-  /** PumpSpeedControl */
-  @inherit(r)
+  /** PumpSpeedControl: reserved */
   @ext(0x19, 0)
-  model PumpSpeedControl {
-    /** reserved */
-    value: UIN;
-  }
+  model PumpSpeedControl is ReadonlyRegister<UIN>;
 
-  /** fan_PWM */
-  @inherit(r)
+  /** fan_PWM: PWM value from hardware */
   @ext(0x14, 0)
-  model FanPWM {
-    /** PWM value from hardware */
-    value: UIN;
-  }
+  model FanPWM is ReadonlyRegister<UIN>;
   // ##### statistics #####
   @condition(Id.Id.sw, ">=104")
   namespace Sw_ge104 {
-    /** AirInletSensor_Offset */
-    @inherit(r, wi)
+    /** AirInletSensor_Offset: calibration value for air inlet sensor */
     @ext(0x4a, 0)
-    model SourceInputSensorOffset {
-      /** calibration value for air inlet sensor */
-      value: temp;
-    }
+    model SourceInputSensorOffset is InstallRegister<temp>;
 
-    /** Brine_warmSensor_Offset */
-    @inherit(r, wi)
+    /** Brine_warmSensor_Offset: calibration value for brine sensor */
     @ext(0x4b, 0)
-    model Parametersandinformation_SourceInputSensorOffset {
-      /** calibration value for brine sensor */
-      value: temp;
-    }
+    model Parametersandinformation_SourceInputSensorOffset
+      is InstallRegister<temp>;
 
-    /** MaxDeiceTime */
-    @inherit(r, wi)
+    /** MaxDeiceTime: max. deicing time. By exceeding this value, message unsuccessful deicing is released */
     @ext(0x45, 0)
-    model DeiceTimeMax {
-      /** max. deicing time. By exceeding this value, message unsuccessful deicing is released */
-      value: minutes2;
-    }
+    model DeiceTimeMax is InstallRegister<minutes2>;
 
-    /** MinDeicePeriod */
-    @inherit(r, wi)
+    /** MinDeicePeriod: Min. time between deicings. If time is shorter, something is wrong */
     @ext(0x46, 0)
-    model DeicePeriodMin {
-      /** Min. time between deicings. If time is shorter, something is wrong */
-      value: minutes2;
-    }
+    model DeicePeriodMin is InstallRegister<minutes2>;
 
-    /** TDeicefinish */
-    @inherit(r, wi)
+    /** TDeicefinish: stops automatic defrosting process */
     @ext(0x29, 0)
-    model DeicefinishTemp {
-      /** stops automatic defrosting process */
-      value: temp;
-    }
+    model DeicefinishTemp is InstallRegister<temp>;
 
-    /** MaxDeltaT */
-    @inherit(r, wi)
+    /** MaxDeltaT: start defrost process when temperature difference between air and brine is above this setpoint */
     @ext(0x28, 0)
-    model DeltaTMax {
-      /** start defrost process when temperature difference between air and brine is above this setpoint */
-      value: temp;
-    }
+    model DeltaTMax is InstallRegister<temp>;
 
-    /** TDeiceOn */
-    @inherit(r, wi)
+    /** TDeiceOn: above this air temperature ice is quite unusual */
     @ext(0x27, 0)
-    model DeiceOnTemp {
-      /** above this air temperature ice is quite unusual */
-      value: temp;
-    }
+    model DeiceOnTemp is InstallRegister<temp>;
 
-    /** TOnlyFan */
-    @inherit(r, wi)
+    /** TOnlyFan: above this air temperature, the defroster is not used for defrosting, only fan */
     @ext(0x26, 0)
-    model OnlyFanTemp {
-      /** above this air temperature, the defroster is not used for defrosting, only fan */
-      value: temp;
-    }
+    model OnlyFanTemp is InstallRegister<temp>;
 
-    /** DeiceWFanHyst */
-    @inherit(r, wi)
+    /** DeiceWFanHyst: remaining temperature difference to air inlet while fan defrosting */
     @ext(0x24, 0)
-    model DeiceWFanHyst {
-      /** remaining temperature difference to air inlet while fan defrosting */
-      value: temp;
-    }
+    model DeiceWFanHyst is InstallRegister<temp>;
 
-    /** DeiceRequestHyst */
-    @inherit(r, wi)
+    /** DeiceRequestHyst: for stable frost detection */
     @ext(0x23, 0)
-    model DeiceRequestHyst {
-      /** for stable frost detection */
-      value: temp;
-    }
+    model DeiceRequestHyst is InstallRegister<temp>;
 
-    /** MinSpeedTemp */
-    @inherit(r)
+    /** MinSpeedTemp: temperature for minimum speed */
     @ext(0x58, 0)
-    model SpeedTempMin {
-      /** temperature for minimum speed */
-      value: temp;
-    }
+    model SpeedTempMin is ReadonlyRegister<temp>;
 
-    /** MaxSpeedTemp */
-    @inherit(r)
+    /** MaxSpeedTemp: temperature for maximum speed */
     @ext(0x57, 0)
-    model SpeedTempMax {
-      /** temperature for maximum speed */
-      value: temp;
-    }
+    model SpeedTempMax is ReadonlyRegister<temp>;
 
-    /** MaxFanSpeed */
-    @inherit(r, wi)
+    /** MaxFanSpeed: maximum allowed fan speed, set by look-up-table according to IDU power */
     @ext(0x3f, 0)
-    model FanSpeedMax {
-      /** maximum allowed fan speed, set by look-up-table according to IDU power */
-      value: percent0;
-    }
+    model FanSpeedMax is InstallRegister<percent0>;
 
-    /** FrostProtection */
-    @inherit(r)
+    /** FrostProtection: copy from AMU: frost protection */
     @ext(0x41, 0)
-    model FrostProtection {
-      /** copy from AMU: frost protection */
-      value: temp;
-    }
+    model FrostProtection is ReadonlyRegister<temp>;
 
-    /** SyncHeaterDeicing */
-    @inherit(r)
+    /** SyncHeaterDeicing: synchronize heater while deicing */
     @ext(0x47, 0)
-    model SyncHeaterDeicing {
-      /** synchronize heater while deicing */
-      value: yesno;
-    }
+    model SyncHeaterDeicing is ReadonlyRegister<yesno>;
 
-    /** SyncDeicing */
-    @inherit(r)
+    /** SyncDeicing: synchronize deicing process */
     @ext(0x49, 0)
-    model SyncDeicing {
-      /** synchronize deicing process */
-      value: yesno;
-    }
+    model SyncDeicing is ReadonlyRegister<yesno>;
 
-    /** RelayCommutations */
-    @inherit(r)
+    /** RelayCommutations: reserved */
     @ext(0x4d, 0)
-    model RelayStarts {
-      /** reserved */
-      value: ULG;
-    }
+    model RelayStarts is ReadonlyRegister<ULG>;
 
-    /** CheckByte */
-    @inherit(r)
+    /** CheckByte: factory EOL test */
     @ext(0x55, 0)
-    model CheckByte {
-      /** factory EOL test */
-      value: UCH;
-    }
+    model CheckByte is ReadonlyRegister<UCH>;
 
-    /** LEDBlinkProgram */
-    @inherit(r)
+    /** LEDBlinkProgram: LED error message */
     @ext(0x56, 0)
-    model LEDBlinkProgram {
-      /** LED error message */
-      value: UIN;
-    }
+    model LEDBlinkProgram is ReadonlyRegister<UIN>;
 
-    /** Test_Heater */
-    @inherit(r)
+    /** Test_Heater: reserved */
     @ext(0x48, 0)
-    model TestHeater {
-      /** reserved */
-      value: UCH;
-    }
+    model TestHeater is ReadonlyRegister<UCH>;
 
-    /** T_AirMin */
-    @inherit(r)
+    /** T_AirMin: minimum allowed air temperature */
     @ext(0x25, 0)
-    model SourceTempMin {
-      /** minimum allowed air temperature */
-      value: temp;
-    }
+    model SourceTempMin is ReadonlyRegister<temp>;
 
     /** FanRuntimeMinutes */
     @inherit(r)
@@ -529,21 +282,13 @@ namespace Omu {
       value: ULG;
     }
 
-    /** HeaterCommutations */
-    @inherit(r)
+    /** HeaterCommutations: defroster cycles */
     @ext(0x4f, 0)
-    model HeaterStarts {
-      /** defroster cycles */
-      value: ULG;
-    }
+    model HeaterStarts is ReadonlyRegister<ULG>;
 
-    /** DeicingCommutations */
-    @inherit(r)
+    /** DeicingCommutations: deicing cycles */
     @ext(0x51, 0)
-    model DeicingStarts {
-      /** deicing cycles */
-      value: ULG;
-    }
+    model DeicingStarts is ReadonlyRegister<ULG>;
 
     /** DeicingRuntimeMinutes */
     @inherit(r)
@@ -554,71 +299,39 @@ namespace Omu {
       value: ULG;
     }
 
-    /** DeiceErrorCommutations */
-    @inherit(r)
+    /** DeiceErrorCommutations: deice error cycles */
     @ext(0x53, 0)
-    model DeiceErrorStarts {
-      /** deice error cycles */
-      value: ULG;
-    }
+    model DeiceErrorStarts is ReadonlyRegister<ULG>;
 
-    /** STBErrorCommutations */
-    @inherit(r)
+    /** STBErrorCommutations: STB cycles */
     @ext(0x50, 0)
-    model STBErrorStarts {
-      /** STB cycles */
-      value: ULG;
-    }
+    model STBErrorStarts is ReadonlyRegister<ULG>;
 
-    /** PowerOnCommutations */
-    @inherit(r)
+    /** PowerOnCommutations: power on cycles */
     @ext(0x54, 0)
-    model PowerOnStarts {
-      /** power on cycles */
-      value: ULG;
-    }
+    model PowerOnStarts is ReadonlyRegister<ULG>;
   }
   @condition(Id.Id.sw, ">=130")
   namespace Sw_ge130 {
-    /** CoolingActive */
-    @inherit(r)
+    /** CoolingActive: cooling active */
     @ext(0x59, 0)
-    model CoolingActive {
-      /** CoolingActive */
-      value: yesno;
-    }
+    model CoolingActive is ReadonlyRegister<yesno>;
 
-    /** CoolingFanStartTemp */
-    @inherit(r, wi)
+    /** CoolingFanStartTemp: brine temperature to start fan while cooling */
     @ext(0x5a, 0)
-    model CoolingFanStartTemp {
-      /** brine temperature to start fan while cooling */
-      value: temp0;
-    }
+    model CoolingFanStartTemp is InstallRegister<temp0>;
 
-    /** CoolingFanStopTemp */
-    @inherit(r, wi)
+    /** CoolingFanStopTemp: reserved */
     @ext(0x5b, 0)
-    model CoolingFanStopTemp {
-      /** reserved */
-      value: temp0;
-    }
+    model CoolingFanStopTemp is InstallRegister<temp0>;
 
-    /** CoolingMaxFanSpeed */
-    @inherit(r, wi)
+    /** CoolingMaxFanSpeed: max. fan speed while cooling */
     @ext(0x5c, 0)
-    model CoolingMaxFanSpeed {
-      /** max. fan speed while cooling */
-      value: percent0;
-    }
+    model CoolingMaxFanSpeed is InstallRegister<percent0>;
 
-    /** CoolingTest */
-    @inherit(r, wi)
+    /** CoolingTest: reserved */
     @ext(0x5d, 0)
-    model CoolingTest {
-      /** reserved */
-      value: UCH;
-    }
+    model CoolingTest is InstallRegister<UCH>;
   }
 
   /** included parts */

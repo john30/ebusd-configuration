@@ -14,30 +14,11 @@ namespace Vaillant;
 // @zz(0xa0)
 namespace Sol.Hwc {
   // ,sol00,VR 68,sol 210 DHW
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### DHW: general #####
 
-  /** desired temperature */
-  @inherit(r, w)
+  /** DesiredTemperature: desired temperature (day temperature) for DHW */
   @ext(0x13, 0)
-  model TempDesired {
-    /** desired temperature (day temperature) for DHW */
-    value: temp1;
-  }
+  model TempDesired is Register<temp1>;
 
   /** LegioStartDay */
   @inherit(r, wi)
@@ -48,173 +29,90 @@ namespace Sol.Hwc {
     value: UCH;
   }
 
-  /** LegioStartTime */
-  @inherit(r, wi)
+  /** LegioStartTime: Start time for legio protection */
   @ext(0x4f, 0)
-  model LegioStartTime {
-    /** Start time for legio protection */
-    value: UCH;
-  }
+  model LegioStartTime is InstallRegister<UCH>;
 
-  /** SolarGain_LP_Delay */
-  @inherit(r)
+  /** SolarGain_LP_Delay: Set TRUE for LP delay in case of solar gain */
   @ext(0x5d, 0)
-  model SolGainPressLowDelay {
-    /** Set TRUE for LP delay in case of solar gain */
-    value: yesno;
-  }
+  model SolGainPressLowDelay is ReadonlyRegister<yesno>;
 
-  /** Holiday function active */
-  @inherit(r)
+  /** Holiday function active: TRUE if holiday is active */
   @ext(0xb, 0)
-  model IsInHoliday {
-    /** TRUE if holiday is active */
-    value: yesno;
-  }
+  model IsInHoliday is ReadonlyRegister<yesno>;
 
-  /** IsInBankHoliday */
-  @inherit(r)
+  /** IsInBankHoliday: TRUE if BankHoliday is active */
   @ext(0x5f, 0)
-  model IsInBankHoliday {
-    /** TRUE if BankHoliday is active */
-    value: yesno;
-  }
+  model IsInBankHoliday is ReadonlyRegister<yesno>;
 
-  /** IsInSystemOff */
-  @inherit(r)
+  /** IsInSystemOff: TRUE if SystemOff is active */
   @ext(0x60, 0)
-  model IsInSystemOff {
-    /** TRUE if SystemOff is active */
-    value: yesno;
-  }
+  model IsInSystemOff is ReadonlyRegister<yesno>;
   // ##### DHW: DHW #####
 
-  /** Flow setpoint */
-  @inherit(r)
+  /** Flow setpoint: Flow temperature setpoint calculated by VR68 */
   @ext(0x16, 0)
-  model FlowTempDesired {
-    /** Flow temperature setpoint calculated by VR68 */
-    value: temp1;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp1>;
 
-  /** ActualDesiredTemp */
-  @inherit(r)
+  /** ActualDesiredTemp: Current tank setpoint. Depends on the programmed period and current time, operating mode … */
   @ext(0x1f, 0)
-  model ActualTempDesired {
-    /** Current tank setpoint. Depends on the programmed period and current time, operating mode … */
-    value: temp1;
-  }
+  model ActualTempDesired is ReadonlyRegister<temp1>;
 
-  /** ManualTankSetpoint */
-  @inherit(r, w)
+  /** ManualTankSetpoint: DHW setpoint in case of manual mode */
   @ext(0x47, 0)
-  model ManualStorageTempDesired {
-    /** DHW setpoint in case of manual mode */
-    value: temp;
-  }
+  model ManualStorageTempDesired is Register<temp>;
 
-  /** QuickVetoSetpoint */
-  @inherit(r)
+  /** QuickVetoSetpoint: DHW setpoint in case of quick veto */
   @ext(0x46, 0)
-  model QuickVetoTempDesired {
-    /** DHW setpoint in case of quick veto */
-    value: temp;
-  }
+  model QuickVetoTempDesired is ReadonlyRegister<temp>;
 
-  /** Legionella pump */
-  @inherit(r)
+  /** LegionellaPump: Legionella pump */
   @ext(0x7, 0)
-  model LegionellaPump {
-    /** Legionella pump */
-    value: onoff;
-  }
+  model LegionellaPump is ReadonlyRegister<onoff>;
 
   /** RuntimeLegionellaPump */
-  @inherit(r)
   @ext(0x41, 0)
-  model RuntimeLegionellaPump {
-    value: hoursum2;
-  }
+  model RuntimeLegionellaPump is ReadonlyRegister<hoursum2>;
 
-  /** DhwLegioProtectionMaxTimer */
-  @inherit(r)
+  /** DhwLegioProtectionMaxTimer: Maximal time the legio protection state is hold (indepent of reached temperature) */
   @ext(0x1a, 0)
-  model HwcLegioProtectionMaxTimer {
-    /** Maximal time the legio protection state is hold (indepent of reached temperature) */
-    value: minutes0;
-  }
+  model HwcLegioProtectionMaxTimer is ReadonlyRegister<minutes0>;
 
-  /** LegionellaProtectionActive */
-  @inherit(r)
+  /** LegionellaProtectionActive: TRUE if legionella protection is active */
   @ext(0x49, 0)
-  model LegionellaProtectionActive {
-    /** TRUE if legionella protection is active */
-    value: yesno;
-  }
+  model LegionellaProtectionActive is ReadonlyRegister<yesno>;
 
-  /** T_DHW_Offset */
-  @inherit(r, wi)
+  /** T_DHWOffset: Offset between desired temperature and setpoint */
   @ext(0x50, 0)
-  model HwcTempOffset {
-    /** Offset between desired temperature and setpoint */
-    value: calibration0;
-  }
+  model HwcTempOffset is InstallRegister<calibration0>;
 
-  /** DhwLaggingTime */
-  @inherit(r, wi)
+  /** DhwLaggingTime: Lagging time after tank loading */
   @ext(0x22, 0)
-  model HwcLaggingTime {
-    /** Lagging time after tank loading */
-    value: minutes0;
-  }
+  model HwcLaggingTime is InstallRegister<minutes0>;
 
-  /** DHW_LoadingHysteresis */
-  @inherit(r)
+  /** DHW_LoadingHysteresis: Hysteresis for DHW tank loading, if there is no special hysteresis (legionella, frost protection...). */
   @ext(0x5c, 0)
-  model HwcLoadingHysteresis {
-    /** Hysteresis for DHW tank loading, if there is no special hysteresis (legionella, frost protection...). */
-    value: desiredtemp;
-  }
+  model HwcLoadingHysteresis is ReadonlyRegister<desiredtemp>;
 
-  /** DhwLoadingRequest */
-  @inherit(r)
+  /** DhwLoadingRequest: Flag: Loading request to the energy manager for DHW */
   @ext(0x1c, 0)
-  model HwcLoadingRequest {
-    /** Flag: Loading request to the energy manager for DHW */
-    value: yesno;
-  }
+  model HwcLoadingRequest is ReadonlyRegister<yesno>;
 
-  /** DhwLoadingEnabled */
-  @inherit(r)
+  /** DhwLoadingEnabled: Flag: Loading enabled by the energy manager */
   @ext(0x1d, 0)
-  model HwcLoadingEnabled {
-    /** Flag: Loading enabled by the energy manager */
-    value: yesno;
-  }
+  model HwcLoadingEnabled is ReadonlyRegister<yesno>;
 
-  /** DhwLegioTempOkTimer */
-  @inherit(r)
+  /** DhwLegioTempOkTimer: Time for which the temperature for legio protection should be hold */
   @ext(0x20, 0)
-  model HwcLegioTempOkTimer {
-    /** Time for which the temperature for legio protection should be hold */
-    value: temp0;
-  }
+  model HwcLegioTempOkTimer is ReadonlyRegister<temp0>;
 
-  /** IsInQuickVeto */
-  @inherit(r)
+  /** IsInQuickVeto: Flag: Quick veto active */
   @ext(0x4b, 0)
-  model IsInQuickVeto {
-    /** Flag: Quick veto active */
-    value: yesno;
-  }
+  model IsInQuickVeto is ReadonlyRegister<yesno>;
 
-  /** IsInOneOffLoading */
-  @inherit(r)
+  /** IsInOneOffLoading: TRUE if one off loading is active */
   @ext(0x4a, 0)
-  model IsInOneOffLoading {
-    /** TRUE if one off loading is active */
-    value: yesno;
-  }
+  model IsInOneOffLoading is ReadonlyRegister<yesno>;
 
   enum Values_LegioStartDay {
     Mon: 0,
@@ -229,23 +127,15 @@ namespace Sol.Hwc {
   }
   @condition(Id.Id.sw, "<201")
   namespace Sw_lt201 {
-    /** OperatingMode430 */
-    @inherit(r, w)
+    /** OperatingMode430: Operating mode of solar DHW circuit for 430 (1 = auto, 2 = manual, 3 = off) */
     @ext(0xf, 0)
-    model OperatingMode430 {
-      /** Operating mode of solar DHW circuit for 430 (1 = auto, 2 = manual, 3 = off) */
-      value: UCH;
-    }
+    model OperatingMode430 is Register<UCH>;
   }
   @condition(Id.Id.sw, ">=201")
   namespace Sw_ge201 {
-    /** OperatingMode470 */
-    @inherit(r)
+    /** OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on) */
     @ext(0xf, 0)
-    model OperatingMode470 {
-      /** Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on) */
-      value: UCH;
-    }
+    model OperatingMode470 is ReadonlyRegister<UCH>;
   }
 
   /** included parts */

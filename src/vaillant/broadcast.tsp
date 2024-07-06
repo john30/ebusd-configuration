@@ -17,10 +17,10 @@ namespace Broadcast {
   @write
   @zz(BROADCAST)
   @base(MF, 0x16)
-  model wi {}
+  model wi_1 {}
 
   /** date/time */
-  @inherit(b, wi)
+  @inherit(b, wi_1)
   @ext(0)
   model Vdatetime {
     time: BTI;

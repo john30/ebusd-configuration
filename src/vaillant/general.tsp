@@ -9,10 +9,10 @@ namespace Vaillant;
 namespace General {
   /** default *r */
   @base(MF, 0x13)
-  model r {}
+  model r_1 {}
 
   /** register value range */
-  @inherit(r)
+  @inherit(r_1)
   @ext(0x4)
   model Valuerange {
     /** register number */

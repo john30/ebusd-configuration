@@ -9,172 +9,79 @@ namespace Vaillant;
 
 namespace Bai._0010004150_inc {
   // ,BAI00,ECOBIG pneumatisch,0010004150 174
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
   // ##### dia level 1 #####
 
-  /** d.00 heating partload */
-  @inherit(r, wi)
+  /** d.00 heating partload: Heating part load */
   @ext(0x7, 0x4)
-  model PartloadHcKW {
-    /** Heating part load */
-    value: power;
-  }
+  model PartloadHcKW is InstallRegister<power>;
 
-  /** d.01 central heating overruntime */
-  @inherit(r, wi)
+  /** d.01 central heating overruntime: water pump overrun time for heating mode */
   @ext(0xf7, 0x3)
-  model WPPostrunTime {
-    /** water pump overrun time for heating mode */
-    value: minutes0;
-  }
+  model WPPostrunTime is InstallRegister<minutes0>;
 
-  /** d.02 Max blocking time CH */
-  @inherit(r, wi)
+  /** d.02 Max blocking time CH: max. burner anti cycling period at 20°C Flow temperature setpoint */
   @ext(0x9, 0x4)
-  model BlockTimeHcMax {
-    /** max. burner anti cycling period at 20°C Flow temperature setpoint */
-    value: minutes0;
-  }
+  model BlockTimeHcMax is InstallRegister<minutes0>;
 
-  /** d.03 Temp DHW */
-  @inherit(r)
+  /** d.03 Temp DHW: hot water flow temperature (combination boiler only) */
   @ext(0x16, 0)
-  model HwcTemp {
-    /** hot water flow temperature (combination boiler only) */
-    value: tempsensor;
-  }
+  model HwcTemp is ReadonlyRegister<tempsensor>;
 
-  /** d.04 Temp storage / she */
-  @inherit(r)
+  /** d.04 Temp storage / she: current temperature for warm start sensor (combinations boiler only) Current storage tank sensor (system boiler only) */
   @ext(0x17, 0)
-  model StorageTemp {
-    /** current temperature for warm start sensor (combinations boiler only) Current storage tank sensor (system boiler only) */
-    value: tempsensor;
-  }
+  model StorageTemp is ReadonlyRegister<tempsensor>;
 
-  /** d.05 flow/return setpoint */
-  @inherit(r)
+  /** d.05 flow/return setpoint: Flow temperature target value or return target value when return regulation is set */
   @ext(0x39, 0)
-  model FlowTempDesired {
-    /** Flow temperature target value or return target value when return regulation is set */
-    value: temp;
-  }
+  model FlowTempDesired is ReadonlyRegister<temp>;
 
-  /** d.06 DHW setpoint */
-  @inherit(r)
+  /** d.06 DHW setpoint: Hot water temperature target value */
   @ext(0xea, 0x3)
-  model HwcTempDesired {
-    /** Hot water temperature target value */
-    value: temp;
-  }
+  model HwcTempDesired is ReadonlyRegister<temp>;
 
-  /** d.07 Storage setpoint */
-  @inherit(r)
+  /** d.07 Storage setpoint: Warm start temperature value (combination boiler plus only), Storage temperature target value (system boiler only) */
   @ext(0x4, 0)
-  model StorageTempDesired {
-    /** Warm start temperature value (combination boiler plus only), Storage temperature target value (system boiler only) */
-    value: temp;
-  }
+  model StorageTempDesired is ReadonlyRegister<temp>;
 
-  /** d.08 Room thermostat 230 V */
-  @inherit(r)
+  /** d.08 Room thermostat 230 V: External controls heat demand (Clamp 3-4) */
   @ext(0x2a, 0)
-  model ACRoomthermostat {
-    /** External controls heat demand (Clamp 3-4) */
-    value: onoff;
-  }
+  model ACRoomthermostat is ReadonlyRegister<onoff>;
 
-  /** d.09 ext flowsetpoint */
-  @inherit(r)
+  /** d.09 ext flowsetpoint: minimum out of Kl.7 and eBus flow setpoint */
   @ext(0x6e, 0x4)
-  model ExtFlowTempDesiredMin {
-    /** minimum out of Kl.7 and eBus flow setpoint */
-    value: temp;
-  }
+  model ExtFlowTempDesiredMin is ReadonlyRegister<temp>;
 
-  /** d.10 Central heating pump */
-  @inherit(r)
+  /** d.10 Central heating pump: internal heating pump */
   @ext(0x44, 0)
-  model WP {
-    /** internal heating pump */
-    value: onoff;
-  }
+  model WP is ReadonlyRegister<onoff>;
 
-  /** d.11 external pump */
-  @inherit(r)
+  /** d.11 external pump: External heating pump */
   @ext(0x3f, 0)
-  model ExtWP {
-    /** External heating pump */
-    value: onoff;
-  }
+  model ExtWP is ReadonlyRegister<onoff>;
 
-  /** d.12 storage load pump */
-  @inherit(r)
+  /** d.12 storage load pump: tank load pump demand */
   @ext(0x9e, 0)
-  model Storageloadpump {
-    /** tank load pump demand */
-    value: percent0;
-  }
+  model Storageloadpump is ReadonlyRegister<percent0>;
 
-  /** d.13 Circulation pump */
-  @inherit(r)
+  /** d.13 Circulation pump: Hot water circulation pump (via external module) */
   @ext(0x7b, 0)
-  model CirPump {
-    /** Hot water circulation pump (via external module) */
-    value: onoff;
-  }
+  model CirPump is ReadonlyRegister<onoff>;
 
-  /** d.16 room thermostat 24 V */
-  @inherit(r)
+  /** d.16 room thermostat 24 V: External controls heat demand (Clamp 3'-4') */
   @ext(0xe, 0)
-  model DCRoomthermostat {
-    /** External controls heat demand (Clamp 3-4) */
-    value: onoff;
-  }
+  model DCRoomthermostat is ReadonlyRegister<onoff>;
 
-  /** d.22 DHW demand */
-  @inherit(r)
+  /** d.22 DHW demand: domestic hot water (tapping or tank contact) demand */
   @ext(0x58, 0)
-  model HwcDemand {
-    /** domestic hot water (tapping or tank contact) demand */
-    value: yesno;
-  }
+  model HwcDemand is ReadonlyRegister<yesno>;
 
-  /** d.23 operation mode */
-  @inherit(r)
+  /** d.23 operation mode: Wintermode active */
   @ext(0xf2, 0x3)
-  model HeatingSwitch {
-    /** Wintermode active */
-    value: onoff;
-  }
+  model HeatingSwitch is ReadonlyRegister<onoff>;
 
-  /** d.25 DHW demand enabled */
-  @inherit(r)
+  /** d.25 DHW demand enabled: hot water release (tank storage) via eBus Control */
   @ext(0x47, 0x4)
-  model StoragereleaseClock {
-    /** hot water release (tank storage) via eBus Control */
-    value: yesno;
-  }
+  model StoragereleaseClock is ReadonlyRegister<yesno>;
 
   /** d.30 Gasvalve */
   @inherit(r)
@@ -203,37 +110,21 @@ namespace Bai._0010004150_inc {
     value: UIN;
   }
 
-  /** d.35 Position TWV */
-  @inherit(r)
+  /** d.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
   @ext(0x54, 0)
-  model PositionValveSet {
-    /** Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
-    value: UCH;
-  }
+  model PositionValveSet is ReadonlyRegister<UCH>;
 
-  /** d.36 DHW waterflow */
-  @inherit(r)
+  /** d.36 DHW waterflow: domestic hot water flow sensor */
   @ext(0x55, 0)
-  model HwcWaterflow {
-    /** domestic hot water flow sensor */
-    value: uin100;
-  }
+  model HwcWaterflow is ReadonlyRegister<uin100>;
 
-  /** d.40 TFT_DK */
-  @inherit(r)
+  /** d.40 TFT_DK: flow temperature */
   @ext(0x18, 0)
-  model FlowTemp {
-    /** Flow temperature */
-    value: tempsensor;
-  }
+  model FlowTemp is ReadonlyRegister<tempsensor>;
 
-  /** d.41 Temp heating return */
-  @inherit(r)
+  /** d.41 Temp heating return: return temperature */
   @ext(0x98, 0)
-  model ReturnTemp {
-    /** return temperature */
-    value: tempmirrorsensor;
-  }
+  model ReturnTemp is ReadonlyRegister<tempmirrorsensor>;
 
   /** d.44 Dig. ionisation voltage */
   @inherit(r)
@@ -244,62 +135,34 @@ namespace Bai._0010004150_inc {
     value: SIN;
   }
 
-  /** d.47 Temp outside */
-  @inherit(r)
+  /** d.47 Temp outside: Outside temperature (uncorrected value) */
   @ext(0x76, 0)
-  model OutdoorstempSensor {
-    /** Outside temperature (uncorrected value) */
-    value: tempsensor;
-  }
+  model OutdoorstempSensor is ReadonlyRegister<tempsensor>;
 
-  /** d.67 Remaining burner block time */
-  @inherit(r)
+  /** d.67 Remaining burner block time: Remaining burner anti cycling time */
   @ext(0x38, 0)
-  model RemainingBoilerblocktime {
-    /** Remaining burner anti cycling time */
-    value: minutes0;
-  }
+  model RemainingBoilerblocktime is ReadonlyRegister<minutes0>;
 
-  /** d.90 Digital control recognized */
-  @inherit(r)
+  /** d.90 Digital control recognized: Digital regulator status */
   @ext(0, 0x4)
-  model EBusHeatcontrol {
-    /** Digital regulator status */
-    value: yesno;
-  }
+  model EBusHeatcontrol is ReadonlyRegister<yesno>;
 
-  /** d.91 Status DCF 77 */
-  @inherit(r)
+  /** d.91 Status DCF 77: DCF status */
   @ext(0x69, 0)
-  model DcfState {
-    /** dcfStatus */
-    value: dcfstate;
-  }
+  model DcfState is ReadonlyRegister<dcfstate>;
   // ##### expert level #####
 
-  /** external flowsetpoint */
-  @inherit(r)
+  /** external flowsetpoint: Flow target temperature from external regulator to terminal 7-8-9 */
   @ext(0x25, 0)
-  model ExternalFlowTempDesired {
-    /** Flow target temperature from external regulator to terminal 7-8-9 */
-    value: temp;
-  }
+  model ExternalFlowTempDesired is ReadonlyRegister<temp>;
 
-  /** DHWSwitch_DK */
-  @inherit(r)
+  /** DHWSwitch_DK: Demand external tank (via contact) */
   @ext(0, 0)
-  model ExternalHwcSwitch {
-    /** Demand external tank (via contact) */
-    value: onoff;
-  }
+  model ExternalHwcSwitch is ReadonlyRegister<onoff>;
 
-  /** water pressure */
-  @inherit(r)
+  /** Waterpressure: water pressure */
   @ext(0x2, 0)
-  model WaterPressure {
-    /** water pressure */
-    value: presssensor;
-  }
+  model WaterPressure is ReadonlyRegister<presssensor>;
 
   /** flame */
   @inherit(r)
@@ -310,13 +173,9 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** Changes_DSN_DK */
-  @inherit(r)
+  /** Changes_DSN_DK: Numbers adjusting (storing) the DSN */
   @ext(0xc, 0)
-  model ChangesDSN {
-    /** Numbers adjusting (storing) the DSN */
-    value: UCH;
-  }
+  model ChangesDSN is ReadonlyRegister<UCH>;
 
   /** SD_Gasvalve_uC_DK */
   @inherit(r)
@@ -346,53 +205,29 @@ namespace Bai._0010004150_inc {
     value: SIN;
   }
 
-  /** SD_Flame_Sensing_ASIC_DK */
-  @inherit(r)
+  /** SD_Flame_Sensing_ASIC_DK: ioni/adc value from the flame control circuit */
   @ext(0x2f, 0)
-  model FlameSensingASIC {
-    /** ioni/adc value from the flame control circuit */
-    value: UIN;
-  }
+  model FlameSensingASIC is ReadonlyRegister<UIN>;
 
-  /** HZ_UnderHundred_SwiActi_DK */
-  @inherit(r)
+  /** HZ_UnderHundred_SwiActi_DK: Heat switch cycles under hundred */
   @ext(0x30, 0)
-  model HcUnderHundredStarts {
-    /** Heat switch cycles under hundred */
-    value: UCH;
-  }
+  model HcUnderHundredStarts is ReadonlyRegister<UCH>;
 
-  /** BW_UnderHundred_SwiActi_DK */
-  @inherit(r)
+  /** BW_UnderHundred_SwiActi_DK: DHW switch cycles under hundred */
   @ext(0x31, 0)
-  model HwcUnderHundredStarts {
-    /** DHW switch cycles under hundred */
-    value: UCH;
-  }
+  model HwcUnderHundredStarts is ReadonlyRegister<UCH>;
 
-  /** EbusSourceOn_DK */
-  @inherit(r)
+  /** EbusSourceOn_DK: Activation signal of the eBus source */
   @ext(0x34, 0)
-  model EbusSourceOn {
-    /** Activation signal of the eBus source */
-    value: onoff;
-  }
+  model EbusSourceOn is ReadonlyRegister<onoff>;
 
-  /** Fluegasvalve_DK */
-  @inherit(r)
+  /** Fluegasvalve_DK: flue gasvalve activation signal */
   @ext(0x3c, 0)
-  model Fluegasvalve {
-    /** flue gasvalve activation signal */
-    value: onoff;
-  }
+  model Fluegasvalve is ReadonlyRegister<onoff>;
 
-  /** External_Faultmessage_DK */
-  @inherit(r)
+  /** External_Faultmessage_DK: external fault message */
   @ext(0x3e, 0)
-  model ExternalFaultmessage {
-    /** external fault message */
-    value: onoff;
-  }
+  model ExternalFaultmessage is ReadonlyRegister<onoff>;
 
   /** SD_Gasvalve_ASICFeedback_DK */
   @inherit(r)
@@ -421,61 +256,33 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** DHW_Types_DK */
-  @inherit(r)
+  /** DHW_Types_DK: DHW type of the appliance */
   @ext(0x4b, 0)
-  model HwcTypes {
-    /** DHW type of the appliance */
-    value: UCH;
-  }
+  model HwcTypes is ReadonlyRegister<UCH>;
 
-  /** DHW impellor switch */
-  @inherit(r)
+  /** DHW impellor switch: domestic hot water (tapping) demand */
   @ext(0x57, 0)
-  model HwcImpellorSwitch {
-    /** domestic hot water (tapping) demand */
-    value: yesno;
-  }
+  model HwcImpellorSwitch is ReadonlyRegister<yesno>;
 
-  /** WarmstartDemand */
-  @inherit(r)
+  /** WarmstartDemand: aktivation of warmstart */
   @ext(0x3a, 0x4)
-  model WarmstartDemand {
-    /** aktivation of warmstart */
-    value: yesno;
-  }
+  model WarmstartDemand is ReadonlyRegister<yesno>;
 
-  /** BoilerType_DK */
-  @inherit(r)
+  /** BoilerType_DK: Boiler typ of the bmu */
   @ext(0x5e, 0)
-  model BoilerType {
-    /** Boiler typ of the bmu */
-    value: UCH;
-  }
+  model BoilerType is ReadonlyRegister<UCH>;
 
-  /** ParamToken_DK */
-  @inherit(r)
+  /** ParamToken_DK: token for parameter managment */
   @ext(0x60, 0)
-  model ParamToken {
-    /** token for parameter managment */
-    value: UCH;
-  }
+  model ParamToken is ReadonlyRegister<UCH>;
 
-  /** ReturnTemperature_DK */
-  @inherit(r)
+  /** ReturnTemperature_DK: external return sensor */
   @ext(0x6b, 0)
-  model Expertlevel_ReturnTemp {
-    /** external return sensor */
-    value: tempsensor;
-  }
+  model Expertlevel_ReturnTemp is ReadonlyRegister<tempsensor>;
 
   /** Floor heating contact */
-  @inherit(r)
   @ext(0x70, 0)
-  model FloorHeatingContact {
-    /** Floor heating contact */
-    value: onoff;
-  }
+  model FloorHeatingContact is ReadonlyRegister<onoff>;
 
   /** SD_Temperaturelimiter_DK */
   @inherit(r)
@@ -486,37 +293,21 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** EbusVoltage_DK */
-  @inherit(r)
+  /** EbusVoltage_DK: feedback signal of the eBus source */
   @ext(0x7f, 0)
-  model EbusVoltage {
-    /** feedback signal of the eBus source */
-    value: onoff;
-  }
+  model EbusVoltage is ReadonlyRegister<onoff>;
 
-  /** FluegasvalveOpen_DK */
-  @inherit(r)
+  /** FluegasvalveOpen_DK: feedback of the flue gas valve */
   @ext(0x89, 0)
-  model FluegasvalveOpen {
-    /** feedback of the flue gas valve */
-    value: onoff;
-  }
+  model FluegasvalveOpen is ReadonlyRegister<onoff>;
 
-  /** Testbyte_DK */
-  @inherit(r)
+  /** Testbyte_DK: Testbyte (relevant for the Tester) */
   @ext(0x99, 0)
-  model Testbyte {
-    /** Testbyte (relevant for the Tester) */
-    value: UCH;
-  }
+  model Testbyte is ReadonlyRegister<UCH>;
 
-  /** DSN_DK */
-  @inherit(r)
+  /** DSN_DK: DSN: Device Specific number */
   @ext(0x9a, 0)
-  model DSN {
-    /** DSN: Device Specific number */
-    value: UIN;
-  }
+  model DSN is ReadonlyRegister<UIN>;
 
   /** TargetFan_Speed_Output_DK */
   @inherit(r)
@@ -536,37 +327,21 @@ namespace Bai._0010004150_inc {
     value: HEX;
   }
 
-  /** Statenumber_DK */
-  @inherit(r)
+  /** Statenumber_DK: status number */
   @ext(0xab, 0)
-  model Statenumber {
-    /** status number */
-    value: UCH;
-  }
+  model Statenumber is ReadonlyRegister<UCH>;
 
-  /** WaterpressureBranchControlOff_DK */
-  @inherit(r)
+  /** WaterpressureBranchControlOff_DK: water pressure branch controll off */
   @ext(0xaf, 0)
-  model WaterpressureBranchControlOff {
-    /** water pressure branch controll off */
-    value: onoff;
-  }
+  model WaterpressureBranchControlOff is ReadonlyRegister<onoff>;
 
-  /** DSN start */
-  @inherit(r)
+  /** DSN Start adress */
   @ext(0x31, 0x4)
-  model DSNStart {
-    /** DSN Start adress */
-    value: UIN;
-  }
+  model DSNStart is ReadonlyRegister<UIN>;
 
-  /** ExtTankModulCon_DK */
-  @inherit(r)
+  /** ExtTankModulCon_DK: external tank modul connected (VR65) */
   @ext(0xbf, 0)
-  model ExtStorageModulCon {
-    /** external tank modul connected (VR65) */
-    value: yesno;
-  }
+  model ExtStorageModulCon is ReadonlyRegister<yesno>;
 
   /** Partnumber_Box */
   @inherit(r)
@@ -577,13 +352,9 @@ namespace Bai._0010004150_inc {
     value: HEX;
   }
 
-  /** WP_SecondStage_DK */
-  @inherit(r)
+  /** WP_SecondStage_DK: Second stage of the pump activated */
   @ext(0xed, 0)
-  model WPSecondStage {
-    /** Second stage of the pump activated */
-    value: onoff;
-  }
+  model WPSecondStage is ReadonlyRegister<onoff>;
 
   /** SD_STL_with_NTC */
   @inherit(r)
@@ -603,21 +374,13 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** VortexFlowSensor_DK */
-  @inherit(r)
+  /** VortexFlowSensor_DK: Predictive Maintenance data, CH water flow */
   @ext(0xd5, 0)
-  model VortexFlowSensor {
-    /** Predictive Maintenance data, CH water flow */
-    value: UIN;
-  }
+  model VortexFlowSensor is ReadonlyRegister<UIN>;
 
-  /** DisplayMode_DK */
-  @inherit(r)
+  /** DisplayMode_DK: Display mode of the aplliance */
   @ext(0xda, 0)
-  model DisplayMode {
-    /** Display mode of the aplliance */
-    value: UCH;
-  }
+  model DisplayMode is ReadonlyRegister<UCH>;
 
   /** SD_Gasvalve3_uC_DK */
   @inherit(r)
@@ -628,21 +391,13 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** InitialisationEEPROM */
-  @inherit(r)
+  /** InitialisationEEPROM: Initialisation off all EEPROM values (done in the production) */
   @ext(0xdc, 0)
-  model InitialisationEEPROM {
-    /** Initialisation off all EEPROM values (done in the production) */
-    value: yesno;
-  }
+  model InitialisationEEPROM is ReadonlyRegister<yesno>;
 
-  /** TimerInputCH_DK */
-  @inherit(r)
+  /** TimerInputCH_DK: timer input (block heatdemand) */
   @ext(0xde, 0)
-  model TimerInputHc {
-    /** timer input (block heatdemand) */
-    value: onoff;
-  }
+  model TimerInputHc is ReadonlyRegister<onoff>;
 
   /** FanMinSpeedOperation */
   @inherit(r)
@@ -662,13 +417,9 @@ namespace Bai._0010004150_inc {
     value: UIN;
   }
 
-  /** ExternGasvalve_DK */
-  @inherit(r)
+  /** ExternGasvalve_DK: external gasvalve activated */
   @ext(0xe4, 0)
-  model ExternGasvalve {
-    /** external gasvalve activated */
-    value: onoff;
-  }
+  model ExternGasvalve is ReadonlyRegister<onoff>;
 
   /** DCF_TimeDate_DK */
   @inherit(r)
@@ -679,36 +430,21 @@ namespace Bai._0010004150_inc {
     value: HEX;
   }
 
-  /** FlowSetPotmeter */
-  @inherit(r)
+  /** FlowSetPotmeter: flow setpoint potentiometer */
   @ext(0xf0, 0x3)
-  model FlowSetPotmeter {
-    /** flow setpoint potentiometer */
-    value: temp;
-  }
+  model FlowSetPotmeter is ReadonlyRegister<temp>;
 
-  /** DHWSetPotmeter */
-  @inherit(r)
+  /** DHWSetPotmeter: DHW setpoint potentiometer */
   @ext(0xf1, 0x3)
-  model HwcSetPotmeter {
-    /** DHW setpoint potentiometer */
-    value: temp;
-  }
+  model HwcSetPotmeter is ReadonlyRegister<temp>;
 
-  /** DHW_Switch */
-  @inherit(r)
+  /** DHWSwitch: DHW on/off */
   @ext(0xf3, 0x3)
-  model HwcSwitch {
-    /** DHW on/off */
-    value: onoff;
-  }
+  model HwcSwitch is ReadonlyRegister<onoff>;
 
   /** ProductionByte */
-  @inherit(r)
   @ext(0x3e, 0x4)
-  model ProductionByte {
-    value: UCH;
-  }
+  model ProductionByte is ReadonlyRegister<UCH>;
 
   /** SerialNumber */
   @inherit(r)
@@ -729,13 +465,9 @@ namespace Bai._0010004150_inc {
   }
   // ##### dia level 2 #####
 
-  /** d.17 Return regulation */
-  @inherit(r, wi)
+  /** d.17 Return regulation: heating flow/return regulation activation */
   @ext(0xc, 0x4)
-  model ReturnRegulation {
-    /** heating flow/return regulation activation */
-    value: onoff;
-  }
+  model ReturnRegulation is InstallRegister<onoff>;
 
   /** d.18 CH pump mode */
   @inherit(r, wi)
@@ -746,21 +478,13 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** d.19 Mode of 2 speed pump */
-  @inherit(r, wi)
+  /** d.19 Mode of 2 speed pump: Operating mode of the two-stage heating pump0: burner mode = 2, pre/post-run = 1; 1: CH + post-run = 1, DHW = 2, 2: as 1 but rotation speed in CH is dependent of heating part load, (defaultsetting)3: always stage 2 */
   @ext(0xb, 0x4)
-  model SecondPumpMode {
-    /** Operating mode of the two-stage heating pump0: burner mode = 2, pre/post-run = 1; 1: CH + post-run = 1, DHW = 2, 2: as 1 but rotation speed in CH is dependent of heating part load, (defaultsetting)3: always stage 2 */
-    value: UCH;
-  }
+  model SecondPumpMode is InstallRegister<UCH>;
 
-  /** d.20 Max value tanksetpoint */
-  @inherit(r, wi)
+  /** d.20 Max value tanksetpoint: Adjustment of maximum tank setpoint range (maximum endposition of potmeter) */
   @ext(0x43, 0x4)
-  model HwcTempMax {
-    /** Adjustment of maximum tank setpoint range (maximum endposition of potmeter) */
-    value: temp;
-  }
+  model HwcTempMax is InstallRegister<temp>;
 
   /** d.27 Option relais 1 */
   @inherit(r, wi)
@@ -798,29 +522,17 @@ namespace Bai._0010004150_inc {
     value: SIN;
   }
 
-  /** d.58 solar function */
-  @inherit(r, wi)
+  /** d.58 solar function: special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti) */
   @ext(0x73, 0x4)
-  model SolPostHeat {
-    /** special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti) */
-    value: UCH;
-  }
+  model SolPostHeat is InstallRegister<UCH>;
 
-  /** d.60 Number STL cut off */
-  @inherit(r)
+  /** d.60 Number STL cut off: Number of safety temperature limiter cut offs */
   @ext(0x20, 0)
-  model DeactivationsTemplimiter {
-    /** Number of safety temperature limiter cut offs */
-    value: UCH;
-  }
+  model DeactivationsTemplimiter is ReadonlyRegister<UCH>;
 
-  /** d.61 Number ignition device cut off */
-  @inherit(r)
+  /** d.61 Number ignition device cut off: number of lock outs (unsuccessfull ignitons in the last attempt, flame failure) */
   @ext(0x1f, 0)
-  model DeactivationsIFC {
-    /** number of lock outs (unsuccessfull ignitons in the last attempt, flame failure) */
-    value: UCH;
-  }
+  model DeactivationsIFC is ReadonlyRegister<UCH>;
 
   /** d.64 average ignition time */
   @inherit(r)
@@ -842,37 +554,21 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** d.68 ignition attempts 1 */
-  @inherit(r)
+  /** d.68 ignition attempts 1: unsuccessfull ignitions in the first attempt */
   @ext(0x6e, 0)
-  model CounterStartattempts1 {
-    /** unsuccessfull ignitions in the first attempt */
-    value: temp0;
-  }
+  model CounterStartattempts1 is ReadonlyRegister<temp0>;
 
-  /** d.69 ignition attempts 2 */
-  @inherit(r)
+  /** d.69 ignition attempts 2: unsuccessfull ignitions in the second attempt */
   @ext(0x6f, 0)
-  model CounterStartattempts2 {
-    /** unsuccessfull ignitions in the second attempt */
-    value: temp0;
-  }
+  model CounterStartattempts2 is ReadonlyRegister<temp0>;
 
-  /** d.70 diverter valve position */
-  @inherit(r, wi)
+  /** d.70 diverter valve position: Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position */
   @ext(0x2a, 0x4)
-  model ValveMode {
-    /** Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position */
-    value: UCH;
-  }
+  model ValveMode is InstallRegister<UCH>;
 
-  /** d.71 Max value flow temp */
-  @inherit(r, wi)
+  /** d.71 Max value flow temp: Adjustment of maximum central heating setpoint range (maximum endposition of potmeter) */
   @ext(0xe, 0x4)
-  model FlowsetHcMax {
-    /** Adjustment of maximum central heating setpoint range (maximum endposition of potmeter) */
-    value: temp;
-  }
+  model FlowsetHcMax is InstallRegister<temp>;
 
   /** d.72 postrun time storage */
   @inherit(r, wi)
@@ -884,53 +580,29 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** d.73 Warmstart offset */
-  @inherit(r, wi)
+  /** d.73 Warmstart offset: Offset for warm start target value (combination boilers only) */
   @ext(0x10, 0x4)
-  model WarmstartOffset {
-    /** Offset for warm start target value (combination boilers only) */
-    value: temp;
-  }
+  model WarmstartOffset is InstallRegister<temp>;
 
-  /** d.75 Max load time storage */
-  @inherit(r, wi)
+  /** d.75 Max load time storage: Maximum charging time for a storage without own control */
   @ext(0x12, 0x4)
-  model StorageLoadTimeMax {
-    /** Maximum charging time for a storage without own control */
-    value: minutes0;
-  }
+  model StorageLoadTimeMax is InstallRegister<minutes0>;
 
-  /** d.77 hot water partload */
-  @inherit(r, wi)
+  /** d.77 hot water partload: storage part load (storage charging capacity limit) */
   @ext(0x8, 0x4)
-  model PartloadHwcKW {
-    /** storage part load (storage charging capacity limit) */
-    value: power;
-  }
+  model PartloadHwcKW is InstallRegister<power>;
 
-  /** d.78 Max value flow temp storage */
-  @inherit(r, wi)
+  /** d.78 Max value flow temp storage: storage charging temperature limit (target flow temperature in storage mode) */
   @ext(0xf, 0x4)
-  model FlowsetHwcMax {
-    /** storage charging temperature limit (target flow temperature in storage mode) */
-    value: temp;
-  }
+  model FlowsetHwcMax is InstallRegister<temp>;
 
-  /** d.80 operating hours CH */
-  @inherit(r)
+  /** d.80 operating hours CH: central heating operation hours */
   @ext(0x28, 0)
-  model HcHours {
-    /** central heating operation hours */
-    value: hoursum2;
-  }
+  model HcHours is ReadonlyRegister<hoursum2>;
 
-  /** d.81 Operating hours DHW */
-  @inherit(r)
+  /** d.81 Operating hours DHW: water heating operation hours */
   @ext(0x22, 0)
-  model HwcHours {
-    /** water heating operation hours */
-    value: hoursum2;
-  }
+  model HwcHours is ReadonlyRegister<hoursum2>;
 
   /** d.82 Burner starts heating */
   @inherit(r)
@@ -950,110 +622,58 @@ namespace Bai._0010004150_inc {
     value: UIN;
   }
 
-  /** d.84 Hours till next service */
-  @inherit(r, wi)
+  /** d.84 Hours till next service: Maintenance indicator:Number of hours until the next maintenance */
   @ext(0x20, 0x4)
-  model HoursTillService {
-    /** Maintenance indicator:Number of hours until the next maintenance */
-    value: hoursum2;
-  }
+  model HoursTillService is InstallRegister<hoursum2>;
 
-  /** d.93 Device specific number */
-  @inherit(r, ws)
+  /** d.93 Device specific number: DSN aplliance variant setting */
   @ext(0x30, 0x4)
-  model DSNOffset {
-    /** DSN aplliance variant setting */
-    value: UCH;
-  }
+  model DSNOffset is ServiceRegister<UCH>;
 
   /** d.96 Set factory settings */
-  @inherit(r, wi)
   @ext(0x68, 0x4)
-  model SetFactoryValues {
-    /** Factory settings */
-    value: yesno;
-  }
+  model SetFactoryValues is InstallRegister<yesno>;
   // ##### maintenance data #####
 
-  /** TempGradientFailure_DK */
-  @inherit(r)
+  /** TempGradientFailure_DK: Number of cut offs of the boilers cause of to high gradient (S.54) */
   @ext(0x11, 0)
-  model TempGradientFailure {
-    /** Number of cut offs of the boilers cause of to high gradient (S.54) */
-    value: temp0;
-  }
+  model TempGradientFailure is ReadonlyRegister<temp0>;
 
-  /** TempDiffBlock_DK */
-  @inherit(r)
+  /** TempDiffBlock_DK: Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures */
   @ext(0x12, 0)
-  model TempDiffBlock {
-    /** Number of modulationblocking of the boilers cause of to high/incorrect difference of flow/return temperatures */
-    value: temp0;
-  }
+  model TempDiffBlock is ReadonlyRegister<temp0>;
 
-  /** TempDiffFailure_DK */
-  @inherit(r)
+  /** TempDiffFailure_DK: Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures */
   @ext(0x13, 0)
-  model TempDiffFailure {
-    /** Number of cut offs of the boilers cause of to high/incorrect differences of flow/return temperatures */
-    value: temp0;
-  }
+  model TempDiffFailure is ReadonlyRegister<temp0>;
 
-  /** pump operation hours */
-  @inherit(r)
+  /** Pump operation hours */
   @ext(0x14, 0)
-  model PumpHours {
-    /** pump operation hours */
-    value: hoursum2;
-  }
+  model PumpHours is ReadonlyRegister<hoursum2>;
 
-  /** CH_PumpCommunt_DK */
-  @inherit(r)
+  /** CH_PumpCommunt_DK: pump switchings */
   @ext(0x15, 0)
-  model HcPumpStarts {
-    /** pump switchings */
-    value: cntstarts2;
-  }
+  model HcPumpStarts is ReadonlyRegister<cntstarts2>;
 
-  /** TWV_Communt_DK */
-  @inherit(r)
+  /** TWV_Communt_DK: commutations of the three way valve */
   @ext(0x1a, 0)
-  model ValveStarts {
-    /** commutations of the three way valve */
-    value: cntstarts2;
-  }
+  model ValveStarts is ReadonlyRegister<cntstarts2>;
 
-  /** fan operation hours */
-  @inherit(r)
+  /** Fan operation hours */
   @ext(0x1b, 0)
-  model FanHours {
-    /** fan operation hours */
-    value: hoursum2;
-  }
+  model FanHours is ReadonlyRegister<hoursum2>;
 
-  /** FanCommunt_DK */
-  @inherit(r)
+  /** FanCommunt_DK: commutations of the fan */
   @ext(0x1c, 0)
-  model FanStarts {
-    /** commutations of the fan */
-    value: cntstarts2;
-  }
+  model FanStarts is ReadonlyRegister<cntstarts2>;
 
-  /** OverflowCounter_DK */
-  @inherit(r)
+  /** OverflowCounter_DK: Predictive Maintenance counter have got an overflow */
   @ext(0x1e, 0)
-  model OverflowCounter {
-    /** Predictive Maintenance counter have got an overflow */
-    value: yesno;
-  }
+  model OverflowCounter is ReadonlyRegister<yesno>;
 
-  /** MaxTempDiffExtTFT_DK */
-  @inherit(r)
+  /** MaxTempDiffExtTFT_DK: Predictive maintenance data */
   @ext(0x27, 0)
-  model TempMaxDiffExtTFT {
-    /** Predictive maintenance data */
-    value: temp;
-  }
+  model TempMaxDiffExtTFT is ReadonlyRegister<temp>;
 
   /** min_Ignitiontime_DK */
   @inherit(r)
@@ -1065,278 +685,146 @@ namespace Bai._0010004150_inc {
     value: UCH;
   }
 
-  /** Temp DHW max */
-  @inherit(r)
+  /** Temp DHW max: maximum temperature measured by the domestic hot water outlet sensor */
   @ext(0x35, 0)
-  model Maintenancedata_HwcTempMax {
-    /** maximum temperature measured by the domestic hot water outlet sensor */
-    value: temp;
-  }
+  model Maintenancedata_HwcTempMax is ReadonlyRegister<temp>;
 
-  /** Temp storage max */
-  @inherit(r)
+  /** Temp storage max: maximum temperature measured by the external tank sensor */
   @ext(0x36, 0)
-  model StorageTempMax {
-    /** maximum temperature measured by the external tank sensor */
-    value: temp;
-  }
+  model StorageTempMax is ReadonlyRegister<temp>;
 
-  /** TFT_max_DK */
-  @inherit(r)
+  /** TFT_max_DK: maximum temperature measured by the flow sensor */
   @ext(0x37, 0)
-  model FlowTempMax {
-    /** maximum temperature measured by the flow sensor */
-    value: temp;
-  }
+  model FlowTempMax is ReadonlyRegister<temp>;
 
-  /** Fan_PWM_Sum_DK */
-  @inherit(r)
+  /** Fan_PWM_Sum_DK: Predictive Maintenance data for the fan damage recognition */
   @ext(0x3a, 0)
-  model FanPWMSum {
-    /** Predictive Maintenance data for the fan damage recognition */
-    value: UIN;
-  }
+  model FanPWMSum is ReadonlyRegister<UIN>;
 
-  /** Fan_PWM_Test_DK */
-  @inherit(r)
+  /** Fan_PWM_Test_DK: Predictive Maintenance data for the fan damage recognition */
   @ext(0x3b, 0)
-  model FanPWMTest {
-    /** Predictive Maintenance data for the fan damage recognition */
-    value: UCH;
-  }
+  model FanPWMTest is ReadonlyRegister<UCH>;
 
-  /** MaxDeltaFlowReturn_DK */
-  @inherit(r)
+  /** MaxDeltaFlowReturn_DK: Predictive Maintenance data */
   @ext(0x3d, 0)
-  model DeltaFlowReturnMax {
-    /** Predictive maintenance data */
-    value: temp;
-  }
+  model DeltaFlowReturnMax is ReadonlyRegister<temp>;
 
-  /** TankLoadPumpOperationHours_DK */
-  @inherit(r)
+  /** TankLoadPumpOperationHours_DK: Preditive maintenance data */
   @ext(0x4c, 0)
-  model StorageLoadPumpHours {
-    /** Preditive maintenance data */
-    value: hoursum2;
-  }
+  model StorageLoadPumpHours is ReadonlyRegister<hoursum2>;
 
-  /** TankloadPumpCommunt_DK */
-  @inherit(r)
+  /** TankloadPumpCommunt_DK: Preditive maintenance data */
   @ext(0x4f, 0)
-  model StorageloadPumpStarts {
-    /** Preditive maintenance data */
-    value: cntstarts2;
-  }
+  model StorageloadPumpStarts is ReadonlyRegister<cntstarts2>;
 
-  /** DHW Waterflow_max_DK */
-  @inherit(r)
+  /** DHW Waterflow_max_DK: domestic hot water flow sensor maximum value */
   @ext(0x56, 0)
-  model HwcWaterflowMax {
-    /** domestic hot water flow sensor maximum value */
-    value: uin100;
-  }
+  model HwcWaterflowMax is ReadonlyRegister<uin100>;
 
-  /** CounterStartAttempts3_DK */
-  @inherit(r)
+  /** CounterStartAttempts3_DK: unsuccessfull ignitions in the third attempt */
   @ext(0x81, 0)
-  model CounterStartAttempts3 {
-    /** unsuccessfull ignitions in the third attempt */
-    value: temp0;
-  }
+  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
 
-  /** CounterStartAttempts4_DK */
-  @inherit(r)
+  /** CounterStartAttempts4_DK: unsuccessfull ignitions in the fourth attempt */
   @ext(0x82, 0)
-  model CounterStartAttempts4 {
-    /** unsuccessfull ignitions in the fourth attempt */
-    value: temp0;
-  }
+  model CounterStartAttempts4 is ReadonlyRegister<temp0>;
 
-  /** TRT_max_DK */
-  @inherit(r)
+  /** TRT_max_DK: max. return temperature */
   @ext(0xbe, 0)
-  model ReturnTempMax {
-    /** Max_Return_Temperature */
-    value: temp;
-  }
+  model ReturnTempMax is ReadonlyRegister<temp>;
 
-  /** PumpDHWFlowSum_DK */
-  @inherit(r)
+  /** PumpDHWFlowSum_DK: summed up DHW flow rate */
   @ext(0xc1, 0)
-  model PumpHwcFlowSum {
-    /** summed up DHW flow rate */
-    value: UIN;
-  }
+  model PumpHwcFlowSum is ReadonlyRegister<UIN>;
 
-  /** PumpDHWFlowNumber_DK */
-  @inherit(r)
+  /** PumpDHWFlowNumber_DK: number of times DHW flow rate was detected */
   @ext(0xc2, 0)
-  model PumpHwcFlowNumber {
-    /** number of times DHW flow rate was detected */
-    value: UCH;
-  }
+  model PumpHwcFlowNumber is ReadonlyRegister<UCH>;
 
-  /** SHE_MaxFlowTemp_DK */
-  @inherit(r)
+  /** SHE_MaxFlowTemp_DK: maximum flow temperature DHW */
   @ext(0xc3, 0)
-  model SHEMaxFlowTemp {
-    /** maximum flow temperature DHW */
-    value: temp;
-  }
+  model SHEMaxFlowTemp is ReadonlyRegister<temp>;
 
-  /** SHE_MaxDeltaFlowDHW_DK */
-  @inherit(r)
+  /** SHE_MaxDeltaFlowDHW_DK: maximum difference between flow and DHW outlet temperature */
   @ext(0xc4, 0)
-  model SHEMaxDeltaHwcFlow {
-    /** maximum difference between flow and DHW outlet temperature */
-    value: temp;
-  }
+  model SHEMaxDeltaHwcFlow is ReadonlyRegister<temp>;
 
-  /** PrEnergySumDHW1_DK */
-  @inherit(r)
+  /** PrEnergySumDHW1_DK: Predictive Maintenance data */
   @ext(0xc5, 0)
-  model PrEnergySumHwc1 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergySumHwc1 is ReadonlyRegister<ULG>;
 
-  /** PrEnergyCountDHW1_DK */
-  @inherit(r)
+  /** PrEnergyCountDHW1_DK: Predictive Maintenance data */
   @ext(0xc6, 0)
-  model PrEnergyCountHwc1 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergyCountHwc1 is ReadonlyRegister<ULG>;
 
-  /** PrEnergySumDHW2_DK */
-  @inherit(r)
+  /** PrEnergySumDHW2_DK: Predictive Maintenance data */
   @ext(0xc7, 0)
-  model PrEnergySumHwc2 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergySumHwc2 is ReadonlyRegister<ULG>;
 
-  /** PrEnergyCountDHW2_DK */
-  @inherit(r)
+  /** PrEnergyCountDHW2_DK: Predictive Maintenance data */
   @ext(0xc8, 0)
-  model PrEnergyCountHwc2 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergyCountHwc2 is ReadonlyRegister<ULG>;
 
-  /** PrEnergySumDHW3_DK */
-  @inherit(r)
+  /** PrEnergySumDHW3_DK: Predictive Maintenance data */
   @ext(0xc9, 0)
-  model PrEnergySumHwc3 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergySumHwc3 is ReadonlyRegister<ULG>;
 
-  /** PrEnergyCountDHW3_DK */
-  @inherit(r)
+  /** PrEnergyCountDHW3_DK: Predictive Maintenance data */
   @ext(0xca, 0)
-  model PrEnergyCountHwc3 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergyCountHwc3 is ReadonlyRegister<ULG>;
 
-  /** MaxWaterFlowCH_DK */
-  @inherit(r)
+  /** MaxWaterFlowCH_DK: Predictive Maintenance data */
   @ext(0xd0, 0)
-  model WaterHcFlowMax {
-    /** Predictive maintenance data */
-    value: UIN;
-  }
+  model WaterHcFlowMax is ReadonlyRegister<UIN>;
 
-  /** WaterpressureVariantSum_DK */
-  @inherit(r)
+  /** WaterpressureVariantSum_DK: Predictive Maintenance data */
   @ext(0xf0, 0)
-  model WaterpressureVariantSum {
-    /** Predictive maintenance data */
-    value: pressm2;
-  }
+  model WaterpressureVariantSum is ReadonlyRegister<pressm2>;
 
-  /** WaterpressureMeasureCounter_DK */
-  @inherit(r)
+  /** WaterpressureMeasureCounter_DK: Predictive Maintenance data */
   @ext(0xf1, 0)
-  model WaterpressureMeasureCounter {
-    /** Predictive maintenance data */
-    value: UCH;
-  }
+  model WaterpressureMeasureCounter is ReadonlyRegister<UCH>;
 
-  /** PrAPSCounter_DK */
-  @inherit(r)
+  /** PrAPSCounter_DK: Predictive Maintenance data */
   @ext(0xf2, 0)
-  model PrAPSCounter {
-    /** Predictive maintenance data */
-    value: UCH;
-  }
+  model PrAPSCounter is ReadonlyRegister<UCH>;
 
-  /** PrAPSSum_DK */
-  @inherit(r)
+  /** PrAPSSum_DK: Predictive Maintenance data */
   @ext(0xf3, 0)
-  model PrAPSSum {
-    /** Predictive maintenance data */
-    value: seconds2;
-  }
+  model PrAPSSum is ReadonlyRegister<seconds2>;
 
   /** PrVortexFlowSensorValue_DK */
   @inherit(r)
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
-    /** Predictive maintenance data */
+    /** Predictive Maintenance data */
     @unit("ADC")
     value: SIN;
   }
 
-  /** PrEnergySumCH1_DK */
-  @inherit(r)
+  /** PrEnergySumCH1_DK: Predictive Maintenance data */
   @ext(0xf5, 0)
-  model PrEnergySumHc1 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergySumHc1 is ReadonlyRegister<ULG>;
 
-  /** PrEnergyCountCH1_DK */
-  @inherit(r)
+  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
   @ext(0xf6, 0)
-  model PrEnergyCountHc1 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergyCountHc1 is ReadonlyRegister<ULG>;
 
-  /** PrEnergySumCH2_DK */
-  @inherit(r)
+  /** PrEnergySumCH2_DK: Predictive Maintenance data */
   @ext(0xf7, 0)
-  model PrEnergySumHc2 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergySumHc2 is ReadonlyRegister<ULG>;
 
-  /** PrEnergyCountCH2_DK */
-  @inherit(r)
+  /** PrEnergyCountCH2_DK: Predictive Maintenance data */
   @ext(0xf8, 0)
-  model PrEnergyCountHc2 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergyCountHc2 is ReadonlyRegister<ULG>;
 
-  /** PrEnergySumCH3_DK */
-  @inherit(r)
+  /** PrEnergySumCH3_DK: Predictive Maintenance data */
   @ext(0xf9, 0)
-  model PrEnergySumHc3 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergySumHc3 is ReadonlyRegister<ULG>;
 
-  /** PrEnergyCountCH3_DK */
-  @inherit(r)
+  /** PrEnergyCountCH3_DK: Predictive Maintenance data */
   @ext(0xfa, 0)
-  model PrEnergyCountHc3 {
-    /** Predictive maintenance data */
-    value: ULG;
-  }
+  model PrEnergyCountHc3 is ReadonlyRegister<ULG>;
 
   enum Values_Gasvalve {
     off: 240,
@@ -1422,21 +910,13 @@ namespace Bai._0010004150_inc {
   }
   @condition(Id.Id.sw, ">=413")
   namespace Sw_ge413 {
-    /** d.74 APC_LegioProtection */
-    @inherit(r, wi)
+    /** d.74 APC_LegioProtection: Legionella protection for actoSTORE */
     @ext(0x97, 0x4)
-    model APCLegioProtection {
-      /** Legionella protection for actoSTORE */
-      value: UCH;
-    }
+    model APCLegioProtection is InstallRegister<UCH>;
 
-    /** d.92 APC_ComStatus_DK */
-    @inherit(r)
+    /** d.92 APC_ComStatus_DK: actoSTORE communication status */
     @ext(0x62, 0)
-    model APCComStatus {
-      /** actoSTORE communication status */
-      value: UCH;
-    }
+    model APCComStatus is ReadonlyRegister<UCH>;
   }
 
   /** included parts */

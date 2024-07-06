@@ -11,191 +11,96 @@ namespace Vaillant;
 // @zz(0xec)
 namespace Solsy.Sc {
   // ,SOLSY,auroMATIC 620/3,0020080463 163 Solar
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
   // ##### Statistics #####
 
   /** StatPowerOn */
-  @inherit(r)
   @ext(0xcc, 0)
-  model StatPowerOn {
-    value: UIN;
-  }
+  model StatPowerOn is ReadonlyRegister<UIN>;
 
   /** StatOperatingHours */
-  @inherit(r)
   @ext(0xcd, 0)
-  model StatOperatingHours {
-    value: UIN;
-  }
+  model StatOperatingHours is ReadonlyRegister<UIN>;
 
   /** StatMonthOfInstallation */
-  @inherit(r)
   @ext(0xce, 0)
-  model StatMonthOfInstallation {
-    value: UCH;
-  }
+  model StatMonthOfInstallation is ReadonlyRegister<UCH>;
 
   /** StatYearOfInstallation */
-  @inherit(r)
   @ext(0xcf, 0)
-  model StatYearOfInstallation {
-    value: UCH;
-  }
+  model StatYearOfInstallation is ReadonlyRegister<UCH>;
 
   /** Stat15MinBusTimeout */
-  @inherit(r)
   @ext(0xd0, 0)
-  model Stat15MinBusTimeout {
-    value: UCH;
-  }
+  model Stat15MinBusTimeout is ReadonlyRegister<UCH>;
 
   /** StatRTOSErrorcode */
-  @inherit(r)
   @ext(0xd1, 0)
-  model StatRTOSErrorcode {
-    value: UIN;
-  }
+  model StatRTOSErrorcode is ReadonlyRegister<UIN>;
 
   /** StatRestarts */
-  @inherit(r)
   @ext(0xd2, 0)
-  model StatRestarts {
-    value: UIN;
-  }
+  model StatRestarts is ReadonlyRegister<UIN>;
 
   /** StatRTOSErrorCounter */
-  @inherit(r)
   @ext(0xd3, 0)
-  model StatRTOSErrorCounter {
-    value: UIN;
-  }
+  model StatRTOSErrorCounter is ReadonlyRegister<UIN>;
   // ##### SOLAR: Data #####
 
-  /** Storage1Sensor3 */
-  @inherit(r)
+  /** Storage1Sensor3: Temperature of SP1 sensor */
   @ext(0, 0)
-  model Storage1Sensor3 {
-    /** Temperature of SP1 sensor */
-    value: tempsensor;
-  }
+  model Storage1Sensor3 is ReadonlyRegister<tempsensor>;
 
-  /** Storage2Sensor3 */
-  @inherit(r)
+  /** Storage2Sensor3: Temperature of SP2 sensor */
   @ext(0x2, 0)
-  model Storage2Sensor3 {
-    /** Temperature of SP2 sensor */
-    value: tempsensor;
-  }
+  model Storage2Sensor3 is ReadonlyRegister<tempsensor>;
 
-  /** Storage3Sensor3 */
-  @inherit(r)
+  /** Storage3Sensor3: Temperature of SP3 sensor */
   @ext(0x5, 0)
-  model Storage3Sensor3 {
-    /** Temperature of SP3 sensor */
-    value: tempsensor;
-  }
+  model Storage3Sensor3 is ReadonlyRegister<tempsensor>;
 
-  /** CollectorPumpHRuntime1 */
-  @inherit(r)
+  /** CollectorPumpHRuntime1: Overall runtime of COL1 pump */
   @ext(0x6e, 0)
-  model CollPumpHRuntime1 {
-    /** Overall runtime of COL1 pump */
-    value: hoursum2;
-  }
+  model CollPumpHRuntime1 is ReadonlyRegister<hoursum2>;
 
-  /** CollectorPumpHRuntime2 */
-  @inherit(r)
+  /** CollectorPumpHRuntime2: Overall runtime of COL2 pump */
   @ext(0x6e, 0x8)
-  model CollPumpHRuntime2 {
-    /** Overall runtime of COL2 pump */
-    value: hoursum2;
-  }
+  model CollPumpHRuntime2 is ReadonlyRegister<hoursum2>;
 
-  /** YieldSensor */
-  @inherit(r, w)
+  /** YieldSensor: Temperature of "Ertrag" sensor */
   @ext(0x8, 0)
-  model YieldSensor {
-    /** Temperature of "Ertrag" sensor */
-    value: tempsensor;
-  }
+  model YieldSensor is Register<tempsensor>;
 
-  /** Collector1Sensor */
-  @inherit(r)
+  /** Collector1Sensor: Temperature of COL1 sensor */
   @ext(0x9, 0)
-  model Coll1Sensor {
-    /** Temperature of COL1 sensor */
-    value: tempsensor;
-  }
+  model Coll1Sensor is ReadonlyRegister<tempsensor>;
 
-  /** Storage4Sensor3 */
-  @inherit(r)
+  /** Storage4Sensor3: Temperature of SP4 sensor */
   @ext(0x14, 0)
-  model Storage4Sensor3 {
-    /** Temperature of SP4 sensor */
-    value: tempsensor;
-  }
+  model Storage4Sensor3 is ReadonlyRegister<tempsensor>;
 
-  /** SumBackflowSensor */
-  @inherit(r)
+  /** SumBackflowSensor: Temperature of TD2 sensor */
   @ext(0x7, 0)
-  model SumBackflowSensor {
-    /** Temperature of TD2 sensor */
-    value: tempsensor;
-  }
+  model SumBackflowSensor is ReadonlyRegister<tempsensor>;
 
-  /** Collector2Sensor */
-  @inherit(r)
+  /** Collector2Sensor: Temperature of COL2 sensor */
   @ext(0x15, 0)
-  model Coll2Sensor {
-    /** Temperature of COL2 sensor */
-    value: tempsensor;
-  }
+  model Coll2Sensor is ReadonlyRegister<tempsensor>;
 
-  /** SolarCollectorPumpED1 */
-  @inherit(r)
+  /** SolarCollectorPumpED1: Percantage of power COL1 pump is running actually */
   @ext(0x67, 0)
-  model SolCollPumpED1 {
-    /** Percantage of power COL1 pump is running actually */
-    value: percent0;
-  }
+  model SolCollPumpED1 is ReadonlyRegister<percent0>;
 
-  /** SolarCollectorPumpED2 */
-  @inherit(r)
+  /** SolarCollectorPumpED2: Percantage of power COL2 pump is running actually */
   @ext(0x67, 0x8)
-  model SolCollPumpED2 {
-    /** Percantage of power COL2 pump is running actually */
-    value: percent0;
-  }
+  model SolCollPumpED2 is ReadonlyRegister<percent0>;
 
-  /** TeleSwitch */
-  @inherit(r)
+  /** State of the Teleswitch */
   @ext(0xa, 0)
-  model TeleSwitch {
-    /** State of the Teleswitch */
-    value: onoff;
-  }
+  model TeleSwitch is ReadonlyRegister<onoff>;
 
-  /** HasSolarCollectorVolumeSensor */
-  @inherit(r)
+  /** HasSolarCollectorVolumeSensor: - */
   @ext(0x9a, 0)
-  model HasSolCollVolumeSensor {
-    /**  */
-    value: yesno;
-  }
+  model HasSolCollVolumeSensor is ReadonlyRegister<yesno>;
 
   /** SolarCollectorVolumeSensorPowerLastMinute */
   @inherit(r)
@@ -206,94 +111,50 @@ namespace Solsy.Sc {
     value: UIN;
   }
 
-  /** Multi purpose output */
-  @inherit(r)
+  /** State of multi purpose output */
   @ext(0x1c, 0)
-  model OutputMA {
-    /** State of multi purpose output */
-    value: onoff;
-  }
+  model OutputMA is ReadonlyRegister<onoff>;
   // ##### SOLAR: Configuration #####
 
-  /** SolEnableDiffTemp1 */
-  @inherit(r, w)
+  /** SolEnableDiffTemp1: Temperature difference between collector 1 and tank, which is necassary to start solar pump */
   @ext(0x63, 0)
-  model SolEnableDiffTemp1 {
-    /** Temperature difference between collector 1 and tank, which is necassary to start solar pump */
-    value: temp0;
-  }
+  model SolEnableDiffTemp1 is Register<temp0>;
 
-  /** DeltaTOnFlexDtController */
-  @inherit(r, w)
+  /** DeltaTOnFlexDtController: Temperature difference between flexible deltaT sensors, which is necassary to start solar pump */
   @ext(0xa6, 0)
-  model DeltaTOnFlexDtController {
-    /** Temperature difference between flexible deltaT sensors, which is necassary to start solar pump */
-    value: calibration0;
-  }
+  model DeltaTOnFlexDtController is Register<calibration0>;
 
-  /** DeltaTOffFlexDtController */
-  @inherit(r, w)
+  /** DeltaTOffFlexDtController: Temperature difference between flexible deltaT sensors, which is necassary to stop solar pump */
   @ext(0xa7, 0)
-  model DeltaTOffFlexDtController {
-    /** Temperature difference between flexible deltaT sensors, which is necassary to stop solar pump */
-    value: calibration0;
-  }
+  model DeltaTOffFlexDtController is Register<calibration0>;
 
-  /** SolEnableDiffTemp2 */
-  @inherit(r, w)
+  /** SolEnableDiffTemp2: Temperature difference between collector 2 and tank, which is necassary to start solar pump */
   @ext(0x63, 0x8)
-  model SolEnableDiffTemp2 {
-    /** Temperature difference between collector 2 and tank, which is necassary to start solar pump */
-    value: temp0;
-  }
+  model SolEnableDiffTemp2 is Register<temp0>;
 
-  /** SolDisableDiffTemp1 */
-  @inherit(r, w)
+  /** SolDisableDiffTemp1: Temperature difference between collector 1 and tank, at which pump stops */
   @ext(0x64, 0)
-  model SolDisableDiffTemp1 {
-    /** Temperature difference between collector 1 and tank, at which pump stops */
-    value: temp0;
-  }
+  model SolDisableDiffTemp1 is Register<temp0>;
 
-  /** SolDisableDiffTemp2 */
-  @inherit(r, w)
+  /** SolDisableDiffTemp2: Temperature difference between collector 2 and tank, at which pump stops */
   @ext(0x64, 0x8)
-  model SolDisableDiffTemp2 {
-    /** Temperature difference between collector 2 and tank, at which pump stops */
-    value: temp0;
-  }
+  model SolDisableDiffTemp2 is Register<temp0>;
 
-  /** SolDhwMaxLoadTemp1 */
-  @inherit(r, w)
+  /** SolDhwMaxLoadTemp1: Maximal temperature for solar loading of tank1 */
   @ext(0x65, 0)
-  model SolHwcMaxLoadTemp1 {
-    /** Maximal temperature for solar loading of tank1 */
-    value: temp0;
-  }
+  model SolHwcMaxLoadTemp1 is Register<temp0>;
 
-  /** SolDhwMaxLoadTemp2 */
-  @inherit(r, w)
+  /** SolDhwMaxLoadTemp2: Maximal temperature for solar loading of tank2 */
   @ext(0x65, 0x8)
-  model SolHwcMaxLoadTemp2 {
-    /** Maximal temperature for solar loading of tank2 */
-    value: temp0;
-  }
+  model SolHwcMaxLoadTemp2 is Register<temp0>;
 
-  /** SolarProtection */
-  @inherit(r, w)
+  /** SolarProtection: Collector pump should not start for high temperatures */
   @ext(0x81, 0)
-  model SolProtection {
-    /** Collector pump should not start for high temperatures */
-    value: onoff;
-  }
+  model SolProtection is Register<onoff>;
 
-  /** SolarProtectionStartTemp */
-  @inherit(r, w)
+  /** SolarProtectionStartTemp: Temperature for collector pump protection in case of high temperatures */
   @ext(0x82, 0)
-  model SolProtectionStartTemp {
-    /** Temperature for collector pump protection in case of high temperatures */
-    value: temp0;
-  }
+  model SolProtectionStartTemp is Register<temp0>;
 
   /** ColKickGradient */
   @inherit(r, ws)
@@ -304,19 +165,12 @@ namespace Solsy.Sc {
   }
 
   /** ColKickPumpTime */
-  @inherit(r, ws)
   @ext(0x9e, 0)
-  model ColKickPumpTime {
-    value: seconds0;
-  }
+  model ColKickPumpTime is ServiceRegister<seconds0>;
 
-  /** SolarCircuitProtectionHysteresis */
-  @inherit(r, w)
+  /** SolarCircuitProtectionHysteresis: After collector pump protection in case of too high temperatures, the collector has to cool down at least this temperature */
   @ext(0x9f, 0)
-  model ScProtectionHysteresis {
-    /** After collector pump protection in case of too high temperatures, the collector has to cool down at least this temperature */
-    value: desiredtemp;
-  }
+  model ScProtectionHysteresis is Register<desiredtemp>;
 
   /** FrostProtectionLimit */
   @inherit(r)
@@ -327,13 +181,9 @@ namespace Solsy.Sc {
     value: SCH;
   }
 
-  /** FrostProtectionEnabled */
-  @inherit(r)
+  /** FrostProtectionEnabled: Solar collector frost protection on/off */
   @ext(0xa3, 0)
-  model FrostProtectionEnabled {
-    /** Solar collector frost protection on/off */
-    value: onoff;
-  }
+  model FrostProtectionEnabled is ReadonlyRegister<onoff>;
 
   /** SolarCollectorVolumeSensorTicksPer10Liter */
   @inherit(r)
@@ -354,21 +204,13 @@ namespace Solsy.Sc {
     value: UIN;
   }
 
-  /** SolEnablePumpPWM */
-  @inherit(r, w)
+  /** SolEnablePumpPWM: Collector pumps should be driven by a slow pulse width modulation */
   @ext(0xae, 0)
-  model SolEnablePumpPWM {
-    /** Collector pumps should be driven by a slow pulse width modulation */
-    value: onoff;
-  }
+  model SolEnablePumpPWM is Register<onoff>;
 
-  /** ExtendedYieldCalculation */
-  @inherit(r, w)
+  /** ExtendedYieldCalculation: calculate solar yield like specified by austrian regulation. Uses SP3 or this purpose! */
   @ext(0x7f, 0)
-  model ExtendedYieldCalculation {
-    /** calculate solar yield like specified by austrian regulation. Uses SP3 or this purpose! */
-    value: onoff;
-  }
+  model ExtendedYieldCalculation is Register<onoff>;
 
   /** SolarPriority */
   @inherit(r, w)
@@ -379,37 +221,21 @@ namespace Solsy.Sc {
     value: UCH;
   }
 
-  /** SolOperatingMode */
-  @inherit(r)
+  /** SolOperatingMode: Operating mode solar */
   @ext(0xac, 0)
-  model SolOperatingMode {
-    /** Operating mode solar */
-    value: UCH;
-  }
+  model SolOperatingMode is ReadonlyRegister<UCH>;
 
-  /** SolTeleswitchOperatingMode */
-  @inherit(r)
+  /** SolTeleswitchOperatingMode: Teleswitch operating mode solar */
   @ext(0xad, 0)
-  model SolTeleswitchOperatingMode {
-    /** Teleswitch operating mode solar */
-    value: UCH;
-  }
+  model SolTeleswitchOperatingMode is ReadonlyRegister<UCH>;
 
-  /** KolMinTemperature1 */
-  @inherit(r, w)
+  /** KolMinTemperature1: Temperature COL1 sensor has to reach before starting pumps at least */
   @ext(0xa0, 0)
-  model KolTempMin1 {
-    /** Temperature COL1 sensor has to reach before starting pumps at least */
-    value: temp0;
-  }
+  model KolTempMin1 is Register<temp0>;
 
-  /** KolMinTemperature2 */
-  @inherit(r, w)
+  /** KolMinTemperature2: Temperature COL2 sensor has to reach before starting pumps at least */
   @ext(0xa0, 0x8)
-  model KolTempMin2 {
-    /** Temperature COL2 sensor has to reach before starting pumps at least */
-    value: temp0;
-  }
+  model KolTempMin2 is Register<temp0>;
 
   enum Values_SolPriority {
     _1_2: 16,

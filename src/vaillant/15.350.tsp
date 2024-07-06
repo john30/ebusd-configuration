@@ -10,68 +10,26 @@ namespace Vaillant;
 namespace _350 {
   // ,35000,VRT 350,173 173
 
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
-
-  /** default *ws for user level "service" */
-  @write
-  @auth("service")
-  @base(MF, 0x9, 0xe)
-  model ws {}
-
-  @inherit(r, wi)
   @ext(0, 0)
-  model ResvdStorage1Sensor {
-    value: tempsensor;
-  }
+  model ResvdStorage1Sensor is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(1, 0)
-  model ResvdStorage2Sensor {
-    value: tempsensor;
-  }
+  model ResvdStorage2Sensor is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(0x2, 0)
-  model ResvdStorage3Sensor {
-    value: tempsensor;
-  }
+  model ResvdStorage3Sensor is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(0x3, 0)
-  model ResvdColl1Sensor {
-    value: tempsensor;
-  }
+  model ResvdColl1Sensor is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(0x4, 0)
-  model ResvdColl2Sensor {
-    value: tempsensor;
-  }
+  model ResvdColl2Sensor is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(0x5, 0)
-  model YieldSensor {
-    value: tempsensor;
-  }
+  model YieldSensor is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(0x6, 0)
-  model ResvdCollPump1 {
-    value: UCH;
-  }
+  model ResvdCollPump1 is InstallRegister<UCH>;
 
   @inherit(r, wi)
   @ext(0x7, 0)
@@ -80,120 +38,63 @@ namespace _350 {
     value: HEX;
   }
 
-  @inherit(r, wi)
   @ext(0x8, 0)
-  model ResvdCollPump2 {
-    value: UCH;
-  }
+  model ResvdCollPump2 is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x9, 0)
-  model UV1State {
-    value: UCH;
-  }
+  model UV1State is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0xa, 0)
-  model LegioPump {
-    value: onoff;
-  }
+  model LegioPump is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0xb, 0)
-  model CirPump {
-    value: onoff;
-  }
+  model CirPump is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0xc, 0)
-  model ElectronicCartridge {
-    value: onoff;
-  }
+  model ElectronicCartridge is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0xd, 0)
-  model C1C2State {
-    value: onoff;
-  }
+  model C1C2State is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0xe, 0)
-  model BypassValve {
-    value: onoff;
-  }
+  model BypassValve is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x10, 0)
-  model RoomTempOffsetSelfWarming {
-    value: temp;
-  }
+  model RoomTempOffsetSelfWarming is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x11, 0)
-  model RoomTempOffset {
-    value: temp;
-  }
+  model RoomTempOffset is InstallRegister<temp>;
 
   /** act. outside temperature [°C/sensor state] */
-  @inherit(r, wi)
   @ext(0x12, 0)
-  model OutsideTemp {
-    value: tempsensor;
-  }
+  model OutsideTemp is InstallRegister<tempsensor>;
 
-  @inherit(r, wi)
   @ext(0x13, 0)
-  model OutsideTempOffset {
-    value: temp;
-  }
+  model OutsideTempOffset is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x14, 0)
-  model ActualTempDesired {
-    value: temp0;
-  }
+  model ActualTempDesired is InstallRegister<temp0>;
 
-  @inherit(r, wi)
   @ext(0x15, 0)
-  model OperatingMode {
-    value: mcmode;
-  }
+  model OperatingMode is InstallRegister<mcmode>;
 
-  @inherit(r, wi)
   @ext(0x16, 0)
-  model ActualWeekday {
-    value: bday;
-  }
+  model ActualWeekday is InstallRegister<bday>;
 
-  @inherit(r, wi)
   @ext(0x17, 0)
-  model Time {
-    value: time;
-  }
+  model Time is InstallRegister<time>;
 
-  @inherit(r, wi)
   @ext(0x18, 0)
-  model ReducedNightTemp {
-    value: temp;
-  }
+  model ReducedNightTemp is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x19, 0)
-  model PrevOperatingMode {
-    value: mcmode;
-  }
+  model PrevOperatingMode is InstallRegister<mcmode>;
 
-  @inherit(r, wi)
   @ext(0x1a, 0)
-  model TeleSwOperatingMode {
-    value: mcmode;
-  }
+  model TeleSwOperatingMode is InstallRegister<mcmode>;
 
-  @inherit(r, wi)
   @ext(0x1b, 0)
-  model HwcState {
-    value: UCH;
-  }
+  model HwcState is InstallRegister<UCH>;
 
   @inherit(r, wi)
   @ext(0x1c, 0)
@@ -202,17 +103,11 @@ namespace _350 {
     value: UCH;
   }
 
-  @inherit(r, wi)
   @ext(0x1d, 0)
-  model ClockSwitchSummerWinterDone {
-    value: onoff;
-  }
+  model ClockSwitchSummerWinterDone is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x1e, 0)
-  model Yield {
-    value: UIN;
-  }
+  model Yield is InstallRegister<UIN>;
 
   @inherit(r, wi)
   @ext(0x1f, 0)
@@ -221,11 +116,8 @@ namespace _350 {
     uin_1: UIN;
   }
 
-  @inherit(r, wi)
   @ext(0x20, 0)
-  model Date {
-    value: date;
-  }
+  model Date is InstallRegister<date>;
 
   @inherit(r, wi)
   @ext(0x21, 0)
@@ -234,71 +126,38 @@ namespace _350 {
     value: UCH;
   }
 
-  @inherit(r, wi)
   @ext(0x22, 0)
-  model ROCRoomSet {
-    value: temp;
-  }
+  model ROCRoomSet is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x23, 0)
-  model OffsetDesTemp {
-    value: temp;
-  }
+  model OffsetDesTemp is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x24, 0)
-  model StateOfRoomCon {
-    value: UCH;
-  }
+  model StateOfRoomCon is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x25, 0)
-  model LegioProtectionState {
-    value: onoff;
-  }
+  model LegioProtectionState is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x26, 0)
-  model StatusDcf {
-    value: dcfstate;
-  }
+  model StatusDcf is InstallRegister<dcfstate>;
 
-  @inherit(r, wi)
   @ext(0x27, 0)
-  model DcfDaten {
-    value: UIN;
-  }
+  model DcfDaten is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x28, 0)
-  model IsInHoliday {
-    value: UCH;
-  }
+  model IsInHoliday is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x29, 0)
-  model IsInParty {
-    value: onoff;
-  }
+  model IsInParty is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x2a, 0)
-  model IsInSingleHwcLoadingMode {
-    value: onoff;
-  }
+  model IsInSingleHwcLoadingMode is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x2b, 0)
-  model RestoreOpModeAfterHoliday {
-    value: onoff;
-  }
+  model RestoreOpModeAfterHoliday is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x2c, 0)
-  model IsInSavingsFunction {
-    value: onoff;
-  }
+  model IsInSavingsFunction is InstallRegister<onoff>;
 
   @inherit(r, wi)
   @ext(0x2d, 0)
@@ -307,53 +166,29 @@ namespace _350 {
     onoff: onoff;
   }
 
-  @inherit(r, wi)
   @ext(0x2e, 0)
-  model SwitchOffParty {
-    value: onoff;
-  }
+  model SwitchOffParty is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x2f, 0)
-  model IsInTeleSwitch {
-    value: onoff;
-  }
+  model IsInTeleSwitch is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x30, 0)
-  model IsInFloorPavingDrying {
-    value: onoff;
-  }
+  model IsInFloorPavingDrying is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x31, 0)
-  model IsInQuickVeto {
-    value: onoff;
-  }
+  model IsInQuickVeto is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x32, 0)
-  model QuickVetoTemp {
-    value: temp;
-  }
+  model QuickVetoTemp is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x33, 0)
-  model StackeBUSTaskMax {
-    value: UCH;
-  }
+  model StackeBUSTaskMax is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x34, 0)
-  model StackMainTaskMax {
-    value: UCH;
-  }
+  model StackMainTaskMax is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x35, 0)
-  model StackLifeCheckTaskMax {
-    value: UCH;
-  }
+  model StackLifeCheckTaskMax is InstallRegister<UCH>;
 
   @inherit(r, wi)
   @ext(0x36, 0)
@@ -362,29 +197,17 @@ namespace _350 {
     value: ULG;
   }
 
-  @inherit(r, wi)
   @ext(0x37, 0)
-  model TimeWindows {
-    value: UIN;
-  }
+  model TimeWindows is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x38, 0)
-  model EBUSCRC {
-    value: UCH;
-  }
+  model EBUSCRC is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x39, 0)
-  model HwcTempDesired {
-    value: temp;
-  }
+  model HwcTempDesired is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x3a, 0)
-  model ComfTempEnabled {
-    value: onoff;
-  }
+  model ComfTempEnabled is InstallRegister<onoff>;
 
   @inherit(r, wi)
   @ext(0x3b, 0)
@@ -395,17 +218,11 @@ namespace _350 {
     temp_3: temp;
   }
 
-  @inherit(r, wi)
   @ext(0x3c, 0)
-  model FrostProtectDelay {
-    value: UCH;
-  }
+  model FrostProtectDelay is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x3d, 0)
-  model HydraulicScheme {
-    value: UCH;
-  }
+  model HydraulicScheme is InstallRegister<UCH>;
 
   @inherit(r, wi)
   @ext(0x3e, 0)
@@ -414,217 +231,112 @@ namespace _350 {
     value: HEX;
   }
 
-  @inherit(r, wi)
   @ext(0x3f, 0)
-  model ONDiff {
-    value: UCH;
-  }
+  model ONDiff is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x40, 0)
-  model OffDiff {
-    value: UCH;
-  }
+  model OffDiff is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x41, 0)
-  model LegioProtectionEnabled {
-    value: yesno;
-  }
+  model LegioProtectionEnabled is InstallRegister<yesno>;
 
-  @inherit(r, wi)
   @ext(0x42, 0)
-  model FillmodeStartTime {
-    value: UCH;
-  }
+  model FillmodeStartTime is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x43, 0)
-  model OperatingmodeStartTime {
-    value: UCH;
-  }
+  model OperatingmodeStartTime is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x44, 0)
-  model NumCollPanels {
-    value: UCH;
-  }
+  model NumCollPanels is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x45, 0)
-  model SolPumpBlockingTime {
-    value: UCH;
-  }
+  model SolPumpBlockingTime is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x46, 0)
-  model LoadingDelayEnabled {
-    value: onoff;
-  }
+  model LoadingDelayEnabled is InstallRegister<onoff>;
 
   /** Solar flow rate [l/h] */
-  @inherit(r, wi)
   @ext(0x47, 0)
-  model SolFlowRate {
-    value: UIN;
-  }
+  model SolFlowRate is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x48, 0)
-  model EDControlEnabled {
-    value: onoff;
-  }
+  model EDControlEnabled is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x49, 0)
-  model ResetYield {
-    value: onoff;
-  }
+  model ResetYield is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x4a, 0)
-  model ResetOperatingTimes {
-    value: onoff;
-  }
+  model ResetOperatingTimes is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x4b, 0)
-  model PumpPower {
-    value: power;
-  }
+  model PumpPower is InstallRegister<power>;
 
-  @inherit(r, wi)
   @ext(0x4c, 0)
-  model StartCircuitAeration {
-    value: onoff;
-  }
+  model StartCircuitAeration is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x4d, 0)
-  model HeatingCurve {
-    value: curve;
-  }
+  model HeatingCurve is InstallRegister<curve>;
 
-  @inherit(r, wi)
   @ext(0x4e, 0)
-  model ControlMode {
-    value: SCH;
-  }
+  model ControlMode is InstallRegister<SCH>;
 
-  @inherit(r, wi)
   @ext(0x4f, 0)
-  model OtShutdownLimit {
-    value: temp;
-  }
+  model OtShutdownLimit is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x50, 0)
-  model FlowTempMin {
-    value: temp;
-  }
+  model FlowTempMin is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x51, 0)
-  model DisableAutoSync {
-    value: UCH;
-  }
+  model DisableAutoSync is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x52, 0)
-  model ONMINDiff {
-    value: UCH;
-  }
+  model ONMINDiff is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x53, 0)
-  model ONMAXDiff {
-    value: UCH;
-  }
+  model ONMAXDiff is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x54, 0)
-  model HydraulicMixer {
-    value: onoff;
-  }
+  model HydraulicMixer is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x55, 0)
-  model EBUSFifoDiffCntMax {
-    value: UCH;
-  }
+  model EBUSFifoDiffCntMax is InstallRegister<UCH>;
 
-  @inherit(r, wi)
   @ext(0x56, 0)
-  model ZweipunktAnalogSlct {
-    value: UCH;
-  }
+  model ZweipunktAnalogSlct is InstallRegister<UCH>;
 
   /** Actual roomtemperature setpoint [°C] */
-  @inherit(r, wi)
   @ext(0x57, 0)
-  model ActualRoomTempDesired {
-    value: temp;
-  }
+  model ActualRoomTempDesired is InstallRegister<temp>;
 
-  @inherit(r, wi)
   @ext(0x58, 0)
-  model WeekDayProgSwitch {
-    value: onoff;
-  }
+  model WeekDayProgSwitch is InstallRegister<onoff>;
 
-  @inherit(r, wi)
   @ext(0x59, 0)
-  model OperatingModeHwc {
-    value: mcmode;
-  }
+  model OperatingModeHwc is InstallRegister<mcmode>;
 
-  @inherit(r, wi)
   @ext(0x5a, 0)
-  model RTCAdjustment {
-    value: SIN;
-  }
+  model RTCAdjustment is InstallRegister<SIN>;
 
-  @inherit(r, wi)
   @ext(0x5b, 0)
-  model EEpromMaxInkonsCnt {
-    value: UIN;
-  }
+  model EEpromMaxInkonsCnt is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x5c, 0)
-  model POCResetCnt {
-    value: UIN;
-  }
+  model POCResetCnt is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x5d, 0)
-  model WDResetCnt {
-    value: UIN;
-  }
+  model WDResetCnt is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x5e, 0)
-  model LVResetCnt {
-    value: UIN;
-  }
+  model LVResetCnt is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x5f, 0)
-  model CMResetCnt {
-    value: UIN;
-  }
+  model CMResetCnt is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x60, 0)
-  model COMErrorCnt {
-    value: UIN;
-  }
+  model COMErrorCnt is InstallRegister<UIN>;
 
-  @inherit(r, wi)
   @ext(0x61, 0)
-  model VariantDKRefreshCnt {
-    value: UCH;
-  }
+  model VariantDKRefreshCnt is InstallRegister<UCH>;
 
   enum Values_YearCalendarActive {
     off: 0,
@@ -647,18 +359,12 @@ namespace _350 {
   @condition(Id.Id.sw, "<=140")
   namespace Sw_le140 {
     /** actual room temperature [°C/Sensor state] */
-    @inherit(r, wi)
     @ext(0xf, 0)
-    model RoomTemp {
-      value: tempsensor;
-    }
+    model RoomTemp is InstallRegister<tempsensor>;
   }
   @condition(Id.Id.sw, ">=141")
   namespace Sw_ge141 {
-    @inherit(r, ws)
     @ext(0x66, 0)
-    model DisplayedRoomTemp {
-      value: temp;
-    }
+    model DisplayedRoomTemp is ServiceRegister<temp>;
   }
 }

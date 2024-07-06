@@ -11,110 +11,51 @@ namespace Vaillant;
 // @zz(0x15)
 namespace E7f {
   // ,E7f00,ExaCONTROL E7 radio,E7f00 206
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### general #####
 
-  /** OutsideTempSensor */
-  @inherit(r)
+  /** OutsideTempSensor: current outdoor temperature and sensorstate */
   @ext(0x3, 0)
-  model OutsideTemp {
-    /** current outdoor temperature and sensorstate */
-    value: tempsensor;
-  }
+  model OutsideTemp is ReadonlyRegister<tempsensor>;
 
-  /** OperatingMode */
-  @inherit(r, w)
+  /** OperatingMode: operating mode */
   @ext(0x5, 0)
-  model OperatingMode {
-    /** OperatingMode */
-    value: mcmode;
-  }
+  model OperatingMode is Register<mcmode>;
 
-  /** Actual Weekday */
-  @inherit(r, w)
+  /** ActualWeekday: current day of week */
   @ext(0x6, 0)
-  model ActualWeekday {
-    /** current day of week */
-    value: bday;
-  }
+  model ActualWeekday is Register<bday>;
 
-  /** time */
-  @inherit(r, w)
+  /** current time */
   @ext(0x7, 0)
-  model Time {
-    /** current time */
-    value: time;
-  }
+  model Time is Register<time>;
 
-  /** ReducedNightTemp */
-  @inherit(r, w)
+  /** ReducedNightTemp: drop temperature setpoint */
   @ext(0x8, 0)
-  model ReducedNightTemp {
-    /** drop temperature setpoint */
-    value: temp;
-  }
+  model ReducedNightTemp is Register<temp>;
 
-  /** YearCalendarActive */
-  @inherit(r, wi)
+  /** YearCalendarActive: enable calendar (=> automatic switching to and fro daylight savings time) */
   @ext(0xb, 0)
-  model YearCalendarActive {
-    /** enable calendar (=> automatic switching to and fro daylight savings time) */
-    value: onoff;
-  }
+  model YearCalendarActive is InstallRegister<onoff>;
 
-  /** date */
-  @inherit(r, w)
+  /** current date (calendar must be enabled previously!) */
   @ext(0xd, 0)
-  model Date {
-    /** current date (calendar must be enabled previously!) */
-    value: date;
-  }
+  model Date is Register<date>;
 
-  /** Heating curve */
-  @inherit(r)
+  /** Heating curve: holiday function - remaining days */
   @ext(0x11, 0)
-  model IsInHoliday {
-    /** holiday function - remaining days */
-    value: UCH;
-  }
+  model IsInHoliday is ReadonlyRegister<UCH>;
 
-  /** IsInQuickVeto */
-  @inherit(r)
+  /** IsInQuickVeto: temperature override (quick veto) */
   @ext(0x16, 0)
-  model IsInQuickVeto {
-    /** temperature override (quick veto) */
-    value: onoff;
-  }
+  model IsInQuickVeto is ReadonlyRegister<onoff>;
 
-  /** QuickVetoTemp */
-  @inherit(r)
+  /** QuickVetoTemp: room temperature setpoint during activated quick veto function */
   @ext(0x17, 0)
-  model QuickVetoTemp {
-    /** room temperature setpoint during activated quick veto function */
-    value: temp;
-  }
+  model QuickVetoTemp is ReadonlyRegister<temp>;
 
-  /** DesiredDHWTemp */
-  @inherit(r, w)
+  /** DesiredDHWTemp: DHW setpoint */
   @ext(0x1e, 0)
-  model HwcTempDesired {
-    /** DHW setpoint */
-    value: temp;
-  }
+  model HwcTempDesired is Register<temp>;
 
   /** DesiredComfTemp */
   @inherit(r, w)
@@ -129,29 +70,17 @@ namespace E7f {
   }
   // ##### extra #####
 
-  /** RaumtemperaturIstOffset */
-  @inherit(r, wi)
+  /** RaumtemperaturIstOffset: room temperature correction */
   @ext(0x2, 0)
-  model RoomTempOffset {
-    /** room temperature correction */
-    value: temp;
-  }
+  model RoomTempOffset is InstallRegister<temp>;
 
-  /** OutDoorTempCorr */
-  @inherit(r, wi)
+  /** OutDoorTempCorr: outside temperature correction */
   @ext(0x4, 0)
-  model OutsideTempOffset {
-    /** outside temperature correction */
-    value: temp;
-  }
+  model OutsideTempOffset is InstallRegister<temp>;
 
-  /** Heating curve */
-  @inherit(r, wi)
+  /** heating curve (only relevant if an outside temperature sensor is connected to the BMU) */
   @ext(0x23, 0)
-  model HeatingCurve {
-    /** heating curve (only relevant if an outside temperature sensor is connected to the BMU) */
-    value: curve;
-  }
+  model HeatingCurve is InstallRegister<curve>;
 
   /** ZweipunktAnalogSlct */
   @inherit(r, wi)
@@ -172,133 +101,69 @@ namespace E7f {
   }
   // ##### internal #####
 
-  /** MaxStackeBUSTask */
-  @inherit(r)
+  /** MaxStackeBUSTask: maximum number of bytes needed for the eBUS task stack */
   @ext(0x18, 0)
-  model StackeBUSTaskMax {
-    /** maximum number of bytes needed for the eBUS task stack */
-    value: UCH;
-  }
+  model StackeBUSTaskMax is ReadonlyRegister<UCH>;
 
-  /** MaxStackMainTask */
-  @inherit(r)
+  /** MaxStackMainTask: maximum number of bytes needed for the main task stack */
   @ext(0x19, 0)
-  model StackMainTaskMax {
-    /** maximum number of bytes needed for the main task stack */
-    value: UCH;
-  }
+  model StackMainTaskMax is ReadonlyRegister<UCH>;
 
-  /** MaxStackLifeCheckTask */
-  @inherit(r)
+  /** MaxStackLifeCheckTask: maximum number of bytes needed for the life check task stack */
   @ext(0x1a, 0)
-  model StackLifeCheckTaskMax {
-    /** maximum number of bytes needed for the life check task stack */
-    value: UCH;
-  }
+  model StackLifeCheckTaskMax is ReadonlyRegister<UCH>;
 
-  /** eBUSFifoDiffCntMax */
-  @inherit(r)
+  /** eBUSFifoDiffCntMax: max. eBUS-fifo level */
   @ext(0x28, 0)
-  model EBUSFifoDiffCntMax {
-    /** max. eBUS-fifo level */
-    value: UCH;
-  }
+  model EBUSFifoDiffCntMax is ReadonlyRegister<UCH>;
 
-  /** RTCAdjustment */
-  @inherit(r)
+  /** RTCAdjustment: adjustment value for RTC-timer (add or subtract 1sec in RTC-synchronisation time every x minute(s); add: positive value; sub: negative value) */
   @ext(0x2c, 0)
-  model RTCAdjustment {
-    /** adjustment value for RTC-timer (add or subtract 1sec in RTC-synchronisation time every x minute(s); add: positive value; sub: negative value) */
-    value: SIN;
-  }
+  model RTCAdjustment is ReadonlyRegister<SIN>;
 
-  /** EEpromMaxInkonsCnt */
-  @inherit(r)
+  /** EEpromMaxInkonsCnt: EEPROM inconsistency counter */
   @ext(0x2d, 0)
-  model EEpromMaxInkonsCnt {
-    /** EEPROM inconsistency counter */
-    value: UIN;
-  }
+  model EEpromMaxInkonsCnt is ReadonlyRegister<UIN>;
 
-  /** POCResetCnt */
-  @inherit(r)
+  /** POCResetCnt: power on resets */
   @ext(0x2e, 0)
-  model POCResetCnt {
-    /** power on resets */
-    value: UIN;
-  }
+  model POCResetCnt is ReadonlyRegister<UIN>;
 
-  /** WDResetCnt */
-  @inherit(r)
+  /** WDResetCnt: watchdog resets */
   @ext(0x2f, 0)
-  model WDResetCnt {
-    /** watchdog resets */
-    value: UIN;
-  }
+  model WDResetCnt is ReadonlyRegister<UIN>;
 
-  /** LVResetCnt */
-  @inherit(r)
+  /** LVResetCnt: low voltage resets */
   @ext(0x30, 0)
-  model LVResetCnt {
-    /** low voltage resets */
-    value: UIN;
-  }
+  model LVResetCnt is ReadonlyRegister<UIN>;
 
-  /** CMResetCnt */
-  @inherit(r)
+  /** CMResetCnt: clock monitor resets */
   @ext(0x31, 0)
-  model CMResetCnt {
-    /** clock monitor resets */
-    value: UIN;
-  }
+  model CMResetCnt is ReadonlyRegister<UIN>;
 
-  /** COMErrorCnt */
-  @inherit(r)
+  /** COMErrorCnt: eBUS-communication errors */
   @ext(0x32, 0)
-  model COMErrorCnt {
-    /** eBUS-communication errors */
-    value: UIN;
-  }
+  model COMErrorCnt is ReadonlyRegister<UIN>;
 
-  /** VariantDKRefreshCnt */
-  @inherit(r)
+  /** VariantDKRefreshCnt: counts how often variant ID has been corrected */
   @ext(0x33, 0)
-  model VariantDKRefreshCnt {
-    /** counts how often variant ID has been corrected */
-    value: UCH;
-  }
+  model VariantDKRefreshCnt is ReadonlyRegister<UCH>;
 
-  /** RfCommErrorPending */
-  @inherit(r)
+  /** RfCommErrorPending: radio communication fails */
   @ext(0x35, 0)
-  model RfCommErrorPending {
-    /** radio communication fails */
-    value: onoff;
-  }
+  model RfCommErrorPending is ReadonlyRegister<onoff>;
 
-  /** BMU_ErrorStatus_DK */
-  @inherit(r)
+  /** BMU_ErrorStatus_DK: error status of the BMU */
   @ext(0x36, 0)
-  model BMUErrorStatus {
-    /** error status of the BMU */
-    value: UCH;
-  }
+  model BMUErrorStatus is ReadonlyRegister<UCH>;
 
-  /** BatteryError */
-  @inherit(r)
+  /** BatteryError: low battery */
   @ext(0x37, 0)
-  model BatteryError {
-    /** low battery */
-    value: onoff;
-  }
+  model BatteryError is ReadonlyRegister<onoff>;
 
-  /** eBUSCommErrorPending */
-  @inherit(r)
+  /** eBUSCommErrorPending: eBUS communication fails */
   @ext(0x39, 0)
-  model EBUSCommErrorPending {
-    /** eBUS communication fails */
-    value: onoff;
-  }
+  model EBUSCommErrorPending is ReadonlyRegister<onoff>;
 
   enum Values_ZweipunktAnalogSlct {
     two_point_control: 0,
@@ -311,23 +176,15 @@ namespace E7f {
   }
   @condition(Id.Id.sw, ">=201")
   namespace Sw_ge201 {
-    /** DisplayedRoomTemp */
-    @inherit(r)
+    /** DisplayedRoomTemp: displayed room temperature */
     @ext(0x3e, 0)
-    model DisplayedRoomTemp {
-      /** displayed room temperature */
-      value: temp;
-    }
+    model DisplayedRoomTemp is ReadonlyRegister<temp>;
   }
   @condition(Id.Id.sw, "=102-131")
   namespace Sw_102_131 {
-    /** RaumtemperaturIst */
-    @inherit(r)
+    /** RaumtemperaturIst: raw value current room temperature */
     @ext(0, 0)
-    model RoomTemp {
-      /** raw value current room temperature */
-      value: tempsensor;
-    }
+    model RoomTemp is ReadonlyRegister<tempsensor>;
   }
 
   /** included parts */

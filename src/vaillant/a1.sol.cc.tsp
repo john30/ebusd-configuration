@@ -14,33 +14,16 @@ namespace Vaillant;
 // @zz(0xa1)
 namespace Sol.Cc {
   // ,sol00,VR 68,sol 210 Circulation
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
   // ##### CP: Circulation pump #####
 
-  /** circulation pump */
-  @inherit(r)
+  /** CirculationPump: Circulation Pump ZP */
   @ext(0x5, 0)
-  model CirPump {
-    /** Circulation Pump ZP */
-    value: onoff;
-  }
+  model CirPump is ReadonlyRegister<onoff>;
   // ##### CP: CP #####
 
-  /** OperatingMode */
-  @inherit(r)
+  /** OperatingMode: Operating mode of CP circuit (1 = auto, 2 = manual, 3 = off, 4 = on) */
   @ext(0xf, 0)
-  model OperatingMode {
-    /** Operating mode of CP circuit (1 = auto, 2 = manual, 3 = off, 4 = on) */
-    value: mcmode;
-  }
+  model OperatingMode is ReadonlyRegister<mcmode>;
 
   /** included parts */
   union _includes {

@@ -12,110 +12,51 @@ namespace Vaillant;
 // @zz(0xec)
 namespace Sol.Sc {
   // ,sol00,VR 68,sol 210 Solar
-
-  /** default *r */
-  @base(MF, 0x9, 0xd)
-  model r {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x9, 0xe)
-  model w {}
-
-  /** default *wi for user level "install" */
-  @write
-  @auth("install")
-  @base(MF, 0x9, 0xe)
-  model wi {}
   // ##### SOLAR: Solar #####
 
-  /** KOL */
-  @inherit(r)
+  /** KOL: value and sensorstate of the collector sensor */
   @ext(0x4, 0)
-  model Col {
-    /** value and sensorstate of the collector sensor */
-    value: tempsensor;
-  }
+  model Col is ReadonlyRegister<tempsensor>;
 
-  /** SP1 */
-  @inherit(r)
+  /** value and sensorstate of upper tank temperature sensor SP1 */
   @ext(0, 0)
-  model SP1 {
-    /** value and sensorstate of upper tank temperature sensor SP1 */
-    value: tempsensor;
-  }
+  model SP1 is ReadonlyRegister<tempsensor>;
 
-  /** SP2 */
-  @inherit(r)
+  /** value and sensorstate of lower tank temperature sensor SP2 */
   @ext(1, 0)
-  model SP2 {
-    /** value and sensorstate of lower tank temperature sensor SP2 */
-    value: tempsensor;
-  }
+  model SP2 is ReadonlyRegister<tempsensor>;
 
-  /** TD1 */
-  @inherit(r)
+  /** value and sensorstate of middle tank temperature sensor TD1 */
   @ext(0x2, 0)
-  model D1Temp {
-    /** value and sensorstate of middle tank temperature sensor TD1 */
-    value: tempsensor;
-  }
+  model D1Temp is ReadonlyRegister<tempsensor>;
 
-  /** TD2 */
-  @inherit(r)
+  /** value and sensorstate of the system's return flow sensor TD2 */
   @ext(0x8, 0)
-  model D2Temp {
-    /** value and sensorstate of the system's return flow sensor TD2 */
-    value: tempsensor;
-  }
+  model D2Temp is ReadonlyRegister<tempsensor>;
 
-  /** Sensor Solarertrag */
-  @inherit(r)
+  /** Sensor Solarertrag: value and sensorstate of the solar gain sensor */
   @ext(0x3, 0)
-  model SolGain {
-    /** value and sensorstate of the solar gain sensor */
-    value: tempsensor;
-  }
+  model SolGain is ReadonlyRegister<tempsensor>;
 
-  /** SolarOperationMode */
-  @inherit(r)
+  /** SolarOperationMode: solar operation mode (permanently on, off) */
   @ext(0x36, 0)
-  model SolOperationMode {
-    /** solar operation mode (permanently on, off) */
-    value: onoff;
-  }
+  model SolOperationMode is ReadonlyRegister<onoff>;
 
-  /** CollectorPump */
-  @inherit(r)
+  /** CollectorPump: collector pump's state */
   @ext(0x6, 0)
-  model CollPump {
-    /** collector pump's state */
-    value: onoff;
-  }
+  model CollPump is ReadonlyRegister<onoff>;
 
-  /** RuntimeCollectorPump */
-  @inherit(r)
+  /** RuntimeCollectorPump: accumulated runtime of the collector pump */
   @ext(0x2a, 0)
-  model RuntimeCollPump {
-    /** accumulated runtime of the collector pump */
-    value: hoursum2;
-  }
+  model RuntimeCollPump is ReadonlyRegister<hoursum2>;
 
-  /** RuntimeCollectorPumpSeconds */
-  @inherit(r)
+  /** RuntimeCollectorPumpSeconds: runtime in seconds base for runtime in hours */
   @ext(0x29, 0)
-  model RuntimeCollPumpSeconds {
-    /** runtime in seconds base for runtime in hours */
-    value: UIN;
-  }
+  model RuntimeCollPumpSeconds is ReadonlyRegister<UIN>;
 
-  /** KickFunction */
-  @inherit(r, wi)
+  /** KickFunction: enable kick function */
   @ext(0x32, 0)
-  model KickFunction {
-    /** enable kick function */
-    value: onoff;
-  }
+  model KickFunction is InstallRegister<onoff>;
 
   /** ColKickPumpTime */
   @inherit(r)
@@ -126,13 +67,9 @@ namespace Sol.Sc {
     value: UCH;
   }
 
-  /** ColKickTempDelta */
-  @inherit(r)
+  /** ColKickTempDelta: temperature difference necessary for activating the pump kick */
   @ext(0x3c, 0)
-  model ColKickTempDelta {
-    /** temperature difference necessary for activating the pump kick */
-    value: temp0;
-  }
+  model ColKickTempDelta is ReadonlyRegister<temp0>;
 
   /** FlowRate */
   @inherit(r, wi)
@@ -144,93 +81,49 @@ namespace Sol.Sc {
     value: SIN;
   }
 
-  /** SolarCollPumpDcIntegrator */
-  @inherit(r)
+  /** SolarCollPumpDcIntegrator: integral part of the solar collector pump's control if duty ratio control is active */
   @ext(0x19, 0)
-  model SolCollPumpDcIntegrator {
-    /** integral part of the solar collector pump's control if duty ratio control is active */
-    value: SIN;
-  }
+  model SolCollPumpDcIntegrator is ReadonlyRegister<SIN>;
 
-  /** MaximalTemperature */
-  @inherit(r, wi)
+  /** MaximalTemperature: solar storage 1 maximum temperature for solar charge */
   @ext(0x26, 0)
-  model MaximalTemp {
-    /** solar storage 1 maximum temperature for solar charge */
-    value: temp0;
-  }
+  model MaximalTemp is InstallRegister<temp0>;
 
-  /** TempDifferenceEIN */
-  @inherit(r, wi)
+  /** TempDifferenceEIN: solar difference control's switch on temperature of storage 1 */
   @ext(0x24, 0)
-  model TempDifferenceOn {
-    /** solar difference control's switch on temperature of storage 1 */
-    value: temp0;
-  }
+  model TempDifferenceOn is InstallRegister<temp0>;
 
-  /** TempDifferenceAUS */
-  @inherit(r, wi)
+  /** TempDifferenceAUS: solar difference control's switch off temperature of storage 1 */
   @ext(0x25, 0)
-  model TempDifferenceOff {
-    /** solar difference control's switch off temperature of storage 1 */
-    value: temp0;
-  }
+  model TempDifferenceOff is InstallRegister<temp0>;
 
-  /** MaximalTemperature2 */
-  @inherit(r, wi)
+  /** MaximalTemperature2: maximum temperature for solar charge of storage 2 */
   @ext(0x26, 0x30)
-  model MaximalTemp2 {
-    /** maximum temperature for solar charge of storage 2 */
-    value: temp0;
-  }
+  model MaximalTemp2 is InstallRegister<temp0>;
 
-  /** TempDifferenceEIN2 */
-  @inherit(r, wi)
+  /** TempDifferenceEIN2: solar difference control's switch on temperature of storage 2 */
   @ext(0x24, 0x30)
-  model TempDifferenceOn2 {
-    /** solar difference control's switch on temperature of storage 2 */
-    value: temp0;
-  }
+  model TempDifferenceOn2 is InstallRegister<temp0>;
 
-  /** TempDifferenceAUS2 */
-  @inherit(r, wi)
+  /** TempDifferenceAUS2: solar difference control's switch off temperature of storage 2 */
   @ext(0x25, 0x30)
-  model TempDifferenceOff2 {
-    /** solar difference control's switch off temperature of storage 2 */
-    value: temp0;
-  }
+  model TempDifferenceOff2 is InstallRegister<temp0>;
 
-  /** EDFunktion */
-  @inherit(r, wi)
+  /** EDFunktion: enable duty ratio control */
   @ext(0x34, 0)
-  model EDFunction {
-    /** enable duty ratio control */
-    value: onoff;
-  }
+  model EDFunction is InstallRegister<onoff>;
 
-  /** SolarCollectorPumpED */
-  @inherit(r)
+  /** SolarCollectorPumpED: percentage of 'pump is on' during one minute (if duty ratio control is enabled) */
   @ext(0x28, 0)
-  model SolCollPumpED {
-    /** percentage of 'pump is on' during one minute (if duty ratio control is enabled) */
-    value: percent0;
-  }
+  model SolCollPumpED is ReadonlyRegister<percent0>;
 
-  /** SolarCircuitProtectionLimit */
-  @inherit(r, wi)
+  /** SolarCircuitProtectionLimit: switch off temperature for collector protection (109 <=> off) */
   @ext(0x30, 0)
-  model ScProtectionLimit {
-    /** switch off temperature for collector protection (109 <=> off) */
-    value: desiredtemp;
-  }
+  model ScProtectionLimit is InstallRegister<desiredtemp>;
 
-  /** SolarCircuitProtectionHysteresis */
-  @inherit(r)
+  /** SolarCircuitProtectionHysteresis: temperature hysteresis for activating solar pump after collector protection */
   @ext(0x31, 0)
-  model ScProtectionHysteresis {
-    /** temperature hysteresis for activating solar pump after collector protection */
-    value: calibration0;
-  }
+  model ScProtectionHysteresis is ReadonlyRegister<calibration0>;
 
   /** SolarCircuitProtectionTime */
   @inherit(r)
@@ -241,198 +134,102 @@ namespace Sol.Sc {
     value: UCH;
   }
 
-  /** enable solar circuit protection */
-  @inherit(r, wi)
+  /** EnableSolarCircuitProtection: enable solar circuit protection */
   @ext(0x59, 0)
-  model EnableScProtection {
-    /** enable solar circuit protection */
-    value: onoff;
-  }
+  model EnableScProtection is InstallRegister<onoff>;
 
-  /** FrostProtectionEnabled */
-  @inherit(r)
+  /** FrostProtectionEnabled: set TRUE to enable solar frost protection */
   @ext(0x5a, 0)
-  model FrostProtectionEnabled {
-    /** set TRUE to enable solar frost protection */
-    value: yesno;
-  }
+  model FrostProtectionEnabled is ReadonlyRegister<yesno>;
 
-  /** FrostProtectionLimit */
-  @inherit(r)
+  /** FrostProtectionLimit: temperature level for activating solar frost protection */
   @ext(0x5b, 0)
-  model FrostProtectionLimit {
-    /** temperature level for activating solar frost protection */
-    value: temps2;
-  }
+  model FrostProtectionLimit is ReadonlyRegister<temps2>;
 
-  /** Reset solar gain */
-  @inherit(r, w)
+  /** ResetSolarGain: reset solar gain */
   @ext(0x35, 0)
-  model ResetSolGain {
-    /** Reset solar gain */
-    value: yesno;
-  }
+  model ResetSolGain is Register<yesno>;
 
-  /** SumSolarGain_day_before */
-  @inherit(r)
+  /** SumSolarGain_day_before: sum of yesterday's solar gain */
   @ext(0x4c, 0)
-  model SumSolGainDayBefore {
-    /** sum of yesterday's solar gain */
-    value: energy4;
-  }
+  model SumSolGainDayBefore is ReadonlyRegister<energy4>;
 
-  /** SumSolarGain */
-  @inherit(r)
+  /** SumSolarGain: accumulated solar gain */
   @ext(0x33, 0)
-  model SumSolGain {
-    /** accumulated solar gain */
-    value: energy4;
-  }
+  model SumSolGain is ReadonlyRegister<energy4>;
   // ##### SOLAR: general #####
 
-  /** weekday */
-  @inherit(r)
+  /** Weekday: current day of week */
   @ext(0xe, 0)
-  model Weekday {
-    /** current day of week */
-    value: bday;
-  }
+  model Weekday is ReadonlyRegister<bday>;
 
-  /** date */
-  @inherit(r)
+  /** current date */
   @ext(0xd, 0)
-  model Date {
-    /** current date */
-    value: date;
-  }
+  model Date is ReadonlyRegister<date>;
 
-  /** time */
-  @inherit(r)
+  /** current time */
   @ext(0xc, 0)
-  model Time {
-    /** current time */
-    value: time;
-  }
+  model Time is ReadonlyRegister<time>;
 
-  /** Hzdraulic plan */
-  @inherit(r)
+  /** Hzdraulic plan: 1..8 nur Solar */
   @ext(0x21, 0)
-  model HydraulicScheme {
-    /** 1..8 nur Solar */
-    value: UCH;
-  }
+  model HydraulicScheme is ReadonlyRegister<UCH>;
 
-  /** SystemMode */
-  @inherit(r)
+  /** SystemMode: 0 = heatpump; 1 = 430 system, must be cyclicly written by the CI */
   @ext(0x3d, 0)
-  model SystemMode {
-    /** 0 = heatpump; 1 = 430 system, must be cyclicly written by the CI */
-    value: onoff;
-  }
+  model SystemMode is ReadonlyRegister<onoff>;
 
-  /** MultifunctionOutput */
-  @inherit(r)
+  /** MultifunctionOutput: Output of multifunction relay */
   @ext(0xa, 0)
-  model MultifunctionOutput {
-    /** Output of multifunction relay */
-    value: onoff;
-  }
+  model MultifunctionOutput is ReadonlyRegister<onoff>;
 
-  /** O_Multifunction */
-  @inherit(r, wi)
+  /** O_Multifunction: multifunction relay: 0 = 2nd storage, 1 = differential control */
   @ext(0x3a, 0)
-  model OMultifunction {
-    /** multifunction relay: 0 = 2nd storage, 1 = differential control */
-    value: onoff;
-  }
+  model OMultifunction is InstallRegister<onoff>;
 
-  /** MAPreferredStorage */
-  @inherit(r, wi)
+  /** MAPreferredStorage: prefered storage */
   @ext(0x37, 0)
-  model MAPreferredStorage {
-    /** prefered storage */
-    value: UCH;
-  }
+  model MAPreferredStorage is InstallRegister<UCH>;
 
-  /** TempDifferenceOnTD12 */
-  @inherit(r, wi)
+  /** TempDifferenceOnTD12: temperature difference for the multifunction-output relay to switch on */
   @ext(0x42, 0)
-  model TempDifferenceOnTD12 {
-    /** temperature difference for the multifunction-output relay to switch on */
-    value: temp0;
-  }
+  model TempDifferenceOnTD12 is InstallRegister<temp0>;
 
-  /** TempDifferenceOffTD12 */
-  @inherit(r, wi)
+  /** TempDifferenceOffTD12: temperature difference for the multifunction-output relay to switch off */
   @ext(0x43, 0)
-  model TempDifferenceOffTD12 {
-    /** temperature difference for the multifunction-output relay to switch off */
-    value: temp0;
-  }
+  model TempDifferenceOffTD12 is InstallRegister<temp0>;
 
-  /** PumpAntiLockingFlags */
-  @inherit(r)
+  /** PumpAntiLockingFlags: each set bit represents a pump that has not run in the last 24h */
   @ext(0x9, 0)
-  model PumpAntiLockingFlags {
-    /** each set bit represents a pump that has not run in the last 24h */
-    value: UIN;
-  }
+  model PumpAntiLockingFlags is ReadonlyRegister<UIN>;
 
-  /** InitCircuit */
-  @inherit(r)
+  /** InitCircuit: true if DHW and CP circuits are in init phase */
   @ext(0x18, 0)
-  model InitCircuit {
-    /** true if DHW and CP circuits are in init phase */
-    value: yesno;
-  }
+  model InitCircuit is ReadonlyRegister<yesno>;
 
-  /** IsInBoostMode */
-  @inherit(r)
+  /** IsInBoostMode: heatpump in boost mode */
   @ext(0x39, 0)
-  model IsInBoostMode {
-    /** heatpump in boost mode */
-    value: onoff;
-  }
+  model IsInBoostMode is ReadonlyRegister<onoff>;
 
-  /** QuickVetoStart */
-  @inherit(r)
+  /** QuickVetoStart: Signal for starting quick veto (will be reset after quick veto has been started) */
   @ext(0x45, 0)
-  model QuickVetoStart {
-    /** Signal for starting quick veto (will be reset after quick veto has been started) */
-    value: yesno;
-  }
+  model QuickVetoStart is ReadonlyRegister<yesno>;
 
-  /** Lp_Zp_Ma_Port */
-  @inherit(r)
+  /** Lp_Zp_Ma_Port: multifunction-output port replay */
   @ext(0x54, 0)
-  model LpZpMaPort {
-    /** multifunction-output port replay */
-    value: onoff;
-  }
+  model LpZpMaPort is ReadonlyRegister<onoff>;
 
-  /** Hk1P_Kol1P_P1_Port */
-  @inherit(r)
+  /** Hk1P_Kol1P_P1_Port: collector 1 pump port replay */
   @ext(0x55, 0)
-  model Hc1PumpKol1PP1Port {
-    /** collector 1 pump port replay */
-    value: onoff;
-  }
+  model Hc1PumpKol1PP1Port is ReadonlyRegister<onoff>;
 
-  /** Hk2a_LegP_P2_Port */
-  @inherit(r)
+  /** Hk2a_LegP_P2_Port: legionella pump port replay */
   @ext(0x57, 0)
-  model Hc2aLegPumpP2Port {
-    /** legionella pump port replay */
-    value: onoff;
-  }
+  model Hc2aLegPumpP2Port is ReadonlyRegister<onoff>;
 
-  /** Hk2z_Port */
-  @inherit(r)
+  /** Hk2z_Port: Port replay */
   @ext(0x58, 0)
-  model Hc2zPort {
-    /** Port replay */
-    value: onoff;
-  }
+  model Hc2zPort is ReadonlyRegister<onoff>;
 
   /** included parts */
   union _includes {
