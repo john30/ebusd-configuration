@@ -321,7 +321,7 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
   ]
 }
 const knownManufacturers = new Map<string, [number, string]>([
-  ['vaillant', [0xb5, 'Vaillant']],//todo use enum from lib
+  ['vaillant', [0xb5, 'Vaillant']],
 ])
 const setSubdirManuf = (subdir: string): string|undefined => {
   const [id, name] = knownManufacturers.get(subdir)||[];
@@ -647,7 +647,8 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       isDefault += ` for user level "${auth}"`;
     }
   }
-  let dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
+  let dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio
+  const poll = dirsStr.split(';').filter(d=>d.match(/r[0-9]$/)).map(d=>d.replace(/.*([0-9])$/,'$1')).filter(p=>p).sort(); // extract poll prio
   const single = dirs.length===1 && (isDefault || !additions.defaultsByName.has(dirs[0]));//todo why
   const chain = (line[7]||'').split(';').map((i,_,a)=>fromHexOpt(a.length<=1&&!!single&&!!line[6], line[6], i.split(':')[0]));
   const idComb = chain[0];
@@ -707,6 +708,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       }
       model = [
         comm&&`/** ${normComment(location, comm)} */`,
+        auth&&`@auth("${auth}")` || (poll.length?`@poll(${poll[0]})`:undefined),
         `@ext(${idComb.join(', ')})`,
         `model ${pascalCase(modelName)} is ${name}<${typ}>;`,
       ]
@@ -720,7 +722,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       single
         ? direction(dirs[0]) // single model
         : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
-      auth&&`@auth("${auth}")`,
+      auth&&`@auth("${auth}")` || (poll.length?`@poll(${poll[0]})`:undefined),
       line[4]&&`@qq(${fromHex(line[4]).join})`,
       zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
       single&&idComb.length>=2
