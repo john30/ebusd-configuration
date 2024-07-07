@@ -7,6 +7,7 @@ sed -i \
   -e 's#\(phone.*\),STR:9,#\1,phone,#i' \
   -e 's#,UCH,hour,#,hours,,#i' \
   -e 's#,ULG,hour,#,hoursum,,#i' \
+  -e 's#,UIN,,Steps,#,UIN,,,#i' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
