@@ -1,6 +1,6 @@
 import csvParser from "csv-parser";
-import * as fs from "fs";
-import {readFile, writeFile} from "fs/promises";
+import {createReadStream, createWriteStream} from "fs";
+import {mkdir, readFile, readdir, readlink, stat, symlink, writeFile} from "fs/promises";
 import {dump, load} from "js-yaml";
 import * as path from 'path';
 import {Transform, type TransformCallback} from "stream";
@@ -858,12 +858,25 @@ export const csv2tsp = async (args: string[] = []) => {
       }
     }
   }
+  const links: Record<string, string[]> = {}; // key=src location within indir, value=to[] within indir
   if (!files?.length) {
     // whole tree in indir if no files
-    files = (await fs.promises.readdir(indir, {withFileTypes: true, recursive: true}))
-    .filter(e => e.isFile() && !e.isSymbolicLink() && (e.name.endsWith('.csv')||e.name.endsWith('.inc')))
-    .sort()
-    .map(e => path.join(e.parentPath, e.name));
+    const all = await readdir(indir, {withFileTypes: true, recursive: true});
+    files = all
+      .filter(e => e.isFile() && !e.isSymbolicLink() && (e.name.endsWith('.csv')||e.name.endsWith('.inc')))
+      .sort()
+      .map(e => path.join(e.parentPath, e.name));
+    for (const e of all.filter(e => e.isSymbolicLink())) {
+      const file = path.join(e.parentPath, e.name);
+      const link = await readlink(file);
+      const src = path.relative(indir, path.resolve(e.parentPath, link));
+      let list = links[src];
+      if (!list) {
+        list = [];
+        links[src] = list;
+      }
+      list.push(path.relative(indir, file));
+    }
   }
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
@@ -874,10 +887,10 @@ export const csv2tsp = async (args: string[] = []) => {
     }
     const todir = path.join(outdir, subdir);
     try {
-      await fs.promises.stat(todir); // throws if not exists
+      await stat(todir); // throws if not exists
     } catch (_) {
       console.log(`creating directory ${todir}`);
-      await fs.promises.mkdir(todir, {recursive: true});
+      await mkdir(todir, {recursive: true});
     }
     const isTemplates = name==='_templates.csv';
     const isInclude = path.extname(name)==='.inc';
@@ -954,7 +967,7 @@ export const csv2tsp = async (args: string[] = []) => {
     }
     let firstLine = true;
     await pipeline(
-      fs.createReadStream(file, 'utf-8'),
+      createReadStream(file, 'utf-8'),
       csvParser({headers: false}),
       transform = new Transform({
         objectMode: true,
@@ -979,8 +992,15 @@ export const csv2tsp = async (args: string[] = []) => {
         },
         flush: (cb) => push(trans('', undefined, false, additions), cb, true),
       }),
-      fs.createWriteStream(newFile),
+      createWriteStream(newFile),
     );
+    if (!isInclude) {
+      for (const link of links?.[location] || []) {
+        const linkNameNoExt = path.basename(link, path.extname(link));
+        const linkFile = path.join(todir, linkNameNoExt+'.tsp');
+        await symlink(path.relative(todir, newFile), linkFile);
+      }
+    }
   }
   if (langFile) {
     const replacer = (key: string, value: any) => {
