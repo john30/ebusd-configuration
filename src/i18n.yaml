@@ -2615,15 +2615,14 @@ pumpedpowerin:
   de: 'Einschaltdauer Pumpe: Leistung in %'
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x5,0
-0primaryopen220primaryclosed:
-  first: '0: primary open; 220: primary closed'
-  en: '0: primary open; 220: primary closed'
+0primroffen220primrgeschlossen:
+  first: '0 : primär offen .. 220 primär geschlossen'
   de: '0 : primär offen .. 220 primär geschlossen'
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x6,0:value
-calculatedmixerposition:
-  first: CalculatedMixerPosition
-  en: CalculatedMixerPosition
+calculatedmixerposition0primaryopen220primaryclosed:
+  first: 'CalculatedMixerPosition: 0: primary open; 220: primary closed'
+  en: 'CalculatedMixerPosition: 0: primary open; 220: primary closed'
   de: Berechnete Mischerposition
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x6,0

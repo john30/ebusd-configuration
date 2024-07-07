@@ -39,14 +39,9 @@ namespace Pmw.Hwc {
   @ext(0x5, 0)
   model PumpED is ReadonlyRegister<percent0>;
 
-  /** CalculatedMixerPosition */
-  @inherit(r)
+  /** CalculatedMixerPosition: 0: primary open; 220: primary closed */
   @ext(0x6, 0)
-  model CalculatedMixerPosition {
-    /** 0: primary open; 220: primary closed */
-    @unit("Steps")
-    value: UIN;
-  }
+  model CalculatedMixerPosition is ReadonlyRegister<UIN>;
 
   /** ElectricalHeater */
   @ext(0x8, 0)
