@@ -109,6 +109,7 @@ namespace Circuit {
   /** included parts */
   union _includes {
     Hwcmode_inc,  // <= references the imported namespace and implicitly resolves to all contained models
+    named: Hwcmode_inc, // <= named entry emits a !load instruction instead
   }
 }
 ```
