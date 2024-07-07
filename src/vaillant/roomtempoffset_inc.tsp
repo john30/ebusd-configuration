@@ -16,6 +16,7 @@ namespace Roomtempoffset_inc {
 
   /** Room offset calculation */
   @inherit(w_1)
+  @ext
   model RoomTempOffset {
     value: temp;
   }
