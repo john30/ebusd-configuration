@@ -99,7 +99,7 @@ namespace Timer_inc {
   model w_6 {}
 
   /** Periods Saturday */
-  @inherit(r_6, r_6)
+  @inherit(r_6, w_6)
   @ext
   model Timer_Saturday {
     value: timer;
