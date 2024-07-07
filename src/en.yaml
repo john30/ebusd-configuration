@@ -466,8 +466,7 @@ Current Volume Flow: Current Volume Flow
   = 0,185 * x [Hz] )
 'CircoPump: Power in %': 'CircoPump: Power in %'
 'Pump_ED: Power in %': 'Pump_ED: Power in %'
-'0: primary open; 220: primary closed': '0: primary open; 220: primary closed'
-CalculatedMixerPosition: CalculatedMixerPosition
+'CalculatedMixerPosition: 0: primary open; 220: primary closed': 'CalculatedMixerPosition: 0: primary open; 220: primary closed'
 ElectricalHeater: ElectricalHeater
 HeatDemand: HeatDemand
 'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL': 'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'

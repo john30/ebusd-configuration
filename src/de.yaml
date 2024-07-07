@@ -556,8 +556,8 @@ Current Volume Flow: aktueller Volumenstrom
   = 0,185 * x [Hz] )
 'CircoPump: Power in %': 'Zirkulationspumpe: Leistung in %'
 'Pump_ED: Power in %': 'Einschaltdauer Pumpe: Leistung in %'
-'0: primary open; 220: primary closed': '0 : primär offen .. 220 primär geschlossen'
-CalculatedMixerPosition: Berechnete Mischerposition
+'0 : primär offen .. 220 primär geschlossen': '0 : primär offen .. 220 primär geschlossen'
+'CalculatedMixerPosition: 0: primary open; 220: primary closed': Berechnete Mischerposition
 ElectricalHeater: Elektrischer Heizstab
 HeatDemand: Wärmeanforderung
 'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL': 'Betriebsart: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'
