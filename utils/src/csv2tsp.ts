@@ -102,56 +102,48 @@ model ws {}
 /** read/write register */
 @inherit(r, w)
 model Register<T> {
-  /** register value */
   value: T;
 }
 
 /** read only register */
 @inherit(r)
 model ReadonlyRegister<T> {
-  /** register value */
   value: T;
 }
 
 /** installer level register */
 @inherit(r, wi)
 model InstallRegister<T> {
-  /** register value */
   value: T;
 }
 
 /** service level register */
 @inherit(r, ws)
 model ServiceRegister<T> {
-  /** register value */
   value: T;
 }
 
 /** read/write updated register */
 @inherit(r, w, u)
 model UpdateRegister<T> {
-  /** register value */
   value: T;
 }
 
 /** read only updated register */
 @inherit(r, u)
 model ReadonlyUpdateRegister<T> {
-  /** register value */
   value: T;
 }
 
 /** installer level updated register */
 @inherit(r, wi, u)
 model InstallUpdateRegister<T> {
-  /** register value */
   value: T;
 }
 
 /** service level updated register */
 @inherit(r, ws, u)
 model ServiceUpdateRegister<T> {
-  /** register value */
   value: T;
 }
 
