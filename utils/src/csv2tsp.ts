@@ -178,7 +178,10 @@ const templateHeaderSubdir = [
 const templateFooter: string[] = [];
 const dynLengthTypes = new Set<string>(['STR', 'NTS', 'IGN', 'HEX'])
 const pascalCase = (s?: string) => s ? s.substring(0,1).toUpperCase()+s.substring(1) : s;
-const normId = (id: string): string => id.replaceAll(/[^a-zA-Z0-9_]/g, '_');
+const normId = (id: string): string => id
+  .replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue')
+  .replaceAll('Ä','AE').replaceAll('Ö','OE').replaceAll('Ü','UE')
+  .replaceAll(/[^a-zA-Z0-9_]/g, '_');
 const normType = (t: string): string => {
   const parts = t.split(':');
   parts[0] = normId(parts[0]);
@@ -721,6 +724,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
         ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
         : idComb.length ? `@ext(${idComb.join(', ')})`
           +(chain.length>1?`\n@chain(${chainLengths&&chainLengths.size?chainLengths.values().next().value:'0'}, ${chain.slice(1).map(i=>`#[${i.join(', ')}]`).join(', ')})`:'')
+        : !single ? '@ext' // needed when default already defines whole id (e.g. roomtempoffset.inc)
         : undefined,
       `model ${isDefault ? modelName : pascalCase(modelName)} {`, // expected to be PascalCase
       ...fields,
