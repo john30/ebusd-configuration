@@ -595,18 +595,18 @@ namespace Bai._0010005400_inc {
   /** Rückmeldung Brennstoffventil 1 */
   @inherit(r)
   @ext(0x47, 0)
-  model R_ckmeldungBrennstoffventil1 {
+  model RueckmeldungBrennstoffventil1 {
     /** feedback gasvalve (from ASIC) */
-    @values(Values_R_ckmeldungBrennstoffventil1)
+    @values(Values_RueckmeldungBrennstoffventil1)
     value: UCH;
   }
 
   /** Rückmeldung Brennstoffventil 2 */
   @inherit(r)
   @ext(0x48, 0)
-  model R_ckmeldungBrennstoffventil2 {
+  model RueckmeldungBrennstoffventil2 {
     /** feedback gasvalve (from Microcontroller) */
-    @values(Values_R_ckmeldungBrennstoffventil2)
+    @values(Values_RueckmeldungBrennstoffventil2)
     value: UCH;
   }
 
@@ -805,9 +805,9 @@ namespace Bai._0010005400_inc {
   /** Rückmeldung Brennstoffventil 3 */
   @inherit(r)
   @ext(0xdb, 0)
-  model R_ckmeldungBrennstoffventil3 {
+  model RueckmeldungBrennstoffventil3 {
     /** Gasvalve activation signal (from Microcontroller) */
-    @values(Values_R_ckmeldungBrennstoffventil3)
+    @values(Values_RueckmeldungBrennstoffventil3)
     value: UCH;
   }
 
@@ -998,12 +998,12 @@ namespace Bai._0010005400_inc {
     yes: 15,
   }
 
-  enum Values_R_ckmeldungBrennstoffventil1 {
+  enum Values_RueckmeldungBrennstoffventil1 {
     off: 240,
     on: 15,
   }
 
-  enum Values_R_ckmeldungBrennstoffventil2 {
+  enum Values_RueckmeldungBrennstoffventil2 {
     off: 240,
     on: 15,
   }
@@ -1053,7 +1053,7 @@ namespace Bai._0010005400_inc {
     yes: 15,
   }
 
-  enum Values_R_ckmeldungBrennstoffventil3 {
+  enum Values_RueckmeldungBrennstoffventil3 {
     off: 240,
     on: 15,
   }

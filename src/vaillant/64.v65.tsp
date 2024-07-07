@@ -16,6 +16,7 @@ namespace V65 {
   model u_1 {}
 
   @inherit(u_1)
+  @ext
   model State {
     @out
     setvalve: switchvalve2;

@@ -20,6 +20,7 @@ namespace Timer_inc {
 
   /** Periods Monday */
   @inherit(r_1, w_1)
+  @ext
   model Timer_Monday {
     value: timer;
   }
@@ -35,6 +36,7 @@ namespace Timer_inc {
 
   /** Periods Tuesday */
   @inherit(r_2, w_2)
+  @ext
   model Timer_Tuesday {
     value: timer;
   }
@@ -50,6 +52,7 @@ namespace Timer_inc {
 
   /** Periods Wednesday */
   @inherit(r_3, w_3)
+  @ext
   model Timer_Wednesday {
     value: timer;
   }
@@ -65,6 +68,7 @@ namespace Timer_inc {
 
   /** Periods Thursday */
   @inherit(r_4, w_4)
+  @ext
   model Timer_Thursday {
     value: timer;
   }
@@ -80,6 +84,7 @@ namespace Timer_inc {
 
   /** Periods Friday */
   @inherit(r_5, w_5)
+  @ext
   model Timer_Friday {
     value: timer;
   }
@@ -95,6 +100,7 @@ namespace Timer_inc {
 
   /** Periods Saturday */
   @inherit(r_6, r_6)
+  @ext
   model Timer_Saturday {
     value: timer;
   }
@@ -110,6 +116,7 @@ namespace Timer_inc {
 
   /** Periods Sunday */
   @inherit(r_7, w_7)
+  @ext
   model Timer_Sunday {
     value: timer;
   }
