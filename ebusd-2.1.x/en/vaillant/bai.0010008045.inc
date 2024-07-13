@@ -29,7 +29,7 @@ r,,FlowTemp,d.40 TFT_DK,,,,1800,,,tempsensor,,,flow temperature
 r,,ReturnTemp,d.41 Temp heating return,,,,9800,,,tempmirrorsensor,,,return temperature
 r,,IonisationVoltageLevel,d.44 Dig. ionisation voltage,,,,A400,,,SIN,10,,digital ionisation voltage> 80 no flame< 40 good flame
 r,,OutdoorstempSensor,d.47 Temp outside,,,,7600,,,tempsensor,,,Outside temperature (uncorrected value)
-r;wi,,Night-timeOffset,d.62 Night-time offset,,,,3F04,,,IGN:7;UCH,,,"Night-time offset (Specific function for Belgium and NL: RT does not stop the burner but change the set-point. Do not use in other countries)"
+r;wi,,NighttimeOffset,d.62 Night-time offset,,,,3F04,,,IGN:7;UCH,,,"Night-time offset (Specific function for Belgium and NL: RT does not stop the burner but change the set-point. Do not use in other countries)"
 r,,RemainingBoilerblocktime,d.67 Remaining burner block time,,,,3800,,,minutes0,,,Remaining burner anti cycling time
 r,,EBusHeatcontrol,d.90 Digital control recognized,,,,7400,,,yesno,,,Digital regulator status
 # ##### dia level 2 #####,,,,,,,,,,,,,

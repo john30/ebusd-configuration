@@ -89,7 +89,7 @@ r,,HwcSetPotmeter,DHWSetPotmeter,,,,"F103",,,temp,,,DHW setpoint potentiometer
 r,,HwcSwitch,DHWSwitch,,,,"F303",,,onoff,,,DHW on/off
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,serial number of AI
-r,,FaultlistDK[0],Faultlist_DK[0],,,,"EF03",,,HEX:8,,,fault list (of the last 10 failures)
+r,,FaultlistDK,Faultlist_DK[0],,,,"EF03",,,HEX:8,,,fault list (of the last 10 failures)
 # ##### dia level 2 #####,,,,,,,,,,,,,
 r;wi,,ReturnRegulation,d.17 Return regulation,,,,"0C04",,,onoff,,,heating flow/return regulation activation
 r;wi,,HcPumpMode,d.18 CH pump mode,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pump mode

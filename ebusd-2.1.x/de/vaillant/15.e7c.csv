@@ -14,7 +14,7 @@ r;w,,HeatingOverrideEndTime,Heating Override End Time,,,,2500,,,DTM,,,Endzeit He
 r;w,,KeyboardLockEnable,Keyboard Lock Enable,,,,2a00,,,onoff,,,Tastatursperre aktivieren
 r;w,,Contrast,Contrast,,,,2b00,,,UCH,,,Kontrast
 r;w,,Brightness,Brightness,,,,2c00,,,UCH,,,Helligkeit
-r;w,,Time&Date,Time & Date,,,,2e00,,,DTM,,,Uhrzeit & Datum
+r;w,,TimeDate,Time & Date,,,,2e00,,,DTM,,,Uhrzeit & Datum
 r;w,,DateFormat,Date Format,,,,2d00,,,UCH,,,Datumsformat 1-TT.MM.JJJJ 2-JJJJ.MM.TT
 r;w,,Weekday,Weekday,,,,2f00,,,bday,,,Wochentag
 r;w,,RoomName,Room Name,,,,3000,,,STR:14,,,Raumname

@@ -14,7 +14,7 @@ r;w,,HeatingOverrideEndTime,Heating Override End Time,,,,2500,,,DTM,,,Heating Ov
 r;w,,KeyboardLockEnable,Keyboard Lock Enable,,,,2a00,,,onoff,,,Keyboard Lock Enable
 r;w,,Contrast,Contrast,,,,2b00,,,UCH,,,Contrast
 r;w,,Brightness,Brightness,,,,2c00,,,UCH,,,Brightness
-r;w,,Time&Date,Time & Date,,,,2e00,,,DTM,,,Time & Date
+r;w,,TimeDate,Time & Date,,,,2e00,,,DTM,,,Time & Date
 r;w,,DateFormat,Date Format,,,,2d00,,,UCH,,,Date format 1-dd.mm.yyyy 2-yyyy.mm.dd
 r;w,,Weekday,Weekday,,,,2f00,,,bday,,,Weekday
 r;w,,RoomName,Room Name,,,,3000,,,STR:14,,,Room Name
