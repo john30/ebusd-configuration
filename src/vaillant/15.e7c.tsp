@@ -50,7 +50,7 @@ namespace E7c {
 
   /** Time & Date */
   @ext(0x2e, 0)
-  model Time_Date is Register<DTM>;
+  model TimeDate is Register<DTM>;
 
   /** Date format 1-dd.mm.yyyy 2-yyyy.mm.dd */
   @ext(0x2d, 0)

@@ -113,7 +113,7 @@ namespace Bai._0010008045_inc {
   /** d.62 Night-time offset */
   @inherit(r, wi)
   @ext(0x3f, 0x4)
-  model Night_timeOffset {
+  model NighttimeOffset {
     /** Night-time offset (Specific function for Belgium and NL: RT does not stop the burner but change the set-point. Do not use in other countries) */
     @maxLength(7) ign: IGN;
 
