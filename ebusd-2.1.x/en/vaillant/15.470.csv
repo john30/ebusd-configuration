@@ -28,8 +28,8 @@ r;w,,Hc2BankHolidayStartPeriod,HC2BankHolidayStartPeriod,,,,"2500",,,date,,,seco
 r;w,,Hc2BankHolidayEndPeriod,HC2BankHolidayEndPeriod,,,,"2600",,,date,,,second heating circuit's end date of bank holidays
 r,,Hc2SFMode,HC2_SFMode,,,,"1C00",,,UCH,0=none;1=party;2=onedaybankholiday;3=onedayholiday;4=holiday;5=bankholiday;6=quickveto;7=onetimeventilation;8=onetimewater,,activated special function of second heating circuit
 r;w,,HwcTempDesired,DHW_DesiredTemp,,,,"4400",,,temp1,,,setpoint of domestic hot water circuit
-r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,STR:11,,,"labelling of the first heating circuit (only A-Z,0-9,blank)"
-r;w,,HcName2,aaucHcNames_HK2,,,,"3F08",,,STR:11,,,"labelling of the second heating circuit (only A-Z,0-9,blank)"
+r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,hcname,,,"labelling of the first heating circuit (only A-Z,0-9,blank)"
+r;w,,HcName2,aaucHcNames_HK2,,,,"3F08",,,hcname,,,"labelling of the second heating circuit (only A-Z,0-9,blank)"
 r;wi,,ContactName,aucContactName,,,,"B400",,,STR:13,,,"installer's name (only A-Z,0-9,blank)"
 r;wi,,PhoneNumber,aucPhoneNumber,,,,"5400",,,STR:13,,,"installer's telephone number (only 0-9,-,blank)"
 r;wi,,MaintenanceDate,MaintenanceDate,,,,"5900",,,date,,,date of the next maintenance service

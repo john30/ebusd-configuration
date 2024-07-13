@@ -48,20 +48,20 @@ r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,heat buf
 [SW>=250]r,,SysWithCoolingSupport,SysWithCoolingSupport,,,,"9B00",,,onoff,,,
 [SW>=362]r,,reserve1,reserve 1,,,,"9D00",,,UCH,,,for future use
 # ##### HC Names and Tel No #####,,,,,,,,,,,,,
-r;w,,HcName2,aaucHcNames CH2,,,,"4108",,,STR:11,,,name of CH2
-r;w,,HcName3,aaucHcNames CH3,,,,"4110",,,STR:11,,,name of CH3
-r;w,,HcName4,aaucHcNames CH4,,,,"4118",,,STR:11,,,name of CH4
-r;w,,HcName5,aaucHcNames CH5,,,,"4120",,,STR:11,,,name of CH5
-r;w,,HcName6,aaucHcNames CH6,,,,"4128",,,STR:11,,,name of CH6
-r;w,,HcName7,aaucHcNames CH7,,,,"4130",,,STR:11,,,name of CH7
-r;w,,HcName8,aaucHcNames CH8,,,,"4138",,,STR:11,,,name of CH8
-r;w,,HcName9,aaucHcNames CH9,,,,"4140",,,STR:11,,,name of CH9
-r;w,,HcName10,aaucHcNames CH10,,,,"4148",,,STR:11,,,name of CH10
-r;w,,HcName11,aaucHcNames CH11,,,,"4150",,,STR:11,,,name of CH11
-r;w,,HcName12,aaucHcNames CH12,,,,"4158",,,STR:11,,,name of CH12
-r;w,,HcName13,aaucHcNames CH13,,,,"4160",,,STR:11,,,name of CH13
-r;w,,HcName14,aaucHcNames CH14,,,,"4168",,,STR:11,,,name of CH14
-r;w,,HcName15,aaucHcNames CH15,,,,"4170",,,STR:11,,,name of CH15
-r;w,,HcName16,aaucHcNames CH16,,,,"4178",,,STR:11,,,name of CH16
-r;wi,,PhoneNumberPart1,aucPhoneNumber part 1,,,,"4200",,,STR:9,,,phone number part 1
-r;wi,,PhoneNumberPart2,aucPhoneNumber part 2,,,,"4208",,,STR:9,,,phone number part 2
+r;w,,HcName2,aaucHcNames CH2,,,,"4108",,,hcname,,,name of CH2
+r;w,,HcName3,aaucHcNames CH3,,,,"4110",,,hcname,,,name of CH3
+r;w,,HcName4,aaucHcNames CH4,,,,"4118",,,hcname,,,name of CH4
+r;w,,HcName5,aaucHcNames CH5,,,,"4120",,,hcname,,,name of CH5
+r;w,,HcName6,aaucHcNames CH6,,,,"4128",,,hcname,,,name of CH6
+r;w,,HcName7,aaucHcNames CH7,,,,"4130",,,hcname,,,name of CH7
+r;w,,HcName8,aaucHcNames CH8,,,,"4138",,,hcname,,,name of CH8
+r;w,,HcName9,aaucHcNames CH9,,,,"4140",,,hcname,,,name of CH9
+r;w,,HcName10,aaucHcNames CH10,,,,"4148",,,hcname,,,name of CH10
+r;w,,HcName11,aaucHcNames CH11,,,,"4150",,,hcname,,,name of CH11
+r;w,,HcName12,aaucHcNames CH12,,,,"4158",,,hcname,,,name of CH12
+r;w,,HcName13,aaucHcNames CH13,,,,"4160",,,hcname,,,name of CH13
+r;w,,HcName14,aaucHcNames CH14,,,,"4168",,,hcname,,,name of CH14
+r;w,,HcName15,aaucHcNames CH15,,,,"4170",,,hcname,,,name of CH15
+r;w,,HcName16,aaucHcNames CH16,,,,"4178",,,hcname,,,name of CH16
+r;wi,,PhoneNumberPart1,aucPhoneNumber part 1,,,,"4200",,,phone,,,phone number part 1
+r;wi,,PhoneNumberPart2,aucPhoneNumber part 2,,,,"4208",,,phone,,,phone number part 2
