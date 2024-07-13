@@ -8,6 +8,7 @@ sed -i \
   -e 's#,UCH,hour,#,hours,,#i' \
   -e 's#,ULG,hour,#,hoursum,,#i' \
   -e 's#,UIN,,Steps,#,UIN,,,#i' \
+  -e 's#,UIN,,Schritte,#,UIN,,,#i' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
