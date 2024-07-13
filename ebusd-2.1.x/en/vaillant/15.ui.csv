@@ -34,8 +34,8 @@ r;wi,,OutsideTempOffset,OutDoorTempCorr,,,,"2100",,,temp,,,
 r;w,,RoomTempHoliday,RoomSetTempHoliday,,,,"2200",,,temp,,,
 r;w,,HolidayPeriod,HolidayPeriod,,,,"4300",,,hfrom;hto;hfrom;hto,,,
 r;wi,,ServicePeriod,ServicePeriod,,,,"2B00",,,date,,,
-r;wi,,PhoneNumberPart1,aucPhoneNumber_part1,,,,"4200",,,STR:9,,,
-r;wi,,PhoneNumberPart2,aucPhoneNumber_part2,,,,"4208",,,STR:9,,,
+r;wi,,PhoneNumberPart1,aucPhoneNumber_part1,,,,"4200",,,phone,,,
+r;wi,,PhoneNumberPart2,aucPhoneNumber_part2,,,,"4208",,,phone,,,
 r;wi,,KeyCodeforConfigMenu,KeyCodeforConfigMenue,,,,"2C00",,,HEX:4,,,
 r;wi,,TempFailDetectTime,TempFailDetectTime,,,,"3300",,,temp0,,,
 r;wi,,LcdContrastPwmValue,LcdContrastPwmValue,,,,"3600",,,UCH,,,contrast for the display
@@ -135,20 +135,20 @@ r,,FlagsB6,FlagsBoiler_6,,,,"8730",,,UCH,,,
 r,,FlagsB7,FlagsBoiler_7,,,,"8738",,,UCH,,,
 r,,FlagsB8,FlagsBoiler_8,,,,"8740",,,UCH,,,
 # ##### heating circuit name #####,,,,,,,,,,,,,
-r;w,,HcName1,aaucHcNames_1,,,,"4100",,,STR:11,,,name of heating circuit No 1
-r;w,,HcName2,aaucHcNames_2,,,,"4108",,,STR:11,,,name of heating circuit No 2
-r;w,,HcName3,aaucHcNames_3,,,,"4110",,,STR:11,,,name of heating circuit No 3
-r;w,,HcName4,aaucHcNames_4,,,,"4118",,,STR:11,,,name of heating circuit No 4
-r;w,,HcName5,aaucHcNames_5,,,,"4120",,,STR:11,,,name of heating circuit No 5
-r;w,,HcName6,aaucHcNames_6,,,,"4128",,,STR:11,,,name of heating circuit No 6
-r;w,,HcName7,aaucHcNames_7,,,,"4130",,,STR:11,,,name of heating circuit No 7
-r;w,,HcName8,aaucHcNames_8,,,,"4138",,,STR:11,,,name of heating circuit No 8
-r;w,,HcName9,aaucHcNames_9,,,,"4140",,,STR:11,,,name of heating circuit No 9
-r;w,,HcName10,aaucHcNames_10,,,,"4148",,,STR:11,,,name of heating circuit No 10
-r;w,,HcName11,aaucHcNames_11,,,,"4150",,,STR:11,,,name of heating circuit No 11
-r;w,,HcName12,aaucHcNames_12,,,,"4158",,,STR:11,,,name of heating circuit No 12
-r;w,,HcName13,aaucHcNames_13,,,,"4160",,,STR:11,,,name of heating circuit No 13
-r;w,,HcName14,aaucHcNames_14,,,,"4168",,,STR:11,,,name of heating circuit No 14
-r;w,,HcName15,aaucHcNames_15,,,,"4170",,,STR:11,,,name of heating circuit No 15
+r;w,,HcName1,aaucHcNames_1,,,,"4100",,,hcname,,,name of heating circuit No 1
+r;w,,HcName2,aaucHcNames_2,,,,"4108",,,hcname,,,name of heating circuit No 2
+r;w,,HcName3,aaucHcNames_3,,,,"4110",,,hcname,,,name of heating circuit No 3
+r;w,,HcName4,aaucHcNames_4,,,,"4118",,,hcname,,,name of heating circuit No 4
+r;w,,HcName5,aaucHcNames_5,,,,"4120",,,hcname,,,name of heating circuit No 5
+r;w,,HcName6,aaucHcNames_6,,,,"4128",,,hcname,,,name of heating circuit No 6
+r;w,,HcName7,aaucHcNames_7,,,,"4130",,,hcname,,,name of heating circuit No 7
+r;w,,HcName8,aaucHcNames_8,,,,"4138",,,hcname,,,name of heating circuit No 8
+r;w,,HcName9,aaucHcNames_9,,,,"4140",,,hcname,,,name of heating circuit No 9
+r;w,,HcName10,aaucHcNames_10,,,,"4148",,,hcname,,,name of heating circuit No 10
+r;w,,HcName11,aaucHcNames_11,,,,"4150",,,hcname,,,name of heating circuit No 11
+r;w,,HcName12,aaucHcNames_12,,,,"4158",,,hcname,,,name of heating circuit No 12
+r;w,,HcName13,aaucHcNames_13,,,,"4160",,,hcname,,,name of heating circuit No 13
+r;w,,HcName14,aaucHcNames_14,,,,"4168",,,hcname,,,name of heating circuit No 14
+r;w,,HcName15,aaucHcNames_15,,,,"4170",,,hcname,,,name of heating circuit No 15
 [SW>=400]!include,yield4445.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
