@@ -458,7 +458,7 @@ namespace Bai._0010004150_inc {
   /** Faultlist_DK[0] */
   @inherit(r)
   @ext(0x26, 0)
-  model FaultlistDK_0_ {
+  model FaultlistDK {
     /** fault list (of the last 10 failures) */
     @maxLength(10)
     value: HEX;
