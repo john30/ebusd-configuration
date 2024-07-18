@@ -1,0 +1,30 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,VMD01,VMS 8/D,0020071488 243,,,,,,,,,,
+ *r,,,,,,"B509","0D",,,,,,
+ *w,,,,,,"B509","0E",,,,,,
+ *wi,#install,,,,,"B509","0E",,,,,,
+# ##### Generell #####,,,,,,,,,,,,,
+r,,T5,T5 Sensor,,,,"0500",,,tempsensor,,,Solar collector Temperature
+r,,T1,T1 Sensor,,,,"0700",,,tempsensor,,,Temperature in solar back flow (from solar collector)
+r,,T7,T7 Sensor,,,,"0C00",,,tempsensor,,,Average temperature in tank (computed from T6 and mid tank sensor values))
+r,,PowerOnCounter,PowerOnCounter,,,,"1900",,,UIN,,, Power On Counter (in hours)
+r,,T6,T6 Sensor,,,,"A100",,,tempsensor,,,Average temperature in tank (computed from T6 and mid tank sensor values))
+# r;wi,,SolPumpRelay,Relais Solarpumpe,,,,"0F00",,,onoff,,,Solar pump relay: 0: OFF; 1: ON
+# r;wi,,SolPumpPower,Leistung Solarpumpe,,,,"9E00",,,power,,,Performance of solar pump: (7 - 100 %)
+ r;wi,,FlowRate,Volumenstrom,,,,"9E00",,,SIN,10,l/min,chosen flow rate of the collector pump (to calculate solar gain)
+# r;wi,,BufferPumpPower,Leistung Pufferpumpe,,,,"1100",,,power,,,Performance of buffer pump: (15 - 100%)
+# r,,MonitorMatlabLast5minSolAverage,MonitorMatlab_Last5minSolarAverage,,,,"1700",,,SIN,,,
+# r,,CurrentVPMLoadingMode,Aktuelle Betriebsart,,,,"1900",,,UCH,,,1 = Warmwasser (autonom)2 = Heizung (autonom)3 = +10K (autonom)4 = Schwimmbad5 = Warmwasser6 = Heizung7 = +10K
+# r,,RunTimePump1Minutes,Laufzeit Pumpe 1,,,,"1A00",,,minutes0,,,Laufzeit der Solarpumpe (Minuten Anteil)
+# r,,RunTimePump1Hours,Laufzeit Pumpe 1,,,,"1B00",,,hoursum2,,,Laufzeit der Solarpumpe (Stunden Anteil)
+# r,,ExternalHwcRequest,Externe Warmwasseranforderung,,,,"1C00",,,onoff,,,0: No request; 1: Request
+# r,,ExternalHcRequest,Externe Heizungsanforderung,,,,"1D00",,,onoff,,,0: No request; 1: Request
+# r,,ExternalHwcTempDesired,Externer Warmwassersollwert,,,,"1E00",,,desiredtemp,,,Requested temperature for DHW
+# r,,ExternalHcTempDesired,Externer Heizungssollwert,,,,"1F00",,,desiredtemp,,,Requested temperature for CH
+# r,,CurrentASCStateforExternals,CurrentASCStateforExternals,,,,"2000",,,UCH,,,1:OFF 2: Proofing 3:DHWLoading 4:CHLoading 5:Overtemperature
+# r,,CurrentASCStateforASI,CurrentASCStateforASI,,,,"2100",,,UCH,,,1: Standby 2:Proofing 3:StorageLoading 4:Error_System_blocked
+# r,,DateAndTimeIsSet,DateAndTimeIsSet,,,,"2200",,,onoff,,,0: Date and Time is not set; 1: Date and Time is set
+# r;wi,,Time,Zeit,,,,"1900",,,time,,,
+# r;wi,,Date,Datum,,,,"1900",,,date,,,
+# r,,FlowSensorFrequency,FlowSensorFrequency,,,,"2D00",,,UIN,,,
+# r,,Runtime,Laufzeit Kollektorpumpe,,,,"1900",,,hoursum2,,,accumulated runtime of the collector pump
