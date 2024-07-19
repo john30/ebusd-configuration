@@ -55,6 +55,8 @@ const knownBaseModels: Record<string, Record<string, KnownModel>> = {vaillant: {
   u: {dd: [0xb5, 0x09, 0x29], dir: 'u'},
   wi: {dd: [0xb5, 0x09, 0x0e], dir: 'w', auth: 'install'},
   ws: {dd: [0xb5, 0x09, 0x0e], dir: 'w', auth: 'service'},
+  rm: {dd: [0xb5, 0x04]},
+  wm: {dd: [0xb5, 0x05], dir: 'w'},
   rt: {dd: [0xb5, 0x15]},
   wt: {dd: [0xb5, 0x15], dir: 'w'},
 }};
@@ -147,6 +149,16 @@ model ServiceUpdateRegister<T> {
   value: T;
 }
 
+/** default *r for mode */
+@base(MF, 0x04)
+model rm {
+}
+
+/** default *w for mode */
+@write
+@base(MF, 0x05)
+model wm {}
+
 /** default *r for timer */
 @base(MF, 0x15)
 model rt {
@@ -181,7 +193,7 @@ const pascalCase = (s?: string) => s ? s.substring(0,1).toUpperCase()+s.substrin
 const normId = (id: string): string => id
   .replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue')
   .replaceAll('Ä','AE').replaceAll('Ö','OE').replaceAll('Ü','UE')
-  .replaceAll(/[^a-zA-Z0-9_]/g, '_');
+  .replaceAll(/[^a-zA-Z0-9_]/g, '_').replace(/^([0-9])/, '_$1');
 const normType = (t: string): string => {
   const parts = t.split(':');
   parts[0] = normId(parts[0]);
@@ -586,6 +598,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       return;
     }
     // conditional
+    const loadInclude = dirsStr[0]==='!' && line[1] && path.basename(line[1], path.extname(line[1]));
     conditions.forEach(cond => {
       // SW<1,SW>1,SW=1,SW<=1,SW>=1
       let [,name, values] = cond.match(/^([^=<>]*)(.*)$/)||[,cond];
@@ -598,7 +611,11 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       if (value) {
         nsAdd = name;
       } else {
-        nsAdd = ((field.startsWith('Id.Id.')?field.substring('Id.Id.'.length):field)+values)
+        nsAdd = values||'';
+        if (loadInclude && nsAdd.startsWith("='") && field.includes('.Id.')) {
+          nsAdd = '_'+loadInclude.split('.').reverse()[0]; // reduce multiple product ids with filename instead
+        }
+        nsAdd = ((field.startsWith('Id.Id.')?field.substring('Id.Id.'.length):field)+nsAdd)
           .replace('>=', '_ge').replace('<=', '_le').replace('>', '_gt').replace('<', '_lt').replace('==', '_eq')
           .replaceAll(/[^a-zA-Z0-9]/g, '_');
       }
