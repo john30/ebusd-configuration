@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,BAI00,auroCOMPACT/2,0010003886 167,,,,,,,,,,
+#,BAI00,auroCOMPACT,auroCOMPACT/2,0010003886 167,,,,,,,,,,
 *r,,,,,,"B509","0D",,,,,,
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
@@ -8,8 +8,8 @@
 r;wi,,PartloadHcKW,d.00 Heizungsteillast,,,,"0704",,,power,,,Heizungsteillast
 r;wi,,WPPostrunTime,d.01 Pumpennachlaufzeit,,,,"F703",,,minutes0,,,Wasserpumpennachlaufzeit nach Heizbetrieb
 r;wi,,BlockTimeHcMax,d.02 Maximale Brennersperrzeit,,,,"0904",,,minutes0,,,Max. Brennersperrzeit bei einem Vorlaufsollwert von 20°C
-r,,HwcTemp,d.03 WW Vorlaufsolltemp,,,,"1600",,,tempsensor,,,hot water inlet temperature into tank
-r,,StorageTemp,d.04 Speicheristtemp,,,,"1700",,,tempsensor,,,Aktuelle Speichertemperatur und Sensorstatus
+r,,HwcTemp,d.03 Speicherladetemperatur,,,,"1600",,,tempsensor,,,Messwert der Speicherladetemperatur und Sensorstatus
+r,,StorageTemp,d.04 Speichertemperatur,,,,"1700",,,tempsensor,,,Messwert der Speichertemperatur und Sensorstatus
 r,,FlowTempDesired,d.05 Vorlaufsolltemperatur,,,,"3900",,,temp,,,Vorlaufsolltemperatur oder Rücklaufsolltemperatur (wenn Rücklaufregelung aktiviert wurde). Der Maximalwert wird über d.71 und einem eBUS Regler begrenzt.
 r,,HwcTempDesired,d.06 Brauchwassersollwert,,,,"EA03",,,temp,,,Gewünschte Warmwasser Solltemperatur
 r,,StorageTempDesired,d.07 Speichersolltemp,,,,"0400",,,temp,,,Storage temperature target value
@@ -29,8 +29,8 @@ r,,Gasvalve,d.30 Gasventil,,,,"BB00",,,UCH,240=off;15=on,,GMV Ansteuersignal
 r,,TargetFanSpeed,d.33 Lüfter Solldrehzahl,,,,"2400",,,UIN,,1/min,Drehzahlsollwert des Lüfters
 r,,FanSpeed,d.34 Lüfteristdrehzahl,,,,"8300",,,UIN,,1/min,Aktuelle Lüfterdrehzahl
 r,,PositionValveSet,d.35 Position VUV,,,,"5400",,,UCH,,,Position des 3-Wege Ventil: 100=Warmwasser 0=Heizbetrieb 40=Mittenstellung
-r,,CollTemp,d.38 TCollector_DK,,,,"7800",,,tempsensor,,,Collector temperature
-r,,SolBackTemp,d.39 TSolarBack_DK,,,,"6800",,,tempsensor,,,Solarertrag Sensor
+r,,CollTemp,d.38 Kollektortemperatur,,,,"7800",,,tempsensor,,,Messwert der Kollektortemperatur
+r,,SolBackTemp,d.39 Temperatur Solarkreis-Wärmetauscher,,,,"6800",,,tempsensor,,,Messwert der Temperatur hinter Solarkreis-Wärmetauscher
 r,,FlowTemp,d.40 Vorlauftemperatur,,,,"1800",,,tempsensor,,,Vorlauftemperatur
 r,,ReturnTemp,d.41 Rücklauftemperatur,,,,"9800",,,tempmirrorsensor,,,Rücklauftemperatur
 r,,SBTemp,d.42 TSB_DK,,,,"0600",,,tempsensor,,,Speicherbodentemperatur

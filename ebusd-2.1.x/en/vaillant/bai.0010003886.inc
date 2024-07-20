@@ -1,5 +1,5 @@
 # type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
-#,BAI00,auroCOMPACT/2,0010003886 167,,,,,,,,,,
+#,BAI00,auroCOMPACT,auroCOMPACT/2,0010003886 167,,,,,,,,,,
 *r,,,,,,"B509","0D",,,,,,
 *w,,,,,,"B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
@@ -30,7 +30,7 @@ r,,TargetFanSpeed,d.33 Target fan speed,,,,"2400",,,UIN,,1/min,Fan speed setpoin
 r,,FanSpeed,d.34 Actual fan speed,,,,"8300",,,UIN,,1/min,fan speed actual value
 r,,PositionValveSet,d.35 Position TWV,,,,"5400",,,UCH,,,"Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position"
 r,,CollTemp,d.38 TCollector_DK,,,,"7800",,,tempsensor,,,Collector temperature
-r,,SolBackTemp,d.39 TSolarBack_DK,,,,"6800",,,tempsensor,,,Solar yield sensor
+r,,SolBackTemp,d.39 TSolarBack_DK,,,,"6800",,,tempsensor,,,Temperature behind solar circuit heat exchanger
 r,,FlowTemp,d.40 TFT_DK,,,,"1800",,,tempsensor,,,flow temperature
 r,,ReturnTemp,d.41 Temp heating return,,,,"9800",,,tempmirrorsensor,,,return temperature
 r,,SBTemp,d.42 TSB_DK,,,,"0600",,,tempsensor,,,Temperature of tank bottom
