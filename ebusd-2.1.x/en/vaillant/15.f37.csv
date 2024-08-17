@@ -21,7 +21,7 @@ r;w,,Hc1HolidayEndPeriod,HC1HolidayEndPeriod,,,,"1200",,,date,,,first heating ci
 r;w,,Hc1BankHolidayStartPeriod,HC1BankHolidayStartPeriod,,,,"2100",,,date,,,first heating circuit's start date of bank holidays
 r;w,,Hc1BankHolidayEndPeriod,HC1BankHolidayEndPeriod,,,,"2200",,,date,,,first heating circuit's end date of bank holidays
 r;w,,HwcTempDesired,DHW_DesiredTemp,,,,"4400",,,temp1,,,setpoint of domestic hot water circuit
-r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,STR:11,,,"labelling of the first heating circuit (only A-Z,0-9,blank)"
+r;w,,HcName1,aaucHcNames_HK1,,,,"3F00",,,hcname,,,"labelling of the first heating circuit (only A-Z,0-9,blank)"
 r;wi,,ContactName,aucContactName,,,,"B400",,,STR:13,,,"installer's name (only A-Z,0-9,blank)"
 r;wi,,PhoneNumber,aucPhoneNumber,,,,"5400",,,STR:13,,,"installer's telephone number (only 0-9,-,blank)"
 r;wi,,MaintenanceDate,MaintenanceDate,,,,"5900",,,date,,,date of the next maintenance service

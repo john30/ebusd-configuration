@@ -4,6 +4,7 @@
 *u,,,,,,"B509","29",,,IGN:2,,,
 *uhwc,,,,,"25","B509","29",,,IGN:2,,,
 *w,,,,,,"B509","0E",,,,,,
+*whwc,,,,,"25","B509","0E",,,,,,
 *wi,#install,,,,,"B509","0E",,,,,,
 *ws,#service,,,,,"B509","0E",,,,,,
 *wc,#control,,,,,"B509","0E",,,,,,
@@ -146,7 +147,7 @@ r,,BackupStarts,Zusatzhzg. Starts,,,,"B100",,,cntstarts,,,Anzahl der Starts der 
 [brinetowater][SW>=350]r,,SourcePumpCoolingHours,Solepumpengesamtlaufzeit Kühlbetrieb,,,,"7D01",,,hoursum,,,Solepumpengesamtlaufzeit während Kühlbetrieb
 # ***** Installationsmenü *****,,,,,,,,,,,,,
 r;wi;u,,ApplianceCode,Wärmepumpen Typ,,,,"4301",,,UCH,,,appliance code
-r,,HeatpumpType,Wärmepumpen Typ,,,,"7601",,,UCH,1=airtowater;2=brinetowater;3=watertowater;4=indirectwatertowater;5=brinetowater,,heatpump type
+r,,HeatpumpType,Wärmepumpen Typ,,,,"7601",,,UCH,1=airtowater;2=brinetowater;3=watertowater;4=indirectwatertowater;5=airtobrinetowater,,heatpump type
 r;ws;u,,ElectricWiringDiagram,Elektroplan,,,,"8700",,,UCH,,,represents the electrical installation (plan 1...3)
 # ***** Diverse *****,,,,,,,,,,,,,
 r;u,,StateSoftwareCode,Software-Status,,,,"CF00",,,ULG,,,Der Status gibt Auskunft über den Betriebszustand der Wärmepumpen-Software (nur für Entwickler)
@@ -180,8 +181,7 @@ r,,RebootCounter,RebootCounter,,,,"F500",,,UIN,,,number of appliance starts
 r,,T19MaxToCompOff,T19_Max_To_Compressor_Off,,,,"2B01",,,temp,,,limit on compressor outlet temp that leads to an overpressure situation
 r;w,,EnergyBalancingRelease,,,,,"D100",,,onoff,,,
 r;u,,TimeOfNextPredictedPowerCut,,,,,"D300",,,time,,,
-r,,PowerCutPreloading,,,,,"F400",,,onoff,,,
-w,,PowerCutPreloading,,,"25",,"F400",,,onoff,,,
+r;whwc,,PowerCutPreloading,,,,,"F400",,,onoff,,,
 # ***** Nur für Hocheffizenzpumpen *****,,,,,,,,,,,,,
 [SW>=407]r;u,,SourcePumpStatus,BrinePumpStatus,,,,"B801",,,UCH,,,0=HEP_ok: 1= HEP_error; >=2=noHEP
 [SW>=407]r,,SourcePumpPWM,BrinePumpPWM,,,,"AC01",,,percent0,,,actual speed of brine pump (7%=off)
