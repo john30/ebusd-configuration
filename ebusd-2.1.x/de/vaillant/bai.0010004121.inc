@@ -139,9 +139,9 @@ r,,HwcSetPotmeter,WW Sollwert Potentiometer,,,,"F103",,,temp,,,WW Sollwertpotent
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI
 # ##### Diagnose Ebene 2 #####,,,,,,,,,,,,,
-r;wi,,WPPWMPowerDia,d.14 WP_PWMPowerDia_DK,,,,"A100",,,UCH,,,Set-PWM-Powerrate of electronic-pump
+r;wi,,WPPWMPowerDia,d.14 WP_PWMPowerDia_DK,,,,"A100",,,UCH,0=auto;1=53%;2=60%;3=70%;4=85%;5=100%,,"Set-PWM-Powerrate of electronic-pump (0=auto (factory setting), 1=53%, 2=60%, 3=70%, 4=85%, 5=100%)"
 r;wi,,ReturnRegulation,d.17 Rücklaufregelung,,,,"0C04",,,onoff,,,Aktivierung der Rücklaufregelung
-r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,"Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend"
+r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"4904",,,UCH,0=postrun;1=permanent;2=winter,,"Pump mode: 0=postrun, 1=continous, 2=Winter, 3=intermittend"
 r;wi,,HwcTempMax,d.20 Max. WW Temperatur,,,,"4304",,,temp,,,Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers (Rechtsanschlag).
 r;wi,,OptionRelais,d.26 OptionRelais_DK,,,,"B800",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Option relais function
 r;wi,,AccessoriesOne,d.27 Zubehörrelais 1,,,,"4B04",,,UCH,1=circulationpump;2=extheatingpump;3=storagechargingpump;4=fluegasflapextractorhood;5=externalgasvalve;6=externalerrormessage;7=solarpump;8=remotecontrol,,Funktion des Zubehörrelais 1
