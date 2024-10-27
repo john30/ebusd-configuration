@@ -29,7 +29,7 @@ r,,FlowTemp,d.40 Vorlauftemperatur,,,,1800,,,tempsensor,,,Vorlauftemperatur
 r,,ReturnTemp,d.41 Rücklauftemperatur,,,,9800,,,tempmirrorsensor,,,Rücklauftemperatur
 r,,IonisationVoltageLevel,d.44 Spannungspegel Ionisationssignal,,,,A400,,,SIN,10,,Ionisationsspannung: größer 80 = keine Flammekleiner 40 = gutes Flammensignal
 r,,OutdoorstempSensor,d.47 Außentemperaturfühler,,,,7600,,,tempsensor,,,Außentemperaturwert (ohne Korrekturwert) und Sensorstatus
-r;wi,,Night-timeOffset,d.62 Nachtverschiebung,,,,3F04,,,IGN:7;UCH,,,"Nachtverschiebung (Spezifische Funktion für Belgien und NL: RT stoppt den Brenner nicht, sondern ändert den Sollwert. Nicht in anderen Ländern verwenden)"
+r;wi,,NighttimeOffset,d.62 Nachtverschiebung,,,,3F04,,,IGN:7;UCH,,,"Nachtverschiebung (Spezifische Funktion für Belgien und NL: RT stoppt den Brenner nicht, sondern ändert den Sollwert. Nicht in anderen Ländern verwenden)"
 r,,RemainingBoilerblocktime,d.67 Verbleibende Brennersperrzeit,,,,3800,,,minutes0,,,Verbleibende Brennersperrzeit
 r,,EBusHeatcontrol,d.90 Digitaler Regler,,,,7400,,,yesno,,,Gibt an ob ein digitaler Regler erkannt wurde
 # ##### dia level 2 #####,,,,,,,,,,,,,

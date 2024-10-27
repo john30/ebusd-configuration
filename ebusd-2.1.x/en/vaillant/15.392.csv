@@ -39,8 +39,8 @@ r,,Hc1ActualFlowTempDesired,HC1ActualFlowSetPoint,,,,"3E00",,,temp1,,,calculated
 r;wi,,HwcLegioStartDay,DHW_LegioStartDay,,,,"4900",,,UCH,0=Mon;1=Tue;2=Wed;3=Thu;4=Fri;5=Sat;6=Sun;7=off;8=Mon-Sun,,weekday on which legionella protection is started (may also be every day of the week)
 r;wi,,HwcLegioStartTime,DHW_LegioStartTime,,,,"4A00",,,time,,,time on which legionella protection is started
 r;wi,,HwcCircuitActive,DHW_CircuitActive,,,,"4B00",,,yesno,,,domestic hot water circuit is enabled
-r;wi,,PhoneNumber1,aucPhoneNumber_1,,,,"5400",,,STR:9,,,first part of the installer's telephone number
-r;wi,,PhoneNumber2,aucPhoneNumber_2,,,,"5408",,,STR:9,,,second part of the installer's telephone number
+r;wi,,PhoneNumber1,aucPhoneNumber_1,,,,"5400",,,phone,,,first part of the installer's telephone number
+r;wi,,PhoneNumber2,aucPhoneNumber_2,,,,"5408",,,phone,,,second part of the installer's telephone number
 r;wi,,KeyCodeforConfigMenu,KeyCodeforConfigMenue,,,,"5500",,,HEX:4,,,code for the installer's menues
 r;wi,,MaintenanceDate,MaintenanceDate,,,,"5900",,,date,,,date of the next maintenance service
 r;wi,,LcdContrastValue,LcdContrastValue,,,,"5A00",,,UCH,,,setting of the LCD contrast

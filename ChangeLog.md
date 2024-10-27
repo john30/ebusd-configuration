@@ -1,3 +1,10 @@
+# 2024-03-01
+* remove previous merge of #316 again as several users reported having issues with their heating since that: live monitor and test menu to vaillant/08.hmu
+
+# 2024-02-11
+* added vailant/15.ctlv2
+* added live monitor and test menu to vaillant/08.hmu
+
 # 2024-01-20
 * added vaillant/15.bass
 * added vaillant/08.recov

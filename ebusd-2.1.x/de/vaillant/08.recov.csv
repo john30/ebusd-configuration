@@ -5,7 +5,7 @@
 *w,,,,,,B509,,,,,,,
 r2,recov,VentIntensityDay,Lueftungsintensitaet Tag auslesen,,,,048a03,,,UCH,,,
 r2,recov,VentIntensityNight,Lueftungsintensitaet Nacht auslesen,,,,048b03,,,UCH,,,
-r2,recov,VentHeatRecovery,Waermerueckgewinnung auslesen,,,,048c03,,,UCH,0=auto;1=an;2=aus,,
+r2,recov,VentHeatRecovery,Waermerueckgewinnung auslesen,,,,048c03,,,UCH,0=auto;1=on;2=off,,
 w,recov,SetVentIntensity1,Lueftungsintensitaet 1 setzen,,,,0e8a0301,,,,,,
 w,recov,SetVentIntensity2,Lueftungsintensitaet 2 setzen,,,,0e8a0302,,,,,,
 w,recov,SetVentIntensity3,Lueftungsintensitaet 3 setzen,,,,0e8a0303,,,,,,

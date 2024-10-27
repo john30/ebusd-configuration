@@ -64,7 +64,7 @@ to,TTM,,,to
 slot1,from;to,,,slot 1 from/to
 slot2,from;to,,,slot 2 from/to
 slot3,from;to,,,slot 3 from/to
-slot1-3,slot1;slot2;slot3,,,
+slot1-3,slot1;slot2;slot3,,,slots 1-3
 timer,slot1-3;daysel,,,
 backtype,UCH,0=not present;1=externalheat;2=externalwater;3=externalheatandwater;4=internalheatandwater,,
 backmode,UCH,0=no backup;1=withbackup;2=onlybackup,,
@@ -97,3 +97,12 @@ shortphone,STR:6,,,phone number
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
+slotIndex,UCH,,,array index for the zones. Array Index start at 0 for the first element
+slotCount,UCH,,,Number of total slots in the array. May be Zero.
+slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,,Number of total slots in the array for a week. Mon-Sun
+slotTimeFrame,HTM;HTM,,,Timeslot from/until
+slotTemp,UIN,10,,Temperature stored in the slot. Degrees Celsius
+wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for writing the time table settings.
+wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;HEX:2,,,Complete slot for writing the time table settings without a temperature. FF FF has to be appended.
+rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
+rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.

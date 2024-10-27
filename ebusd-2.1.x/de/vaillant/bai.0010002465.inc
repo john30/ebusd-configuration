@@ -89,7 +89,7 @@ r,,HwcSetPotmeter,WW Sollwert Potentiometer,,,,"F103",,,temp,,,WW Sollwertpotent
 r,,HwcSwitch,Wasserschalter,,,,"F303",,,onoff,,,WW aus/ein
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,Seriennummer AI
-r,,FaultlistDK[0],Fehlerliste,,,,"EF03",,,HEX:8,,,Liste der letzten 10 Fehler
+r,,FaultlistDK,Fehlerliste,,,,"EF03",,,HEX:8,,,Liste der letzten 10 Fehler
 # ##### Diagnose Ebene 2 #####,,,,,,,,,,,,,
 r;wi,,ReturnRegulation,d.17 Rücklaufregelung,,,,"0C04",,,onoff,,,Aktivierung der Rücklaufregelung
 r;wi,,HcPumpMode,d.18 Pumpenbetriebsart,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pumpenbetriebsart für den Heizbetrieb

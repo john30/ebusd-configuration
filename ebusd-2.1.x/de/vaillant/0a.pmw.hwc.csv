@@ -12,7 +12,7 @@ r,,Ntc3Sensor,NTC 3 Sensor,,,,"0200",,,tempsensor,,,T3 Temperature
 r,,Vortex,Vortex,,,,"0300",,,frequency,,,"Frequency in Hz ( 1: y [l/min] = 0,0835 * x [Hz] - 0,03, 2: y [l/min] = 0,185 * x [Hz] )"
 r,,CircoPump,Zirkulationspumpe,,,,"0400",,,percent0,,,Leistung in %
 r,,PumpED,Einschaltdauer Pumpe,,,,"0500",,,percent0,,,Leistung in %
-r,,CalculatedMixerPosition,Berechnete Mischerposition,,,,"0600",,,UIN,,Schritte,0 : primär offen .. 220 primär geschlossen
+r,,CalculatedMixerPosition,Berechnete Mischerposition,,,,"0600",,,UIN,,,0 : primär offen .. 220 primär geschlossen
 r,,ElectricalHeater,Elektrischer Heizstab,,,,"0800",,,onoff,,,
 r,,HeatDemand,Wärmeanforderung,,,,"0900",,,temp,,,
 r;wi,,OperatingMode,Betriebsart,,,,"0A00",,,hwcmode2,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"

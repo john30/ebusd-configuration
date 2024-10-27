@@ -56,8 +56,8 @@ r;wi,,ContinuosHeating,ContinuosHeating,,,,"4F00",,,SCH,,,"-26=off, when the out
 r;wi,,PreheatingTime,PreheatingTime,,,,"5000",,,UIN,,,"in steps of 10, maximum time of enabling the heating before the heating time window starts"
 r;wi,,PreStopTime,PreStopTime,,,,"5100",,,UCH,,,"in steps of 10, maximum time of starting the lowering operation before the heating time window ends"
 r;wi,,ExcessTemp,ExcessTemperature,,,,"5200",,,calibration1,,,excess temperature (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range)
-r,,PhoneNumber1,aucPhoneNumber_1,,,,"5400",,,STR:9,,,first part of the installer's telephone number
-r,,PhoneNumber2,aucPhoneNumber_2,,,,"5408",,,STR:9,,,second part of the installer's telephone number
+r,,PhoneNumber1,aucPhoneNumber_1,,,,"5400",,,phone,,,first part of the installer's telephone number
+r,,PhoneNumber2,aucPhoneNumber_2,,,,"5408",,,phone,,,second part of the installer's telephone number
 r;wi,,KeyCodeforConfigMenu,KeyCodeforConfigMenue,,,,"5500",,,HEX:4,,,code for the installer's menues
 r;wi,,MaintenanceDate,MaintenanceDate,,,,"5900",,,date,,,date of the next maintenance service
 r;wi,,LcdContrastValue,LcdContrastValue,,,,"5A00",,,UCH,,,setting of the LCD contrast
