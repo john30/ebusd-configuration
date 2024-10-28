@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/temp$
+### BRINK zone valve
+##
+## This ebus config is based on information from https://gathering.tweakers.net/forum/list_messages/1979992
+## It is untested and likely incomplete.
+
+## Brink zone valve
+*r,zkp,,,,09,4050,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*w,zkp,,,,09,4050,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+r,,ValveStatus,1f0940a10102,,,40a1,02,,,HEX:7,0x00040000000000=SleepResidentialZone;0x00040000020300=SleepZone;0x0700040000010200=ResidentialZone,,
