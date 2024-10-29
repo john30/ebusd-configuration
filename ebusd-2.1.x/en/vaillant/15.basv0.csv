@@ -112,6 +112,8 @@ r;w,,Hc1MinFlowTempDesired,MinFlowTempDesired Heating Circuit 1,,,,1200,,,tempv,
 r;w,,Hc1ExtHwcOpMode,ExtHwcOpMode,,,,1300,,,opmode2,,,operation mode of external Hwc circuit
 r;w,,Hc1SummerTempLimit,Switch off temperature threshold Heating Circuit 1,,,,1400,,,tempv,,,if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint
 r;w,,Hc1RoomTempSwitchOn,RoomTempSwitchOn heating circuit 1,,,,1500,,,rcmode,,,room temperature modulation of Hc1
+r;w,,Hc1ScreedDryingDay,,,,,1600,,,UIN,,,current day of screed Hc1 drying schedule (1 to 29 0=screed drying off)
+r,,Hc1ScreedDryingDesiredTemp,,,,,1700,,,tempv,,,current Hc1 screed drying desired temp
 r,,Hc1ExtHwcActive,,,,,1800,,,onoff,,,
 r,,Hc1ExtHeatDemand,,,,,1900,,,onoff,,,indicator of external heat demand for Hc1
 r,,Hc1MixerMovement,MixerMovement heating circuit 1,,,,1A00,,,EXP,,,"status of mixer (<0 closing, >0 opening)"
@@ -450,23 +452,24 @@ r;w,,z3Name2,label zone 3 part 2,,,,1800,,,zname,,,name of zone 3
 *w,broadcast,,,,FE,,,,,,,,
 b,,NoiseReduction,noise reduction state,,,b508,,onoff,,onoff,,,
 # includes,,,,,,,,,,,,,
-#*r,,,,,,B555,a50004,,,,,,
-#*w,,,,,,B555,a60004,,,,,,
-#r,,silentTimer.Config,timer Configuration(static atm? describes featue set?),,,B555,a30004,,,HEX:9,,,Configuration
-#r,,silentTimer.TimeSlotsPerWeekday,Configured slot count for each weekday,,,B555,a40004,,,slotCountWeek,,,Amount of configured slots per weekday
-#r,,silentTimer.Monday,timer monday read,,,,00,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Monday,timer monday write,,,,00,,,wTimeSlotWithoutTemp,,,
-#r,,silentTimer.Tuesday,timer tuesday read,,,,01,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Tuesday,timer tuesday write,,,,01,,,wTimeSlotWithoutTemp,,,
-#r,,silentTimer.Wednesday,timer wednesday read,,,,02,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Wednesday,timer wednesday write,,,,02,,,wTimeSlotWithoutTemp,,,
-#r,,silentTimer.Thursday,timer thursday read,,,,03,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Thursday,timer thursday write,,,,03,,,wTimeSlotWithoutTemp,,,
-#r,,silentTimer.Friday,timer friday read,,,,04,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Friday,timer friday write,,,,04,,,wTimeSlotWithoutTemp,,,
-#r,,silentTimer.Saturday,timer saturday read,,,,05,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Saturday,timer saturday write,,,,05,,,wTimeSlotWithoutTemp,,,
-#r,,silentTimer.Sunday,timer sunday read,,,,06,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-#w,,silentTimer.Sunday,timer sunday write,,,,06,,,wTimeSlotWithoutTemp,,,
+# Timers silent mode,,,,,,,,,,,,,
+*r,,,,,,B555,a50004,,,,,,
+*w,,,,,,B555,a60004,,,,,,
+r,,silentTimer.Config,timer Configuration(static atm? describes featue set?),,,B555,a30004,,,HEX:9,,,Configuration
+r,,silentTimer.TimeSlotsPerWeekday,Configured slot count for each weekday,,,B555,a40004,,,slotCountWeek,,,Amount of configured slots per weekday
+r,,silentTimer.Monday,timer monday read,,,,00,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Monday,timer monday write,,,,00,,,wTimeSlotWithoutTemp,,,
+r,,silentTimer.Tuesday,timer tuesday read,,,,01,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Tuesday,timer tuesday write,,,,01,,,wTimeSlotWithoutTemp,,,
+r,,silentTimer.Wednesday,timer wednesday read,,,,02,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Wednesday,timer wednesday write,,,,02,,,wTimeSlotWithoutTemp,,,
+r,,silentTimer.Thursday,timer thursday read,,,,03,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Thursday,timer thursday write,,,,03,,,wTimeSlotWithoutTemp,,,
+r,,silentTimer.Friday,timer friday read,,,,04,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Friday,timer friday write,,,,04,,,wTimeSlotWithoutTemp,,,
+r,,silentTimer.Saturday,timer saturday read,,,,05,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Saturday,timer saturday write,,,,05,,,wTimeSlotWithoutTemp,,,
+r,,silentTimer.Sunday,timer sunday read,,,,06,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+w,,silentTimer.Sunday,timer sunday write,,,,06,,,wTimeSlotWithoutTemp,,,
 
 !include,errors.inc,,,,,,,,,,,,
