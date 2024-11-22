@@ -755,6 +755,15 @@ model ServiceUpdateRegister<T> {
   value: T;
 }
 
+/** default *r for mode */
+@base(MF, 0x04)
+model rm {}
+
+/** default *w for mode */
+@write
+@base(MF, 0x05)
+model wm {}
+
 /** default *r for timer */
 @base(MF, 0x15)
 model rt {

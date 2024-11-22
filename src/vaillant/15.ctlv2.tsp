@@ -9,7 +9,7 @@ namespace Vaillant;
 
 // @zz(0x15)
 namespace Ctlv2 {
-  // ,CTLV2, sensoCOMFORT VRC 720/2 (SW 0514)
+  // ,CTLV2,sensoCOMFORT VRC 720/2 (SW 0514)
   // ##### General #####
 
   /** default *r */
