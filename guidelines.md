@@ -8,6 +8,8 @@ Since there is already a lot of [tools around TypeSpec](https://typespec.io/tool
 
 For details of the [eBUS TypeSpec library, see the library readme](https://github.com/john30/ebus-typespec).
 
+In addition to the tooling provided by TypeSpec directly, the [VS Code extension "ebus notebook"](https://marketplace.visualstudio.com/items?itemName=ebusd.ebus-notebook) is provided and allows working on message definitions directly in a VS Code notebook with support for sending to a running ebusd instance.
+
 ## Example
 Here is a small example illustrating the enhanced readability. A message declared in CSV like this:
 ```csv
@@ -25,6 +27,16 @@ model SourceTemp {
   /** Source temperature sensor */
   value: tempsensor;
 }
+```
+
+Furthermore, when adding another level of abstraction, this can be even reduced to this (the template model `Register<typ>` not shown here as this would be part of the `_templates.tsp`, see the manufacturer specific subdirectories in `src/` for a complete example):
+```typespec
+import "@ebusd/ebus-typespec";
+import "./_templates.tsp";
+
+/** source temperature */
+@ext(0x0f, 0x00)
+model SourceTemp is Register<tempsensor>;
 ```
 
 ## Directory structure
@@ -64,7 +76,7 @@ Converting the latest CSV files prepared for i18n can be done with the npm tasks
 4. `npm run format`: reformats all generated tsp files
 5. `npm run lint`: checks for issues in all generated tsp files
 
-Alternatively, the `npm run csvall` performs all of these steps and also adjusts/excludes some top level items that rarely changed and emit warnings otherwise.
+Alternatively, the `npm run csvall` performs all of these steps in addition to some pre-normalization, and also adjusts/excludes some top level items that rarely changed and emit warnings otherwise.
 
 From here, the changed declarations in `outtsp` can be compared against the current source folder in `src`, changes to it applied and reviewed beforw PR submission.
 
@@ -81,22 +93,30 @@ From here, the changed declarations in `outtsp` can be compared against the curr
 * use a common top level namespace per manufacturer
 * use a unique namespace per circuit (under the manufacturer namespace)
 * use a unique name per message
-* reuse existing messages with the include schema (todo)
+* reuse shared messages with the [include schema](#include-schema)
 * prefer predefined types instead of redefining them
-* only eBUS internal scalar definitions are allowed to be uppercase only (like `UCH`)
+* only eBUS internal scalar type definitions are allowed to be uppercase only (like `UCH`)
+
+
+## Include schema
+Inclusion of shared common models is a bit tricky, as TypeSpec currently lacks good support for doing so out of the box.
+Therefore, a special union is currently used that implicitly resolves to (i.e. includes) all the models of namespaces listed in it, e.g.
+```typespec
+import "@ebusd/ebus-typespec";
+import "./hwcmode_inc.tsp";  // <= imports the `Hwcmode_inc` namespace for referencing it below
+
+namespace Circuit {
+  /** included parts */
+  union _includes {
+    Hwcmode_inc,  // <= references the imported namespace and implicitly resolves to all contained models
+    named: Hwcmode_inc, // <= named entry emits a !load instruction instead
+  }
+}
+```
 
 
 ## Style guide
-Follow the [TypeSpec style guide](https://typespec.io/docs/handbook/style-guide) with the following additions/exceptions:
-* name of value lists in `enum` always begins with `values_` followed by the name of the message or field referring to
-* due to absence of an option to include models in a namepsace from another namespace, the construct for includsion is putting these namespaces into a union named `_includes`:
-  ```typespec
-    union _includes {
-      namespaceName,
-      // etc.
-    }
-  ```
-* namespaces are allowed in camelCase.
+See the [style guide in the eBUS TypeSpec library](https://github.com/john30/ebus-typespec#style-guide).
 
 
 ## Converting to CSV

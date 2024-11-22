@@ -1,10 +1,11 @@
 import csvParser from "csv-parser";
-import * as fs from "fs";
-import {readFile, writeFile} from "fs/promises";
+import {createReadStream, createWriteStream} from "fs";
+import {mkdir, readFile, readdir, readlink, stat, symlink, writeFile} from "fs/promises";
 import {dump, load} from "js-yaml";
 import * as path from 'path';
 import {Transform, type TransformCallback} from "stream";
 import {pipeline} from "stream/promises";
+import {isDeepStrictEqual} from "util";
 
 type ReqStrs = (string | undefined | false)[];
 
@@ -12,7 +13,13 @@ type OptStrs = ReqStrs | undefined;
 
 type CsvLine = Record<number, string|undefined>;
 
-type Additions = {imports: ReqStrs, models: ReqStrs, includes: [string, string[]][], defaultsByName: Map<string, number>, conditions: Map<string, string[]>};
+type Additions = {
+  subdir: string, file: string, nameNoExt: string,
+  imports: ReqStrs, includes: [string, string[]][],
+  defaultsByName: Map<string, number>, renamedDefaults: Record<string, string>,
+  baseModels: Map<string, KnownModel>, complexModels: Map<string, string>,
+  conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
+};
 
 type Trans<T extends CsvLine> = (location: string, line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
 
@@ -33,10 +40,144 @@ const ebusImport = [
 ]
 const ebusUsing = [
   'using Ebus;',
-  'using Ebus.num;',
-  'using Ebus.dtm;',
-  'using Ebus.str;',
+  'using Ebus.Num;',
+  'using Ebus.Dtm;',
+  'using Ebus.Str;',
 ]
+type KnownModel = {
+  dd: number[],
+  dir?: string,
+  auth?: string,
+}
+const knownBaseModels: Record<string, Record<string, KnownModel>> = {vaillant: {
+  r: {dd: [0xb5, 0x09, 0x0d]},
+  w: {dd: [0xb5, 0x09, 0x0e], dir: 'w'},
+  u: {dd: [0xb5, 0x09, 0x29], dir: 'u'},
+  wi: {dd: [0xb5, 0x09, 0x0e], dir: 'w', auth: 'install'},
+  ws: {dd: [0xb5, 0x09, 0x0e], dir: 'w', auth: 'service'},
+  rm: {dd: [0xb5, 0x04]},
+  wm: {dd: [0xb5, 0x05], dir: 'w'},
+  rt: {dd: [0xb5, 0x15]},
+  wt: {dd: [0xb5, 0x15], dir: 'w'},
+}};
+const knownComplexModels: Record<string, Record<string, string>> = {vaillant: {
+  'r': 'ReadonlyRegister',
+  'r,w': 'Register',
+  'r,wi': 'InstallRegister',
+  'r,ws': 'ServiceRegister',
+  'r,u': 'ReadonlyUpdateRegister',
+  'r,u,w': 'UpdateRegister',
+  'r,u,wi': 'InstallUpdateRegister',
+  'r,u,ws': 'ServiceUpdateRegister',
+  'rt,wt': 'Timer',
+}};
+const knownbaseModelTemplates: Record<string, string> = {vaillant: `
+/** default *r for register */
+@base(MF, 0x9, 0xd)
+model r {}
+
+/** default *w for register */
+@write
+@base(MF, 0x9, 0xe)
+model w {}
+
+/** default *u for register */
+@passive 
+@base(MF, 0x9, 0x29)
+model u {
+  @maxLength(2) 
+  value: IGN,
+}
+
+/** default *wi for register with user level "install" */
+@write
+@auth("install")
+@base(MF, 0x9, 0xe)
+model wi {}
+
+/** default *ws for register with user level "service" */
+@write
+@auth("service")
+@base(MF, 0x9, 0xe)
+model ws {}
+
+/** read/write register */
+@inherit(r, w)
+model Register<T> {
+  value: T;
+}
+
+/** read only register */
+@inherit(r)
+model ReadonlyRegister<T> {
+  value: T;
+}
+
+/** installer level register */
+@inherit(r, wi)
+model InstallRegister<T> {
+  value: T;
+}
+
+/** service level register */
+@inherit(r, ws)
+model ServiceRegister<T> {
+  value: T;
+}
+
+/** read/write updated register */
+@inherit(r, w, u)
+model UpdateRegister<T> {
+  value: T;
+}
+
+/** read only updated register */
+@inherit(r, u)
+model ReadonlyUpdateRegister<T> {
+  value: T;
+}
+
+/** installer level updated register */
+@inherit(r, wi, u)
+model InstallUpdateRegister<T> {
+  value: T;
+}
+
+/** service level updated register */
+@inherit(r, ws, u)
+model ServiceUpdateRegister<T> {
+  value: T;
+}
+
+/** default *r for mode */
+@base(MF, 0x04)
+model rm {
+}
+
+/** default *w for mode */
+@write
+@base(MF, 0x05)
+model wm {}
+
+/** default *r for timer */
+@base(MF, 0x15)
+model rt {
+  @maxLength(1)
+  value: IGN;
+}
+
+/** default *w for timer */
+@write
+@base(MF, 0x15)
+model wt {}
+
+/** timer */
+@inherit(rt, wt)
+model Timer<T> {
+  /** timer value */
+  value: T;
+}
+`};
 const templateHeader = [
   ...ebusImport,
   ...ebusUsing,
@@ -48,7 +189,11 @@ const templateHeaderSubdir = [
 ];
 const templateFooter: string[] = [];
 const dynLengthTypes = new Set<string>(['STR', 'NTS', 'IGN', 'HEX'])
-const normId = (id: string): string => id.replaceAll(/[^a-zA-Z0-9_]/g, '_');
+const pascalCase = (s?: string) => s ? s.substring(0,1).toUpperCase()+s.substring(1) : s;
+const normId = (id: string): string => id
+  .replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue')
+  .replaceAll('Ä','AE').replaceAll('Ö','OE').replaceAll('Ü','UE')
+  .replaceAll(/[^a-zA-Z0-9_]/g, '_').replace(/^([0-9])/, '_$1');
 const normType = (t: string): string => {
   const parts = t.split(':');
   parts[0] = normId(parts[0]);
@@ -143,10 +288,15 @@ const addI18n = (location: string, str?: string): string|undefined => {
   return first;
 };
 const normComment = (location: string, str?: string) => str && addI18n(location, str.replace(/@/g, 'at').replaceAll('**', '^'));
-const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?): OptStrs => {
+const templateTrans: Trans<TemplateLine> = (location, line, header, additions): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
-    return [...addValueLists(), ...templateFooter];
+    const base = knownbaseModelTemplates[additions.subdir || ''] || '';
+    return [
+      ...addValueLists(),
+      ...(base ? [base] : []),
+      ...templateFooter,
+    ];
   }
   line = objSlice(line);
   if (!line) return;
@@ -158,7 +308,7 @@ const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?
     return [
       '',
       comm&&comm!==line[1]&&`/** ${normComment(`${location}:${id}`, comm)} */`,
-      `model ${id} {`,
+      `model ${id} {`, // expected to be lowercase in templates
       ...types.map(t => {
           const {id, typ, typLen} = divisorValues('', t, '', '');
           const name = removeTrailNum(normFieldName(id));
@@ -178,7 +328,7 @@ const templateTrans: Trans<TemplateLine> = (location, line?, header?, additions?
   ]
 }
 const knownManufacturers = new Map<string, [number, string]>([
-  ['vaillant', [0xb5, 'Vaillant']],//todo use enum from lib
+  ['vaillant', [0xb5, 'Vaillant']],
 ])
 const setSubdirManuf = (subdir: string): string|undefined => {
   const [id, name] = knownManufacturers.get(subdir)||[];
@@ -191,8 +341,8 @@ const templateTransSub = (subdir: string): Trans<TemplateLine> => (...args): Opt
   if (header) return [
     ...templateHeaderSubdir,
     '',
-    `namespace ${subdir};`,
-    setSubdirManuf(subdir)&&`alias MF = ${hex(subdirManufId||0)}; // Ebus.id.manufacturers.${subdirManuf}`,
+    `namespace ${pascalCase(subdir)};`, // expected to be PascalCase
+    setSubdirManuf(subdir)&&`alias MF = ${hex(subdirManufId||0)}; // Ebus.Id.Values_manufacturers.${subdirManuf}`,
   ];
   return templateTrans(...args);
 }
@@ -247,19 +397,19 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   let [typ, typName] = splitTypeName(typIn);
   name = name || typName;
   const id = normId(name||(typ.split(':')[0]));
-  comm = comm || name || '';
+  comm = comm || '';
   const typLen = addLength(typ);
-  const origTyp = typ;
+  // const origTyp = typ;
   typ = normType(typ);
-  if (!comm && origTyp && !isBaseType(origTyp)) {
-    comm = origTyp;
-  }
+  // if (!comm && origTyp && !isBaseType(origTyp)) {
+  //   comm = origTyp;
+  // }
   const divParts = divVal && divVal.split(';');
   const hasValues = divParts && divParts.length>1;
   let divisor: string|undefined;
   let values: string|undefined;
   if (hasValues) {
-    values = `values_`;
+    values = `Values_`;
     values += ((id&&!isBaseType(id)&&id)||singleField||comm||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
     values += suffix(values, valueLists.seen);
     valueLists.list.set(values, divParts);
@@ -270,6 +420,19 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   }
   return {id, typ, typLen, comm, divisor, values};
 };
+const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string, typ: string}|undefined => {
+  if (!line || !singleField) return;
+  const types = line[2].split(';');
+  if (types.length>1 || line[1] || line[4] || line[3]) return;
+  // similar to divisorValues() but without incrementing any suffix
+  let [typ] = splitTypeName(line[2]);
+  const typLen = addLength(typ);
+  typ = normType(typ);
+  if (typLen || !typ) {
+    return;
+  }
+  return {comm: line[5], typ};
+}
 const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, singleField?: string): OptStrs => {
   if (!line) return;
   const {id, typ, typLen, comm, divisor, values}
@@ -307,15 +470,17 @@ const messageHeader = [
   ...ebusUsing,
 ];
 const messageFooter: string[] = ['}'];
+const directionNorm = (dir: string): string|undefined => dir[0]==='r' ? undefined : dir[0]==='w' ? 'w' : ((dir[1]==='w'?'uw':'')+'u');
 const direction = (dir: string): string|undefined => dir[0]==='r' ? undefined : dir[0]==='w' ? '@write ' : ((dir[1]==='w'?'@write ':'')+'@passive ');
 let subdirManufId: number|undefined;
 let subdirManuf: string|undefined;
 const hex = (n?: number) => n===undefined?undefined:`0x${(n|0x100).toString(16).substring(1)}`;
-const fromHex = (...strs: ReqStrs): (number|string)[] => Buffer.from(strs.filter(s=>s!==undefined).join(''))
+const fromHex = (...strs: ReqStrs): (number|string)[] => fromHexOpt(false, ...strs);
+const fromHexOpt = (allowMf: boolean, ...strs: ReqStrs): (number|string)[] => Buffer.from(strs.filter(s=>s!==undefined).join(''))
 .reduce((p, c, i, all) => {
   if (i%2) {
     const n = Number.parseInt(String.fromCharCode(p.n, c), 16);
-    p.r.push(i===1 && all.length>=2*2 && n===subdirManufId ? 'MF' : n<2 ? n : `0x${n.toString(16)}`);
+    p.r.push(allowMf && i===1 && all.length>=2*2 && n===subdirManufId ? 'MF' : n<2 ? n : `0x${n.toString(16)}`);
     p.n = 0;
   } else {
     p.n = c;
@@ -340,18 +505,27 @@ const objSlice = <T extends CsvLine>(line: T|undefined, from: number = 0, len: n
   }
   return used;
 };
-const namespaceWithZz = (header: string) => {
+const namespaceWithZz = (header: string, additions: Additions) => {
   const parts = header.split('.');
   let zz: string|undefined;
   let circuit = header;
   if (parts.length>=2 && parts[0].length==2) {
     // zz.circuit
-    zz = `0x${parts[0]}`;
+    zz = `@zz(0x${parts[0]})`
+    if (additions.nameNoExt.startsWith(parts[0]+'.')) {
+      // comment unnecessary @zz
+      zz = '// '+zz;
+    }
     parts.splice(0, 1);
   }
-  circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_':'')+p).join('.');
+  // note: these need to be kept for uniqueness as e.g. 52.mc2.mc.4 and 53.mc2.mc.5 would otherwise overlap
+  // if (parts.length>1 && parts[parts.length-1].match(/^[0-9]*$/)) {
+  //   // drop component index suffix
+  //   parts.splice(parts.length-1, 1);
+  // }
+  circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_'+p:pascalCase(p))).join('.');
   return [
-    zz&&`@zz(${zz})`,
+    zz,
     `namespace ${circuit} {`,
   ];
 };
@@ -382,7 +556,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     return [
       ...messageHeader,
       '',
-      ...namespaceWithZz(header),
+      ...namespaceWithZz(header, additions),
     ];
   }
   if (header===false) {
@@ -412,18 +586,19 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       let value = line[6]||'';
       if (circuit==='scan') {
         if (!model) {
-          // refers to Ebus.id.id
-          circuit = 'id.id';
+          // refers to Ebus.Id.Id
+          circuit = 'Id.Id';
           field = field?.toLowerCase();
         } else {
-          additions!.imports.push(`import "./${circuit}.tsp";`);
+          additions.imports.push(`import "./${circuit}.tsp";`);
         }
       }
       const fname = field||(value&&normalize?'value':'');
-      additions.conditions.set(name, [[circuit,model,fname].filter(p=>p).join('.'), value]);
+      additions.conditions.set(name, [[pascalCase(circuit),pascalCase(model),fname].filter(p=>p).join('.'), value]);
       return;
     }
     // conditional
+    const loadInclude = dirsStr[0]==='!' && line[1] && path.basename(line[1], path.extname(line[1]));
     conditions.forEach(cond => {
       // SW<1,SW>1,SW=1,SW<=1,SW>=1
       let [,name, values] = cond.match(/^([^=<>]*)(.*)$/)||[,cond];
@@ -436,9 +611,15 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       if (value) {
         nsAdd = name;
       } else {
-        nsAdd = ((field.startsWith('id.id.')?field.substring('id.id.'.length):field)+values).replaceAll(/[^a-zA-Z0-9]/g, '_');
+        nsAdd = values||'';
+        if (loadInclude && nsAdd.startsWith("='") && field.includes('.Id.')) {
+          nsAdd = '_'+loadInclude.split('.').reverse()[0]; // reduce multiple product ids with filename instead
+        }
+        nsAdd = ((field.startsWith('Id.Id.')?field.substring('Id.Id.'.length):field)+nsAdd)
+          .replace('>=', '_ge').replace('<=', '_le').replace('>', '_gt').replace('<', '_lt').replace('==', '_eq')
+          .replaceAll(/[^a-zA-Z0-9]/g, '_');
       }
-      condNamespace = condNamespace?condNamespace+'_'+nsAdd:nsAdd;
+      condNamespace = (condNamespace?condNamespace+'_'+nsAdd:nsAdd).replaceAll('__', '_');
     });
   }
   if (dirsStr[0]==='!') {
@@ -446,32 +627,74 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     const isLoad = dirsStr==='!load';
     if (dirsStr==='!include' || isLoad) {
       const fileNoExt = path.basename(line[1]!, path.extname(line[1]!));
-      additions!.imports.push(`import "./${fileNoExt}_inc.tsp";`);
+      additions.imports.push(`import "./${fileNoExt}_inc.tsp";`);
       const fileComp = fileNoExt.split('.').reverse()[0];
       let name = condNamespace || fileComp;
       name = normId(name.replace(/(__[^_]+_?)+/, '_'+fileComp)); // reduce multiple product ids with filename instead
-      additions!.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
+      additions.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
     }
     return;
   }
   let circuit: string|undefined = line[1];
   let auth: string|undefined;
   if (isDefault) {
+    const baseModels = knownBaseModels[additions.subdir || ''] || '';
+    if (baseModels && !additions.baseModels.size) {
+      for (const [name, baseModel] of Object.entries(baseModels)) {
+        additions.defaultsByName.set(name, 0);
+        additions.baseModels.set(name, baseModel);
+      }
+    }
+    const complexModels = knownComplexModels[additions.subdir || ''] || '';
+    if (complexModels && !additions.complexModels.size) {
+      for (const [key, complexModel] of Object.entries(complexModels)) {
+        additions.complexModels.set(key, complexModel);
+      }
+    }
     // default line: convert to base models
-    dirsStr += suffix(dirsStr, additions!.defaultsByName);
-    if (circuit?.startsWith('#')) {
-      auth = circuit.substring(1);
+    const circuitLevel = circuit?.split('#');
+    if (circuitLevel?.length===2) {
+      auth = circuitLevel[1];
+      circuit = circuitLevel[0];
       isDefault += ` for user level "${auth}"`;
-      circuit = '';
     }
   }
-  const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio, todo do otherwise
-  const chain = (line[7]||'').split(';').map(i=>fromHex(line[6], i.split(':')[0])); // weird construct of limitling length omitted for now => todo rewrite the definition
+  let dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio
+  const poll = dirsStr.split(';').filter(d=>d.match(/r[0-9]$/)).map(d=>d.replace(/.*([0-9])$/,'$1')).filter(p=>p).sort(); // extract poll prio
+  const single = dirs.length===1 && (isDefault || !additions.defaultsByName.has(dirs[0]));//todo why
+  const chain = (line[7]||'').split(';').map((i,_,a)=>fromHexOpt(a.length<=1&&!!single&&!!line[6], line[6], i.split(':')[0]));
   const idComb = chain[0];
-  const single = dirs.length===1 && (isDefault || !dirs.some(d=>additions!.defaultsByName.has(d)));
+  if (isDefault) {
+    if (additions.baseModels.size && !line[5]) {
+      let renamedDefault;
+      const numId = idComb.map(i => (i==='MF' ? subdirManufId : typeof i === 'string' ? parseInt(i, 16) : i) as number);
+      const dir = directionNorm(dirs[0]);
+      for (const [name, b] of additions.baseModels.entries()) {
+        if ((auth ? auth===b.auth : !b.auth)
+          && (dir ? b.dir===dir : !b.dir)
+          && isDeepStrictEqual(numId, b.dd)) {
+          renamedDefault = name;
+          break;
+        }
+      }
+      if (renamedDefault) {
+        additions.renamedDefaults[dirs[0]] = renamedDefault;
+        return; // do not emit as part of base models
+      }
+      delete additions.renamedDefaults[dirs[0]];
+    }
+    const suff = suffix(dirsStr, additions.defaultsByName);
+    dirs[0] += suff;
+  }
+  const chainLengths = chain.length>1 && (line[7]||'').split(';').map(i=>i.split(':')[1])
+    .filter(i=>i?.length)
+    .reduce((p,c)=>p.add(c)&&p, new Set<string>());
+  if (chainLengths && chainLengths.size>1) {
+    console.error(`different chain lengths in "${line[6]}", ignored`);
+  }
   const zz = line[5]&&fromHex(line[5]).join();
   // adjust location before extracting fields
-  location += `:${condNamespace}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
+  location += `:${condNamespace||''}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
   const fieldLines: FieldOfLine[] = [];
   const seenFields = new Map<string, number>();
   for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+maxFields*messageLineFieldLen; idx+=messageLineFieldLen) {
@@ -481,38 +704,74 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     }
     fieldLines.push(fieldLine);
   }
-  const fields: OptStrs = [];
-  const modelName = normId(isDefault?dirsStr:line[2]);
-  fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
-  return [
+  const modelName = normId(isDefault?dirs[0]:line[2]);
+  let model: OptStrs;
+  if (!single && additions.complexModels.size && fieldLines.length===1) {
+    // check for complex known model
+    const key = dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).sort().join();
+    const name = additions.complexModels.get(key);
+    let {comm, typ} = isSimpleField(fieldLines[0], modelName) || {};
+    if (name && typ) {
+      const msgComm = line[3];
+      if (!comm || msgComm?.toLowerCase().includes(comm.toLowerCase())) {
+        comm = msgComm;
+      } else if (msgComm && !comm.toLowerCase().includes(msgComm.toLowerCase())) {
+        comm = msgComm+': '+comm;
+      }
+      model = [
+        comm&&`/** ${normComment(location, comm)} */`,
+        auth&&`@auth("${auth}")` || (poll.length?`@poll(${poll[0]})`:undefined),
+        `@ext(${idComb.join(', ')})`,
+        `model ${pascalCase(modelName)} is ${name}<${typ}>;`,
+      ]
+    };
+  }
+  if (!model) {
+    const fields: OptStrs = [];
+    fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
+      model = [
+      (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
+      single
+        ? direction(dirs[0]) // single model
+        : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
+      auth&&`@auth("${auth}")` || (poll.length?`@poll(${poll[0]})`:undefined),
+      line[4]&&`@qq(${fromHex(line[4]).join})`,
+      zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
+      single&&idComb.length>=2
+        ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
+        : idComb.length ? `@ext(${idComb.join(', ')})`
+          +(chain.length>1?`\n@chain(${chainLengths&&chainLengths.size?chainLengths.values().next().value:'0'}, ${chain.slice(1).map(i=>`#[${i.join(', ')}]`).join(', ')})`:'')
+        : !single ? '@ext' // needed when default already defines whole id (e.g. roomtempoffset.inc)
+        : undefined,
+      `model ${isDefault ? modelName : pascalCase(modelName)} {`, // expected to be PascalCase
+      ...fields,
+      '}',
+    ];
+  }
+  const ret = [
     '',
-    ...conds,
-    condNamespace&&`namespace ${condNamespace} {`,
-    (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
-    single
-      ? direction(dirs[0]) // single model
-      : `@inherit(${dirs.map(d=>d+getSuffix(d, additions!.defaultsByName)).join(', ')})`, // multi model
-    auth&&`@auth("${auth}")`,
-    line[4]&&`@qq(${fromHex(line[4]).join})`,
-    zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
-    single&&idComb.length>=2
-      ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`
-      : idComb.length ? chain.map(i=>`@ext(${i.join(', ')})`).join(' ')
-      : undefined,
-    `model ${modelName} {`,
-    ...fields,
-    '}',
-    condNamespace&&`}`,
+    ...(condNamespace ? [] : conds),
+    ...model,
   ];
+  if (condNamespace) {
+    let condBlock = additions.conditionBlocks.get(condNamespace);
+    if (!condBlock) {
+      condBlock = {header: [...conds, `namespace ${pascalCase(condNamespace)} {`,], lines: []};
+      additions.conditionBlocks.set(condNamespace, condBlock);
+    }
+    condBlock.lines.push(...ret);
+    return [];
+  }
+  return ret;
 }
 const messageTransSub = (subdir: string): Trans<MessageLine> => (...args): OptStrs => {
-  const [,,header] = args;
+  const [,,header,additions] = args;
   header && setSubdirManuf(subdir);
   if (header) return [
     ...messageHeader,
-    `namespace ${subdir};`,
+    `namespace ${pascalCase(subdir)};`, // expected to be PascalCase
     '',
-    ...namespaceWithZz(header),
+    ...namespaceWithZz(header, additions),
   ];
   return messageTrans(...args);
 }
@@ -612,12 +871,25 @@ export const csv2tsp = async (args: string[] = []) => {
       }
     }
   }
+  const links: Record<string, string[]> = {}; // key=src location within indir, value=to[] within indir
   if (!files?.length) {
     // whole tree in indir if no files
-    files = (await fs.promises.readdir(indir, {withFileTypes: true, recursive: true}))
-    .filter(e => e.isFile() && !e.isSymbolicLink() && (e.name.endsWith('.csv')||e.name.endsWith('.inc')))
-    .sort()
-    .map(e => path.join(e.parentPath, e.name));
+    const all = await readdir(indir, {withFileTypes: true, recursive: true});
+    files = all
+      .filter(e => e.isFile() && !e.isSymbolicLink() && (e.name.endsWith('.csv')||e.name.endsWith('.inc')))
+      .sort()
+      .map(e => path.join(e.parentPath, e.name));
+    for (const e of all.filter(e => e.isSymbolicLink())) {
+      const file = path.join(e.parentPath, e.name);
+      const link = await readlink(file);
+      const src = path.relative(indir, path.resolve(e.parentPath, link));
+      let list = links[src];
+      if (!list) {
+        list = [];
+        links[src] = list;
+      }
+      list.push(path.relative(indir, file));
+    }
   }
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
@@ -628,10 +900,10 @@ export const csv2tsp = async (args: string[] = []) => {
     }
     const todir = path.join(outdir, subdir);
     try {
-      await fs.promises.stat(todir); // throws if not exists
+      await stat(todir); // throws if not exists
     } catch (_) {
       console.log(`creating directory ${todir}`);
-      await fs.promises.mkdir(todir, {recursive: true});
+      await mkdir(todir, {recursive: true});
     }
     const isTemplates = name==='_templates.csv';
     const isInclude = path.extname(name)==='.inc';
@@ -653,11 +925,15 @@ export const csv2tsp = async (args: string[] = []) => {
     const empty = (line: CsvLine) => !line || !Object.keys(line).length;
     const content: ReqStrs = [];
     const additions: Additions = {
+      subdir, file, nameNoExt,
       imports: [],
       includes: [],
-      models: [],
-      defaultsByName: new Map<string, number>(),
-      conditions: new Map<string, string[]>(),
+      defaultsByName: new Map(),
+      renamedDefaults: {},
+      baseModels: new Map(),
+      complexModels: new Map(),
+      conditions: new Map(),
+      conditionBlocks: new Map(),
     };
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
@@ -683,13 +959,17 @@ export const csv2tsp = async (args: string[] = []) => {
           content.push(...lines);
         }
       };
-      addToNamespace(additions.models);
+      if (additions.conditionBlocks.size) {
+        for (const {header, lines} of additions.conditionBlocks.values()) {
+          addToNamespace([...header, ...lines, '}']);
+        }
+      }
       if (additions.includes.length) {
         addToNamespace([
           '',
           '/** included parts */',
           'union _includes {',
-          ...additions.includes.map(([i,c]) => `${c.join('\n')}${i.split('.').map(i=>(i.match(/^[0-9]/)?'_':'')+i).join('.')}_inc,`),
+          ...additions.includes.map(([i,c]) => `${c.join('\n')}${i.split('.').map(i=>(i.match(/^[0-9]/)?'_'+i:pascalCase(i))).join('.')}_inc,`),
           '}',
         ]);
       }
@@ -700,7 +980,7 @@ export const csv2tsp = async (args: string[] = []) => {
     }
     let firstLine = true;
     await pipeline(
-      fs.createReadStream(file, 'utf-8'),
+      createReadStream(file, 'utf-8'),
       csvParser({headers: false}),
       transform = new Transform({
         objectMode: true,
@@ -725,8 +1005,15 @@ export const csv2tsp = async (args: string[] = []) => {
         },
         flush: (cb) => push(trans('', undefined, false, additions), cb, true),
       }),
-      fs.createWriteStream(newFile),
+      createWriteStream(newFile),
     );
+    if (!isInclude) {
+      for (const link of links?.[location] || []) {
+        const linkNameNoExt = path.basename(link, path.extname(link));
+        const linkFile = path.join(todir, linkNameNoExt+'.tsp');
+        await symlink(path.relative(todir, newFile), linkFile);
+      }
+    }
   }
   if (langFile) {
     const replacer = (key: string, value: any) => {
