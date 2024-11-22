@@ -69,6 +69,7 @@ const knownComplexModels: Record<string, Record<string, string>> = {vaillant: {
   'r,u,w': 'UpdateRegister',
   'r,u,wi': 'InstallUpdateRegister',
   'r,u,ws': 'ServiceUpdateRegister',
+  'rm,wm': 'Mode',
   'rt,wt': 'Timer',
 }};
 const knownbaseModelTemplates: Record<string, string> = {vaillant: `
@@ -157,7 +158,8 @@ model rm {
 /** default *w for mode */
 @write
 @base(MF, 0x05)
-model wm {}
+model wm {
+}
 
 /** default *r for timer */
 @base(MF, 0x15)

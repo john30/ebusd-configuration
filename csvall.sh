@@ -9,6 +9,9 @@ sed -i \
   -e 's#,ULG,hour,#,hoursum,,#i' \
   -e 's#,UIN,,Steps,#,UIN,,,#i' \
   -e 's#,UIN,,Schritte,#,UIN,,,#i' \
+  -e 's#^r,,FaultlistDK\[0\],#r,,FaultlistDK,#' \
+  -e 's#,,night-time#,,NightTime#i' \
+  -e 's#,,Time&Date#,,TimeDate#i' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
