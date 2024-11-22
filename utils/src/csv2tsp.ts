@@ -192,7 +192,7 @@ const templateHeaderSubdir = [
 const templateFooter: string[] = [];
 const dynLengthTypes = new Set<string>(['STR', 'NTS', 'IGN', 'HEX'])
 const pascalCase = (s?: string) => s ? s.substring(0,1).toUpperCase()+s.substring(1) : s;
-const normId = (id: string): string => id
+const normId = (id: string): string => (id || '')
   .replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue')
   .replaceAll('Ä','AE').replaceAll('Ö','OE').replaceAll('Ü','UE')
   .replaceAll(/[^a-zA-Z0-9_]/g, '_').replace(/^([0-9])/, '_$1');
@@ -566,7 +566,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   };
   const line = objSlice(wholeLine);
   if (!line) return;
-  let dirsStr = line[0];
+  let dirsStr = line[0].trim();
   let isDefault: string|undefined = dirsStr[0]==='*'?`default ${dirsStr}`:undefined;
   if (isDefault) {
     dirsStr = dirsStr.substring(1);
@@ -983,7 +983,7 @@ export const csv2tsp = async (args: string[] = []) => {
     let firstLine = true;
     await pipeline(
       createReadStream(file, 'utf-8'),
-      csvParser({headers: false}),
+      csvParser({headers: false, mapValues: ({value}) => typeof value === 'string' ? value.trim() : value}),
       transform = new Transform({
         objectMode: true,
         transform: (line: CsvLine, _, cb) => {
