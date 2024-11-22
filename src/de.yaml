@@ -171,6 +171,16 @@ RTCLowVoltageCounter: RTCLowVoltageCounter
 Monitor_Matlab_DHW_Calculation: Monitor_Matlab_DHW_Calculation
 Monitor_Matlab_CH_Calculation: Monitor_Matlab_CH_Calculation
 'SolarYieldTotal: Accumulated solar gain since installation': 'Solarertrag gesamt: Kumulierter Solarertrag seit Installation'
+'T5 Sensor: Solar collector Temperature': 'T5 Sensor: Solar collector Temperature'
+'T1 Sensor: Temperature in solar back flow (from solar collector)': 'T1 Sensor: Temperature in solar back flow (from solar collector)'
+'T7 Sensor: Average temperature in tank (computed from T6 and mid tank sensor values))': >-
+  T7 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+  values))
+'PowerOnCounter: Power On Counter (in hours)': 'PowerOnCounter: Power On Counter (in hours)'
+'T6 Sensor: Average temperature in tank (computed from T6 and mid tank sensor values))': >-
+  T6 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+  values))
+chosen flow rate of the collector pump (to calculate solar gain): chosen flow rate of the collector pump (to calculate solar gain)
 'Compressor_Commutations_DHW: Number of commutations of': 'Compressor_Commutations_DHW: Number of commutations of'
 'Compressor_Commutations_CH: Number of commutations of': 'Compressor_Commutations_CH: Number of commutations of'
 'Brine_Fan_Commutations: Number of commutations of': 'Brine_Fan_Commutations: Number of commutations of'
@@ -3228,7 +3238,6 @@ ColKickPumpTime: >-
 'ColKickTempDelta: temperature difference necessary for activating the pump kick': >-
   ColKickTempDelta: temperature difference necessary for activating the pump
   kick
-chosen flow rate of the collector pump (to calculate solar gain): chosen flow rate of the collector pump (to calculate solar gain)
 FlowRate: Volumenstrom
 'SolarCollPumpDcIntegrator: integral part of the solar collector pump''s control if duty ratio control is active': >-
   SolarCollPumpDcIntegrator: integral part of the solar collector pump's control

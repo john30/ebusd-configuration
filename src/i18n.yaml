@@ -980,6 +980,55 @@ solaryieldtotalaccumulatedsolargainsinceinstallation:
   locations:
     - vaillant/06.pms.csv::r::0x56,0
     - vaillant/06.vms.csv::r::0x56,0
+t5sensorsolarcollectortemperature:
+  first: 'T5 Sensor: Solar collector Temperature'
+  en: 'T5 Sensor: Solar collector Temperature'
+  de: 'T5 Sensor: Solar collector Temperature'
+  locations:
+    - vaillant/06.vmd.csv::r::0x5,0
+t1sensortemperatureinsolarbackflowfromsolarcollector:
+  first: 'T1 Sensor: Temperature in solar back flow (from solar collector)'
+  en: 'T1 Sensor: Temperature in solar back flow (from solar collector)'
+  de: 'T1 Sensor: Temperature in solar back flow (from solar collector)'
+  locations:
+    - vaillant/06.vmd.csv::r::0x7,0
+t7sensoraveragetemperatureintankcomputedfromt6andmidtanksensorvalues:
+  first: >-
+    T7 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+    values))
+  en: >-
+    T7 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+    values))
+  de: >-
+    T7 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+    values))
+  locations:
+    - vaillant/06.vmd.csv::r::0xc,0
+poweroncounterpoweroncounterinhours:
+  first: 'PowerOnCounter: Power On Counter (in hours)'
+  en: 'PowerOnCounter: Power On Counter (in hours)'
+  de: 'PowerOnCounter: Power On Counter (in hours)'
+  locations:
+    - vaillant/06.vmd.csv::r::0x19,0
+t6sensoraveragetemperatureintankcomputedfromt6andmidtanksensorvalues:
+  first: >-
+    T6 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+    values))
+  en: >-
+    T6 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+    values))
+  de: >-
+    T6 Sensor: Average temperature in tank (computed from T6 and mid tank sensor
+    values))
+  locations:
+    - vaillant/06.vmd.csv::r::0xa1,0
+chosenflowrateofthecollectorpumptocalculatesolargain:
+  first: chosen flow rate of the collector pump (to calculate solar gain)
+  en: chosen flow rate of the collector pump (to calculate solar gain)
+  de: chosen flow rate of the collector pump (to calculate solar gain)
+  locations:
+    - vaillant/06.vmd.csv::r::0x9e,0:value
+    - vaillant/ec.sol.sc.csv::r::0x2d,0:value
 compressorcommutationsdhwnumberofcommutationsof:
   first: 'Compressor_Commutations_DHW: Number of commutations of'
   en: 'Compressor_Commutations_DHW: Number of commutations of'
@@ -20450,12 +20499,6 @@ colkicktempdeltatemperaturedifferencenecessaryforactivatingthepumpkick:
     kick
   locations:
     - vaillant/ec.sol.sc.csv::r::0x3c,0
-chosenflowrateofthecollectorpumptocalculatesolargain:
-  first: chosen flow rate of the collector pump (to calculate solar gain)
-  en: chosen flow rate of the collector pump (to calculate solar gain)
-  de: chosen flow rate of the collector pump (to calculate solar gain)
-  locations:
-    - vaillant/ec.sol.sc.csv::r::0x2d,0:value
 flowrate:
   first: FlowRate
   en: FlowRate

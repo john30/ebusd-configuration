@@ -3,6 +3,7 @@ import "./broadcast.tsp";
 import "./memory.tsp";
 import "./vaillant/05.vd4.tsp";
 import "./vaillant/06.pms.tsp";
+import "./vaillant/06.vmd.tsp";
 import "./vaillant/06.vms.tsp";
 import "./vaillant/08.bai.tsp";
 import "./vaillant/08.ehp.tsp";
