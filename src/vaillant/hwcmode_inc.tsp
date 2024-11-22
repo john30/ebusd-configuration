@@ -9,17 +9,8 @@ namespace Vaillant;
 namespace Hwcmode_inc {
   // HWC/CC: Operation mode
 
-  /** default *r */
-  @base(MF, 0x4)
-  model r_1 {}
-
-  /** default *w */
-  @write
-  @base(MF, 0x5)
-  model w_1 {}
-
   /** date/time */
-  @inherit(r_1)
+  @inherit(rm)
   @ext(0)
   model DateTime {
     dcfstate: dcfstate;
@@ -29,7 +20,7 @@ namespace Hwcmode_inc {
   }
 
   /** Operation mode */
-  @inherit(r_1)
+  @inherit(rm)
   @ext(1)
   model Mode {
     temp: temp0;
@@ -42,35 +33,35 @@ namespace Hwcmode_inc {
   }
 
   /** Set desired temperature */
-  @inherit(w_1)
+  @inherit(wm)
   @ext(1)
   model SetTempDesired {
     value: temp0;
   }
 
   /** Set operation mode */
-  @inherit(w_1)
+  @inherit(wm)
   @ext(0x2)
   model SetMode {
     value: hwcmode;
   }
 
   /** Set min flow temperature */
-  @inherit(w_1)
+  @inherit(wm)
   @ext(0xe)
   model SetFlowTempMin {
     value: temp0;
   }
 
   /** Set max flow temperature */
-  @inherit(w_1)
+  @inherit(wm)
   @ext(0xf)
   model SetFlowTempMax {
     value: temp0;
   }
 
   /** Parameters */
-  @inherit(r_1)
+  @inherit(rm)
   @ext(0x9)
   model Params {
     temp: temp0;
@@ -84,7 +75,7 @@ namespace Hwcmode_inc {
   }
 
   /** Status flow temperature/mixer/pump/desired flow temperature */
-  @inherit(r_1)
+  @inherit(rm)
   @ext(0xa)
   model Status0a {
     flowtemp: temp;
@@ -95,7 +86,7 @@ namespace Hwcmode_inc {
   }
 
   /** Desired flow/status/flow/desired temperature */
-  @inherit(r_1)
+  @inherit(rm)
   @ext(0xd)
   model Status {
     temp: temp0;
@@ -105,7 +96,7 @@ namespace Hwcmode_inc {
   }
 
   /** outside temperature */
-  @inherit(r_1)
+  @inherit(rm)
   @ext(0x16)
   model Status16 {
     value: temp;
