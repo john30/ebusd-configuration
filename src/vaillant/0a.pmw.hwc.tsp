@@ -51,9 +51,9 @@ namespace Pmw.Hwc {
   @ext(0x9, 0)
   model HeatDemand is ReadonlyRegister<temp>;
 
-  /** OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL */
+  /** OperatingMode */
   @ext(0xa, 0)
-  model OperatingMode is InstallRegister<mcmode>;
+  model OperatingMode is InstallRegister<hwcmode2>;
 
   /** ManualTappingSetpoint */
   @ext(0xb, 0)

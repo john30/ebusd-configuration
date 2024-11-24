@@ -559,7 +559,7 @@ Current Volume Flow: aktueller Volumenstrom
 'CalculatedMixerPosition: 0: primary open; 220: primary closed': 'Berechnete Mischerposition: 0 : primär offen .. 220 primär geschlossen'
 ElectricalHeater: Elektrischer Heizstab
 HeatDemand: Wärmeanforderung
-'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL': 'Betriebsart: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'
+OperatingMode: Betriebsart
 ManualTappingSetpoint: ManualTappingSetpoint
 AutoTappingSetpoint: Automatischer Zapfsollwert
 QuickVetoSetpoint: Quick Veto Sollwert
@@ -1490,7 +1490,7 @@ TurnOffDelay: Ausschaltverzögerung
   Die Kesselfolgeumkehr prüft ob der Unterschied der Ansteuerstunden (nicht die
   echten Betriebsstunden) zwischen den Heizgeräten 100 Stunden überschreitet und
   sortiert die Geräte dann neu nach den Ansteuerstunden (Vorlaufsollwert > 20°C)
-BoilerSequenceChangeTime: >-
+'BoilerSequenceChangeTime: if this xx hours reachred between the first and the last boiler in the actual sequence then the boiler sequensce is new sorted': >-
   Mindestdifferenz für Kesslfolgeumkehr: Anzahl der Ansteuerstunden die
   überschritten sein müssen um eine Neuanordnung der Heizgeräte aus zu lösen.
   Defaultwert ist 100 Stunden
@@ -1567,14 +1567,14 @@ DesiredStateBoiler_8: DesiredStateBoiler_8
 'LoadingPumpBoiler_6: Off=0, On=100': 'LoadingPumpBoiler_6: Off=0, On=100'
 'LoadingPumpBoiler_7: Off=0, On=100': 'LoadingPumpBoiler_7: Off=0, On=100'
 'LoadingPumpBoiler_8: Off=0, On=100': 'LoadingPumpBoiler_8: Off=0, On=100'
-'ChPumpBoiler_1: Off=0, On=1': 'ChPumpBoiler_1: Off=0, On=1'
-'ChPumpBoiler_2: Off=0, On=1': 'ChPumpBoiler_2: Off=0, On=1'
-'ChPumpBoiler_3: Off=0, On=1': 'ChPumpBoiler_3: Off=0, On=1'
-'ChPumpBoiler_4: Off=0, On=1': 'ChPumpBoiler_4: Off=0, On=1'
-'ChPumpBoiler_5: Off=0, On=1': 'ChPumpBoiler_5: Off=0, On=1'
-'ChPumpBoiler_6: Off=0, On=1': 'ChPumpBoiler_6: Off=0, On=1'
-'ChPumpBoiler_7: Off=0, On=1': 'ChPumpBoiler_7: Off=0, On=1'
-'ChPumpBoiler_8: Off=0, On=1': 'ChPumpBoiler_8: Off=0, On=1'
+ChPumpBoiler_1: 'ChPumpBoiler_1: Off=0, On=1'
+ChPumpBoiler_2: 'ChPumpBoiler_2: Off=0, On=1'
+ChPumpBoiler_3: 'ChPumpBoiler_3: Off=0, On=1'
+ChPumpBoiler_4: 'ChPumpBoiler_4: Off=0, On=1'
+ChPumpBoiler_5: 'ChPumpBoiler_5: Off=0, On=1'
+ChPumpBoiler_6: 'ChPumpBoiler_6: Off=0, On=1'
+ChPumpBoiler_7: 'ChPumpBoiler_7: Off=0, On=1'
+ChPumpBoiler_8: 'ChPumpBoiler_8: Off=0, On=1'
 FlagsBoiler_1: FlagsBoiler_1
 FlagsBoiler_2: FlagsBoiler_2
 FlagsBoiler_3: FlagsBoiler_3
@@ -1617,6 +1617,7 @@ SystemDesiredFlowTemp: Vorlauftemp. SOLL
   Heizungsanforderung
 'TempIncrease: temperature increase': Temperaturüberhöhung
 'PreShutDownTime: pre shut down time': Vorabschaltzeit
+'FrostOverRideTime: frost over ride time': 'Frostschutz-Verzögerung: Frostschutzverzögerung'
 'EhpBackupHeaterRelease: backup heater release': 'Freigabe Zusatzheizer: Freigabe Reserveheizung'
 'EhpTimeOfPredictedPowerCut: time of the next predicted power cut': >-
   Erwarteter EVU Abschaltzeitpunkt: Zeit bis zur nächsten Abschaltung durch das
@@ -1681,7 +1682,6 @@ Stat15MinBusTimeout: Stat15MinBusTimeout
 StatRTOSErrorcode: StatRTOSErrorcode
 StatRestarts: StatRestarts
 StatRTOSErrorCounter: StatRTOSErrorCounter
-OperatingMode: Betriebsart
 'MinFlowTemp: 1 °C resolution': 'Min. Vorlauftemp.: 1 °C resolution'
 'MaxFlowTemp: 1 °C resolution': 'Max. Vorlauftemp.: 1 °C resolution'
 'DesiredTemperature: 1/2 °C resolution': 'Solltemperatur: 1/2 °C resolution'
@@ -1832,6 +1832,10 @@ BMR:Heating curve for whole system: >-
   Vorlaufsolltemperatur: BMR:flow temperature that is actually desired by
   circuit
 'MaxFlowTemp: BMR:Maximum Flow Temperature for circuit': 'Max. Vorlauftemp.: BMR:Maximum Flow Temperature for circuit'
+'HcMaxPreHeating: BMR: Maximum Preheating time in minutes': >-
+  Max. Voraufheizung: Um die Trägheit der Fußbodenheizung zu berücksichtigen,
+  können Sie eine Voraufheizung vor Beginn der programmierten Heizzeit manuell
+  einstellen
 'Floor_Protection_Limit: Floor protection temperature at which the heat pump goes to error mode.': >-
   Fußbodenschutztemperatur. Überschreitet die VF2 -IST-Temperatur diesen Wert
   wird ein Fehler ausgelöst.
@@ -1849,13 +1853,13 @@ BMR:Heating curve for whole system: >-
 'CoolingStartOffset_HK2: Circuit specific offset to the adjusted outside temperature cut-off value for demanding cooling operation. HK2 value.': >-
   CoolingStartOffset_HK2: Heizkreisspezifischer Offset auf die eingestellte
   AT-Abschaltgrenze zur Erzeugung einer Kühlanforderung. HK2 Wert.
-Tot_AverageTime_HK2: >-
+'Tot_AverageTime_HK2: Circuit specific averaging time span in hours. HK2 value': >-
   Tot_AverageTime_HK2: Heizkreisspezifischer (HK2) Außentemperatur
   Mittelungszeitraum
-DWMOffToHeatingDelay_HK2: >-
+'DWMOffToHeatingDelay_HK2: Circuit specific delay for standby to heating operation change: HK2': >-
   DWMOffToHeatingDelay_HK2: Heizkreisspezifische Sperrzeit für den Wechsel von
   Bereitschaft zur Heizanforderung nach vorherigem Kühlbetrieb. HK2 Wert.
-DWMOffToCoolingDelay_HK2: >-
+'DWMOffToCoolingDelay_HK2: Circuit specific delay for standby to cooling operation change: HK2': >-
   DWMOffToCoolingDelay_HK2: Heizkreisspezifische Sperrzeit für den Wechsel von
   Bereitschaft zur Kühlanforderung nach vorherigem Heizbetrieb. HK2 Wert.
 'MinEfficiencyHysteresis_HK2: If remote control with room temperature measurement used, minimum general flow (VF2) to heat circuit room temperature difference to release cooling operation.': >-
@@ -2715,7 +2719,7 @@ e.08 SD_CO_R0_DK: e.08 SD_CO_R0_DK
 'e.19 FluePipeFactor_DK: calculated fluepipe-factor': 'e.19 FluePipeFactor_DK: calculated fluepipe-factor'
 'SD_CO_PTC_TargetTemp_DK: target heater-temperature': 'SD_CO_PTC_TargetTemp_DK: target heater-temperature'
 BoilerType_2_DK: BoilerType_2_DK
-TTM_MaxTime_DK: 'TTM_MaxTime_DK: maximum time for calibration-routine'
+'TTM_MaxTime_DK: maximum time for calibration-routine': 'TTM_MaxTime_DK: maximum time for calibration-routine'
 average time for calibration-routine: average time for calibration-routine
 TTM_AverageTime_sum_DK: TTM_AverageTime_sum_DK
 maximum value of calculated gas-adaptive correction-factor: maximum value of calculated gas-adaptive correction-factor
@@ -3200,7 +3204,7 @@ value and sensorstate of the system's return flow sensor TD2: value and sensorst
 'RuntimeCollectorPump: accumulated runtime of the collector pump': 'Laufzeit Kollektorpumpe: accumulated runtime of the collector pump'
 'RuntimeCollectorPumpSeconds: runtime in seconds base for runtime in hours': 'RuntimeCollectorPumpSeconds: runtime in seconds base for runtime in hours'
 'KickFunction: enable kick function': 'KickFunction: enable kick function'
-ColKickPumpTime: >-
+'ColKickPumpTime: time pump is running when collector kick function is activated': >-
   Länge Kollektorkick: time pump is running when collector kick function is
   activated
 'ColKickTempDelta: temperature difference necessary for activating the pump kick': >-
@@ -3235,7 +3239,7 @@ FlowRate: Volumenstrom
 'SolarCircuitProtectionHysteresis: temperature hysteresis for activating solar pump after collector protection': >-
   Hysterese Schutzfunktion: temperature hysteresis for activating solar pump
   after collector protection
-SolarCircuitProtectionTime: >-
+'SolarCircuitProtectionTime: time for which KOL temperature has to exceed the protection temperature to enter solar circuit protection mode': >-
   SolarCircuitProtectionTime: time for which KOL temperature has to exceed the
   protection temperature to enter solar circuit protection mode
 'EnableSolarCircuitProtection: enable solar circuit protection': 'Solarkreisschutzfunktion: enable solar circuit protection'
@@ -3321,6 +3325,7 @@ State of multi purpose output: 'Multifunktionsausgang MA: Status Multifunktionsa
   Starttemp. Sol. Schutzfunktion: Temperature for collector pump protection in
   case of high temperatures
 ColKickGradient: Gradient Kollektorkick
+ColKickPumpTime: Länge Kollektorkick
 'SolarCircuitProtectionHysteresis: After collector pump protection in case of too high temperatures, the collector has to cool down at least this temperature': 'Hysterese Schutzfunktion: Hysterese für die Kollektorkreisschutzfunktion'
 limits for the solar collector frost protection: limits for the solar collector frost protection
 FrostProtectionLimit: Grenze für Solarkreis Frostschutz

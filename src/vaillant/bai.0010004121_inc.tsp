@@ -250,14 +250,9 @@ namespace Bai._0010004121_inc {
   @ext(0xc, 1)
   model BoilerType2 is ReadonlyRegister<ULG>;
 
-  /** TTM_MaxTime_DK */
-  @inherit(r)
+  /** TTM_MaxTime_DK: maximum time for calibration-routine */
   @ext(0x18, 1)
-  model TMMaxTimeTemp {
-    /** maximum time for calibration-routine */
-    @unit("sec")
-    value: UIN;
-  }
+  model TMMaxTimeTemp is ReadonlyRegister<seconds2>;
 
   /** TTM_AverageTime_sum_DK */
   @inherit(r)
@@ -644,8 +639,9 @@ namespace Bai._0010004121_inc {
   @ext(0xe5, 0)
   model DCFTimeDate {
     /** DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time; */
-    @maxLength(8)
-    value: HEX;
+    btime: btime;
+
+    bdate: bdate;
   }
 
   /** FlowSetPotmeter: flow setpoint potentiometer */

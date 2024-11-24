@@ -41,14 +41,9 @@ namespace Ehp.Mc {
   @ext(0x31, 0)
   model FlowTempMax is InstallRegister<temp0>;
 
-  /** HcMaxPreHeating */
-  @inherit(r, wi)
+  /** HcMaxPreHeating: BMR: Maximum Preheating time in minutes */
   @ext(0x38, 0)
-  model HcMaxPreHeating {
-    /** BMR: Maximum Preheating time in minutes */
-    @unit("hours")
-    value: UCH;
-  }
+  model HcMaxPreHeating is InstallRegister<hours>;
 
   /** FloorPavingDryingDay: BMR: actual day of floor paving drying program (1...29) */
   @ext(0x3b, 0)
@@ -109,32 +104,17 @@ namespace Ehp.Mc {
     @ext(0x87, 1)
     model CoolingStartOffsetHc2 is InstallRegister<temp1>;
 
-    /** Tot_AverageTime_HK2 */
-    @inherit(r)
+    /** Tot_AverageTime_HK2: Circuit specific averaging time span in hours. HK2 value */
     @ext(0x89, 1)
-    model TotAverageTimeHc2 {
-      /** Circuit specific averaging time span in hours. HK2 value */
-      @unit("hour")
-      value: UCH;
-    }
+    model TotAverageTimeHc2 is ReadonlyRegister<hours>;
 
-    /** DWMOffToHeatingDelay_HK2 */
-    @inherit(r, wi)
+    /** DWMOffToHeatingDelay_HK2: Circuit specific delay for standby to heating operation change: HK2 */
     @ext(0x84, 1)
-    model DWMOffToHeatingDelayHc2 {
-      /** Circuit specific delay for standby to heating operation change: HK2 */
-      @unit("hour")
-      value: UCH;
-    }
+    model DWMOffToHeatingDelayHc2 is InstallRegister<hours>;
 
-    /** DWMOffToCoolingDelay_HK2 */
-    @inherit(r, wi)
+    /** DWMOffToCoolingDelay_HK2: Circuit specific delay for standby to cooling operation change: HK2 */
     @ext(0x85, 1)
-    model DWMOffToCoolingDelayHc2 {
-      /** Circuit specific delay for standby to cooling operation change: HK2 */
-      @unit("hour")
-      value: UCH;
-    }
+    model DWMOffToCoolingDelayHc2 is InstallRegister<hours>;
 
     /** MinEfficiencyHysteresis_HK2: If remote control with room temperature measurement used, minimum general flow (VF2) to heat circuit room temperature difference to release cooling operation. */
     @ext(0x8b, 1)

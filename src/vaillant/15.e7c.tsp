@@ -840,7 +840,7 @@ namespace E7c {
 
   /** Maintenance Alarm Date: Maintance Alarm Date */
   @ext(0x70, 0)
-  model MaintenanceAlarmDate is InstallRegister<ULG>;
+  model MaintenanceAlarmDate is InstallRegister<DTM>;
 
   /** Auto Heat Curve Regulation */
   @ext(0x6e, 0)

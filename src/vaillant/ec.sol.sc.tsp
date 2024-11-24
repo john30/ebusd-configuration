@@ -58,14 +58,9 @@ namespace Sol.Sc {
   @ext(0x32, 0)
   model KickFunction is InstallRegister<onoff>;
 
-  /** ColKickPumpTime */
-  @inherit(r)
+  /** ColKickPumpTime: time pump is running when collector kick function is activated */
   @ext(0x3b, 0)
-  model ColKickPumpTime {
-    /** time pump is running when collector kick function is activated */
-    @unit("sec")
-    value: UCH;
-  }
+  model ColKickPumpTime is ReadonlyRegister<seconds0>;
 
   /** ColKickTempDelta: temperature difference necessary for activating the pump kick */
   @ext(0x3c, 0)
@@ -125,14 +120,9 @@ namespace Sol.Sc {
   @ext(0x31, 0)
   model ScProtectionHysteresis is ReadonlyRegister<calibration0>;
 
-  /** SolarCircuitProtectionTime */
-  @inherit(r)
+  /** SolarCircuitProtectionTime: time for which KOL temperature has to exceed the protection temperature to enter solar circuit protection mode */
   @ext(0x3e, 0)
-  model ScProtectionTime {
-    /** time for which KOL temperature has to exceed the protection temperature to enter solar circuit protection mode */
-    @unit("sec")
-    value: UCH;
-  }
+  model ScProtectionTime is ReadonlyRegister<seconds0>;
 
   /** EnableSolarCircuitProtection: enable solar circuit protection */
   @ext(0x59, 0)

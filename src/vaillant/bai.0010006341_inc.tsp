@@ -664,8 +664,9 @@ namespace Bai._0010006341_inc {
   @ext(0xe5, 0)
   model DCFTimeDate {
     /** DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time; */
-    @maxLength(8)
-    value: HEX;
+    btime: btime;
+
+    bdate: bdate;
   }
 
   /** actoSTOR_EE_PreventiveCounter_DK */

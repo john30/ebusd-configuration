@@ -47,12 +47,8 @@ namespace Ui {
   model PreShutDownTime is Register<minutes0>;
 
   /** FrostOverRideTime */
-  @inherit(r, w)
   @ext(0x2e, 0)
-  model FrostOverRideTime {
-    @unit("hour")
-    value: UCH;
-  }
+  model FrostOverRideTime is Register<hours>;
 
   /** TempIncrease */
   @ext(0x2f, 0)
@@ -232,14 +228,9 @@ namespace Ui {
   @ext(0x32, 0)
   model BoilerSequence is InstallRegister<onoff>;
 
-  /** BoilerSequenceChangeTime */
-  @inherit(r, wi)
+  /** BoilerSequenceChangeTime: if this xx hours reachred between the first and the last boiler in the actual sequence then the boiler sequensce is new sorted */
   @ext(0x37, 0)
-  model BoilerSequenceChangeTime {
-    /** if this xx hours reachred between the first and the last boiler in the actual sequence then the boiler sequensce is new sorted */
-    @unit("hour")
-    value: UCH;
-  }
+  model BoilerSequenceChangeTime is InstallRegister<hours>;
 
   /** SequenceOfBoiler */
   @inherit(r)
@@ -251,68 +242,36 @@ namespace Ui {
   }
 
   /** BurnerHours_boiler1 */
-  @inherit(r)
   @ext(0x4c, 0)
-  model BoilerHoursB1 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB1 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler2 */
-  @inherit(r)
   @ext(0x4c, 0x8)
-  model BoilerHoursB2 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB2 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler3 */
-  @inherit(r)
   @ext(0x4c, 0x10)
-  model BoilerHoursB3 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB3 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler4 */
-  @inherit(r)
   @ext(0x4c, 0x18)
-  model BoilerHoursB4 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB4 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler5 */
-  @inherit(r)
   @ext(0x4c, 0x20)
-  model BoilerHoursB5 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB5 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler6 */
-  @inherit(r)
   @ext(0x4c, 0x28)
-  model BoilerHoursB6 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB6 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler7 */
-  @inherit(r)
   @ext(0x4c, 0x30)
-  model BoilerHoursB7 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB7 is ReadonlyRegister<hoursum>;
 
   /** BurnerHours_boiler8 */
-  @inherit(r)
   @ext(0x4c, 0x38)
-  model BoilerHoursB8 {
-    @unit("hour")
-    value: ULG;
-  }
+  model BoilerHoursB8 is ReadonlyRegister<hoursum>;
   // ##### EM internal #####
 
   /** SystemModeStream1 */
@@ -581,37 +540,37 @@ namespace Ui {
   @ext(0x85, 0x40)
   model LoadingPumpB8 is ReadonlyRegister<UCH>;
 
-  /** ChPumpBoiler_1: Off=0, On=1 */
+  /** ChPumpBoiler_1 */
   @ext(0x86, 0x8)
-  model HcPumpB1 is ReadonlyRegister<UCH>;
+  model HcPumpB1 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_2: Off=0, On=1 */
+  /** ChPumpBoiler_2 */
   @ext(0x86, 0x10)
-  model HcPumpB2 is ReadonlyRegister<UCH>;
+  model HcPumpB2 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_3: Off=0, On=1 */
+  /** ChPumpBoiler_3 */
   @ext(0x86, 0x18)
-  model HcPumpB3 is ReadonlyRegister<UCH>;
+  model HcPumpB3 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_4: Off=0, On=1 */
+  /** ChPumpBoiler_4 */
   @ext(0x86, 0x20)
-  model HcPumpB4 is ReadonlyRegister<UCH>;
+  model HcPumpB4 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_5: Off=0, On=1 */
+  /** ChPumpBoiler_5 */
   @ext(0x86, 0x28)
-  model HcPumpB5 is ReadonlyRegister<UCH>;
+  model HcPumpB5 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_6: Off=0, On=1 */
+  /** ChPumpBoiler_6 */
   @ext(0x86, 0x30)
-  model HcPumpB6 is ReadonlyRegister<UCH>;
+  model HcPumpB6 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_7: Off=0, On=1 */
+  /** ChPumpBoiler_7 */
   @ext(0x86, 0x38)
-  model HcPumpB7 is ReadonlyRegister<UCH>;
+  model HcPumpB7 is ReadonlyRegister<onoff>;
 
-  /** ChPumpBoiler_8: Off=0, On=1 */
+  /** ChPumpBoiler_8 */
   @ext(0x86, 0x40)
-  model HcPumpB8 is ReadonlyRegister<UCH>;
+  model HcPumpB8 is ReadonlyRegister<onoff>;
 
   /** FlagsBoiler_1 */
   @ext(0x87, 0x8)

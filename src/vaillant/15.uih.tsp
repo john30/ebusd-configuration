@@ -84,14 +84,9 @@ namespace Uih {
   @ext(0x2d, 0)
   model PreShutDownTime is InstallRegister<minutes0>;
 
-  /** FrostOverRideTime */
-  @inherit(r, wi)
+  /** FrostOverRideTime: frost over ride time */
   @ext(0x2e, 0)
-  model FrostOverRideTime {
-    /** FrostOverRideTime */
-    @unit("hours")
-    value: UCH;
-  }
+  model FrostOverRideTime is InstallRegister<hours>;
 
   /** EhpBackupHeaterRelease: backup heater release */
   @ext(0x71, 0)
