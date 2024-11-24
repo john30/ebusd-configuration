@@ -166,6 +166,12 @@ scalar onoff extends UCH;
 @values(Values_yesno)
 scalar yesno extends UCH;
 
+@values(Values_onoff2)
+scalar onoff2 extends UCH;
+
+@values(Values_yesno2)
+scalar yesno2 extends UCH;
+
 @values(Values_errorok)
 scalar errorok extends UCH;
 
@@ -533,6 +539,16 @@ enum Values_onoff {
 enum Values_yesno {
   no: 0,
   yes: 1,
+}
+
+enum Values_onoff2 {
+  off: 240,
+  on: 15,
+}
+
+enum Values_yesno2 {
+  no: 240,
+  yes: 15,
 }
 
 enum Values_errorok {

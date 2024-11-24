@@ -2249,8 +2249,7 @@ RuntimeLegionellaPump: RuntimeLegionellaPump
 'OperatingMode: Operating mode of CP circuit (1 = auto, 2 = manual, 3 = off, 4 = on)': >-
   OperatingMode: Operating mode of CP circuit (1 = auto, 2 = manual, 3 = off, 4
   = on)
-Second stage of the pump activated: Second stage of the pump activated
-WP_SecondStage_DK: WP_SecondStage_DK
+'WP_SecondStage_DK: Second stage of the pump activated': 'WP_SecondStage_DK: Second stage of the pump activated'
 'd.00 heating partload: Heating part load': 'd.00 heating partload: Heating part load'
 'd.01 central heating overruntime: water pump overrun time for heating mode': 'd.01 central heating overruntime: water pump overrun time for heating mode'
 'd.02 Max blocking time CH: max. burner anti cycling period at 20°C Flow temperature setpoint': >-
@@ -2275,8 +2274,7 @@ WP_SecondStage_DK: WP_SecondStage_DK
 'd.13 Circulation pump: Hot water circulation pump (via external module)': 'd.13 Circulation pump: Hot water circulation pump (via external module)'
 'd.23 operation mode: Wintermode active': 'd.23 operation mode: Wintermode active'
 'd.25 DHW demand enabled: hot water release (tank storage) via eBus Control': 'd.25 DHW demand enabled: hot water release (tank storage) via eBus Control'
-Gasvalve activation signal: Gasvalve activation signal
-d.30 Gasvalve: d.30 Gasvalve
+'d.30 Gasvalve: Gasvalve activation signal': 'd.30 Gasvalve: Gasvalve activation signal'
 'd.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position': >-
   d.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 =
   middle position
@@ -2292,14 +2290,16 @@ d.30 Gasvalve: d.30 Gasvalve
 'd.48 SD_TAI_DK: Exhaust sensor (inside the flue pipe)': 'd.48 SD_TAI_DK: Exhaust sensor (inside the flue pipe)'
 'd.49 SD_TAA_DK: Exhaust sensor (outside the flue pipe)': 'd.49 SD_TAA_DK: Exhaust sensor (outside the flue pipe)'
 'Waterpressure: water pressure': 'Waterpressure: water pressure'
-flame: flame
+Flame: Flame
 current for the gasvalve: current for the gasvalve
 SM_GV_Current_DK: SM_GV_Current_DK
 'Changes_DSN_DK: Numbers adjusting (storing) the DSN': 'Changes_DSN_DK: Numbers adjusting (storing) the DSN'
-Activation signal of the gasvalve (activated via micrcontroller): Activation signal of the gasvalve (activated via micrcontroller)
-SD_Gasvalve_uC_DK: SD_Gasvalve_uC_DK
-'TRUE: STB failures is volatileFALSE: STB failure is not volataile': 'TRUE: STB failures is volatileFALSE: STB failure is not volataile'
-SD_VolatileLockout_DK: SD_VolatileLockout_DK
+'SD_Gasvalve_uC_DK: Activation signal of the gasvalve (activated via micrcontroller)': >-
+  SD_Gasvalve_uC_DK: Activation signal of the gasvalve (activated via
+  micrcontroller)
+'SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is not volataile': >-
+  SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is not
+  volataile
 Modulation set point: Modulation set point
 Modulationsetpoint_DK: Modulationsetpoint_DK
 'SD_Flame_Sensing_ASIC_DK: ioni/adc value from the flame control circuit': 'SD_Flame_Sensing_ASIC_DK: ioni/adc value from the flame control circuit'
@@ -2308,12 +2308,9 @@ Modulationsetpoint_DK: Modulationsetpoint_DK
 'EbusSourceOn_DK: Activation signal of the eBus source': 'EbusSourceOn_DK: Activation signal of the eBus source'
 'Fluegasvalve_DK: flue gasvalve activation signal': 'Fluegasvalve_DK: flue gasvalve activation signal'
 'External_Faultmessage_DK: external fault message': 'External_Faultmessage_DK: external fault message'
-feedback gasvalve (from ASIC): feedback gasvalve (from ASIC)
-SD_Gasvalve_ASICFeedback_DK: SD_Gasvalve_ASICFeedback_DK
-feedback gasvalve (from Microcontroller): feedback gasvalve (from Microcontroller)
-SD_Gasvalve_uCFeedback_DK: SD_Gasvalve_uCFeedback_DK
-igniton activated: igniton activated
-SD_Ignitor_DK: SD_Ignitor_DK
+'SD_Gasvalve_ASICFeedback_DK: feedback gasvalve (from ASIC)': 'SD_Gasvalve_ASICFeedback_DK: feedback gasvalve (from ASIC)'
+'SD_Gasvalve_uCFeedback_DK: feedback gasvalve (from Microcontroller)': 'SD_Gasvalve_uCFeedback_DK: feedback gasvalve (from Microcontroller)'
+'SD_Ignitor_DK: igniton activated': 'SD_Ignitor_DK: igniton activated'
 'DHW_Types_DK: DHW type of the appliance': 'DHW_Types_DK: DHW type of the appliance'
 'DHW impellor switch: domestic hot water (tapping) demand': 'DHW impellor switch: domestic hot water (tapping) demand'
 'WarmstartDemand: aktivation of warmstart': 'WarmstartDemand: aktivation of warmstart'
@@ -2321,8 +2318,7 @@ SD_Ignitor_DK: SD_Ignitor_DK
 'ParamToken_DK: token for parameter managment': 'ParamToken_DK: token for parameter managment'
 'ReturnTemperature_DK: external return sensor': 'ReturnTemperature_DK: external return sensor'
 Floor heating contact: Floor heating contact
-feedback signal of the temperature limiter: feedback signal of the temperature limiter
-SD_Temperaturelimiter_DK: SD_Temperaturelimiter_DK
+'SD_Temperaturelimiter_DK: feedback signal of the temperature limiter': 'SD_Temperaturelimiter_DK: feedback signal of the temperature limiter'
 'EbusVoltage_DK: feedback signal of the eBus source': 'EbusVoltage_DK: feedback signal of the eBus source'
 'FluegasvalveOpen_DK: feedback of the flue gas valve': 'FluegasvalveOpen_DK: feedback of the flue gas valve'
 'Testbyte_DK: Testbyte (relevant for the Tester)': 'Testbyte_DK: Testbyte (relevant for the Tester)'
@@ -2334,16 +2330,13 @@ PowerValue: PowerValue
 DSN Start adress: DSN Start adress
 part number of the eBox: part number of the eBox
 Partnumber_Box: Partnumber_Box
-Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact: >-
-  Safety temperature limit concept:1 = safety temp. Limit check with NTC0 =
-  safety temp. Limit check with contact
-SD_STL_with_NTC: SD_STL_with_NTC
-all IFC faults are volataile: all IFC faults are volataile
-SD_VolatileLockout_IFC_GV_DK: SD_VolatileLockout_IFC_GV_DK
+'SD_STL_with_NTC: Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact': >-
+  SD_STL_with_NTC: Safety temperature limit concept:1 = safety temp. Limit check
+  with NTC0 = safety temp. Limit check with contact
+'SD_VolatileLockout_IFC_GV_DK: all IFC faults are volataile': 'SD_VolatileLockout_IFC_GV_DK: all IFC faults are volataile'
 'VortexFlowSensor_DK: Predictive Maintenance data, CH water flow': 'VortexFlowSensor_DK: Predictive Maintenance data, CH water flow'
 'DisplayMode_DK: Display mode of the aplliance': 'DisplayMode_DK: Display mode of the aplliance'
-Gasvalve activation signal (from Microcontroller): Gasvalve activation signal (from Microcontroller)
-SD_Gasvalve3_uC_DK: SD_Gasvalve3_uC_DK
+'SD_Gasvalve3_uC_DK: Gasvalve activation signal (from Microcontroller)': 'SD_Gasvalve3_uC_DK: Gasvalve activation signal (from Microcontroller)'
 'InitialisationEEPROM: Initialisation off all EEPROM values (done in the production)': >-
   InitialisationEEPROM: Initialisation off all EEPROM values (done in the
   production)
@@ -2477,8 +2470,7 @@ serial number of AI: serial number of AI
 SerialNumber: SerialNumber
 fault list (of the last 10 failures): fault list (of the last 10 failures)
 Faultlist_DK[0]: Faultlist_DK[0]
-Air pressure switch: Air pressure switch
-d.24 SD_AircontrolOk_DK: d.24 SD_AircontrolOk_DK
+'d.24 SD_AircontrolOk_DK: Air pressure switch': 'd.24 SD_AircontrolOk_DK: Air pressure switch'
 'd.58 solar function: special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)': >-
   d.58 solar function: special DHW functions0: solar function deactivated
   (default)1: solar function activated and DHW setpoint minimum 60°C2: solar
@@ -2639,7 +2631,6 @@ Pred_Waterpressure_SwitchingPoint_DK: Pred_Waterpressure_SwitchingPoint_DK
 Pred_StatusFlags_DK: Pred_StatusFlags_DK
 Pred_ConditionFlags: Pred_ConditionFlags
 'PrEnergySumDHW2_DK: Predictive Maintenance data': 'PrEnergySumDHW2_DK: Predictive Maintenance data'
-'WP_SecondStage_DK: Second stage of the pump activated': 'WP_SecondStage_DK: Second stage of the pump activated'
 'd.74 APC_LegioProtection: Legionella protection for actoSTORE': 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
 'd.92 APC_ComStatus_DK: actoSTORE communication status': 'd.92 APC_ComStatus_DK: actoSTORE communication status'
 'd.24 AirPressureSwitch_DK: contact of the air pressure switch': 'd.24 AirPressureSwitch_DK: contact of the air pressure switch'
@@ -2659,33 +2650,31 @@ d.76 SD_CodingResistor_DK: d.76 SD_CodingResistor_DK
   Flüssiggas 30mbar
 Current calculated partload: Current calculated partload
 CurrentPartload: CurrentPartload
-IFC error: IFC error
-SD_IFC_Fault_DK: SD_IFC_Fault_DK
-Brennstoffventil: Brennstoffventil
+'SD_IFC_Fault_DK: IFC error': 'SD_IFC_Fault_DK: IFC error'
+'Brennstoffventil: Activation signal of the gasvalve (activated via micrcontroller)': >-
+  Brennstoffventil: Activation signal of the gasvalve (activated via
+  micrcontroller)
 last 10 fault codes: last 10 fault codes
-Rückmeldung Brennstoffventil 1: Rückmeldung Brennstoffventil 1
-Rückmeldung Brennstoffventil 2: Rückmeldung Brennstoffventil 2
+'Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC)': 'Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC)'
+'Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller)': 'Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller)'
 'Fan_DK: Fan activation signal': 'Fan_DK: Fan activation signal'
-temperature limiter error: temperature limiter error
-SD_TL_Fault_DK: SD_TL_Fault_DK
-internal electronic error: internal electronic error
-SD_ADC_ok_DK: SD_ADC_ok_DK
-Fan error: Fan error
-SD_Fan_Fault_DK: SD_Fan_Fault_DK
+'SD_TL_Fault_DK: temperature limiter error': 'SD_TL_Fault_DK: temperature limiter error'
+'SD_ADC_ok_DK: internal electronic error': 'SD_ADC_ok_DK: internal electronic error'
+'SD_Fan_Fault_DK: Fan error': 'SD_Fan_Fault_DK: Fan error'
 'FunctionFlags_DK: differrent function flags': 'FunctionFlags_DK: differrent function flags'
 'SR_IFC_EE_FaultCause_DK: current IFC fault cause': 'SR_IFC_EE_FaultCause_DK: current IFC fault cause'
 'ParamReplication_DK: activated the parameter managment again': 'ParamReplication_DK: activated the parameter managment again'
 'Anode_IN_Feedback_DK: feedback signal of the anode': 'Anode_IN_Feedback_DK: feedback signal of the anode'
-Thermal fuse error: Thermal fuse error
-SR_TF_IN_SD_Feedback_DK: SR_TF_IN_SD_Feedback_DK
+'SR_TF_IN_SD_Feedback_DK: Thermal fuse error': 'SR_TF_IN_SD_Feedback_DK: Thermal fuse error'
 'Demand_CirculationPump_DK: remote control activated accessory circulation pump': 'Demand_CirculationPump_DK: remote control activated accessory circulation pump'
 'Function_Fault_DK: boiler stopped by a internal function fault': 'Function_Fault_DK: boiler stopped by a internal function fault'
 min. / max powervalues: min. / max powervalues
 AdvancedPowerValues_DK: AdvancedPowerValues_DK
 'Shiftloadtankpump_DK: current status of the shift load pump': 'Shiftloadtankpump_DK: current status of the shift load pump'
-feedback of the syphon switch contact: feedback of the syphon switch contact
-SR_Syphon_IN_SD_Switch_DK: SR_Syphon_IN_SD_Switch_DK
-Rückmeldung Brennstoffventil 3: Rückmeldung Brennstoffventil 3
+'SR_Syphon_IN_SD_Switch_DK: feedback of the syphon switch contact': 'SR_Syphon_IN_SD_Switch_DK: feedback of the syphon switch contact'
+'Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from Microcontroller)': >-
+  Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from
+  Microcontroller)
 'DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done in the production)': >-
   DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done in
   the production)
@@ -2768,21 +2757,20 @@ d.44 Ionisation voltage: d.44 Ionisation voltage
 d.91 DCF Status: d.91 DCF Status
 Demand external HWC tank (via contact): Demand external HWC tank (via contact)
 CH water pressure: CH water pressure
-'TRUE: STB errors are locking': 'TRUE: STB errors are locking'
+'SD_VolatileLockout_DK: TRUE: STB errors are locking': 'SD_VolatileLockout_DK: TRUE: STB errors are locking'
 'SD_Flame_Sensing_ASIC: ioni/adc value from the flame control circuit': 'SD_Flame_Sensing_ASIC: ioni/adc value from the flame control circuit'
 'HZ_UnderHundred_SwiActi: Heat switch cycles under hundred': 'HZ_UnderHundred_SwiActi: Heat switch cycles under hundred'
 'BW_UnderHundred_SwiActi: DHW switch cycles under hundred': 'BW_UnderHundred_SwiActi: DHW switch cycles under hundred'
 'FluegasvalveOpen_DK: Feedback from the flue gas valve': 'FluegasvalveOpen_DK: Feedback from the flue gas valve'
-Gas valve feedback (from ASIC): Gas valve feedback (from ASIC)
-Gas valve feedback (from micro controller): Gas valve feedback (from micro controller)
-Ignition status: Ignition status
+'SD_Gasvalve_ASICFeedback_DK: Gas valve feedback (from ASIC)': 'SD_Gasvalve_ASICFeedback_DK: Gas valve feedback (from ASIC)'
+'SD_Gasvalve_uCFeedback_DK: Gas valve feedback (from micro controller)': 'SD_Gasvalve_uCFeedback_DK: Gas valve feedback (from micro controller)'
+'SD_Ignitor_DK: Ignition status': 'SD_Ignitor_DK: Ignition status'
 'DHW impellor switch: DHW demand from impeller switch': 'DHW impellor switch: DHW demand from impeller switch'
 'WarmstartDemand: Status of warmstarr mode': 'WarmstartDemand: Status of warmstarr mode'
 'BoilerType: Boiler typ of the BMU': 'BoilerType: Boiler typ of the BMU'
 'ParamToken: Token for parameter managment': 'ParamToken: Token for parameter managment'
 'Ext. return temperature: External return temperature sensor': 'Ext. return temperature: External return temperature sensor'
 Feedback of the temperature limiter sensor: Feedback of the temperature limiter sensor
-Temperature limiter sensor: Temperature limiter sensor
 eBUS voltage feedback: eBUS voltage feedback
 'Flue flap open: Exhaust (flue) flap open': 'Flue flap open: Exhaust (flue) flap open'
 Testbyte (relevant for testers): Testbyte (relevant for testers)
@@ -2795,12 +2783,10 @@ Power number: Power number
 DSN starting address: DSN starting address
 'VR65 memory module: External memory module (VR65) connected': 'VR65 memory module: External memory module (VR65) connected'
 'WP_SecondStage: Second stage of the pump activated': 'WP_SecondStage: Second stage of the pump activated'
-Temperature limiter (1 = NTC; 0 = switching contact): Temperature limiter (1 = NTC; 0 = switching contact)
-All IFC errors are non-volatile: All IFC errors are non-volatile
-SD_VolatileLockout_IFC_GV: SD_VolatileLockout_IFC_GV
+'SD_STL_with_NTC: Temperature limiter (1 = NTC; 0 = switching contact)': 'SD_STL_with_NTC: Temperature limiter (1 = NTC; 0 = switching contact)'
+'SD_VolatileLockout_IFC_GV: All IFC errors are non-volatile': 'SD_VolatileLockout_IFC_GV: All IFC errors are non-volatile'
 'DisplayMode: Display mode of the appliance': 'DisplayMode: Display mode of the appliance'
-Gas valve switching signal (from the processor): Gas valve switching signal (from the processor)
-Gasventil 3: Gasventil 3
+'Gasventil 3: Gas valve switching signal (from the processor)': 'Gasventil 3: Gas valve switching signal (from the processor)'
 'InitialisationEEPROM: EEPROM initialization (for production)': 'InitialisationEEPROM: EEPROM initialization (for production)'
 'Eingang Schaltuhr: Timer input (block heatdemand)': 'Eingang Schaltuhr: Timer input (block heatdemand)'
 Fan minimum speed: Fan minimum speed

@@ -90,14 +90,9 @@ namespace Bai._0010005400_inc {
   @ext(0x47, 0x4)
   model StoragereleaseClock is ReadonlyRegister<yesno>;
 
-  /** d.30 Gasvalve */
-  @inherit(r)
+  /** d.30 Gasvalve: Gasvalve activation signal */
   @ext(0xbb, 0)
-  model Gasvalve {
-    /** Gasvalve activation signal */
-    @values(Values_Gasvalve)
-    value: UCH;
-  }
+  model Gasvalve is ReadonlyRegister<onoff2>;
 
   /** d.33 Target fan speed */
   @inherit(r)
@@ -509,45 +504,25 @@ namespace Bai._0010005400_inc {
   @ext(0, 0)
   model ExternalHwcSwitch is ReadonlyRegister<onoff>;
 
-  /** flame */
-  @inherit(r)
+  /** Flame */
   @ext(0x5, 0)
-  model Flame {
-    /** flame */
-    @values(Values_Flame)
-    value: UCH;
-  }
+  model Flame is ReadonlyRegister<onoff2>;
 
-  /** SD_IFC_Fault_DK */
-  @inherit(r)
+  /** SD_IFC_Fault_DK: IFC error */
   @ext(0x7, 0)
-  model IFCFault {
-    /** IFC error */
-    @values(Values_IFCFault)
-    value: UCH;
-  }
+  model IFCFault is ReadonlyRegister<onoff2>;
 
   /** Changes_DSN_DK: Numbers adjusting (storing) the DSN */
   @ext(0xc, 0)
   model ChangesDSN is ReadonlyRegister<UCH>;
 
-  /** Brennstoffventil */
-  @inherit(r)
+  /** Brennstoffventil: Activation signal of the gasvalve (activated via micrcontroller) */
   @ext(0xd, 0)
-  model Brennstoffventil {
-    /** Activation signal of the gasvalve (activated via micrcontroller) */
-    @values(Values_Brennstoffventil)
-    value: UCH;
-  }
+  model Brennstoffventil is ReadonlyRegister<onoff2>;
 
-  /** SD_VolatileLockout_DK */
-  @inherit(r)
+  /** SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is not volataile */
   @ext(0x10, 0)
-  model VolatileLockout {
-    /** TRUE: STB failures is volatileFALSE: STB failure is not volataile */
-    @values(Values_VolatileLockout)
-    value: UCH;
-  }
+  model VolatileLockout is ReadonlyRegister<yesno2>;
 
   /** Faultlist_DK */
   @inherit(r)
@@ -592,32 +567,17 @@ namespace Bai._0010005400_inc {
   @ext(0x3e, 0)
   model ExternalFaultmessage is ReadonlyRegister<onoff>;
 
-  /** Rückmeldung Brennstoffventil 1 */
-  @inherit(r)
+  /** Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC) */
   @ext(0x47, 0)
-  model RueckmeldungBrennstoffventil1 {
-    /** feedback gasvalve (from ASIC) */
-    @values(Values_RueckmeldungBrennstoffventil1)
-    value: UCH;
-  }
+  model RueckmeldungBrennstoffventil1 is ReadonlyRegister<onoff2>;
 
-  /** Rückmeldung Brennstoffventil 2 */
-  @inherit(r)
+  /** Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller) */
   @ext(0x48, 0)
-  model RueckmeldungBrennstoffventil2 {
-    /** feedback gasvalve (from Microcontroller) */
-    @values(Values_RueckmeldungBrennstoffventil2)
-    value: UCH;
-  }
+  model RueckmeldungBrennstoffventil2 is ReadonlyRegister<onoff2>;
 
-  /** SD_Ignitor_DK */
-  @inherit(r)
+  /** SD_Ignitor_DK: igniton activated */
   @ext(0x49, 0)
-  model Ignitor {
-    /** igniton activated */
-    @values(Values_Ignitor)
-    value: UCH;
-  }
+  model Ignitor is ReadonlyRegister<onoff2>;
 
   /** Fan_DK: Fan activation signal */
   @ext(0x4a, 0)
@@ -627,32 +587,17 @@ namespace Bai._0010005400_inc {
   @ext(0x4b, 0)
   model HwcTypes is ReadonlyRegister<UCH>;
 
-  /** SD_TL_Fault_DK */
-  @inherit(r)
+  /** SD_TL_Fault_DK: temperature limiter error */
   @ext(0x4d, 0)
-  model TemplimiterFault {
-    /** temperature limiter error */
-    @values(Values_TemplimiterFault)
-    value: UCH;
-  }
+  model TemplimiterFault is ReadonlyRegister<onoff2>;
 
-  /** SD_ADC_ok_DK */
-  @inherit(r)
+  /** SD_ADC_ok_DK: internal electronic error */
   @ext(0x4e, 0)
-  model ADCOk {
-    /** internal electronic error */
-    @values(Values_ADCOk)
-    value: UCH;
-  }
+  model ADCOk is ReadonlyRegister<onoff2>;
 
-  /** SD_Fan_Fault_DK */
-  @inherit(r)
+  /** SD_Fan_Fault_DK: Fan error */
   @ext(0x53, 0)
-  model FanFault {
-    /** Fan error */
-    @values(Values_FanFault)
-    value: UCH;
-  }
+  model FanFault is ReadonlyRegister<onoff2>;
 
   /** BoilerType_DK: Boiler typ of the bmu */
   @ext(0x5e, 0)
@@ -674,14 +619,9 @@ namespace Bai._0010005400_inc {
   @ext(0x70, 0)
   model FloorHeatingContact is ReadonlyRegister<onoff>;
 
-  /** SD_Temperaturelimiter_DK */
-  @inherit(r)
+  /** SD_Temperaturelimiter_DK: feedback signal of the temperature limiter */
   @ext(0x77, 0)
-  model Templimiter {
-    /** feedback signal of the temperature limiter */
-    @values(Values_Templimiter)
-    value: UCH;
-  }
+  model Templimiter is ReadonlyRegister<onoff2>;
 
   /** SR_IFC_EE_FaultCause_DK: current IFC fault cause */
   @ext(0x7a, 0)
@@ -699,14 +639,9 @@ namespace Bai._0010005400_inc {
   @ext(0x7f, 0)
   model EbusVoltage is ReadonlyRegister<onoff>;
 
-  /** SR_TF_IN_SD_Feedback_DK */
-  @inherit(r)
+  /** SR_TF_IN_SD_Feedback_DK: Thermal fuse error */
   @ext(0x84, 0)
-  model SRTFINSDFeedback {
-    /** Thermal fuse error */
-    @values(Values_SRTFINSDFeedback)
-    value: UCH;
-  }
+  model SRTFINSDFeedback is ReadonlyRegister<onoff2>;
 
   /** Demand_CirculationPump_DK: remote control activated accessory circulation pump */
   @ext(0x88, 0)
@@ -771,45 +706,25 @@ namespace Bai._0010005400_inc {
     value: HEX;
   }
 
-  /** SR_Syphon_IN_SD_Switch_DK */
-  @inherit(r)
+  /** SR_Syphon_IN_SD_Switch_DK: feedback of the syphon switch contact */
   @ext(0xcf, 0)
-  model SRSyphonINSDSwitch {
-    /** feedback of the syphon switch contact */
-    @values(Values_SRSyphonINSDSwitch)
-    value: UCH;
-  }
+  model SRSyphonINSDSwitch is ReadonlyRegister<yesno2>;
 
-  /** SD_STL_with_NTC */
-  @inherit(r)
+  /** SD_STL_with_NTC: Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact */
   @ext(0xd2, 0)
-  model TemplimiterWithNTC {
-    /** Safety temperature limit concept:1 = safety temp. Limit check with NTC0 = safety temp. Limit check with contact */
-    @values(Values_TemplimiterWithNTC)
-    value: UCH;
-  }
+  model TemplimiterWithNTC is ReadonlyRegister<yesno2>;
 
-  /** SD_VolatileLockout_IFC_GV_DK */
-  @inherit(r)
+  /** SD_VolatileLockout_IFC_GV_DK: all IFC faults are volataile */
   @ext(0xd3, 0)
-  model VolatileLockoutIFCGV {
-    /** all IFC faults are volataile */
-    @values(Values_VolatileLockoutIFCGV)
-    value: UCH;
-  }
+  model VolatileLockoutIFCGV is ReadonlyRegister<yesno2>;
 
   /** DisplayMode_DK: Display mode of the aplliance */
   @ext(0xda, 0)
   model DisplayMode is ReadonlyRegister<UCH>;
 
-  /** Rückmeldung Brennstoffventil 3 */
-  @inherit(r)
+  /** Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from Microcontroller) */
   @ext(0xdb, 0)
-  model RueckmeldungBrennstoffventil3 {
-    /** Gasvalve activation signal (from Microcontroller) */
-    @values(Values_RueckmeldungBrennstoffventil3)
-    value: UCH;
-  }
+  model RueckmeldungBrennstoffventil3 is ReadonlyRegister<onoff2>;
 
   /** InitialisationEEPROM: Initialisation off all EEPROM values (done in the production) */
   @ext(0xdc, 0)
@@ -934,11 +849,6 @@ namespace Bai._0010005400_inc {
     value: SIN;
   }
 
-  enum Values_Gasvalve {
-    off: 240,
-    on: 15,
-  }
-
   enum Values_HcPumpMode {
     post_run: 0,
     permanent: 1,
@@ -976,86 +886,6 @@ namespace Bai._0010005400_inc {
     externalerrormessage: 6,
     solarpump: 7,
     remotecontrol: 8,
-  }
-
-  enum Values_Flame {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_IFCFault {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_Brennstoffventil {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_VolatileLockout {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_RueckmeldungBrennstoffventil1 {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_RueckmeldungBrennstoffventil2 {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_Ignitor {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_TemplimiterFault {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_ADCOk {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_FanFault {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_Templimiter {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_SRTFINSDFeedback {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_SRSyphonINSDSwitch {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_TemplimiterWithNTC {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_VolatileLockoutIFCGV {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_RueckmeldungBrennstoffventil3 {
-    off: 240,
-    on: 15,
   }
 
   /** included parts */

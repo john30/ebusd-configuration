@@ -13489,28 +13489,20 @@ operatingmodeoperatingmodeofcpcircuit1auto2manual3off4on:
     = on)
   locations:
     - vaillant/a1.sol.cc.csv::r::0xf,0
-secondstageofthepumpactivated:
-  first: Second stage of the pump activated
-  en: Second stage of the pump activated
-  de: Second stage of the pump activated
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xed,0:value
-    - vaillant/bai.0010002465.inc::r::0xed,0:value
-    - vaillant/bai.0010003857.inc::r::0xed,0:value
-    - vaillant/bai.0010003886.inc::r::0xed,0:value
-    - vaillant/bai.0010004121.inc::r::0xed,0:value
-    - vaillant/bai.0010006101.inc::r::0xed,0:value
-wpsecondstagedk:
-  first: WP_SecondStage_DK
-  en: WP_SecondStage_DK
-  de: WP_SecondStage_DK
+wpsecondstagedksecondstageofthepumpactivated:
+  first: 'WP_SecondStage_DK: Second stage of the pump activated'
+  en: 'WP_SecondStage_DK: Second stage of the pump activated'
+  de: 'WP_SecondStage_DK: Second stage of the pump activated'
   locations:
     - vaillant/bai.0010002315.inc::r::0xed,0
     - vaillant/bai.0010002465.inc::r::0xed,0
     - vaillant/bai.0010003857.inc::r::0xed,0
     - vaillant/bai.0010003886.inc::r::0xed,0
     - vaillant/bai.0010004121.inc::r::0xed,0
+    - vaillant/bai.0010004150.inc::r::0xed,0
     - vaillant/bai.0010006101.inc::r::0xed,0
+    - vaillant/bai.0010008045.inc::r::0xed,0
+    - vaillant/bai.308523.inc::r::0xed,0
 d00heatingpartloadheatingpartload:
   first: 'd.00 heating partload: Heating part load'
   en: 'd.00 heating partload: Heating part load'
@@ -13804,29 +13796,10 @@ d25dhwdemandenabledhotwaterreleasetankstorageviaebuscontrol:
     - vaillant/bai.0010010674.inc::r::0x47,0x4
     - vaillant/bai.0010021961.inc::r::0x47,0x4
     - vaillant/bai.308523.inc::r::0x47,0x4
-gasvalveactivationsignal:
-  first: Gasvalve activation signal
-  en: Gasvalve activation signal
-  de: GMV Ansteuersignal
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xbb,0:value
-    - vaillant/bai.0010002465.inc::r::0xbb,0:value
-    - vaillant/bai.0010003857.inc::r::0xbb,0:value
-    - vaillant/bai.0010003886.inc::r::0xbb,0:value
-    - vaillant/bai.0010004121.inc::r::0xbb,0:value
-    - vaillant/bai.0010004150.inc::r::0xbb,0:value
-    - vaillant/bai.0010005400.inc::r::0xbb,0:value
-    - vaillant/bai.0010006101.inc::r::0xbb,0:value
-    - vaillant/bai.0010006341.inc::r::0xbb,0:value
-    - vaillant/bai.0010007508.inc::r::0xbb,0:value
-    - vaillant/bai.0010008045.inc::r::0xbb,0:value
-    - vaillant/bai.0010010674.inc::r::0xbb,0:value
-    - vaillant/bai.0020066007.inc::r::0xbb,0:value
-    - vaillant/bai.308523.inc::r::0xbb,0:value
-d30gasvalve:
-  first: d.30 Gasvalve
-  en: d.30 Gasvalve
-  de: d.30 Gasventil
+d30gasvalvegasvalveactivationsignal:
+  first: 'd.30 Gasvalve: Gasvalve activation signal'
+  en: 'd.30 Gasvalve: Gasvalve activation signal'
+  de: 'd.30 Gasventil: GMV Ansteuersignal'
   locations:
     - vaillant/bai.0010002315.inc::r::0xbb,0
     - vaillant/bai.0010002465.inc::r::0xbb,0
@@ -14033,41 +14006,25 @@ waterpressurewaterpressure:
     - vaillant/bai.0010010674.inc::r::0x2,0
     - vaillant/bai.308523.inc::r::0x2,0
 flame:
-  first: flame
-  en: flame
+  first: Flame
+  en: Flame
   de: Flammensignal
   locations:
-    - vaillant/bai.0010002315.inc::r::0x5,0:value
     - vaillant/bai.0010002315.inc::r::0x5,0
-    - vaillant/bai.0010002465.inc::r::0x5,0:value
     - vaillant/bai.0010002465.inc::r::0x5,0
-    - vaillant/bai.0010003857.inc::r::0x5,0:value
     - vaillant/bai.0010003857.inc::r::0x5,0
-    - vaillant/bai.0010003886.inc::r::0x5,0:value
     - vaillant/bai.0010003886.inc::r::0x5,0
-    - vaillant/bai.0010004121.inc::r::0x5,0:value
     - vaillant/bai.0010004121.inc::r::0x5,0
-    - vaillant/bai.0010004150.inc::r::0x5,0:value
     - vaillant/bai.0010004150.inc::r::0x5,0
-    - vaillant/bai.0010005400.inc::r::0x5,0:value
     - vaillant/bai.0010005400.inc::r::0x5,0
-    - vaillant/bai.0010006101.inc::r::0x5,0:value
     - vaillant/bai.0010006101.inc::r::0x5,0
-    - vaillant/bai.0010006341.inc::r::0x5,0:value
     - vaillant/bai.0010006341.inc::r::0x5,0
-    - vaillant/bai.0010007508.inc::r::0x5,0:value
     - vaillant/bai.0010007508.inc::r::0x5,0
-    - vaillant/bai.0010008045.inc::r::0x5,0:value
     - vaillant/bai.0010008045.inc::r::0x5,0
-    - vaillant/bai.0010010674.inc::r::0x5,0:value
     - vaillant/bai.0010010674.inc::r::0x5,0
-    - vaillant/bai.0010015600.inc::r::0x5,0:value
     - vaillant/bai.0010015600.inc::r::0x5,0
-    - vaillant/bai.0010021961.inc::r::0x5,0:value
     - vaillant/bai.0010021961.inc::r::0x5,0
-    - vaillant/bai.0020066007.inc::r::0x5,0:value
     - vaillant/bai.0020066007.inc::r::0x5,0
-    - vaillant/bai.308523.inc::r::0x5,0:value
     - vaillant/bai.308523.inc::r::0x5,0
 currentforthegasvalve:
   first: current for the gasvalve
@@ -14102,31 +14059,14 @@ changesdsndknumbersadjustingstoringthedsn:
     - vaillant/bai.0010021961.inc::r::0xc,0
     - vaillant/bai.0020066007.inc::r::0xc,0
     - vaillant/bai.308523.inc::r::0xc,0
-activationsignalofthegasvalveactivatedviamicrcontroller:
-  first: Activation signal of the gasvalve (activated via micrcontroller)
-  en: Activation signal of the gasvalve (activated via micrcontroller)
+sdgasvalveucdkactivationsignalofthegasvalveactivatedviamicrcontroller:
+  first: >-
+    SD_Gasvalve_uC_DK: Activation signal of the gasvalve (activated via
+    micrcontroller)
+  en: >-
+    SD_Gasvalve_uC_DK: Activation signal of the gasvalve (activated via
+    micrcontroller)
   de: Schaltsignal für das Gasventil
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xd,0:value
-    - vaillant/bai.0010002465.inc::r::0xd,0:value
-    - vaillant/bai.0010003857.inc::r::0xd,0:value
-    - vaillant/bai.0010003886.inc::r::0xd,0:value
-    - vaillant/bai.0010004121.inc::r::0xd,0:value
-    - vaillant/bai.0010004150.inc::r::0xd,0:value
-    - vaillant/bai.0010005400.inc::r::0xd,0:value
-    - vaillant/bai.0010006101.inc::r::0xd,0:value
-    - vaillant/bai.0010006341.inc::r::0xd,0:value
-    - vaillant/bai.0010007508.inc::r::0xd,0:value
-    - vaillant/bai.0010008045.inc::r::0xd,0:value
-    - vaillant/bai.0010010674.inc::r::0xd,0:value
-    - vaillant/bai.0010015600.inc::r::0xd,0:value
-    - vaillant/bai.0010021961.inc::r::0xd,0:value
-    - vaillant/bai.0020066007.inc::r::0xd,0:value
-    - vaillant/bai.308523.inc::r::0xd,0:value
-sdgasvalveucdk:
-  first: SD_Gasvalve_uC_DK
-  en: SD_Gasvalve_uC_DK
-  de: Gasventil
   locations:
     - vaillant/bai.0010002315.inc::r::0xd,0
     - vaillant/bai.0010002465.inc::r::0xd,0
@@ -14140,29 +14080,14 @@ sdgasvalveucdk:
     - vaillant/bai.0010021961.inc::r::0xd,0
     - vaillant/bai.0020066007.inc::r::0xd,0
     - vaillant/bai.308523.inc::r::0xd,0
-truestbfailuresisvolatilefalsestbfailureisnotvolataile:
-  first: 'TRUE: STB failures is volatileFALSE: STB failure is not volataile'
-  en: 'TRUE: STB failures is volatileFALSE: STB failure is not volataile'
-  de: 'WAHR: STB Fehler sind verriegelnd'
-  locations:
-    - vaillant/bai.0010002315.inc::r::0x10,0:value
-    - vaillant/bai.0010002465.inc::r::0x10,0:value
-    - vaillant/bai.0010003857.inc::r::0x10,0:value
-    - vaillant/bai.0010003886.inc::r::0x10,0:value
-    - vaillant/bai.0010004121.inc::r::0x10,0:value
-    - vaillant/bai.0010004150.inc::r::0x10,0:value
-    - vaillant/bai.0010005400.inc::r::0x10,0:value
-    - vaillant/bai.0010006101.inc::r::0x10,0:value
-    - vaillant/bai.0010006341.inc::r::0x10,0:value
-    - vaillant/bai.0010007508.inc::r::0x10,0:value
-    - vaillant/bai.0010008045.inc::r::0x10,0:value
-    - vaillant/bai.0010010674.inc::r::0x10,0:value
-    - vaillant/bai.0020066007.inc::r::0x10,0:value
-    - vaillant/bai.308523.inc::r::0x10,0:value
-sdvolatilelockoutdk:
-  first: SD_VolatileLockout_DK
-  en: SD_VolatileLockout_DK
-  de: Verriegelnde Störabschaltungen
+sdvolatilelockoutdktruestbfailuresisvolatilefalsestbfailureisnotvolataile:
+  first: >-
+    SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is
+    not volataile
+  en: >-
+    SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is
+    not volataile
+  de: 'Verriegelnde Störabschaltungen: WAHR: STB Fehler sind verriegelnd'
   locations:
     - vaillant/bai.0010002315.inc::r::0x10,0
     - vaillant/bai.0010002465.inc::r::0x10,0
@@ -14176,8 +14101,6 @@ sdvolatilelockoutdk:
     - vaillant/bai.0010007508.inc::r::0x10,0
     - vaillant/bai.0010008045.inc::r::0x10,0
     - vaillant/bai.0010010674.inc::r::0x10,0
-    - vaillant/bai.0010015600.inc::r::0x10,0
-    - vaillant/bai.0010021961.inc::r::0x10,0
     - vaillant/bai.0020066007.inc::r::0x10,0
     - vaillant/bai.308523.inc::r::0x10,0
 modulationsetpoint:
@@ -14333,28 +14256,10 @@ externalfaultmessagedkexternalfaultmessage:
     - vaillant/bai.0010015600.inc::r::0x3e,0
     - vaillant/bai.0010021961.inc::r::0x3e,0
     - vaillant/bai.308523.inc::r::0x3e,0
-feedbackgasvalvefromasic:
-  first: feedback gasvalve (from ASIC)
-  en: feedback gasvalve (from ASIC)
+sdgasvalveasicfeedbackdkfeedbackgasvalvefromasic:
+  first: 'SD_Gasvalve_ASICFeedback_DK: feedback gasvalve (from ASIC)'
+  en: 'SD_Gasvalve_ASICFeedback_DK: feedback gasvalve (from ASIC)'
   de: Rückmeldung Gasventil vom ASIC
-  locations:
-    - vaillant/bai.0010002315.inc::r::0x47,0:value
-    - vaillant/bai.0010002465.inc::r::0x47,0:value
-    - vaillant/bai.0010003857.inc::r::0x47,0:value
-    - vaillant/bai.0010003886.inc::r::0x47,0:value
-    - vaillant/bai.0010004121.inc::r::0x47,0:value
-    - vaillant/bai.0010004150.inc::r::0x47,0:value
-    - vaillant/bai.0010005400.inc::r::0x47,0:value
-    - vaillant/bai.0010006101.inc::r::0x47,0:value
-    - vaillant/bai.0010006341.inc::r::0x47,0:value
-    - vaillant/bai.0010007508.inc::r::0x47,0:value
-    - vaillant/bai.0010008045.inc::r::0x47,0:value
-    - vaillant/bai.0010010674.inc::r::0x47,0:value
-    - vaillant/bai.308523.inc::r::0x47,0:value
-sdgasvalveasicfeedbackdk:
-  first: SD_Gasvalve_ASICFeedback_DK
-  en: SD_Gasvalve_ASICFeedback_DK
-  de: Rückmeldung Gasventil
   locations:
     - vaillant/bai.0010002315.inc::r::0x47,0
     - vaillant/bai.0010002465.inc::r::0x47,0
@@ -14364,31 +14269,11 @@ sdgasvalveasicfeedbackdk:
     - vaillant/bai.0010004150.inc::r::0x47,0
     - vaillant/bai.0010006101.inc::r::0x47,0
     - vaillant/bai.0010008045.inc::r::0x47,0
-    - vaillant/bai.0010015600.inc::r::0x47,0
-    - vaillant/bai.0010021961.inc::r::0x47,0
     - vaillant/bai.308523.inc::r::0x47,0
-feedbackgasvalvefrommicrocontroller:
-  first: feedback gasvalve (from Microcontroller)
-  en: feedback gasvalve (from Microcontroller)
+sdgasvalveucfeedbackdkfeedbackgasvalvefrommicrocontroller:
+  first: 'SD_Gasvalve_uCFeedback_DK: feedback gasvalve (from Microcontroller)'
+  en: 'SD_Gasvalve_uCFeedback_DK: feedback gasvalve (from Microcontroller)'
   de: Rückmeldung Gasventil vom Prozessor
-  locations:
-    - vaillant/bai.0010002315.inc::r::0x48,0:value
-    - vaillant/bai.0010002465.inc::r::0x48,0:value
-    - vaillant/bai.0010003857.inc::r::0x48,0:value
-    - vaillant/bai.0010003886.inc::r::0x48,0:value
-    - vaillant/bai.0010004121.inc::r::0x48,0:value
-    - vaillant/bai.0010004150.inc::r::0x48,0:value
-    - vaillant/bai.0010005400.inc::r::0x48,0:value
-    - vaillant/bai.0010006101.inc::r::0x48,0:value
-    - vaillant/bai.0010006341.inc::r::0x48,0:value
-    - vaillant/bai.0010007508.inc::r::0x48,0:value
-    - vaillant/bai.0010008045.inc::r::0x48,0:value
-    - vaillant/bai.0010010674.inc::r::0x48,0:value
-    - vaillant/bai.308523.inc::r::0x48,0:value
-sdgasvalveucfeedbackdk:
-  first: SD_Gasvalve_uCFeedback_DK
-  en: SD_Gasvalve_uCFeedback_DK
-  de: Rückmeldung Gasventil
   locations:
     - vaillant/bai.0010002315.inc::r::0x48,0
     - vaillant/bai.0010002465.inc::r::0x48,0
@@ -14398,31 +14283,11 @@ sdgasvalveucfeedbackdk:
     - vaillant/bai.0010004150.inc::r::0x48,0
     - vaillant/bai.0010006101.inc::r::0x48,0
     - vaillant/bai.0010008045.inc::r::0x48,0
-    - vaillant/bai.0010015600.inc::r::0x48,0
-    - vaillant/bai.0010021961.inc::r::0x48,0
     - vaillant/bai.308523.inc::r::0x48,0
-ignitonactivated:
-  first: igniton activated
-  en: igniton activated
-  de: Zündung aktiviert
-  locations:
-    - vaillant/bai.0010002315.inc::r::0x49,0:value
-    - vaillant/bai.0010002465.inc::r::0x49,0:value
-    - vaillant/bai.0010003857.inc::r::0x49,0:value
-    - vaillant/bai.0010003886.inc::r::0x49,0:value
-    - vaillant/bai.0010004121.inc::r::0x49,0:value
-    - vaillant/bai.0010004150.inc::r::0x49,0:value
-    - vaillant/bai.0010005400.inc::r::0x49,0:value
-    - vaillant/bai.0010006101.inc::r::0x49,0:value
-    - vaillant/bai.0010006341.inc::r::0x49,0:value
-    - vaillant/bai.0010007508.inc::r::0x49,0:value
-    - vaillant/bai.0010008045.inc::r::0x49,0:value
-    - vaillant/bai.0010010674.inc::r::0x49,0:value
-    - vaillant/bai.308523.inc::r::0x49,0:value
-sdignitordk:
-  first: SD_Ignitor_DK
-  en: SD_Ignitor_DK
-  de: Zünder
+sdignitordkignitonactivated:
+  first: 'SD_Ignitor_DK: igniton activated'
+  en: 'SD_Ignitor_DK: igniton activated'
+  de: 'Zünder: Zündung aktiviert'
   locations:
     - vaillant/bai.0010002315.inc::r::0x49,0
     - vaillant/bai.0010002465.inc::r::0x49,0
@@ -14436,8 +14301,6 @@ sdignitordk:
     - vaillant/bai.0010007508.inc::r::0x49,0
     - vaillant/bai.0010008045.inc::r::0x49,0
     - vaillant/bai.0010010674.inc::r::0x49,0
-    - vaillant/bai.0010015600.inc::r::0x49,0
-    - vaillant/bai.0010021961.inc::r::0x49,0
     - vaillant/bai.308523.inc::r::0x49,0
 dhwtypesdkdhwtypeoftheappliance:
   first: 'DHW_Types_DK: DHW type of the appliance'
@@ -14563,28 +14426,10 @@ floorheatingcontact:
     - vaillant/bai.0010021961.inc::r::0x70,0
     - vaillant/bai.0020066007.inc::r::0x70,0
     - vaillant/bai.308523.inc::r::0x70,0
-feedbacksignalofthetemperaturelimiter:
-  first: feedback signal of the temperature limiter
-  en: feedback signal of the temperature limiter
+sdtemperaturelimiterdkfeedbacksignalofthetemperaturelimiter:
+  first: 'SD_Temperaturelimiter_DK: feedback signal of the temperature limiter'
+  en: 'SD_Temperaturelimiter_DK: feedback signal of the temperature limiter'
   de: Rückmeldung des Temperaturbegrenzer Signals
-  locations:
-    - vaillant/bai.0010002315.inc::r::0x77,0:value
-    - vaillant/bai.0010002465.inc::r::0x77,0:value
-    - vaillant/bai.0010003857.inc::r::0x77,0:value
-    - vaillant/bai.0010003886.inc::r::0x77,0:value
-    - vaillant/bai.0010004121.inc::r::0x77,0:value
-    - vaillant/bai.0010004150.inc::r::0x77,0:value
-    - vaillant/bai.0010005400.inc::r::0x77,0:value
-    - vaillant/bai.0010006101.inc::r::0x77,0:value
-    - vaillant/bai.0010006341.inc::r::0x77,0:value
-    - vaillant/bai.0010007508.inc::r::0x77,0:value
-    - vaillant/bai.0010008045.inc::r::0x77,0:value
-    - vaillant/bai.0010010674.inc::r::0x77,0:value
-    - vaillant/bai.308523.inc::r::0x77,0:value
-sdtemperaturelimiterdk:
-  first: SD_Temperaturelimiter_DK
-  en: SD_Temperaturelimiter_DK
-  de: Temperaturbegrenzer
   locations:
     - vaillant/bai.0010002315.inc::r::0x77,0
     - vaillant/bai.0010002465.inc::r::0x77,0
@@ -14798,33 +14643,14 @@ partnumberbox:
     - vaillant/bai.0010021961.inc::r::0xc0,0
     - vaillant/bai.0020066007.inc::r::0xc0,0
     - vaillant/bai.308523.inc::r::0xc0,0
-safetytemperaturelimitconcept1safetytemplimitcheckwithntc0safetytemplimitcheckwithcontact:
+sdstlwithntcsafetytemperaturelimitconcept1safetytemplimitcheckwithntc0safetytemplimitcheckwithcontact:
   first: >-
-    Safety temperature limit concept:1 = safety temp. Limit check with NTC0 =
-    safety temp. Limit check with contact
+    SD_STL_with_NTC: Safety temperature limit concept:1 = safety temp. Limit
+    check with NTC0 = safety temp. Limit check with contact
   en: >-
-    Safety temperature limit concept:1 = safety temp. Limit check with NTC0 =
-    safety temp. Limit check with contact
-  de: Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xd2,0:value
-    - vaillant/bai.0010002465.inc::r::0xd2,0:value
-    - vaillant/bai.0010003857.inc::r::0xd2,0:value
-    - vaillant/bai.0010003886.inc::r::0xd2,0:value
-    - vaillant/bai.0010004121.inc::r::0xd2,0:value
-    - vaillant/bai.0010004150.inc::r::0xd2,0:value
-    - vaillant/bai.0010005400.inc::r::0xd2,0:value
-    - vaillant/bai.0010006101.inc::r::0xd2,0:value
-    - vaillant/bai.0010006341.inc::r::0xd2,0:value
-    - vaillant/bai.0010007508.inc::r::0xd2,0:value
-    - vaillant/bai.0010008045.inc::r::0xd2,0:value
-    - vaillant/bai.0010010674.inc::r::0xd2,0:value
-    - vaillant/bai.0020066007.inc::r::0xd2,0:value
-    - vaillant/bai.308523.inc::r::0xd2,0:value
-sdstlwithntc:
-  first: SD_STL_with_NTC
-  en: SD_STL_with_NTC
-  de: SD_STL_with_NTC
+    SD_STL_with_NTC: Safety temperature limit concept:1 = safety temp. Limit
+    check with NTC0 = safety temp. Limit check with contact
+  de: 'SD_STL_with_NTC: Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt'
   locations:
     - vaillant/bai.0010002315.inc::r::0xd2,0
     - vaillant/bai.0010002465.inc::r::0xd2,0
@@ -14838,32 +14664,12 @@ sdstlwithntc:
     - vaillant/bai.0010007508.inc::r::0xd2,0
     - vaillant/bai.0010008045.inc::r::0xd2,0
     - vaillant/bai.0010010674.inc::r::0xd2,0
-    - vaillant/bai.0010015600.inc::r::0xd2,0
-    - vaillant/bai.0010021961.inc::r::0xd2,0
     - vaillant/bai.0020066007.inc::r::0xd2,0
     - vaillant/bai.308523.inc::r::0xd2,0
-allifcfaultsarevolataile:
-  first: all IFC faults are volataile
-  en: all IFC faults are volataile
-  de: Alle IFC Fehler sind nichtflüchtig
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xd3,0:value
-    - vaillant/bai.0010002465.inc::r::0xd3,0:value
-    - vaillant/bai.0010003857.inc::r::0xd3,0:value
-    - vaillant/bai.0010003886.inc::r::0xd3,0:value
-    - vaillant/bai.0010004121.inc::r::0xd3,0:value
-    - vaillant/bai.0010004150.inc::r::0xd3,0:value
-    - vaillant/bai.0010005400.inc::r::0xd3,0:value
-    - vaillant/bai.0010006341.inc::r::0xd3,0:value
-    - vaillant/bai.0010007508.inc::r::0xd3,0:value
-    - vaillant/bai.0010008045.inc::r::0xd3,0:value
-    - vaillant/bai.0010010674.inc::r::0xd3,0:value
-    - vaillant/bai.0020066007.inc::r::0xd3,0:value
-    - vaillant/bai.308523.inc::r::0xd3,0:value
-sdvolatilelockoutifcgvdk:
-  first: SD_VolatileLockout_IFC_GV_DK
-  en: SD_VolatileLockout_IFC_GV_DK
-  de: SD_VolatileLockout_IFC_GV_DK
+sdvolatilelockoutifcgvdkallifcfaultsarevolataile:
+  first: 'SD_VolatileLockout_IFC_GV_DK: all IFC faults are volataile'
+  en: 'SD_VolatileLockout_IFC_GV_DK: all IFC faults are volataile'
+  de: 'SD_VolatileLockout_IFC_GV_DK: Alle IFC Fehler sind nichtflüchtig'
   locations:
     - vaillant/bai.0010002315.inc::r::0xd3,0
     - vaillant/bai.0010002465.inc::r::0xd3,0
@@ -14905,29 +14711,10 @@ displaymodedkdisplaymodeoftheaplliance:
     - vaillant/bai.0010008045.inc::r::0xda,0
     - vaillant/bai.0010010674.inc::r::0xda,0
     - vaillant/bai.308523.inc::r::0xda,0
-gasvalveactivationsignalfrommicrocontroller:
-  first: Gasvalve activation signal (from Microcontroller)
-  en: Gasvalve activation signal (from Microcontroller)
-  de: Gasventil Schaltsignal (vom Prozessor)
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xdb,0:value
-    - vaillant/bai.0010002465.inc::r::0xdb,0:value
-    - vaillant/bai.0010003857.inc::r::0xdb,0:value
-    - vaillant/bai.0010003886.inc::r::0xdb,0:value
-    - vaillant/bai.0010004121.inc::r::0xdb,0:value
-    - vaillant/bai.0010004150.inc::r::0xdb,0:value
-    - vaillant/bai.0010005400.inc::r::0xdb,0:value
-    - vaillant/bai.0010006101.inc::r::0xdb,0:value
-    - vaillant/bai.0010006341.inc::r::0xdb,0:value
-    - vaillant/bai.0010007508.inc::r::0xdb,0:value
-    - vaillant/bai.0010008045.inc::r::0xdb,0:value
-    - vaillant/bai.0010010674.inc::r::0xdb,0:value
-    - vaillant/bai.0020066007.inc::r::0xdb,0:value
-    - vaillant/bai.308523.inc::r::0xdb,0:value
-sdgasvalve3ucdk:
-  first: SD_Gasvalve3_uC_DK
-  en: SD_Gasvalve3_uC_DK
-  de: Gasventil 3
+sdgasvalve3ucdkgasvalveactivationsignalfrommicrocontroller:
+  first: 'SD_Gasvalve3_uC_DK: Gasvalve activation signal (from Microcontroller)'
+  en: 'SD_Gasvalve3_uC_DK: Gasvalve activation signal (from Microcontroller)'
+  de: 'Gasventil 3: Gasventil Schaltsignal (vom Prozessor)'
   locations:
     - vaillant/bai.0010002315.inc::r::0xdb,0
     - vaillant/bai.0010002465.inc::r::0xdb,0
@@ -16672,18 +16459,10 @@ faultlistdk0:
     - vaillant/bai.0010002465.inc::r::0xef,0x3
     - vaillant/bai.0010004150.inc::r::0x26,0
     - vaillant/bai.0020066007.inc::r::0x26,0
-airpressureswitch:
-  first: Air pressure switch
-  en: Air pressure switch
-  de: Druckdose
-  locations:
-    - vaillant/bai.0010002465.inc::r::0x3,0:value
-    - vaillant/bai.0010006101.inc::r::0x3,0:value
-    - vaillant/bai.0010008045.inc::r::0x3,0:value
-d24sdaircontrolokdk:
-  first: d.24 SD_AircontrolOk_DK
-  en: d.24 SD_AircontrolOk_DK
-  de: d.24 SD_AircontrolOk_DK
+d24sdaircontrolokdkairpressureswitch:
+  first: 'd.24 SD_AircontrolOk_DK: Air pressure switch'
+  en: 'd.24 SD_AircontrolOk_DK: Air pressure switch'
+  de: 'd.24 SD_AircontrolOk_DK: Druckdose'
   locations:
     - vaillant/bai.0010002465.inc::r::0x3,0
     - vaillant/bai.0010006101.inc::r::0x3,0
@@ -17874,14 +17653,6 @@ prenergysumdhw2dkpredictivemaintenancedata:
     - vaillant/bai.0010008045.inc::r::0xc7,0
     - vaillant/bai.0010010674.inc::r::0xc7,0
     - vaillant/bai.308523.inc::r::0xc7,0
-wpsecondstagedksecondstageofthepumpactivated:
-  first: 'WP_SecondStage_DK: Second stage of the pump activated'
-  en: 'WP_SecondStage_DK: Second stage of the pump activated'
-  de: 'WP_SecondStage_DK: Second stage of the pump activated'
-  locations:
-    - vaillant/bai.0010004150.inc::r::0xed,0
-    - vaillant/bai.0010008045.inc::r::0xed,0
-    - vaillant/bai.308523.inc::r::0xed,0
 d74apclegioprotectionlegionellaprotectionforactostore:
   first: 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
   en: 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
@@ -18023,28 +17794,23 @@ currentpartload:
     - vaillant/bai.0010005400.inc::r::0,1
     - vaillant/bai.0010007508.inc::r::0,1
     - vaillant/bai.0010010674.inc::r::0,1
-ifcerror:
-  first: IFC error
-  en: IFC error
-  de: IFC error
-  locations:
-    - vaillant/bai.0010005400.inc::r::0x7,0:value
-    - vaillant/bai.0010006341.inc::r::0x7,0:value
-    - vaillant/bai.0010007508.inc::r::0x7,0:value
-    - vaillant/bai.0010010674.inc::r::0x7,0:value
-sdifcfaultdk:
-  first: SD_IFC_Fault_DK
-  en: SD_IFC_Fault_DK
-  de: SD_IFC_Fault_DK
+sdifcfaultdkifcerror:
+  first: 'SD_IFC_Fault_DK: IFC error'
+  en: 'SD_IFC_Fault_DK: IFC error'
+  de: 'SD_IFC_Fault_DK: IFC error'
   locations:
     - vaillant/bai.0010005400.inc::r::0x7,0
     - vaillant/bai.0010006341.inc::r::0x7,0
     - vaillant/bai.0010007508.inc::r::0x7,0
     - vaillant/bai.0010010674.inc::r::0x7,0
-brennstoffventil:
-  first: Brennstoffventil
-  en: Brennstoffventil
-  de: Brennstoffventil
+brennstoffventilactivationsignalofthegasvalveactivatedviamicrcontroller:
+  first: >-
+    Brennstoffventil: Activation signal of the gasvalve (activated via
+    micrcontroller)
+  en: >-
+    Brennstoffventil: Activation signal of the gasvalve (activated via
+    micrcontroller)
+  de: 'Brennstoffventil: Schaltsignal für das Gasventil'
   locations:
     - vaillant/bai.0010005400.inc::r::0xd,0
     - vaillant/bai.0010006341.inc::r::0xd,0
@@ -18059,19 +17825,19 @@ last10faultcodes:
     - vaillant/bai.0010006341.inc::r::0x26,0:value
     - vaillant/bai.0010007508.inc::r::0x26,0:value
     - vaillant/bai.0010010674.inc::r::0x26,0:value
-rckmeldungbrennstoffventil1:
-  first: Rückmeldung Brennstoffventil 1
-  en: Rückmeldung Brennstoffventil 1
-  de: Rückmeldung Brennstoffventil 1
+rckmeldungbrennstoffventil1feedbackgasvalvefromasic:
+  first: 'Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC)'
+  en: 'Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC)'
+  de: 'Rückmeldung Brennstoffventil 1: Rückmeldung Gasventil vom ASIC'
   locations:
     - vaillant/bai.0010005400.inc::r::0x47,0
     - vaillant/bai.0010006341.inc::r::0x47,0
     - vaillant/bai.0010007508.inc::r::0x47,0
     - vaillant/bai.0010010674.inc::r::0x47,0
-rckmeldungbrennstoffventil2:
-  first: Rückmeldung Brennstoffventil 2
-  en: Rückmeldung Brennstoffventil 2
-  de: Rückmeldung Brennstoffventil 2
+rckmeldungbrennstoffventil2feedbackgasvalvefrommicrocontroller:
+  first: 'Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller)'
+  en: 'Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller)'
+  de: 'Rückmeldung Brennstoffventil 2: Rückmeldung Gasventil vom Prozessor'
   locations:
     - vaillant/bai.0010005400.inc::r::0x48,0
     - vaillant/bai.0010006341.inc::r::0x48,0
@@ -18086,55 +17852,28 @@ fandkfanactivationsignal:
     - vaillant/bai.0010006341.inc::r::0x4a,0
     - vaillant/bai.0010007508.inc::r::0x4a,0
     - vaillant/bai.0010010674.inc::r::0x4a,0
-temperaturelimitererror:
-  first: temperature limiter error
-  en: temperature limiter error
-  de: temperature limiter error
-  locations:
-    - vaillant/bai.0010005400.inc::r::0x4d,0:value
-    - vaillant/bai.0010006341.inc::r::0x4d,0:value
-    - vaillant/bai.0010007508.inc::r::0x4d,0:value
-    - vaillant/bai.0010010674.inc::r::0x4d,0:value
-sdtlfaultdk:
-  first: SD_TL_Fault_DK
-  en: SD_TL_Fault_DK
-  de: SD_TL_Fault_DK
+sdtlfaultdktemperaturelimitererror:
+  first: 'SD_TL_Fault_DK: temperature limiter error'
+  en: 'SD_TL_Fault_DK: temperature limiter error'
+  de: 'SD_TL_Fault_DK: temperature limiter error'
   locations:
     - vaillant/bai.0010005400.inc::r::0x4d,0
     - vaillant/bai.0010006341.inc::r::0x4d,0
     - vaillant/bai.0010007508.inc::r::0x4d,0
     - vaillant/bai.0010010674.inc::r::0x4d,0
-internalelectronicerror:
-  first: internal electronic error
-  en: internal electronic error
-  de: internal electronic error
-  locations:
-    - vaillant/bai.0010005400.inc::r::0x4e,0:value
-    - vaillant/bai.0010006341.inc::r::0x4e,0:value
-    - vaillant/bai.0010007508.inc::r::0x4e,0:value
-    - vaillant/bai.0010010674.inc::r::0x4e,0:value
-sdadcokdk:
-  first: SD_ADC_ok_DK
-  en: SD_ADC_ok_DK
-  de: SD_ADC_ok_DK
+sdadcokdkinternalelectronicerror:
+  first: 'SD_ADC_ok_DK: internal electronic error'
+  en: 'SD_ADC_ok_DK: internal electronic error'
+  de: 'SD_ADC_ok_DK: internal electronic error'
   locations:
     - vaillant/bai.0010005400.inc::r::0x4e,0
     - vaillant/bai.0010006341.inc::r::0x4e,0
     - vaillant/bai.0010007508.inc::r::0x4e,0
     - vaillant/bai.0010010674.inc::r::0x4e,0
-fanerror:
-  first: Fan error
-  en: Fan error
-  de: Fan error
-  locations:
-    - vaillant/bai.0010005400.inc::r::0x53,0:value
-    - vaillant/bai.0010006341.inc::r::0x53,0:value
-    - vaillant/bai.0010007508.inc::r::0x53,0:value
-    - vaillant/bai.0010010674.inc::r::0x53,0:value
-sdfanfaultdk:
-  first: SD_Fan_Fault_DK
-  en: SD_Fan_Fault_DK
-  de: SD_Fan_Fault_DK
+sdfanfaultdkfanerror:
+  first: 'SD_Fan_Fault_DK: Fan error'
+  en: 'SD_Fan_Fault_DK: Fan error'
+  de: 'SD_Fan_Fault_DK: Fan error'
   locations:
     - vaillant/bai.0010005400.inc::r::0x53,0
     - vaillant/bai.0010006341.inc::r::0x53,0
@@ -18176,19 +17915,10 @@ anodeinfeedbackdkfeedbacksignaloftheanode:
     - vaillant/bai.0010006341.inc::r::0x7e,0
     - vaillant/bai.0010007508.inc::r::0x7e,0
     - vaillant/bai.0010010674.inc::r::0x7e,0
-thermalfuseerror:
-  first: Thermal fuse error
-  en: Thermal fuse error
-  de: Thermal fuse error
-  locations:
-    - vaillant/bai.0010005400.inc::r::0x84,0:value
-    - vaillant/bai.0010006341.inc::r::0x84,0:value
-    - vaillant/bai.0010007508.inc::r::0x84,0:value
-    - vaillant/bai.0010010674.inc::r::0x84,0:value
-srtfinsdfeedbackdk:
-  first: SR_TF_IN_SD_Feedback_DK
-  en: SR_TF_IN_SD_Feedback_DK
-  de: SR_TF_IN_SD_Feedback_DK
+srtfinsdfeedbackdkthermalfuseerror:
+  first: 'SR_TF_IN_SD_Feedback_DK: Thermal fuse error'
+  en: 'SR_TF_IN_SD_Feedback_DK: Thermal fuse error'
+  de: 'SR_TF_IN_SD_Feedback_DK: Thermal fuse error'
   locations:
     - vaillant/bai.0010005400.inc::r::0x84,0
     - vaillant/bai.0010006341.inc::r::0x84,0
@@ -18245,28 +17975,23 @@ shiftloadtankpumpdkcurrentstatusoftheshiftloadpump:
     - vaillant/bai.0010006341.inc::r::0xb4,0
     - vaillant/bai.0010007508.inc::r::0xb4,0
     - vaillant/bai.0010010674.inc::r::0xb4,0
-feedbackofthesyphonswitchcontact:
-  first: feedback of the syphon switch contact
-  en: feedback of the syphon switch contact
-  de: feedback of the syphon switch contact
-  locations:
-    - vaillant/bai.0010005400.inc::r::0xcf,0:value
-    - vaillant/bai.0010006341.inc::r::0xcf,0:value
-    - vaillant/bai.0010007508.inc::r::0xcf,0:value
-    - vaillant/bai.0010010674.inc::r::0xcf,0:value
-srsyphoninsdswitchdk:
-  first: SR_Syphon_IN_SD_Switch_DK
-  en: SR_Syphon_IN_SD_Switch_DK
-  de: SR_Syphon_IN_SD_Switch_DK
+srsyphoninsdswitchdkfeedbackofthesyphonswitchcontact:
+  first: 'SR_Syphon_IN_SD_Switch_DK: feedback of the syphon switch contact'
+  en: 'SR_Syphon_IN_SD_Switch_DK: feedback of the syphon switch contact'
+  de: 'SR_Syphon_IN_SD_Switch_DK: feedback of the syphon switch contact'
   locations:
     - vaillant/bai.0010005400.inc::r::0xcf,0
     - vaillant/bai.0010006341.inc::r::0xcf,0
     - vaillant/bai.0010007508.inc::r::0xcf,0
     - vaillant/bai.0010010674.inc::r::0xcf,0
-rckmeldungbrennstoffventil3:
-  first: Rückmeldung Brennstoffventil 3
-  en: Rückmeldung Brennstoffventil 3
-  de: Rückmeldung Brennstoffventil 3
+rckmeldungbrennstoffventil3gasvalveactivationsignalfrommicrocontroller:
+  first: >-
+    Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from
+    Microcontroller)
+  en: >-
+    Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from
+    Microcontroller)
+  de: 'Rückmeldung Brennstoffventil 3: Gasventil Schaltsignal (vom Prozessor)'
   locations:
     - vaillant/bai.0010005400.inc::r::0xdb,0
     - vaillant/bai.0010006341.inc::r::0xdb,0
@@ -18782,13 +18507,13 @@ chwaterpressure:
   locations:
     - vaillant/bai.0010015600.inc::r::0x2,0
     - vaillant/bai.0010021961.inc::r::0x2,0
-truestberrorsarelocking:
-  first: 'TRUE: STB errors are locking'
-  en: 'TRUE: STB errors are locking'
-  de: 'WAHR: STB Fehler sind verriegelnd'
+sdvolatilelockoutdktruestberrorsarelocking:
+  first: 'SD_VolatileLockout_DK: TRUE: STB errors are locking'
+  en: 'SD_VolatileLockout_DK: TRUE: STB errors are locking'
+  de: 'Verriegelnde Störabschaltungen: WAHR: STB Fehler sind verriegelnd'
   locations:
-    - vaillant/bai.0010015600.inc::r::0x10,0:value
-    - vaillant/bai.0010021961.inc::r::0x10,0:value
+    - vaillant/bai.0010015600.inc::r::0x10,0
+    - vaillant/bai.0010021961.inc::r::0x10,0
 sdflamesensingasicioniadcvaluefromtheflamecontrolcircuit:
   first: 'SD_Flame_Sensing_ASIC: ioni/adc value from the flame control circuit'
   en: 'SD_Flame_Sensing_ASIC: ioni/adc value from the flame control circuit'
@@ -18817,27 +18542,27 @@ fluegasvalveopendkfeedbackfromthefluegasvalve:
   locations:
     - vaillant/bai.0010015600.inc::r::0x3c,0
     - vaillant/bai.0010021961.inc::r::0x3c,0
-gasvalvefeedbackfromasic:
-  first: Gas valve feedback (from ASIC)
-  en: Gas valve feedback (from ASIC)
+sdgasvalveasicfeedbackdkgasvalvefeedbackfromasic:
+  first: 'SD_Gasvalve_ASICFeedback_DK: Gas valve feedback (from ASIC)'
+  en: 'SD_Gasvalve_ASICFeedback_DK: Gas valve feedback (from ASIC)'
   de: Rückmeldung Gasventil vom ASIC
   locations:
-    - vaillant/bai.0010015600.inc::r::0x47,0:value
-    - vaillant/bai.0010021961.inc::r::0x47,0:value
-gasvalvefeedbackfrommicrocontroller:
-  first: Gas valve feedback (from micro controller)
-  en: Gas valve feedback (from micro controller)
+    - vaillant/bai.0010015600.inc::r::0x47,0
+    - vaillant/bai.0010021961.inc::r::0x47,0
+sdgasvalveucfeedbackdkgasvalvefeedbackfrommicrocontroller:
+  first: 'SD_Gasvalve_uCFeedback_DK: Gas valve feedback (from micro controller)'
+  en: 'SD_Gasvalve_uCFeedback_DK: Gas valve feedback (from micro controller)'
   de: Rückmeldung Gasventil vom Prozessor
   locations:
-    - vaillant/bai.0010015600.inc::r::0x48,0:value
-    - vaillant/bai.0010021961.inc::r::0x48,0:value
-ignitionstatus:
-  first: Ignition status
-  en: Ignition status
-  de: Zündung aktiviert
+    - vaillant/bai.0010015600.inc::r::0x48,0
+    - vaillant/bai.0010021961.inc::r::0x48,0
+sdignitordkignitionstatus:
+  first: 'SD_Ignitor_DK: Ignition status'
+  en: 'SD_Ignitor_DK: Ignition status'
+  de: 'Zünder: Zündung aktiviert'
   locations:
-    - vaillant/bai.0010015600.inc::r::0x49,0:value
-    - vaillant/bai.0010021961.inc::r::0x49,0:value
+    - vaillant/bai.0010015600.inc::r::0x49,0
+    - vaillant/bai.0010021961.inc::r::0x49,0
 dhwimpellorswitchdhwdemandfromimpellerswitch:
   first: 'DHW impellor switch: DHW demand from impeller switch'
   en: 'DHW impellor switch: DHW demand from impeller switch'
@@ -18877,13 +18602,6 @@ feedbackofthetemperaturelimitersensor:
   first: Feedback of the temperature limiter sensor
   en: Feedback of the temperature limiter sensor
   de: Rückmeldung des Temperaturbegrenzer Signals
-  locations:
-    - vaillant/bai.0010015600.inc::r::0x77,0:value
-    - vaillant/bai.0010021961.inc::r::0x77,0:value
-temperaturelimitersensor:
-  first: Temperature limiter sensor
-  en: Temperature limiter sensor
-  de: Temperaturbegrenzer
   locations:
     - vaillant/bai.0010015600.inc::r::0x77,0
     - vaillant/bai.0010021961.inc::r::0x77,0
@@ -18975,24 +18693,17 @@ wpsecondstagesecondstageofthepumpactivated:
   locations:
     - vaillant/bai.0010015600.inc::r::0xed,0
     - vaillant/bai.0010021961.inc::r::0xed,0
-temperaturelimiter1ntc0switchingcontact:
-  first: Temperature limiter (1 = NTC; 0 = switching contact)
-  en: Temperature limiter (1 = NTC; 0 = switching contact)
-  de: Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt
+sdstlwithntctemperaturelimiter1ntc0switchingcontact:
+  first: 'SD_STL_with_NTC: Temperature limiter (1 = NTC; 0 = switching contact)'
+  en: 'SD_STL_with_NTC: Temperature limiter (1 = NTC; 0 = switching contact)'
+  de: 'SD_STL_with_NTC: Temperaturbegrenzer Art:1 = NTC0 = Schaltkontakt'
   locations:
-    - vaillant/bai.0010015600.inc::r::0xd2,0:value
-    - vaillant/bai.0010021961.inc::r::0xd2,0:value
-allifcerrorsarenonvolatile:
-  first: All IFC errors are non-volatile
-  en: All IFC errors are non-volatile
-  de: Alle IFC Fehler sind nichtflüchtig
-  locations:
-    - vaillant/bai.0010015600.inc::r::0xd3,0:value
-    - vaillant/bai.0010021961.inc::r::0xd3,0:value
-sdvolatilelockoutifcgv:
-  first: SD_VolatileLockout_IFC_GV
-  en: SD_VolatileLockout_IFC_GV
-  de: SD_VolatileLockout_IFC_GV
+    - vaillant/bai.0010015600.inc::r::0xd2,0
+    - vaillant/bai.0010021961.inc::r::0xd2,0
+sdvolatilelockoutifcgvallifcerrorsarenonvolatile:
+  first: 'SD_VolatileLockout_IFC_GV: All IFC errors are non-volatile'
+  en: 'SD_VolatileLockout_IFC_GV: All IFC errors are non-volatile'
+  de: 'SD_VolatileLockout_IFC_GV: Alle IFC Fehler sind nichtflüchtig'
   locations:
     - vaillant/bai.0010015600.inc::r::0xd3,0
     - vaillant/bai.0010021961.inc::r::0xd3,0
@@ -19003,17 +18714,10 @@ displaymodedisplaymodeoftheappliance:
   locations:
     - vaillant/bai.0010015600.inc::r::0xda,0
     - vaillant/bai.0010021961.inc::r::0xda,0
-gasvalveswitchingsignalfromtheprocessor:
-  first: Gas valve switching signal (from the processor)
-  en: Gas valve switching signal (from the processor)
-  de: Gasventil Schaltsignal (vom Prozessor)
-  locations:
-    - vaillant/bai.0010015600.inc::r::0xdb,0:value
-    - vaillant/bai.0010021961.inc::r::0xdb,0:value
-gasventil3:
-  first: Gasventil 3
-  en: Gasventil 3
-  de: Gasventil 3
+gasventil3gasvalveswitchingsignalfromtheprocessor:
+  first: 'Gasventil 3: Gas valve switching signal (from the processor)'
+  en: 'Gasventil 3: Gas valve switching signal (from the processor)'
+  de: 'Gasventil 3: Gasventil Schaltsignal (vom Prozessor)'
   locations:
     - vaillant/bai.0010015600.inc::r::0xdb,0
     - vaillant/bai.0010021961.inc::r::0xdb,0
