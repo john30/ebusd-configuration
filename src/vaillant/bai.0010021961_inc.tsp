@@ -199,36 +199,21 @@ namespace Bai._0010021961_inc {
   @ext(0x2, 0)
   model WaterPressure is ReadonlyRegister<presssensor>;
 
-  /** flame */
-  @inherit(r)
+  /** Flame */
   @ext(0x5, 0)
-  model Flame {
-    /** flame */
-    @values(Values_Flame)
-    value: UCH;
-  }
+  model Flame is ReadonlyRegister<onoff2>;
 
   /** Changes_DSN_DK: Numbers adjusting (storing) the DSN */
   @ext(0xc, 0)
   model ChangesDSN is ReadonlyRegister<UCH>;
 
-  /** SD_Gasvalve_uC_DK */
-  @inherit(r)
+  /** SD_Gasvalve_uC_DK: Activation signal of the gasvalve (activated via micrcontroller) */
   @ext(0xd, 0)
-  model GasvalveUC {
-    /** Activation signal of the gasvalve (activated via micrcontroller) */
-    @values(Values_GasvalveUC)
-    value: UCH;
-  }
+  model GasvalveUC is ReadonlyRegister<onoff2>;
 
-  /** SD_VolatileLockout_DK */
-  @inherit(r)
+  /** SD_VolatileLockout_DK: TRUE: STB errors are locking */
   @ext(0x10, 0)
-  model VolatileLockout {
-    /** TRUE: STB errors are locking */
-    @values(Values_VolatileLockout)
-    value: UCH;
-  }
+  model VolatileLockout is ReadonlyRegister<yesno2>;
 
   /** Modulationsetpoint_DK */
   @inherit(r)
@@ -264,32 +249,17 @@ namespace Bai._0010021961_inc {
   @ext(0x3e, 0)
   model ExternalFaultmessage is ReadonlyRegister<onoff>;
 
-  /** SD_Gasvalve_ASICFeedback_DK */
-  @inherit(r)
+  /** SD_Gasvalve_ASICFeedback_DK: Gas valve feedback (from ASIC) */
   @ext(0x47, 0)
-  model GasvalveASICFeedback {
-    /** Gas valve feedback (from ASIC) */
-    @values(Values_GasvalveASICFeedback)
-    value: UCH;
-  }
+  model GasvalveASICFeedback is ReadonlyRegister<onoff2>;
 
-  /** SD_Gasvalve_uCFeedback_DK */
-  @inherit(r)
+  /** SD_Gasvalve_uCFeedback_DK: Gas valve feedback (from micro controller) */
   @ext(0x48, 0)
-  model GasvalveUCFeedback {
-    /** Gas valve feedback (from micro controller) */
-    @values(Values_GasvalveUCFeedback)
-    value: UCH;
-  }
+  model GasvalveUCFeedback is ReadonlyRegister<onoff2>;
 
-  /** SD_Ignitor_DK */
-  @inherit(r)
+  /** SD_Ignitor_DK: Ignition status */
   @ext(0x49, 0)
-  model Ignitor {
-    /** Ignition status */
-    @values(Values_Ignitor)
-    value: UCH;
-  }
+  model Ignitor is ReadonlyRegister<onoff2>;
 
   /** DHW_Types_DK: DHW type of the appliance */
   @ext(0x4b, 0)
@@ -319,14 +289,9 @@ namespace Bai._0010021961_inc {
   @ext(0x70, 0)
   model FloorHeatingContact is ReadonlyRegister<onoff>;
 
-  /** Temperature limiter sensor */
-  @inherit(r)
+  /** Feedback of the temperature limiter sensor */
   @ext(0x77, 0)
-  model Templimiter {
-    /** Feedback of the temperature limiter sensor */
-    @values(Values_Templimiter)
-    value: UCH;
-  }
+  model Templimiter is ReadonlyRegister<onoff2>;
 
   /** eBUS voltage feedback */
   @ext(0x7f, 0)
@@ -391,36 +356,21 @@ namespace Bai._0010021961_inc {
   @ext(0xed, 0)
   model WPSecondStage is ReadonlyRegister<onoff>;
 
-  /** SD_STL_with_NTC */
-  @inherit(r)
+  /** SD_STL_with_NTC: Temperature limiter (1 = NTC; 0 = switching contact) */
   @ext(0xd2, 0)
-  model TemplimiterWithNTC {
-    /** Temperature limiter (1 = NTC; 0 = switching contact) */
-    @values(Values_TemplimiterWithNTC)
-    value: UCH;
-  }
+  model TemplimiterWithNTC is ReadonlyRegister<yesno2>;
 
-  /** SD_VolatileLockout_IFC_GV */
-  @inherit(r)
+  /** SD_VolatileLockout_IFC_GV: All IFC errors are non-volatile */
   @ext(0xd3, 0)
-  model VolatileLockoutIFCGV {
-    /** All IFC errors are non-volatile */
-    @values(Values_VolatileLockoutIFCGV)
-    value: UCH;
-  }
+  model VolatileLockoutIFCGV is ReadonlyRegister<yesno2>;
 
   /** DisplayMode: Display mode of the appliance */
   @ext(0xda, 0)
   model DisplayMode is ReadonlyRegister<UCH>;
 
-  /** Gasventil 3 */
-  @inherit(r)
+  /** Gasventil 3: Gas valve switching signal (from the processor) */
   @ext(0xdb, 0)
-  model Gasvalve3UC {
-    /** Gas valve switching signal (from the processor) */
-    @values(Values_Gasvalve3UC)
-    value: UCH;
-  }
+  model Gasvalve3UC is ReadonlyRegister<onoff2>;
 
   /** InitialisationEEPROM: EEPROM initialization (for production) */
   @ext(0xdc, 0)
@@ -931,56 +881,6 @@ namespace Bai._0010021961_inc {
     _70: 3,
     _85: 4,
     _100: 5,
-  }
-
-  enum Values_Flame {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_GasvalveUC {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_VolatileLockout {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_GasvalveASICFeedback {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_GasvalveUCFeedback {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_Ignitor {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_Templimiter {
-    off: 240,
-    on: 15,
-  }
-
-  enum Values_TemplimiterWithNTC {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_VolatileLockoutIFCGV {
-    no: 240,
-    yes: 15,
-  }
-
-  enum Values_Gasvalve3UC {
-    off: 240,
-    on: 15,
   }
 
   enum Values_HcPumpMode {
