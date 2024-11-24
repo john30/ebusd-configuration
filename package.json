@@ -4,7 +4,7 @@
   "description": "utilities for converting ebusd-configuration files",
   "scripts": {
     "csv2tsp": "tsx ./utils/src/index.ts",
-    "csv2tsp-combine": "tsx ./utils/src/index.ts -b latest/de -L de -m outtsp/i18n.yaml -s outtsp -o outtsp.de",
+    "csv2tsp-combine": "tsx ./utils/src/index.ts -b latest/de -L de -m outtsp/i18n.yaml -p src/i18n.yaml -s outtsp -o outtsp.de",
     "maintsp": "find outtsp/ -name '*.tsp' -not -type l|grep -v 'main.tsp'|sort|grep -v '_inc.'|sed -e 's#outtsp/##' -e 's#^#import \"./#' -e 's#$#\";#' > outtsp/main.tsp",
     "format": "npx tsp format outtsp/*.tsp outtsp/**/*.tsp outtsp.de/*.tsp outtsp.de/**/*.tsp",
     "lint": "npx tsp compile outtsp/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",

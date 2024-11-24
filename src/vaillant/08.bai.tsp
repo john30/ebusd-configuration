@@ -12,6 +12,7 @@ import "./bai.0010006101_inc.tsp";
 import "./bai.0010006341_inc.tsp";
 import "./bai.0010007508_inc.tsp";
 import "./bai.0010010674_inc.tsp";
+import "./bai.0010011701_inc.tsp";
 import "./bai.0010015600_inc.tsp";
 import "./bai.0020066007_inc.tsp";
 import "./bai.308523_inc.tsp";
@@ -21,6 +22,7 @@ import "./bai.0010003886_inc.tsp";
 import "./bai.0010004121_inc.tsp";
 import "./bai.0010006101_inc.tsp";
 import "./bai.0010010674_inc.tsp";
+import "./bai.0010011701_inc.tsp";
 import "./bai.0010015600_inc.tsp";
 import "./bai.0020066007_inc.tsp";
 import "./bai.308523_inc.tsp";
@@ -246,6 +248,18 @@ namespace Bai {
 
     @condition(
       Scan.Id.product,
+      "='0010011701'",
+      "'0010011702'",
+      "'0010011703'",
+      "'0010011704'",
+      "'0010011709'",
+      "0010016402'",
+      "'0010016403'"
+    )
+    Scan_Id_product_0010011701: Bai._0010011701_inc,
+
+    @condition(
+      Scan.Id.product,
       "='0010014917'",
       "'0010014629'",
       "'0010014630'",
@@ -347,6 +361,9 @@ namespace Bai {
 
     @condition(Id.Id.hw, "=0702")
     hw_0702: Bai._0010010674_inc,
+
+    @condition(Id.Id.hw, "=5502")
+    hw_5502: Bai._0010011701_inc,
 
     @condition(Id.Id.hw, "=9602")
     hw_9602: Bai._0010015600_inc,
