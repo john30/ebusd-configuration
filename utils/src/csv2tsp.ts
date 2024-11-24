@@ -250,7 +250,16 @@ const addI18n = (location: string, str?: string): string|undefined => {
       }
     }
   }
-  const old = i18n.get(key);
+  let old = i18n.get(key);
+  if (!old && !add && i18nMapRev) {
+    const other = i18nMapRev.get(str)!;
+    if (other) {
+      key = other!.toLowerCase().replaceAll(/[^a-z0-9]/g, '');
+      first = other;
+      old = i18n.get(key);
+      add = {first, [i18nLang]: str, en: other};
+    }
+  }
   if (old) {
     if (add) {
       Object.assign(old, add);
@@ -792,6 +801,7 @@ const helpTxt = [
   '  -w           warn on different text for same key',
   '  -m mapfile   the file name of a multi-language mapping to read for normalizing i18n',
   '  -M lang      the language code for -m option (default "en")',
+  '  -p mapfile   the file name of a previously generated multi-language mapping to read for seeding the i18n normalization',
   '  -s i18ndir   the directory in which to store i18n file(s) per language ("<lang>.yaml")',
   '  -i regex     pattern for file names (including relative dir) to ignore',
   '  csvfile      the csv file(s) to transform (unless to traverse the whole basedir)'
@@ -802,12 +812,14 @@ const i18n = new Map<string, I18n>(); // map from i18n key to src language text 
 let i18nLang: keyof Omit<I18n, 'locations'> = 'en';
 let warnI18n = false;
 let i18nMap: Map<string, [string, Partial<I18n>]>; // map from message/field/template key to i18n key and language+text
+let i18nMapRev: Map<string, string>; // map from non-en language to en from previous mapping
 export const csv2tsp = async (args: string[] = []) => {
   let indir = 'latest/en';
   let outdir = 'outtsp';
   let files: string[] = [];
   let langFile: string|undefined;
   let normFile: string|undefined;
+  let normFilePrev: string|undefined;
   let normFileLang: keyof Omit<I18n, 'locations'> = 'en';
   let storeI18nDir: string|undefined;
   let ignorePattern: RegExp|undefined;
@@ -843,6 +855,9 @@ export const csv2tsp = async (args: string[] = []) => {
       case '-M':
         normFileLang = args[++i] as keyof Omit<I18n, 'locations'>;
         break;
+      case '-p':
+        normFilePrev = args[++i];
+        break;
       case '-s':
         storeI18nDir = args[++i];
         break;
@@ -868,8 +883,36 @@ export const csv2tsp = async (args: string[] = []) => {
     if (read) {
       i18nMap = new Map();
       const normData = await load(read) as Record<string, I18n & {locations: string[]}>;
+      if (normFilePrev && i18nLang!=='en') {
+        i18nMapRev = new Map();
+      }
       for (const [k, v] of Object.entries(normData)) {
-        v.locations.forEach(l => i18nMap.set(l, [k, {first: v.first, [normFileLang]: v[normFileLang] as string}]))
+        if (i18nMapRev && v.locations.length && v[i18nLang] && v.en && v.en!==v[i18nLang]) {
+          if (!i18nMapRev.has(v[i18nLang] as string)) {
+            i18nMapRev.set(v[i18nLang] as string, v.en);
+          }
+        }
+        v.locations.forEach(l => {
+          i18nMap.set(l, [k, {first: v.first, [normFileLang]: v[normFileLang] as string}]);
+        });
+      }
+      if (normFilePrev && i18nLang!=='en') {
+        read = undefined;
+        try {
+          read = await readFile(normFilePrev, 'utf-8');
+        } catch (e) {
+          console.error(`unable to read previous mapping file ${normFilePrev}, ignoring it`);
+        }
+        if (read) {
+          const normDataPrev = await load(read) as Record<string, I18n & {locations: string[]}>;
+          for (const [k, v] of Object.entries(normDataPrev)) {
+            if (v[i18nLang] && v.en && v.en!==v[i18nLang]) {
+              if (!i18nMapRev.has(v[i18nLang] as string)) {
+                i18nMapRev.set(v[i18nLang] as string, v.en);
+              }
+            }
+          }
+        }
       }
     }
   }

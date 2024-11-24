@@ -769,8 +769,9 @@ namespace Bai._0010005400_inc {
   @ext(0xe5, 0)
   model DCFTimeDate {
     /** DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time; */
-    @maxLength(8)
-    value: HEX;
+    btime: btime;
+
+    bdate: bdate;
   }
 
   /** InitialisationSequence_DK: value:0 -> off1-> full initialisation incl. all defaultvalues (done in the production) */

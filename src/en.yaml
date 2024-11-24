@@ -469,7 +469,7 @@ Current Volume Flow: Current Volume Flow
 'CalculatedMixerPosition: 0: primary open; 220: primary closed': 'CalculatedMixerPosition: 0: primary open; 220: primary closed'
 ElectricalHeater: ElectricalHeater
 HeatDemand: HeatDemand
-'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL': 'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'
+OperatingMode: OperatingMode
 ManualTappingSetpoint: ManualTappingSetpoint
 AutoTappingSetpoint: AutoTappingSetpoint
 QuickVetoSetpoint: QuickVetoSetpoint
@@ -1333,7 +1333,7 @@ StateEM: StateEM
   SolarHydraulicMap: hydraulic scheme (1..9); this parameter has to change at
   the IO-pcb
 PreShutDownTime: PreShutDownTime
-FrostOverRideTime: frost over ride time
+FrostOverRideTime: FrostOverRideTime
 TempIncrease: TempIncrease
 'ContinuousHeatingLimit: -128=off, (0x80, -128 = off)': 'ContinuousHeatingLimit: -128=off, (0x80, -128 = off)'
 'Mk2Detected: detected VR60 (bit counted)': 'Mk2Detected: detected VR60 (bit counted)'
@@ -1370,7 +1370,9 @@ SeparationShift: SeparationShift
 TurnOnDelay: TurnOnDelay
 TurnOffDelay: TurnOffDelay
 'BoilerSequence: activation of boiler sequence': 'BoilerSequence: activation of boiler sequence'
-BoilerSequenceChangeTime: BoilerSequenceChangeTime
+'BoilerSequenceChangeTime: if this xx hours reachred between the first and the last boiler in the actual sequence then the boiler sequensce is new sorted': >-
+  BoilerSequenceChangeTime: if this xx hours reachred between the first and the
+  last boiler in the actual sequence then the boiler sequensce is new sorted
 row of sequence: row of sequence
 SequenceOfBoiler: SequenceOfBoiler
 BurnerHours_boiler1: BurnerHours_boiler1
@@ -1441,14 +1443,14 @@ DesiredStateBoiler_8: DesiredStateBoiler_8
 'LoadingPumpBoiler_6: Off=0, On=100': 'LoadingPumpBoiler_6: Off=0, On=100'
 'LoadingPumpBoiler_7: Off=0, On=100': 'LoadingPumpBoiler_7: Off=0, On=100'
 'LoadingPumpBoiler_8: Off=0, On=100': 'LoadingPumpBoiler_8: Off=0, On=100'
-'ChPumpBoiler_1: Off=0, On=1': 'ChPumpBoiler_1: Off=0, On=1'
-'ChPumpBoiler_2: Off=0, On=1': 'ChPumpBoiler_2: Off=0, On=1'
-'ChPumpBoiler_3: Off=0, On=1': 'ChPumpBoiler_3: Off=0, On=1'
-'ChPumpBoiler_4: Off=0, On=1': 'ChPumpBoiler_4: Off=0, On=1'
-'ChPumpBoiler_5: Off=0, On=1': 'ChPumpBoiler_5: Off=0, On=1'
-'ChPumpBoiler_6: Off=0, On=1': 'ChPumpBoiler_6: Off=0, On=1'
-'ChPumpBoiler_7: Off=0, On=1': 'ChPumpBoiler_7: Off=0, On=1'
-'ChPumpBoiler_8: Off=0, On=1': 'ChPumpBoiler_8: Off=0, On=1'
+ChPumpBoiler_1: ChPumpBoiler_1
+ChPumpBoiler_2: ChPumpBoiler_2
+ChPumpBoiler_3: ChPumpBoiler_3
+ChPumpBoiler_4: ChPumpBoiler_4
+ChPumpBoiler_5: ChPumpBoiler_5
+ChPumpBoiler_6: ChPumpBoiler_6
+ChPumpBoiler_7: ChPumpBoiler_7
+ChPumpBoiler_8: ChPumpBoiler_8
 FlagsBoiler_1: FlagsBoiler_1
 FlagsBoiler_2: FlagsBoiler_2
 FlagsBoiler_3: FlagsBoiler_3
@@ -1494,6 +1496,7 @@ SystemDesiredFlowTemp: SystemDesiredFlowTemp
   simultaneous demand
 'TempIncrease: temperature increase': 'TempIncrease: temperature increase'
 'PreShutDownTime: pre shut down time': 'PreShutDownTime: pre shut down time'
+'FrostOverRideTime: frost over ride time': 'FrostOverRideTime: frost over ride time'
 'EhpBackupHeaterRelease: backup heater release': 'EhpBackupHeaterRelease: backup heater release'
 'EhpTimeOfPredictedPowerCut: time of the next predicted power cut': 'EhpTimeOfPredictedPowerCut: time of the next predicted power cut'
 'TempFailDetectTime: temperature fail detection time': 'TempFailDetectTime: temperature fail detection time'
@@ -1555,7 +1558,6 @@ Stat15MinBusTimeout: Stat15MinBusTimeout
 StatRTOSErrorcode: StatRTOSErrorcode
 StatRestarts: StatRestarts
 StatRTOSErrorCounter: StatRTOSErrorCounter
-OperatingMode: OperatingMode
 'MinFlowTemp: 1 °C resolution': 'MinFlowTemp: 1 °C resolution'
 'MaxFlowTemp: 1 °C resolution': 'MaxFlowTemp: 1 °C resolution'
 'DesiredTemperature: 1/2 °C resolution': 'DesiredTemperature: 1/2 °C resolution'
@@ -1691,6 +1693,7 @@ BMR:Heating curve for whole system: BMR:Heating curve for whole system
 'MinFlowTemp: BMR:Minimum Flow Temperature for circuit': 'MinFlowTemp: BMR:Minimum Flow Temperature for circuit'
 'Flow setpoint: BMR:flow temperature that is actually desired by circuit': 'Flow setpoint: BMR:flow temperature that is actually desired by circuit'
 'MaxFlowTemp: BMR:Maximum Flow Temperature for circuit': 'MaxFlowTemp: BMR:Maximum Flow Temperature for circuit'
+'HcMaxPreHeating: BMR: Maximum Preheating time in minutes': 'HcMaxPreHeating: BMR: Maximum Preheating time in minutes'
 'Floor_Protection_Limit: Floor protection temperature at which the heat pump goes to error mode.': >-
   Floor_Protection_Limit: Floor protection temperature at which the heat pump
   goes to error mode.
@@ -1705,9 +1708,13 @@ BMR:Heating curve for whole system: BMR:Heating curve for whole system
 'CoolingStartOffset_HK2: Circuit specific offset to the adjusted outside temperature cut-off value for demanding cooling operation. HK2 value.': >-
   CoolingStartOffset_HK2: Circuit specific offset to the adjusted outside
   temperature cut-off value for demanding cooling operation. HK2 value.
-Tot_AverageTime_HK2: Tot_AverageTime_HK2
-DWMOffToHeatingDelay_HK2: DWMOffToHeatingDelay_HK2
-DWMOffToCoolingDelay_HK2: DWMOffToCoolingDelay_HK2
+'Tot_AverageTime_HK2: Circuit specific averaging time span in hours. HK2 value': 'Tot_AverageTime_HK2: Circuit specific averaging time span in hours. HK2 value'
+'DWMOffToHeatingDelay_HK2: Circuit specific delay for standby to heating operation change: HK2': >-
+  DWMOffToHeatingDelay_HK2: Circuit specific delay for standby to heating
+  operation change: HK2
+'DWMOffToCoolingDelay_HK2: Circuit specific delay for standby to cooling operation change: HK2': >-
+  DWMOffToCoolingDelay_HK2: Circuit specific delay for standby to cooling
+  operation change: HK2
 'MinEfficiencyHysteresis_HK2: If remote control with room temperature measurement used, minimum general flow (VF2) to heat circuit room temperature difference to release cooling operation.': >-
   MinEfficiencyHysteresis_HK2: If remote control with room temperature
   measurement used, minimum general flow (VF2) to heat circuit room temperature
@@ -2553,7 +2560,7 @@ e.08 SD_CO_R0_DK: e.08 SD_CO_R0_DK
 'e.19 FluePipeFactor_DK: calculated fluepipe-factor': 'e.19 FluePipeFactor_DK: calculated fluepipe-factor'
 'SD_CO_PTC_TargetTemp_DK: target heater-temperature': 'SD_CO_PTC_TargetTemp_DK: target heater-temperature'
 BoilerType_2_DK: BoilerType_2_DK
-TTM_MaxTime_DK: TTM_MaxTime_DK
+'TTM_MaxTime_DK: maximum time for calibration-routine': 'TTM_MaxTime_DK: maximum time for calibration-routine'
 average time for calibration-routine: average time for calibration-routine
 TTM_AverageTime_sum_DK: TTM_AverageTime_sum_DK
 maximum value of calculated gas-adaptive correction-factor: maximum value of calculated gas-adaptive correction-factor
@@ -3037,7 +3044,9 @@ value and sensorstate of the system's return flow sensor TD2: value and sensorst
 'RuntimeCollectorPump: accumulated runtime of the collector pump': 'RuntimeCollectorPump: accumulated runtime of the collector pump'
 'RuntimeCollectorPumpSeconds: runtime in seconds base for runtime in hours': 'RuntimeCollectorPumpSeconds: runtime in seconds base for runtime in hours'
 'KickFunction: enable kick function': 'KickFunction: enable kick function'
-ColKickPumpTime: ColKickPumpTime
+'ColKickPumpTime: time pump is running when collector kick function is activated': >-
+  ColKickPumpTime: time pump is running when collector kick function is
+  activated
 'ColKickTempDelta: temperature difference necessary for activating the pump kick': >-
   ColKickTempDelta: temperature difference necessary for activating the pump
   kick
@@ -3070,7 +3079,9 @@ FlowRate: FlowRate
 'SolarCircuitProtectionHysteresis: temperature hysteresis for activating solar pump after collector protection': >-
   SolarCircuitProtectionHysteresis: temperature hysteresis for activating solar
   pump after collector protection
-SolarCircuitProtectionTime: SolarCircuitProtectionTime
+'SolarCircuitProtectionTime: time for which KOL temperature has to exceed the protection temperature to enter solar circuit protection mode': >-
+  SolarCircuitProtectionTime: time for which KOL temperature has to exceed the
+  protection temperature to enter solar circuit protection mode
 'EnableSolarCircuitProtection: enable solar circuit protection': 'EnableSolarCircuitProtection: enable solar circuit protection'
 'FrostProtectionEnabled: set TRUE to enable solar frost protection': 'FrostProtectionEnabled: set TRUE to enable solar frost protection'
 'FrostProtectionLimit: temperature level for activating solar frost protection': 'FrostProtectionLimit: temperature level for activating solar frost protection'
@@ -3142,6 +3153,7 @@ State of multi purpose output: State of multi purpose output
   SolarProtectionStartTemp: Temperature for collector pump protection in case of
   high temperatures
 ColKickGradient: ColKickGradient
+ColKickPumpTime: ColKickPumpTime
 'SolarCircuitProtectionHysteresis: After collector pump protection in case of too high temperatures, the collector has to cool down at least this temperature': >-
   SolarCircuitProtectionHysteresis: After collector pump protection in case of
   too high temperatures, the collector has to cool down at least this

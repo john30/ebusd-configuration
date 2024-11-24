@@ -457,12 +457,8 @@ namespace _430 {
   model AdpPreHCurrentRoomTemp is ReadonlyRegister<temp>;
 
   /** adpPreH_MinutesBeforeFirstTW */
-  @inherit(r)
   @ext(0xb6, 0)
-  model AdpPreHMinutesBeforeFirstTW {
-    @unit("sec")
-    value: UIN;
-  }
+  model AdpPreHMinutesBeforeFirstTW is ReadonlyRegister<seconds2>;
 
   /** adpPreH_PreheatingTime */
   @ext(0xb7, 0)
@@ -485,12 +481,8 @@ namespace _430 {
   model AdpPreHRamp is ReadonlyRegister<UIN>;
 
   /** adpPreH_Starttime */
-  @inherit(r)
   @ext(0xbc, 0)
-  model AdpPreHStarttime {
-    @unit("sec")
-    value: UIN;
-  }
+  model AdpPreHStarttime is ReadonlyRegister<seconds2>;
 
   /** adpPreH_RoomTempStart */
   @ext(0xbd, 0)

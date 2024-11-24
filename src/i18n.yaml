@@ -2682,12 +2682,13 @@ heatdemand:
   de: Wärmeanforderung
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x9,0
-operatingmode0off1on2auto3manual:
-  first: 'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'
-  en: 'OperatingMode: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'
-  de: 'Betriebsart: 0=OFF, 1=ON, 2=AUTO, 3=MANUAL'
+operatingmode:
+  first: OperatingMode
+  en: OperatingMode
+  de: Betriebsart
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0xa,0
+    - vaillant/23.zeo.cc.csv::r::0x6,0x2
 manualtappingsetpoint:
   first: ManualTappingSetpoint
   en: ManualTappingSetpoint
@@ -8228,11 +8229,10 @@ preshutdowntime:
     - vaillant/15.ui.csv::r::0x2d,0
 frostoverridetime:
   first: FrostOverRideTime
-  en: frost over ride time
+  en: FrostOverRideTime
   de: Frostschutz-Verzögerung
   locations:
     - vaillant/15.ui.csv::r::0x2e,0
-    - vaillant/15.uih.csv::r::0x2e,0
 tempincrease:
   first: TempIncrease
   en: TempIncrease
@@ -8464,9 +8464,15 @@ boilersequenceactivationofboilersequence:
     (Vorlaufsollwert > 20°C)
   locations:
     - vaillant/15.ui.csv::r::0x32,0
-boilersequencechangetime:
-  first: BoilerSequenceChangeTime
-  en: BoilerSequenceChangeTime
+boilersequencechangetimeifthisxxhoursreachredbetweenthefirstandthelastboilerintheactualsequencethentheboilersequensceisnewsorted:
+  first: >-
+    BoilerSequenceChangeTime: if this xx hours reachred between the first and
+    the last boiler in the actual sequence then the boiler sequensce is new
+    sorted
+  en: >-
+    BoilerSequenceChangeTime: if this xx hours reachred between the first and
+    the last boiler in the actual sequence then the boiler sequensce is new
+    sorted
   de: >-
     Mindestdifferenz für Kesslfolgeumkehr: Anzahl der Ansteuerstunden die
     überschritten sein müssen um eine Neuanordnung der Heizgeräte aus zu lösen.
@@ -8887,51 +8893,51 @@ loadingpumpboiler8off0on100:
   de: 'LoadingPumpBoiler_8: Off=0, On=100'
   locations:
     - vaillant/15.ui.csv::r::0x85,0x40
-chpumpboiler1off0on1:
-  first: 'ChPumpBoiler_1: Off=0, On=1'
-  en: 'ChPumpBoiler_1: Off=0, On=1'
+chpumpboiler1:
+  first: ChPumpBoiler_1
+  en: ChPumpBoiler_1
   de: 'ChPumpBoiler_1: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x8
-chpumpboiler2off0on1:
-  first: 'ChPumpBoiler_2: Off=0, On=1'
-  en: 'ChPumpBoiler_2: Off=0, On=1'
+chpumpboiler2:
+  first: ChPumpBoiler_2
+  en: ChPumpBoiler_2
   de: 'ChPumpBoiler_2: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x10
-chpumpboiler3off0on1:
-  first: 'ChPumpBoiler_3: Off=0, On=1'
-  en: 'ChPumpBoiler_3: Off=0, On=1'
+chpumpboiler3:
+  first: ChPumpBoiler_3
+  en: ChPumpBoiler_3
   de: 'ChPumpBoiler_3: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x18
-chpumpboiler4off0on1:
-  first: 'ChPumpBoiler_4: Off=0, On=1'
-  en: 'ChPumpBoiler_4: Off=0, On=1'
+chpumpboiler4:
+  first: ChPumpBoiler_4
+  en: ChPumpBoiler_4
   de: 'ChPumpBoiler_4: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x20
-chpumpboiler5off0on1:
-  first: 'ChPumpBoiler_5: Off=0, On=1'
-  en: 'ChPumpBoiler_5: Off=0, On=1'
+chpumpboiler5:
+  first: ChPumpBoiler_5
+  en: ChPumpBoiler_5
   de: 'ChPumpBoiler_5: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x28
-chpumpboiler6off0on1:
-  first: 'ChPumpBoiler_6: Off=0, On=1'
-  en: 'ChPumpBoiler_6: Off=0, On=1'
+chpumpboiler6:
+  first: ChPumpBoiler_6
+  en: ChPumpBoiler_6
   de: 'ChPumpBoiler_6: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x30
-chpumpboiler7off0on1:
-  first: 'ChPumpBoiler_7: Off=0, On=1'
-  en: 'ChPumpBoiler_7: Off=0, On=1'
+chpumpboiler7:
+  first: ChPumpBoiler_7
+  en: ChPumpBoiler_7
   de: 'ChPumpBoiler_7: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x38
-chpumpboiler8off0on1:
-  first: 'ChPumpBoiler_8: Off=0, On=1'
-  en: 'ChPumpBoiler_8: Off=0, On=1'
+chpumpboiler8:
+  first: ChPumpBoiler_8
+  en: ChPumpBoiler_8
   de: 'ChPumpBoiler_8: Off=0, On=1'
   locations:
     - vaillant/15.ui.csv::r::0x86,0x40
@@ -9180,6 +9186,12 @@ preshutdowntimepreshutdowntime:
   de: Vorabschaltzeit
   locations:
     - vaillant/15.uih.csv::r::0x2d,0
+frostoverridetimefrostoverridetime:
+  first: 'FrostOverRideTime: frost over ride time'
+  en: 'FrostOverRideTime: frost over ride time'
+  de: 'Frostschutz-Verzögerung: Frostschutzverzögerung'
+  locations:
+    - vaillant/15.uih.csv::r::0x2e,0
 ehpbackupheaterreleasebackupheaterrelease:
   first: 'EhpBackupHeaterRelease: backup heater release'
   en: 'EhpBackupHeaterRelease: backup heater release'
@@ -9596,12 +9608,6 @@ statrtoserrorcounter:
     - vaillant/52.mc2.mc.4.csv::r::0xd3,0
     - vaillant/53.mc2.mc.5.csv::r::0xd3,0
     - vaillant/ec.solsy.sc.csv::r::0xd3,0
-operatingmode:
-  first: OperatingMode
-  en: OperatingMode
-  de: Betriebsart
-  locations:
-    - vaillant/23.zeo.cc.csv::r::0x6,0x2
 minflowtemp1cresolution:
   first: 'MinFlowTemp: 1 °C resolution'
   en: 'MinFlowTemp: 1 °C resolution'
@@ -10195,7 +10201,6 @@ hcmaxpreheating:
   de: Max. Voraufheizung
   locations:
     - vaillant/26.solsy.hc.csv:sw_ge401:r::0x38,0
-    - vaillant/50.ehp.mc.csv::r::0x38,0
 teleswitchoperatingmodeiftheteleswitchportisactivatedtheburnercircuitoperatesinthismode:
   first: >-
     TeleswitchOperatingMode: If the tele switch port is activated the burner
@@ -10381,6 +10386,15 @@ maxflowtempbmrmaximumflowtemperatureforcircuit:
   de: 'Max. Vorlauftemp.: BMR:Maximum Flow Temperature for circuit'
   locations:
     - vaillant/50.ehp.mc.csv::r::0x31,0
+hcmaxpreheatingbmrmaximumpreheatingtimeinminutes:
+  first: 'HcMaxPreHeating: BMR: Maximum Preheating time in minutes'
+  en: 'HcMaxPreHeating: BMR: Maximum Preheating time in minutes'
+  de: >-
+    Max. Voraufheizung: Um die Trägheit der Fußbodenheizung zu berücksichtigen,
+    können Sie eine Voraufheizung vor Beginn der programmierten Heizzeit manuell
+    einstellen
+  locations:
+    - vaillant/50.ehp.mc.csv::r::0x38,0
 floorprotectionlimitfloorprotectiontemperatureatwhichtheheatpumpgoestoerrormode:
   first: >-
     Floor_Protection_Limit: Floor protection temperature at which the heat pump
@@ -10451,25 +10465,37 @@ coolingstartoffsethk2circuitspecificoffsettotheadjustedoutsidetemperaturecutoffv
     AT-Abschaltgrenze zur Erzeugung einer Kühlanforderung. HK2 Wert.
   locations:
     - vaillant/50.ehp.mc.csv:sw_ge350:r::0x87,1
-totaveragetimehk2:
-  first: Tot_AverageTime_HK2
-  en: Tot_AverageTime_HK2
+totaveragetimehk2circuitspecificaveragingtimespaninhourshk2value:
+  first: >-
+    Tot_AverageTime_HK2: Circuit specific averaging time span in hours. HK2
+    value
+  en: >-
+    Tot_AverageTime_HK2: Circuit specific averaging time span in hours. HK2
+    value
   de: >-
     Tot_AverageTime_HK2: Heizkreisspezifischer (HK2) Außentemperatur
     Mittelungszeitraum
   locations:
     - vaillant/50.ehp.mc.csv:sw_ge350:r::0x89,1
-dwmofftoheatingdelayhk2:
-  first: DWMOffToHeatingDelay_HK2
-  en: DWMOffToHeatingDelay_HK2
+dwmofftoheatingdelayhk2circuitspecificdelayforstandbytoheatingoperationchangehk2:
+  first: >-
+    DWMOffToHeatingDelay_HK2: Circuit specific delay for standby to heating
+    operation change: HK2
+  en: >-
+    DWMOffToHeatingDelay_HK2: Circuit specific delay for standby to heating
+    operation change: HK2
   de: >-
     DWMOffToHeatingDelay_HK2: Heizkreisspezifische Sperrzeit für den Wechsel von
     Bereitschaft zur Heizanforderung nach vorherigem Kühlbetrieb. HK2 Wert.
   locations:
     - vaillant/50.ehp.mc.csv:sw_ge350:r::0x84,1
-dwmofftocoolingdelayhk2:
-  first: DWMOffToCoolingDelay_HK2
-  en: DWMOffToCoolingDelay_HK2
+dwmofftocoolingdelayhk2circuitspecificdelayforstandbytocoolingoperationchangehk2:
+  first: >-
+    DWMOffToCoolingDelay_HK2: Circuit specific delay for standby to cooling
+    operation change: HK2
+  en: >-
+    DWMOffToCoolingDelay_HK2: Circuit specific delay for standby to cooling
+    operation change: HK2
   de: >-
     DWMOffToCoolingDelay_HK2: Heizkreisspezifische Sperrzeit für den Wechsel von
     Bereitschaft zur Kühlanforderung nach vorherigem Heizbetrieb. HK2 Wert.
@@ -14789,6 +14815,9 @@ dcftimedatestampstructucharsecucharminucharstduchartagucharmonucharwtgucharjahtd
   first: >-
     DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
     uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
+  en: >-
+    DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
+    uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
   de: >-
     DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
     uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
@@ -14803,14 +14832,11 @@ dcftimedatestampstructucharsecucharminucharstduchartagucharmonucharwtgucharjahtd
     - vaillant/bai.0010006101.inc::r::0xe5,0:btime
     - vaillant/bai.0010006341.inc::r::0xe5,0:btime
     - vaillant/bai.0010007508.inc::r::0xe5,0:btime
-    - vaillant/bai.0010008045.inc::r::0xe5,0:value
+    - vaillant/bai.0010008045.inc::r::0xe5,0:btime
     - vaillant/bai.0010010674.inc::r::0xe5,0:btime
     - vaillant/bai.0010015600.inc::r::0xe5,0:vti
     - vaillant/bai.0010021961.inc::r::0xe5,0:vti
     - vaillant/bai.308523.inc::r::0xe5,0:btime
-  en: >-
-    DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
-    uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 dcftimedatedk:
   first: DCF_TimeDate_DK
   en: DCF_TimeDate_DK
@@ -17158,9 +17184,9 @@ boilertype2dk:
   locations:
     - vaillant/bai.0010004121.inc::r::0xc,1
     - vaillant/bai.0010006101.inc::r::0xc,1
-ttmmaxtimedk:
-  first: TTM_MaxTime_DK
-  en: TTM_MaxTime_DK
+ttmmaxtimedkmaximumtimeforcalibrationroutine:
+  first: 'TTM_MaxTime_DK: maximum time for calibration-routine'
+  en: 'TTM_MaxTime_DK: maximum time for calibration-routine'
   de: 'TTM_MaxTime_DK: maximum time for calibration-routine'
   locations:
     - vaillant/bai.0010004121.inc::r::0x18,1
@@ -20182,15 +20208,18 @@ kickfunctionenablekickfunction:
   de: 'KickFunction: enable kick function'
   locations:
     - vaillant/ec.sol.sc.csv::r::0x32,0
-colkickpumptime:
-  first: ColKickPumpTime
-  en: ColKickPumpTime
+colkickpumptimetimepumpisrunningwhencollectorkickfunctionisactivated:
+  first: >-
+    ColKickPumpTime: time pump is running when collector kick function is
+    activated
+  en: >-
+    ColKickPumpTime: time pump is running when collector kick function is
+    activated
   de: >-
     Länge Kollektorkick: time pump is running when collector kick function is
     activated
   locations:
     - vaillant/ec.sol.sc.csv::r::0x3b,0
-    - vaillant/ec.solsy.sc.csv::r::0x9e,0
 colkicktempdeltatemperaturedifferencenecessaryforactivatingthepumpkick:
   first: >-
     ColKickTempDelta: temperature difference necessary for activating the pump
@@ -20323,9 +20352,13 @@ solarcircuitprotectionhysteresistemperaturehysteresisforactivatingsolarpumpafter
     after collector protection
   locations:
     - vaillant/ec.sol.sc.csv::r::0x31,0
-solarcircuitprotectiontime:
-  first: SolarCircuitProtectionTime
-  en: SolarCircuitProtectionTime
+solarcircuitprotectiontimetimeforwhichkoltemperaturehastoexceedtheprotectiontemperaturetoentersolarcircuitprotectionmode:
+  first: >-
+    SolarCircuitProtectionTime: time for which KOL temperature has to exceed the
+    protection temperature to enter solar circuit protection mode
+  en: >-
+    SolarCircuitProtectionTime: time for which KOL temperature has to exceed the
+    protection temperature to enter solar circuit protection mode
   de: >-
     SolarCircuitProtectionTime: time for which KOL temperature has to exceed the
     protection temperature to enter solar circuit protection mode
@@ -20703,6 +20736,12 @@ colkickgradient:
   de: Gradient Kollektorkick
   locations:
     - vaillant/ec.solsy.sc.csv::r::0x9d,0
+colkickpumptime:
+  first: ColKickPumpTime
+  en: ColKickPumpTime
+  de: Länge Kollektorkick
+  locations:
+    - vaillant/ec.solsy.sc.csv::r::0x9e,0
 solarcircuitprotectionhysteresisaftercollectorpumpprotectionincaseoftoohightemperaturesthecollectorhastocooldownatleastthistemperature:
   first: >-
     SolarCircuitProtectionHysteresis: After collector pump protection in case of
