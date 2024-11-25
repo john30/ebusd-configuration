@@ -4,6 +4,8 @@ temps2,SIN,,°C,temperature
 tempv,EXP,,°C,temperature
 press,FLT,,bar,pressure
 pressv,EXP,,bar,pressure
+press10,UCH,10,bar,pressure
+flowrate,UIN,,l/h,flow rate
 date,HDA:3,,,date
 day,BDY,,,weekday
 daysel,UCH,0=selected;1=Mo-Fr;2=Sa-Su;3=Mo-Su,,days
@@ -29,7 +31,7 @@ calibration1,D1C,,K,
 calibrations,SCH,2,K,
 calibrationv,EXP,,K,
 integral,SIN,,°min,
-hcmode,UCH,0=auto;1=off;2=heat;2=water,,boiler mode
+hcmode,UCH,0=auto;1=off;2=heat;3=water,,boiler mode
 hcmode2,UCH,0=off;3=heat;4=water,,boiler mode
 mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,mixer mode
 mctype,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
@@ -64,7 +66,7 @@ to,TTM,,,to
 slot1,from;to,,,slot 1 from/to
 slot2,from;to,,,slot 2 from/to
 slot3,from;to,,,slot 3 from/to
-slot1-3,slot1;slot2;slot3,,,slots 1-3
+slot1-3,slot1;slot2;slot3,,,
 timer,slot1-3;daysel,,,
 backtype,UCH,0=not present;1=externalheat;2=externalwater;3=externalheatandwater;4=internalheatandwater,,
 backmode,UCH,0=no backup;1=withbackup;2=onlybackup,,
@@ -96,7 +98,7 @@ phone,STR:9,,,phone number
 shortphone,STR:6,,,phone number
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
-rcmode,UIN,0=off;1=modulating;2=thermostat,,
+rcmode,UIN,0=inactive;1=active;2=expanded,,
 slotIndex,UCH,,,array index for the zones. Array Index start at 0 for the first element
 slotCount,UCH,,,Number of total slots in the array. May be Zero.
 slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,,Number of total slots in the array for a week. Mon-Sun
@@ -106,3 +108,5 @@ wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for
 wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;HEX:2,,,Complete slot for writing the time table settings without a temperature. FF FF has to be appended.
 rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
 rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.
+minutesum,ULG,,min,minutes
+scode,UIN,34=Frost protection;100=Standby;101=Heating: Compressor shutdown;102=Heating: Compressor blocked;103=Heating: Prerun;104=Heating: Compressor active;107=Heating: Overrun;111=Cooling: Compressor shutdown;112=Cooling: Compressor blocked;113=Cooling: Prerun;114=Cooling: Compressor active;117=Cooling: Overrun;125=Heating: Immersion heater active;132=Warm Water: Compressor blocked;133=Warm Water: Prerun;134=Warm Water: Compressor active;135=Warm Water: Immersion Heater active;137=Warm Water: Overrun;141=Heating: Immersion Heater shutdown;142=Heating: Immersion Heater blocked;151=Warm Water: Immersion Heater shutdown;152=Warm Water: Immersion Heater blocked;202=Air purging program active;240=Compressor oil heating activated;252=Fan 1 blocked;255=Fan 1 air inlet too high;256=Fan 1 air inlet too low;260=Fan 2 blocked;275=Building circuit flow too low;277=Building circuit pump fault;280=Frequency converter fault: Compressor;281=Frequency converter fault: Mains voltage;282=Frequency converter fault: Overheating;283=Deicing time too long;284=Deicing flow temperature too low;285=Compressor outlet temperature too high;286=Hot gas temperature switch open;287=Fan 1: Wind;288=Fan 2: Wind;289=Current limt active;302=High pressure switch open;303=Compressor outlet temperature too high;304=Evaporation temperature too low;305=Condensation temperature too low;306=Evaporation temperature too high;308=Condensation temperature too high;312=Building circuit return temperature too low;314=Building circuit return temperature too high;351=Immersion heater: Flow temperature too high;516=Deicing active;575=Frequency converter fault;581=Connection fault: frequency converter;590=4-port-valve position fault,,
