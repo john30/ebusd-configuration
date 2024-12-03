@@ -311,7 +311,7 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
   }
   line = objSlice(line);
   if (!line) return;
-  const {id, typ, typLen, comm, divisor, values}
+  const {id, typ, typLen, comm, divisor, values, constValue}
   = divisorValues(line[0], line[1], line[2], line[4]);
   const types = line[1].split(';');
   if (types.length>1) {
@@ -404,7 +404,7 @@ const splitTypeName = (t?: string): string[] => {
 }
 const divisorValues = (name: string|undefined, typIn: string, divVal: string|undefined,
   comm: string|undefined, singleField?: string
-): {id: string, typ?: string, typLen?: string, comm: string, divisor?: string, values?: string} => {
+): {id: string, typ?: string, typLen?: string, comm: string, divisor?: string, values?: string, constValue?: string} => {
   let [typ, typName] = splitTypeName(typIn);
   name = name || typName;
   const id = normId(name||(typ.split(':')[0]));
@@ -415,11 +415,15 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
   // if (!comm && origTyp && !isBaseType(origTyp)) {
   //   comm = origTyp;
   // }
-  const divParts = divVal && divVal.split(';');
-  const hasValues = divParts && divParts.length>1;
+  const divParts = divVal?.split(';');
+  const hasValues = divParts && (divParts.length>1 || divParts[0].indexOf('=')>0); // may be just one
+  const isConst = !hasValues && divParts?.length===1 && divParts[0].startsWith('=');
   let divisor: string|undefined;
   let values: string|undefined;
-  if (hasValues) {
+  let constValue: string|undefined;
+  if (isConst) {
+    constValue = divParts[0].substring(1).trim();
+  } else if (hasValues) {
     values = `Values_`;
     values += ((id&&!isBaseType(id)&&id)||singleField||comm||'').replaceAll(/[^a-zA-Z0-9]/g, '_');
     values += suffix(values, valueLists.seen);
@@ -429,7 +433,7 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
     const value = parseInt(divVal!, 10);
     divisor = `@${value<0?'factor':'divisor'}(${Math.abs(value)})`;
   }
-  return {id, typ, typLen, comm, divisor, values};
+  return {id, typ, typLen, comm, divisor, values, constValue};
 };
 const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string, typ: string}|undefined => {
   if (!line || !singleField) return;
@@ -446,7 +450,7 @@ const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string,
 }
 const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, singleField?: string): OptStrs => {
   if (!line) return;
-  const {id, typ, typLen, comm, divisor, values}
+  const {id, typ, typLen, comm, divisor, values, constValue}
   = divisorValues(line[0], line[2], line[3], line[5], singleField);
   const types = line[2].split(';');
   if (types.length>1) {
@@ -472,6 +476,7 @@ const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<str
     line[4]&&`@unit("${line[4]}")`,
     divisor||values,
     typLen,
+    constValue!==undefined ? `@constValue(${constValue})` : '',
     `${suffName}: ${typ},`,
   ]
 };
