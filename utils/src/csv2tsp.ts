@@ -554,7 +554,7 @@ const addValueLists = (): ReqStrs => {
     const keys = new Map<string, number>();
     values.forEach(v => {
       const [k, n] = v.split('=');
-      let id = normId(n.replace(/2/g, '2').replace(/³/g, '3').replaceAll(/[^a-zA-Z0-9]/g, '_'));
+      let id = normId(n.replace(/²/g, '2').replace(/³/g, '3').replaceAll(/[^a-zA-Z0-9]/g, '_'));
       if (id[0]>='0' && id[0]<='9') {
         id = '_'+id;
       }
