@@ -1,9 +1,0 @@
-# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
-*r,error,,,,,B503,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-*w,error,,,,,B503,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-r,,currenterror,Aktuelle Fehler,,,,0001,code,,UIN,,,,code,,UIN,,,,code,,UIN,,,,code,,UIN,,,,code,,UIN,,,
-r,,currentservice,Aktuelle Warungsmeldung,,,,0002,code,,UIN,,,,code,,UIN,,,,code,,UIN,,,,code,,UIN,,,,code,,UIN,,,
-r,,errorhistory,Fehlerhistorie,,,,0101,index,m,UCH,,,,state,,UCH,,,,,,time2,,,,,,date,,,,code,,UIN,,,
-r,,servicehistory,Historie Wartungsmeldungen,,,,0102,index,m,UCH,,,,data,,HEX:7,,,,,,,,,,,,,,,,,,,,,
-w,,clearerrorhistory,Fehlerhistorie löschen,,,,0201,cleared,s,yesno,,,,,,,,,,,,,,,,,,,,,,,,,,,
-w,,clearservicehistory,Historie Wartungsmeldungen löschen,,,,0202,cleared,s,yesno,,,,,,,,,,,,,,,,,,,,,,,,,,,

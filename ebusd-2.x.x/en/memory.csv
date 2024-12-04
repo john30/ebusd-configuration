@@ -1,7 +1,0 @@
-# type (r[1-9];w;u),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m/s),type / templates,divider / values,unit,comment,field,part (m/s),type / templates,divider / values,unit,comment,field,part (m/s),type / templates,divider / values,unit,comment
-*r,memory,,,,,,,,,,,,,,,,,,,,,,,,
-*wi,memory#install,,,,,,,,,,,,,,,,,,,,,,,,
-r,,ram,read RAM data,,,0900,,address,m,UIN,,,start address,count,m,UCH,,,number of bytes,data,,HEX:*,,,data bytes
-wi,,ram,write RAM data,,,0901,,address,,UIN,,,start address,data,,HEX:*,,,data bytes,,,,,,
-r,,eeprom,read EEPROM data,,,0902,,address,m,UIN,,,start address,count,m,UCH,,,number of bytes,data,,HEX:*,,,data bytes
-wi,,eeprom,write EEPROM data,,,0903,,address,,UIN,,,start address,data,,HEX:*,,,data bytes,,,,,,

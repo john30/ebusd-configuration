@@ -1,7 +1,0 @@
-# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
-*b,broadcast,,,,FE,B516,,,,,,,,,,,,,,,,,,,
-b,,vdatetime,date/time,,,,00,time,,BTI,,,,date,,BDA,,,,,,,,,
-b,,outsidetemp,outside temperature,,,,01,,,temp2,,,,,,,,,,,,,,,
-*b,broadcast,,,,FE,B505,,,,,,,,,,,,,,,,,,,
-b,,hwcStatus,state hot water,,,,27,,,onoff,,,,VF1,,temp0,,,,,,onoff,,,
-b,,load,quick - hot water tank filling,,,,06,,,onoff,,,,,,,,,
