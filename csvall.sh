@@ -22,7 +22,7 @@ sed -i \
   -e 's#,ULG,,,Maintance Alarm Date#,DTM,,,Maintance Alarm Date#' \
   -e 's#,HEX:8,,,DCF Time / date#,btime;bdate,,,DCF Time / date#' \
   -e 's#^r,,FaultlistDK\[0\],#r,,FaultlistDK,#' \
-  -e 's#,,night-time#,,NightTime#i' \
+  -e 's#,,night-\?time#,,NightTime#i' \
   -e 's#,,Time&Date#,,TimeDate#i' \
   -e 's#,UCH,240=off;15=on,#,onoff2,,#' \
   -e 's#,UCH,,,"Off=0, On=1"#,onoff,,,#' \
