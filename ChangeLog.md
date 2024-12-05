@@ -1,3 +1,7 @@
+# 2024-07-13
+* normalized, corrected, and converted to TypeSpec
+* generated files rebuilt from TypeSpec definitions published on github CDN https://ebus.github.io/
+
 # 2024-03-01
 * remove previous merge of #316 again as several users reported having issues with their heating since that: live monitor and test menu to vaillant/08.hmu
 

@@ -13,16 +13,27 @@ If you mess up these files or even just a single line in one of them, you might 
 
 ## Usage with ebusd
 
-Since [ebusd version 3.2](https://github.com/john30/ebusd/tree/v3.2), the default for the location of the configuration files (see ["--configpath" option](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options)) is the web service at https://cfg.ebusd.eu/ .
+For many years, the CSV file based definitions served a great purpose, the last published version of which are still kept for convenience in the [ebusd-2.1.x folder](ebusd-2.1.x/).
 
-**Note**: For the time being, only the files linked to by the [`latest`](https://github.com/john30/ebusd-configuration/blob/master/latest) folder are served. The other folders are kept for historic reasons.
+However, the CSV files are hard to read and understand and as such, there is a new approach of working with eBUS message defintions.
 
-The current version being released to the web service is published on the [web service entry page](https://cfg.ebusd.eu/) itself and usually follows the latest entry of the [ChangeLog](https://github.com/john30/ebusd-configuration/blob/master/ChangeLog.md).
+That's why the CSV files were relieved by [TypeSpec](https://typespec.io/) files that reside in the [src folder](src/).
 
+These files are way easier to maintain and understand, especially when it comes to applying corrections or enhancements.
 
-### Using a clone
+See the [guidelines](guidelines.md) for further reading.
 
-In case a different branch or version is supposed to be used, simply clone this repository (or the fork) and point ebusd to the ebusd-2.1.x/de or ebusd-2.1.x/en folder of the cloned directory using the ["--configpath" option](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options).
+### Using the web service
+
+For use with ebusd, the [TypeSpec files](src/) are converted back to CSV by using the [eBUS TypeSpec library](https://github.com/john30/ebus-typespec) which was developed explicitly for this purpose.
+
+The CSV output is made available via github CDN on [https://ebus.github.io/](https://ebus.github.io/) and this is used as the default definition source since [ebusd version 24.1](https://github.com/john30/ebusd/releases/tag/24.1).
+
+The [CDN repository](https://github.com/eBUS/ebus.github.io) can also be cloned for local use by using the ["--configpath" option](https://github.com/john30/ebusd/wiki/2.-Run#message-configuration-options) to point to the desired language folder.
+
+### Using the TypeSpec sources locally
+
+When working on message definitions, the easiest way is to use the [eBUS TypeSpec library](https://github.com/john30/ebus-typespec) for conversion, or even better the [VS Code extension "ebus notebook"](https://marketplace.visualstudio.com/items?itemName=ebusd.ebus-notebook).
 
 
 ## Scan mechanism
@@ -33,7 +44,7 @@ This is reflected by the file name as well as conditional messages within a file
 For each seen device on the bus, ebusd will pick the best suiting file from the manufacturer subdirectory after reading the device's identification.
 See also the [ebusd scan documentation](https://github.com/john30/ebusd/wiki/3.-Commands#scan) for details.
 
-The CSV file is then picked like this:
+The file is then picked like this:
 * manufacturer subdirectory
 * target address: two hex digits prefix of the CSV file name
 * ID part: converted to lower case, trimmed (leading/trailing spaces removed as well as up to two trailing "0" digits), remaining spaces replaced by underscore
@@ -45,12 +56,13 @@ So, e.g. for the scan result
 `08;Vaillant;EHP00;0327;7201`  
 which is
 * target address: 0x08
-* manufacturer 0xB5: Vaillant
+* manufacturer 0xB5: "Vaillant"
 * device id: "EHP00"
 * software version: "03.27"
 * hardware version "72.01"
 
-ebusd will load the file `vaillant/08.ehp.csv` from either [ebusd-2.1.x/de](https://github.com/john30/ebusd-configuration/blob/master/ebusd-2.1.x/de/vaillant/08.ehp.csv) or [ebusd-2.1.x/en](https://github.com/john30/ebusd-configuration/blob/master/ebusd-2.1.x/en/vaillant/08.ehp.csv) being used as configuration directory.
+ebusd will load the file [`src/vaillant/08.ehp.tsp`](src/vaillant/08.ehp.tsp) indirectly using e.g. the english variant [converted CSV from the CDN repository](https://github.com/eBUS/ebus.github.io/blob/main/en/vaillant/08.ehp.csv) served from 
+[https://ebus.github.io/en/vaillant/08.ehp.csv](https://ebus.github.io/en/vaillant/08.ehp.csv).
 
 Some devices share the same prefix (e.g. "ehp.*"). This is due to the fact
 that the same physical unit can contain several logical circuits.
@@ -67,20 +79,14 @@ In the configuration files, some of the following component type names (`circuit
 * `cc`: circulation circuit
 * `sc`: solar circuit
 
-These are sometimes also used as suffix in filenames (e.g. `23.ehp.cc.csv`) in order to note the component type as replacement for the device identifier not revealing the type in the first place.
+These are sometimes also used as suffix in filenames (e.g. `23.ehp.cc.tsp`) in order to note the component type as replacement for the device identifier not revealing the type in the first place.
 
 For a single heating installation, a component type may be present in several instances (e.g. two mixers). In case these share the exact same message definitions (besides a different target address), this is reflected here as symbolic link to the `main` definition file.
 
 Mixers and room controllers usually are available for more than one heating
 circuit. If so, these files are available multiple times with the heating
-circuit number appended, e.g. "mc2.4.csv" for heating circuit 4. For the
+circuit number appended, e.g. "mc2.4.tsp" for heating circuit 4. For the
 primary heating circuit the number is not appended, though.
-
-
-## Working on the definitions
-For many years, the CSV file based definitions served a good purpose. However, these are rather hard to read and understand and as such, there is a new approach of working with message defintions.
-
-Please refer to the [guidelines for details](guidelines.md).
 
 
 ## Contact
