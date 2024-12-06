@@ -50,11 +50,11 @@ namespace Pms {
 
   /** SolarPumpPower: Performance of solar pump: (7 - 100 %) */
   @ext(0x10, 0)
-  model SolPumpPower is InstallRegister<power>;
+  model SolPumpPower is InstallRegister<percent>;
 
   /** BufferPumpPower: Performance of buffer pump: (15 - 100%) */
   @ext(0x11, 0)
-  model BufferPumpPower is InstallRegister<power>;
+  model BufferPumpPower is InstallRegister<percent>;
 
   /** MonitorMatlab_Last5minSolarAverage */
   @ext(0x17, 0)
