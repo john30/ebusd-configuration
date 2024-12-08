@@ -17,8 +17,8 @@ namespace Memory {
   model wi {}
 
   /** RAM data */
-  @inherit(r,wi)
-  @ext()
+  @inherit(r, wi)
+  @ext
   model Ram {
     /** start address */
     @out
@@ -32,7 +32,6 @@ namespace Memory {
     data: HEX;
   }
 
-
   /** default *r */
   @base(0x9, 2)
   model r_1 {}
@@ -44,8 +43,8 @@ namespace Memory {
   model wi_1 {}
 
   /** EEPROM data */
-  @inherit(r_1,wi_1)
-  @ext()
+  @inherit(r_1, wi_1)
+  @ext
   model Eeprom {
     /** start address */
     @out
