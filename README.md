@@ -10,6 +10,14 @@ If you mess up these files or even just a single line in one of them, you might 
 
 **If you don't know what you're doing: better keep your hands off!!!**
 
+## IMPORTANT NOTICE
+The old web service at [cfg.ebusd.eu](https://cfg.ebusd.eu) (https and http) is at its end of life and will be shutdown soon (likely end of 2024).
+
+If you want to continue using web based configuration files, you need to
+* move to [ebusd version >= 24.1](https://github.com/john30/ebusd/releases/tag/24.1), or
+* use local CSV files from [here](ebusd-2.1.x/) (old frozen version kept for convenience), or
+* use local CSV files from the new [CDN repository](https://github.com/eBUS/ebus.github.io) (can also be cloned for local use, see below)
+
 
 ## Usage with ebusd
 
@@ -23,7 +31,7 @@ These files are way easier to maintain and understand, especially when it comes 
 
 See the [guidelines](guidelines.md) for further reading.
 
-### Using the web service
+### Using the CDN
 
 For use with ebusd, the [TypeSpec files](src/) are converted back to CSV by using the [eBUS TypeSpec library](https://github.com/john30/ebus-typespec) which was developed explicitly for this purpose.
 
