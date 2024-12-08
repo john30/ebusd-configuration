@@ -791,9 +791,7 @@ namespace Bai._0010007508_inc {
   @inherit(r)
   @ext(0xe5, 0)
   model DCFTimeDate {
-    /** DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time; */
     btime: btime;
-
     bdate: bdate;
   }
 

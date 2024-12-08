@@ -2515,9 +2515,6 @@ Partnumber_Box: Partnumber_Box
 'InitialisationEEPROM: Initialisation off all EEPROM values (done in the production)': 'InitialisationEEPROM_DK: EEPROM Initialisierrung (für die Produktion)'
 'TimerInputCH_DK: timer input (block heatdemand)': 'Eingang Schaltuhr: timer input (block heatdemand)'
 'ExternGasvalve_DK: external gasvalve activated': 'Ext. Gasventil: Externes Magnetventil'
-DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;: >-
-  DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
-  uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 DCF_TimeDate_DK: DCF Datum/Uhrzeit
 'd.17 Return regulation: heating flow/return regulation activation': 'd.17 Rücklaufregelung: Aktivierung der Rücklaufregelung'
 Pump mode: Pumpenbetriebsart für den Heizbetrieb

@@ -14811,32 +14811,6 @@ externgasvalvedkexternalgasvalveactivated:
     - vaillant/bai.0010008045.inc::r::0xe4,0
     - vaillant/bai.0010010674.inc::r::0xe4,0
     - vaillant/bai.308523.inc::r::0xe4,0
-dcftimedatestampstructucharsecucharminucharstduchartagucharmonucharwtgucharjahtdcf77time:
-  first: >-
-    DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
-    uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
-  en: >-
-    DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
-    uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
-  de: >-
-    DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
-    uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
-  locations:
-    - vaillant/bai.0010002315.inc::r::0xe5,0:btime
-    - vaillant/bai.0010002465.inc::r::0xe5,0:btime
-    - vaillant/bai.0010003857.inc::r::0xe5,0:btime
-    - vaillant/bai.0010003886.inc::r::0xe5,0:btime
-    - vaillant/bai.0010004121.inc::r::0xe5,0:btime
-    - vaillant/bai.0010004150.inc::r::0xe5,0:btime
-    - vaillant/bai.0010005400.inc::r::0xe5,0:btime
-    - vaillant/bai.0010006101.inc::r::0xe5,0:btime
-    - vaillant/bai.0010006341.inc::r::0xe5,0:btime
-    - vaillant/bai.0010007508.inc::r::0xe5,0:btime
-    - vaillant/bai.0010008045.inc::r::0xe5,0:btime
-    - vaillant/bai.0010010674.inc::r::0xe5,0:btime
-    - vaillant/bai.0010015600.inc::r::0xe5,0:vti
-    - vaillant/bai.0010021961.inc::r::0xe5,0:vti
-    - vaillant/bai.308523.inc::r::0xe5,0:btime
 dcftimedatedk:
   first: DCF_TimeDate_DK
   en: DCF_TimeDate_DK

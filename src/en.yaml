@@ -2349,9 +2349,6 @@ Partnumber_Box: Partnumber_Box
   production)
 'TimerInputCH_DK: timer input (block heatdemand)': 'TimerInputCH_DK: timer input (block heatdemand)'
 'ExternGasvalve_DK: external gasvalve activated': 'ExternGasvalve_DK: external gasvalve activated'
-DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag; uchar mon; uchar wtg; uchar jah; } Tdcf77_time;: >-
-  DCF Time / date stamp struct { uchar sec; uchar min; uchar std; uchar tag;
-  uchar mon; uchar wtg; uchar jah; } Tdcf77_time;
 DCF_TimeDate_DK: DCF_TimeDate_DK
 'd.17 Return regulation: heating flow/return regulation activation': 'd.17 Return regulation: heating flow/return regulation activation'
 Pump mode: Pump mode
