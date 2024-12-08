@@ -1,3 +1,10 @@
+# 2024-12-08
+* added vaillant/06.vmd
+* added vaillant/08.bai 0010011701
+* added ochsner/15.22102
+* added some generic opdata from eBUS spec to src/opdata_inc and src/broadcast
+* added wolf/broadcast, wolf/08.hc, and wolf/50.mc with symlinked kromschroeder dir
+
 # 2024-07-13
 * normalized, corrected, and converted to TypeSpec
 * generated files rebuilt from TypeSpec definitions published on github CDN https://ebus.github.io/
