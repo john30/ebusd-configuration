@@ -1,6 +1,8 @@
 import "./_templates.tsp";
 import "./broadcast.tsp";
 import "./memory.tsp";
+import "./ochsner/15.22102.tsp";
+import "./ochsner/_templates.tsp";
 import "./vaillant/05.vd4.tsp";
 import "./vaillant/06.pms.tsp";
 import "./vaillant/06.vmd.tsp";
@@ -60,3 +62,7 @@ import "./vaillant/ec.solsy.sc.tsp";
 import "./vaillant/ec.zeo.sc.tsp";
 import "./vaillant/general.tsp";
 import "./vaillant/scan.tsp";
+import "./wolf/08.hc.tsp";
+import "./wolf/50.mc.tsp";
+import "./wolf/_templates.tsp";
+import "./wolf/broadcast.tsp";
