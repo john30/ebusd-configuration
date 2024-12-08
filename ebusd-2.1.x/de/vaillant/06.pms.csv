@@ -13,8 +13,8 @@ r,,Ntc2Sensor,NTC 2 Sensor,,,,"0600",,,tempsensor,,,Temperature in solar back fl
 r,,Ntc3Sensor,NTC 3 Sensor,,,,"0700",,,tempsensor,,,Temperature in buffer flow (to buffer)
 r,,Ntc4Sensor,NTC 4 Sensor,,,,"0800",,,tempsensor,,,Temperature in buffer back flow (from buffer)
 r;wi,,SolPumpRelay,Relais Solarpumpe,,,,"0F00",,,onoff,,,Solar pump relay: 0: OFF; 1: ON
-r;wi,,SolPumpPower,Leistung Solarpumpe,,,,"1000",,,power,,,Performance of solar pump: (7 - 100 %)
-r;wi,,BufferPumpPower,Leistung Pufferpumpe,,,,"1100",,,power,,,Performance of buffer pump: (15 - 100%)
+r;wi,,SolPumpPower,Leistung Solarpumpe,,,,"1000",,,percent,,,Performance of solar pump: (7 - 100 %)
+r;wi,,BufferPumpPower,Leistung Pufferpumpe,,,,"1100",,,percent,,,Performance of buffer pump: (15 - 100%)
 r,,MonitorMatlabLast5minSolAverage,MonitorMatlab_Last5minSolarAverage,,,,"1700",,,SIN,,,
 r,,CurrentSolTempDesired,Solar Zieltemperatur,,,,"1800",,,UIN,,°C,Temperature target in solar flow at sensor Ntc1Sensor
 r,,CurrentVPMLoadingMode,Aktuelle Betriebsart,,,,"1900",,,UCH,,,1 = Warmwasser (autonom)2 = Heizung (autonom)3 = +10K (autonom)4 = Schwimmbad5 = Warmwasser6 = Heizung7 = +10K
