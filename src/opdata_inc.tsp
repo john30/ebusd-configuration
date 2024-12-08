@@ -6,24 +6,29 @@ using Ebus.Dtm;
 using Ebus.Str;
 
 namespace Opdata_inc {
-
   /** burner operational data */
   @ext(0x5, 0x7)
   model HcOperation {
     /** status heat request */
     @values(Values_status)
     status: UCH;
+
     /** variable consumers */
     @values(Values_action)
     action: UCH;
+
     /** boiler target temperature */
     desiredtemp: temp;
+
     /** boiler target pressure */
     desiredpress: press;
+
     /** setting degree, steps instead of percent when action is 0x44=hwc_stepped */
     settingdegree: percent1;
+
     /** hot water target temperature */
     hwcdesiredtemp: temp1;
+
     /** fuel choice */
     @values(Values_fuel)
     fuel: UCH;
@@ -34,15 +39,20 @@ namespace Opdata_inc {
   model RcTarget {
     /** boiler target temperature */
     desiredtemp: temp2;
+
     /** outside temperature */
     outsidetemp: temp2;
+
     /** forced performance */
     @unit("%")
     forced: D1B;
+
     /** hot water active */
     hwc: BI0;
+
     /** heat active */
     hc: BI1;
+
     /** hot water target temperature */
     hwcdesiredtemp: temp2;
   }
@@ -52,25 +62,35 @@ namespace Opdata_inc {
   model RcOperation {
     /** boiler effective temperature */
     temp: temp2;
+
     /** hot water effective temperature */
     buffertemp: temp2;
+
     /** emission test */
     @values(Values_emission_test)
     emissiontest: UCH;
+
     /** hot water active */
     hwc: BI0;
+
     /** pump active */
     pump: BI1;
+
     /** buffer 1 active */
     buffer1: BI2;
+
     /** buffer 2 active */
     buffer2: BI3;
+
     /** loading pump active */
     loading: BI4;
+
     /** hot water loading pump active */
     hwcloading: BI5;
+
     /** TBF connected */
     tbfconnect: BI6;
+
     /** return flow temperature */
     returntemp: temp2;
   }
@@ -80,17 +100,20 @@ namespace Opdata_inc {
   model ControlCmd {
     /** boiler target temperature */
     desiredtemp: temp2;
+
     /** hot water target temperature */
     hwcdesiredtemp: temp2;
+
     /** expected performance */
     @unit("%")
     expected: D1B;
+
     /** first device with error */
     device: UCH;
+
     /** error code */
     error: UCH;
   }
-
 
   enum Values_status {
     off: 0x00,

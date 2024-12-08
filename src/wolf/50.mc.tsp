@@ -43,7 +43,7 @@ namespace mc {
     /** Kollektortemperatur */
     collectortemp: temp;
 
-    /** Solartemperatur Warmwasser*/
+    /** Solartemperatur Warmwasser */
     hwcsolartemp: temp;
   }
 

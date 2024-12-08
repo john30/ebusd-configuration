@@ -51,7 +51,6 @@ namespace Broadcast {
     error: STR;
   }
 
-
   @inherit(b)
   model RcTarget is Opdata_inc.RcTarget;
 
