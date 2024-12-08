@@ -20,7 +20,9 @@ sed -i \
   -e 's#,mcmode,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"#,hwcmode2,,,#' \
   -e 's#,hwcmode2,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"#,hwcmode2,,,#' \
   -e 's#,ULG,,,Maintance Alarm Date#,DTM,,,Maintance Alarm Date#' \
-  -e 's#,HEX:8,,,DCF Time / date#,btime;bdate,,,DCF Time / date#' \
+  -e 's#,HEX:8,,,DCF Time / date[^,]*#,btime;bdate,,,#' \
+  -e 's#,btime;bdate,,,DCF Time / date stamp struct[^,]*#,btime;bdate,,,#' \
+  -e 's#,VTI;HDA,,,DCF Time / date stamp struct[^,]*#,VTI;HDA,,,#' \
   -e 's#^r,,FaultlistDK\[0\],#r,,FaultlistDK,#' \
   -e 's#,,night-\?time#,,NightTime#i' \
   -e 's#,,Time&Date#,,TimeDate#i' \
