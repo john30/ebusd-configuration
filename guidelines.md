@@ -121,7 +121,7 @@ See the [style guide in the eBUS TypeSpec library](https://github.com/john30/ebu
 
 ## Converting to CSV
 The final step is to create the CSV needed by ebusd (for the time being):
-1. `npm run compile`: generates CSV files in directory `outcsv`
+1. `npm run compile-en`: generates CSV files in directory `outcsv/@ebusd/ebus-typespec/`
 2. this directory would then serve as the base for publishing to CDN for use by ebusd
 
 
