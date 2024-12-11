@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,v3x00,VR39,0020139898,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*wi,#install,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+# ##### dia level 1 #####,,,,,,,,,,,,,
+r,,CirPump,d.13 Circulation pump,,,,"7B00",,,onoff,,,Hot water circulation pump (via external module)
+r,,Flame,Flame,,,,"0500",,,UCH,240=off;15=on,,flame
+!include,errors.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,
