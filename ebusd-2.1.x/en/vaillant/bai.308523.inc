@@ -90,6 +90,7 @@ r,,HwcSetPotmeter,DHWSetPotmeter,,,,"F103",,,temp,,,DHW setpoint potentiometer
 r,,HwcSwitch,DHWSwitch,,,,"F303",,,onoff,,,DHW on/off
 r,,ProductionByte,ProductionByte,,,,"3E04",,,UCH,,,
 r,,SerialNumber,SerialNumber,,,,"3F04",,,HEX:8,,,serial number of AI
+wi,BAI,SetModeOverride,Setmode,,08,B510,00,hcmode,,UCH,,,,flowtempdesired,,D1C,,,,hwctempdesired,,D1C,,,,hwcflowtempdesired,,UCH,,,,setmode1,,UCH,,,,disablehc,,BI0,,,,disablehwctapping,,BI1,,,,disablehwcload,,BI2,,,,setmode2,,UCH,,,,remoteControlHcPump,,BI0,,,,releaseBackup,,BI1,,,,releaseCooling,,BI2
 # ##### dia level 2 #####,,,,,,,,,,,,,
 r;wi,,ReturnRegulation,d.17 Return regulation,,,,"0C04",,,onoff,,,heating flow/return regulation activation
 r;wi,,HcPumpMode,d.18 CH pump mode,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,Pump mode
