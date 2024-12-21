@@ -30,15 +30,15 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.14.8",
-    "@typespec/json-schema": "~0.62.0",
-    "@typespec/library-linter": "~0.62.0",
+    "@typespec/json-schema": "~0.63.0",
+    "@typespec/library-linter": "~0.63.0",
     "csv-parser": "^3.0.0",
     "js-yaml": "^4.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@ebusd/ebus-typespec": ">=0.15.0",
-    "@typespec/compiler": "~0.62.0",
+    "@ebusd/ebus-typespec": ">=0.16.0",
+    "@typespec/compiler": "~0.63.0",
     "tsx": "^4.15.7"
   }
 }

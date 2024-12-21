@@ -19,6 +19,7 @@ type Additions = {
   defaultsByName: Map<string, number>, renamedDefaults: Record<string, string>,
   baseModels: Map<string, KnownModel>, complexModels: Map<string, string>,
   conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
+  renamedTemplates: Map<string, string>,
 };
 
 type Trans<T extends CsvLine> = (location: string, line: T|undefined, header: string|false|undefined, additions: Additions) => OptStrs;
@@ -195,6 +196,7 @@ const pascalCase = (s?: string) => s ? s.substring(0,1).toUpperCase()+s.substrin
 const normId = (id: string): string => (id || '')
   .replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue')
   .replaceAll('Ä','AE').replaceAll('Ö','OE').replaceAll('Ü','UE')
+  .replaceAll('²', '2').replaceAll('³', '3')
   .replaceAll(/[^a-zA-Z0-9_]/g, '_').replace(/^([0-9])/, '_$1');
 const normType = (t: string): string => {
   const parts = t.split(':');
@@ -311,8 +313,11 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
   }
   line = objSlice(line);
   if (!line) return;
-  const {id, typ, typLen, comm, divisor, values, constValue}
-  = divisorValues(line[0], line[1], line[2], line[4]);
+  const {id, renameTo, typ, typLen, comm, divisor, values}
+  = divisorValues(line[0], line[1], line[2], line[4], undefined, true, additions.renamedTemplates);
+  if (renameTo) {
+    additions.renamedTemplates.set(id, renameTo);
+  }
   const types = line[1].split(';');
   if (types.length>1) {
     const seen = new Map<string, number>();
@@ -321,8 +326,8 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
       comm&&comm!==line[1]&&`/** ${normComment(`${location}:${id}`, comm)} */`,
       `model ${id} {`, // expected to be lowercase in templates
       ...types.map(t => {
-          const {id, typ, typLen} = divisorValues('', t, '', '');
-          const name = removeTrailNum(normFieldName(id));
+          const {id, typ, typLen} = divisorValues('', t, '', '', undefined, undefined, additions.renamedTemplates);
+          const name = removeTrailNum(normFieldName(additions.renamedTemplates.get(id) || id));
           return `  ${typLen??''}${name}${suffix(name, seen)}: ${typ},`;
         }),
        '}',
@@ -403,15 +408,26 @@ const splitTypeName = (t?: string): string[] => {
   return p;
 }
 const divisorValues = (name: string|undefined, typIn: string, divVal: string|undefined,
-  comm: string|undefined, singleField?: string
-): {id: string, typ?: string, typLen?: string, comm: string, divisor?: string, values?: string, constValue?: string} => {
+  comm: string|undefined, singleField?: string, renamable?: true, renamedTemplates?: Map<string, string>,
+): {id: string, renameTo?: string, typ?: string, typLen?: string, comm: string, divisor?: string, values?: string, constValue?: string} => {
   let [typ, typName] = splitTypeName(typIn);
   name = name || typName;
+  let renameTo: string|undefined = undefined;
+  if (renamable) {
+    const parts = name.split(':');
+    if (parts.length>1) {
+      name = parts[0];
+      renameTo = parts[1];
+    }
+  }
   const id = normId(name||(typ.split(':')[0]));
   comm = comm || '';
   const typLen = addLength(typ);
   // const origTyp = typ;
   typ = normType(typ);
+  if (renamedTemplates?.has(typ)) {
+    name = renamedTemplates.get(typ);
+  }
   // if (!comm && origTyp && !isBaseType(origTyp)) {
   //   comm = origTyp;
   // }
@@ -433,7 +449,7 @@ const divisorValues = (name: string|undefined, typIn: string, divVal: string|und
     const value = parseInt(divVal!, 10);
     divisor = `@${value<0?'factor':'divisor'}(${Math.abs(value)})`;
   }
-  return {id, typ, typLen, comm, divisor, values, constValue};
+  return {id, renameTo, typ, typLen, comm, divisor, values, constValue};
 };
 const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string, typ: string}|undefined => {
   if (!line || !singleField) return;
@@ -448,7 +464,7 @@ const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string,
   }
   return {comm: line[5], typ};
 }
-const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, singleField?: string): OptStrs => {
+const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, additions: Additions, singleField?: string): OptStrs => {
   if (!line) return;
   const {id, typ, typLen, comm, divisor, values, constValue}
   = divisorValues(line[0], line[2], line[3], line[5], singleField);
@@ -457,8 +473,8 @@ const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<str
     const ret: ReqStrs = [];
     let firstComm: string|undefined = comm;
     types.filter(t=>t).forEach(t => {
-      const {id, typ, typLen} = divisorValues('', t, '', '');
-      const name = removeTrailNum(normFieldName(id));
+      const {id, typ, typLen} = divisorValues('', t, '', '', undefined, undefined, additions.renamedTemplates);
+      const name = removeTrailNum(normFieldName(additions.renamedTemplates.get(id) || id));
       const suffName = `${name}${suffix(name, seen)}`;
       ret.push(...[
         (firstComm&&firstComm!==id&&firstComm!==line[2])?`/** ${normComment(`${location}:${suffName}`, firstComm)} */`:undefined,
@@ -554,7 +570,7 @@ const addValueLists = (): ReqStrs => {
     const keys = new Map<string, number>();
     values.forEach(v => {
       const [k, n] = v.split('=');
-      let id = normId(n.replace(/²/g, '2').replace(/³/g, '3').replaceAll(/[^a-zA-Z0-9]/g, '_'));
+      let id = normId(n);
       if (id[0]>='0' && id[0]<='9') {
         id = '_'+id;
       }
@@ -744,8 +760,8 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   }
   if (!model) {
     const fields: OptStrs = [];
-    fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, fieldLines.length===1?modelName:'')||[]));
-      model = [
+    fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, additions, fieldLines.length===1?modelName:'')||[]));
+    model = [
       (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
       single
         ? direction(dirs[0]) // single model
@@ -941,6 +957,7 @@ export const csv2tsp = async (args: string[] = []) => {
       list.push(path.relative(indir, file));
     }
   }
+  const renamedTemplatesByDir = new Map<string, Map<string, string>>();
   for (const file of files) {
     const subdir = path.relative(indir, path.dirname(file));
     const name = path.basename(file);
@@ -955,7 +972,13 @@ export const csv2tsp = async (args: string[] = []) => {
       console.log(`creating directory ${todir}`);
       await mkdir(todir, {recursive: true});
     }
+    // _templates is first per directory
     const isTemplates = name==='_templates.csv';
+    let renamedTemplates = renamedTemplatesByDir.get(subdir);
+    if (!renamedTemplates) {
+      renamedTemplates = new Map(subdir ? renamedTemplatesByDir.get('') : undefined);
+      renamedTemplatesByDir.set(subdir, renamedTemplates);
+    }
     const isInclude = path.extname(name)==='.inc';
     const nameNoExt = path.basename(name, path.extname(name));
     const namespace = isInclude ? nameNoExt+'_inc' : nameNoExt;
@@ -984,6 +1007,7 @@ export const csv2tsp = async (args: string[] = []) => {
       complexModels: new Map(),
       conditions: new Map(),
       conditionBlocks: new Map(),
+      renamedTemplates,
     };
     const push = (inp: OptStrs, cb: TransformCallback, flush=false) => {
       if (!transform) return cb();
