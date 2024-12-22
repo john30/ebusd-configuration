@@ -197,7 +197,8 @@ const normId = (id: string): string => (id || '')
   .replaceAll('ä','ae').replaceAll('ö','oe').replaceAll('ü','ue')
   .replaceAll('Ä','AE').replaceAll('Ö','OE').replaceAll('Ü','UE')
   .replaceAll('²', '2').replaceAll('³', '3')
-  .replaceAll(/[^a-zA-Z0-9_]/g, '_').replace(/^([0-9])/, '_$1');
+  .replaceAll(/[^a-zA-Z0-9_]/g, '_').replace(/^([0-9])/, '_$1')
+  .replaceAll(/__+/g, '_').replace(/^(.+)_$/, '$1');
 const normType = (t: string): string => {
   const parts = t.split(':');
   parts[0] = normId(parts[0]);
@@ -789,7 +790,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
         ? direction(dirs[0]) // single model
         : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
       auth&&`@auth("${auth}")` || (poll.length?`@poll(${poll[0]})`:undefined),
-      line[4]&&`@qq(${fromHex(line[4]).join})`,
+      line[4]&&`@qq(${fromHex(line[4]).join('')})`,
       zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
       single&&idComb.length>=2
         ? `@${isDefault?'base':'id'}(${idComb.join(', ')})`

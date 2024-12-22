@@ -29,6 +29,7 @@ sed -i \
   -e 's#,UCH,240=off;15=on,#,onoff2,,#' \
   -e 's#,UCH,,,"Off=0, On=1"#,onoff,,,#' \
   -e 's#,UCH,240=no;15=yes,#,yesno2,,#' \
+  -e 's#,RückmeldungB#,RueckmeldungB#' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
