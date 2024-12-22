@@ -2407,32 +2407,32 @@ thbtopoffsetoffsetforcalibratingtemperaturesensor:
     - vaillant/08.ehp.csv::r::0x33,1
 currentenergyintegralinmin:
   first: current energy integral in °min
-  en: current energy integral in °min
   de: aktuelles Energieintegral in °min
+  en: current energy integral in °min
   locations:
     - vaillant/08.hmu.csv::r::0x21:value
 currentyieldedenergyfromtheenvironmentinkw:
   first: current yielded energy from the environment in kW
-  en: current yielded energy from the environment in kW
   de: aktuell gewonnene Energie aus der Umwelt in kW
+  en: current yielded energy from the environment in kW
   locations:
     - vaillant/08.hmu.csv::r::0x23:value
 currentpowerconsumptionoftheheatpumpinkw:
   first: current power consumption of the heatpump in kW
-  en: current power consumption of the heatpump in kW
   de: aktueller Stromverbrauch der Wärmepumpe in kW
+  en: current power consumption of the heatpump in kW
   locations:
     - vaillant/08.hmu.csv::r::0x24:value
 currentcompressorutilizationinpercent:
   first: current compressor utilization in percent
-  en: current compressor utilization in percent
   de: aktuelle Kompressorauslastung in Prozent
+  en: current compressor utilization in percent
   locations:
     - vaillant/08.hmu.csv::r::0x25:value
 currentheatingwaterflowrateinlitersperhour:
   first: current heating water flow rate in liters per hour
-  en: current heating water flow rate in liters per hour
   de: Aktuelle Heizwasser Durchflussrate der Wärmepumpe in Liter pro Stunde
+  en: current heating water flow rate in liters per hour
   locations:
     - vaillant/08.hmu.csv::r::0x2b,0x3,0xff,0xff:value
 readventilationintensityday:
@@ -12002,8 +12002,8 @@ code1code2valid:
   locations:
     - vaillant/84.zeo.csv::r::1,0
 dcfstatus:
-  first: dcfStatus
-  en: dcfStatus
+  first: DCF status
+  en: DCF status
   de: DCF Status
   locations:
     - vaillant/84.zeo.csv::r::0x3a,0
@@ -20944,11 +20944,11 @@ vorlauftemperaturrcklauftemperaturaussentemperaturwwtemperaturspeichertemperatur
     - vaillant/hcmode.inc::r::1
 betriebsartmaximaltemperaturreglercurrenttempmaximaltemperaturreglercurrenttemp:
   first: >-
-    Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+    Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
   en: >-
-    Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+    Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
   de: >-
-    Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+    Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
   locations:
     - vaillant/hcmode.inc::r::0x2
 setdesiredtemperature:

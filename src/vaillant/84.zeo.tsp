@@ -188,7 +188,7 @@ namespace Zeo {
   @ext(1, 0)
   model Code1Code2Valid is ReadonlyRegister<onoff>;
 
-  /** dcfStatus */
+  /** DCF status */
   @ext(0x3a, 0)
   model DcfStatus is ReadonlyRegister<UCH>;
 

@@ -74,7 +74,7 @@ namespace Hcmode_inc {
     pumpstate: pumpstate;
   }
 
-  /** Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp */
+  /** Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp */
   @inherit(r_1)
   @ext(0x2)
   model Status02 {

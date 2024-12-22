@@ -2156,7 +2156,7 @@ tdes_um: tdes_um
   PrimaryCircuitMicroSwitchPattern: 1=Des.o.B. 2=Adsorption 4=Des.m.B.
   8=Direktheizbetrieb
 Code1Code2Valid: Codes übernehmen?
-dcfStatus: DCF Status
+DCF status: DCF Status
 MaxStackeBUSTask: MaxStackeBUSTask
 MaxStackMainTask: MaxStackMainTask
 MaxStackLifeCheckTask: MaxStackLifeCheckTask
@@ -3375,8 +3375,8 @@ Status circulation pump: Betriebsart
 Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW Temperatur/Speichertemperatur/Pumpenstatus: >-
   Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW
   Temperatur/Speichertemperatur/Pumpenstatus
-Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp: >-
-  Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp: >-
+  Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
 Set desired temperature: Solltemperatur setzen
 Set operation mode: Betriebsart setzen
 Set min flow temperature: Minimalen Vorlaufsollwert setzen

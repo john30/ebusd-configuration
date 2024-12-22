@@ -354,7 +354,7 @@ namespace _350 {
     VRT_360: 0x33CCCC33,
     SD_17: 0x3CC3C33C,
     SD_37: 0x66999966,
-    VRT_360_: 0x69969669,
+    VRT_360_1: 0x69969669,
   }
   @condition(Id.Id.sw, "<=140")
   namespace Sw_le140 {
