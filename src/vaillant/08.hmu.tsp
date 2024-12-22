@@ -45,57 +45,73 @@ namespace Hmu {
     value: energy;
   }
 
+  /** energy yield hot water */
+  @inherit(r_2)
+  @ext(0x16)
+  model EnergyYieldHwc {
+    value: energy4;
+  }
+
+  /** operation hours */
   @inherit(r_2)
   @ext(0x40)
   model Hours {
-    value: energy;
+    value: hoursum;
   }
 
+  /** operation hours heating */
   @inherit(r_2)
   @ext(0x41)
   model HoursHc {
-    value: energy;
+    value: hoursum;
   }
 
+  /** operation hours cooling */
   @inherit(r_2)
   @ext(0x43)
   model HoursCool {
-    value: energy;
+    value: hoursum;
   }
   // some more statistics from Live Monitor
 
+  /** current energy integral */
   @inherit(r_2)
   @ext(0x21)
   model EnergyIntegral {
-    /** current energy integral in °min */
-    @unit("°min")
     value: integral;
   }
 
+  /** current yielded energy from the environment */
   @inherit(r_2)
   @ext(0x23)
   model CurrentYieldPower {
-    /** current yielded energy from the environment in kW */
     @unit("kW")
     @divisor(10)
     value: D1B;
   }
 
+  /** current power consumption */
   @inherit(r_2)
   @ext(0x24)
   model CurrentConsumedPower {
-    /** current power consumption of the heatpump in kW */
     @unit("kW")
     @divisor(10)
     value: D1B;
   }
 
+  /** current compressor utilization */
   @inherit(r_2)
   @ext(0x25)
   model CurrentCompressorUtil {
-    /** current compressor utilization in percent */
     @unit("%")
     value: D1B;
+  }
+
+  /** air intake temperature */
+  @inherit(r_2)
+  @ext(0x26)
+  model AirIntakeTemp {
+    value: temp;
   }
   // Total heating yields
 
@@ -419,47 +435,50 @@ namespace Hmu {
     ignore: HEX;
   }
 
-  /** Read T.008 */
+  /** Read EEV position */
   @inherit(ws_1)
   @ext(0x15)
   model EnableTestEEVPosition {}
 
-  /** T.008 value */
+  /** EEV position */
   @inherit(rs)
   @ext(0x15)
   model TestEEVPosition {
-    value: UIN;
+    /** T.0.21 */
+    value: percent0;
   }
 
-  /** Read T.026 */
+  /** Read compressor outlet temperature */
   @inherit(ws_1)
   @ext(0x37)
   model EnableTestCompressorExitTemp {}
 
-  /** T.026 value */
+  /** compressor outlet temperature */
   @inherit(rs)
   @ext(0x37)
   model TestCompressorExitTemp {
+    /** T.0.55 */
     @unit("°C")
     @divisor(10)
     value: SIN;
   }
 
-  /** Read T.027 */
+  /** Read compressor inlet temperature */
   @inherit(ws_1)
   @ext(0x38)
   model EnableTestCompressorIntakeTemp {}
 
-  /** T.027 value */
+  /** compressor inlet temperature */
   @inherit(rs)
   @ext(0x38)
-  model TestCompressorIntakeTemp {
+  model TestCompressorInletTemp {
+    /** T.0.56 */
     @unit("°C")
     @divisor(10)
     value: SIN;
   }
 
-  /** Read T.016 */
+  /** Read current heating water flow rate */
   @inherit(ws_1)
   @ext(0x2b)
   model EnableTestWaterThroughput {}
@@ -468,21 +487,338 @@ namespace Hmu {
   @inherit(rs)
   @ext(0x2b)
   model TestWaterThroughput {
+    /** T.0.45 */
     @unit("l/h")
     value: UIN;
   }
 
-  /** Read T.068 */
+  /** Read compressor speed */
   @inherit(ws_1)
   @ext(0x5d)
   model EnableTestCompressorSpeed {}
 
-  /** T.068 value */
+  /** compressor speed */
   @inherit(rs)
   @ext(0x5d)
   model TestCompressorSpeed {
+    /** T.0.93 */
+    @unit("U/s")
+    @divisor(10)
+    value: SIN;
+  }
+  // installer level test menu sensor/actor test from PR #174
+
+  /** building pump power */
+  @inherit(rs)
+  @ext(1)
+  model TestBuildingPumpPower {
+    /** T.0.01 */
+    value: percent0;
+  }
+
+  /** fan 1 */
+  @inherit(rs)
+  @ext(0x11)
+  model TestFan1 {
+    /** T.0.02 */
+    value: percent0;
+  }
+
+  /** condensate tray heater */
+  @inherit(rs)
+  @ext(0x13)
+  model TestCondensateTrayHeater {
+    /** T.0.19 */
+    value: onoff;
+  }
+
+  /** 4 way valve */
+  @inherit(rs)
+  @ext(0x14)
+  model TestFourWayValve {
+    /** T.0.20 */
+    value: onoff;
+  }
+
+  /** heating coil compressor */
+  @inherit(rs)
+  @ext(0x17)
+  model TestHeatingCoilCompressor {
+    /** T.0.23 */
+    value: onoff;
+  }
+
+  /** flow temperature */
+  @inherit(rs)
+  @ext(0x28)
+  model TestFlowTemp {
+    /** T.0.40 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** return temperature */
+  @inherit(rs)
+  @ext(0x29)
+  model TestReturnTemp {
+    /** T.0.41 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** building water pressure */
+  @inherit(rs)
+  @ext(0x2a)
+  model TestBuildingWaterPress {
+    /** T.0.42 */
+    @unit("bar")
     @divisor(10)
     value: UIN;
+  }
+
+  /** air intake temperature */
+  @inherit(rs)
+  @ext(0x30)
+  model TestAirIntakeTemp {
+    /** T.0.48 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** EEV outlet temperature */
+  @inherit(rs)
+  @ext(0x39)
+  model TestEEVOutletTemp {
+    /** T.0.57 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** condensor outlet temperature */
+  @inherit(rs)
+  @ext(0x3b)
+  model TestCondensorOutletTemp {
+    /** T.0.59 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** high pressure */
+  @inherit(rs)
+  @ext(0x3f)
+  model TestHighPress {
+    /** T.0.63 */
+    @unit("bar")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** low pressure */
+  @inherit(rs)
+  @ext(0x40)
+  model TestLowPress {
+    /** T.0.64 */
+    @unit("bar")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** high pressure switch */
+  @inherit(rs)
+  @ext(0x43)
+  model TestHighPressureSwitch {
+    /** T.0.67 */
+    @values(Values_TestHighPressureSwitch)
+    value: UIN;
+  }
+
+  /** evaporation temperature */
+  @inherit(rs)
+  @ext(0x55)
+  model TestEvaporationTemp {
+    /** T.0.85 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** condensate temperature */
+  @inherit(rs)
+  @ext(0x56)
+  model TestCondensateTemp {
+    /** T.0.86 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** overheating target value */
+  @inherit(rs)
+  @ext(0x57)
+  model TestOverheatingTargetValue {
+    /** T.0.87 */
+    @unit("K")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** overheating current value */
+  @inherit(rs)
+  @ext(0x58)
+  model TestOverheatingActualValue {
+    /** T.0.88 */
+    @unit("K")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** sub cooling target value */
+  @inherit(rs)
+  @ext(0x59)
+  model TestSubcoolingTargetValue {
+    /** T.0.89 */
+    @unit("K")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** sub cooling current value */
+  @inherit(rs)
+  @ext(0x5a)
+  model TestSubcoolingActualValue {
+    /** T.0.90 */
+    @unit("K")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** temperature switch compressor outlet */
+  @inherit(rs)
+  @ext(0x7b)
+  model TestTempSwitchCompressorOutlet {
+    /** T.0.123 */
+    @values(Values_TestTempSwitchCompressorOutlet)
+    value: UIN;
+  }
+
+  /** priority switch valve WW */
+  @inherit(rs)
+  @ext(0x2)
+  model TestPrioritySwitchingValve {
+    /** T.1.02 */
+    value: switchvalve;
+  }
+
+  /** storage temperature */
+  @inherit(rs)
+  @ext(0x2c)
+  model TestCylinderTemp {
+    /** T.1.44 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** lockout contact S20 */
+  @inherit(rs)
+  @ext(0x2e)
+  model TestLockoutContactS20 {
+    /** T.1.46 */
+    @values(Values_TestLockoutContactS20)
+    value: UIN;
+  }
+
+  /** outside temperature */
+  @inherit(rs)
+  @ext(0x45)
+  model TestOutdoorTemp {
+    /** T.1.69 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** system temperature */
+  @inherit(rs)
+  @ext(0x46)
+  model TestSystemTemp {
+    /** T.1.70 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** DCF status */
+  @inherit(rs)
+  @ext(0x47)
+  model TestDCFStatus {
+    /** T.1.71 */
+    value: UIN;
+  }
+
+  /** lockout contact S21 */
+  @inherit(rs)
+  @ext(0x48)
+  model TestLockoutContactS21 {
+    /** T.1.72 */
+    @values(Values_TestLockoutContactS21)
+    value: UIN;
+  }
+
+  /** MA1 output */
+  @inherit(rs)
+  @ext(0x77)
+  model TestMA1Output {
+    /** T.1.119 */
+    value: onoff;
+  }
+
+  /** STB heater */
+  @inherit(rs)
+  @ext(0x7c)
+  model TestImmersionHeaterSafetyCutOut {
+    /** T.1.124 */
+    @values(Values_TestImmersionHeaterSafetyCutOut)
+    value: UIN;
+  }
+
+  /** ME input */
+  @inherit(rs)
+  @ext(0x7d)
+  model TestMIInput {
+    /** T.1.125 */
+    value: SIN;
+  }
+
+  /** MA2 output */
+  @inherit(rs)
+  @ext(0x7e)
+  model TestMO2Output {
+    /** T.1.126 */
+    value: onoff;
+  }
+
+  /** MA3 output */
+  @inherit(rs)
+  @ext(0x7f)
+  model TestMO3Output {
+    /** T.1.127 */
+    value: onoff;
+  }
+
+  /** Vorlauftemperatur Heizstab */
+  @inherit(rs)
+  @ext(0x82)
+  model TestFlowTempImmersionHeater {
+    /** T1.130 */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
   }
   // Values from Live Monitor. EnableLiveMonitor message needs to be sent before each of the read messages work.
 
@@ -576,6 +912,78 @@ namespace Hmu {
   model LiveMonitorAirIntakeTemp {
     value: temp;
   }
+  // installer level test menu statistics from PR #174
+
+  /** default *ri for user level "install" */
+  @auth("install")
+  @base(MF, 0x1a, 0x5)
+  model ri {
+    @maxLength(3)
+    value: IGN;
+  }
+
+  /** compressor hours */
+  @inherit(ri)
+  @ext(0xb4, 0x34, 0)
+  model CompressorHours {
+    value: hoursum;
+  }
+
+  /** compressor starts */
+  @inherit(ri)
+  @ext(0xb4, 0x34, 1)
+  model CompressorStarts {
+    value: UIN;
+  }
+
+  /** building punp hours */
+  @inherit(ri)
+  @ext(0xb4, 0x34, 0x2)
+  model BuildingPumpHours {
+    value: hoursum;
+  }
+
+  /** building punp starts */
+  @inherit(ri)
+  @ext(0xb4, 0x34, 0x3)
+  model BuildingPumpStarts {
+    value: UIN;
+  }
+
+  /** 4 way valve hours */
+  @inherit(ri)
+  @ext(0x7, 0x34, 0x6)
+  model FourWayValveHours {
+    value: hoursum;
+  }
+
+  /** 4 way valve switching operations */
+  @inherit(ri)
+  @ext(0x36, 0x34, 0x7)
+  model FourWayValveSwitchingOperations {
+    value: UIN;
+  }
+
+  /** fan 1 hours */
+  @inherit(ri)
+  @ext(0x3c, 0x34, 0x51)
+  model Fan1Hours {
+    value: hoursum;
+  }
+
+  /** fan 1 starts */
+  @inherit(ri)
+  @ext(0xd6, 0x34, 0x52)
+  model Fan1Starts {
+    value: UIN;
+  }
+
+  /** EEV steps */
+  @inherit(ri)
+  @ext(0xe4, 0x34, 0xd)
+  model EEVSteps {
+    value: UIN;
+  }
 
   enum Values_state {
     ready: 0x01,
@@ -583,6 +991,31 @@ namespace Hmu {
     heating: 0x09,
     cooling: 0x11,
     heating_water: 0x81,
+  }
+
+  enum Values_TestHighPressureSwitch {
+    open: 0,
+    close: 1,
+  }
+
+  enum Values_TestTempSwitchCompressorOutlet {
+    open: 0,
+    close: 1,
+  }
+
+  enum Values_TestLockoutContactS20 {
+    close: 0,
+    open: 1,
+  }
+
+  enum Values_TestLockoutContactS21 {
+    close: 0,
+    open: 1,
+  }
+
+  enum Values_TestImmersionHeaterSafetyCutOut {
+    close: 0,
+    open: 1,
   }
 
   enum Values_status {

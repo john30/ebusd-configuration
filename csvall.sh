@@ -30,6 +30,8 @@ sed -i \
   -e 's#,UCH,,,"Off=0, On=1"#,onoff,,,#' \
   -e 's#,UCH,240=no;15=yes,#,yesno2,,#' \
   -e 's#,RückmeldungB#,RueckmeldungB#' \
+  -e 's#ReglerCurrentTEMP#ReglerCurrentTemp#' \
+  -e 's#\(,CounterStartattempts[.*],\)temp0,#\1UCH,#' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
