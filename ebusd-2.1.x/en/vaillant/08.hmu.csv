@@ -3,18 +3,67 @@
 r,,State,,,,,07,energy,,UCH,,,,,,energy,,,,,,onoff,,,,state,,UCH,0x01=ready;0x0b=error;0x09=heating;0x11=cooling;0x81=heating_water,,
 # Heatpump statistics,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF32",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
-r,,EnergyHc,,,,,00,,,energy,,,,,,,,,,,,,,,,,,,,,
-r,,EnergyCool,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
-r,,EnergyYieldHwc,energy yield hot water,,,,16,,,energy4,,,,,,,,,,,,,,,,,,,,,
+r,,YIeldHcDay,,,,,00,,,energy,10,kWh,,,,,,,,,,,,,,,,,,,
+r,,YieldCoolDay,,,,,01,,,energy,10,kWh,,,,,,,,,,,,,,,,,,,
+r,,YieldHwcDay,,,,,02,,,energy,10,kWh,,,,,,,,,,,,,
+r,,YieldHcMonth,,,,,0e,,,energy,10,kWh,,,,,,,,,,,,,
+r,,CopHcMonth,,,,,0f,,,UIN,10,,,,,,,,,,,,,,
+r,,YieldHc,,,,,10,,,energy,,kWh,,,,,,,,,,,,,
+r,,CopHc,,,,,11,,,UIN,10,,,,,,,,,,,,,,
+r,,YieldHwcMonth,,,,,12,,,energy,10,kWh,,,,,,,,,,,,,
+r,,CopHwcMonth,,,,,13,,,UIN,10,,,,,,,,,,,,,,
+r,,YieldHwc,energy yield hot water,,,,16,,,energy4,,,,,,,,,,,,,,,,,,,,,
+r,,CopHwc,,,,,17,,,UIN,10,,,,,,,,,,,,,,
 r,,Hours,operation hours,,,,40,,,hoursum,,,,,,,,,,,,,,,,,,,,,
 r,,HoursHc,operation hours heating,,,,41,,,hoursum,,,,,,,,,,,,,,,,,,,,,
 r,,HoursCool,operation hours cooling,,,,43,,,hoursum,,,,,,,,,,,,,,,,,,,,,
+r,,HoursHwc,operation hours hot water,,,,44,,,hoursum,,,,,,,,,,,,,,,,
 # some more statistics from Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,EnergyIntegral,current energy integral,,,,21,,,integral,,,,,,,,,,,,,,,,,,,,,
+# example: 3108b51a0405ff3223 / 0aff083500000000000000
 r,,CurrentYieldPower,current yielded energy from the environment,,,,23,,,D1B,10,kW,,,,,,,,,,,,,,,,,,,
+# example: 3108b51a0405ff3224 / 0aff083501000000000000
 r,,CurrentConsumedPower,current power consumption,,,,24,,,D1B,10,kW,,,,,,,,,,,,,,,,,,,
 r,,CurrentCompressorUtil,current compressor utilization,,,,25,,,D1B,,%,,,,,,,,,,,,,,,,,,,
 r,,AirIntakeTemp,air intake temperature,,,,26,,,temp,,,,,,,,,,,,,,,
+# Values from Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,,TargetTempHc,heat circuit target temperature,,,,1C,,,D2C,,°C,,,,,,,,,,,,,
+r,,SourceTempOutput,,,,,27,,,D2C,,°C,,,,,,,,,,,,,
+r,,BuildingCircuitFlow,,,,,3C,,,UIN,,l/h,,,,,,,,,,,,,
+r,,FlowPressure,,,,,3d,,,D2C,4,,,,,,,,,,,,,,
+r,,SourcePressure,,,,,3e,,,D2C,4,,,,,,,,,,,,,,
+# example: 3108b51a0405ff324d / 02ff01 (not working!)
+r,,TotalEnergyUsage,,,,,4D,,,energy,,kWh,,,,,,,,,,,,,
+*r,,,,,,"B51A","05",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
+r,,CompressorHours,,,,,FF3400,,,UIN,,h,hours,,,,,,,,,,,,,
+r,,CompressorStarts,,,,,FF3401,,,UIN,,,,,,,,,,,,,,,
+r,,BuildingPumpHours,,,,,FF3402,,,UIN,,h,hours,,,,,,,,,,,,,
+r,,BuildingPumpStarts,,,,,FF3403,,,UIN,,,,,,,,,,,,,,,
+r,,ForWayValveHours,,,,,FF3406,,,UIN,,h,hours,,,,,,,,,,,,,
+r,,ForWayValveSwitches,,,,,FF3407,,,UIN,,,,,,,,,,,,,,,
+r,,EEVSteps,,,,,FF340D,,,UIN,,,,,,,,,,,,,,,
+r,,FourWayValveSwitchingOperations,,,,,FF3430,,,UIN,,,,,,,,,,,,,,,
+r,,Fan1Hours,,,,,FF3451,,,UIN,,h,hours,,,,,,,,,,,,,
+r,,Fan1Starts,,,,,FF3452,,,UIN,,,,,,,,,,,,,,,
+r,,Fan2Hours,,,,,FF345E,,,UIN,,h,hours,,,,,,,,,,,,,
+r,,Fan2Starts,,,,,FF345F,,,UIN,,,,,,,,,,,,,,,
+
+# Heat pump configuration menu values
+r,,HeatCurve,,,,,8F352D,,,IGN:3,,,,,,BCD,10,,heat curve 0.1 to 4.0,,,,,,,,,,,,
+r,,SummerSwitchOffTemp,,,,,8F352E,,,IGN:3,,,,,,D2C,,°C,Switch-off temperature summer (°C),,,,,,,,,,,,
+r,,HcBivalencePoint,,,,,8F352F,,,IGN:3,,,,,,D2C,,°C,Central heating bivalence point (°C),,,,,,,,,,,,
+r,,HwcBivalencePoint,,,,,8F3530,,,IGN:3,,,,,,D2C,,°C,Bivalence point domestic hot water (°C),,,,,,,,,,,,
+r,,MaxFlowTemp,,,,,8F3532,,,IGN:3,,,,,,D2C,,°C,Maximum flow temperature (°C),,,,,,,,,,,,
+r,,MinFlowTemp,,,,,8F3533,,,IGN:3,,,,,,D2C,,°C,Minimum flow temperature (°C),,,,,,,,,,,,
+r,,HcModeActive,,,,,8F3534,,,IGN:3,,,,,,UCH,0=no;1=yes,,Central heating mode active (yes/no),,,,,,,,,,,,
+r,,HwcModeActive,,,,,8F3535,,,IGN:3,,,,,,UCH,0=no;1=yes,,Domestic hot water mode active (yes/no),,,,,,,,,,,,
+r,,HwcChargeHysteresis,,,,,8F3539,,,IGN:3,,,,,,D2C,,°K,Hysteresis Hwc charging (°K),,,,,,,,,,,,
+r,,ImmersionHeaterMode,,,,,C4331E,,,IGN:3,,,,,,UCH,0=off;1=on,,Immersion heater mode (on/off),,,,,,,,,,,,
+r,,CompressorHysteresisHc,,,,,F83443,,,IGN:3,,,,,,D2C,,°K,Compressor hysteresis central heating (°K),,,,,,,,,,,,
+r,,CompressorHysteresisCooling,,,,,86353F,,,IGN:3,,,,,,D2C,,,Compressor hysteresis cooling (°K),,,,,,,,,,,,
+r,,HwcMode,,,,,523444,,,IGN:3,,,,,,UCH,0=eco;1=normal;2=balance,,Domestic hot water mod (eco/normal/balance),,,,,,,,,,,,
+r,,TargetTempHwc,,,,,C63207,,,IGN:3,,,,,,D2C,,°C,Target Hwc temperature (°C),,,,,,,,,,,,
+
 # Total heating yields,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,,,,,,"B516","18",,,IGN:1,,,,,,,,,,,,,,,,,,,,,
 r,,YieldTotal,,,,,01,,,energy,,,,,,,,,,,,,,,,,,,,,
@@ -52,32 +101,38 @@ r,,ConsumptionThisYear12,,,,,0C00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,,,,,,,
 # Test menus on VWZ. EnableTest message needs to be sent before each of the read messages work.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *rs,#service,,,,,"B514",05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
 *ws,#service,,,,,"B514",05,ignore,,HEX:3,="03FFFF",,,,,,,,,,,,,,,,,,,,
-ws,,EnableTestEEVPosition,Read EEV position,,,,15
+ws,,EnableTestEEVPosition,read EEV position,,,,15
 rs,,TestEEVPosition,EEV position,,,,15,,,percent0,,,T.0.21
-ws,,EnableTestCompressorExitTemp,Read compressor outlet temperature,,,,37
+ws,,EnableTestCompressorExitTemp,read compressor outlet temperature,,,,37
 rs,,TestCompressorExitTemp,compressor outlet temperature,,,,37,,,SIN,10,°C,T.0.55
-ws,,EnableTestCompressorIntakeTemp,Read compressor inlet temperature,,,,38
+ws,,EnableTestCompressorIntakeTemp,read compressor inlet temperature,,,,38
 rs,,TestCompressorInletTemp,compressor inlet temperature,,,,38,,,SIN,10,°C,T.0.56
-ws,,EnableTestWaterThroughput,Read current heating water flow rate,,,,2B
+ws,,EnableTestWaterThroughput,read current heating water flow rate,,,,2B
 rs,,TestWaterThroughput,current heating water flow rate,,,,2B,,,UIN,,l/h,T.0.45
-ws,,EnableTestCompressorSpeed,Read compressor speed,,,,5D
+ws,,EnableTestCompressorSpeed,read compressor speed,,,,5D
 rs,,TestCompressorSpeed,compressor speed,,,,5d,,,SIN,10,U/s,T.0.93
 # installer level test menu sensor/actor test from PR #174
 rs,,TestBuildingPumpPower,building pump power,,,,01,,,percent0,,,T.0.01
 rs,,TestFan1,fan 1,,,,11,,,percent0,,,T.0.02
+rs,,TestFan2,fan 2,,,,12,,,percent0,,,T.0.02
 rs,,TestCondensateTrayHeater,condensate tray heater,,,,13,,,onoff,,,T.0.19
 rs,,TestFourWayValve,4 way valve,,,,14,,,onoff,,,T.0.20
 rs,,TestHeatingCoilCompressor,heating coil compressor,,,,17,,,onoff,,,T.0.23
+ws,,EnableTestFlowTemp,read flow temperature,,,,28
 rs,,TestFlowTemp,flow temperature,,,,28,,,SIN,10,°C,T.0.40
+ws,,EnableTestReturnTemp,read return temperature,,,,29
 rs,,TestReturnTemp,return temperature,,,,29,,,SIN,10,°C,T.0.41
 rs,,TestBuildingWaterPress,building water pressure,,,,2a,,,UIN,10,bar,T.0.42
 rs,,TestAirIntakeTemp,air intake temperature,,,,30,,,SIN,10,°C,T.0.48
 rs,,TestEEVOutletTemp,EEV outlet temperature,,,,39,,,SIN,10,°C,T.0.57
 rs,,TestCondensorOutletTemp,condensor outlet temperature,,,,3b,,,SIN,10,°C,T.0.59
+ws,,EnableTestHighPress,read high pressure,,,,3f
 rs,,TestHighPress,high pressure,,,,3f,,,SIN,10,bar,T.0.63
 rs,,TestLowPress,low pressure,,,,40,,,SIN,10,bar,T.0.64
 rs,,TestHighPressureSwitch,high pressure switch,,,,43,,,UIN,0=open;1=close,,T.0.67
+ws,,EnableTestEvaporationTemp,read evaporation temperature,,,,55
 rs,,TestEvaporationTemp,evaporation temperature,,,,55,,,SIN,10,°C,T.0.85
+ws,,EnableTestCondensateTemp,read condensate temperature,,,,56
 rs,,TestCondensateTemp,condensate temperature,,,,56,,,SIN,10,°C,T.0.86
 rs,,TestOverheatingTargetValue,overheating target value,,,,57,,,SIN,10,K,T.0.87
 rs,,TestOverheatingActualValue,overheating current value,,,,58,,,SIN,10,K,T.0.88
@@ -97,7 +152,11 @@ rs,,TestMIInput,ME input,,,,7d,,,SIN,,,T.1.125
 rs,,TestMO2Output,MA2 output,,,,7e,,,onoff,,,T.1.126
 rs,,TestMO3Output,MA3 output,,,,7f,,,onoff,,,T.1.127
 rs,,TestFlowTempImmersionHeater,Vorlauftemperatur Heizstab,,,,82,,,SIN,10,°C,T1.130
-# Values from Live Monitor. EnableLiveMonitor message needs to be sent before each of the read messages work.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*rs,#service,,,,,"B514",05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
+*ws,#service,,,,,"B514",05,ignore,,HEX:3,="000000",,,,,,,,,,,,,,,,,,,,
+ws,,EnableTestEEVTemp,read EEV temperature,,,,3b,,m,HEX:3
+rs,,TestEEVTemp,EEV temperature,,,,3b000000,,,IGN:2,,,,,,SIN,10,,°C
+# Values from Live Monitor. EnableLiveMonitorMain message needs to be sent before the read message works.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *us,#service,,,,,B503,00,,,,,,,,,,,,,,,,,,,,,,,,
 *ws,#service,,,,,B503,00,,,,,,,,,,,,,,,,,,,,,,,,
 ws,,EnableiveMonitorMain,enable live monitor read status,,,,03,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -118,14 +177,14 @@ rs,,LiveMonitorCurrentCompressorUtil,compressor modulation,,,,25,,,D1B,,%,,,,,,,
 rs,,LiveMonitorAirIntakeTemp,air intake temperature,,,,26,,,temp,,,,,,,,,,,,,,,
 # installer level test menu statistics from PR #174
 *ri,#install,,,,,"B51A","05",,,IGN:3,,,,
-ri,,CompressorHours,compressor hours,,,,b43400,,,hoursum,,,
-ri,,CompressorStarts,compressor starts,,,,b43401,,,UIN,,,
-ri,,BuildingPumpHours,building punp hours,,,,b43402,,,hoursum,,,
-ri,,BuildingPumpStarts,building punp starts,,,,b43403,,,UIN,,,
-ri,,FourWayValveHours,4 way valve hours,,,,073406,,,hoursum,,,
-ri,,FourWayValveSwitchingOperations,4 way valve switching operations,,,,363407,,,UIN,,,
-ri,,Fan1Hours,fan 1 hours,,,,3c3451,,,hoursum,,,
-ri,,Fan1Starts,fan 1 starts,,,,d63452,,,UIN,,,
-ri,,EEVSteps,EEV steps,,,,e4340d,,,UIN,,,
+ri,,StatCompressorHours,compressor hours,,,,b43400,,,hoursum,,,
+ri,,StatCompressorStarts,compressor starts,,,,b43401,,,UIN,,,
+ri,,StatBuildingPumpHours,building punp hours,,,,b43402,,,hoursum,,,
+ri,,StatBuildingPumpStarts,building punp starts,,,,b43403,,,UIN,,,
+ri,,StatFourWayValveHours,4 way valve hours,,,,073406,,,hoursum,,,
+ri,,StatFourWayValveSwitchingOperations,4 way valve switching operations,,,,363407,,,UIN,,,
+ri,,StatFan1Hours,fan 1 hours,,,,3c3451,,,hoursum,,,
+ri,,StatFan1Starts,fan 1 starts,,,,d63452,,,UIN,,,
+ri,,StatEEVSteps,EEV steps,,,,e4340d,,,UIN,,,
 !include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
