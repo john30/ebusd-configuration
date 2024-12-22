@@ -1,6 +1,6 @@
 import csvParser from "csv-parser";
-import {createReadStream, createWriteStream} from "fs";
-import {mkdir, readFile, readdir, readlink, stat, symlink, writeFile} from "fs/promises";
+import {createReadStream, createWriteStream, type Stats} from "fs";
+import {mkdir, readFile, readdir, readlink, stat, symlink, unlink, writeFile} from "fs/promises";
 import {dump, load} from "js-yaml";
 import * as path from 'path';
 import {Transform, type TransformCallback} from "stream";
@@ -691,6 +691,16 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       isDefault += ` for user level "${auth}"`;
     }
   }
+  if (circuit) {
+    const name = path.basename(location, path.extname(location));
+    const parts = name.split('.');
+    if (parts.length===1 ? circuit===name : parts[0].match(/^[0-9a-f]{2,2}$/) ? circuit===parts[1] : circuit===name) {
+      circuit = undefined;
+    }
+  }
+  if (circuit && !namespacePerCircuit) {
+    console.warn(`found circuit ${circuit} that differs from the file name circuit part in ${location}${isDefault?' for default':''}. consider using the '-n' switch!`);
+  }
   let dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio
   const poll = dirsStr.split(';').filter(d=>d.match(/r[0-9]$/)).map(d=>d.replace(/.*([0-9])$/,'$1')).filter(p=>p).sort(); // extract poll prio
   const single = dirs.length===1 && (isDefault || !additions.defaultsByName.has(dirs[0]));//todo why
@@ -715,8 +725,20 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       }
       delete additions.renamedDefaults[dirs[0]];
     }
-    const suff = suffix(dirsStr, additions.defaultsByName);
+    const suff = suffix(
+      (namespacePerCircuit && !condNamespace && circuit ? circuit+':' : '')+
+      dirsStr, additions.defaultsByName);
     dirs[0] += suff;
+    if (namespacePerCircuit && !condNamespace && circuit) {
+      additions.renamedDefaults[':'+dirsStr] = circuit;
+      condNamespace = circuit;
+    }
+  }
+  if (namespacePerCircuit && !isDefault && !circuit && !single) {
+    const add = additions.renamedDefaults[':'+dirsStr];
+    if (add) {
+      condNamespace = add+(condNamespace?'.'+condNamespace:'');
+    }
   }
   const chainLengths = chain.length>1 && (line[7]||'').split(';').map(i=>i.split(':')[1])
     .filter(i=>i?.length)
@@ -825,9 +847,11 @@ const helpTxt = [
   '  -p mapfile   the file name of a previously generated multi-language mapping to read for seeding the i18n normalization',
   '  -s i18ndir   the directory in which to store i18n file(s) per language ("<lang>.yaml")',
   '  -i regex     pattern for file names (including relative dir) to ignore',
+  '  -n           add extra namespace for explicitly named circuit',
   '  csvfile      the csv file(s) to transform (unless to traverse the whole basedir)'
 ];
 let normalize = true;
+let namespacePerCircuit = false;
 type I18n = {first: string, en?: string, de?: string, locations: Set<string>}
 const i18n = new Map<string, I18n>(); // map from i18n key to src language text and locations as message/field/template key
 let i18nLang: keyof Omit<I18n, 'locations'> = 'en';
@@ -884,6 +908,9 @@ export const csv2tsp = async (args: string[] = []) => {
         break;
       case '-i':
         ignorePattern = new RegExp(args[++i]);
+        break;
+      case '-n':
+        namespacePerCircuit = true;
         break;
       default:
         files = args.slice(i);
@@ -1085,7 +1112,27 @@ export const csv2tsp = async (args: string[] = []) => {
       for (const link of links?.[location] || []) {
         const linkNameNoExt = path.basename(link, path.extname(link));
         const linkFile = path.join(todir, linkNameNoExt+'.tsp');
-        await symlink(path.relative(todir, newFile), linkFile);
+        const target = path.relative(todir, newFile);
+        let st: Stats|undefined;
+        let lnk: string|undefined;
+        try {
+          st = await stat(linkFile); // throws if not exists
+          lnk = await readlink(linkFile);
+        } catch (_) {
+          // handled below
+        }
+        if (lnk===target) {
+          // fine
+        } else {
+          if (st) {
+            try {
+              await unlink(linkFile);
+            } catch (_) {
+              // try creating the new link nevertheless
+            }
+          }
+          await symlink(target, linkFile);
+        }
       }
     }
   }
