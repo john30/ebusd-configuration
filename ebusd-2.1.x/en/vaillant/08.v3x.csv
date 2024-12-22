@@ -1,0 +1,13 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,v3x00,VR39,0020139898,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*wi,#install,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+# ##### dia level 1 #####,,,,,,,,,,,,,
+r,,CirPump,d.13 Circulation pump,,,,"7B00",,,onoff,,,
+# ##### dia level 2 #####,,,,,,,,,,,,,
+r;wi,,ReturnRegulation,d.17 Return regulation,,,,"0C04",,,onoff,,,
+r;wi,,HcPumpMode,d.18 CH pump mode,,,,"4904",,,UCH,0=post run;1=permanent;2=winter,,
+!include,errors.inc,,,,,,,,,,,,
+!include,service.inc,,,,,,,,,,,,
