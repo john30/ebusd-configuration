@@ -49,6 +49,7 @@ import "./vaillant/53.mc2.mc.5.tsp";
 import "./vaillant/64.v65.tsp";
 import "./vaillant/75.rcc.tsp";
 import "./vaillant/75.v81.tsp";
+import "./vaillant/76.vwz.tsp";
 import "./vaillant/84.zeo.tsp";
 import "./vaillant/_templates.tsp";
 import "./vaillant/a0.sol.hwc.tsp";

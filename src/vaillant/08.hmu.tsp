@@ -232,90 +232,99 @@ namespace Hmu {
   }
 
   /** default *r */
-  @base(MF, 0x1a, 0x5)
+  @base(MF, 0x1a, 0x5, 0xff, 0x34)
   model r_3 {
     @maxLength(3)
     value: IGN;
   }
+  // ff34 prefix also seen as e534 in PR 330
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0)
+  /** default *u */
+  @passive
+  @base(MF, 0x1a, 0x5, 0xe5, 0x34)
+  model u_1 {
+    @maxLength(3)
+    value: IGN;
+  }
+
+  @inherit(r_3, u_1)
+  @ext(0)
   model CompressorHours {
     /** hours */
     @unit("h")
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 1)
+  @inherit(r_3, u_1)
+  @ext(1)
   model CompressorStarts {
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x2)
+  @inherit(r_3, u_1)
+  @ext(0x2)
   model BuildingPumpHours {
     /** hours */
     @unit("h")
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x3)
+  @inherit(r_3, u_1)
+  @ext(0x3)
   model BuildingPumpStarts {
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x6)
+  @inherit(r_3, u_1)
+  @ext(0x6)
   model ForWayValveHours {
     /** hours */
     @unit("h")
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x7)
+  @inherit(r_3, u_1)
+  @ext(0x7)
   model ForWayValveSwitches {
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0xd)
+  @inherit(r_3, u_1)
+  @ext(0xd)
   model EEVSteps {
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x30)
+  @inherit(r_3, u_1)
+  @ext(0x30)
   model FourWayValveSwitchingOperations {
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x51)
+  @inherit(r_3, u_1)
+  @ext(0x51)
   model Fan1Hours {
     /** hours */
     @unit("h")
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x52)
+  @inherit(r_3, u_1)
+  @ext(0x52)
   model Fan1Starts {
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x5e)
+  @inherit(r_3, u_1)
+  @ext(0x5e)
   model Fan2Hours {
     /** hours */
     @unit("h")
     value: UIN;
   }
 
-  @inherit(r_3)
-  @ext(0xff, 0x34, 0x5f)
+  @inherit(r_3, u_1)
+  @ext(0x5f)
   model Fan2Starts {
     value: UIN;
   }
