@@ -237,7 +237,7 @@ namespace Hmu {
     @maxLength(3)
     value: IGN;
   }
-  // ff34 prefix also seen as e534 in PR 330
+  // TODO ff34 prefix also seen as e534 in PR 330, see also duplication in StatCompressorHours with b434 and others. this seems to be HW/SW specific and needs to be sorted out.
 
   /** default *u */
   @passive

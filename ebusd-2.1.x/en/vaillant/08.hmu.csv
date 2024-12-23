@@ -35,7 +35,7 @@ r,,SourcePressure,,,,,3e,,,D2C,4,,,,,,,,,,,,,,
 # example: 3108b51a0405ff324d / 02ff01 (not working!)
 r,,TotalEnergyUsage,,,,,4D,,,energy,,kWh,,,,,,,,,,,,,
 *r,,,,,,"B51A","05FF34",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
-# ff34 prefix also seen as e534 in PR 330
+# TODO ff34 prefix also seen as e534 in PR 330, see also duplication in StatCompressorHours with b434 and others. this seems to be HW/SW specific and needs to be sorted out.
 *u,,,,,,"B51A","05E534",,,IGN:3,,,,,,,,,,,,,,,,,,,,,
 r;u,,CompressorHours,,,,,00,,,UIN,,h,hours,,,,,,,,,,,,,
 r;u,,CompressorStarts,,,,,01,,,UIN,,,,,,,,,,,,,,,
