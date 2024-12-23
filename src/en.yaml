@@ -435,29 +435,47 @@ current yielded energy from the environment in kW: current yielded energy from t
 current power consumption of the heatpump in kW: current power consumption of the heatpump in kW
 current compressor utilization in percent: current compressor utilization in percent
 current heating water flow rate in liters per hour: current heating water flow rate in liters per hour
-Read Ventilation Intensity Day: Read Ventilation Intensity Day
-Read Ventilation Intensity Night: Read Ventilation Intensity Night
-Read Heat Recovery: Read Heat Recovery
-Set Ventilation Intensity 1: Set Ventilation Intensity 1
-Set Ventilation Intensity 2: Set Ventilation Intensity 2
-Set Ventilation Intensity 3: Set Ventilation Intensity 3
-Set Ventilation Intensity 4: Set Ventilation Intensity 4
-Set Ventilation Intensity 5: Set Ventilation Intensity 5
-Set Ventilation Intensity 6: Set Ventilation Intensity 6
-Set Heat Recovery Auto: Set Heat Recovery Auto
-Turn On Heat Recovery: Turn On Heat Recovery
-Turn Off Heat Recovery: Turn Off Heat Recovery
-Set Ventilation Day: Set Ventilation Day
-Set Ventilation Night: Set Ventilation Night
-Activate Boost Ventilation: Activate Boost Ventilation
-Position of Bypass Flap: Position of Bypass Flap
-Outside Air Temperature: Outside Air Temperature
-Outgoing Air Temperature: Outgoing Air Temperature
-Waste Air Temperature: Waste Air Temperature
-Inlet Air Temperature: Inlet Air Temperature
-Relative Humidity Waste Air: Relative Humidity Waste Air
-Frost Protection Element Active: Frost Protection Element Active
-Current Volume Flow: Current Volume Flow
+'Ventilation level day: 1-6': 'Ventilation level day: 1-6'
+'Ventilation level night: 1-6': 'Ventilation level night: 1-6'
+Heat recovery: Heat recovery
+Days left until filter change: Days left until filter change
+Days left until maintenance: Days left until maintenance
+Energy yield today: Energy yield today
+Energy yield yesterday: Energy yield yesterday
+Energy yield month: Energy yield month
+Energy yield year: Energy yield year
+Energy yield total: Energy yield total
+Installation height: Installation height
+Exhaust air disbalance: Exhaust air disbalance
+Nominal flow NL: Nominal flow NL
+Reduced ventilation to NL: Reduced ventilation to NL
+Intenstive ventilation to NL: Intenstive ventilation to NL
+Heat exchanger typ: Heat exchanger typ
+Frost protection element: Frost protection element
+Air-earth collector available: Air-earth collector available
+Max. diff.temp. bypass: Max. diff.temp. bypass
+Pressure monitor available: Pressure monitor available
+Step switch available: Step switch available
+Air quality sensor number: Air quality sensor number
+min CO2 content: min CO2 content
+max CO2 content: max CO2 content
+min air humidity: min air humidity
+max air humidity: max air humidity
+Supply air speed: Supply air speed
+Exhaust air speed: Exhaust air speed
+Supply air internal actual flow: Supply air internal actual flow
+Supply air internal target flow: Supply air internal target flow
+Exhaust air internal actual flow: Exhaust air internal actual flow
+Exhaust air internal target flow: Exhaust air internal target flow
+gets overwritten/ignored when behind VR32: gets overwritten/ignored when behind VR32
+Ventilation stage: Ventilation stage
+Intensive ventilation: Intensive ventilation
+Outside air temperature: Outside air temperature
+Exit air temperature: Exit air temperature
+Exhaust air temperature: Exhaust air temperature
+Exhaust air humidity: Exhaust air humidity
+Supply air temperature: Supply air temperature
+Bypass flap position: Bypass flap position
 'Ntc1Sensor: T1 Temperature': 'Ntc1Sensor: T1 Temperature'
 'Ntc2Sensor: T2 Temperature': 'Ntc2Sensor: T2 Temperature'
 'Ntc3Sensor: T3 Temperature': 'Ntc3Sensor: T3 Temperature'
