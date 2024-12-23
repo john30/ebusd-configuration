@@ -1152,7 +1152,25 @@ export const csv2tsp = async (args: string[] = []) => {
       return value;
     };
     console.log(`writing multi-language mapping to ${langFile}`);
-    await writeFile(langFile, dump(i18n, {replacer}), 'utf-8');
+    i18n.forEach((i, k) => {
+      // ensure same order
+      i18n.set(k, {
+        first: i.first,
+        en: i.en,
+        de: i.de,
+        locations: i.locations,
+      });
+    });
+
+    await writeFile(langFile, dump(i18n, {replacer,
+      // sortKeys: (a: string, b: string) => {
+      //   const diff = a.toLowerCase().localeCompare(b.toLowerCase());
+      //   if (diff !== 0) {
+      //     return diff;
+      //   }
+      //   return a.localeCompare(b);
+      // },
+    }), 'utf-8');
     if (storeI18nDir) {
       // const langs = new Set<string>();
       // i18n.forEach(i => Object.keys(i).forEach(l => l!=='locations' && l!=='first' && langs.add(l)));

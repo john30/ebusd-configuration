@@ -2407,32 +2407,32 @@ thbtopoffsetoffsetforcalibratingtemperaturesensor:
     - vaillant/08.ehp.csv::r::0x33,1
 currentenergyintegralinmin:
   first: current energy integral in °min
-  de: aktuelles Energieintegral in °min
   en: current energy integral in °min
+  de: aktuelles Energieintegral in °min
   locations:
     - vaillant/08.hmu.csv::r::0x21:value
 currentyieldedenergyfromtheenvironmentinkw:
   first: current yielded energy from the environment in kW
-  de: aktuell gewonnene Energie aus der Umwelt in kW
   en: current yielded energy from the environment in kW
+  de: aktuell gewonnene Energie aus der Umwelt in kW
   locations:
     - vaillant/08.hmu.csv::r::0x23:value
 currentpowerconsumptionoftheheatpumpinkw:
   first: current power consumption of the heatpump in kW
-  de: aktueller Stromverbrauch der Wärmepumpe in kW
   en: current power consumption of the heatpump in kW
+  de: aktueller Stromverbrauch der Wärmepumpe in kW
   locations:
     - vaillant/08.hmu.csv::r::0x24:value
 currentcompressorutilizationinpercent:
   first: current compressor utilization in percent
-  de: aktuelle Kompressorauslastung in Prozent
   en: current compressor utilization in percent
+  de: aktuelle Kompressorauslastung in Prozent
   locations:
     - vaillant/08.hmu.csv::r::0x25:value
 currentheatingwaterflowrateinlitersperhour:
   first: current heating water flow rate in liters per hour
-  de: Aktuelle Heizwasser Durchflussrate der Wärmepumpe in Liter pro Stunde
   en: current heating water flow rate in liters per hour
+  de: Aktuelle Heizwasser Durchflussrate der Wärmepumpe in Liter pro Stunde
   locations:
     - vaillant/08.hmu.csv::r::0x2b,0x3,0xff,0xff:value
 readventilationintensityday:
