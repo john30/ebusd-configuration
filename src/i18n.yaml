@@ -64,7 +64,7 @@ desiredtemperature:
   de: Solltemperatur
   locations:
     - _templates.csv:desiredtemp
-    - vaillant/08.recov.csv::r::0x29,0x14,0xe
+    - vaillant/08.recov.csv::r::0x14,0xe
 outsidetemperature:
   first: outside temperature
   en: outside temperature
@@ -2484,144 +2484,246 @@ currentheatingwaterflowrateinlitersperhour:
   de: Aktuelle Heizwasser Durchflussrate der Wärmepumpe in Liter pro Stunde
   locations:
     - vaillant/08.hmu.csv::r::0x2b,0x3,0xff,0xff:value
-readventilationintensityday:
-  first: Read Ventilation Intensity Day
-  en: Read Ventilation Intensity Day
-  de: Lueftungsintensitaet Tag auslesen
+ventilationlevelday16:
+  first: 'Ventilation level day: 1-6'
+  en: 'Ventilation level day: 1-6'
+  de: Lüfterstufe Tag
   locations:
-    - vaillant/08.recov.csv::r::0x4,0x8a,0x3
-readventilationintensitynight:
-  first: Read Ventilation Intensity Night
-  en: Read Ventilation Intensity Night
-  de: Lueftungsintensitaet Nacht auslesen
+    - vaillant/08.recov.csv::r::0x8a,0x3
+ventilationlevelnight16:
+  first: 'Ventilation level night: 1-6'
+  en: 'Ventilation level night: 1-6'
+  de: Lüfterstufe Nacht
   locations:
-    - vaillant/08.recov.csv::r::0x4,0x8b,0x3
-readheatrecovery:
-  first: Read Heat Recovery
-  en: Read Heat Recovery
-  de: Waermerueckgewinnung auslesen
+    - vaillant/08.recov.csv::r::0x8b,0x3
+heatrecovery:
+  first: Heat recovery
+  en: Heat recovery
+  de: Wärmerückgewinnung
   locations:
-    - vaillant/08.recov.csv::r::0x4,0x8c,0x3
-setventilationintensity1:
-  first: Set Ventilation Intensity 1
-  en: Set Ventilation Intensity 1
-  de: Lueftungsintensitaet 1 setzen
+    - vaillant/08.recov.csv::r::0x8c,0x3
+daysleftuntilfilterchange:
+  first: Days left until filter change
+  en: Days left until filter change
+  de: Tage bis Filterwechsel
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8a,0x3,1
-setventilationintensity2:
-  first: Set Ventilation Intensity 2
-  en: Set Ventilation Intensity 2
-  de: Lueftungsintensitaet 2 setzen
+    - vaillant/08.recov.csv::r::0x35,0xe
+daysleftuntilmaintenance:
+  first: Days left until maintenance
+  en: Days left until maintenance
+  de: Tage bis Wartung
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8a,0x3,0x2
-setventilationintensity3:
-  first: Set Ventilation Intensity 3
-  en: Set Ventilation Intensity 3
-  de: Lueftungsintensitaet 3 setzen
+    - vaillant/08.recov.csv::r::0x36,0xe
+energyyieldtoday:
+  first: Energy yield today
+  en: Energy yield today
+  de: Energieertrag heute
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8a,0x3,0x3
-setventilationintensity4:
-  first: Set Ventilation Intensity 4
-  en: Set Ventilation Intensity 4
-  de: Lueftungsintensitaet 4 setzen
+    - vaillant/08.recov.csv::r::0x56,0xe
+energyyieldyesterday:
+  first: Energy yield yesterday
+  en: Energy yield yesterday
+  de: Energieertrag Vortag
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8a,0x3,0x4
-setventilationintensity5:
-  first: Set Ventilation Intensity 5
-  en: Set Ventilation Intensity 5
-  de: Lueftungsintensitaet 5 setzen
+    - vaillant/08.recov.csv::r::0x57,0xe
+energyyieldmonth:
+  first: Energy yield month
+  en: Energy yield month
+  de: Energieertrag Monat
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8a,0x3,0x5
-setventilationintensity6:
-  first: Set Ventilation Intensity 6
-  en: Set Ventilation Intensity 6
-  de: Lueftungsintensitaet 6 setzen
+    - vaillant/08.recov.csv::r::0x58,0xe
+energyyieldyear:
+  first: Energy yield year
+  en: Energy yield year
+  de: Energieertrag Jahr
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8a,0x3,0x6
-setheatrecoveryauto:
-  first: Set Heat Recovery Auto
-  en: Set Heat Recovery Auto
-  de: Waermerueckgewinnung Auto
+    - vaillant/08.recov.csv::r::0x59,0xe
+energyyieldtotal:
+  first: Energy yield total
+  en: Energy yield total
+  de: Energieertrag gesamt
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8c,0x3,0
-turnonheatrecovery:
-  first: Turn On Heat Recovery
-  en: Turn On Heat Recovery
-  de: Waermerueckgewinnung anschalten
+    - vaillant/08.recov.csv::r::0x5a,0xe
+installationheight:
+  first: Installation height
+  en: Installation height
+  de: Installationshöhe
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8c,0x3,1
-turnoffheatrecovery:
-  first: Turn Off Heat Recovery
-  en: Turn Off Heat Recovery
-  de: Waermerueckgewinnung ausschalten
+    - vaillant/08.recov.csv::r::0x1a,0xe
+exhaustairdisbalance:
+  first: Exhaust air disbalance
+  en: Exhaust air disbalance
+  de: Disbalance Abluft
   locations:
-    - vaillant/08.recov.csv::w::0xe,0x8c,0x3,0x2
-setventilationday:
-  first: Set Ventilation Day
-  en: Set Ventilation Day
-  de: Lueftung Tag setzen
+    - vaillant/08.recov.csv::r::0x1b,0xe
+nominalflownl:
+  first: Nominal flow NL
+  en: Nominal flow NL
+  de: Nennvolumenstrom NL
   locations:
-    - vaillant/08.recov.csv::w::0xb5,0x22,0,0x2,0,0xff,0xff
-setventilationnight:
-  first: Set Ventilation Night
-  en: Set Ventilation Night
-  de: Lueftung Nacht setzen
+    - vaillant/08.recov.csv::r::0x1c,0xe
+reducedventilationtonl:
+  first: Reduced ventilation to NL
+  en: Reduced ventilation to NL
+  de: Reduzierte Lüftung zu NL
   locations:
-    - vaillant/08.recov.csv::w::0xb5,0x22,0,1,0,0xff,0xff
-activateboostventilation:
-  first: Activate Boost Ventilation
-  en: Activate Boost Ventilation
-  de: Stosslueften aktivieren
+    - vaillant/08.recov.csv::r::0x1d,0xe
+intenstiveventilationtonl:
+  first: Intenstive ventilation to NL
+  en: Intenstive ventilation to NL
+  de: Intensivlüftung zu NL
   locations:
-    - vaillant/08.recov.csv::w::0xb5,0x22,0,0x3,0,0xff,0xff
-positionofbypassflap:
-  first: Position of Bypass Flap
-  en: Position of Bypass Flap
-  de: Position der Bypass-Klappe
+    - vaillant/08.recov.csv::r::0x1e,0xe
+heatexchangertyp:
+  first: Heat exchanger typ
+  en: Heat exchanger typ
+  de: Wärmetauschertyp
   locations:
-    - vaillant/08.recov.csv::r::0x29,0xb,0xe
+    - vaillant/08.recov.csv::r::0x25,0xe
+frostprotectionelement:
+  first: Frost protection element
+  en: Frost protection element
+  de: Frostschutzelement
+  locations:
+    - vaillant/08.recov.csv::r::0x26,0xe
+airearthcollectoravailable:
+  first: Air-earth collector available
+  en: Air-earth collector available
+  de: Luft-Erdkollektor vorhanden
+  locations:
+    - vaillant/08.recov.csv::r::0x28,0xe
+maxdifftempbypass:
+  first: Max. diff.temp. bypass
+  en: Max. diff.temp. bypass
+  de: Max. Differenztemperatur Bypass
+  locations:
+    - vaillant/08.recov.csv::r::0x2a,0xe
+pressuremonitoravailable:
+  first: Pressure monitor available
+  en: Pressure monitor available
+  de: Druckwächter vorhanden
+  locations:
+    - vaillant/08.recov.csv::r::0x2b,0xe
+stepswitchavailable:
+  first: Step switch available
+  en: Step switch available
+  de: Stufenschalter vorhanden
+  locations:
+    - vaillant/08.recov.csv::r::0x2c,0xe
+airqualitysensornumber:
+  first: Air quality sensor number
+  en: Air quality sensor number
+  de: Luftqualitätssensor Anzahl
+  locations:
+    - vaillant/08.recov.csv::r::0x2d,0xe
+minco2content:
+  first: min CO2 content
+  en: min CO2 content
+  de: min CO2 Wert
+  locations:
+    - vaillant/08.recov.csv::r::0x2e,0xe
+maxco2content:
+  first: max CO2 content
+  en: max CO2 content
+  de: max CO2 Wert
+  locations:
+    - vaillant/08.recov.csv::r::0x2f,0xe
+minairhumidity:
+  first: min air humidity
+  en: min air humidity
+  de: min Luftfeuchte
+  locations:
+    - vaillant/08.recov.csv::r::0x30,0xe
+maxairhumidity:
+  first: max air humidity
+  en: max air humidity
+  de: max Luftfeuchte
+  locations:
+    - vaillant/08.recov.csv::r::0x31,0xe
+supplyairspeed:
+  first: Supply air speed
+  en: Supply air speed
+  de: Drehzahl Zuluft
+  locations:
+    - vaillant/08.recov.csv::r::1,0xe
+exhaustairspeed:
+  first: Exhaust air speed
+  en: Exhaust air speed
+  de: Drehzahl Abluft
+  locations:
+    - vaillant/08.recov.csv::r::0x2,0xe
+supplyairinternalactualflow:
+  first: Supply air internal actual flow
+  en: Supply air internal actual flow
+  de: Interner Istwert Volumenstrom Zuluft
+  locations:
+    - vaillant/08.recov.csv::r::0x3,0xe
+supplyairinternaltargetflow:
+  first: Supply air internal target flow
+  en: Supply air internal target flow
+  de: Interner Sollwert Volumenstrom Zuluft
+  locations:
+    - vaillant/08.recov.csv::r::0x4,0xe
+exhaustairinternalactualflow:
+  first: Exhaust air internal actual flow
+  en: Exhaust air internal actual flow
+  de: Interner Istwert Volumenstrom Abluft
+  locations:
+    - vaillant/08.recov.csv::r::0x5,0xe
+exhaustairinternaltargetflow:
+  first: Exhaust air internal target flow
+  en: Exhaust air internal target flow
+  de: Interner Sollwert Volumenstrom Abluft
+  locations:
+    - vaillant/08.recov.csv::r::0x6,0xe
+ventilationstage:
+  first: Ventilation stage
+  en: Ventilation stage
+  de: Lüfterstufe
+  locations:
+    - vaillant/08.recov.csv::r::0x15,0xe
+intensiveventilation:
+  first: Intensive ventilation
+  en: Intensive ventilation
+  de: Intensivlüftung
+  locations:
+    - vaillant/08.recov.csv::r::0xca,0xd
 outsideairtemperature:
-  first: Outside Air Temperature
-  en: Outside Air Temperature
-  de: Temperatur Aussenluft
+  first: Outside air temperature
+  en: Outside air temperature
+  de: Außenlufttemperatur
   locations:
-    - vaillant/08.recov.csv::r::0x29,0xc,0xe
-outgoingairtemperature:
-  first: Outgoing Air Temperature
-  en: Outgoing Air Temperature
-  de: Temperatur Fortluft
+    - vaillant/08.recov.csv::r::0xc,0xe
+exitairtemperature:
+  first: Exit air temperature
+  en: Exit air temperature
+  de: Fortlufttemperatur
   locations:
-    - vaillant/08.recov.csv::r::0x29,0xd,0xe
-wasteairtemperature:
-  first: Waste Air Temperature
-  en: Waste Air Temperature
-  de: Temperatur Abluft
+    - vaillant/08.recov.csv::r::0xd,0xe
+exhaustairtemperature:
+  first: Exhaust air temperature
+  en: Exhaust air temperature
+  de: Ablufttemperatur
   locations:
-    - vaillant/08.recov.csv::r::0x29,0xb4,0xd
-inletairtemperature:
-  first: Inlet Air Temperature
-  en: Inlet Air Temperature
-  de: Temperatur Zuluft
+    - vaillant/08.recov.csv::r::0xb4,0xd
+exhaustairhumidity:
+  first: Exhaust air humidity
+  en: Exhaust air humidity
+  de: Abluftfeuchte
   locations:
-    - vaillant/08.recov.csv::r::0x29,0xb3,0xd
-relativehumiditywasteair:
-  first: Relative Humidity Waste Air
-  en: Relative Humidity Waste Air
-  de: Luftfeuchtigkeit Zuluft
+    - vaillant/08.recov.csv::r::0x85,0x3
+supplyairtemperature:
+  first: Supply air temperature
+  en: Supply air temperature
+  de: Zulufttemperatur
   locations:
-    - vaillant/08.recov.csv::r::0x29,0x85,0x3
-frostprotectionelementactive:
-  first: Frost Protection Element Active
-  en: Frost Protection Element Active
-  de: Frostschutzelement aktiv
+    - vaillant/08.recov.csv::r::0xb3,0xd
+bypassflapposition:
+  first: Bypass flap position
+  en: Bypass flap position
+  de: Position Bypassklappe
   locations:
-    - vaillant/08.recov.csv::r::0x29,0xf1,0xc
-currentvolumeflow:
-  first: Current Volume Flow
-  en: Current Volume Flow
-  de: aktueller Volumenstrom
-  locations:
-    - vaillant/08.recov.csv::r::0x29,0x3,0xe
+    - vaillant/08.recov.csv::r::0xb,0xe
 ntc1sensort1temperature:
   first: 'Ntc1Sensor: T1 Temperature'
   en: 'Ntc1Sensor: T1 Temperature'
@@ -12051,8 +12153,8 @@ code1code2valid:
   locations:
     - vaillant/84.zeo.csv::r::1,0
 dcfstatus:
-  first: dcfStatus
-  en: dcfStatus
+  first: DCF status
+  en: DCF status
   de: DCF Status
   locations:
     - vaillant/84.zeo.csv::r::0x3a,0
@@ -20987,11 +21089,11 @@ vorlauftemperaturrcklauftemperaturaussentemperaturwwtemperaturspeichertemperatur
     - vaillant/hcmode.inc::r::1
 betriebsartmaximaltemperaturreglercurrenttempmaximaltemperaturreglercurrenttemp:
   first: >-
-    Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+    Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
   en: >-
-    Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+    Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
   de: >-
-    Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+    Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
   locations:
     - vaillant/hcmode.inc::r::0x2
 setdesiredtemperature:

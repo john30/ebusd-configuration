@@ -2,7 +2,6 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./yield8485_inc.tsp";
 import "./yield8485r_inc.tsp";
-import "./yield8485_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;

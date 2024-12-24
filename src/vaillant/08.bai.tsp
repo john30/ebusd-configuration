@@ -18,16 +18,6 @@ import "./bai.0020066007_inc.tsp";
 import "./bai.308523_inc.tsp";
 import "./bai.0010021961_inc.tsp";
 import "./bai.0010008045_inc.tsp";
-import "./bai.0010003886_inc.tsp";
-import "./bai.0010004121_inc.tsp";
-import "./bai.0010006101_inc.tsp";
-import "./bai.0010010674_inc.tsp";
-import "./bai.0010011701_inc.tsp";
-import "./bai.0010015600_inc.tsp";
-import "./bai.0020066007_inc.tsp";
-import "./bai.308523_inc.tsp";
-import "./bai.0010008045_inc.tsp";
-import "./bai.308523_inc.tsp";
 import "./hcmode_inc.tsp";
 using Ebus;
 using Ebus.Num;
@@ -129,6 +119,7 @@ namespace Bai {
       "'0010004123'",
       "'0010004124'",
       "'0010004125'",
+      "'0010002498'",
       "'209'"
     )
     Scan_Id_product_0010004121: Bai._0010004121_inc,

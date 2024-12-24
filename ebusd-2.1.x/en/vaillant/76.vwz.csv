@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment
+# additions from PR 330 for HMU;0901;5103 / VWZ;0522;5103
+# Test menus on VWZ. EnableTest message needs to be sent before each of the read messages work.
+*rs,#service,,,,,"B514",05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
+*ws,#service,,,,,"B514",05,ignore,,HEX:3,="03FFFF",,,,,,,,,,,,,,,,,,,,
+ws,,EnableTestThreeWayValve,enable test 3 way valve,,,,02
+rs,,TestThreeWayValve,3 way valve,,,,02,,,UCH,0=heating;1=dhw,,
+ws,,EnableTestHwcTemp,enable test hwc temperature,,,,2c
+rs,,TestHwcTemp,hwc temperature,,,,2C,,,temps2,10,°C,
+ws,,EnableTestOutdoorTemp,enable test outdoor temperature,,,,
+rs,,TestOutdoorTemp,outdoor temperature,,,,45,,,temps2,10,°C,

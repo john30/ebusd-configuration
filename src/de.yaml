@@ -535,29 +535,46 @@ current yielded energy from the environment in kW: aktuell gewonnene Energie aus
 current power consumption of the heatpump in kW: aktueller Stromverbrauch der Wärmepumpe in kW
 current compressor utilization in percent: aktuelle Kompressorauslastung in Prozent
 current heating water flow rate in liters per hour: Aktuelle Heizwasser Durchflussrate der Wärmepumpe in Liter pro Stunde
-Read Ventilation Intensity Day: Lueftungsintensitaet Tag auslesen
-Read Ventilation Intensity Night: Lueftungsintensitaet Nacht auslesen
-Read Heat Recovery: Waermerueckgewinnung auslesen
-Set Ventilation Intensity 1: Lueftungsintensitaet 1 setzen
-Set Ventilation Intensity 2: Lueftungsintensitaet 2 setzen
-Set Ventilation Intensity 3: Lueftungsintensitaet 3 setzen
-Set Ventilation Intensity 4: Lueftungsintensitaet 4 setzen
-Set Ventilation Intensity 5: Lueftungsintensitaet 5 setzen
-Set Ventilation Intensity 6: Lueftungsintensitaet 6 setzen
-Set Heat Recovery Auto: Waermerueckgewinnung Auto
-Turn On Heat Recovery: Waermerueckgewinnung anschalten
-Turn Off Heat Recovery: Waermerueckgewinnung ausschalten
-Set Ventilation Day: Lueftung Tag setzen
-Set Ventilation Night: Lueftung Nacht setzen
-Activate Boost Ventilation: Stosslueften aktivieren
-Position of Bypass Flap: Position der Bypass-Klappe
-Outside Air Temperature: Temperatur Aussenluft
-Outgoing Air Temperature: Temperatur Fortluft
-Waste Air Temperature: Temperatur Abluft
-Inlet Air Temperature: Temperatur Zuluft
-Relative Humidity Waste Air: Luftfeuchtigkeit Zuluft
-Frost Protection Element Active: Frostschutzelement aktiv
-Current Volume Flow: aktueller Volumenstrom
+'Ventilation level day: 1-6': Lüfterstufe Tag
+'Ventilation level night: 1-6': Lüfterstufe Nacht
+Heat recovery: Wärmerückgewinnung
+Days left until filter change: Tage bis Filterwechsel
+Days left until maintenance: Tage bis Wartung
+Energy yield today: Energieertrag heute
+Energy yield yesterday: Energieertrag Vortag
+Energy yield month: Energieertrag Monat
+Energy yield year: Energieertrag Jahr
+Energy yield total: Energieertrag gesamt
+Installation height: Installationshöhe
+Exhaust air disbalance: Disbalance Abluft
+Nominal flow NL: Nennvolumenstrom NL
+Reduced ventilation to NL: Reduzierte Lüftung zu NL
+Intenstive ventilation to NL: Intensivlüftung zu NL
+Heat exchanger typ: Wärmetauschertyp
+Frost protection element: Frostschutzelement
+Air-earth collector available: Luft-Erdkollektor vorhanden
+Max. diff.temp. bypass: Max. Differenztemperatur Bypass
+Pressure monitor available: Druckwächter vorhanden
+Step switch available: Stufenschalter vorhanden
+Air quality sensor number: Luftqualitätssensor Anzahl
+min CO2 content: min CO2 Wert
+max CO2 content: max CO2 Wert
+min air humidity: min Luftfeuchte
+max air humidity: max Luftfeuchte
+Supply air speed: Drehzahl Zuluft
+Exhaust air speed: Drehzahl Abluft
+Supply air internal actual flow: Interner Istwert Volumenstrom Zuluft
+Supply air internal target flow: Interner Sollwert Volumenstrom Zuluft
+Exhaust air internal actual flow: Interner Istwert Volumenstrom Abluft
+Exhaust air internal target flow: Interner Sollwert Volumenstrom Abluft
+Ventilation stage: Lüfterstufe
+Intensive ventilation: Intensivlüftung
+Outside air temperature: Außenlufttemperatur
+Exit air temperature: Fortlufttemperatur
+Exhaust air temperature: Ablufttemperatur
+Exhaust air humidity: Abluftfeuchte
+Supply air temperature: Zulufttemperatur
+Bypass flap position: Position Bypassklappe
 'Ntc1Sensor: T1 Temperature': 'NTC 1 Sensor: T1 Temperature'
 'Ntc2Sensor: T2 Temperature': 'NTC 2 Sensor: T2 Temperature'
 'Ntc3Sensor: T3 Temperature': 'NTC 3 Sensor: T3 Temperature'
@@ -2166,7 +2183,7 @@ tdes_um: tdes_um
   PrimaryCircuitMicroSwitchPattern: 1=Des.o.B. 2=Adsorption 4=Des.m.B.
   8=Direktheizbetrieb
 Code1Code2Valid: Codes übernehmen?
-dcfStatus: DCF Status
+DCF status: DCF Status
 MaxStackeBUSTask: MaxStackeBUSTask
 MaxStackMainTask: MaxStackMainTask
 MaxStackLifeCheckTask: MaxStackLifeCheckTask
@@ -3384,8 +3401,8 @@ Status circulation pump: Betriebsart
 Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW Temperatur/Speichertemperatur/Pumpenstatus: >-
   Vorlauftemperatur/Rücklauftemperatur/Aussentemperatur/WW
   Temperatur/Speichertemperatur/Pumpenstatus
-Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp: >-
-  Betriebsart/Maximaltemperatur/ReglerCurrentTEMP/Maximaltemperatur/ReglerCurrentTemp
+Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp: >-
+  Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
 Set desired temperature: Solltemperatur setzen
 Set operation mode: Betriebsart setzen
 Set min flow temperature: Minimalen Vorlaufsollwert setzen

@@ -7,7 +7,8 @@ import {Transform, type TransformCallback} from "stream";
 import {pipeline} from "stream/promises";
 import {isDeepStrictEqual} from "util";
 
-type ReqStrs = (string | undefined | false)[];
+type ReqStr = string | undefined | false;
+type ReqStrs = ReqStr[];
 
 type OptStrs = ReqStrs | undefined;
 
@@ -15,7 +16,7 @@ type CsvLine = Record<number, string|undefined>;
 
 type Additions = {
   subdir: string, file: string, nameNoExt: string,
-  imports: ReqStrs, includes: [string, string[]][],
+  imports: Map<string, ReqStr>, includes: [string, string[]][],
   defaultsByName: Map<string, number>, renamedDefaults: Record<string, string>,
   baseModels: Map<string, KnownModel>, complexModels: Map<string, string>,
   conditions: Map<string, string[]>, conditionBlocks: Map<string, {header: string[], lines: ReqStrs}>,
@@ -623,7 +624,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
           circuit = 'Id.Id';
           field = field?.toLowerCase();
         } else {
-          additions.imports.push(`import "./${circuit}.tsp";`);
+          additions.imports.set(circuit.toLowerCase(), `import "./${circuit}.tsp";`);
         }
       }
       const fname = field||(value&&normalize?'value':'');
@@ -660,7 +661,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     const isLoad = dirsStr==='!load';
     if (dirsStr==='!include' || isLoad) {
       const fileNoExt = path.basename(line[1]!, path.extname(line[1]!));
-      additions.imports.push(`import "./${fileNoExt}_inc.tsp";`);
+      additions.imports.set(fileNoExt.toLowerCase(), `import "./${fileNoExt}_inc.tsp";`);
       const fileComp = fileNoExt.split('.').reverse()[0];
       let name = condNamespace || fileComp;
       name = normId(name.replace(/(__[^_]+_?)+/, '_'+fileComp)); // reduce multiple product ids with filename instead
@@ -1027,7 +1028,7 @@ export const csv2tsp = async (args: string[] = []) => {
     const content: ReqStrs = [];
     const additions: Additions = {
       subdir, file, nameNoExt,
-      imports: [],
+      imports: new Map(),
       includes: [],
       defaultsByName: new Map(),
       renamedDefaults: {},
@@ -1047,9 +1048,9 @@ export const csv2tsp = async (args: string[] = []) => {
         content.push(...inp);
       }
       if (!flush) return cb();
-      if (additions.imports.length) {
+      if (additions.imports.size) {
         const pos = content.map(l => l&&l.startsWith('import ')).lastIndexOf(true);
-        content.splice(pos+1, 0, ...additions.imports);
+        content.splice(pos+1, 0, ...additions.imports.values());
       }
       const addToNamespace = (lines: ReqStrs) => {
         if (!lines?.length) return;
@@ -1152,7 +1153,25 @@ export const csv2tsp = async (args: string[] = []) => {
       return value;
     };
     console.log(`writing multi-language mapping to ${langFile}`);
-    await writeFile(langFile, dump(i18n, {replacer}), 'utf-8');
+    i18n.forEach((i, k) => {
+      // ensure same order
+      i18n.set(k, {
+        first: i.first,
+        en: i.en,
+        de: i.de,
+        locations: i.locations,
+      });
+    });
+
+    await writeFile(langFile, dump(i18n, {replacer,
+      // sortKeys: (a: string, b: string) => {
+      //   const diff = a.toLowerCase().localeCompare(b.toLowerCase());
+      //   if (diff !== 0) {
+      //     return diff;
+      //   }
+      //   return a.localeCompare(b);
+      // },
+    }), 'utf-8');
     if (storeI18nDir) {
       // const langs = new Set<string>();
       // i18n.forEach(i => Object.keys(i).forEach(l => l!=='locations' && l!=='first' && langs.add(l)));
