@@ -32,13 +32,13 @@
     "@types/node": "^20.14.8",
     "@typespec/json-schema": "~0.63.0",
     "@typespec/library-linter": "~0.63.0",
-    "csv-parser": "^3.0.0",
+    "csv-parser": "^3.1.0",
     "js-yaml": "^4.1.0",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@ebusd/ebus-typespec": ">=0.16.0",
+    "@ebusd/ebus-typespec": ">=0.17.0",
     "@typespec/compiler": "~0.63.0",
-    "tsx": "^4.15.7"
+    "tsx": "^4.19.2"
   }
 }
