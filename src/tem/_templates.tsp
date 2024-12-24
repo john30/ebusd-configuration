@@ -4,6 +4,7 @@ using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
 using Ebus.Str;
+using Ebus.Contrib;
 
 namespace Tem;
 // Bartl TEM
@@ -38,7 +39,7 @@ scalar range extends SCH;
 
 /** Kommando */
 model command {
-  tem_p: UIN; // todo TEM_P;
+  tem_p: TEM_P;
   type: type;
   unit: unit;
 }
