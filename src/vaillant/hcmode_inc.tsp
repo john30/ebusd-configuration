@@ -37,8 +37,14 @@ namespace Hcmode_inc {
   @base(MF, 0x10)
   model uw {}
 
+  /** default *wi for user level "install" */
+  @write
+  @auth("install")
+  @base(MF, 0x10)
+  model wi_1 {}
+
   /** Operation mode */
-  @inherit(uw)
+  @inherit(uw, wi_1)
   @ext(0)
   model SetMode {
     hcmode: hcmode;
