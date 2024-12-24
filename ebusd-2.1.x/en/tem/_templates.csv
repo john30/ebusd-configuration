@@ -1,0 +1,54 @@
+#name,type/templates,divider/values,unit,comment
+# Bartl TEM,,,,
+type,UCH,0x00=none;0x02=on-off;0x04=Zeit;0x09=selection;0x0d=Temperatur;0x40=Dauer;0x4d=TemperaturSchwelle;0x8d=TemperaturSoll;0xc0=range,,Datentyp
+unit,UCH,0x00=none;0x02=°C;0x04=K;0x08=%;0x0a=h;0x0c=min;0x10=kW;0x2a=hh:mm,,Einheit
+maxs:max,SIN,,,Maximum
+mins:min,SIN,,,Minimum
+maxs_10:max,SIN,10,,Maximum (Teiler 10)
+mins_10:min,SIN,10,,Minimum (Teiler 10)
+wd,BDY,,,Weekday
+range,SCH,,,Range
+command,TEM_P;type;unit,,,Kommando
+temp1:temp,SIN,,°C,Temperatur
+temp1_1b:temp,SCH;IGN:1,,°C,Temperatur
+temp10:temp,SIN,10,°C,Temperatur (Teiler 10)
+temp10K:temp,SIN,10,K,Temperatur (Teiler 10K)
+temp2:temp,SIN,2,°C,Temperatur (Teiler 2)
+temp256:temp,D2B,,°C,Temperatur (Teiler 256)
+max_temp1:max,temp1,,,Maximum
+min_temp1:min,temp1,,,Minimum
+max_temp1_1b:max,SCH;IGN:1,,,Maximum
+min_temp1_1b:min,SCH;IGN:1,,,Minimum
+max_temp10:max,temp10,,,Maximum
+min_temp10:min,temp10,,,Minimum
+max_temp10K:max,temp10K,,,Maximum
+min_temp10K:min,temp10K,,,Minimum
+max_temp2:max,temp2,,,Maximum
+min_temp2:min,temp2,,,Minimum
+max_time:max,MIN,,,Maximum
+min_time:min,MIN,,,Minimum
+max_wd:max,wd;IGN:1,,,Maximum
+min_wd:min,wd;IGN:1,,,Minimum
+max_range:max,range;IGN:1,,,Maximum
+min_range:max,range;IGN:1,,,Minimum
+parameter1,command;maxs;mins,,,Parameter
+parameter1_10,command;maxs_10;mins_10,,,Parameter10
+parameter2,command;UCH;UCH,,,Parameter
+parameter_temp1,command;max_temp1;min_temp1,,,ParameterTemp1
+parameter_temp1_1b,command;max_temp1_1b;min_temp1_1b,,,ParameterTemp1
+parameter_temp10,command;max_temp10;min_temp10,,,ParameterTemp10
+parameter_temp10K,command;max_temp10K;min_temp10K,,,ParameterTemp10K
+parameter_temp2,command;max_temp2;min_temp2,,,ParameterTemp2
+parameter_time,command;max_time;min_time,,,ParameterTime
+parameter_wd,command;max_wd;min_wd,,,ParameterWeekday
+parameter_range,command;max_range;min_range,,,ParameterRange
+btime,BTI,,,Binary Time
+bdate,BDA,,,Binary Date
+status,UIN,,,Status
+hcd100,HCD,100,h,Betriebsstunden (Teiler 10)
+tp_2h,BI0;BI1;BI2;BI3;BI4;BI5;BI6;BI7,,,Zeitprogramm 2 Stunden
+tp_8h,tp_2h;tp_2h;tp_2h;tp_2h,,,Zeitprogramm 8 Stunden
+tp_20h,tp_2h;tp_2h;tp_2h;tp_2h;tp_2h;tp_2h;tp_2h;tp_2h;tp_2h;tp_2h,,,Zeitprogramm 20 Stunden
+tp_mode,UCH;UCH;UCH;UCH;UCH;UCH;UCH;UCH;UCH;IGN:1,,,Modus Zeitprogramm
+tp_week,tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_8h,,,Zeitprogramm Woche
+tp_all,tp_mode;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_20h;tp_8h,,,Zeitprogramm komplett
