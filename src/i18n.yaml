@@ -2627,24 +2627,12 @@ exhaustairinternaltargetflow:
   de: Interner Sollwert Volumenstrom Abluft
   locations:
     - vaillant/08.recov.csv::r::0x6,0xe
-getsoverwrittenignoredwhenbehindvr32:
-  first: gets overwritten/ignored when behind VR32
-  en: gets overwritten/ignored when behind VR32
-  de: wird überschrieben/ignoriert wenn hinter VR32
-  locations:
-    - vaillant/08.recov.csv::r::0x15,0xe:value
-    - vaillant/08.recov.csv::r::0xca,0xd:value
 ventilationstage:
   first: Ventilation stage
   en: Ventilation stage
   de: Lüfterstufe
   locations:
     - vaillant/08.recov.csv::r::0x15,0xe
-wirdberschriebenignoriertwennhintervr32:
-  first: wird überschrieben/ignoriert wenn hinter VR32
-  de: wird überschrieben/ignoriert wenn hinter VR32
-  locations:
-    - vaillant/08.recov.csv::r::0x14,0xe:value
 intensiveventilation:
   first: Intensive ventilation
   en: Intensive ventilation

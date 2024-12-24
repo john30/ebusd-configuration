@@ -467,7 +467,6 @@ Supply air internal actual flow: Supply air internal actual flow
 Supply air internal target flow: Supply air internal target flow
 Exhaust air internal actual flow: Exhaust air internal actual flow
 Exhaust air internal target flow: Exhaust air internal target flow
-gets overwritten/ignored when behind VR32: gets overwritten/ignored when behind VR32
 Ventilation stage: Ventilation stage
 Intensive ventilation: Intensive ventilation
 Outside air temperature: Outside air temperature

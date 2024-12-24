@@ -36,7 +36,7 @@ r2;u,,SupplyFlowActual,Supply air internal actual flow,,,,030e,,,UIN,,m3/h,
 r,,SupplyFlowTarget,Supply air internal target flow,,,,040e,,,UIN,,m3/h,
 r,,ExhaustFlowActual,Exhaust air internal actual flow,,,,050e,,,UIN,,m3/h,
 r,,ExhaustFlowTarget,Exhaust air internal target flow,,,,060e,,,UIN,,m3/h,
-r;w,,VentilationStage,Ventilation stage,,,,150e,,,UCH,0=low;1=auto;2=medium;3=high,,gets overwritten/ignored when behind VR32
+r;w,,VentilationStage,Ventilation stage,,,,150e,,,UCH,0=low;1=auto;2=medium;3=high,,
 r;u;w,,DesiredTemp,Desired temperature,,,,140e,,,temp,,,
 r;w,,IntensiveVentilation,Intensive ventilation,,,,ca0d,,,onoff,,,
 r;u,,OutsideAirTemp,Outside air temperature,,,,0c0e,,,tempsensor,,,

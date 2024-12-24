@@ -234,7 +234,6 @@ namespace Recov {
   @inherit(r, w)
   @ext(0x15, 0xe)
   model VentilationStage {
-    /** gets overwritten/ignored when behind VR32 */
     @values(Values_VentilationStage)
     value: UCH;
   }

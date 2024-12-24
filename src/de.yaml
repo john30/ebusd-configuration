@@ -557,9 +557,7 @@ Supply air internal actual flow: Interner Istwert Volumenstrom Zuluft
 Supply air internal target flow: Interner Sollwert Volumenstrom Zuluft
 Exhaust air internal actual flow: Interner Istwert Volumenstrom Abluft
 Exhaust air internal target flow: Interner Sollwert Volumenstrom Abluft
-gets overwritten/ignored when behind VR32: wird überschrieben/ignoriert wenn hinter VR32
 Ventilation stage: Lüfterstufe
-wird überschrieben/ignoriert wenn hinter VR32: wird überschrieben/ignoriert wenn hinter VR32
 Intensive ventilation: Intensivlüftung
 Outside air temperature: Außenlufttemperatur
 Exit air temperature: Fortlufttemperatur
