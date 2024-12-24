@@ -703,9 +703,22 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   if (circuit && !namespacePerCircuit) {
     console.warn(`found circuit ${circuit} that differs from the file name circuit part in ${location}${isDefault?' for default':''}. consider using the '-n' switch!`);
   }
-  let dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio
+  const dirs = dirsStr.split(';').map(d=>d.replace(/[0-9]$/,'')); // strip off poll prio
   const poll = dirsStr.split(';').filter(d=>d.match(/r[0-9]$/)).map(d=>d.replace(/.*([0-9])$/,'$1')).filter(p=>p).sort(); // extract poll prio
-  const single = dirs.length===1 && (isDefault || !additions.defaultsByName.has(dirs[0]));//todo why
+  let defaultNs: string|undefined;
+  if (namespacePerCircuit && !isDefault && !circuit) {
+    const add = additions.renamedDefaults[':'+dirsStr];
+    if (add) {
+      defaultNs = add;
+      // dirs.forEach((v, i) => dirs[i] = add+':'+v);
+      condNamespace = add+(condNamespace?'.'+condNamespace:'');
+    }
+  }
+  // single: outside of any defaults inherit scope
+  const single = dirs.length===1 && (
+    isDefault
+    || !additions.defaultsByName.has((defaultNs?defaultNs+':':'')+dirs[0])
+  );
   const chain = (line[7]||'').split(';').map((i,_,a)=>fromHexOpt(a.length<=1&&!!single&&!!line[6], line[6], i.split(':')[0]));
   const idComb = chain[0];
   if (isDefault) {
@@ -734,12 +747,6 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     if (namespacePerCircuit && !condNamespace && circuit) {
       additions.renamedDefaults[':'+dirsStr] = circuit;
       condNamespace = circuit;
-    }
-  }
-  if (namespacePerCircuit && !isDefault && !circuit && !single) {
-    const add = additions.renamedDefaults[':'+dirsStr];
-    if (add) {
-      condNamespace = add+(condNamespace?'.'+condNamespace:'');
     }
   }
   const chainLengths = chain.length>1 && (line[7]||'').split(';').map(i=>i.split(':')[1])
@@ -789,7 +796,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
       single
         ? direction(dirs[0]) // single model
-        : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix(d, additions.defaultsByName))).join(', ')})`, // multi model
+        : `@inherit(${dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix((defaultNs?defaultNs+':':'')+d, additions.defaultsByName))).join(', ')})`, // multi model
       auth&&`@auth("${auth}")` || (poll.length?`@poll(${poll[0]})`:undefined),
       line[4]&&`@qq(${fromHex(line[4]).join('')})`,
       zz&&`@zz(${zz==='0xfe'?'BROADCAST':zz})`,
