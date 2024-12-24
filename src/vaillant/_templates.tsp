@@ -468,7 +468,7 @@ enum Values_hcmode {
   auto: 0,
   off: 1,
   heat: 2,
-  water: 2,
+  water: 3,
 }
 
 enum Values_hcmode2 {
