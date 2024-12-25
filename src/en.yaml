@@ -1520,7 +1520,7 @@ SystemDesiredFlowTemp: SystemDesiredFlowTemp
 'EhpHeatBufferAvailable: heat buffer is available': 'EhpHeatBufferAvailable: heat buffer is available'
 Child protection: Child protection
 CoolingDay: CoolingDay
-CoolingActive: CoolingActive
+CoolingActive: cooling active
 'EarnedEnergyOld: Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs.': >-
   EarnedEnergyOld: Contains earned energy sum stored from AMU last midnight.
   Required for data transmission between PCBs.
@@ -3005,7 +3005,6 @@ defroster is running: defroster is running
   power
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
 'T_AirMAX: maximum allowed air inlet temperature': 'T_AirMAX: maximum allowed air inlet temperature'
-'CoolingActive: cooling active': 'CoolingActive: cooling active'
 'CoolingFanStartTemp: brine temperature to start fan while cooling': 'CoolingFanStartTemp: brine temperature to start fan while cooling'
 'CoolingFanStopTemp: reserved': 'CoolingFanStopTemp: reserved'
 'CoolingMaxFanSpeed: max. fan speed while cooling': 'CoolingMaxFanSpeed: max. fan speed while cooling'

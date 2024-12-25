@@ -9285,10 +9285,11 @@ coolingday:
     - vaillant/15.uih.csv:sw_ge220:r::0x7c,0
 coolingactive:
   first: CoolingActive
-  en: CoolingActive
+  en: cooling active
   de: Kühlung aktiv
   locations:
     - vaillant/15.uih.csv:sw_ge220:r::0x83,0
+    - vaillant/e0.omu.csv:sw_ge130:r::0x59,0
 earnedenergyoldcontainsearnedenergysumstoredfromamulastmidnightrequiredfordatatransmissionbetweenpcbs:
   first: >-
     EarnedEnergyOld: Contains earned energy sum stored from AMU last midnight.
@@ -19917,12 +19918,6 @@ tairmaxmaximumallowedairinlettemperature:
   de: 'T_AirMAX: maximum allowed air inlet temperature'
   locations:
     - vaillant/e0.omu.csv::r::0x43,0
-coolingactivecoolingactive:
-  first: 'CoolingActive: cooling active'
-  en: 'CoolingActive: cooling active'
-  de: 'Kühlung aktiv: cooling active'
-  locations:
-    - vaillant/e0.omu.csv:sw_ge130:r::0x59,0
 coolingfanstarttempbrinetemperaturetostartfanwhilecooling:
   first: 'CoolingFanStartTemp: brine temperature to start fan while cooling'
   en: 'CoolingFanStartTemp: brine temperature to start fan while cooling'

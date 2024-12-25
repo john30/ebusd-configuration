@@ -457,6 +457,10 @@ model rTimeSlotWithoutTemp {
   @maxLength(2) ign_1: IGN;
 }
 
+/** Status code */
+@values(Values_appliancecode)
+scalar appliancecode extends UCH;
+
 enum Values_daysel {
   selected: 0,
   Mo_Fr: 1,
@@ -692,6 +696,29 @@ enum Values_rcmode {
   off: 0,
   modulating: 1,
   thermostat: 2,
+}
+
+enum Values_appliancecode {
+  off: 0,
+  prerun: 1,
+  pump_prerun: 2,
+  ignition: 3,
+  on: 4,
+  overrun: 5,
+  fan_overrun: 6,
+  pump_overrun: 7,
+  shutdown: 8,
+  measure: 9,
+  hwc_desired: 10,
+  hwc_prerun: 11,
+  hwc_pump_prerun: 12,
+  hwc_ignition: 13,
+  hwc_on: 14,
+  hwc_overrun: 15,
+  hwc_fan_overrun: 16,
+  hwc_pump_overrun: 17,
+  hwc_shutdown: 18,
+  frost_protect: 34,
 }
 
 /** default *r for register */

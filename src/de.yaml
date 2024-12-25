@@ -3165,7 +3165,6 @@ defroster is running: defroster is running
   power
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
 'T_AirMAX: maximum allowed air inlet temperature': 'T_AirMAX: maximum allowed air inlet temperature'
-'CoolingActive: cooling active': 'Kühlung aktiv: cooling active'
 'CoolingFanStartTemp: brine temperature to start fan while cooling': 'CoolingFanStartTemp: brine temperature to start fan while cooling'
 'CoolingFanStopTemp: reserved': 'CoolingFanStopTemp: reserved'
 'CoolingMaxFanSpeed: max. fan speed while cooling': 'CoolingMaxFanSpeed: max. fan speed while cooling'
