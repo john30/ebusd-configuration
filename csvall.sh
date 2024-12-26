@@ -16,6 +16,9 @@ sed -i \
   -e 's#,UIN,,Steps,#,UIN,,,#i' \
   -e 's#,UIN,,Schritte,#,UIN,,,#ig' \
   -e 's#,UIN,,sec,#,seconds2,,,#ig' \
+  -e 's#,UIN,,h,hours#,hoursum2,,,#ig' \
+  -e 's#,UIN,,,hours#,hoursum2,,,#ig' \
+  -e 's#,UIN,,hours,#,hoursum2,,,#ig' \
   -e 's#,UCH,,sec,#,seconds0,,,#ig' \
   -e 's#,mcmode,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"#,hwcmode2,,,#' \
   -e 's#,hwcmode2,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"#,hwcmode2,,,#' \

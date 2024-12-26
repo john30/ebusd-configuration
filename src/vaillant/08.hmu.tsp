@@ -144,6 +144,20 @@ namespace Hmu {
   }
   // some more statistics from Live Monitor
 
+  /** target flow temperature */
+  @inherit(r_2)
+  @ext(0x1f)
+  model TargetFlowTemp {
+    value: temp;
+  }
+
+  /** current flow temperature */
+  @inherit(r_2)
+  @ext(0x20)
+  model FlowTemp {
+    value: temp;
+  }
+
   /** current energy integral */
   @inherit(r_2)
   @ext(0x21)
@@ -250,9 +264,7 @@ namespace Hmu {
   @inherit(r_3, u_1)
   @ext(0)
   model CompressorHours {
-    /** hours */
-    @unit("h")
-    value: UIN;
+    value: hoursum2;
   }
 
   @inherit(r_3, u_1)
@@ -264,9 +276,7 @@ namespace Hmu {
   @inherit(r_3, u_1)
   @ext(0x2)
   model BuildingPumpHours {
-    /** hours */
-    @unit("h")
-    value: UIN;
+    value: hoursum2;
   }
 
   @inherit(r_3, u_1)
@@ -278,9 +288,7 @@ namespace Hmu {
   @inherit(r_3, u_1)
   @ext(0x6)
   model ForWayValveHours {
-    /** hours */
-    @unit("h")
-    value: UIN;
+    value: hoursum2;
   }
 
   @inherit(r_3, u_1)
@@ -304,9 +312,7 @@ namespace Hmu {
   @inherit(r_3, u_1)
   @ext(0x51)
   model Fan1Hours {
-    /** hours */
-    @unit("h")
-    value: UIN;
+    value: hoursum2;
   }
 
   @inherit(r_3, u_1)
@@ -318,9 +324,7 @@ namespace Hmu {
   @inherit(r_3, u_1)
   @ext(0x5e)
   model Fan2Hours {
-    /** hours */
-    @unit("h")
-    value: UIN;
+    value: hoursum2;
   }
 
   @inherit(r_3, u_1)
@@ -1027,7 +1031,7 @@ namespace Hmu {
   model TestHighPressureSwitch {
     /** T.0.67 */
     @values(Values_TestHighPressureSwitch)
-    value: UIN;
+    value: UCH;
   }
 
   /** read evaporation temperature */
@@ -1106,7 +1110,7 @@ namespace Hmu {
   model TestTempSwitchCompressorOutlet {
     /** T.0.123 */
     @values(Values_TestTempSwitchCompressorOutlet)
-    value: UIN;
+    value: UCH;
   }
 
   /** priority switch valve WW */
@@ -1133,7 +1137,7 @@ namespace Hmu {
   model TestLockoutContactS20 {
     /** T.1.46 */
     @values(Values_TestLockoutContactS20)
-    value: UIN;
+    value: UCH;
   }
 
   /** outside temperature */
@@ -1161,7 +1165,7 @@ namespace Hmu {
   @ext(0x47)
   model TestDCFStatus {
     /** T.1.71 */
-    value: UIN;
+    value: dcfstate;
   }
 
   /** lockout contact S21 */
@@ -1170,7 +1174,7 @@ namespace Hmu {
   model TestLockoutContactS21 {
     /** T.1.72 */
     @values(Values_TestLockoutContactS21)
-    value: UIN;
+    value: UCH;
   }
 
   /** MA1 output */
@@ -1187,7 +1191,7 @@ namespace Hmu {
   model TestImmersionHeaterSafetyCutOut {
     /** T.1.124 */
     @values(Values_TestImmersionHeaterSafetyCutOut)
-    value: UIN;
+    value: UCH;
   }
 
   /** ME input */
@@ -1212,6 +1216,15 @@ namespace Hmu {
   model TestMO3Output {
     /** T.1.127 */
     value: onoff;
+  }
+
+  /** condensor inlet temperature */
+  @inherit(rs)
+  @ext(0x81)
+  model TestCondensorInletTemp {
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
   }
 
   /** Vorlauftemperatur Heizstab */
@@ -1426,6 +1439,176 @@ namespace Hmu {
   model StatEEVSteps {
     value: UIN;
   }
+  // stats from PR 407,potentially for HW5103+SW0607 only
+
+  /** default *r */
+  @base(MF, 0x9, 0x54, 0x2, 0)
+  model r_7 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  @inherit(r_7)
+  @ext(0xd, 0xa)
+  model RunDataCompressorSpeed {
+    @unit("rps")
+    value: EXP;
+  }
+
+  /** (EEV Position in different scale?) */
+  @inherit(r_7)
+  @ext(0x28, 0xa)
+  model RunDataEEVPositionAbs {
+    value: UIN;
+  }
+
+  @inherit(r_7)
+  @ext(0x47, 0xa)
+  model RunDataFan1Speed {
+    @unit("rpm")
+    value: EXP;
+  }
+
+  @inherit(r_7)
+  @ext(0x49, 0xa)
+  model RunDataFan2Speed {
+    @unit("rpm")
+    value: EXP;
+  }
+
+  @inherit(r_7)
+  @ext(0x53, 0xd)
+  model RunDataStatuscode {
+    @values(Values_RunDataStatuscode)
+    value: UIN;
+  }
+
+  @inherit(r_7)
+  @ext(0x5b, 0xd)
+  model RunDataElectricPowerConsumption {
+    /** current electrical power consumption (Watt) */
+    @unit("W")
+    value: EXP;
+  }
+
+  @inherit(r_7)
+  @ext(0x6a, 0x9)
+  model RunDataHighPressure {
+    value: pressv;
+  }
+
+  @inherit(r_7)
+  @ext(0x98, 0x8)
+  model RunDataCompressorInletTemp {
+    value: tempv;
+  }
+
+  @inherit(r_7)
+  @ext(0xa2, 0x8)
+  model RunDataCompressorOutletTemp {
+    value: tempv;
+  }
+
+  @inherit(r_7)
+  @ext(0xac, 0x8)
+  model RunDataEEVOutletTemp {
+    value: tempv;
+  }
+
+  @inherit(r_7)
+  @ext(0xb8, 0xb)
+  model RunStatsHMUHours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xb9, 0xb)
+  model RunStatsHcHours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xbc, 0xb)
+  model RunStatsHwcHours {
+    /** total runtime of Hwc mode */
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xc2, 0xb)
+  model RunStatsCompressorHours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xc3, 0xb)
+  model RunStatsCompressorStarts {
+    value: cntstarts2;
+  }
+
+  @inherit(r_7)
+  @ext(0xc4, 0xb)
+  model RunStatsBuildingPumpHours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xc5, 0x9)
+  model RunDataBuildingCPumpPower {
+    @unit("%")
+    value: EXP;
+  }
+
+  @inherit(r_7)
+  @ext(0xc5, 0xb)
+  model RunStatsBuildingCPumpStarts {
+    /** total starts of building circuit pump */
+    value: cntstarts2;
+  }
+
+  @inherit(r_7)
+  @ext(0xc8, 0xb)
+  model RunStats4PortValveHours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xc9, 0xb)
+  model RunStats4PortValveSwitches {
+    value: cntstarts2;
+  }
+
+  @inherit(r_7)
+  @ext(0xd7, 0xb)
+  model RunStatsFan1Hours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xd8, 0xb)
+  model RunStatsFan1Starts {
+    value: cntstarts2;
+  }
+
+  @inherit(r_7)
+  @ext(0xd9, 0xb)
+  model RunStatsFan2Hours {
+    value: hoursum2;
+  }
+
+  @inherit(r_7)
+  @ext(0xda, 0xb)
+  model RunStatsFan2Starts {
+    value: cntstarts2;
+  }
+
+  @inherit(r_7)
+  @ext(0xde, 0x8)
+  model RunDataAirInletTemp {
+    value: tempv;
+  }
+  // r,RunStatsCompressorHc?,TODO,1801,IGN:1;minutesum:runtime;cntstarts:cycles,compressor runtime in min and starts in Hc mode
+  // r,RunStatsCompressorHwc?,TODO,1802,IGN:1;minutesum:runtime;cntstarts:cycles,compressor runtime in min and starts in Hwc mode
 
   enum Values_state {
     ready: 0x01,
@@ -1514,6 +1697,62 @@ namespace Hmu {
   enum Values_function {
     Heating: 0x01,
     Cooling: 0x02,
+  }
+
+  enum Values_RunDataStatuscode {
+    Frost_protection: 34,
+    Standby: 100,
+    Heating_Compressor_shutdown: 101,
+    Heating_Compressor_blocked: 102,
+    Heating_Prerun: 103,
+    Heating_Compressor_active: 104,
+    Heating_Overrun: 107,
+    Cooling_Compressor_shutdown: 111,
+    Cooling_Compressor_blocked: 112,
+    Cooling_Prerun: 113,
+    Cooling_Compressor_active: 114,
+    Cooling_Overrun: 117,
+    Heating_Immersion_heater_active: 125,
+    Warm_Water_Compressor_blocked: 132,
+    Warm_Water_Prerun: 133,
+    Warm_Water_Compressor_active: 134,
+    Warm_Water_Immersion_Heater_active: 135,
+    Warm_Water_Overrun: 137,
+    Heating_Immersion_Heater_shutdown: 141,
+    Heating_Immersion_Heater_blocked: 142,
+    Warm_Water_Immersion_Heater_shutdown: 151,
+    Warm_Water_Immersion_Heater_blocked: 152,
+    Air_purging_program_active: 202,
+    Compressor_oil_heating_activated: 240,
+    Fan_1_blocked: 252,
+    Fan_1_air_inlet_too_high: 255,
+    Fan_1_air_inlet_too_low: 256,
+    Fan_2_blocked: 260,
+    Building_circuit_flow_too_low: 275,
+    Building_circuit_pump_fault: 277,
+    Frequency_converter_fault_Compressor: 280,
+    Frequency_converter_fault_Mains_voltage: 281,
+    Frequency_converter_fault_Overheating: 282,
+    Deicing_time_too_long: 283,
+    Deicing_flow_temperature_too_low: 284,
+    Compressor_outlet_temperature_too_high: 285,
+    Hot_gas_temperature_switch_open: 286,
+    Fan_1_Wind: 287,
+    Fan_2_Wind: 288,
+    Current_limt_active: 289,
+    High_pressure_switch_open: 302,
+    Compressor_outlet_temperature_too_high_1: 303,
+    Evaporation_temperature_too_low: 304,
+    Condensation_temperature_too_low: 305,
+    Evaporation_temperature_too_high: 306,
+    Condensation_temperature_too_high: 308,
+    Building_circuit_return_temperature_too_low: 312,
+    Building_circuit_return_temperature_too_high: 314,
+    Immersion_heater_Flow_temperature_too_high: 351,
+    Deicing_active: 516,
+    Frequency_converter_fault: 575,
+    Connection_fault_frequency_converter: 581,
+    _4_port_valve_position_fault: 590,
   }
 
   /** included parts */
