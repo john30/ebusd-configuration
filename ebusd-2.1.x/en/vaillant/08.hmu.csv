@@ -102,7 +102,7 @@ r,,ConsumptionThisYear12,,,,,0C00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,,,,,,,
 # additions from PR 160 for HMU;0304;8802;0010019765
 # Test menus on VWZ. EnableTest message needs to be sent before each of the read messages work.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *rs,#service,,,,,"B514",05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
-*ws,#service,,,,,"B514",05,ignore,,HEX:3,="03FFFF",,,,,,,,,,,,,,,,,,,,
+*ws,#service,,,,,"B514",05,ignore,m,HEX:3,="03FFFF",,,,,,,,,,,,,,,,,,,,
 ws,,EnableTestEEVPosition,read EEV position,,,,15
 rs,,TestEEVPosition,EEV position,,,,15,,,percent0,,,T.0.21
 ws,,EnableTestCompressorExitTemp,read compressor outlet temperature,,,,37

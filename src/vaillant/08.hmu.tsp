@@ -799,6 +799,7 @@ namespace Hmu {
   @auth("service")
   @base(MF, 0x14, 0x5)
   model ws_1 {
+    @out
     @maxLength(3)
     @constValue("03FFFF")
     ignore: HEX;
