@@ -106,3 +106,4 @@ wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for
 wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;HEX:2,,,Complete slot for writing the time table settings without a temperature. FF FF has to be appended.
 rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
 rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.
+appliancecode,UCH,0=off;1=prerun;2=pump_prerun;3=ignition;4=on;5=overrun;6=fan_overrun;7=pump_overrun;8=shutdown;9=measure;10=hwc_desired;11=hwc_prerun;12=hwc_pump_prerun;13=hwc_ignition;14=hwc_on;15=hwc_overrun;16=hwc_fan_overrun;17=hwc_pump_overrun;18=hwc_shutdown;34=frost_protect,,Status code

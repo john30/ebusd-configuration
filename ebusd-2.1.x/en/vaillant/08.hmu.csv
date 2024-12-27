@@ -19,6 +19,8 @@ r,,HoursHc,operation hours heating,,,,41,,,hoursum,,,,,,,,,,,,,,,,,,,,,
 r,,HoursCool,operation hours cooling,,,,43,,,hoursum,,,,,,,,,,,,,,,,,,,,,
 r,,HoursHwc,operation hours hot water,,,,44,,,hoursum,,,,,,,,,,,,,,,,
 # some more statistics from Live Monitor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+r,,TargetFlowTemp,target flow temperature,,,,1F,,,temp,,,,,,,,,,,,,,,,,,,,,
+r,,FlowTemp,current flow temperature,,,,20,,,temp,,,,,,,,,,,,,,,,,,,,,
 r,,EnergyIntegral,current energy integral,,,,21,,,integral,,,,,,,,,,,,,,,,,,,,,
 # example: 3108b51a0405ff3223 / 0aff083500000000000000
 r,,CurrentYieldPower,current yielded energy from the environment,,,,23,,,D1B,10,kW,,,,,,,,,,,,,,,,,,,
@@ -102,7 +104,7 @@ r,,ConsumptionThisYear12,,,,,0C00,month,,D1B,,,,,,IGN:1,,,,,,energy,,,,,,,,,
 # additions from PR 160 for HMU;0304;8802;0010019765
 # Test menus on VWZ. EnableTest message needs to be sent before each of the read messages work.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *rs,#service,,,,,"B514",05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
-*ws,#service,,,,,"B514",05,ignore,,HEX:3,="03FFFF",,,,,,,,,,,,,,,,,,,,
+*ws,#service,,,,,"B514",05,ignore,m,HEX:3,="03FFFF",,,,,,,,,,,,,,,,,,,,
 ws,,EnableTestEEVPosition,read EEV position,,,,15
 rs,,TestEEVPosition,EEV position,,,,15,,,percent0,,,T.0.21
 ws,,EnableTestCompressorExitTemp,read compressor outlet temperature,,,,37
@@ -131,7 +133,7 @@ rs,,TestCondensorOutletTemp,condensor outlet temperature,,,,3b,,,SIN,10,°C,T.0.
 ws,,EnableTestHighPress,read high pressure,,,,3f
 rs,,TestHighPress,high pressure,,,,3f,,,SIN,10,bar,T.0.63
 rs,,TestLowPress,low pressure,,,,40,,,SIN,10,bar,T.0.64
-rs,,TestHighPressureSwitch,high pressure switch,,,,43,,,UIN,0=open;1=close,,T.0.67
+rs,,TestHighPressureSwitch,high pressure switch,,,,43,,,UCH,0=open;1=close,,T.0.67
 ws,,EnableTestEvaporationTemp,read evaporation temperature,,,,55
 rs,,TestEvaporationTemp,evaporation temperature,,,,55,,,SIN,10,°C,T.0.85
 ws,,EnableTestCondensateTemp,read condensate temperature,,,,56
@@ -140,19 +142,20 @@ rs,,TestOverheatingTargetValue,overheating target value,,,,57,,,SIN,10,K,T.0.87
 rs,,TestOverheatingActualValue,overheating current value,,,,58,,,SIN,10,K,T.0.88
 rs,,TestSubcoolingTargetValue,sub cooling target value,,,,59,,,SIN,10,K,T.0.89
 rs,,TestSubcoolingActualValue,sub cooling current value,,,,5a,,,SIN,10,K,T.0.90
-rs,,TestTempSwitchCompressorOutlet,temperature switch compressor outlet,,,,7b,,,UIN,0=open;1=close,,T.0.123
+rs,,TestTempSwitchCompressorOutlet,temperature switch compressor outlet,,,,7b,,,UCH,0=open;1=close,,T.0.123
 rs,,TestPrioritySwitchingValve,priority switch valve WW,,,,02,,,switchvalve,,,T.1.02
 rs,,TestCylinderTemp,storage temperature,,,,2c,,,SIN,10,°C,T.1.44
-rs,,TestLockoutContactS20,lockout contact S20,,,,2e,,,UIN,0=close;1=open,,T.1.46
+rs,,TestLockoutContactS20,lockout contact S20,,,,2e,,,UCH,0=close;1=open,,T.1.46
 rs,,TestOutdoorTemp,outside temperature,,,,45,,,SIN,10,°C,T.1.69
 rs,,TestSystemTemp,system temperature,,,,46,,,SIN,10,°C,T.1.70
-rs,,TestDCFStatus,DCF status,,,,47,,,UIN,,,T.1.71
-rs,,TestLockoutContactS21,lockout contact S21,,,,48,,,UIN,0=close;1=open,,T.1.72
+rs,,TestDCFStatus,DCF status,,,,47,,,dcfstate,,,T.1.71
+rs,,TestLockoutContactS21,lockout contact S21,,,,48,,,UCH,0=close;1=open,,T.1.72
 rs,,TestMA1Output,MA1 output,,,,77,,,onoff,,,T.1.119
-rs,,TestImmersionHeaterSafetyCutOut,STB heater,,,,7c,,,UIN,0=close;1=open,,T.1.124
+rs,,TestImmersionHeaterSafetyCutOut,STB heater,,,,7c,,,UCH,0=close;1=open,,T.1.124
 rs,,TestMIInput,ME input,,,,7d,,,SIN,,,T.1.125
 rs,,TestMO2Output,MA2 output,,,,7e,,,onoff,,,T.1.126
 rs,,TestMO3Output,MA3 output,,,,7f,,,onoff,,,T.1.127
+rs,,TestCondensorInletTemp,condensor inlet temperature,,,,81,,,SIN,10,°C,
 rs,,TestFlowTempImmersionHeater,Vorlauftemperatur Heizstab,,,,82,,,SIN,10,°C,T1.130
 *rs,#service,,,,,"B514",05,,,IGN:2,,,,,,,,,,,,,,,,,,,,,
 *ws,#service,,,,,"B514",05,ignore,,HEX:3,="000000",,,,,,,,,,,,,,,,,,,,
@@ -188,5 +191,34 @@ ri,,StatFourWayValveSwitchingOperations,4 way valve switching operations,,,,3634
 ri,,StatFan1Hours,fan 1 hours,,,,3c3451,,,hoursum,,,
 ri,,StatFan1Starts,fan 1 starts,,,,d63452,,,UIN,,,
 ri,,StatEEVSteps,EEV steps,,,,e4340d,,,UIN,,,
+# stats from PR 407, potentially for HW5103+SW0607 only
+*r,,,,,,B509,540200,,,IGN:4,,,,,,,,,,,,,,,,,,,,,
+r,,RunDataCompressorSpeed,,,,,0D0A,,,EXP,,rps,,,,,,,,,,,,,,,,,,,
+r,,RunDataEEVPositionAbs,(EEV Position in different scale?),,,,280A,,,UIN,,,,,,,,,,,,,,,,,,,,,
+r,,RunDataFan1Speed,,,,,470A,,,EXP,,rpm,,,,,,,,,,,,,,,,,,,
+r,,RunDataFan2Speed,,,,,490A,,,EXP,,rpm,,,,,,,,,,,,,,,,,,,
+r,,RunDataStatuscode,,,,,530D,,,UIN,34=Frost protection;100=Standby;101=Heating: Compressor shutdown;102=Heating: Compressor blocked;103=Heating: Prerun;104=Heating: Compressor active;107=Heating: Overrun;111=Cooling: Compressor shutdown;112=Cooling: Compressor blocked;113=Cooling: Prerun;114=Cooling: Compressor active;117=Cooling: Overrun;125=Heating: Immersion heater active;132=Warm Water: Compressor blocked;133=Warm Water: Prerun;134=Warm Water: Compressor active;135=Warm Water: Immersion Heater active;137=Warm Water: Overrun;141=Heating: Immersion Heater shutdown;142=Heating: Immersion Heater blocked;151=Warm Water: Immersion Heater shutdown;152=Warm Water: Immersion Heater blocked;202=Air purging program active;240=Compressor oil heating activated;252=Fan 1 blocked;255=Fan 1 air inlet too high;256=Fan 1 air inlet too low;260=Fan 2 blocked;275=Building circuit flow too low;277=Building circuit pump fault;280=Frequency converter fault: Compressor;281=Frequency converter fault: Mains voltage;282=Frequency converter fault: Overheating;283=Deicing time too long;284=Deicing flow temperature too low;285=Compressor outlet temperature too high;286=Hot gas temperature switch open;287=Fan 1: Wind;288=Fan 2: Wind;289=Current limt active;302=High pressure switch open;303=Compressor outlet temperature too high;304=Evaporation temperature too low;305=Condensation temperature too low;306=Evaporation temperature too high;308=Condensation temperature too high;312=Building circuit return temperature too low;314=Building circuit return temperature too high;351=Immersion heater: Flow temperature too high;516=Deicing active;575=Frequency converter fault;581=Connection fault: frequency converter;590=4-port-valve position fault,,,,,,,,,,,,,,,,,,,,
+r,,RunDataElectricPowerConsumption,,,,,5B0D,,,EXP,,W,current electrical power consumption (Watt),,,,,,,,,,,,,,,,,,
+r,,RunDataHighPressure,,,,,6A09,,,pressv,,,,,,,,,,,,,,,,,,,,,
+r,,RunDataCompressorInletTemp,,,,,9808,,,tempv,,,,,,,,,,,,,,,,,,,,,
+r,,RunDataCompressorOutletTemp,,,,,A208,,,tempv,,,,,,,,,,,,,,,,,,,,,
+r,,RunDataEEVOutletTemp,,,,,AC08,,,tempv,,,,,,,,,,,,,,,,,,,,,
+r,,RunStatsHMUHours,,,,,B80B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunStatsHcHours,,,,,B90B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunStatsHwcHours,,,,,BC0B,,,UIN,,hours,total runtime of Hwc mode,,,,,,,,,,,,,,,,,,
+r,,RunStatsCompressorHours,,,,,C20B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunStatsCompressorStarts,,,,,C30B,,,cntstarts2,,,,,,,,,,,,,,,,,,,,,
+r,,RunStatsBuildingPumpHours,,,,,C40B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunDataBuildingCPumpPower,,,,,C509,,,EXP,,%,,,,,,,,,,,,,,,,,,,
+r,,RunStatsBuildingCPumpStarts,,,,,C50B,,,cntstarts2,,,total starts of building circuit pump,,,,,,,,,,,,,,,,,,
+r,,RunStats4PortValveHours,,,,,C80B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunStats4PortValveSwitches,,,,,C90B,,,cntstarts2,,,,,,,,,,,,,,,,,,,,,
+r,,RunStatsFan1Hours,,,,,D70B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunStatsFan1Starts,,,,,D80B,,,cntstarts2,,,,,,,,,,,,,,,,,,,,,
+r,,RunStatsFan2Hours,,,,,D90B,,,UIN,,hours,,,,,,,,,,,,,,,,,,,
+r,,RunStatsFan2Starts,,,,,DA0B,,,cntstarts2,,,,,,,,,,,,,,,,,,,,,
+r,,RunDataAirInletTemp,,,,,DE08,,,tempv,,,,,,,,,,,,,,,,,,,,,
+#r,,RunStatsCompressorHc?,TODO,,,,1801,,,IGN:1;minutesum:runtime;cntstarts:cycles,,,compressor runtime in min and starts in Hc mode,,,,,,,,,,,,,,,,,,
+#r,,RunStatsCompressorHwc?,TODO,,,,1802,,,IGN:1;minutesum:runtime;cntstarts:cycles,,,compressor runtime in min and starts in Hwc mode,,,,,,,,,,,,,,,,,,
 !include,hcmode.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

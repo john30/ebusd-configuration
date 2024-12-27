@@ -2708,6 +2708,7 @@ d.51 MaxFanSpeedOffset: d.51 Offset max. Lüfterdrehzahl
 d.96 Set factory settings: d.96 Werkseinstellungen
 'PrEnergySumDHW1_DK: Predictive Maintenance data': 'PrEnergySumDHW1_DK: Wartungsdaten'
 'PrEnergyCountDHW1_DK: Predictive Maintenance data': 'PrEnergyCountDHW1_DK: Wartungsdaten'
+'PrEnergySumDHW2_DK: Predictive Maintenance data': 'PrEnergySumDHW2_DK: Wartungsdaten'
 'd.38 TCollector_DK: Collector temperature': 'd.38 TCollector_DK: Collector temperature'
 'd.39 TSolarBack_DK: Solar yield sensor': 'd.39 TSolarBack_DK: Solarertrag Sensor'
 'd.42 TSB_DK: Temperature of tank bottom': 'd.42 TSB_DK: Speicherbodentemperatur'
@@ -2822,7 +2823,6 @@ Pred_Waterpressure_MaxPressure_DK: Pred_Waterpressure_MaxPressure_DK
 Pred_Waterpressure_SwitchingPoint_DK: Pred_Waterpressure_SwitchingPoint_DK
 Pred_StatusFlags_DK: Pred_StatusFlags_DK
 Pred_ConditionFlags: Pred_ConditionFlags
-'PrEnergySumDHW2_DK: Predictive Maintenance data': 'PrEnergySumDHW2_DK: Wartungsdaten'
 'd.74 APC_LegioProtection: Legionella protection for actoSTORE': 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
 'd.92 APC_ComStatus_DK: actoSTORE communication status': 'd.92 APC_ComStatus_DK: actoSTORE communication status'
 'd.24 AirPressureSwitch_DK: contact of the air pressure switch': 'd.24 AirPressureSwitch_DK: contact of the air pressure switch'
@@ -3084,25 +3084,26 @@ Max flow return temperature: Max. Rücklauftemperatur
 'SHE_MaxDeltaFlowDHW: maximum difference between flow and DHW outlet temperature': >-
   SHE_MaxDeltaFlowDHW: maximum difference between flow and DHW outlet
   temperature
-'PrEnergySumDHW1: Maintenance data': 'PrEnergySumDHW1: Wartungsdaten'
-'PrEnergyCountDHW1: Maintenance data': 'PrEnergyCountDHW1: Wartungsdaten'
-'PrEnergySumDHW2: Maintenance data': 'PrEnergySumDHW2: Wartungsdaten'
-'PrEnergyCountDHW2: Maintenance data': 'PrEnergyCountDHW2: Wartungsdaten'
-'PrEnergySumDHW3: Maintenance data': 'PrEnergySumDHW3: Wartungsdaten'
-'PrEnergyCountDHW3: Maintenance data': 'PrEnergyCountDHW3: Wartungsdaten'
+Maintenance data: Wartungsdaten
+PrEnergySumDHW1: PrEnergySumDHW1
+PrEnergyCountDHW1: PrEnergyCountDHW1
+PrEnergySumDHW2: PrEnergySumDHW2
+PrEnergyCountDHW2: PrEnergyCountDHW2
+PrEnergySumDHW3: PrEnergySumDHW3
+PrEnergyCountDHW3: PrEnergyCountDHW3
 'MaxWaterFlowCH: v': 'MaxWaterFlowCH: Wartungsdaten'
 'WaterpressureVariantSum: Maintenance data': 'WaterpressureVariantSum: Wartungsdaten'
 'WaterpressureMeasureCounter: Maintenance data': 'WaterpressureMeasureCounter: Wartungsdaten'
 'PrAPSCounter: Maintenance data': 'PrAPSCounter: Wartungsdaten'
 'PrAPSSum: Maintenance data': 'PrAPSSum: Wartungsdaten'
-Maintenance data: Wartungsdaten
 PrVortexFlowSensorValue: PrVortexFlowSensorValue
-'PrEnergySumCH1: Maintenance data': 'PrEnergySumCH1: Wartungsdaten'
-'PrEnergyCountCH1: Maintenance data': 'PrEnergyCountCH1: Wartungsdaten'
-'PrEnergySumCH2: Maintenance data': 'PrEnergySumCH2: Wartungsdaten'
-'PrEnergyCountCH2: Wartungsdaten': 'PrEnergyCountCH2: Wartungsdaten'
-'PrEnergySumCH3: Maintenance data': 'PrEnergySumCH3: Wartungsdaten'
-'PrEnergyCountCH3: Maintenance data': 'PrEnergyCountCH3: Wartungsdaten'
+PrEnergySumCH1: PrEnergySumCH1
+PrEnergyCountCH1: PrEnergyCountCH1
+PrEnergySumCH2: PrEnergySumCH2
+Wartungsdaten: Wartungsdaten
+PrEnergyCountCH2: PrEnergyCountCH2
+PrEnergySumCH3: PrEnergySumCH3
+PrEnergyCountCH3: PrEnergyCountCH3
 'special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)': >-
   Spezielle WW Funktionen:0 = Solarfunktion deaktiviert (default)1 =
   Solarfunktion aktiviert und WW Sollwert minimal 60°C2 = Solarfunktion
@@ -3175,7 +3176,6 @@ defroster is running: defroster is running
   power
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
 'T_AirMAX: maximum allowed air inlet temperature': 'T_AirMAX: maximum allowed air inlet temperature'
-'CoolingActive: cooling active': 'Kühlung aktiv: cooling active'
 'CoolingFanStartTemp: brine temperature to start fan while cooling': 'CoolingFanStartTemp: brine temperature to start fan while cooling'
 'CoolingFanStopTemp: reserved': 'CoolingFanStopTemp: reserved'
 'CoolingMaxFanSpeed: max. fan speed while cooling': 'CoolingMaxFanSpeed: max. fan speed while cooling'

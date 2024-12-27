@@ -378,27 +378,27 @@ namespace Bai._0010006341_inc {
 
   /** PrEnergySumDHW1_DK: Predictive Maintenance data */
   @ext(0xc5, 0)
-  model PrEnergySumHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergySumHwc1 is InstallRegister<ULG>;
 
   /** PrEnergyCountDHW1_DK: Predictive Maintenance data */
   @ext(0xc6, 0)
-  model PrEnergyCountHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc1 is InstallRegister<ULG>;
 
-  /** PrEnergySumDHW1_DK: Predictive Maintenance data */
+  /** PrEnergySumDHW2_DK: Predictive Maintenance data */
   @ext(0xc7, 0)
-  model Maintenancedata_PrEnergySumHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergySumHwc2 is InstallRegister<ULG>;
 
   /** PrEnergyCountDHW2_DK: Predictive Maintenance data */
   @ext(0xc8, 0)
-  model PrEnergyCountHwc2 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc2 is InstallRegister<ULG>;
 
   /** PrEnergySumDHW3_DK: Predictive Maintenance data */
   @ext(0xc9, 0)
-  model PrEnergySumHwc3 is ReadonlyRegister<ULG>;
+  model PrEnergySumHwc3 is InstallRegister<ULG>;
 
   /** PrEnergyCountDHW3_DK: Predictive Maintenance data */
   @ext(0xca, 0)
-  model PrEnergyCountHwc3 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc3 is InstallRegister<ULG>;
 
   /** WaterpressureVariantSum_DK: Predictive Maintenance data */
   @ext(0xf0, 0)
@@ -683,7 +683,7 @@ namespace Bai._0010006341_inc {
   model InitialisationSequence is ReadonlyRegister<UCH>;
 
   /** FlowSetPotmeter: flow setpoint potentiometer */
-  @ext(0x19, 0)
+  @ext(0xf0, 0x3)
   model FlowSetPotmeter is ReadonlyRegister<temp>;
 
   /** DHWSetPotmeter: DHW setpoint potentiometer */

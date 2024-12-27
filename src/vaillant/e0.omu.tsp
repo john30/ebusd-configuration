@@ -111,7 +111,7 @@ namespace Omu {
 
   /** IDU_appliance_code: appliance code, copy from AMU */
   @ext(0x3e, 0)
-  model IDUApplianceCode is ReadonlyRegister<UCH>;
+  model IDUApplianceCode is ReadonlyRegister<appliancecode>;
 
   /** CompressorActive: compressor is running or pre or post running */
   @ext(0x17, 0)
@@ -135,7 +135,7 @@ namespace Omu {
 
   /** OAW_Control_Pump_PWM: reserved */
   @ext(0x37, 0)
-  model OAWControlPumpPWM is InstallRegister<UIN>;
+  model OAWControlPumpPWM is InstallRegister<UCH>;
 
   /** Test_Fan */
   @ext(0x3a, 0)
@@ -151,7 +151,7 @@ namespace Omu {
 
   /** FanStartSpeed: reserved */
   @ext(0x22, 0)
-  model FanStartSpeed is ReadonlyRegister<UIN>;
+  model FanStartSpeed is ReadonlyRegister<percent0>;
 
   /** Free2: reserved */
   @ext(0x21, 0)
@@ -159,11 +159,11 @@ namespace Omu {
 
   /** FanstableTime: reserved */
   @ext(0x20, 0)
-  model FanstableTime is ReadonlyRegister<UIN>;
+  model FanstableTime is ReadonlyRegister<minutes0>;
 
   /** OffsetFanSpeed: reserved */
   @ext(0x1f, 0)
-  model OffsetFanSpeed is ReadonlyRegister<UIN>;
+  model OffsetFanSpeed is ReadonlyRegister<UCH>;
 
   /** RelaisOut: reserved */
   @ext(0x1e, 0)
@@ -175,8 +175,15 @@ namespace Omu {
 
   /** fan_PWM: PWM value from hardware */
   @ext(0x14, 0)
-  model FanPWM is ReadonlyRegister<UIN>;
+  model FanPWM is ReadonlyRegister<UCH>;
   // ##### statistics #####
+  // B521 service commands
+
+  /** default *uw */
+  @write
+  @passive
+  @base(MF, 0x21, 0)
+  model uw {}
   @condition(Id.Id.sw, ">=104")
   namespace Sw_ge104 {
     /** AirInletSensor_Offset: calibration value for air inlet sensor */
@@ -313,7 +320,7 @@ namespace Omu {
   }
   @condition(Id.Id.sw, ">=130")
   namespace Sw_ge130 {
-    /** CoolingActive: cooling active */
+    /** CoolingActive */
     @ext(0x59, 0)
     model CoolingActive is ReadonlyRegister<yesno>;
 
@@ -332,6 +339,98 @@ namespace Omu {
     /** CoolingTest: reserved */
     @ext(0x5d, 0)
     model CoolingTest is InstallRegister<UCH>;
+  }
+  @condition(Id.Id.sw, "<131")
+  namespace Sw_lt131 {
+    /** Control command from HMU to OMU */
+    @inherit(uw)
+    @ext
+    model OMUControl {
+      /** new status */
+      NewStatus: appliancecode;
+
+      @maxLength(3)
+      ign: IGN;
+
+      /** current status */
+      @in
+      Status: appliancecode;
+
+      /** last status */
+      @in
+      LastStatus: appliancecode;
+
+      /** brine outlet temperature */
+      @in
+      @unit("°C")
+      @divisor(16)
+      BrineOutletTemp: D2C;
+
+      /** air inlet temperature */
+      @in
+      @unit("°C")
+      @divisor(16)
+      TempAirInlet: D2C;
+
+      @in
+      ign_1: IGN;
+
+      /** fan speed */
+      @in
+      @unit("/min")
+      @factor(10)
+      FanSpeed: UCH;
+
+      /** fan power */
+      @in
+      FanPower: percent0;
+    }
+  }
+  @condition(Id.Id.sw, ">=131")
+  namespace Sw_ge131 {
+    /** Control command from HMU to OMU */
+    @inherit(uw)
+    @ext
+    model OMUControl {
+      /** new status */
+      NewStatus: appliancecode;
+
+      @maxLength(7)
+      ign: IGN;
+
+      /** current status */
+      @in
+      Status: appliancecode;
+
+      /** last status */
+      @in
+      LastStatus: appliancecode;
+
+      /** brine outlet temperature */
+      @in
+      @unit("°C")
+      @divisor(16)
+      BrineOutletTemp: D2C;
+
+      /** air inlet temperature */
+      @in
+      @unit("°C")
+      @divisor(16)
+      TempAirInlet: D2C;
+
+      @in
+      ign_1: IGN;
+
+      /** fan speed */
+      @in
+      @unit("/min")
+      @factor(10)
+      FanSpeed: UCH;
+
+      /** fan power */
+      @in
+      FanPower: percent0;
+    }
   }
 
   /** included parts */

@@ -1520,7 +1520,7 @@ SystemDesiredFlowTemp: SystemDesiredFlowTemp
 'EhpHeatBufferAvailable: heat buffer is available': 'EhpHeatBufferAvailable: heat buffer is available'
 Child protection: Child protection
 CoolingDay: CoolingDay
-CoolingActive: CoolingActive
+CoolingActive: cooling active
 'EarnedEnergyOld: Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs.': >-
   EarnedEnergyOld: Contains earned energy sum stored from AMU last midnight.
   Required for data transmission between PCBs.
@@ -2539,6 +2539,7 @@ d.51 MaxFanSpeedOffset: d.51 MaxFanSpeedOffset
 d.96 Set factory settings: d.96 Set factory settings
 'PrEnergySumDHW1_DK: Predictive Maintenance data': 'PrEnergySumDHW1_DK: Predictive Maintenance data'
 'PrEnergyCountDHW1_DK: Predictive Maintenance data': 'PrEnergyCountDHW1_DK: Predictive Maintenance data'
+'PrEnergySumDHW2_DK: Predictive Maintenance data': 'PrEnergySumDHW2_DK: Predictive Maintenance data'
 'd.38 TCollector_DK: Collector temperature': 'd.38 TCollector_DK: Collector temperature'
 'd.39 TSolarBack_DK: Solar yield sensor': 'd.39 TSolarBack_DK: Solar yield sensor'
 'd.42 TSB_DK: Temperature of tank bottom': 'd.42 TSB_DK: Temperature of tank bottom'
@@ -2651,7 +2652,6 @@ Pred_Waterpressure_MaxPressure_DK: Pred_Waterpressure_MaxPressure_DK
 Pred_Waterpressure_SwitchingPoint_DK: Pred_Waterpressure_SwitchingPoint_DK
 Pred_StatusFlags_DK: Pred_StatusFlags_DK
 Pred_ConditionFlags: Pred_ConditionFlags
-'PrEnergySumDHW2_DK: Predictive Maintenance data': 'PrEnergySumDHW2_DK: Predictive Maintenance data'
 'd.74 APC_LegioProtection: Legionella protection for actoSTORE': 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
 'd.92 APC_ComStatus_DK: actoSTORE communication status': 'd.92 APC_ComStatus_DK: actoSTORE communication status'
 'd.24 AirPressureSwitch_DK: contact of the air pressure switch': 'd.24 AirPressureSwitch_DK: contact of the air pressure switch'
@@ -2916,25 +2916,26 @@ Max flow return temperature: Max flow return temperature
 'SHE_MaxDeltaFlowDHW: maximum difference between flow and DHW outlet temperature': >-
   SHE_MaxDeltaFlowDHW: maximum difference between flow and DHW outlet
   temperature
-'PrEnergySumDHW1: Maintenance data': 'PrEnergySumDHW1: Maintenance data'
-'PrEnergyCountDHW1: Maintenance data': 'PrEnergyCountDHW1: Maintenance data'
-'PrEnergySumDHW2: Maintenance data': 'PrEnergySumDHW2: Maintenance data'
-'PrEnergyCountDHW2: Maintenance data': 'PrEnergyCountDHW2: Maintenance data'
-'PrEnergySumDHW3: Maintenance data': 'PrEnergySumDHW3: Maintenance data'
-'PrEnergyCountDHW3: Maintenance data': 'PrEnergyCountDHW3: Maintenance data'
+Maintenance data: Maintenance data
+PrEnergySumDHW1: PrEnergySumDHW1
+PrEnergyCountDHW1: PrEnergyCountDHW1
+PrEnergySumDHW2: PrEnergySumDHW2
+PrEnergyCountDHW2: PrEnergyCountDHW2
+PrEnergySumDHW3: PrEnergySumDHW3
+PrEnergyCountDHW3: PrEnergyCountDHW3
 'MaxWaterFlowCH: v': 'MaxWaterFlowCH: v'
 'WaterpressureVariantSum: Maintenance data': 'WaterpressureVariantSum: Maintenance data'
 'WaterpressureMeasureCounter: Maintenance data': 'WaterpressureMeasureCounter: Maintenance data'
 'PrAPSCounter: Maintenance data': 'PrAPSCounter: Maintenance data'
 'PrAPSSum: Maintenance data': 'PrAPSSum: Maintenance data'
-Maintenance data: Maintenance data
 PrVortexFlowSensorValue: PrVortexFlowSensorValue
-'PrEnergySumCH1: Maintenance data': 'PrEnergySumCH1: Maintenance data'
-'PrEnergyCountCH1: Maintenance data': 'PrEnergyCountCH1: Maintenance data'
-'PrEnergySumCH2: Maintenance data': 'PrEnergySumCH2: Maintenance data'
-'PrEnergyCountCH2: Wartungsdaten': 'PrEnergyCountCH2: Wartungsdaten'
-'PrEnergySumCH3: Maintenance data': 'PrEnergySumCH3: Maintenance data'
-'PrEnergyCountCH3: Maintenance data': 'PrEnergyCountCH3: Maintenance data'
+PrEnergySumCH1: PrEnergySumCH1
+PrEnergyCountCH1: PrEnergyCountCH1
+PrEnergySumCH2: PrEnergySumCH2
+Wartungsdaten: Wartungsdaten
+PrEnergyCountCH2: PrEnergyCountCH2
+PrEnergySumCH3: PrEnergySumCH3
+PrEnergyCountCH3: PrEnergyCountCH3
 'special DHW functions0: solar function deactivated (default)1: solar function activated and DHW setpoint minimum 60°C2: solar function activated and DHW setpoint like combi standard (min 35°)3: DHW setpoint minimum 60°C (poti)': >-
   special DHW functions0: solar function deactivated (default)1: solar function
   activated and DHW setpoint minimum 60°C2: solar function activated and DHW
@@ -3005,7 +3006,6 @@ defroster is running: defroster is running
   power
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
 'T_AirMAX: maximum allowed air inlet temperature': 'T_AirMAX: maximum allowed air inlet temperature'
-'CoolingActive: cooling active': 'CoolingActive: cooling active'
 'CoolingFanStartTemp: brine temperature to start fan while cooling': 'CoolingFanStartTemp: brine temperature to start fan while cooling'
 'CoolingFanStopTemp: reserved': 'CoolingFanStopTemp: reserved'
 'CoolingMaxFanSpeed: max. fan speed while cooling': 'CoolingMaxFanSpeed: max. fan speed while cooling'

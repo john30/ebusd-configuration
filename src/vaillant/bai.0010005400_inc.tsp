@@ -451,11 +451,11 @@ namespace Bai._0010005400_inc {
 
   /** PrEnergySumDHW1_DK: Predictive Maintenance data */
   @ext(0xc5, 0)
-  model PrEnergySumHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergySumHwc1 is InstallRegister<ULG>;
 
   /** PrEnergyCountDHW1_DK: Predictive Maintenance data */
   @ext(0xc6, 0)
-  model PrEnergyCountHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc1 is InstallRegister<ULG>;
 
   /** WaterpressureVariantSum_DK: Predictive Maintenance data */
   @ext(0xf0, 0)
@@ -491,9 +491,13 @@ namespace Bai._0010005400_inc {
     value: SIN;
   }
 
-  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
+  /** PrEnergySumCH1_DK: Predictive Maintenance data */
   @ext(0xf5, 0)
-  model PrEnergyCountHc1 is ReadonlyRegister<ULG>;
+  model PrEnergySumHc1 is InstallRegister<ULG>;
+
+  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
+  @ext(0xf6, 0)
+  model PrEnergyCountHc1 is InstallRegister<ULG>;
   // ##### expert level\Main #####
 
   /** external flowsetpoint: Flow target temperature from external regulator to terminal 7-8-9 */
@@ -777,7 +781,7 @@ namespace Bai._0010005400_inc {
   model InitialisationSequence is ReadonlyRegister<UCH>;
 
   /** FlowSetPotmeter: flow setpoint potentiometer */
-  @ext(0x19, 0)
+  @ext(0xf0, 0x3)
   model FlowSetPotmeter is ReadonlyRegister<temp>;
 
   /** DHWSetPotmeter: DHW setpoint potentiometer */
