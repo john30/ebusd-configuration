@@ -683,7 +683,7 @@ namespace Bai._0010006341_inc {
   model InitialisationSequence is ReadonlyRegister<UCH>;
 
   /** FlowSetPotmeter: flow setpoint potentiometer */
-  @ext(0x19, 0)
+  @ext(0xf0, 0x3)
   model FlowSetPotmeter is ReadonlyRegister<temp>;
 
   /** DHWSetPotmeter: DHW setpoint potentiometer */
