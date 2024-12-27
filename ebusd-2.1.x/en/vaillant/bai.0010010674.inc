@@ -102,12 +102,12 @@ r;wi,,PrEnergyCountHwc3,PrEnergyCountDHW3_DK,,,,"CA00",,,ULG,,,Predictive Mainte
 r,,CurrentPartload,CurrentPartload,,,,"0001",,,UIN,,kW,Current calculated partload
 r,,WaterpressureVariantSum,WaterpressureVariantSum_DK,,,,"F000",,,pressm2,,,Predictive Maintenance data
 r,,WaterpressureMeasureCounter,WaterpressureMeasureCounter_DK,,,,"F100",,,UCH,,,Predictive Maintenance data
-r;wi,,PrEnergySumHc1,PrEnergySumCH1_DK,,,,"F400",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergyCountHc1,PrEnergyCountCH1_DK,,,,"F500",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergySumHc2,PrEnergySumCH2_DK,,,,"F600",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergyCountHc2,PrEnergyCountCH2_DK,,,,"F700",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergySumHc3,PrEnergySumCH3_DK,,,,"F800",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergyCountHc3,PrEnergyCountCH3_DK,,,,"F900",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergySumHc1,PrEnergySumCH1_DK,,,,"F500",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergyCountHc1,PrEnergyCountCH1_DK,,,,"F600",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergySumHc2,PrEnergySumCH2_DK,,,,"F700",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergyCountHc2,PrEnergyCountCH2_DK,,,,"F800",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergySumHc3,PrEnergySumCH3_DK,,,,"F900",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergyCountHc3,PrEnergyCountCH3_DK,,,,"FA00",,,ULG,,,Predictive Maintenance data
 # ##### expert level\Main #####,,,,,,,,,,,,,
 r,,externalFlowTempDesired,external flowsetpoint,,,,"2500",,,temp,,,Flow target temperature from external regulator to terminal 7-8-9
 r,,externalHwcSwitch,DHWSwitch_DK,,,,"0000",,,onoff,,,Demand external tank (via contact)

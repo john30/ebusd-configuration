@@ -162,9 +162,10 @@ r,,WaterpressureMeasureCounter,WaterpressureMeasureCounter_DK,,,,"F100",,,UCH,,,
 r,,PrAPSCounter,PrAPSCounter_DK,,,,"F200",,,UCH,,,Predictive Maintenance data
 r,,PrAPSSum,PrAPSSum_DK,,,,"F300",,,seconds2,,,Predictive Maintenance data
 r,,PrVortexFlowSensorValue,PrVortexFlowSensorValue_DK,,,,"F400",,,SIN,,ADC,Predictive Maintenance data
-r;wi,,PrEnergyCountHc1,PrEnergyCountCH1_DK,,,,"F500",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergySumHc2,PrEnergySumCH2_DK,,,,"F600",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergyCountHc2,PrEnergyCountCH2_DK,,,,"F700",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergySumHc3,PrEnergySumCH3_DK,,,,"F800",,,ULG,,,Predictive Maintenance data
-r;wi,,PrEnergyCountHc3,PrEnergyCountCH3_DK,,,,"F900",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergySumHc1,PrEnergySumCH1_DK,,,,"F500",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergyCountHc1,PrEnergyCountCH1_DK,,,,"F600",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergySumHc2,PrEnergySumCH2_DK,,,,"F700",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergyCountHc2,PrEnergyCountCH2_DK,,,,"F800",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergySumHc3,PrEnergySumCH3_DK,,,,"F900",,,ULG,,,Predictive Maintenance data
+r;wi,,PrEnergyCountHc3,PrEnergyCountCH3_DK,,,,"FA00",,,ULG,,,Predictive Maintenance data
 !include,errors.inc,,,,,,,,,,,,

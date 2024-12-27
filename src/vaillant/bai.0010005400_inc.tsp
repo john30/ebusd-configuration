@@ -491,8 +491,12 @@ namespace Bai._0010005400_inc {
     value: SIN;
   }
 
-  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
+  /** PrEnergySumCH1_DK: Predictive Maintenance data */
   @ext(0xf5, 0)
+  model PrEnergySumHc1 is InstallRegister<ULG>;
+
+  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
+  @ext(0xf6, 0)
   model PrEnergyCountHc1 is InstallRegister<ULG>;
   // ##### expert level\Main #####
 

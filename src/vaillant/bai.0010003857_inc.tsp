@@ -723,24 +723,28 @@ namespace Bai._0010003857_inc {
     value: SIN;
   }
 
-  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
+  /** PrEnergySumCH1_DK: Predictive Maintenance data */
   @ext(0xf5, 0)
+  model PrEnergySumHc1 is InstallRegister<ULG>;
+
+  /** PrEnergyCountCH1_DK: Predictive Maintenance data */
+  @ext(0xf6, 0)
   model PrEnergyCountHc1 is InstallRegister<ULG>;
 
   /** PrEnergySumCH2_DK: Predictive Maintenance data */
-  @ext(0xf6, 0)
+  @ext(0xf7, 0)
   model PrEnergySumHc2 is InstallRegister<ULG>;
 
   /** PrEnergyCountCH2_DK: Predictive Maintenance data */
-  @ext(0xf7, 0)
+  @ext(0xf8, 0)
   model PrEnergyCountHc2 is InstallRegister<ULG>;
 
   /** PrEnergySumCH3_DK: Predictive Maintenance data */
-  @ext(0xf8, 0)
+  @ext(0xf9, 0)
   model PrEnergySumHc3 is InstallRegister<ULG>;
 
   /** PrEnergyCountCH3_DK: Predictive Maintenance data */
-  @ext(0xf9, 0)
+  @ext(0xfa, 0)
   model PrEnergyCountHc3 is InstallRegister<ULG>;
 
   enum Values_HcPumpMode {
