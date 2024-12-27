@@ -451,11 +451,11 @@ namespace Bai._0010005400_inc {
 
   /** PrEnergySumDHW1_DK: Predictive Maintenance data */
   @ext(0xc5, 0)
-  model PrEnergySumHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergySumHwc1 is InstallRegister<ULG>;
 
   /** PrEnergyCountDHW1_DK: Predictive Maintenance data */
   @ext(0xc6, 0)
-  model PrEnergyCountHwc1 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc1 is InstallRegister<ULG>;
 
   /** WaterpressureVariantSum_DK: Predictive Maintenance data */
   @ext(0xf0, 0)
@@ -493,7 +493,7 @@ namespace Bai._0010005400_inc {
 
   /** PrEnergyCountCH1_DK: Predictive Maintenance data */
   @ext(0xf5, 0)
-  model PrEnergyCountHc1 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHc1 is InstallRegister<ULG>;
   // ##### expert level\Main #####
 
   /** external flowsetpoint: Flow target temperature from external regulator to terminal 7-8-9 */

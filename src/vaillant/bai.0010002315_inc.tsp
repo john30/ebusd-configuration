@@ -556,15 +556,15 @@ namespace Bai._0010002315_inc {
 
   /** PrEnergyCountDHW2_DK: Predictive Maintenance data */
   @ext(0xc8, 0)
-  model PrEnergyCountHwc2 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc2 is InstallRegister<ULG>;
 
   /** PrEnergySumDHW3_DK: Predictive Maintenance data */
   @ext(0xc9, 0)
-  model PrEnergySumHwc3 is ReadonlyRegister<ULG>;
+  model PrEnergySumHwc3 is InstallRegister<ULG>;
 
   /** PrEnergyCountDHW3_DK: Predictive Maintenance data */
   @ext(0xca, 0)
-  model PrEnergyCountHwc3 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHwc3 is InstallRegister<ULG>;
 
   /** MaxWaterFlowCH_DK: Predictive Maintenance data */
   @ext(0xd0, 0)
@@ -597,27 +597,27 @@ namespace Bai._0010002315_inc {
 
   /** PrEnergySumCH1_DK: Predictive Maintenance data */
   @ext(0xf5, 0)
-  model PrEnergySumHc1 is ReadonlyRegister<ULG>;
+  model PrEnergySumHc1 is InstallRegister<ULG>;
 
   /** PrEnergyCountCH1_DK: Predictive Maintenance data */
   @ext(0xf6, 0)
-  model PrEnergyCountHc1 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHc1 is InstallRegister<ULG>;
 
   /** PrEnergySumCH2_DK: Predictive Maintenance data */
   @ext(0xf7, 0)
-  model PrEnergySumHc2 is ReadonlyRegister<ULG>;
+  model PrEnergySumHc2 is InstallRegister<ULG>;
 
   /** PrEnergyCountCH2_DK: Predictive Maintenance data */
   @ext(0xf8, 0)
-  model PrEnergyCountHc2 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHc2 is InstallRegister<ULG>;
 
   /** PrEnergySumCH3_DK: Predictive Maintenance data */
   @ext(0xf9, 0)
-  model PrEnergySumHc3 is ReadonlyRegister<ULG>;
+  model PrEnergySumHc3 is InstallRegister<ULG>;
 
   /** PrEnergyCountCH3_DK: Predictive Maintenance data */
   @ext(0xfa, 0)
-  model PrEnergyCountHc3 is ReadonlyRegister<ULG>;
+  model PrEnergyCountHc3 is InstallRegister<ULG>;
 
   enum Values_HcPumpMode {
     post_run: 0,

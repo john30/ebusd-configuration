@@ -16977,17 +16977,13 @@ prenergysumdhw1dkpredictivemaintenancedata:
   de: 'PrEnergySumDHW1_DK: Wartungsdaten'
   locations:
     - vaillant/bai.0010003857.inc::r::0xc5,0
-    - vaillant/bai.0010003857.inc::r::0xc7,0
     - vaillant/bai.0010003886.inc::r::0xc5,0
-    - vaillant/bai.0010003886.inc::r::0xc7,0
     - vaillant/bai.0010004121.inc::r::0xc5,0
     - vaillant/bai.0010004150.inc::r::0xc5,0
     - vaillant/bai.0010005400.inc::r::0xc5,0
     - vaillant/bai.0010006101.inc::r::0xc5,0
     - vaillant/bai.0010006341.inc::r::0xc5,0
-    - vaillant/bai.0010006341.inc::r::0xc7,0
     - vaillant/bai.0010007508.inc::r::0xc5,0
-    - vaillant/bai.0010007508.inc::r::0xc7,0
     - vaillant/bai.0010008045.inc::r::0xc5,0
     - vaillant/bai.0010010674.inc::r::0xc5,0
     - vaillant/bai.308523.inc::r::0xc5,0
@@ -17007,6 +17003,21 @@ prenergycountdhw1dkpredictivemaintenancedata:
     - vaillant/bai.0010008045.inc::r::0xc6,0
     - vaillant/bai.0010010674.inc::r::0xc6,0
     - vaillant/bai.308523.inc::r::0xc6,0
+prenergysumdhw2dkpredictivemaintenancedata:
+  first: 'PrEnergySumDHW2_DK: Predictive Maintenance data'
+  en: 'PrEnergySumDHW2_DK: Predictive Maintenance data'
+  de: 'PrEnergySumDHW2_DK: Wartungsdaten'
+  locations:
+    - vaillant/bai.0010003857.inc::r::0xc7,0
+    - vaillant/bai.0010003886.inc::r::0xc7,0
+    - vaillant/bai.0010004121.inc::r::0xc7,0
+    - vaillant/bai.0010004150.inc::r::0xc7,0
+    - vaillant/bai.0010006101.inc::r::0xc7,0
+    - vaillant/bai.0010006341.inc::r::0xc7,0
+    - vaillant/bai.0010007508.inc::r::0xc7,0
+    - vaillant/bai.0010008045.inc::r::0xc7,0
+    - vaillant/bai.0010010674.inc::r::0xc7,0
+    - vaillant/bai.308523.inc::r::0xc7,0
 d38tcollectordkcollectortemperature:
   first: 'd.38 TCollector_DK: Collector temperature'
   en: 'd.38 TCollector_DK: Collector temperature'
@@ -17696,17 +17707,6 @@ predconditionflags:
   de: Pred_ConditionFlags
   locations:
     - vaillant/bai.0010004121.inc::r::0x7e,1
-prenergysumdhw2dkpredictivemaintenancedata:
-  first: 'PrEnergySumDHW2_DK: Predictive Maintenance data'
-  en: 'PrEnergySumDHW2_DK: Predictive Maintenance data'
-  de: 'PrEnergySumDHW2_DK: Wartungsdaten'
-  locations:
-    - vaillant/bai.0010004121.inc::r::0xc7,0
-    - vaillant/bai.0010004150.inc::r::0xc7,0
-    - vaillant/bai.0010006101.inc::r::0xc7,0
-    - vaillant/bai.0010008045.inc::r::0xc7,0
-    - vaillant/bai.0010010674.inc::r::0xc7,0
-    - vaillant/bai.308523.inc::r::0xc7,0
 d74apclegioprotectionlegionellaprotectionforactostore:
   first: 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
   en: 'd.74 APC_LegioProtection: Legionella protection for actoSTORE'
@@ -19417,45 +19417,74 @@ shemaxdeltaflowdhwmaximumdifferencebetweenflowanddhwoutlettemperature:
   locations:
     - vaillant/bai.0010015600.inc::r::0xc4,0
     - vaillant/bai.0010021961.inc::r::0xc4,0
-prenergysumdhw1maintenancedata:
-  first: 'PrEnergySumDHW1: Maintenance data'
-  en: 'PrEnergySumDHW1: Maintenance data'
-  de: 'PrEnergySumDHW1: Wartungsdaten'
+maintenancedata:
+  first: Maintenance data
+  en: Maintenance data
+  de: Wartungsdaten
+  locations:
+    - vaillant/bai.0010015600.inc::r::0xc5,0:value
+    - vaillant/bai.0010015600.inc::r::0xc6,0:value
+    - vaillant/bai.0010015600.inc::r::0xc7,0:value
+    - vaillant/bai.0010015600.inc::r::0xc8,0:value
+    - vaillant/bai.0010015600.inc::r::0xc9,0:value
+    - vaillant/bai.0010015600.inc::r::0xca,0:value
+    - vaillant/bai.0010015600.inc::r::0xf4,0:value
+    - vaillant/bai.0010015600.inc::r::0xf5,0:value
+    - vaillant/bai.0010015600.inc::r::0xf6,0:value
+    - vaillant/bai.0010015600.inc::r::0xf7,0:value
+    - vaillant/bai.0010015600.inc::r::0xf9,0:value
+    - vaillant/bai.0010015600.inc::r::0xfa,0:value
+    - vaillant/bai.0010021961.inc::r::0xc5,0:value
+    - vaillant/bai.0010021961.inc::r::0xc6,0:value
+    - vaillant/bai.0010021961.inc::r::0xc7,0:value
+    - vaillant/bai.0010021961.inc::r::0xc8,0:value
+    - vaillant/bai.0010021961.inc::r::0xc9,0:value
+    - vaillant/bai.0010021961.inc::r::0xca,0:value
+    - vaillant/bai.0010021961.inc::r::0xf4,0:value
+    - vaillant/bai.0010021961.inc::r::0xf5,0:value
+    - vaillant/bai.0010021961.inc::r::0xf6,0:value
+    - vaillant/bai.0010021961.inc::r::0xf7,0:value
+    - vaillant/bai.0010021961.inc::r::0xf9,0:value
+    - vaillant/bai.0010021961.inc::r::0xfa,0:value
+prenergysumdhw1:
+  first: PrEnergySumDHW1
+  en: PrEnergySumDHW1
+  de: PrEnergySumDHW1
   locations:
     - vaillant/bai.0010015600.inc::r::0xc5,0
     - vaillant/bai.0010021961.inc::r::0xc5,0
-prenergycountdhw1maintenancedata:
-  first: 'PrEnergyCountDHW1: Maintenance data'
-  en: 'PrEnergyCountDHW1: Maintenance data'
-  de: 'PrEnergyCountDHW1: Wartungsdaten'
+prenergycountdhw1:
+  first: PrEnergyCountDHW1
+  en: PrEnergyCountDHW1
+  de: PrEnergyCountDHW1
   locations:
     - vaillant/bai.0010015600.inc::r::0xc6,0
     - vaillant/bai.0010021961.inc::r::0xc6,0
-prenergysumdhw2maintenancedata:
-  first: 'PrEnergySumDHW2: Maintenance data'
-  en: 'PrEnergySumDHW2: Maintenance data'
-  de: 'PrEnergySumDHW2: Wartungsdaten'
+prenergysumdhw2:
+  first: PrEnergySumDHW2
+  en: PrEnergySumDHW2
+  de: PrEnergySumDHW2
   locations:
     - vaillant/bai.0010015600.inc::r::0xc7,0
     - vaillant/bai.0010021961.inc::r::0xc7,0
-prenergycountdhw2maintenancedata:
-  first: 'PrEnergyCountDHW2: Maintenance data'
-  en: 'PrEnergyCountDHW2: Maintenance data'
-  de: 'PrEnergyCountDHW2: Wartungsdaten'
+prenergycountdhw2:
+  first: PrEnergyCountDHW2
+  en: PrEnergyCountDHW2
+  de: PrEnergyCountDHW2
   locations:
     - vaillant/bai.0010015600.inc::r::0xc8,0
     - vaillant/bai.0010021961.inc::r::0xc8,0
-prenergysumdhw3maintenancedata:
-  first: 'PrEnergySumDHW3: Maintenance data'
-  en: 'PrEnergySumDHW3: Maintenance data'
-  de: 'PrEnergySumDHW3: Wartungsdaten'
+prenergysumdhw3:
+  first: PrEnergySumDHW3
+  en: PrEnergySumDHW3
+  de: PrEnergySumDHW3
   locations:
     - vaillant/bai.0010015600.inc::r::0xc9,0
     - vaillant/bai.0010021961.inc::r::0xc9,0
-prenergycountdhw3maintenancedata:
-  first: 'PrEnergyCountDHW3: Maintenance data'
-  en: 'PrEnergyCountDHW3: Maintenance data'
-  de: 'PrEnergyCountDHW3: Wartungsdaten'
+prenergycountdhw3:
+  first: PrEnergyCountDHW3
+  en: PrEnergyCountDHW3
+  de: PrEnergyCountDHW3
   locations:
     - vaillant/bai.0010015600.inc::r::0xca,0
     - vaillant/bai.0010021961.inc::r::0xca,0
@@ -19494,13 +19523,6 @@ prapssummaintenancedata:
   locations:
     - vaillant/bai.0010015600.inc::r::0xf3,0
     - vaillant/bai.0010021961.inc::r::0xf3,0
-maintenancedata:
-  first: Maintenance data
-  en: Maintenance data
-  de: Wartungsdaten
-  locations:
-    - vaillant/bai.0010015600.inc::r::0xf4,0:value
-    - vaillant/bai.0010021961.inc::r::0xf4,0:value
 prvortexflowsensorvalue:
   first: PrVortexFlowSensorValue
   en: PrVortexFlowSensorValue
@@ -19508,45 +19530,52 @@ prvortexflowsensorvalue:
   locations:
     - vaillant/bai.0010015600.inc::r::0xf4,0
     - vaillant/bai.0010021961.inc::r::0xf4,0
-prenergysumch1maintenancedata:
-  first: 'PrEnergySumCH1: Maintenance data'
-  en: 'PrEnergySumCH1: Maintenance data'
-  de: 'PrEnergySumCH1: Wartungsdaten'
+prenergysumch1:
+  first: PrEnergySumCH1
+  en: PrEnergySumCH1
+  de: PrEnergySumCH1
   locations:
     - vaillant/bai.0010015600.inc::r::0xf5,0
     - vaillant/bai.0010021961.inc::r::0xf5,0
-prenergycountch1maintenancedata:
-  first: 'PrEnergyCountCH1: Maintenance data'
-  en: 'PrEnergyCountCH1: Maintenance data'
-  de: 'PrEnergyCountCH1: Wartungsdaten'
+prenergycountch1:
+  first: PrEnergyCountCH1
+  en: PrEnergyCountCH1
+  de: PrEnergyCountCH1
   locations:
     - vaillant/bai.0010015600.inc::r::0xf6,0
     - vaillant/bai.0010021961.inc::r::0xf6,0
-prenergysumch2maintenancedata:
-  first: 'PrEnergySumCH2: Maintenance data'
-  en: 'PrEnergySumCH2: Maintenance data'
-  de: 'PrEnergySumCH2: Wartungsdaten'
+prenergysumch2:
+  first: PrEnergySumCH2
+  en: PrEnergySumCH2
+  de: PrEnergySumCH2
   locations:
     - vaillant/bai.0010015600.inc::r::0xf7,0
     - vaillant/bai.0010021961.inc::r::0xf7,0
-prenergycountch2wartungsdaten:
-  first: 'PrEnergyCountCH2: Wartungsdaten'
-  en: 'PrEnergyCountCH2: Wartungsdaten'
-  de: 'PrEnergyCountCH2: Wartungsdaten'
+wartungsdaten:
+  first: Wartungsdaten
+  en: Wartungsdaten
+  de: Wartungsdaten
+  locations:
+    - vaillant/bai.0010015600.inc::r::0xf8,0:value
+    - vaillant/bai.0010021961.inc::r::0xf8,0:value
+prenergycountch2:
+  first: PrEnergyCountCH2
+  en: PrEnergyCountCH2
+  de: PrEnergyCountCH2
   locations:
     - vaillant/bai.0010015600.inc::r::0xf8,0
     - vaillant/bai.0010021961.inc::r::0xf8,0
-prenergysumch3maintenancedata:
-  first: 'PrEnergySumCH3: Maintenance data'
-  en: 'PrEnergySumCH3: Maintenance data'
-  de: 'PrEnergySumCH3: Wartungsdaten'
+prenergysumch3:
+  first: PrEnergySumCH3
+  en: PrEnergySumCH3
+  de: PrEnergySumCH3
   locations:
     - vaillant/bai.0010015600.inc::r::0xf9,0
     - vaillant/bai.0010021961.inc::r::0xf9,0
-prenergycountch3maintenancedata:
-  first: 'PrEnergyCountCH3: Maintenance data'
-  en: 'PrEnergyCountCH3: Maintenance data'
-  de: 'PrEnergyCountCH3: Wartungsdaten'
+prenergycountch3:
+  first: PrEnergyCountCH3
+  en: PrEnergyCountCH3
+  de: PrEnergyCountCH3
   locations:
     - vaillant/bai.0010015600.inc::r::0xfa,0
     - vaillant/bai.0010021961.inc::r::0xfa,0
