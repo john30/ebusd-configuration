@@ -43,7 +43,7 @@ namespace Ehp.Mc {
 
   /** HcMaxPreHeating: BMR: Maximum Preheating time in minutes */
   @ext(0x38, 0)
-  model HcMaxPreHeating is InstallRegister<hours>;
+  model HcMaxPreHeating is InstallRegister<minutes5>;
 
   /** FloorPavingDryingDay: BMR: actual day of floor paving drying program (1...29) */
   @ext(0x3b, 0)

@@ -1810,10 +1810,9 @@ Heating curve: 'Heizkurve: Heating curve'
 'HcMaxPreHeating: The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)': >-
   Max. Voraufheizung: The heating start before a time window could shifted
   forwards maximal this time (related to the outside temperature)
-maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature): >-
-  maximum time central heating is released in advance of the first time window
-  (time is adjusted according to current outside temperature)
-HcMaxPreHeating: Max. Voraufheizung
+'HcMaxPreHeating: maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature)': >-
+  Max. Voraufheizung: maximum time central heating is released in advance of the
+  first time window (time is adjusted according to current outside temperature)
 'TeleswitchOperatingMode: If the tele switch port is activated the burner circuit operates in this mode': >-
   TeleSWITCH Betriebsart: If the tele switch port is activated the burner
   circuit operates in this mode
@@ -1934,7 +1933,9 @@ Operating mode of mixer circuit: 'Betriebsart: Operating mode of mixer circuit'
   Maximaler Vorlaufsollwert: For a heat demand the desired flow temperature will
   maximal be this value
 'DesiredTemperature1: Day temperature setpoint of the circuit': 'Solltemperatur: Day temperature setpoint of the circuit'
-HcMaxPreHeating1: Max. Voraufheizung
+'HcMaxPreHeating1: maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature)': >-
+  Max. Voraufheizung: maximum time central heating is released in advance of the
+  first time window (time is adjusted according to current outside temperature)
 'HcMaxPreHeating1: The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)': >-
   Max. Voraufheizung: The heating start before a time window could shifted
   forwards maximal this time (related to the outside temperature)

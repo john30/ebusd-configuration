@@ -60,6 +60,11 @@ scalar minutes0 extends UCH;
 @unit("min")
 scalar minutes2 extends UIN;
 
+/** minutes */
+@unit("min")
+@factor(5)
+scalar minutes5 extends UCH;
+
 /** hours */
 @unit("h")
 scalar hoursum extends ULG;

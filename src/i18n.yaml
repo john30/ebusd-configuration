@@ -10236,23 +10236,19 @@ hcmaxpreheatingtheheatingstartbeforeatimewindowcouldshiftedforwardsmaximalthisti
     forwards maximal this time (related to the outside temperature)
   locations:
     - vaillant/26.solsy.hc.csv:sw_le400:r::0x38,0
-maximumtimecentralheatingisreleasedinadvanceofthefirsttimewindowtimeisadjustedaccordingtocurrentoutsidetemperature:
+hcmaxpreheatingmaximumtimecentralheatingisreleasedinadvanceofthefirsttimewindowtimeisadjustedaccordingtocurrentoutsidetemperature:
   first: >-
-    maximum time central heating is released in advance of the first time window
-    (time is adjusted according to current outside temperature)
+    HcMaxPreHeating: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
   en: >-
-    maximum time central heating is released in advance of the first time window
-    (time is adjusted according to current outside temperature)
+    HcMaxPreHeating: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
   de: >-
-    maximum time central heating is released in advance of the first time window
-    (time is adjusted according to current outside temperature)
-  locations:
-    - vaillant/26.solsy.hc.csv:sw_ge401:r::0x38,0:value
-    - vaillant/50.solsy.mc.csv:sw_ge401:r::0x38,0:value
-hcmaxpreheating:
-  first: HcMaxPreHeating
-  en: HcMaxPreHeating
-  de: Max. Voraufheizung
+    Max. Voraufheizung: maximum time central heating is released in advance of
+    the first time window (time is adjusted according to current outside
+    temperature)
   locations:
     - vaillant/26.solsy.hc.csv:sw_ge401:r::0x38,0
 teleswitchoperatingmodeiftheteleswitchportisactivatedtheburnercircuitoperatesinthismode:
@@ -10826,10 +10822,19 @@ desiredtemperature1daytemperaturesetpointofthecircuit:
   locations:
     - vaillant/50.solsy.mc.csv::r::0x32,0
     - vaillant/52.mc2.mc.4.csv::r::0x32,0
-hcmaxpreheating1:
-  first: HcMaxPreHeating1
-  en: HcMaxPreHeating1
-  de: Max. Voraufheizung
+hcmaxpreheating1maximumtimecentralheatingisreleasedinadvanceofthefirsttimewindowtimeisadjustedaccordingtocurrentoutsidetemperature:
+  first: >-
+    HcMaxPreHeating1: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
+  en: >-
+    HcMaxPreHeating1: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
+  de: >-
+    Max. Voraufheizung: maximum time central heating is released in advance of
+    the first time window (time is adjusted according to current outside
+    temperature)
   locations:
     - vaillant/50.solsy.mc.csv:sw_ge401:r::0x38,0
 hcmaxpreheating1theheatingstartbeforeatimewindowcouldshiftedforwardsmaximalthistimerelatedtotheoutsidetemperature:
@@ -13063,6 +13068,7 @@ minutes:
     - vaillant/_templates.csv:minutes
     - vaillant/_templates.csv:minutes0
     - vaillant/_templates.csv:minutes2
+    - vaillant/_templates.csv:minutes5
 hours:
   first: hours
   en: hours

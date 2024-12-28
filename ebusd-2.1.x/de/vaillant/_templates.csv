@@ -13,6 +13,7 @@ time2,VTM,,,Zeit
 minutes,ULG,120,min,Minuten
 minutes0,UCH,,min,Minuten
 minutes2,UIN,,min,Minuten
+minutes5,UCH,-5,min,Minuten
 hoursum,ULG,,h,Stunden
 hoursum2,UIN,,h,Stunden
 hours,UCH,,h,Stunden

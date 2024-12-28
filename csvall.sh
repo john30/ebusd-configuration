@@ -20,6 +20,7 @@ sed -i \
   -e 's#,UIN,,,hours#,hoursum2,,,#ig' \
   -e 's#,UIN,,hours,#,hoursum2,,,#ig' \
   -e 's#,UCH,,sec,#,seconds0,,,#ig' \
+  -e 's#,UCH,,min / 5,#,minutes5,,,#ig' \
   -e 's#,mcmode,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"#,hwcmode2,,,#' \
   -e 's#,hwcmode2,,,"0=OFF, 1=ON, 2=AUTO, 3=MANUAL"#,hwcmode2,,,#' \
   -e 's#,ULG,,,Maintance Alarm Date#,DTM,,,Maintance Alarm Date#' \

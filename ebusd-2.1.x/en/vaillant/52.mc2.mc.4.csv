@@ -33,7 +33,7 @@ r;w,,OtShutdownLimit,OtShutdownLimit1,,,,"3600",,,desiredtemp,,,"For outside tem
 r;w,,HcPumpIdlePeriod,HcPumpIdlePeriod1,,,,"4F00",,,minutes0,,,Time pump is not running in a pause at least
 r;w,,FlowTempMin,MinFlowTemp1,,,,"3000",,,temp0,,,For a heat demand the desired flow temperature will at least be this value
 r;w,,FlowTempMax,MaxFlowTemp1,,,,"3100",,,temp0,,,For a heat demand the desired flow temperature will maximal be this value
-r;w,,HcMaxPreHeating,HcMaxPreHeating1,,,,"3800",,,hours,,,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
+r;w,,HcMaxPreHeating,HcMaxPreHeating1,,,,"3800",,,minutes5,,,The heating start before a time window could shifted forwards maximal this time (related to the outside temperature)
 r;w,,TeleswitchOperatingMode,TeleswitchOperatingMode1,,,,"3F00",,,mcmode,,,If the tele switch port is activated the mixer circuit operates in this mode
 r;wi,,FloorPavingDryingDay,FloorPavingDryingDay1,,,,"3B00",,,UCH,,,Current day of floor paving drying routine
 # ##### MK1: Cooling #####,,,,,,,,,,,,,
