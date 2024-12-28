@@ -37,11 +37,13 @@ sed -i \
   -e 's#ReglerCurrentTEMP#ReglerCurrentTemp#' \
   -e 's#\(,CounterStartattempts[.*],\)temp0,#\1UCH,#' \
   \{\} \; \
+&& npm run csv2tsp-extra \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
 && mv outtsp.de/i18n.yaml outtsp/i18n.yaml \
 && ( (cd outtsp.de && find . -type f) | xargs -i bash -c 'test -f  outtsp/{} || cp outtsp.de/{} outtsp/{}') \
 && cp normalized/*.tsp outtsp/ \
+&& sed -i -e 's#using Ebus.Str;#using Ebus.Str;\nusing Ebus.Contrib;#' outtsp/tem/_templates.tsp \
 && npm run maintsp \
 && npm run format \
 && npm run lint
