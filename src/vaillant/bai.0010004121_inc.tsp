@@ -664,9 +664,15 @@ namespace Bai._0010004121_inc {
   }
   // ##### dia level 2 #####
 
-  /** d.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump */
+  /** d.14 Desired heating pump power */
+  @inherit(r, wi)
   @ext(0xa1, 0)
-  model WPPWMPowerDia is InstallRegister<UCH>;
+  model PumpPowerDesired {
+    /** PWM-Desired central heating pump power */
+    @unit("%")
+    @values(Values_PumpPowerDesired)
+    value: UCH;
+  }
 
   /** d.17 Return regulation: heating flow/return regulation activation */
   @ext(0xc, 0x4)
@@ -1158,6 +1164,15 @@ namespace Bai._0010004121_inc {
   /** PrEnergyCountCH3_DK: Predictive Maintenance data */
   @ext(0xfa, 0)
   model PrEnergyCountHc3 is InstallRegister<ULG>;
+
+  enum Values_PumpPowerDesired {
+    auto: 0,
+    _53: 1,
+    _60: 2,
+    _70: 3,
+    _85: 4,
+    _100: 5,
+  }
 
   enum Values_HcPumpMode {
     post_run: 0,

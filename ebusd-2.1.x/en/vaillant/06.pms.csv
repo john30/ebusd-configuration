@@ -13,8 +13,8 @@ r,,Ntc2Sensor,Ntc2Sensor,,,,"0600",,,tempsensor,,,Temperature in solar back flow
 r,,Ntc3Sensor,Ntc3Sensor,,,,"0700",,,tempsensor,,,Temperature in buffer flow (to buffer)
 r,,Ntc4Sensor,Ntc4Sensor,,,,"0800",,,tempsensor,,,Temperature in buffer back flow (from buffer)
 r;wi,,SolPumpRelay,Relais Solarpumpe,,,,"0F00",,,onoff,,,Solar pump relay: 0: OFF; 1: ON
-r;wi,,SolPumpPower,SolarPumpPower,,,,"1000",,,power,,,Performance of solar pump: (7 - 100 %)
-r;wi,,BufferPumpPower,BufferPumpPower,,,,"1100",,,power,,,Performance of buffer pump: (15 - 100%)
+r;wi,,SolPumpPower,SolarPumpPower,,,,"1000",,,percent0,,,Performance of solar pump: (7 - 100 %)
+r;wi,,BufferPumpPower,BufferPumpPower,,,,"1100",,,percent0,,,Performance of buffer pump: (15 - 100%)
 r,,MonitorMatlabLast5minSolAverage,MonitorMatlab_Last5minSolarAverage,,,,"1700",,,SIN,,,
 r,,CurrentSolTempDesired,CurrentSolarSetpoint,,,,"1800",,,UIN,,°C,Temperature target in solar flow at sensor Ntc1Sensor
 r,,CurrentVPMLoadingMode,CurrentVPM_LoadingMode,,,,"1900",,,UCH,,,"1. DHW-Support (stand alone), 2. CH-Support (stand alone), 3. +10K (stand alone), 4. SwimmingPool, 5.DHW-Support (with external control), 6. CH-Support (with external control), 7. +10K (with external control)"

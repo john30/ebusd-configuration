@@ -134,7 +134,7 @@ namespace Mc2.Mc._4 {
 
   /** HcMaxPreHeating1: The heating start before a time window could shifted forwards maximal this time (related to the outside temperature) */
   @ext(0x38, 0)
-  model HcMaxPreHeating is Register<hours>;
+  model HcMaxPreHeating is Register<minutes5>;
 
   /** TeleswitchOperatingMode1: If the tele switch port is activated the mixer circuit operates in this mode */
   @ext(0x3f, 0)

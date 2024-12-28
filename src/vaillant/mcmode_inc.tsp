@@ -116,7 +116,14 @@ namespace Mcmode_inc {
   @inherit(wm)
   @ext(0x10)
   model SetMaxPreHeating {
-    value: hours12;
+    value: hours;
+  }
+
+  /** Set max pre-heating */
+  @inherit(wm)
+  @ext(0x3f)
+  model SetMaxPreHeatingFine {
+    value: minutes5;
   }
 
   /** Parameters */
@@ -131,7 +138,7 @@ namespace Mcmode_inc {
     pumpidleperiod: minutes0;
     flowtempmin: temps;
     flowtempmax: temps;
-    maxpreheating: hours12;
+    maxpreheating: hours;
   }
 
   /** Status flow temperature/mixer/pump/desired flow temperature */

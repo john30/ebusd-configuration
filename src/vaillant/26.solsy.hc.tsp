@@ -150,14 +150,9 @@ namespace Solsy.Hc {
     @ext(0x7b, 0)
     model EnergyDemandNotReachedDelay is ReadonlyRegister<hours>;
 
-    /** HcMaxPreHeating */
-    @inherit(r, wi)
+    /** HcMaxPreHeating: maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature) */
     @ext(0x38, 0)
-    model HcMaxPreHeating {
-      /** maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature) */
-      @unit("min / 5")
-      value: UCH;
-    }
+    model HcMaxPreHeating is InstallRegister<minutes5>;
   }
   @condition(Id.Id.sw, "<=400")
   namespace Sw_le400 {

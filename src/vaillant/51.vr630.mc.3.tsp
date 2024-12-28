@@ -151,12 +151,8 @@ namespace Vr630.Mc._3 {
   @condition(Id.Id.sw, ">=401")
   namespace Sw_ge401 {
     /** Max. Voraufheizung */
-    @inherit(r, wi)
     @ext(0x38, 0)
-    model HcMaxPreHeating {
-      @unit("min / 5")
-      value: UCH;
-    }
+    model HcMaxPreHeating is InstallRegister<minutes5>;
   }
 
   /** included parts */

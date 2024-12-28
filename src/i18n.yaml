@@ -10285,23 +10285,19 @@ hcmaxpreheatingtheheatingstartbeforeatimewindowcouldshiftedforwardsmaximalthisti
     forwards maximal this time (related to the outside temperature)
   locations:
     - vaillant/26.solsy.hc.csv:sw_le400:r::0x38,0
-maximumtimecentralheatingisreleasedinadvanceofthefirsttimewindowtimeisadjustedaccordingtocurrentoutsidetemperature:
+hcmaxpreheatingmaximumtimecentralheatingisreleasedinadvanceofthefirsttimewindowtimeisadjustedaccordingtocurrentoutsidetemperature:
   first: >-
-    maximum time central heating is released in advance of the first time window
-    (time is adjusted according to current outside temperature)
+    HcMaxPreHeating: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
   en: >-
-    maximum time central heating is released in advance of the first time window
-    (time is adjusted according to current outside temperature)
+    HcMaxPreHeating: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
   de: >-
-    maximum time central heating is released in advance of the first time window
-    (time is adjusted according to current outside temperature)
-  locations:
-    - vaillant/26.solsy.hc.csv:sw_ge401:r::0x38,0:value
-    - vaillant/50.solsy.mc.csv:sw_ge401:r::0x38,0:value
-hcmaxpreheating:
-  first: HcMaxPreHeating
-  en: HcMaxPreHeating
-  de: Max. Voraufheizung
+    Max. Voraufheizung: maximum time central heating is released in advance of
+    the first time window (time is adjusted according to current outside
+    temperature)
   locations:
     - vaillant/26.solsy.hc.csv:sw_ge401:r::0x38,0
 teleswitchoperatingmodeiftheteleswitchportisactivatedtheburnercircuitoperatesinthismode:
@@ -10875,10 +10871,19 @@ desiredtemperature1daytemperaturesetpointofthecircuit:
   locations:
     - vaillant/50.solsy.mc.csv::r::0x32,0
     - vaillant/52.mc2.mc.4.csv::r::0x32,0
-hcmaxpreheating1:
-  first: HcMaxPreHeating1
-  en: HcMaxPreHeating1
-  de: Max. Voraufheizung
+hcmaxpreheating1maximumtimecentralheatingisreleasedinadvanceofthefirsttimewindowtimeisadjustedaccordingtocurrentoutsidetemperature:
+  first: >-
+    HcMaxPreHeating1: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
+  en: >-
+    HcMaxPreHeating1: maximum time central heating is released in advance of the
+    first time window (time is adjusted according to current outside
+    temperature)
+  de: >-
+    Max. Voraufheizung: maximum time central heating is released in advance of
+    the first time window (time is adjusted according to current outside
+    temperature)
   locations:
     - vaillant/50.solsy.mc.csv:sw_ge401:r::0x38,0
 hcmaxpreheating1theheatingstartbeforeatimewindowcouldshiftedforwardsmaximalthistimerelatedtotheoutsidetemperature:
@@ -13112,6 +13117,7 @@ minutes:
     - vaillant/_templates.csv:minutes
     - vaillant/_templates.csv:minutes0
     - vaillant/_templates.csv:minutes2
+    - vaillant/_templates.csv:minutes5
 hours:
   first: hours
   en: hours
@@ -17537,13 +17543,14 @@ valueofwaterpressuresensor:
   locations:
     - vaillant/bai.0010004121.inc::r::0x2,0
     - vaillant/bai.0010006101.inc::r::0x2,0
-d14wppwmpowerdiadksetpwmpowerrateofelectronicpump:
-  first: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
-  en: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+d14desiredheatingpumppower:
+  first: d.14 Desired heating pump power
+  en: d.14 Desired heating pump power
   de: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
   locations:
     - vaillant/bai.0010004121.inc::r::0xa1,0
-    - vaillant/bai.0010006101.inc::r::0xa,0x4
+    - vaillant/bai.0010015600.inc::r::0xa1,0
+    - vaillant/bai.0010021961.inc::r::0xa1,0
 pumpmode0postrun1continous2winter3intermittend:
   first: 'Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend'
   en: 'Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend'
@@ -18226,6 +18233,12 @@ waterpressurebranchcontroloffdkwaterpressurebranchcontroloff:
     Schalten der Pumpe kann hiermit aktiviert oder deaktiviert werden
   locations:
     - vaillant/bai.0010006101.inc::r::0xaf,0
+d14wppwmpowerdiadksetpwmpowerrateofelectronicpump:
+  first: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+  en: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+  de: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+  locations:
+    - vaillant/bai.0010006101.inc::r::0xa,0x4
 d63exhaustwayblockcounternumberstheexhaustwaywasblocked:
   first: 'd.63 exhaust way block counter: numbers the exhaust way was blocked'
   en: 'd.63 exhaust way block counter: numbers the exhaust way was blocked'
@@ -18483,13 +18496,6 @@ pwmdesiredcentralheatingpumppower:
   locations:
     - vaillant/bai.0010015600.inc::r::0xa1,0:value
     - vaillant/bai.0010021961.inc::r::0xa1,0:value
-d14desiredheatingpumppower:
-  first: d.14 Desired heating pump power
-  en: d.14 Desired heating pump power
-  de: d.14 Leistung Heizungspumpe Soll
-  locations:
-    - vaillant/bai.0010015600.inc::r::0xa1,0
-    - vaillant/bai.0010021961.inc::r::0xa1,0
 d15currentheatingpumppowercurrentcentralheatingpumppower:
   first: 'd.15 Current heating pump power: Current central heating pump power'
   en: 'd.15 Current heating pump power: Current central heating pump power'
