@@ -2621,7 +2621,7 @@ Pred_AirPressure_RefPressureSum_DK: Pred_AirPressure_RefPressureSum_DK
 SR_FLIDE_Mode_DK: SR_FLIDE_Mode_DK
 CO_Sensor_SNR: CO_Sensor_SNR
 value of waterpressure-sensor: value of waterpressure-sensor
-'d.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump': 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+d.14 Desired heating pump power: d.14 Desired heating pump power
 'Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend': 'Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend'
 Option relais function: Option relais function
 d.26 OptionRelais_DK: d.26 OptionRelais_DK
@@ -2715,6 +2715,7 @@ maximum waterpressure threshold: maximum waterpressure threshold
 AWPC_EE_MaxThreshold_DK: AWPC_EE_MaxThreshold_DK
 digital ionisation voltage: digital ionisation voltage
 'WaterpressureBranchControlOff_DK: water pressure branch control off': 'WaterpressureBranchControlOff_DK: water pressure branch control off'
+'d.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump': 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
 'd.63 exhaust way block counter: numbers the exhaust way was blocked': 'd.63 exhaust way block counter: numbers the exhaust way was blocked'
 'WarmstartDemand: activation of warmstart': 'WarmstartDemand: activation of warmstart'
 'd.03 Temp DHW: actoSTOR inletsensor temperature': 'd.03 Temp DHW: actoSTOR inletsensor temperature'
@@ -2759,7 +2760,6 @@ d.02 Max blocking time CH: d.02 Max blocking time CH
 'd.10 Central heating pump: Internal central heating pump': 'd.10 Central heating pump: Internal central heating pump'
 'd.11 External heating pump: External central heating pump': 'd.11 External heating pump: External central heating pump'
 PWM-Desired central heating pump power: PWM-Desired central heating pump power
-d.14 Desired heating pump power: d.14 Desired heating pump power
 'd.15 Current heating pump power: Current central heating pump power': 'd.15 Current heating pump power: Current central heating pump power'
 'd.16 Room thermostat 24 V: xternal controls heat demand (Clamp 3-4)': 'd.16 Room thermostat 24 V: xternal controls heat demand (Clamp 3-4)'
 'd.22 DHW demand: Domestic hot water demand': 'd.22 DHW demand: Domestic hot water demand'

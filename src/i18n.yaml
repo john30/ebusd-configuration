@@ -17488,13 +17488,14 @@ valueofwaterpressuresensor:
   locations:
     - vaillant/bai.0010004121.inc::r::0x2,0
     - vaillant/bai.0010006101.inc::r::0x2,0
-d14wppwmpowerdiadksetpwmpowerrateofelectronicpump:
-  first: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
-  en: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+d14desiredheatingpumppower:
+  first: d.14 Desired heating pump power
+  en: d.14 Desired heating pump power
   de: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
   locations:
     - vaillant/bai.0010004121.inc::r::0xa1,0
-    - vaillant/bai.0010006101.inc::r::0xa,0x4
+    - vaillant/bai.0010015600.inc::r::0xa1,0
+    - vaillant/bai.0010021961.inc::r::0xa1,0
 pumpmode0postrun1continous2winter3intermittend:
   first: 'Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend'
   en: 'Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend'
@@ -18177,6 +18178,12 @@ waterpressurebranchcontroloffdkwaterpressurebranchcontroloff:
     Schalten der Pumpe kann hiermit aktiviert oder deaktiviert werden
   locations:
     - vaillant/bai.0010006101.inc::r::0xaf,0
+d14wppwmpowerdiadksetpwmpowerrateofelectronicpump:
+  first: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+  en: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+  de: 'd.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump'
+  locations:
+    - vaillant/bai.0010006101.inc::r::0xa,0x4
 d63exhaustwayblockcounternumberstheexhaustwaywasblocked:
   first: 'd.63 exhaust way block counter: numbers the exhaust way was blocked'
   en: 'd.63 exhaust way block counter: numbers the exhaust way was blocked'
@@ -18434,13 +18441,6 @@ pwmdesiredcentralheatingpumppower:
   locations:
     - vaillant/bai.0010015600.inc::r::0xa1,0:value
     - vaillant/bai.0010021961.inc::r::0xa1,0:value
-d14desiredheatingpumppower:
-  first: d.14 Desired heating pump power
-  en: d.14 Desired heating pump power
-  de: d.14 Leistung Heizungspumpe Soll
-  locations:
-    - vaillant/bai.0010015600.inc::r::0xa1,0
-    - vaillant/bai.0010021961.inc::r::0xa1,0
 d15currentheatingpumppowercurrentcentralheatingpumppower:
   first: 'd.15 Current heating pump power: Current central heating pump power'
   en: 'd.15 Current heating pump power: Current central heating pump power'
