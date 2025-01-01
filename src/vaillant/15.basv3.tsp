@@ -940,7 +940,7 @@ namespace Basv3 {
   @inherit(r_6)
   @ext(0x12, 0)
   model Z1ValveStatus {
-    value: zonevalve;
+    value: closeopen;
   }
 
   /** room zone mapping zone 1 */
@@ -1102,7 +1102,7 @@ namespace Basv3 {
   @inherit(r_7)
   @ext(0x12, 0)
   model Z2ValveStatus {
-    value: zonevalve;
+    value: closeopen;
   }
 
   /** room zone mapping zone 2 */
@@ -1264,7 +1264,7 @@ namespace Basv3 {
   @inherit(r_8)
   @ext(0x12, 0)
   model Z3ValveStatus {
-    value: zonevalve;
+    value: closeopen;
   }
 
   /** room zone mapping zone 3 */
