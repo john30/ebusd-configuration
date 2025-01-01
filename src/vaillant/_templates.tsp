@@ -163,8 +163,8 @@ scalar hwcmode2 extends UCH;
 scalar mixer extends UCH;
 
 /** zone valve state */
-@values(Values_zonevalve)
-scalar zonevalve extends UCH;
+@values(Values_closeopen)
+scalar closeopen extends UCH;
 
 /** day/night mode */
 @values(Values_daynight)
@@ -542,7 +542,7 @@ enum Values_mixer {
   close: 2,
 }
 
-enum Values_zonevalve {
+enum Values_closeopen {
   close: 0,
   open: 1,
 }
