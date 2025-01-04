@@ -76,6 +76,22 @@ namespace Basv3 {
     value: UIN;
   }
 
+  /** hybrid manager */
+  @inherit(r_1)
+  @ext(0xf, 0)
+  model HybridManager {
+    /** 0=Trivalence (tariff based); 1=Bivalence (Outside temperature based) */
+    value: hmmode;
+  }
+
+  /** tariff aux heater */
+  @inherit(r_1)
+  @ext(0x10, 0)
+  model TariffAuxHeater {
+    /** Secondary heater tariff value */
+    value: UIN;
+  }
+
   /** adaptive heat curve */
   @inherit(r_1, w_1)
   @ext(0x14, 0)
@@ -106,6 +122,38 @@ namespace Basv3 {
     value: minutes2;
   }
 
+  /** hc alternative point */
+  @inherit(r_1, w_1)
+  @ext(0x22, 0)
+  model HcAlternativePoint {
+    /** exclusively alternate heating below alternative point (-21=off) */
+    value: tempv;
+  }
+
+  /** hc bivalence point */
+  @inherit(r_1, w_1)
+  @ext(0x23, 0)
+  model HcBivalencePoint {
+    /** Bivalence point heating */
+    value: tempv;
+  }
+
+  /** backup boiler */
+  @inherit(r_1, w_1)
+  @ext(0x24, 0)
+  model BackupBoiler {
+    /** Function of back-up boiler (Off/Hc/Hwc/Hc+Hwc) */
+    value: backmode2;
+  }
+
+  /** hc emergency temperature */
+  @inherit(r_1, w_1)
+  @ext(0x26, 0)
+  model HcEmergencyTemperature {
+    /** Emergency operation temperature */
+    value: tempv;
+  }
+
   /** hysteresis cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x27, 0)
@@ -118,6 +166,14 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0x29, 0)
   model CylinderChargeOffset {
+    value: calibrationv;
+  }
+
+  /** offset outside temperature */
+  @inherit(r_1, w_1)
+  @ext(0x2d, 0)
+  model OffsetOutsideTemp {
+    /* Offset outside temperature (used to determined DisplayedOutsideTemp) */
     value: calibrationv;
   }
 
@@ -152,11 +208,27 @@ namespace Basv3 {
     value: UIN;
   }
 
+  /** cooling outside temperature threshold */
+  @inherit(r_1, w_1)
+  @ext(0x38, 0)
+  model CoolingOutsideTempThreshold {
+    /** Activate Cooling when average outside temperature exceeds threshold */
+    value: tempv;
+  }
+
   /** water pressure */
   @inherit(r_1)
   @ext(0x39, 0)
   model WaterPressure {
     value: pressv;
+  }
+
+  /** dew point offset */
+  @inherit(r_1, w_1)
+  @ext(0x3A, 0)
+  model DewPointOffset {
+    /** Subtract from Z*RoomTemp to calculate dew point */
+    value: tempv;
   }
 
   /** total solar yield */
@@ -357,7 +429,7 @@ namespace Basv3 {
   }
 
   /** average outside temperature */
-  @inherit(r_1)
+  @inherit(r_1, w_1)
   @ext(0x95, 0)
   model OutsideTempAvg {
     /** Average outside temperature (updated every 3h) */
@@ -378,7 +450,7 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** storage temperature bottom */
+  /** hwc storage temperature bottom */
   @inherit(r_1)
   @ext(0x9e, 0)
   model HwcStorageTempBottom {
@@ -398,6 +470,14 @@ namespace Basv3 {
   model HcStorageTempBottom {
     value: tempv;
   }
+
+  /** offset hwc cylinder charge */
+  @inherit(r_1, w_1)
+  @ext(0xa2, 0)
+  model HwcCylinderOffset {
+    value: calibrationv;
+  }
+
   // ##### hot water circuit #####
 
   /** default *r */
@@ -411,6 +491,21 @@ namespace Basv3 {
   @write
   @base(MF, 0x24, 0x2, 1, 1, 0)
   model w_2 {}
+
+  /** hwc enabled */
+  @inherit(r_2, w_2)
+  @ext(0x1, 0)
+  model HwcEnabled {
+    value: yesno;
+  }
+
+  /** hwc circulation pump status */
+  @inherit(r_2)
+  @ext(0x2, 0)
+  model HwcCircPumpStatus {
+    /* Hwc circulation pump status (also turns on during a legionella run) */
+    value: onoff;
+  }
 
   /** hwc operation mode */
   @inherit(r_2, w_2)
@@ -434,6 +529,14 @@ namespace Basv3 {
   model HwcStorageTemp {
     /** Hwc storage temperature */
     value: tempv;
+  }
+
+  /** hwc reheating active */
+  @inherit(r_2)
+  @ext(0x6, 0)
+  model HwcReheatingActive {
+    /* Indicates ongoing hot/legionella water run */
+    value: yesno;
   }
 
   /** hwc flow temperature */
@@ -467,6 +570,13 @@ namespace Basv3 {
     value: sfmode;
   }
 
+  /** hwc status */
+  @inherit(r_2)
+  @ext(0xf, 0)
+  model HwcStatus {
+    value: zonestatus;
+  }
+
   // ##### heating circuit 1 #####
 
   /** default *r */
@@ -489,6 +599,28 @@ namespace Basv3 {
     @maxLength(1) ign: IGN;
   }
 
+  /** DesiredReturnTemp heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x4, 0)
+  model Hc1DesiredReturnTemp {
+    /** Temperature for the increase in return circuit (default 30) */
+    value: tempv;
+  }
+
+  /** DewPointMonitoring heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x5, 0)
+  model Hc1DewPointMonitoring {
+    value: onoff;
+  }
+
+  /** CoolingEnabled heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x6, 0)
+  model Hc1CoolingEnabled {
+    value: onoff;
+  }
+
   /** ActualFlowTempDesired heating circuit 1 */
   @inherit(r_3)
   @ext(0x7, 0)
@@ -505,6 +637,21 @@ namespace Basv3 {
     value: tempv;
   }
 
+  /** ExtHwcTempDesired heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x9, 0)
+  model Hc1ExtHwcTempDesired {
+    /** Desired external Hwc temperature */
+    value: tempv;
+  }
+
+  /** DewPointOffset heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0xa, 0)
+  model Hc1DewPointOffset {
+    value: calibrationv;
+  }
+
   /** ExcessTemp heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xb, 0)
@@ -513,11 +660,26 @@ namespace Basv3 {
     value: calibrationv;
   }
 
+  /** DesiredTemp heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0xc, 0)
+  model Hc1DesiredTemp {
+    value: tempv;
+  }
+
+  /** DesiredSetbackTemp heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0xd, 0)
+  model Hc1DesiredSetbackTemp {
+    /* Target setback temperatur Hc1 (fixed circuit type) */
+    value: tempv;
+  }
+
   /** AutoOffMode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xe, 0)
   model Hc1AutoOffMode {
-    /** Operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat */
+    /** Operation of Hc1 during the lowering time; no influence if room temperature modulation is set to expanded */
     value: offmode;
   }
 
@@ -528,20 +690,34 @@ namespace Basv3 {
     value: EXP;
   }
 
-  /** MaxFlowTempDesired heating circuit 1 */
+  /** HeatingMaxFlowTempDesired heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x10, 0)
-  model Hc1MaxFlowTempDesired {
+  model Hc1HeatingMaxFlowTempDesired {
     /** Maximum flow temperature setpoint (end emphasis) of Hc1 */
     value: tempv;
   }
 
-  /** MinFlowTempDesired heating circuit 1 */
+  /** CoolingMaxFlowTempDesired heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x11, 0)
+  model Hc1CoolingMaxFlowTempDesired {
+    value: tempv;
+  }
+
+  /** HeatingMinFlowTempDesired heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x12, 0)
-  model Hc1MinFlowTempDesired {
+  model Hc1HeatingMinFlowTempDesired {
     /** Minimum flow temperature setpoint (end emphasis) of Hc1 */
     value: tempv;
+  }
+
+  /** ExtHwcOpMode heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x13, 0)
+  model Hc1ExtHwcOpMode {
+    value: opmode2;
   }
 
   /** summer outside switchoff temperature heating circuit 1 */
@@ -552,12 +728,26 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** RoomTempSwitchOn heating circuit 1 */
+  /** RoomTempMod heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x15, 0)
-  model Hc1RoomTempSwitchOn {
+  model Hc1RoomTempMod {
     /** Room temperature modulation of Hc1 */
-    value: rcmode;
+    value: rcmode2;
+  }
+
+  /** ExtHwcActive heating circuit 1 */
+  @inherit(r_3)
+  @ext(0x18, 0)
+  model Hc1ExtHwcActive {
+    value: onoff;
+  }
+
+  /** ExtHeatDemand heating circuit 1 */
+  @inherit(r_3)
+  @ext(0x19, 0)
+  model Hc1ExtHeatDemand {
+    value: onoff;
   }
 
   /** MixerMovement heating circuit 1 */
@@ -577,7 +767,7 @@ namespace Basv3 {
   }
 
   /** Status heating circuit 1 */
-  @inherit(r_3)
+  @inherit(r_3, w_3)
   @ext(0x1b, 0)
   model Hc1Status {
     value: onoff;
@@ -587,8 +777,9 @@ namespace Basv3 {
   @inherit(r_3)
   @ext(0x1e, 0)
   model Hc1PumpStatus {
-    value: onoff;
+    value: hcpumpmode;
   }
+
   // ##### heating circuit 2 #####
 
   /** default *r */
@@ -611,6 +802,28 @@ namespace Basv3 {
     @maxLength(1) ign: IGN;
   }
 
+  /** DesiredReturnTemp heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x4, 0)
+  model Hc2DesiredReturnTemp {
+    /** Temperature for the increase in return circuit (default 30) */
+    value: tempv;
+  }
+
+  /** DewPointMonitoring heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x5, 0)
+  model Hc2DewPointMonitoring {
+    value: onoff;
+  }
+
+  /** CoolingEnabled heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x6, 0)
+  model Hc2CoolingEnabled {
+    value: onoff;
+  }
+
   /** ActualFlowTempDesired heating circuit 2 */
   @inherit(r_4)
   @ext(0x7, 0)
@@ -627,6 +840,21 @@ namespace Basv3 {
     value: tempv;
   }
 
+  /** ExtHwcTempDesired heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x9, 0)
+  model Hc2ExtHwcTempDesired {
+    /** Desired external Hwc temperature */
+    value: tempv;
+  }
+
+  /** DewPointOffset heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0xa, 0)
+  model Hc2DewPointOffset {
+    value: calibrationv;
+  }
+
   /** ExcessTemp heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xb, 0)
@@ -639,7 +867,7 @@ namespace Basv3 {
   @inherit(r_4, w_4)
   @ext(0xe, 0)
   model Hc2AutoOffMode {
-    /** Operation of Hc2 during the lowering time; no influence if room temperature modulation is set to thermostat */
+    /** Operation of Hc2 during the lowering time; no influence if room temperature modulation is set to expanded */
     value: offmode;
   }
 
@@ -650,20 +878,34 @@ namespace Basv3 {
     value: EXP;
   }
 
-  /** MaxFlowTempDesired heating circuit 2 */
+  /** HeatingMaxFlowTempDesired heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x10, 0)
-  model Hc2MaxFlowTempDesired {
+  model Hc2HeatingMaxFlowTempDesired {
     /** Maximum flow temperature setpoint (end emphasis) of Hc2 */
     value: tempv;
   }
 
-  /** MinFlowTempDesired heating circuit 2 */
+  /** CoolingMaxFlowTempDesired heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x11, 0)
+  model Hc2CoolingMaxFlowTempDesired {
+    value: tempv;
+  }
+
+  /** HeatingMinFlowTempDesired heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x12, 0)
-  model Hc2MinFlowTempDesired {
+  model Hc2HeatingMinFlowTempDesired {
     /** Minimum flow temperature setpoint (end emphasis) of Hc2 */
     value: tempv;
+  }
+
+  /** ExtHwcOpMode heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x13, 0)
+  model Hc2ExtHwcOpMode {
+    value: opmode2;
   }
 
   /** summer outside switchoff temperature heating circuit 2 */
@@ -674,13 +916,27 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** RoomTempSwitchOn heating circuit 2 */
+  /** RoomTempMod heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x15, 0)
-  model Hc2RoomTempSwitchOn {
+  model Hc2RoomTempMod {
     /** Room temperature modulation of Hc2 */
-    value: rcmode;
+    value: rcmode2;
   }
+
+  /** ExtHwcActive heating circuit 2 */
+  @inherit(r_4)
+  @ext(0x18, 0)
+  model Hc2ExtHwcActive {
+    value: onoff;
+  }
+
+  /** ExtHeatDemand heating circuit 2 */
+    @inherit(r_4)
+    @ext(0x19, 0)
+    model Hc2ExtHeatDemand {
+      value: onoff;
+    }
 
   /** MixerMovement heating circuit 2 */
   @inherit(r_4)
@@ -699,7 +955,7 @@ namespace Basv3 {
   }
 
   /** Status heating circuit 2 */
-  @inherit(r_4)
+  @inherit(r_4, w_4)
   @ext(0x1b, 0)
   model Hc2Status {
     value: onoff;
@@ -709,8 +965,9 @@ namespace Basv3 {
   @inherit(r_4)
   @ext(0x1e, 0)
   model Hc2PumpStatus {
-    value: onoff;
+    value: hcpumpmode;
   }
+
   // ##### heating circuit 3 #####
 
   /** default *r */
@@ -733,6 +990,28 @@ namespace Basv3 {
     @maxLength(1) ign: IGN;
   }
 
+  /** DesiredReturnTemp heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x4, 0)
+  model Hc3DesiredReturnTemp {
+    /** Temperature for the increase in return circuit (default 30) */
+    value: tempv;
+  }
+
+  /** DewPointMonitoring heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x5, 0)
+  model Hc3DewPointMonitoring {
+    value: onoff;
+  }
+
+  /** CoolingEnabled heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x6, 0)
+  model Hc3CoolingEnabled {
+    value: onoff;
+  }
+
   /** ActualFlowTempDesired heating circuit 3 */
   @inherit(r_5)
   @ext(0x7, 0)
@@ -749,6 +1028,21 @@ namespace Basv3 {
     value: tempv;
   }
 
+  /** ExtHwcTempDesired heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x9, 0)
+  model Hc3ExtHwcTempDesired {
+    /** Desired external Hwc temperature */
+    value: tempv;
+  }
+
+  /** DewPointOffset heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0xa, 0)
+  model Hc3DewPointOffset {
+    value: calibrationv;
+  }
+
   /** ExcessTemp heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xb, 0)
@@ -761,7 +1055,7 @@ namespace Basv3 {
   @inherit(r_5, w_5)
   @ext(0xe, 0)
   model Hc3AutoOffMode {
-    /** Operation of Hc3 during the lowering time; no influence if room temperature modulation is set to thermostat */
+    /** Operation of Hc3 during the lowering time; no influence if room temperature modulation is set to expanded */
     value: offmode;
   }
 
@@ -772,20 +1066,34 @@ namespace Basv3 {
     value: EXP;
   }
 
-  /** MaxFlowTempDesired heating circuit 3 */
+  /** HeatingMaxFlowTempDesired heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x10, 0)
-  model Hc3MaxFlowTempDesired {
+  model Hc3HeatingMaxFlowTempDesired {
     /** Maximum flow temperature setpoint (end emphasis) of Hc3 */
     value: tempv;
   }
 
-  /** MinFlowTempDesired heating circuit 3 */
+  /** CoolingMaxFlowTempDesired heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x11, 0)
+  model Hc3CoolingMaxFlowTempDesired {
+    value: tempv;
+  }
+
+  /** HeatingMinFlowTempDesired heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x12, 0)
-  model Hc3MinFlowTempDesired {
+  model Hc3HeatingMinFlowTempDesired {
     /** Minimum flow temperature setpoint (end emphasis) of Hc3 */
     value: tempv;
+  }
+
+  /** ExtHwcOpMode heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x13, 0)
+  model Hc3ExtHwcOpMode {
+    value: opmode2;
   }
 
   /** summer outside switchoff temperature heating circuit 3 */
@@ -796,12 +1104,26 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** RoomTempSwitchOn heating circuit 3 */
+  /** RoomTempMod heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x15, 0)
-  model Hc3RoomTempSwitchOn {
+  model Hc3RoomTempMod {
     /** Room temperature modulation of Hc3 */
-    value: rcmode;
+    value: rcmode2;
+  }
+
+  /** ExtHwcActive heating circuit 3 */
+  @inherit(r_5)
+  @ext(0x18, 0)
+  model Hc3ExtHwcActive {
+    value: onoff;
+  }
+
+  /** ExtHeatDemand heating circuit 3 */
+  @inherit(r_5)
+  @ext(0x19, 0)
+  model Hc3ExtHeatDemand {
+    value: onoff;
   }
 
   /** MixerMovement heating circuit 3 */
@@ -821,7 +1143,7 @@ namespace Basv3 {
   }
 
   /** Status heating circuit 3 */
-  @inherit(r_5)
+  @inherit(r_5, w_5)
   @ext(0x1b, 0)
   model Hc3Status {
     value: onoff;
@@ -831,7 +1153,7 @@ namespace Basv3 {
   @inherit(r_5)
   @ext(0x1e, 0)
   model Hc3PumpStatus {
-    value: onoff;
+    value: hcpumpmode;
   }
 
   // ##### zone 1 #####
@@ -850,17 +1172,17 @@ namespace Basv3 {
 
   /** cooling operation mode zone 1 */
   @inherit(r_6, w_6)
-  @ext(1, 0)
-  model Z1OpModeCooling {
+  @ext(0x1, 0)
+  model Z1CoolingOpMode {
     /** Operation mode for cooling of zone 1 */
-    value: opmode;
+    value: opmode2;
   }
 
   /** cooling setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x2, 0)
-  model Z1CoolingTemp {
-    /** Desired cooling setpoint for zone 1 */
+  model Z1CoolingTempDesiredTimeControlled {
+    /** Time controlled desired cooling room temperature for zone 1 */
     value: tempv;
   }
 
@@ -888,22 +1210,13 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** operation mode zone 1 */
+  /** heating operation mode zone 1 */
   @inherit(r_6, w_6)
   @ext(0x6, 0)
-  model Z1OpMode {
+  model Z1HeatingOpMode {
     /** Operation mode of zone 1 */
-    value: opmode;
+    value: opmode2;
   }
-
-  /** desired temperature zone 1 */
-  // TODO: verify
-  //@inherit(r_6, w_6)
-  //@ext(0x22, 0)
-  //model Z1DayTemp {
-    /** Day setpoint for zone 1 */
-  //  value: tempv;
-  //}
 
   /** quick veto temperature zone 1 */
   @inherit(r_6, w_6)
@@ -913,11 +1226,11 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** night temperature zone 1 */
+  /** set back temperature zone 1 */
   @inherit(r_6, w_6)
   @ext(0x9, 0)
-  model Z1NightTemp {
-    /** Night setpoint for zone 1 */
+  model Z1SetBackTemp {
+    /** Set back temperature zone 1 (time controlled heating) */
     value: tempv;
   }
 
@@ -925,6 +1238,7 @@ namespace Basv3 {
   @inherit(r_6, w_6)
   @ext(0xe, 0)
   model Z1SFMode {
+    /* Modes 2=party 4=onedayaway 5=onedayhome officially not supported in VRC720 */
     value: sfmode;
   }
 
@@ -951,11 +1265,19 @@ namespace Basv3 {
     value: zmapping;
   }
 
-  /** room temperature desired zone 1 */
-  @inherit(r_6, w_6)
+  /** heating room temperature desired zone 1 */
+  @inherit(r_6)
   @ext(0x14, 0)
-  model Z1ActualRoomTempDesired {
-    /** Current room setpoint considering all basic conditions passed to the control algorithms */
+  model Z1HeatingActualRoomTempDesired {
+    /** Current room setpoint considering all basic conditions passed to the control algorithms (0 = heating inactive) */
+    value: tempv;
+  }
+
+  /** cooling room temperature desired zone 1 */
+  @inherit(r_6)
+  @ext(0x15, 0)
+  model Z1CoolingActualRoomTempDesired {
+    /** Current room setpoint considering all basic conditions passed to the control algorithms (99 = cooling inactive) */
     value: tempv;
   }
 
@@ -983,7 +1305,7 @@ namespace Basv3 {
   /** manual heating setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x22, 0)
-  model Z1HeatingTempManual {
+  model Z1HeatingTempDesiredManual {
     /** Desired heating setpoint in manual mode for zone 1 */
     value: tempv;
   }
@@ -991,7 +1313,7 @@ namespace Basv3 {
   /** manual cooling setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x23, 0)
-  model Z1CoolingTempManual {
+  model Z1CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 1 */
     value: tempv;
   }
@@ -1012,17 +1334,17 @@ namespace Basv3 {
 
   /** cooling operation mode zone 2 */
   @inherit(r_7, w_7)
-  @ext(1, 0)
-  model Z2OpModeCooling {
+  @ext(0x1, 0)
+  model Z2CoolingOpMode {
     /** Operation mode for cooling of zone 2 */
-    value: opmode;
+    value: opmode2;
   }
 
   /** cooling setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x2, 0)
-  model Z2CoolingTemp {
-    /** Desired cooling setpoint for zone 2 */
+  model Z2CoolingTempDesiredTimeControlled {
+    /** Time controlled desired cooling room temperature for zone 2 */
     value: tempv;
   }
 
@@ -1053,19 +1375,10 @@ namespace Basv3 {
   /** operation mode zone 2 */
   @inherit(r_7, w_7)
   @ext(0x6, 0)
-  model Z2OpMode {
+  model Z2HeatingOpMode {
     /** Operation mode of zone 2 */
-    value: opmode;
+    value: opmode2;
   }
-
-  /** desired temperature zone 2 */
-  // TODO: verify
-  //@inherit(r_7, w_7)
-  //@ext(0x22, 0)
-  //model Z2DayTemp {
-    /** Day setpoint for zone 2 */
-  //  value: tempv;
-  //}
 
   /** quick veto temperature zone 2 */
   @inherit(r_7, w_7)
@@ -1075,11 +1388,11 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** night temperature zone 2 */
+  /** set back temperature zone 2 */
   @inherit(r_7, w_7)
   @ext(0x9, 0)
-  model Z2NightTemp {
-    /** Night setpoint for zone 2 */
+  model Z2SetBackTemp {
+    /** Set back temperature zone 2 (time controlled heating) */
     value: tempv;
   }
 
@@ -1087,6 +1400,7 @@ namespace Basv3 {
   @inherit(r_7, w_7)
   @ext(0xe, 0)
   model Z2SFMode {
+    /* Modes 2=party 4=onedayaway 5=onedayhome officially not supported in VRC720 */
     value: sfmode;
   }
 
@@ -1113,11 +1427,19 @@ namespace Basv3 {
     value: zmapping;
   }
 
-  /** room temperature desired zone 2 */
-  @inherit(r_7, w_7)
+  /** heating room temperature desired zone 2 */
+  @inherit(r_7)
   @ext(0x14, 0)
-  model Z2ActualRoomTempDesired {
-    /** Current room setpoint considering all basic conditions passed to the control algorithms */
+  model Z2HeatingActualRoomTempDesired {
+    /** Current room setpoint considering all basic conditions passed to the control algorithms (0 = heating inactive) */
+    value: tempv;
+  }
+
+  /** cooling room temperature desired zone 2 */
+  @inherit(r_7)
+  @ext(0x15, 0)
+  model Z2CoolingActualRoomTempDesired {
+    /** Current room setpoint considering all basic conditions passed to the control algorithms (99 = cooling inactive) */
     value: tempv;
   }
 
@@ -1145,7 +1467,7 @@ namespace Basv3 {
   /** manual heating setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x22, 0)
-  model Z2HeatingTempManual {
+  model Z2HeatingTempDesiredManual {
     /** Desired heating setpoint in manual mode for zone 2 */
     value: tempv;
   }
@@ -1153,7 +1475,7 @@ namespace Basv3 {
   /** manual cooling setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x23, 0)
-  model Z2CoolingTempManual {
+  model Z2CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 2 */
     value: tempv;
   }
@@ -1174,17 +1496,17 @@ namespace Basv3 {
 
   /** cooling operation mode zone 3 */
   @inherit(r_8, w_8)
-  @ext(1, 0)
-  model Z3OpModeCooling {
+  @ext(0x1, 0)
+  model Z3CoolingOpMode {
     /** Operation mode for cooling of zone 3 */
-    value: opmode;
+    value: opmode2;
   }
 
   /** cooling setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x2, 0)
-  model Z3CoolingTemp {
-    /** Desired cooling setpoint for zone 3 */
+  model Z3CoolingTempDesiredTimeControlled {
+    /** Time controlled desired cooling room temperature for zone 3 */
     value: tempv;
   }
 
@@ -1215,19 +1537,10 @@ namespace Basv3 {
   /** operation mode zone 3 */
   @inherit(r_8, w_8)
   @ext(0x6, 0)
-  model Z3OpMode {
+  model Z3HeatingOpMode {
     /** Operation mode of zone 3 */
     value: opmode;
   }
-
-  /** desired temperature zone 3 */
-  // TODO: verify
-  //@inherit(r_8, w_8)
-  //@ext(0x22, 0)
-  //model Z3DayTemp {
-    /** Day setpoint for zone 3 */
-  //  value: tempv;
-  //}
 
   /** quick veto temperature zone 3 */
   @inherit(r_8, w_8)
@@ -1237,11 +1550,11 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** night temperature zone 3 */
+  /** set back temperature zone 3 */
   @inherit(r_8, w_8)
   @ext(0x9, 0)
-  model Z3NightTemp {
-    /** Night setpoint for zone 3 */
+  model Z3SetBackTemp {
+    /** Set back temperature zone 1 (time controlled heating) */
     value: tempv;
   }
 
@@ -1275,11 +1588,19 @@ namespace Basv3 {
     value: zmapping;
   }
 
-  /** room temperature desired zone 3 */
-  @inherit(r_8, w_8)
+  /** heating room temperature desired zone 3 */
+  @inherit(r_8)
   @ext(0x14, 0)
-  model Z3ActualRoomTempDesired {
-    /** Current room setpoint considering all basic conditions passed to the control algorithms */
+  model Z3HeatingActualRoomTempDesired {
+    /** Current room setpoint considering all basic conditions passed to the control algorithms (0 = heating inactive) */
+    value: tempv;
+  }
+
+  /** cooling room temperature desired zone 2 */
+  @inherit(r_8)
+  @ext(0x15, 0)
+  model Z3CoolingActualRoomTempDesired {
+    /** Current room setpoint considering all basic conditions passed to the control algorithms (99 = cooling inactive) */
     value: tempv;
   }
 
@@ -1307,7 +1628,7 @@ namespace Basv3 {
   /** manual heating setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x22, 0)
-  model Z3HeatingTempManual {
+  model Z3HeatingTempDesiredManual {
     /** Desired heating setpoint in manual mode for zone 3 */
     value: tempv;
   }
@@ -1315,7 +1636,7 @@ namespace Basv3 {
   /** manual cooling setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x23, 0)
-  model Z3CoolingTempManual {
+  model Z3CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 3 */
     value: tempv;
   }

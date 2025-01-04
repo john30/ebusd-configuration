@@ -138,6 +138,14 @@ scalar hcmode extends UCH;
 @values(Values_hcmode2)
 scalar hcmode2 extends UCH;
 
+/** hc pump mode */
+@values(Values_hcpumpmode)
+scalar hcpumpmode extends UCH;
+
+/** hybrid manager mode */
+@values(Values_hmmode)
+scalar hmmode extends UCH;
+
 /** mixer mode */
 @values(Values_mcmode)
 scalar mcmode extends UCH;
@@ -305,6 +313,9 @@ scalar backtype extends UCH;
 @values(Values_backmode)
 scalar backmode extends UCH;
 
+@values(Values_backmode2)
+scalar backmode2 extends UCH;
+
 @unit("kW")
 scalar power extends UCH;
 
@@ -373,11 +384,17 @@ scalar frequency extends UIN;
 @values(Values_zonesel)
 scalar zonesel extends UIN;
 
+@values(Values_zonestatus)
+scalar zonestatus extends UIN;
+
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
 @values(Values_opmode)
 scalar opmode extends UIN;
+
+@values(Values_opmode2)
+scalar opmode2 extends UIN;
 
 @values(Values_zmapping)
 scalar zmapping extends UIN;
@@ -410,6 +427,9 @@ scalar offmode extends UIN;
 
 @values(Values_rcmode)
 scalar rcmode extends UIN;
+
+@values(Values_rcmode2)
+scalar rcmode2 extends UIN;
 
 /** array index for the zones. Array Index start at 0 for the first element */
 scalar slotIndex extends UCH;
@@ -492,6 +512,18 @@ enum Values_hcmode2 {
   off: 0,
   heat: 3,
   water: 4,
+}
+
+enum Values_hcpumpmode {
+  off: 0,
+  heat: 1,
+  cool: 2,
+  exthwc: 3,
+}
+
+enum Values_hmmode {
+  trivalence: 0,
+  bivalence: 1,
 }
 
 enum Values_mcmode {
@@ -613,6 +645,13 @@ enum Values_backmode {
   onlybackup: 2,
 }
 
+enum Values_backmode2 {
+  off: 0,
+  heat: 1,
+  water: 2,
+  heatandwater: 3,
+}
+
 enum Values_pumppow {
   _0: 0,
   _1: 1,
@@ -673,6 +712,19 @@ enum Values_zonesel {
   _6: 6,
 }
 
+enum Values_zonestatus {
+  auto: 0,
+  ventilation: 1,
+  party: 3,
+  veto: 4,
+  onedayaway: 5,
+  onedayathome: 6,
+  holidayaway: 7,
+  holidayathome: 8,
+  load: 9,
+  off: 10,
+}
+
 enum Values_sfmode {
   auto: 0,
   ventilation: 1,
@@ -688,6 +740,12 @@ enum Values_opmode {
   auto: 1,
   day: 2,
   night: 3,
+}
+
+enum Values_opmode2 {
+  off: 0,
+  time_controlled: 1,
+  manual: 2,
 }
 
 enum Values_zmapping {
@@ -714,6 +772,12 @@ enum Values_rcmode {
   off: 0,
   modulating: 1,
   thermostat: 2,
+}
+
+enum Values_rcmode2 {
+  inactive: 0,
+  active: 1,
+  expanded: 2,
 }
 
 enum Values_appliancecode {
