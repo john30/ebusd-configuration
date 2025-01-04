@@ -512,7 +512,7 @@ namespace Basv3 {
   @ext(0x3, 0)
   model HwcOpMode {
     /** Operation mode of Hwc */
-    value: opmode;
+    value: opmode2;
   }
 
   /** hwc temperature desired */
@@ -1539,7 +1539,7 @@ namespace Basv3 {
   @ext(0x6, 0)
   model Z3HeatingOpMode {
     /** Operation mode of zone 3 */
-    value: opmode;
+    value: opmode2;
   }
 
   /** quick veto temperature zone 3 */
