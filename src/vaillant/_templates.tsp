@@ -28,6 +28,10 @@ scalar press extends FLT;
 @unit("bar")
 scalar pressv extends EXP;
 
+/** percentage */
+@unit("%")
+scalar percentv extends EXP;
+
 /** date */
 scalar date extends HDA3;
 
@@ -390,6 +394,12 @@ scalar zonestatus extends UIN;
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
+@values(Values_sfmode2)
+scalar sfmode2 extends UCH;
+
+@values(Values_sfmode3)
+scalar sfmode3 extends UCH;
+
 @values(Values_opmode)
 scalar opmode extends UIN;
 
@@ -424,6 +434,9 @@ scalar mamode extends UIN;
 
 @values(Values_offmode)
 scalar offmode extends UIN;
+
+@values(Values_offmode2)
+scalar offmode2 extends UIN;
 
 @values(Values_rcmode)
 scalar rcmode extends UIN;
@@ -735,6 +748,17 @@ enum Values_sfmode {
   load: 6,
 }
 
+enum Values_sfmode2 {
+  auto: 0,
+  ventilation: 1,
+  veto: 3,
+}
+
+enum Values_sfmode3 {
+  auto: 0,
+  load: 6,
+}
+
 enum Values_opmode {
   off: 0,
   auto: 1,
@@ -766,6 +790,11 @@ enum Values_mamode {
 enum Values_offmode {
   eco: 0,
   night: 1,
+}
+
+enum Values_offmode2 {
+  eco: 0,
+  normal: 1,
 }
 
 enum Values_rcmode {

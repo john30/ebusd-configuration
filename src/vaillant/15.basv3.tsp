@@ -157,7 +157,7 @@ namespace Basv3 {
   /** hysteresis cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x27, 0)
-  model CylinderChargeHyst {
+  model HwcCylinderChargeHyst {
     /** Hysteresis cylinder charge */
     value: calibrationv;
   }
@@ -165,7 +165,7 @@ namespace Basv3 {
   /** offset cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x29, 0)
-  model CylinderChargeOffset {
+  model HwcCylinderChargeOffset {
     value: calibrationv;
   }
 
@@ -563,17 +563,19 @@ namespace Basv3 {
     value: hto;
   }
 
-  /** hwc SF mode */
+  /** hwc Special Function (SF) mode */
   @inherit(r_2, w_2)
   @ext(0xd, 0)
   model HwcSFMode {
-    value: sfmode;
+    /** Only auto=0; load=6 supported */
+    value: sfmode3;
   }
 
   /** hwc status */
   @inherit(r_2)
   @ext(0xf, 0)
   model HwcStatus {
+    /** Only auto=0; holidayaway=7; load=9; off=10 supported */
     value: zonestatus;
   }
 
@@ -675,12 +677,12 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** AutoOffMode heating circuit 1 */
+  /** SetbackMode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xe, 0)
-  model Hc1AutoOffMode {
+  model Hc1SetbackMode {
     /** Operation of Hc1 during the lowering time; no influence if room temperature modulation is set to expanded */
-    value: offmode;
+    value: offmode2;
   }
 
   /** HeatCurve heating circuit 1 */
@@ -863,12 +865,12 @@ namespace Basv3 {
     value: calibrationv;
   }
 
-  /** AutoOffMode heating circuit 2 */
+  /** SetbackMode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xe, 0)
-  model Hc2AutoOffMode {
+  model Hc2SetbackMode {
     /** Operation of Hc2 during the lowering time; no influence if room temperature modulation is set to expanded */
-    value: offmode;
+    value: offmode2;
   }
 
   /** HeatCurve heating circuit 2 */
@@ -1051,12 +1053,12 @@ namespace Basv3 {
     value: calibrationv;
   }
 
-  /** AutoOffMode heating circuit 3 */
+  /** SetbackMode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xe, 0)
-  model Hc3AutoOffMode {
+  model Hc3SetbackMode {
     /** Operation of Hc3 during the lowering time; no influence if room temperature modulation is set to expanded */
-    value: offmode;
+    value: offmode2;
   }
 
   /** HeatCurve heating circuit 3 */
@@ -1234,12 +1236,12 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** SF mode zone 1 */
+  /** Special Function (SF) mode zone 1 */
   @inherit(r_6, w_6)
   @ext(0xe, 0)
   model Z1SFMode {
-    /* Modes 2=party 4=onedayaway 5=onedayhome officially not supported in VRC720 */
-    value: sfmode;
+    /* Only auto=0; ventilation=1; veto=3 supported */
+    value: sfmode2;
   }
 
   /** room temperature zone 1 */
@@ -1302,6 +1304,14 @@ namespace Basv3 {
     value: zname;
   }
 
+  /** zone 1 status */
+  @inherit(r_6)
+  @ext(0x1b, 0)
+  model Z1Status {
+    /** Only auto=0; ventilation=1; veto=4; holidayaway=7; load=9; off=10 supported */
+    value: zonestatus;
+  }
+
   /** manual heating setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x22, 0)
@@ -1316,6 +1326,13 @@ namespace Basv3 {
   model Z1CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 1 */
     value: tempv;
+  }
+
+  /** room humidity zone 1 */
+  @inherit(r_6)
+  @ext(0x28, 0)
+  model Z1RoomHumidity {
+    value: percentv;
   }
 
   // ##### zone 2 #####
@@ -1396,12 +1413,12 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** SF mode zone 2 */
+  /** Special Function (SF) mode zone 2 */
   @inherit(r_7, w_7)
   @ext(0xe, 0)
   model Z2SFMode {
-    /* Modes 2=party 4=onedayaway 5=onedayhome officially not supported in VRC720 */
-    value: sfmode;
+    /* Only auto=0; ventilation=1; veto=3 supported */
+    value: sfmode2;
   }
 
   /** room temperature zone 2 */
@@ -1464,6 +1481,14 @@ namespace Basv3 {
     value: zname;
   }
 
+  /** zone 2 status */
+  @inherit(r_7)
+  @ext(0x1b, 0)
+  model Z2Status {
+    /** Only auto=0; ventilation=1; veto=4; holidayaway=7; load=9; off=10 supported */
+    value: zonestatus;
+  }
+
   /** manual heating setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x22, 0)
@@ -1478,6 +1503,13 @@ namespace Basv3 {
   model Z2CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 2 */
     value: tempv;
+  }
+
+  /** room humidity zone 2 */
+  @inherit(r_7)
+  @ext(0x28, 0)
+  model Z2RoomHumidity {
+    value: percentv;
   }
 
   // ##### zone 3 #####
@@ -1558,11 +1590,12 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** SF mode zone 3 */
+  /** Special Function (SF) mode zone 3 */
   @inherit(r_8, w_8)
   @ext(0xe, 0)
   model Z3SFMode {
-    value: sfmode;
+    /* Only auto=0; ventilation=1; veto=3 supported */
+    value: sfmode2;
   }
 
   /** room temperature zone 3 */
@@ -1625,6 +1658,14 @@ namespace Basv3 {
     value: zname;
   }
 
+  /** zone 3 status */
+  @inherit(r_8)
+  @ext(0x1b, 0)
+  model Z3Status {
+    /** Only auto=0; ventilation=1; veto=4; holidayaway=7; load=9; off=10 supported */
+    value: zonestatus;
+  }
+
   /** manual heating setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x22, 0)
@@ -1639,6 +1680,13 @@ namespace Basv3 {
   model Z3CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 3 */
     value: tempv;
+  }
+
+  /** room humidity zone 3 */
+  @inherit(r_8)
+  @ext(0x28, 0)
+  model Z3RoomHumidity {
+    value: percentv;
   }
 
   // includes
