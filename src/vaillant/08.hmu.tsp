@@ -35,7 +35,7 @@ namespace Hmu {
 
   @inherit(r_2)
   @ext(0)
-  model YIeldHcDay {
+  model YieldHcDay {
     @unit("kWh")
     @divisor(10)
     value: energy;
@@ -287,13 +287,13 @@ namespace Hmu {
 
   @inherit(r_3, u_1)
   @ext(0x6)
-  model ForWayValveHours {
+  model FourWayValveHours {
     value: hoursum2;
   }
 
   @inherit(r_3, u_1)
   @ext(0x7)
-  model ForWayValveSwitches {
+  model FourWayValveSwitches {
     value: UIN;
   }
 

@@ -36,6 +36,7 @@ sed -i \
   -e 's#,RückmeldungB#,RueckmeldungB#' \
   -e 's#ReglerCurrentTEMP#ReglerCurrentTemp#' \
   -e 's#\(,CounterStartattempts[.*],\)temp0,#\1UCH,#' \
+  -e 's#ForWay#FourWay#g' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \
