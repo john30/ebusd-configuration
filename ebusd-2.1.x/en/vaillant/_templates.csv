@@ -11,6 +11,7 @@ days,UCH,,,days
 time,VTI,,,time
 time2,VTM,,,time
 minutes,ULG,120,min,minutes
+minutes4,ULG,,min,minutes
 minutes0,UCH,,min,minutes
 minutes2,UIN,,min,minutes
 minutes5,UCH,-5,min,minutes

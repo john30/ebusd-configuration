@@ -54,6 +54,10 @@ scalar minutes extends ULG;
 
 /** minutes */
 @unit("min")
+scalar minutes4 extends ULG;
+
+/** minutes */
+@unit("min")
 scalar minutes0 extends UCH;
 
 /** minutes */
