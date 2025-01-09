@@ -18545,6 +18545,7 @@ d29primarycircuitflowrate:
   de: d.29 Wasserumlaufmenge
   locations:
     - vaillant/bai.0010015600.inc::r::0xfb,0
+    - vaillant/bai.308523.inc::r::0xfb,0
 currentfanspeed:
   first: Current fan speed
   en: Current fan speed
