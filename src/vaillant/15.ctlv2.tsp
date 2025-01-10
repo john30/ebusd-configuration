@@ -1368,25 +1368,15 @@ namespace Ctlv2 {
     value: tempv;
   }
   // ##### timers #####
-
-  /** default *r */
-  model r_9 {}
-
-  /** (3Zones;HWC&CC = constant value. General configuration?) */
-  @inherit(r_9)
-  @ext(0xb5, 0x55, 0xa0)
-  model UnknownValue_a0 {
-    /** First = Zones maybe? Rest unknown; needs some other configured ctlv2 */
-    @maxLength(8)
-    value: HEX;
-  }
+  // *r
+  // r,unknownValue.a0,(3Zones;HWC&CC = constant value. General configuration?),B555,a0,HEX:8,First = Zones maybe? Rest unknown; needs some other configured ctlv2
   // r,unknownValue.a1,(3Zones;HWC&CC = Empty value. air;tariff;etc or Errors?),B555,a1
   // r,unknownValue.a2,(3Zones;HWC&CC = Empty value. air;tariff;etc or Errors?),B555,a2
   // timers hot water
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0x2)
-  model r_10 {}
+  model r_9 {}
 
   /** default *w */
   @write
@@ -1394,8 +1384,7 @@ namespace Ctlv2 {
   model w_9 {}
 
   /** timer Configuration(static atm? describes featue set?) */
-  @inherit(r_10)
-  @ext(0xb5, 0x55, 0xa3, 0, 0x2)
+  @id(MF, 0x55, 0xa3, 0, 0x2)
   model HwcTimer_Config {
     /** Configuration */
     @maxLength(9)
@@ -1403,155 +1392,154 @@ namespace Ctlv2 {
   }
 
   /** timer Anzahl */
-  @inherit(r_10)
-  @ext(0xb5, 0x55, 0xa4, 0, 0x2)
+  @id(MF, 0x55, 0xa4, 0, 0x2)
   model HwcTimer_Timeframes {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
   }
 
   /** timer monday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0, 0)
   model HwcTimer_Monday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer monday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0, 1)
   model HwcTimer_Monday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer monday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0, 0x2)
   model HwcTimer_Monday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer tuesday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(1, 0)
   model HwcTimer_Tuesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer tuesday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(1, 1)
   model HwcTimer_Tuesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer tuesday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(1, 0x2)
   model HwcTimer_Tuesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer wednesday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x2, 0)
   model HwcTimer_Wednesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer wednesday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x2, 1)
   model HwcTimer_Wednesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer wednesday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x2, 0x2)
   model HwcTimer_Wednesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer thursday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x3, 0)
   model HwcTimer_Thursday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer thursday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x3, 1)
   model HwcTimer_Thursday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer thursday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x3, 0x2)
   model HwcTimer_Thursday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer friday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x4, 0)
   model HwcTimer_Friday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer friday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x4, 1)
   model HwcTimer_Friday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer friday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x4, 0x2)
   model HwcTimer_Friday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer saturday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x5, 0)
   model HwcTimer_Saturday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer saturday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x5, 1)
   model HwcTimer_Saturday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer saturday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x5, 0x2)
   model HwcTimer_Saturday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer sunday 1 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x6, 0)
   model HwcTimer_Sunday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer sunday 2 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x6, 1)
   model HwcTimer_Sunday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer sunday 3 */
-  @inherit(r_10)
+  @inherit(r_9)
   @ext(0x6, 0x2)
   model HwcTimer_Sunday2 {
     value: rTimeSlotWithTemp;
@@ -1609,7 +1597,7 @@ namespace Ctlv2 {
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0x3)
-  model r_11 {}
+  model r_10 {}
 
   /** default *w */
   @write
@@ -1617,8 +1605,7 @@ namespace Ctlv2 {
   model w_10 {}
 
   /** timer Configuration(static atm? describes featue set?) */
-  @inherit(r_11)
-  @ext(0xb5, 0x55, 0xa3, 0, 0x3)
+  @id(MF, 0x55, 0xa3, 0, 0x3)
   model CcTimer_Config {
     /** Configuration */
     @maxLength(9)
@@ -1626,155 +1613,154 @@ namespace Ctlv2 {
   }
 
   /** timer Anzahl */
-  @inherit(r_11)
-  @ext(0xb5, 0x55, 0xa4, 0, 0x3)
+  @id(MF, 0x55, 0xa4, 0, 0x3)
   model CcTimer_Timeframes {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
   }
 
   /** timer monday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0, 0)
   model CcTimer_Monday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer monday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0, 1)
   model CcTimer_Monday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer monday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0, 0x2)
   model CcTimer_Monday2 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer tuesday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(1, 0)
   model CcTimer_Tuesday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer tuesday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(1, 1)
   model CcTimer_Tuesday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer tuesday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(1, 0x2)
   model CcTimer_Tuesday2 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer wednesday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x2, 0)
   model CcTimer_Wednesday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer wednesday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x2, 1)
   model CcTimer_Wednesday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer wednesday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x2, 0x2)
   model CcTimer_Wednesday2 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer thursday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x3, 0)
   model CcTimer_Thursday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer thursday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x3, 1)
   model CcTimer_Thursday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer thursday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x3, 0x2)
   model CcTimer_Thursday2 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer friday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x4, 0)
   model CcTimer_Friday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer friday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x4, 1)
   model CcTimer_Friday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer friday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x4, 0x2)
   model CcTimer_Friday2 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer saturday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x5, 0)
   model CcTimer_Saturday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer saturday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x5, 1)
   model CcTimer_Saturday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer saturday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x5, 0x2)
   model CcTimer_Saturday2 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer sunday 1 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x6, 0)
   model CcTimer_Sunday0 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer sunday 2 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x6, 1)
   model CcTimer_Sunday1 {
     value: rTimeSlotWithoutTemp;
   }
 
   /** timer sunday 3 */
-  @inherit(r_11)
+  @inherit(r_10)
   @ext(0x6, 0x2)
   model CcTimer_Sunday2 {
     value: rTimeSlotWithoutTemp;
@@ -1832,7 +1818,7 @@ namespace Ctlv2 {
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0)
-  model r_12 {}
+  model r_11 {}
 
   /** default *w */
   @write
@@ -1840,8 +1826,7 @@ namespace Ctlv2 {
   model w_11 {}
 
   /** timer Configuration(static atm? describes featue set?) */
-  @inherit(r_12)
-  @ext(0xb5, 0x55, 0xa3, 0, 0)
+  @id(MF, 0x55, 0xa3, 0, 0)
   model Z1Timer_Config {
     /** Configuration */
     @maxLength(9)
@@ -1849,155 +1834,154 @@ namespace Ctlv2 {
   }
 
   /** timer Anzahl */
-  @inherit(r_12)
-  @ext(0xb5, 0x55, 0xa4, 0, 0)
+  @id(MF, 0x55, 0xa4, 0, 0)
   model Z1Timer_Timeframes {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
   }
 
   /** timer heating monday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0, 0)
   model Z1Timer_Monday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating monday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0, 1)
   model Z1Timer_Monday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating monday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0, 0x2)
   model Z1Timer_Monday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(1, 0)
   model Z1Timer_Tuesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(1, 1)
   model Z1Timer_Tuesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(1, 0x2)
   model Z1Timer_Tuesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x2, 0)
   model Z1Timer_Wednesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x2, 1)
   model Z1Timer_Wednesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x2, 0x2)
   model Z1Timer_Wednesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x3, 0)
   model Z1Timer_Thursday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x3, 1)
   model Z1Timer_Thursday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x3, 0x2)
   model Z1Timer_Thursday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x4, 0)
   model Z1Timer_Friday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x4, 1)
   model Z1Timer_Friday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x4, 0x2)
   model Z1Timer_Friday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x5, 0)
   model Z1Timer_Saturday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x5, 1)
   model Z1Timer_Saturday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x5, 0x2)
   model Z1Timer_Saturday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 1 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x6, 0)
   model Z1Timer_Sunday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 2 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x6, 1)
   model Z1Timer_Sunday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 3 */
-  @inherit(r_12)
+  @inherit(r_11)
   @ext(0x6, 0x2)
   model Z1Timer_Sunday2 {
     value: rTimeSlotWithTemp;
@@ -2055,7 +2039,7 @@ namespace Ctlv2 {
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 1, 0)
-  model r_13 {}
+  model r_12 {}
 
   /** default *w */
   @write
@@ -2063,8 +2047,7 @@ namespace Ctlv2 {
   model w_12 {}
 
   /** timer Configuration(static atm? describes featue set?) */
-  @inherit(r_13)
-  @ext(0xb5, 0x55, 0xa3, 1, 0)
+  @id(MF, 0x55, 0xa3, 1, 0)
   model Z2Timer_Config {
     /** Configuration */
     @maxLength(9)
@@ -2072,155 +2055,154 @@ namespace Ctlv2 {
   }
 
   /** timer Anzahl */
-  @inherit(r_13)
-  @ext(0xb5, 0x55, 0xa4, 1, 0)
+  @id(MF, 0x55, 0xa4, 1, 0)
   model Z2Timer_Timeframes {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
   }
 
   /** timer heating monday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0, 0)
   model Z2Timer_Monday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating monday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0, 1)
   model Z2Timer_Monday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating monday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0, 0x2)
   model Z2Timer_Monday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(1, 0)
   model Z2Timer_Tuesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(1, 1)
   model Z2Timer_Tuesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(1, 0x2)
   model Z2Timer_Tuesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x2, 0)
   model Z2Timer_Wednesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x2, 1)
   model Z2Timer_Wednesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x2, 0x2)
   model Z2Timer_Wednesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x3, 0)
   model Z2Timer_Thursday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x3, 1)
   model Z2Timer_Thursday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x3, 0x2)
   model Z2Timer_Thursday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x4, 0)
   model Z2Timer_Friday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x4, 1)
   model Z2Timer_Friday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x4, 0x2)
   model Z2Timer_Friday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x5, 0)
   model Z2Timer_Saturday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x5, 1)
   model Z2Timer_Saturday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x5, 0x2)
   model Z2Timer_Saturday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 1 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x6, 0)
   model Z2Timer_Sunday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 2 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x6, 1)
   model Z2Timer_Sunday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 3 */
-  @inherit(r_13)
+  @inherit(r_12)
   @ext(0x6, 0x2)
   model Z2Timer_Sunday2 {
     value: rTimeSlotWithTemp;
@@ -2278,7 +2260,7 @@ namespace Ctlv2 {
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0x2, 0)
-  model r_14 {}
+  model r_13 {}
 
   /** default *w */
   @write
@@ -2286,8 +2268,7 @@ namespace Ctlv2 {
   model w_13 {}
 
   /** timer Configuration(static atm? describes featue set?) */
-  @inherit(r_14)
-  @ext(0xb5, 0x55, 0xa3, 0x2, 0)
+  @id(MF, 0x55, 0xa3, 0x2, 0)
   model Z3Timer_Config {
     /** Configuration */
     @maxLength(9)
@@ -2295,155 +2276,154 @@ namespace Ctlv2 {
   }
 
   /** timer Anzahl */
-  @inherit(r_14)
-  @ext(0xb5, 0x55, 0xa4, 0x2, 0)
+  @id(MF, 0x55, 0xa4, 0x2, 0)
   model Z3Timer_Timeframes {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
   }
 
   /** timer heating monday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0, 0)
   model Z3Timer_Monday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating monday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0, 1)
   model Z3Timer_Monday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating monday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0, 0x2)
   model Z3Timer_Monday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(1, 0)
   model Z3Timer_Tuesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(1, 1)
   model Z3Timer_Tuesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating tuesday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(1, 0x2)
   model Z3Timer_Tuesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x2, 0)
   model Z3Timer_Wednesday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x2, 1)
   model Z3Timer_Wednesday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating wednesday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x2, 0x2)
   model Z3Timer_Wednesday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x3, 0)
   model Z3Timer_Thursday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x3, 1)
   model Z3Timer_Thursday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating thursday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x3, 0x2)
   model Z3Timer_Thursday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x4, 0)
   model Z3Timer_Friday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x4, 1)
   model Z3Timer_Friday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating friday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x4, 0x2)
   model Z3Timer_Friday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x5, 0)
   model Z3Timer_Saturday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x5, 1)
   model Z3Timer_Saturday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating saturday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x5, 0x2)
   model Z3Timer_Saturday2 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 1 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x6, 0)
   model Z3Timer_Sunday0 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 2 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x6, 1)
   model Z3Timer_Sunday1 {
     value: rTimeSlotWithTemp;
   }
 
   /** timer heating sunday 3 */
-  @inherit(r_14)
+  @inherit(r_13)
   @ext(0x6, 0x2)
   model Z3Timer_Sunday2 {
     value: rTimeSlotWithTemp;

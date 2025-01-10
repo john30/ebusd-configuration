@@ -6857,23 +6857,23 @@ firstzonesmayberestunknownneedssomeotherconfiguredctlv2:
   en: First = Zones maybe? Rest unknown; needs some other configured ctlv2
   de: Erstes Byte = Zonenanzahl?
   locations:
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa0:value
 3zoneshwcccconstantvaluegeneralconfiguration:
   first: (3Zones;HWC&CC = constant value. General configuration?)
   en: (3Zones;HWC&CC = constant value. General configuration?)
   de: (3Zonen;HWC&CC = konstanter Wert. Generelle Konfiguration?)
   locations:
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa0
 configuration:
   first: Configuration
   en: Configuration
   de: Konfiguration
   locations:
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0,0x2:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0,0x3:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0,0:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,1,0:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0x2,0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0,0x2:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0,0x3:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0,0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,1,0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0x2,0:value
     - vaillant/50.zeo.mc.csv::r::0xc4,0
 timerconfigurationstaticatmdescribesfeatueset:
   first: timer Configuration(static atm? describes featue set?)
@@ -6882,31 +6882,31 @@ timerconfigurationstaticatmdescribesfeatueset:
     Zeitfenster Konfiguration(aktuell statisch? Beschreibt eine Art
     Funktionalitätsumfang)
   locations:
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0,0x2
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0,0x3
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0,0
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,1,0
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa3,0x2,0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0,0x2
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0,0x3
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0,0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,1,0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa3,0x2,0
 amountofconfiguredslotsperweekday:
   first: Amount of configured slots per weekday
   en: Amount of configured slots per weekday
   de: Anzahl der eingestellten Slots pro Wochentag
   locations:
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0,0x2:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0,0x3:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0,0:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,1,0:value
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0x2,0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0,0x2:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0,0x3:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0,0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,1,0:value
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0x2,0:value
 timeranzahl:
   first: timer Anzahl
   en: timer Anzahl
   de: Zeitfenster Anzahl
   locations:
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0,0x2
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0,0x3
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0,0
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,1,0
-    - vaillant/15.ctlv2.csv::r::0xb5,0x55,0xa4,0x2,0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0,0x2
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0,0x3
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0,0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,1,0
+    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa4,0x2,0
 timerheatingmonday1:
   first: timer heating monday 1
   en: timer heating monday 1
