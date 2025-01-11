@@ -717,6 +717,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   // single: outside of any defaults inherit scope
   const single = dirs.length===1 && (
     isDefault
+    || line[6] // no inherit from default when pbsb is set
     || !additions.defaultsByName.has((defaultNs?defaultNs+':':'')+dirs[0])
   );
   const chain = (line[7]||'').split(';').map((i,_,a)=>fromHexOpt(a.length<=1&&!!single&&!!line[6], line[6], i.split(':')[0]));

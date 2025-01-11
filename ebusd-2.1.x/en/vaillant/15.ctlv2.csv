@@ -212,8 +212,8 @@ r;w,,z3Name1,Bezeichnung Zone 3 Teil 1,,,,1700,,,zname,,,name of zone 3
 r;w,,z3Name2,Bezeichnung Zone 3 Teil 2,,,,1800,,,zname,,,name of zone 3
 r;w,,z3DayTemp,Solltemperatur Zone 3,,,,2200,,,tempv,,,day setpoint for zone 3
 # ##### timers #####,,,,,,,,,,,,,
-*r,,,,,,,,,,,,,
-r,,unknownValue.a0,(3Zones;HWC&CC = constant value. General configuration?),,,B555,a0,,,HEX:8,,,First = Zones maybe? Rest unknown; needs some other configured ctlv2
+#*r,,,,,,,,,,,,,
+#r,,unknownValue.a0,(3Zones;HWC&CC = constant value. General configuration?),,,B555,a0,,,HEX:8,,,First = Zones maybe? Rest unknown; needs some other configured ctlv2
 #r,,unknownValue.a1,(3Zones;HWC&CC = Empty value. air;tariff;etc or Errors?),,,B555,a1,,,,,,
 #r,,unknownValue.a2,(3Zones;HWC&CC = Empty value. air;tariff;etc or Errors?),,,B555,a2,,,,,,
 # timers hot water,,,,,,,,,,,,,

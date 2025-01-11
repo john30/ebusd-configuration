@@ -83,6 +83,14 @@ namespace Bai._308523_inc {
   @ext(0x47, 0x4)
   model StoragereleaseClock is ReadonlyRegister<yesno>;
 
+  /** d.29 Primary circuit flow rate */
+  @inherit(r)
+  @ext(0xfb, 0)
+  model PrimaryCircuitFlowrate {
+    @unit("l/min")
+    value: uin100;
+  }
+
   /** d.30 Gasvalve: Gasvalve activation signal */
   @ext(0xbb, 0)
   model Gasvalve is ReadonlyRegister<onoff2>;

@@ -35,7 +35,7 @@ namespace Hmu {
 
   @inherit(r_2)
   @ext(0)
-  model YIeldHcDay {
+  model YieldHcDay {
     @unit("kWh")
     @divisor(10)
     value: energy;
@@ -287,13 +287,13 @@ namespace Hmu {
 
   @inherit(r_3, u_1)
   @ext(0x6)
-  model ForWayValveHours {
+  model FourWayValveHours {
     value: hoursum2;
   }
 
   @inherit(r_3, u_1)
   @ext(0x7)
-  model ForWayValveSwitches {
+  model FourWayValveSwitches {
     value: UIN;
   }
 
@@ -1607,8 +1607,28 @@ namespace Hmu {
   model RunDataAirInletTemp {
     value: tempv;
   }
-  // r,RunStatsCompressorHc?,TODO,1801,IGN:1;minutesum:runtime;cntstarts:cycles,compressor runtime in min and starts in Hc mode
-  // r,RunStatsCompressorHwc?,TODO,1802,IGN:1;minutesum:runtime;cntstarts:cycles,compressor runtime in min and starts in Hwc mode
+
+  /** default *r */
+  @base(MF, 0x11)
+  model r_8 {}
+
+  /** compressor runtime in min and starts in Hc mode */
+  @inherit(r_8)
+  @ext(0x18, 1)
+  model RunStatsCompressorHc {
+    @maxLength(1) ign: IGN;
+    runtime: minutes4;
+    cycles: cntstarts;
+  }
+
+  /** compressor runtime in min and starts in Hwc mode */
+  @inherit(r_8)
+  @ext(0x18, 0x2)
+  model RunStatsCompressorHwc {
+    @maxLength(1) ign: IGN;
+    runtime: minutes4;
+    cycles: cntstarts;
+  }
 
   enum Values_state {
     ready: 0x01,
