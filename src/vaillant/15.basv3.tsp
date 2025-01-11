@@ -100,10 +100,10 @@ namespace Basv3 {
     value: yesno;
   }
 
-  /** maximum cylinder charging time */
+  /** hwc cylinder maximum charging time */
   @inherit(r_1, w_1)
   @ext(0x17, 0)
-  model MaxCylinderChargeTime {
+  model HwcCylinderChargeMaxTime {
     value: minutes2;
   }
 
@@ -169,12 +169,18 @@ namespace Basv3 {
     value: calibrationv;
   }
 
-  /** offset outside temperature */
+  /** hwc legionella time */
   @inherit(r_1, w_1)
-  @ext(0x2d, 0)
-  model OffsetOutsideTemp {
-    /* Offset outside temperature (used to determined DisplayedOutsideTemp) */
-    value: calibrationv;
+  @ext(0x2a, 0)
+  model HwcLegionellaTime {
+    value: HTM;
+  }
+
+  /** ohwc legionella day */
+  @inherit(r_1, w_1)
+  @ext(0x2b, 0)
+  model HwcLegionellaDay {
+    value: daysel2;
   }
 
   /** next maintenance */
@@ -183,6 +189,14 @@ namespace Basv3 {
   model MaintenanceDate {
     /** Date for next maintenance */
     value: date;
+  }
+
+  /** offset outside temperature */
+  @inherit(r_1, w_1)
+  @ext(0x2d, 0)
+  model OffsetOutsideTemp {
+    /* Offset outside temperature (used to determined DisplayedOutsideTemp) */
+    value: calibrationv;
   }
 
   /** date */
@@ -577,6 +591,20 @@ namespace Basv3 {
   model HwcStatus {
     /** Only auto=0; holidayaway=7; load=9; off=10 supported */
     value: zonestatus;
+  }
+
+  /** hwc holiday start time */
+  @inherit(r_2, w_2)
+  @ext(0x10, 0)
+  model HwcHolidayStartTime {
+    value: HTI;
+  }
+
+  /** hwc holiday end time */
+  @inherit(r_2, w_2)
+  @ext(0x11, 0)
+  model HwcHolidayEndTime {
+    value: HTI;
   }
 
   // ##### heating circuit 1 #####
@@ -1687,6 +1715,1152 @@ namespace Basv3 {
   @ext(0x28, 0)
   model Z3RoomHumidity {
     value: percentv;
+  }
+
+  // ##### timers #####
+
+  /** default *r */
+  model r_9 {}
+
+  @inherit(r_9)
+  @ext(0xb5, 0x55, 0xa0)
+  model UnknownValue_a0 {
+    @maxLength(8)
+    value: HEX;
+  }
+
+  // timers hot water
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 0, 0x2)
+  model r_10 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 0, 0x2)
+  model w_9 {}
+
+  /** hwc timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 0, 0x2)
+  model HwcTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** hwc timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 0, 0x2)
+  model HwcTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** hwc timer monday read */
+  @inherit(r_10)
+  @ext(0, 0)
+  model HwcTimer_Monday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer monday write */
+  @inherit(w_9)
+  @ext(0, 0)
+  model HwcTimer_MondayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer tuesday read */
+  @inherit(r_10)
+  @ext(1, 0)
+  model HwcTimer_Tuesday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer tuesday write */
+  @inherit(w_9)
+  @ext(1, 0)
+  model HwcTimer_TuesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer wednesday read */
+  @inherit(r_10)
+  @ext(2, 0)
+  model HwcTimer_Wednesday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer wednesday write */
+  @inherit(w_9)
+  @ext(2, 0)
+  model HwcTimer_WednesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer thursday read */
+  @inherit(r_10)
+  @ext(3, 0)
+  model HwcTimer_Thursday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer thursday write */
+  @inherit(w_9)
+  @ext(3, 0)
+  model HwcTimer_ThursdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer friday read */
+  @inherit(r_10)
+  @ext(4, 0)
+  model HwcTimer_Friday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer friday write */
+  @inherit(w_9)
+  @ext(4, 0)
+  model HwcTimer_FridayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer saturday read */
+  @inherit(r_10)
+  @ext(5, 0)
+  model HwcTimer_Saturday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer saturday write */
+  @inherit(w_9)
+  @ext(5, 0)
+  model HwcTimer_SaturdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer sunday read */
+  @inherit(r_10)
+  @ext(6, 0)
+  model HwcTimer_Sunday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** hwc timer sunday write */
+  @inherit(w_9)
+  @ext(6, 0)
+  model HwcTimer_SundayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  // timers circulation pump
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 0, 0x3)
+  model r_11 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 0, 0x3)
+  model w_10 {}
+
+  /** cc timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 0, 0x3)
+  model CcTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** cc timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 0, 0x3)
+  model CcTimer_Timeframes {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** cc timer monday read */
+  @inherit(r_11)
+  @ext(0, 0)
+  model CcTimer_Monday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer monday write */
+  @inherit(w_10)
+  @ext(0, 0)
+  model CcTimer_MondayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** cc timer tuesday read */
+  @inherit(r_11)
+  @ext(1, 0)
+  model CcTimer_Tuesday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer tuesday write */
+  @inherit(w_10)
+  @ext(1, 0)
+  model CcTimer_TuesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** cc timer wednesday read */
+  @inherit(r_11)
+  @ext(0x2, 0)
+  model CcTimer_Wednesday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer wednesday write */
+  @inherit(w_10)
+  @ext(0x2, 0)
+  model CcTimer_WednesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** cc timer thursday read */
+  @inherit(r_11)
+  @ext(0x3, 0)
+  model CcTimer_Thursday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer thursday write */
+  @inherit(w_10)
+  @ext(0x3, 0)
+  model CcTimer_ThursdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** cc timer friday read */
+  @inherit(r_11)
+  @ext(0x4, 0)
+  model CcTimer_Friday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer friday write */
+  @inherit(w_10)
+  @ext(0x4, 0)
+  model CcTimer_FridayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** cc timer saturday read */
+  @inherit(r_11)
+  @ext(0x5, 0)
+  model CcTimer_Saturday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer saturday write */
+  @inherit(w_10)
+  @ext(0x5, 0)
+  model CcTimer_SaturdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** cc timer sunday read */
+  @inherit(r_11)
+  @ext(0x6, 0)
+  model CcTimer_Sunday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** cc timer sunday write */
+  @inherit(w_10)
+  @ext(0x6, 0)
+  model CcTimer_SundayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  // timers silent mode
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 0, 0x4)
+  model r_12 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 0, 0x4)
+  model w_11 {}
+
+  /** silent timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 0, 0x4)
+  model SilentTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** silent timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 0, 0x4)
+  model SilentTimer_Timeframes {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** silent timer monday read */
+  @inherit(r_12)
+  @ext(0, 0)
+  model SilentTimer_Monday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer monday write */
+  @inherit(w_11)
+  @ext(0, 0)
+  model SilentTimer_MondayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** silent timer tuesday read */
+  @inherit(r_12)
+  @ext(1, 0)
+  model SilentTimer_Tuesday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer tuesday write */
+  @inherit(w_11)
+  @ext(1, 0)
+  model SilentTimer_TuesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** silent timer wednesday read */
+  @inherit(r_12)
+  @ext(0x2, 0)
+  model SilentTimer_Wednesday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer wednesday write */
+  @inherit(w_11)
+  @ext(0x2, 0)
+  model SilentTimer_WednesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** silent timer thursday read */
+  @inherit(r_12)
+  @ext(0x3, 0)
+  model SilentTimer_Thursday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer thursday write */
+  @inherit(w_11)
+  @ext(0x3, 0)
+  model SilentTimer_ThursdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** silent timer friday read */
+  @inherit(r_12)
+  @ext(0x4, 0)
+  model SilentTimer_Friday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer friday write */
+  @inherit(w_11)
+  @ext(0x4, 0)
+  model SilentTimer_FridayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** silent timer saturday read */
+  @inherit(r_12)
+  @ext(0x5, 0)
+  model SilentTimer_Saturday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer saturday write */
+  @inherit(w_11)
+  @ext(0x5, 0)
+  model SilentTimer_SaturdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** silent timer sunday read */
+  @inherit(r_12)
+  @ext(0x6, 0)
+  model SilentTimer_Sunday {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer sunday write */
+  @inherit(w_11)
+  @ext(0x6, 0)
+  model SilentTimer_SundayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  // heating timers zone 1
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 0, 0)
+  model r_13 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 0, 0)
+  model w_12 {}
+
+  /** timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 0, 0)
+  model Z1HeatingTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 0, 0)
+  model Z1HeatingTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** timer heating monday read */
+  @inherit(r_13)
+  @ext(0, 0)
+  model Z1HeatingTimer_Monday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating monday write */
+  @inherit(w_12)
+  @ext(0, 0)
+  model Z1HeatingTimer_MondayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating tuesday read */
+  @inherit(r_13)
+  @ext(1, 0)
+  model Z1HeatingTimer_Tuesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating tuesday write */
+  @inherit(w_12)
+  @ext(1, 0)
+  model Z1HeatingTimer_TuesdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating wednesday read */
+  @inherit(r_13)
+  @ext(0x2, 0)
+  model Z1HeatingTimer_Wednesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating wednesday write */
+  @inherit(w_12)
+  @ext(0x2, 0)
+  model Z1HeatingTimer_WednesdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating thursday read */
+  @inherit(r_13)
+  @ext(0x3, 0)
+  model Z1HeatingTimer_Thursday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating thursday write */
+  @inherit(w_12)
+  @ext(0x3, 0)
+  model Z1HeatingTimer_ThursdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating friday read */
+  @inherit(r_13)
+  @ext(0x4, 0)
+  model Z1HeatingTimer_Friday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating friday write */
+  @inherit(w_12)
+  @ext(0x4, 0)
+  model Z1HeatingTimer_FridayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating saturday read */
+  @inherit(r_13)
+  @ext(0x5, 0)
+  model Z1HeatingTimer_Saturday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating saturday write */
+  @inherit(w_12)
+  @ext(0x5, 0)
+  model Z1HeatingTimer_SaturdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating sunday read */
+  @inherit(r_13)
+  @ext(0x6, 0)
+  model Z1HeatingTimer_Sunday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating sunday write */
+  @inherit(w_12)
+  @ext(0x6, 0)
+  model Z1HeatingTimer_SundayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  // cooling timers zone 1
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 0, 1)
+  model r_14 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 0, 1)
+  model w_13 {}
+
+  /** timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 0, 1)
+  model Z1CoolingTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 0, 1)
+  model Z1CoolingTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** timer cooling monday read */
+  @inherit(r_14)
+  @ext(0, 0)
+  model Z1CoolingTimer_Monday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling monday write */
+  @inherit(w_13)
+  @ext(0, 0)
+  model Z1CoolingTimer_MondayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling tuesday read */
+  @inherit(r_14)
+  @ext(1, 0)
+  model Z1CoolingTimer_Tuesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling tuesday write */
+  @inherit(w_13)
+  @ext(1, 0)
+  model Z1CoolingTimer_TuesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling wednesday read */
+  @inherit(r_14)
+  @ext(0x2, 0)
+  model Z1CoolingTimer_Wednesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling wednesday write */
+  @inherit(w_13)
+  @ext(0x2, 0)
+  model Z1CoolingTimer_WednesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling thursday read */
+  @inherit(r_14)
+  @ext(0x3, 0)
+  model Z1CoolingTimer_Thursday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling thursday write */
+  @inherit(w_13)
+  @ext(0x3, 0)
+  model Z1CoolingTimer_ThursdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling friday read */
+  @inherit(r_14)
+  @ext(0x4, 0)
+  model Z1CoolingTimer_Friday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling friday write */
+  @inherit(w_13)
+  @ext(0x4, 0)
+  model Z1CoolingTimer_FridayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling saturday read */
+  @inherit(r_14)
+  @ext(0x5, 0)
+  model Z1CoolingTimer_Saturday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling saturday write */
+  @inherit(w_13)
+  @ext(0x5, 0)
+  model Z1CoolingTimer_SaturdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling sunday read */
+  @inherit(r_14)
+  @ext(0x6, 0)
+  model Z1CoolingTimer_Sunday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling sunday write */
+  @inherit(w_13)
+  @ext(0x6, 0)
+  model Z1CoolingTimer_SundayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  // heating timers zone 2
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 1, 0)
+  model r_15 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 1, 0)
+  model w_14 {}
+
+  /** timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 1, 0)
+  model Z2HeatingTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 1, 0)
+  model Z2HeatingTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** timer heating monday read */
+  @inherit(r_15)
+  @ext(0, 0)
+  model Z2HeatingTimer_Monday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating monday write */
+  @inherit(w_14)
+  @ext(0, 0)
+  model Z2HeatingTimer_MondayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating tuesday read */
+  @inherit(r_15)
+  @ext(1, 0)
+  model Z2HeatingTimer_Tuesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating tuesday write */
+  @inherit(w_14)
+  @ext(1, 0)
+  model Z2HeatingTimer_TuesdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating wednesday read */
+  @inherit(r_15)
+  @ext(0x2, 0)
+  model Z2HeatingTimer_Wednesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating wednesday write */
+  @inherit(w_14)
+  @ext(0x2, 0)
+  model Z2HeatingTimer_WednesdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating thursday read */
+  @inherit(r_15)
+  @ext(0x3, 0)
+  model Z2HeatingTimer_Thursday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating thursday write */
+  @inherit(w_14)
+  @ext(0x3, 0)
+  model Z2HeatingTimer_ThursdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating friday read */
+  @inherit(r_15)
+  @ext(0x4, 0)
+  model Z2HeatingTimer_Friday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating friday write */
+  @inherit(w_14)
+  @ext(0x4, 0)
+  model Z2HeatingTimer_FridayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating saturday read */
+  @inherit(r_15)
+  @ext(0x5, 0)
+  model Z2HeatingTimer_Saturday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating saturday write */
+  @inherit(w_14)
+  @ext(0x5, 0)
+  model Z2HeatingTimer_SaturdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating sunday read */
+  @inherit(r_15)
+  @ext(0x6, 0)
+  model Z2HeatingTimer_Sunday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating sunday write */
+  @inherit(w_14)
+  @ext(0x6, 0)
+  model Z2HeatingTimer_SundayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  // cooling timers zone 2
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 1, 1)
+  model r_16 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 1, 1)
+  model w_15 {}
+
+  /** timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 1, 1)
+  model Z2CoolingTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 1, 1)
+  model Z2CoolingTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** timer cooling monday read */
+  @inherit(r_16)
+  @ext(0, 0)
+  model Z2CoolingTimer_Monday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling monday write */
+  @inherit(w_15)
+  @ext(0, 0)
+  model Z2CoolingTimer_MondayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling tuesday read */
+  @inherit(r_16)
+  @ext(1, 0)
+  model Z2CoolingTimer_Tuesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling tuesday write */
+  @inherit(w_15)
+  @ext(1, 0)
+  model Z2CoolingTimer_TuesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling wednesday read */
+  @inherit(r_16)
+  @ext(0x2, 0)
+  model Z2CoolingTimer_Wednesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling wednesday write */
+  @inherit(w_15)
+  @ext(0x2, 0)
+  model Z2CoolingTimer_WednesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling thursday read */
+  @inherit(r_16)
+  @ext(0x3, 0)
+  model Z2CoolingTimer_Thursday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling thursday write */
+  @inherit(w_15)
+  @ext(0x3, 0)
+  model Z2CoolingTimer_ThursdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling friday read */
+  @inherit(r_16)
+  @ext(0x4, 0)
+  model Z2CoolingTimer_Friday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling friday write */
+  @inherit(w_15)
+  @ext(0x4, 0)
+  model Z2CoolingTimer_FridayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling saturday read */
+  @inherit(r_16)
+  @ext(0x5, 0)
+  model Z2CoolingTimer_Saturday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling saturday write */
+  @inherit(w_15)
+  @ext(0x5, 0)
+  model Z2CoolingTimer_SaturdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling sunday read */
+  @inherit(r_16)
+  @ext(0x6, 0)
+  model Z2CoolingTimer_Sunday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling sunday write */
+  @inherit(w_15)
+  @ext(0x6, 0)
+  model Z2CoolingTimer_SundayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  // heating timers zone 3
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 2, 0)
+  model r_17 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 2, 0)
+  model w_16 {}
+
+  /** timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 2, 0)
+  model Z3HeatingTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 2, 0)
+  model Z3HeatingTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** timer heating monday read */
+  @inherit(r_17)
+  @ext(0, 0)
+  model Z3HeatingTimer_Monday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating monday write */
+  @inherit(w_16)
+  @ext(0, 0)
+  model Z3HeatingTimer_MondayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating tuesday read */
+  @inherit(r_17)
+  @ext(1, 0)
+  model Z3HeatingTimer_Tuesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating tuesday write */
+  @inherit(w_16)
+  @ext(1, 0)
+  model Z3HeatingTimer_TuesdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating wednesday read */
+  @inherit(r_17)
+  @ext(0x2, 0)
+  model Z3HeatingTimer_Wednesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating wednesday write */
+  @inherit(w_16)
+  @ext(0x2, 0)
+  model Z3HeatingTimer_WednesdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating thursday read */
+  @inherit(r_17)
+  @ext(0x3, 0)
+  model Z3HeatingTimer_Thursday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating thursday write */
+  @inherit(w_16)
+  @ext(0x3, 0)
+  model Z3HeatingTimer_ThursdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating friday read */
+  @inherit(r_17)
+  @ext(0x4, 0)
+  model Z3HeatingTimer_Friday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating friday write */
+  @inherit(w_16)
+  @ext(0x4, 0)
+  model Z3HeatingTimer_FridayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating saturday read */
+  @inherit(r_17)
+  @ext(0x5, 0)
+  model Z3HeatingTimer_Saturday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating saturday write */
+  @inherit(w_16)
+  @ext(0x5, 0)
+  model Z3HeatingTimer_SaturdayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  /** timer heating sunday read */
+  @inherit(r_17)
+  @ext(0x6, 0)
+  model Z3HeatingTimer_Sunday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer heating sunday write */
+  @inherit(w_16)
+  @ext(0x6, 0)
+  model Z3HeatingTimer_SundayWrite {
+    value: wTimeSlotWithTemp;
+  }
+
+  // cooling timers zone 3
+
+  /** default *r */
+  @base(MF, 0x55, 0xa5, 2, 1)
+  model r_18 {}
+
+  /** default *w */
+  @write
+  @base(MF, 0x55, 0xa6, 2, 1)
+  model w_17 {}
+
+  /** timer Configuration */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa3, 2, 1)
+  model Z3CoolingTimer_Config {
+    /** Configuration */
+    @maxLength(9)
+    value: HEX;
+  }
+
+  /** timer amount */
+  @inherit(r_9)
+  @ext(MF, 0x55, 0xa4, 2, 1)
+  model Z3CoolingTimer_TimeSlotsPerWeekday {
+    /** Amount of configured slots per weekday */
+    value: slotCountWeek;
+  }
+
+  /** timer cooling monday read */
+  @inherit(r_18)
+  @ext(0, 0)
+  model Z3CoolingTimer_Monday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling monday write */
+  @inherit(w_17)
+  @ext(0, 0)
+  model Z3CoolingTimer_MondayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling tuesday read */
+  @inherit(r_18)
+  @ext(1, 0)
+  model Z3CoolingTimer_Tuesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling tuesday write */
+  @inherit(w_17)
+  @ext(1, 0)
+  model Z3CoolingTimer_TuesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling wednesday read */
+  @inherit(r_18)
+  @ext(0x2, 0)
+  model Z3CoolingTimer_Wednesday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling wednesday write */
+  @inherit(w_17)
+  @ext(0x2, 0)
+  model Z3CoolingTimer_WednesdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling thursday read */
+  @inherit(r_18)
+  @ext(0x3, 0)
+  model Z3CoolingTimer_Thursday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling thursday write */
+  @inherit(w_17)
+  @ext(0x3, 0)
+  model Z3CoolingTimer_ThursdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling friday read */
+  @inherit(r_18)
+  @ext(0x4, 0)
+  model Z3CoolingTimer_Friday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling friday write */
+  @inherit(w_17)
+  @ext(0x4, 0)
+  model Z3CoolingTimer_FridayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling saturday read */
+  @inherit(r_18)
+  @ext(0x5, 0)
+  model Z3CoolingTimer_Saturday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling saturday write */
+  @inherit(w_17)
+  @ext(0x5, 0)
+  model Z3CoolingTimer_SaturdayWrite {
+    value: wTimeSlotWithoutTemp;
+  }
+
+  /** timer cooling sunday read */
+  @inherit(r_18)
+  @ext(0x6, 0)
+  model Z3CoolingTimer_Sunday {
+    value: rTimeSlotWithTemp;
+  }
+
+  /** timer cooling sunday write */
+  @inherit(w_17)
+  @ext(0x6, 0)
+  model Z3CoolingTimer_SundayWrite {
+    value: wTimeSlotWithoutTemp;
   }
 
   // includes
