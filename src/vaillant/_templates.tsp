@@ -42,6 +42,9 @@ scalar day extends BDY;
 @values(Values_daysel)
 scalar daysel extends UCH;
 
+@values(Values_daysel2)
+scalar daysel2 extends UCH;
+
 /** days */
 scalar days extends UCH;
 
@@ -514,6 +517,18 @@ enum Values_daysel {
   Mo_Su: 3,
 }
 
+enum Values_daysel2 {
+  off: 0,
+  Mon: 1,
+  Tue: 2,
+  Wed: 3,
+  Thu: 4,
+  Fri: 5,
+  Sat: 6,
+  Sun: 7,
+  daily: 8,
+}
+
 enum Values_hcmode {
   auto: 0,
   off: 1,
@@ -774,7 +789,7 @@ enum Values_opmode2 {
 
 enum Values_zmapping {
   none: 0,
-  VRC700: 1,
+  VRC7XX: 1,
   VR91_1: 2,
   VR91_2: 3,
   VR91_3: 4,
