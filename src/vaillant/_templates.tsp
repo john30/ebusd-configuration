@@ -470,6 +470,10 @@ model rTimeSlotWithoutTemp {
 @values(Values_appliancecode)
 scalar appliancecode extends UCH;
 
+/** HMU Status code */
+@values(Values_hmucode)
+scalar hmucode extends UIN;
+
 enum Values_daysel {
   selected: 0,
   Mo_Fr: 1,
@@ -728,6 +732,62 @@ enum Values_appliancecode {
   hwc_pump_overrun: 17,
   hwc_shutdown: 18,
   frost_protect: 34,
+}
+
+enum Values_hmucode {
+  frost_protect: 34,
+  standby: 100,
+  heat_compressor_shutdown: 101,
+  heat_compressor_blocked: 102,
+  heat_prerun: 103,
+  heat_compressor_active: 104,
+  heat_overrun: 107,
+  cool_compressor_shutdown: 111,
+  cool_compressor_blocked: 112,
+  cool_prerun: 113,
+  cool_compressor_active: 114,
+  cool_overrun: 117,
+  heat_immersion_heater_active: 125,
+  hwc_compressor_blocked: 132,
+  hwc_prerun: 133,
+  hwc_compressor_active: 134,
+  hwc_immersion_heater_active: 135,
+  hwc_overrun: 137,
+  heat_immersion_heater_shutdown: 141,
+  heat_immersion_heater_blocked: 142,
+  hwc_immersion_heater_shutdown: 151,
+  hwc_immersion_heater_blocked: 152,
+  air_purging_program_active: 202,
+  compressor_oil_heating_activated: 240,
+  fan1_blocked: 252,
+  fan1_airinlet_too_high: 255,
+  fan1_airinlet_too_low: 256,
+  fan2_blocked: 260,
+  building_circuit_flow_too_low: 275,
+  building_circuit_pump_fault: 277,
+  frequency_converter_fault_compressor: 280,
+  frequency_converter_fault_mains_voltage: 281,
+  frequency_converter_fault_overheating: 282,
+  deicing_time_too_long: 283,
+  deicing_flow_temperature_too_low: 284,
+  compressor_outlet_temperature_too_high: 285,
+  hot_gas_temperature_switch_open: 286,
+  fan1_wind: 287,
+  fan2_wind: 288,
+  current_limt_active: 289,
+  high_pressure_switch_open: 302,
+  compressor_outlet_temperature_too_high_1: 303,
+  evaporation_temperature_too_low: 304,
+  condensation_temperature_too_low: 305,
+  evaporation_temperature_too_high: 306,
+  condensation_temperature_too_high: 308,
+  building_circuit_return_temperature_too_low: 312,
+  building_circuit_return_temperature_too_high: 314,
+  immersion_heater_flow_temperature_too_high: 351,
+  deicing_active: 516,
+  frequency_converter_fault: 575,
+  connection_fault_frequency_converter: 581,
+  four_port_valve_position_fault: 590,
 }
 
 /** default *r for register */
