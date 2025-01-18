@@ -181,9 +181,6 @@ scalar mixer extends UCH;
 @values(Values_closeopen)
 scalar closeopen extends UCH;
 
-@values(Values_openclose)
-scalar openclose extends UCH;
-
 /** day/night mode */
 @values(Values_daynight)
 scalar daynight extends UCH;
@@ -367,10 +364,6 @@ scalar switchvalve extends UCH;
 /** valve position */
 @values(Values_switchvalve2)
 scalar switchvalve2 extends UCH;
-
-/** valve position */
-@values(Values_switchvalve3)
-scalar switchvalve3 extends UIN;
 
 /** holiday period from */
 scalar hfrom extends HDA3;
@@ -618,11 +611,6 @@ enum Values_closeopen {
   open: 1,
 }
 
-enum Values_openclose {
-  open: 0,
-  close: 1,
-}
-
 enum Values_daynight {
   night: 0,
   day: 1,
@@ -736,11 +724,6 @@ enum Values_switchvalve2 {
   both: 50,
   water: 100,
   standby: 254,
-}
-
-enum Values_switchvalve3 {
-  heat: 0,
-  water: 1,
 }
 
 enum Values_hpstatus {

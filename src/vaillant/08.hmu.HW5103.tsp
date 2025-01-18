@@ -128,6 +128,7 @@ namespace Hmu.Hw5103 {
     value: UIN;
   }
 
+  @condition(Id.Id.sw, ">=902")
   @inherit(r_2)
   @ext(0x3d)
   model FlowPressure {
@@ -313,6 +314,7 @@ namespace Hmu.Hw5103 {
   @base(MF, 0x11)
   model r_8 {}
 
+  @condition(Id.Id.sw, ">=902")
   /** compressor runtime in min and starts in Hc mode */
   @inherit(r_8)
   @ext(0x18, 1)
@@ -322,6 +324,7 @@ namespace Hmu.Hw5103 {
     cycles: cntstarts;
   }
 
+  @condition(Id.Id.sw, ">=902")
   /** compressor runtime in min and starts in Hwc mode */
   @inherit(r_8)
   @ext(0x18, 0x2)
@@ -330,6 +333,5 @@ namespace Hmu.Hw5103 {
     runtime: minutes4;
     cycles: cntstarts;
   }
-
-
 }
+
