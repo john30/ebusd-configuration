@@ -259,6 +259,13 @@ namespace Basv3 {
     value: energy4;
   }
 
+  /** esco block function */
+  @inherit(r_1, w_1)
+  @ext(0x45, 0)
+  model ESCOBlockFunction {
+    value: escomode;
+  }
+
   /** hwc max flow temp desired */
   @inherit(r_1, w_1)
   @ext(0x46, 0)
@@ -457,17 +464,24 @@ namespace Basv3 {
     value: yesno;
   }
 
-  /** hwc storage temperature top */
+  /** green iq */
+  @inherit(r_1)
+  @ext(0x9a, 0)
+  model GreenIQ {
+    value: onoff;
+  }
+
+  /** hwc cylinder temperature top */
   @inherit(r_1)
   @ext(0x9d, 0)
-  model HwcStorageTempTop {
+  model HwcCylinderTempTop {
     value: tempv;
   }
 
-  /** hwc storage temperature bottom */
+  /** hwc cylinder temperature bottom */
   @inherit(r_1)
   @ext(0x9e, 0)
-  model HwcStorageTempBottom {
+  model HwcCylinderTempBottom {
     value: tempv;
   }
 
@@ -537,11 +551,11 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** hwc storage temperature */
+  /** hwc cylinder temperature */
   @inherit(r_2)
   @ext(0x5, 0)
-  model HwcStorageTemp {
-    /** Hwc storage temperature */
+  model HwcCylinderTemp {
+    /** Hwc cylinder temperature */
     value: tempv;
   }
 
@@ -625,7 +639,7 @@ namespace Basv3 {
   @inherit(r_3)
   @ext(0x2, 0)
   model Hc1CircuitType {
-    mctype: mctype;
+    value: hctype;
     @maxLength(1) ign: IGN;
   }
 
@@ -828,7 +842,7 @@ namespace Basv3 {
   @inherit(r_4)
   @ext(0x2, 0)
   model Hc2CircuitType {
-    mctype: mctype;
+    value: hctype;
     @maxLength(1) ign: IGN;
   }
 
@@ -1016,7 +1030,7 @@ namespace Basv3 {
   @inherit(r_5)
   @ext(0x2, 0)
   model Hc3CircuitType {
-    mctype: mctype;
+    value: hctype;
     @maxLength(1) ign: IGN;
   }
 
@@ -1340,6 +1354,28 @@ namespace Basv3 {
     value: zonestatus;
   }
 
+  /** quick veto end time zone 1 */
+  @inherit(r_6)
+  @ext(0x1e, 0)
+  model Z1QuickVetoEndTime {
+    /** Manual override end time for zone 1 */
+    value: HTI;
+  }
+
+  /** end time of holidays for zone 1 */
+  @inherit(r_6, w_6)
+  @ext(0x20, 0)
+  model Z1HolidayEndTime {
+    value: HTI;
+  }
+
+  /** start time of holidays for zone 1 */
+  @inherit(r_6, w_6)
+  @ext(0x21, 0)
+  model Z1HolidayStartTime {
+    value: HTI;
+  }
+
   /** manual heating setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x22, 0)
@@ -1354,6 +1390,21 @@ namespace Basv3 {
   model Z1CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 1 */
     value: tempv;
+  }
+
+  /** quick veto end date zone 1 */
+  @inherit(r_6)
+  @ext(0x24, 0)
+  model Z1QuickVetoEndDate {
+    value: date;
+  }
+
+  /** quick veto duration zone 1 */
+  @inherit(r_6, w_6)
+  @ext(0x26, 0)
+  model Z1QuickVetoDuration {
+    /** Valid values are 0.5-12 in 0.5 increments (default 3); writing enables quick veto mode */
+    value: EXP;
   }
 
   /** room humidity zone 1 */
@@ -1517,6 +1568,28 @@ namespace Basv3 {
     value: zonestatus;
   }
 
+  /** quick veto end time zone 2 */
+  @inherit(r_7)
+  @ext(0x1e, 0)
+  model Z2QuickVetoEndTime {
+    /** Manual override end time for zone 2 */
+    value: HTI;
+  }
+
+  /** end time of holidays for zone 2 */
+  @inherit(r_7, w_7)
+  @ext(0x20, 0)
+  model Z2HolidayEndTime {
+    value: HTI;
+  }
+
+  /** start time of holidays for zone 2 */
+  @inherit(r_7, w_7)
+  @ext(0x21, 0)
+  model Z2HolidayStartTime {
+    value: HTI;
+  }
+
   /** manual heating setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x22, 0)
@@ -1531,6 +1604,21 @@ namespace Basv3 {
   model Z2CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 2 */
     value: tempv;
+  }
+
+  /** quick veto end date zone 2 */
+  @inherit(r_7)
+  @ext(0x24, 0)
+  model Z2QuickVetoEndDate {
+    value: date;
+  }
+
+  /** quick veto duration zone 2 */
+  @inherit(r_7, w_7)
+  @ext(0x26, 0)
+  model Z2QuickVetoDuration {
+    /** Valid values are 0.5-12 in 0.5 increments (default 3); writing enables quick veto mode */
+    value: EXP;
   }
 
   /** room humidity zone 2 */
@@ -1694,6 +1782,28 @@ namespace Basv3 {
     value: zonestatus;
   }
 
+  /** quick veto end time zone 3 */
+  @inherit(r_8)
+  @ext(0x1e, 0)
+  model Z3QuickVetoEndTime {
+    /** Manual override end time for zone 3 */
+    value: HTI;
+  }
+
+  /** end time of holidays for zone 3 */
+  @inherit(r_8, w_8)
+  @ext(0x20, 0)
+  model Z3HolidayEndTime {
+    value: HTI;
+  }
+
+  /** start time of holidays for zone 3 */
+  @inherit(r_8, w_8)
+  @ext(0x21, 0)
+  model Z3HolidayStartTime {
+    value: HTI;
+  }
+
   /** manual heating setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x22, 0)
@@ -1708,6 +1818,21 @@ namespace Basv3 {
   model Z3CoolingTempDesiredManual {
     /** Desired cooling setpoint in manual mode for zone 3 */
     value: tempv;
+  }
+
+  /** quick veto end date zone 3 */
+  @inherit(r_8)
+  @ext(0x24, 0)
+  model Z3QuickVetoEndDate {
+    value: date;
+  }
+
+  /** quick veto duration zone 3 */
+  @inherit(r_8, w_8)
+  @ext(0x26, 0)
+  model Z3QuickVetoDuration {
+    /** Valid values are 0.5-12 in 0.5 increments (default 3); writing enables quick veto mode */
+    value: EXP;
   }
 
   /** room humidity zone 3 */
