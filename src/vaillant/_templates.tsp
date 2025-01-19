@@ -165,6 +165,10 @@ scalar mctype extends UCH;
 @values(Values_mctype7)
 scalar mctype7 extends BI0_7;
 
+/** hc type */
+@values(Values_hctype)
+scalar hctype extends UCH;
+
 /** hot water mode */
 @values(Values_hwcmode)
 scalar hwcmode extends UCH;
@@ -187,6 +191,10 @@ scalar daynight extends UCH;
 
 /** Status */
 scalar status extends UCH;
+
+/** ESCO */
+@values(Values_escomode)
+scalar escomode extends UCH;
 
 @values(Values_onoff)
 scalar onoff extends UCH;
@@ -580,6 +588,23 @@ enum Values_mctype7 {
   returnincr: 4,
   pool: 5,
   circulation: 6,
+}
+
+enum Values_hctype {
+  inactive: 0,
+  heat: 1,
+  fixed: 2,
+  water: 3,
+  returnincr: 4,
+}
+
+enum Values_escomode {
+  heatpump: 0,
+  backup: 1,
+  heatpumpandbackup: 2,
+  heat: 3,
+  cool: 4,
+  heatandcool: 5,
 }
 
 enum Values_hwcmode {
