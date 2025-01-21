@@ -1,4 +1,26 @@
+# 2025-01-21
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * vaillant/08.hmu from #160, #174, #316, #330, #407
+  * vaillant/08.bai from #202, #416, #201, #367, #323
+  * vaillant/08.v3x from #226
+  * vaillant/76.vwz from #330
+  * vaillant/76.vwzio from #407
+  * vaillant/08.recov from #343, #364
+  * vaillant/hcmode from #388 and #389
+  * vaillant/_templates from #393
+  * vaillant/e0.omu from #368
+  * vaillant/15.ctls2 from #422
+  * vaillant/15.ctlv2 from #423
+  * vaillant/06.pms + 06.vms from #430and #454
+  * vaillant/mcmode from #328 
+  * tem/15 from #129
+* add vaillant/15.ctlv3 link according to #35, #418, #449
+* fix some message IDs in vaillant/15.ctlv2 and ochsner
+* fix wolf file names
+
 # 2024-12-08
+https://ebus.github.io/ only:
 * added vaillant/06.vmd
 * added vaillant/08.bai 0010011701
 * added ochsner/15.22102
