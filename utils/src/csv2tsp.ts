@@ -617,7 +617,9 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       let circuit = line[1];
       const model = line[2];
       let field = line[4];
+      const zz = hex(fromHex(line[5])[0] as number) || '';
       let value = line[6]||'';
+      let noNs = '';
       if (circuit==='scan') {
         if (!model) {
           // refers to Ebus.Id.Id
@@ -628,7 +630,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
         }
       }
       const fname = field||(value&&normalize?'value':'');
-      additions.conditions.set(name, [[pascalCase(circuit),pascalCase(model),fname].filter(p=>p).join('.'), value]);
+      additions.conditions.set(name, [[pascalCase(circuit),pascalCase(model),fname].filter(p=>p).join('.'), value, zz, noNs]);
       return;
     }
     // conditional
@@ -636,16 +638,22 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     conditions.forEach(cond => {
       // SW<1,SW>1,SW=1,SW<=1,SW>=1
       let [,name, values] = cond.match(/^([^=<>]*)(.*)$/)||[,cond];
-      const [field, value] = additions.conditions.get(name)||additions.conditions.get(cond)||[];
+      const [field, value, zz, noNs] = additions.conditions.get(name)||additions.conditions.get(cond)||[];
       if (value && !values) {
         values = value;
       }
-      conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
+      if (zz) {
+        conds.push(`@conditionExt(${field}, ${zz}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
+      } else {
+        conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
+      }
       let nsAdd;
       if (value) {
         nsAdd = name;
+      } else if (noNs) {
+        nsAdd = '';
       } else {
-        nsAdd = values||'';
+        nsAdd = (zz?'_'+zz.substring(2)+(values?'_':''):'')+(values||'');
         if (loadInclude && nsAdd.startsWith("='") && field.includes('.Id.')) {
           nsAdd = '_'+loadInclude.split('.').reverse()[0]; // reduce multiple product ids with filename instead
         }
