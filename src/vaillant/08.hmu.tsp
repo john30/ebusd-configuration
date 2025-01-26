@@ -1391,14 +1391,14 @@ namespace Hmu {
     value: UIN;
   }
 
-  /** building punp hours */
+  /** building pump hours */
   @inherit(ri)
   @ext(0xb4, 0x34, 0x2)
   model StatBuildingPumpHours {
     value: hoursum;
   }
 
-  /** building punp starts */
+  /** building pump starts */
   @inherit(ri)
   @ext(0xb4, 0x34, 0x3)
   model StatBuildingPumpStarts {
