@@ -964,6 +964,29 @@ namespace Ctlv2 {
     value: tempv;
   }
 
+  /** Duration of Quick Veto mode Zone 1 */
+  @inherit(r_6, w_6)
+  @ext(0x26, 0)
+  model Z1QuickVetoDuration {
+    /** valid values are 0.5-12 in steps of 0.5 and writing enables quick veto mode */
+    @unit("h")
+    value: EXP;
+  }
+
+  /** Quick Veto end time Zone 1 */
+  @inherit(r_6)
+  @ext(0x1e, 0)
+  model Z1QuickVetoEndTime {
+    value: HTI;
+  }
+
+  /** Quick Veto end date Zone 1 */
+  @inherit(r_6)
+  @ext(0x24, 0)
+  model Z1QuickVetoEndDate {
+    value: date;
+  }
+
   /** Absenktemperatur Zone 1 */
   @inherit(r_6, w_6)
   @ext(0x9, 0)
@@ -1122,6 +1145,29 @@ namespace Ctlv2 {
     value: tempv;
   }
 
+  /** Duration of Quick Veto mode Zone 2 */
+  @inherit(r_7, w_7)
+  @ext(0x26, 0)
+  model Z2QuickVetoDuration {
+    /** valid values are 0.5-12 in steps of 0.5 and writing enables quick veto mode */
+    @unit("h")
+    value: EXP;
+  }
+
+  /** Quick Veto end time Zone 2 */
+  @inherit(r_7)
+  @ext(0x1e, 0)
+  model Z2QuickVetoEndTime {
+    value: HTI;
+  }
+
+  /** Quick Veto end date Zone 2 */
+  @inherit(r_7)
+  @ext(0x24, 0)
+  model Z2QuickVetoEndDate {
+    value: date;
+  }
+
   /** Absenktemperatur Zone 2 */
   @inherit(r_7, w_7)
   @ext(0x9, 0)
@@ -1270,6 +1316,29 @@ namespace Ctlv2 {
   model Z3QuickVetoTemp {
     /** manual override setpoint for zone 3 */
     value: tempv;
+  }
+
+  /** Duration of Quick Veto mode Zone 3 */
+  @inherit(r_8, w_8)
+  @ext(0x26, 0)
+  model Z3QuickVetoDuration {
+    /** valid values are 0.5-12 in steps of 0.5 and writing enables quick veto mode */
+    @unit("h")
+    value: EXP;
+  }
+
+  /** Quick Veto end time Zone 3 */
+  @inherit(r_8)
+  @ext(0x1e, 0)
+  model Z3QuickVetoEndTime {
+    value: HTI;
+  }
+
+  /** Quick Veto end date Zone 3 */
+  @inherit(r_8)
+  @ext(0x24, 0)
+  model Z3QuickVetoEndDate {
+    value: date;
   }
 
   /** Absenktemperatur Zone 3 */
