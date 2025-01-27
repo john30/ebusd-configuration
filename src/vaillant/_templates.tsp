@@ -28,10 +28,6 @@ scalar press extends FLT;
 @unit("bar")
 scalar pressv extends EXP;
 
-/** percentage */
-@unit("%")
-scalar percentv extends EXP;
-
 /** date */
 scalar date extends HDA3;
 
@@ -41,9 +37,6 @@ scalar day extends BDY;
 /** days */
 @values(Values_daysel)
 scalar daysel extends UCH;
-
-@values(Values_daysel2)
-scalar daysel2 extends UCH;
 
 /** days */
 scalar days extends UCH;
@@ -145,14 +138,6 @@ scalar hcmode extends UCH;
 @values(Values_hcmode2)
 scalar hcmode2 extends UCH;
 
-/** hc pump mode */
-@values(Values_hcpumpmode)
-scalar hcpumpmode extends UCH;
-
-/** hybrid manager mode */
-@values(Values_hmmode)
-scalar hmmode extends UCH;
-
 /** mixer mode */
 @values(Values_mcmode)
 scalar mcmode extends UCH;
@@ -176,10 +161,6 @@ scalar hwcmode2 extends UCH;
 /** mixer State */
 @values(Values_mixer)
 scalar mixer extends UCH;
-
-/** zone valve state */
-@values(Values_closeopen)
-scalar closeopen extends UCH;
 
 /** day/night mode */
 @values(Values_daynight)
@@ -320,9 +301,6 @@ scalar backtype extends UCH;
 @values(Values_backmode)
 scalar backmode extends UCH;
 
-@values(Values_backmode2)
-scalar backmode2 extends UCH;
-
 @unit("kW")
 scalar power extends UCH;
 
@@ -391,23 +369,11 @@ scalar frequency extends UIN;
 @values(Values_zonesel)
 scalar zonesel extends UIN;
 
-@values(Values_zonestatus)
-scalar zonestatus extends UIN;
-
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
-@values(Values_sfmode2)
-scalar sfmode2 extends UCH;
-
-@values(Values_sfmode3)
-scalar sfmode3 extends UCH;
-
 @values(Values_opmode)
 scalar opmode extends UIN;
-
-@values(Values_opmode2)
-scalar opmode2 extends UIN;
 
 @values(Values_zmapping)
 scalar zmapping extends UIN;
@@ -438,14 +404,8 @@ scalar mamode extends UIN;
 @values(Values_offmode)
 scalar offmode extends UIN;
 
-@values(Values_offmode2)
-scalar offmode2 extends UIN;
-
 @values(Values_rcmode)
 scalar rcmode extends UIN;
-
-@values(Values_rcmode2)
-scalar rcmode2 extends UIN;
 
 /** array index for the zones. Array Index start at 0 for the first element */
 scalar slotIndex extends UCH;
@@ -521,18 +481,6 @@ enum Values_daysel {
   Mo_Su: 3,
 }
 
-enum Values_daysel2 {
-  off: 0,
-  Mon: 1,
-  Tue: 2,
-  Wed: 3,
-  Thu: 4,
-  Fri: 5,
-  Sat: 6,
-  Sun: 7,
-  daily: 8,
-}
-
 enum Values_hcmode {
   auto: 0,
   off: 1,
@@ -544,18 +492,6 @@ enum Values_hcmode2 {
   off: 0,
   heat: 3,
   water: 4,
-}
-
-enum Values_hcpumpmode {
-  off: 0,
-  heat: 1,
-  cool: 2,
-  exthwc: 3,
-}
-
-enum Values_hmmode {
-  trivalence: 0,
-  bivalence: 1,
 }
 
 enum Values_mcmode {
@@ -604,11 +540,6 @@ enum Values_mixer {
   off: 0,
   open: 1,
   close: 2,
-}
-
-enum Values_closeopen {
-  close: 0,
-  open: 1,
 }
 
 enum Values_daynight {
@@ -677,13 +608,6 @@ enum Values_backmode {
   onlybackup: 2,
 }
 
-enum Values_backmode2 {
-  off: 0,
-  heat: 1,
-  water: 2,
-  heatandwater: 3,
-}
-
 enum Values_pumppow {
   _0: 0,
   _1: 1,
@@ -744,19 +668,6 @@ enum Values_zonesel {
   _6: 6,
 }
 
-enum Values_zonestatus {
-  auto: 0,
-  ventilation: 1,
-  party: 3,
-  veto: 4,
-  onedayaway: 5,
-  onedayathome: 6,
-  holidayaway: 7,
-  holidayathome: 8,
-  load: 9,
-  off: 10,
-}
-
 enum Values_sfmode {
   auto: 0,
   ventilation: 1,
@@ -767,17 +678,6 @@ enum Values_sfmode {
   load: 6,
 }
 
-enum Values_sfmode2 {
-  auto: 0,
-  ventilation: 1,
-  veto: 3,
-}
-
-enum Values_sfmode3 {
-  auto: 0,
-  load: 6,
-}
-
 enum Values_opmode {
   off: 0,
   auto: 1,
@@ -785,15 +685,9 @@ enum Values_opmode {
   night: 3,
 }
 
-enum Values_opmode2 {
-  off: 0,
-  time_controlled: 1,
-  manual: 2,
-}
-
 enum Values_zmapping {
   none: 0,
-  VRC7XX: 1,
+  VRC700: 1,
   VR91_1: 2,
   VR91_2: 3,
   VR91_3: 4,
@@ -811,21 +705,10 @@ enum Values_offmode {
   night: 1,
 }
 
-enum Values_offmode2 {
-  eco: 0,
-  normal: 1,
-}
-
 enum Values_rcmode {
   off: 0,
   modulating: 1,
   thermostat: 2,
-}
-
-enum Values_rcmode2 {
-  inactive: 0,
-  active: 1,
-  expanded: 2,
 }
 
 enum Values_appliancecode {
