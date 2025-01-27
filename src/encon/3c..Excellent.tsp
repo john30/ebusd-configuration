@@ -453,6 +453,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x21)
   model FlowMode0 {
+    @minValue(0) @maxValue(50) @step(50)
     speed: speed;
 
     /** [min:0] */
@@ -472,6 +473,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(1)
   model FlowMode1 {
+    @minValue(50) @maxValue(400) @step(5)
     speed: speed;
 
     /** [min:50] */
@@ -491,6 +493,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x2)
   model FlowMode2 {
+    @minValue(50) @maxValue(400) @step(5)
     speed: speed;
 
     /** [min:50] */
@@ -510,6 +513,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x3)
   model FlowMode3 {
+    @minValue(50) @maxValue(400) @step(5)
     speed: speed;
 
     /** [min:50] */
@@ -529,6 +533,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x4)
   model BypassTemp {
+    @minValue(150) @maxValue(350) @step(5)
     temp10: temp10;
 
     /** [min:150] */
@@ -548,6 +553,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x30)
   model BypassTempHyst {
+    @minValue(0) @maxValue(50) @step(5)
     temp10: temp10;
 
     /** [min:0] */
@@ -606,6 +612,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x9)
   model UnbalanceFlow {
+    @minValue(-100) @maxValue(100)
     speed: sspeed;
 
     /** [min:-100] */
@@ -625,6 +632,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0xa)
   model ExtraHeaterType {
+    @minValue(0) @maxValue(2)
     uir: UIR;
 
     /** [min:0] */
@@ -644,6 +652,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0xb)
   model PostheaterTemp {
+    @minValue(150) @maxValue(300) @step(5)
     temp10: temp10;
 
     /** [min:150] */
@@ -676,6 +685,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0xd)
   model Input1VMin {
+    @minValue(0) @maxValue(100) @step(5)
     voltage: voltage;
 
     /** [min:0] */
@@ -695,6 +705,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0xe)
   model Input1VMax {
+    @minValue(0) @maxValue(100) @step(5)
     voltage: voltage;
 
     /** [min:0] */
@@ -766,6 +777,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x13)
   model Input2VMin {
+    @minValue(0) @maxValue(100) @step(5)
     voltage: voltage;
 
     /** [min:0] */
@@ -785,6 +797,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x14)
   model Input2VMax {
+    @minValue(0) @maxValue(100) @step(5)
     voltage: voltage;
 
     /** [min:0] */
@@ -856,6 +869,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x19)
   model EWTTempMin {
+    @minValue(0) @maxValue(100) @step(5)
     temp10: temp10;
 
     /** [min:0] */
@@ -875,6 +889,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x1a)
   model EWTTempMax {
+    @minValue(150) @maxValue(400) @step(5)
     temp10: temp10;
 
     /** [min:150] */
@@ -894,6 +909,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x32)
   model RHTSensorPresent {
+    @minValue(0) @maxValue(1)
     uir: UIR;
 
     /** [min:0] */
@@ -913,6 +929,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x33)
   model RHTSensorSensitivity {
+    @minValue(-2) @maxValue(2)
     sir: SIR;
 
     /** [min:-2] */
@@ -932,6 +949,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x1d)
   model BacklightLevel {
+    @minValue(0) @maxValue(100) @step(5)
     percentr: percentr;
 
     /** [min:0] */
@@ -952,6 +970,7 @@ namespace Excellent {
   @ext(0x34)
   model CO2Sensor1LowerLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -976,6 +995,7 @@ namespace Excellent {
   @ext(0x35)
   model CO2Sensor1UpperLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1000,6 +1020,7 @@ namespace Excellent {
   @ext(0x36)
   model CO2Sensor2LowerLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1024,6 +1045,7 @@ namespace Excellent {
   @ext(0x37)
   model CO2Sensor2UpperLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1048,6 +1070,7 @@ namespace Excellent {
   @ext(0x38)
   model CO2Sensor3LowerLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1072,6 +1095,7 @@ namespace Excellent {
   @ext(0x39)
   model CO2Sensor3UpperLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1096,6 +1120,7 @@ namespace Excellent {
   @ext(0x3a)
   model CO2Sensor4LowerLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1120,6 +1145,7 @@ namespace Excellent {
   @ext(0x3b)
   model CO2Sensor4UpperLimit {
     @unit("ppm")
+    @minValue(400) @maxValue(2000) @step(25)
     uir: UIR;
 
     /** [min:400] */
@@ -1156,6 +1182,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x3f)
   model FlowCorrection {
+    @minValue(90) @maxValue(110)
     percentr: percentr;
 
     /** [min:90] */
@@ -1188,6 +1215,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x45)
   model FilterDaysBeforeWarning {
+    @minValue(1) @maxValue(365)
     uir: UIR;
 
     /** [min:1] */
@@ -1207,6 +1235,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x41)
   model ModbusInterface {
+    @minValue(0) @maxValue(3) @step(2)
     uir: UIR;
 
     /** [min:0] */
@@ -1226,6 +1255,7 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x42)
   model ModbusSlaveAddress {
+    @minValue(1) @maxValue(247)
     uir: UIR;
 
     /** [min:1] */
