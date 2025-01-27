@@ -758,7 +758,10 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   }
   const zz = line[5]&&fromHex(line[5]).join();
   // adjust location before extracting fields
-  location += `:${condNamespace||''}:${dirs[0]}:${zz||''}:${idComb.join(',')}`;
+  location += `:${condNamespace||''}:`;
+  location += single ? dirs[0]
+  : dirs.map(d=>additions.renamedDefaults[d] || (d+getSuffix((defaultNs?defaultNs+':':'')+d, additions.defaultsByName))).join(',');
+  location += `:${zz||''}:${idComb.join(',')}`;//inherited is missing
   const fieldLines: FieldOfLine[] = [];
   const seenFields = new Map<string, number>();
   for (let idx=messageLinePrefixLen; idx<messageLinePrefixLen+maxFields*messageLineFieldLen; idx+=messageLineFieldLen) {
@@ -1171,15 +1174,14 @@ export const csv2tsp = async (args: string[] = []) => {
       });
     });
 
-    await writeFile(langFile, dump(i18n, {replacer,
-      // sortKeys: (a: string, b: string) => {
-      //   const diff = a.toLowerCase().localeCompare(b.toLowerCase());
-      //   if (diff !== 0) {
-      //     return diff;
-      //   }
-      //   return a.localeCompare(b);
-      // },
-    }), 'utf-8');
+    const sortKeys = (a: string, b: string) => {
+      const diff = a.toLowerCase().localeCompare(b.toLowerCase());
+      if (diff !== 0) {
+        return diff;
+      }
+      return a.localeCompare(b);
+    };
+    await writeFile(langFile, dump(i18n, {replacer, sortKeys}), 'utf-8');
     if (storeI18nDir) {
       // const langs = new Set<string>();
       // i18n.forEach(i => Object.keys(i).forEach(l => l!=='locations' && l!=='first' && langs.add(l)));
@@ -1196,7 +1198,7 @@ export const csv2tsp = async (args: string[] = []) => {
         if (!Object.keys(data).length) continue;
         const file = path.join(storeI18nDir, lang+'.yaml');
         console.log(`writing i18n file to ${file}`);
-        await writeFile(file, dump(data), 'utf-8');
+        await writeFile(file, dump(data, {sortKeys}), 'utf-8');
       }
     }
   }
