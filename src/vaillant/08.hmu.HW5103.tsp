@@ -116,7 +116,7 @@ namespace Hmu.Hw5103 {
 
   @inherit(r_0)
   @ext(0xbc, 0xb)
-  model WaterHours {
+  model DhwHours {
     value: hoursum2;
   }
 
@@ -228,7 +228,7 @@ namespace Hmu.Hw5103 {
   @condition(Id.Id.sw, ">=902")
   @inherit(r_1)
   @ext(0x18, 0x2)
-  model CompressorWater {
+  model CompressorDhw {
     @maxLength(1) ign: IGN;
     runtime: minutes4;
     cycles: cntstarts;
@@ -275,7 +275,7 @@ namespace Hmu.Hw5103 {
 
   @inherit(r_3)
   @ext(0x2)
-  model YieldWaterDay {
+  model YieldDhwDay {
     @unit("kWh")
     @divisor(10)
     value: energy;
@@ -312,7 +312,7 @@ namespace Hmu.Hw5103 {
 
   @inherit(r_3)
   @ext(0x12)
-  model YieldWaterMonth {
+  model YieldDhwMonth {
     @unit("kWh")
     @divisor(10)
     value: energy;
@@ -320,20 +320,20 @@ namespace Hmu.Hw5103 {
 
   @inherit(r_3)
   @ext(0x13)
-  model CopWaterMonth {
+  model CopDhwMonth {
     @divisor(10)
     value: UIN;
   }
 
   @inherit(r_3)
   @ext(0x16)
-  model YieldWater {
+  model YieldDhw {
     value: energy;
   }
 
   @inherit(r_3)
   @ext(0x17)
-  model CopWater {
+  model CopDhw {
     @divisor(10)
     value: UIN;
   }
