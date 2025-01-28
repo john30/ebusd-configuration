@@ -525,19 +525,19 @@ actualexhaustfanspeed:
   en: Actual exhaustfan speed
   first: Actual exhaustfan speed
   locations:
-    - encon/3c..Excellent.csv::r_2::0x3
+    - encon/3c..excellent.csv::r_2::0x3
 actualexhaustflow:
   de: Tatsächliche Abluftmenge
   en: Actual exhaust flow
   first: Actual exhaust flow
   locations:
-    - encon/3c..Excellent.csv::r_2::0xc
+    - encon/3c..excellent.csv::r_2::0xc
 actualexhaustpressure:
   de: Istwert Abluftdruck
   en: Actual exhaust pressure
   first: Actual exhaust pressure
   locations:
-    - encon/3c..Excellent.csv::r_2::0x15
+    - encon/3c..excellent.csv::r_2::0x15
 actualfanspeed:
   de: actual fan speed
   en: actual fan speed
@@ -591,19 +591,19 @@ actualinletfanspeed:
   en: Actual inletfan speed
   first: Actual inletfan speed
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2
+    - encon/3c..excellent.csv::r_2::0x2
 actualinletflow:
   de: Tatsächliche Zuluftmenge
   en: Actual inlet flow
   first: Actual inlet flow
   locations:
-    - encon/3c..Excellent.csv::r_2::0xb
+    - encon/3c..excellent.csv::r_2::0xb
 actualinletpressure:
   de: Istwert Zuluftdruck
   en: Actual inlet pressure
   first: Actual inlet pressure
   locations:
-    - encon/3c..Excellent.csv::r_2::0x14
+    - encon/3c..excellent.csv::r_2::0x14
 actualkrm:
   de: Actual_Krm
   en: Actual_Krm
@@ -812,25 +812,25 @@ airflowratemode0:
   en: Air flow rate mode 0
   first: Air flow rate mode 0
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x21
+    - encon/3c..excellent.csv::r_3,w_1::0x21
 airflowratemode1:
   de: Luftmenge Stufe 1
   en: Air flow rate mode 1
   first: Air flow rate mode 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::1
+    - encon/3c..excellent.csv::r_3,w_1::1
 airflowratemode2:
   de: Luftmenge Stufe 2
   en: Air flow rate mode 2
   first: Air flow rate mode 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x2
+    - encon/3c..excellent.csv::r_3,w_1::0x2
 airflowratemode3:
   de: Luftmenge Stufe 3
   en: Air flow rate mode 3
   first: Air flow rate mode 3
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x3
+    - encon/3c..excellent.csv::r_3,w_1::0x3
 airinletsensoroffsetcalibrationvalueforairinletsensor:
   de: 'AirInletSensor_Offset: calibration value for air inlet sensor'
   en: 'AirInletSensor_Offset: calibration value for air inlet sensor'
@@ -1524,7 +1524,7 @@ backlightlevel:
   en: Backlight level
   first: Backlight level
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x1d
+    - encon/3c..excellent.csv::r_3,w_1::0x1d
 backupcommutationschnumberofcommutationsof:
   de: 'Backup_Commutations_CH: Number of commutations of'
   en: 'Backup_Commutations_CH: Number of commutations of'
@@ -2389,7 +2389,7 @@ bypasscurrent:
   en: Bypass current
   first: Bypass current
   locations:
-    - encon/3c..Excellent.csv::r_2::0xd
+    - encon/3c..excellent.csv::r_2::0xd
 bypassflapposition:
   de: Position Bypassklappe
   en: Bypass flap position
@@ -2401,19 +2401,19 @@ bypasshysteresis:
   en: Bypass hysteresis
   first: Bypass hysteresis
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x30
+    - encon/3c..excellent.csv::r_3,w_1::0x30
 bypassstatus:
   de: Status Bypass
   en: Bypass status
   first: Bypass status
   locations:
-    - encon/3c..Excellent.csv::r_2::0xe
+    - encon/3c..excellent.csv::r_2::0xe
 bypasstemperature:
   de: Bypass Temperatur
   en: Bypass temperature
   first: Bypass temperature
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x4
+    - encon/3c..excellent.csv::r_3,w_1::0x4
 bypassvalve:
   de: Bypass-Ventil
   en: Bypass valve
@@ -2460,7 +2460,7 @@ centralheatingheatrecovery:
   en: Central heating + heat recovery
   first: Central heating + heat recovery
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x7
+    - encon/3c..excellent.csv::r_3,w_1::0x7
 centralheatingonoffswitch:
   de: Wintermodus aktiv (Heizbetrieb und Warmwasser)
   en: Central heating on/off switch
@@ -2991,103 +2991,103 @@ co2sensor1level:
   en: CO2 Sensor 1 level
   first: CO2 Sensor 1 level
   locations:
-    - encon/3c..Excellent.csv::r_2::0x29
+    - encon/3c..excellent.csv::r_2::0x29
 co2sensor1lowerlimit:
   de: CO2-Sensor 1; unterer Grenzwert
   en: CO2 Sensor 1 lower limit
   first: CO2 Sensor 1 lower limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x34
+    - encon/3c..excellent.csv::r_3,w_1::0x34
 co2sensor1status:
   de: Status CO2-Sensor 1
   en: CO2 Sensor 1 status
   first: CO2 Sensor 1 status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x28
+    - encon/3c..excellent.csv::r_2::0x28
 co2sensor1upperlimit:
   de: CO2-Sensor 1; oberer Grenzwert
   en: CO2 Sensor 1 upper limit
   first: CO2 Sensor 1 upper limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x35
+    - encon/3c..excellent.csv::r_3,w_1::0x35
 co2sensor2level:
   de: Niveau CO2-Sensor 2
   en: CO2 Sensor 2 level
   first: CO2 Sensor 2 level
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2b
+    - encon/3c..excellent.csv::r_2::0x2b
 co2sensor2lowerlimit:
   de: CO2-Sensor 2; unterer Grenzwert
   en: CO2 Sensor 2 lower limit
   first: CO2 Sensor 2 lower limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x36
+    - encon/3c..excellent.csv::r_3,w_1::0x36
 co2sensor2status:
   de: Status CO2-Sensor 2
   en: CO2 Sensor 2 status
   first: CO2 Sensor 2 status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2a
+    - encon/3c..excellent.csv::r_2::0x2a
 co2sensor2upperlimit:
   de: CO2-Sensor 2; oberer Grenzwert
   en: CO2 Sensor 2 upper limit
   first: CO2 Sensor 2 upper limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x37
+    - encon/3c..excellent.csv::r_3,w_1::0x37
 co2sensor3level:
   de: Niveau CO2-Sensor 3
   en: CO2 Sensor 3 level
   first: CO2 Sensor 3 level
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2d
+    - encon/3c..excellent.csv::r_2::0x2d
 co2sensor3lowerlimit:
   de: CO2-Sensor 3; unterer Grenzwert
   en: CO2 Sensor 3 lower limit
   first: CO2 Sensor 3 lower limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x38
+    - encon/3c..excellent.csv::r_3,w_1::0x38
 co2sensor3status:
   de: Status CO2-Sensor 3
   en: CO2 Sensor 3 status
   first: CO2 Sensor 3 status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2c
+    - encon/3c..excellent.csv::r_2::0x2c
 co2sensor3upperlimit:
   de: CO2-Sensor 3; oberer Grenzwert
   en: CO2 Sensor 3 upper limit
   first: CO2 Sensor 3 upper limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x39
+    - encon/3c..excellent.csv::r_3,w_1::0x39
 co2sensor4level:
   de: Niveau CO2-Sensor 4
   en: CO2 Sensor 4 level
   first: CO2 Sensor 4 level
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2f
+    - encon/3c..excellent.csv::r_2::0x2f
 co2sensor4lowerlimit:
   de: CO2-Sensor 4; unterer Grenzwert
   en: CO2 Sensor 4 lower limit
   first: CO2 Sensor 4 lower limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x3a
+    - encon/3c..excellent.csv::r_3,w_1::0x3a
 co2sensor4status:
   de: Status CO2-Sensor 4
   en: CO2 Sensor 4 status
   first: CO2 Sensor 4 status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x2e
+    - encon/3c..excellent.csv::r_2::0x2e
 co2sensor4upperlimit:
   de: CO2-Sensor 4; oberer Grenzwert
   en: CO2 Sensor 4 upper limit
   first: CO2 Sensor 4 upper limit
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x3b
+    - encon/3c..excellent.csv::r_3,w_1::0x3b
 co2sensorsactivated:
   de: CO2-Sensoren aktiviert
   en: CO2 Sensors activated
   first: CO2 Sensors activated
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x3c
+    - encon/3c..excellent.csv::r_3,w_1::0x3c
 cocorrfactormaxdk:
   de: CO_CorrFactor_max_DK
   en: CO_CorrFactor_max_DK
@@ -3421,13 +3421,13 @@ conditionsswinput1:
   en: Conditions sw. input 1
   first: Conditions sw. input 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0xf
+    - encon/3c..excellent.csv::r_3,w_1::0xf
 conditionsswinput2:
   de: Bedingungen Schalteingang 2
   en: Conditions sw. input 2
   first: Conditions sw. input 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x15
+    - encon/3c..excellent.csv::r_3,w_1::0x15
 configuration:
   de: Konfiguration
   en: Configuration
@@ -3512,13 +3512,13 @@ contact1position:
   en: Contact 1 position
   first: Contact 1 position
   locations:
-    - encon/3c..Excellent.csv::r_2::0x1b
+    - encon/3c..excellent.csv::r_2::0x1b
 contact2position:
   de: Position Schalteingang 2
   en: Contact 2 position
   first: Contact 2 position
   locations:
-    - encon/3c..Excellent.csv::r_2::0x1c
+    - encon/3c..excellent.csv::r_2::0x1c
 continousheating:
   de: Durchgehendes Heizen
   en: continous heating
@@ -6476,7 +6476,7 @@ defaultpositionswitch:
   en: Default position switch
   first: Default position switch
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x40
+    - encon/3c..excellent.csv::r_3,w_1::0x40
 defaultsettingeepromdkdefaultvaluesettingoffalleepromvaluesdoneintheproduction:
   de: >-
     DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done
@@ -7660,7 +7660,7 @@ dipswitchvalue:
   en: Dipswitch value
   first: Dipswitch value
   locations:
-    - encon/3c..Excellent.csv::r_2::0x4
+    - encon/3c..excellent.csv::r_2::0x4
 displayeddhwtanktemperaturedisplayofthestoragestemperaturealsoincaseofansp1error:
   de: >-
     DisplayedDHWTankTemperature: display of the storage's temperature (also in
@@ -7790,7 +7790,7 @@ doesnotresetafteroneminutewithsky300withlatestswthismessageissentbybrinkaircontr
     Does not reset after one minute with Sky300 with latest SW; this message is
     sent by Brink AirControl wall panel
   locations:
-    - encon/3c..Excellent.csv::w::MF,0xcb,1,1:value
+    - encon/3c..excellent.csv::w::MF,0xcb,1,1:value
 domestichotwaterswitch:
   de: WW aus/ein
   en: Domestic hot water switch
@@ -8071,7 +8071,7 @@ ebussyncgenerrors:
   en: EBus SyncGen Errors
   first: EBus SyncGen Errors
   locations:
-    - encon/3c..Excellent.csv::r_2::0x64
+    - encon/3c..excellent.csv::r_2::0x64
 ebusvoltagedkfeedbacksignaloftheebussource:
   de: Rückmeldung der eBUS Spannung
   en: 'EbusVoltage_DK: feedback signal of the eBus source'
@@ -8480,7 +8480,7 @@ errorhistory:
     - vaillant/84.zeo.csv::r::0x47,0
     - vaillant/84.zeo.csv::r::0x47,0x2
     - vaillant/errors.inc::r_2::1
-    - encon/3c..Excellent.csv::r::MF,0x90
+    - encon/3c..excellent.csv::r::MF,0x90
 errormessage:
   de: Fehlernachricht
   en: error message
@@ -8504,7 +8504,7 @@ ewtstatus:
   en: EWT status
   first: EWT status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x1f
+    - encon/3c..excellent.csv::r_2::0x1f
 excesstemperatureexcesstemperatureflowtemperaturessetpointisincreasedbythisvaluetokeepthemixingvalveinitscontrolrange:
   de: >-
     ExcessTemperature: excess temperature (flow temperature's setpoint is
@@ -8636,7 +8636,7 @@ exhaustflowsetting:
   en: Exhaust flow setting
   first: Exhaust flow setting
   locations:
-    - encon/3c..Excellent.csv::r_2::0xa
+    - encon/3c..excellent.csv::r_2::0xa
 extbackupconfigurationofbackupheaterinstallationlocation:
   de: >-
     Zusatzheizung: Eingestellt wird, ob und wo eine Zusatzheizung hydraulisch
@@ -8772,19 +8772,19 @@ extractfanmodeswinput1:
   en: Extract fan mode sw. input 1
   first: Extract fan mode sw. input 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x11
+    - encon/3c..excellent.csv::r_3,w_1::0x11
 extractfanmodeswinput2:
   de: Funktion Abluftventilator Eingang 2
   en: Extract fan mode sw. input 2
   first: Extract fan mode sw. input 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x17
+    - encon/3c..excellent.csv::r_3,w_1::0x17
 extraheatertype:
   de: Typ zusätsliches Heizregister
   en: Extra heater type
   first: Extra heater type
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0xa
+    - encon/3c..excellent.csv::r_3,w_1::0xa
 extreturntemperatureexternalreturntemperaturesensor:
   de: Externer Rücklauftemperatursensor
   en: 'Ext. return temperature: External return temperature sensor'
@@ -8814,7 +8814,7 @@ factoryreset:
   first: Factory reset
   locations:
     - >-
-      encon/3c..Excellent.csv::w::MF,0xff,0x46,0x61,0x63,0x74,0x6f,0x72,0x79,0x52,0x65,0x73,0x65,0x74
+      encon/3c..excellent.csv::w::MF,0xff,0x46,0x61,0x63,0x74,0x6f,0x72,0x79,0x52,0x65,0x73,0x65,0x74
 factorytestaktivfactorytestpin:
   de: 'Fertigungstest aktiv: Factory Test Pin'
   en: 'FactoryTestAktiv: Factory Test Pin'
@@ -8976,14 +8976,14 @@ fanmode:
   en: Fan mode
   first: Fan mode
   locations:
-    - encon/3c..Excellent.csv::w::MF,0xa1
-    - encon/3c..Excellent.csv::r_2::1
+    - encon/3c..excellent.csv::w::MF,0xa1
+    - encon/3c..excellent.csv::r_2::1
 fanmodealternative:
   de: VentilatorbetriebAlternative
   en: Fan modeAlternative
   first: Fan modeAlternative
   locations:
-    - encon/3c..Excellent.csv::w::MF,0xcb,1,1
+    - encon/3c..excellent.csv::w::MF,0xcb,1,1
 fanmodefutureuse:
   de: 'FanMode: future use'
   en: 'FanMode: future use'
@@ -9139,7 +9139,7 @@ fanstatus:
   en: Fan status
   first: Fan status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x11
+    - encon/3c..excellent.csv::r_2::0x11
 faultlistdk:
   de: Faultlist_DK
   en: Faultlist_DK
@@ -9253,31 +9253,31 @@ filterdaysbeforewarning:
   en: Filter days before warning
   first: Filter days before warning
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x45
+    - encon/3c..excellent.csv::r_3,w_1::0x45
 filterdirty:
   de: Filter verdreckt
   en: Filter dirty
   first: Filter dirty
   locations:
-    - encon/3c..Excellent.csv::r_2::0x18
+    - encon/3c..excellent.csv::r_2::0x18
 filtermaximumflow:
   de: Maximaler Durchsatz Filter
   en: Filter Maximum Flow
   first: Filter Maximum Flow
   locations:
-    - encon/3c..Excellent.csv::r_1::0x1c
+    - encon/3c..excellent.csv::r_1::0x1c
 filterusage:
   de: Filterverwendung
   en: Filter usage
   first: Filter usage
   locations:
-    - encon/3c..Excellent.csv::r_1::0x23
+    - encon/3c..excellent.csv::r_1::0x23
 filterusagedays:
   de: Filterverwendung (Tage)
   en: Filter usage (days)
   first: Filter usage (days)
   locations:
-    - encon/3c..Excellent.csv::r_1::0x22
+    - encon/3c..excellent.csv::r_1::0x22
 firstchenergysavingpumpofftimechpumpofftimeforpumpswitchoffduringheatingoperationwithdirectheatingcircuitsfunctionisofffromfactorybutcanbeactivatedinservicemenusviacode1:
   de: >-
     Ausschaltzeit interne Heizkreispumpe: Heizkreispumpenabschaltzeit in min
@@ -9311,7 +9311,7 @@ fixedimbalance:
   en: Fixed imbalance
   first: Fixed imbalance
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x9
+    - encon/3c..excellent.csv::r_3,w_1::0x9
 fixvaluedayfixvaluedayflowsetpoint:
   de: Festwert Tag
   en: 'FixValueDay: Fix value day flow set point'
@@ -9519,7 +9519,7 @@ flowcorrection:
   en: Flow Correction
   first: Flow Correction
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x3f
+    - encon/3c..excellent.csv::r_3,w_1::0x3f
 flowrate:
   de: Volumenstrom
   en: FlowRate
@@ -9958,7 +9958,7 @@ froststatus:
   en: Frost status
   first: Frost status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x16
+    - encon/3c..excellent.csv::r_2::0x16
 fuelquantity:
   de: Brennstoffmenge
   en: fuel quantity
@@ -10028,7 +10028,7 @@ geoheatexchanger:
   en: Geo heat exchanger
   first: Geo heat exchanger
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x18
+    - encon/3c..excellent.csv::r_3,w_1::0x18
 gerundetemittlereauentemperaturalle3haktualisiert:
   de: gerundete mittlere Außentemperatur (alle 3h aktualisiert)
   en: gerundete mittlere Außentemperatur (alle 3h aktualisiert)
@@ -11585,7 +11585,7 @@ humiditybooststate:
   en: Humidity Boost State
   first: Humidity Boost State
   locations:
-    - encon/3c..Excellent.csv::r_2::0x21
+    - encon/3c..excellent.csv::r_2::0x21
 hwcbankholidayendperiod:
   de: HwcHolidayEndPeriod
   en: hwc bank holiday end period
@@ -11867,7 +11867,7 @@ imbalancepermissible:
   en: Imbalance permissible
   first: Imbalance permissible
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x8
+    - encon/3c..excellent.csv::r_3,w_1::0x8
 increaseofminimumpower:
   de: increase of minimum power
   en: increase of minimum power
@@ -11965,7 +11965,7 @@ inletflowsetting:
   en: Inlet flow setting
   first: Inlet flow setting
   locations:
-    - encon/3c..Excellent.csv::r_2::0x9
+    - encon/3c..excellent.csv::r_2::0x9
 inquiryofexistence:
   de: Existenzanfrage
   en: Inquiry of existence
@@ -11977,7 +11977,7 @@ insidetemperature:
   en: Inside temperature
   first: Inside temperature
   locations:
-    - encon/3c..Excellent.csv::r_2::0x7
+    - encon/3c..excellent.csv::r_2::0x7
 installassistantfinished:
   de: InstallAssistantFinished
   en: InstallAssistantFinished
@@ -13391,13 +13391,13 @@ maximumvoltageinput1:
   en: Maximum voltage input 1
   first: Maximum voltage input 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0xe
+    - encon/3c..excellent.csv::r_3,w_1::0xe
 maximumvoltageinput2:
   de: Maximale Spannung Eingang 2
   en: Maximum voltage input 2
   first: Maximum voltage input 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x14
+    - encon/3c..excellent.csv::r_3,w_1::0x14
 maximumwaterpressurethreshold:
   de: maximum waterpressure threshold
   en: maximum waterpressure threshold
@@ -13597,7 +13597,7 @@ maxtempgeoheatexchanger:
   en: Max. temp. geo heat exchanger
   first: Max. temp. geo heat exchanger
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x1a
+    - encon/3c..excellent.csv::r_3,w_1::0x1a
 maxtempsolarcylinderc:
   de: Max. Temp. Solarspeicher [°C]
   en: Max. temp. solar cylinder [C]
@@ -13993,13 +13993,13 @@ minimumvoltageinput1:
   en: Minimum voltage input 1
   first: Minimum voltage input 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0xd
+    - encon/3c..excellent.csv::r_3,w_1::0xd
 minimumvoltageinput2:
   de: Minimale Spannung Eingang 2
   en: Minimum voltage input 2
   first: Minimum voltage input 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x13
+    - encon/3c..excellent.csv::r_3,w_1::0x13
 minimumwaterpressurethreshold:
   de: minimum waterpressure threshold
   en: minimum waterpressure threshold
@@ -14041,7 +14041,7 @@ mintempgeoheatexchanger:
   en: Min. temp. geo heat exchanger
   first: Min. temp. geo heat exchanger
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x19
+    - encon/3c..excellent.csv::r_3,w_1::0x19
 minthresholdwaterpressuredk:
   de: MinThresholdWaterpressure_DK
   en: MinThresholdWaterpressure_DK
@@ -14211,25 +14211,25 @@ modbusinterface:
   en: Modbus Interface
   first: Modbus Interface
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x41
+    - encon/3c..excellent.csv::r_3,w_1::0x41
 modbusparity:
   de: Parität Modbus
   en: Modbus Parity
   first: Modbus Parity
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x44
+    - encon/3c..excellent.csv::r_3,w_1::0x44
 modbusslaveaddress:
   de: Adresse Modbus-Slave
   en: Modbus Slave Address
   first: Modbus Slave Address
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x42
+    - encon/3c..excellent.csv::r_3,w_1::0x42
 modbusspeed:
   de: Geschwindigkeit Modbus
   en: Modbus Speed
   first: Modbus Speed
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x43
+    - encon/3c..excellent.csv::r_3,w_1::0x43
 modemcountrycode:
   de: Modem Landescode
   en: Modem country code
@@ -14605,7 +14605,7 @@ noresetrequestedisadummymessagedoingnothingitmightbeusefulforintegrationinmqttan
     integration in MQTT and HA automation. ErrorsAndFilter seems not working for
     me - but is specified.
   locations:
-    - encon/3c..Excellent.csv::w::MF,0x91:value
+    - encon/3c..excellent.csv::w::MF,0x91:value
 normaldhwhysteresisthehysteresisfordhwloading:
   de: 'Hysterese Warmwasserladung: The hysteresis for DHW loading'
   en: 'NormalDhwHysteresis: The hysteresis for DHW loading'
@@ -14987,13 +14987,13 @@ operatingtime:
   en: Operating time
   first: Operating time
   locations:
-    - encon/3c..Excellent.csv::r_1::0x24
+    - encon/3c..excellent.csv::r_1::0x24
 operationbypassvalve:
   de: Bypassbetrieb
   en: Operation bypass valve
   first: Operation bypass valve
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x1b
+    - encon/3c..excellent.csv::r_3,w_1::0x1b
 operationduringtheautooffperiod:
   de: operation during the auto-off period
   en: operation during the auto-off period
@@ -15241,7 +15241,7 @@ optiontemperature:
   en: Option temperature
   first: Option temperature
   locations:
-    - encon/3c..Excellent.csv::r_2::0x1a
+    - encon/3c..excellent.csv::r_2::0x1a
 otshutdownlimit1cresolutionbedarfsabhngigeheizungsabschaltung:
   de: 'Außentemp. Abschaltgrenze: Bedarfsabhängige Heizungsabschaltung'
   en: 'OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung'
@@ -15393,7 +15393,7 @@ outsidetemperature:
     - vaillant/hcmode.inc::rm::0x16
     - vaillant/hwcmode.inc::rm::0x16
     - vaillant/mcmode.inc::rm::0x16
-    - encon/3c..Excellent.csv::r_2::0x8
+    - encon/3c..excellent.csv::r_2::0x8
 outsidetempsensorcorrection05cresolution:
   de: 'Außentemp. Sensor Korrektur: 0,5 °C Auflösung'
   en: 'OutsideTempSensorCorrection: 0,5°C resolution'
@@ -15840,7 +15840,7 @@ perilexposition:
   en: Perilex position
   first: Perilex position
   locations:
-    - encon/3c..Excellent.csv::r_2::0x5
+    - encon/3c..excellent.csv::r_2::0x5
 periodsfriday:
   de: Zeitfenster Freitag
   en: Periods Friday
@@ -16069,13 +16069,13 @@ postheaterpower:
   en: Postheater power
   first: Postheater power
   locations:
-    - encon/3c..Excellent.csv::r_2::0x1e
+    - encon/3c..excellent.csv::r_2::0x1e
 postheaterstatus:
   de: Status Nachheizregister
   en: Postheater status
   first: Postheater status
   locations:
-    - encon/3c..Excellent.csv::r_2::0x1d
+    - encon/3c..excellent.csv::r_2::0x1d
 powercutindicatorthatevuhascutthepoweraccordingewd:
   de: >-
     Status Stromunterbrechung durch Ansteuerung des EVUKontaktes (Sperrzeit
@@ -16452,13 +16452,13 @@ preheaterpower:
   en: Preheater power
   first: Preheater power
   locations:
-    - encon/3c..Excellent.csv::r_2::0x10
+    - encon/3c..excellent.csv::r_2::0x10
 preheaterstatus:
   de: Status Vorheizregister
   en: Preheater status
   first: Preheater status
   locations:
-    - encon/3c..Excellent.csv::r_2::0xf
+    - encon/3c..excellent.csv::r_2::0xf
 preheatingtimeinstepsof10maximumtimeofenablingtheheatingbeforetheheatingtimewindowstarts:
   de: >-
     Vorheizzeit: in steps of 10, maximum time of enabling the heating before the
@@ -17678,7 +17678,7 @@ relativehumidity:
   en: Relative Humidity
   first: Relative Humidity
   locations:
-    - encon/3c..Excellent.csv::r_2::0x20
+    - encon/3c..excellent.csv::r_2::0x20
 relaycommutationsreserved:
   de: 'RelayCommutations: reserved'
   en: 'RelayCommutations: reserved'
@@ -17731,7 +17731,7 @@ resetnotifications:
   en: Reset Notifications
   first: Reset Notifications
   locations:
-    - encon/3c..Excellent.csv::w::MF,0x91
+    - encon/3c..excellent.csv::w::MF,0x91
 resetoperationhours:
   de: Rücksetzen Betriebsstunden
   en: Reset operation hours
@@ -17825,13 +17825,13 @@ rhsensorpresent:
   en: RH Sensor Present
   first: RH Sensor Present
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x32
+    - encon/3c..excellent.csv::r_3,w_1::0x32
 rhsensorsensitivity:
   de: Empfindlichkeit Feuchtesensor
   en: RH Sensor Sensitivity
   first: RH Sensor Sensitivity
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x33
+    - encon/3c..excellent.csv::r_3,w_1::0x33
 ringsbeforepickuponlyforanalogmodemsused0willneverpickup:
   de: >-
     Klingelzeichen bis zum Aufheben: Wird nur für das analoge Modem verwendet.
@@ -18518,13 +18518,13 @@ selectioninput1:
   en: Selection input 1
   first: Selection input 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0xc
+    - encon/3c..excellent.csv::r_3,w_1::0xc
 selectioninput2:
   de: Auswahl Eingang 2
   en: Selection input 2
   first: Selection input 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x12
+    - encon/3c..excellent.csv::r_3,w_1::0x12
 selectionwhichheatingcircuitisaffectedbychangingparametersinthebasicdisplay:
   de: >-
     selection which heating circuit is affected by changing parameters in the
@@ -19005,7 +19005,7 @@ softwareversion:
   first: software version
   locations:
     - broadcast.csv::r,b::0x7,0x4:software
-    - encon/3c..Excellent.csv::r_2::0
+    - encon/3c..excellent.csv::r_2::0
 solarcircuitprotectionhysteresisaftercollectorpumpprotectionincaseoftoohightemperaturesthecollectorhastocooldownatleastthistemperature:
   de: 'Hysterese Schutzfunktion: Hysterese für die Kollektorkreisschutzfunktion'
   en: >-
@@ -20479,13 +20479,13 @@ supplyfanmodeswinput1:
   en: Supply fan mode sw. input 1
   first: Supply fan mode sw. input 1
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x10
+    - encon/3c..excellent.csv::r_3,w_1::0x10
 supplyfanmodeswinput2:
   de: Funktion Zuluftventilator Eingang 2
   en: Supply fan mode sw. input 2
   first: Supply fan mode sw. input 2
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0x16
+    - encon/3c..excellent.csv::r_3,w_1::0x16
 svuv1solevuv1:
   de: 'SVUV1: Sole-Vuv1'
   en: 'SVUV1: Sole-Vuv1'
@@ -20536,7 +20536,7 @@ switchposition:
   en: Switch position
   first: Switch position
   locations:
-    - encon/3c..Excellent.csv::r_2::0x6
+    - encon/3c..excellent.csv::r_2::0x6
 syncdeicingsynchronizedeicingprocess:
   de: 'SyncDeicing: synchronize deicing process'
   en: 'SyncDeicing: synchronize deicing process'
@@ -21317,7 +21317,7 @@ temperaturepostheater:
   en: Temperature postheater
   first: Temperature postheater
   locations:
-    - encon/3c..Excellent.csv::r_3,w_1::0xb
+    - encon/3c..excellent.csv::r_3,w_1::0xb
 temperaturesensorhwcstoragebottom:
   de: Temp.fühler WW, unten
   en: temperature sensor HWC storage bottom
@@ -21473,7 +21473,7 @@ temporarysettingswhichresetsafterfewminutes:
   en: Temporary settings which resets after few minutes
   first: Temporary settings which resets after few minutes
   locations:
-    - encon/3c..Excellent.csv::w::MF,0xa1:value
+    - encon/3c..excellent.csv::w::MF,0xa1:value
 tempstoragemaxmaximumtemperaturemeasuredbytheexternaltanksensor:
   de: 'Max. Speichertemp.: Maximaltemperatur gemessen am Speichersensor'
   en: 'Temp storage max: maximum temperature measured by the external tank sensor'
@@ -22652,7 +22652,7 @@ totalflow:
   en: Total Flow
   first: Total Flow
   locations:
-    - encon/3c..Excellent.csv::r_1::0x25
+    - encon/3c..excellent.csv::r_1::0x25
 totalfuelconsumption:
   de: TotalFConsumption
   en: total fuel consumption
