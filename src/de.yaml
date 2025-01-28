@@ -72,8 +72,14 @@ actual energy balancing integral: >-
   Das Energie-Integral ist die aufsummierte Differenz zwischen Vorlauftemperatur
   IST und Vorlauftemperatur SOLL pro Minute. Bei einem bestimmten Wärmedefizit
   startet die Wärmepumpe.
+Actual exhaust flow: Tatsächliche Abluftmenge
+Actual exhaust pressure: Istwert Abluftdruck
+Actual exhaustfan speed: Tatsächliche Drehzahl Abluft
 actual fan speed: actual fan speed
 Actual GSM/GPRS provider: Aktueller GSM/GPRS Provider
+Actual inlet flow: Tatsächliche Zuluftmenge
+Actual inlet pressure: Istwert Zuluftdruck
+Actual inletfan speed: Tatsächliche Drehzahl Zuluft
 actual room temperature [°C/Sensor state]: Aktuelle Raumtemperatur
 Actual roomtemperature setpoint [°C]: Aktueller Raumsollwert[°C]
 Actual Time: Aktuelle Zeit
@@ -126,6 +132,10 @@ adpPreH_RoomSetpoint: adpPreH_RoomSetpoint
 adpPreH_RoomTempStart: adpPreH_RoomTempStart
 adpPreH_Starttime: adpPreH_Starttime
 AdvancedPowerValues_DK: AdvancedPowerValues_DK
+Air flow rate mode 0: Luftmenge Stufe 0
+Air flow rate mode 1: Luftmenge Stufe 1
+Air flow rate mode 2: Luftmenge Stufe 2
+Air flow rate mode 3: Luftmenge Stufe 3
 Air quality sensor number: Luftqualitätssensor Anzahl
 Air-earth collector available: Luft-Erdkollektor vorhanden
 'AirInletSensor_Offset: calibration value for air inlet sensor': 'AirInletSensor_Offset: calibration value for air inlet sensor'
@@ -243,6 +253,7 @@ AWPC_EE_MinThreshold_DK: AWPC_EE_MinThreshold_DK
 'B51000SetPointLoadingPump: loading pump''s setpoint sent via B5 10 00 to the BMU': >-
   B51000SetPointLoadingPump: loading pump's setpoint sent via B5 10 00 to the
   BMU
+Backlight level: Beleuchtung Display
 Backup heater output: 'Zusatzheizung: Status Zusatzheizer'
 'Backup_Commutations_CH: Number of commutations of': 'Backup_Commutations_CH: Number of commutations of'
 'Backup_Commutations_DHW: Number of commutations of': 'Backup_Commutations_DHW: Number of commutations of'
@@ -402,7 +413,11 @@ BW_Anfo: BW_Anfo
 'BW_WW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.': >-
   Interne Heizkreispumpe Vorlaufzeit: Prerun time of the internal heat circuit
   pump in s. Relative to the heat source pump prerun time.
+Bypass current: Strom Bypass
 Bypass flap position: Position Bypassklappe
+Bypass hysteresis: Bypass Hysterese
+Bypass status: Status Bypass
+Bypass temperature: Bypass Temperatur
 Bypass valve: Bypass-Ventil
 calculated CO-concentration: calculated CO-concentration
 'CalculatedKickStopTime: calculated time in between two pump kicks during frostprotection (time depends on outside temperature)': >-
@@ -412,6 +427,7 @@ calculated CO-concentration: calculated CO-concentration
 'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.': >-
   Verzögerungszeit Rückruf GSM/GPRS [s]: Zeit zwischen dem letzten eingehenden
   Klingelzeichen und dem Rückruf beim Server (nur GSM/GPRS).
+Central heating + heat recovery: Zentralheizung + WRG
 Central heating on/off switch: Wintermodus aktiv (Heizbetrieb und Warmwasser)
 'CfgHeatSinkType: BMR: configuration of heating circuit; for heat pumps, only "mixer circuit" or "fix value circuit" possible': >-
   Kreis Typ: Einstellung des Typs für den Heizkreis.- Brennerkreis:
@@ -512,6 +528,23 @@ CO_PTC_U1_DK: CO_PTC_U1_DK
 CO_PTC_U2_DK: CO_PTC_U2_DK
 CO_Sensor_SNR: CO_Sensor_SNR
 CO-sensor resistance at 0ppm CO: CO-sensor resistance at 0ppm CO
+CO2 Sensor 1 level: Niveau CO2-Sensor 1
+CO2 Sensor 1 lower limit: CO2-Sensor 1; unterer Grenzwert
+CO2 Sensor 1 status: Status CO2-Sensor 1
+CO2 Sensor 1 upper limit: CO2-Sensor 1; oberer Grenzwert
+CO2 Sensor 2 level: Niveau CO2-Sensor 2
+CO2 Sensor 2 lower limit: CO2-Sensor 2; unterer Grenzwert
+CO2 Sensor 2 status: Status CO2-Sensor 2
+CO2 Sensor 2 upper limit: CO2-Sensor 2; oberer Grenzwert
+CO2 Sensor 3 level: Niveau CO2-Sensor 3
+CO2 Sensor 3 lower limit: CO2-Sensor 3; unterer Grenzwert
+CO2 Sensor 3 status: Status CO2-Sensor 3
+CO2 Sensor 3 upper limit: CO2-Sensor 3; oberer Grenzwert
+CO2 Sensor 4 level: Niveau CO2-Sensor 4
+CO2 Sensor 4 lower limit: CO2-Sensor 4; unterer Grenzwert
+CO2 Sensor 4 status: Status CO2-Sensor 4
+CO2 Sensor 4 upper limit: CO2-Sensor 4; oberer Grenzwert
+CO2 Sensors activated: CO2-Sensoren aktiviert
 code for installer menu: Passwort für das Konfigurationsmenü
 code for the installer's menues: code for the installer's menues
 'Code1: together with code 2, this enables/disables several sw features, in hex format': >-
@@ -579,6 +612,8 @@ Compressor: 'Status Kompressor: AN/AUS'
   aktualisiert wenn der Kompressor angefordert wird aber aufgrund der
   Laufzeitbedingungen nicht anlaufen darf.
 'CompressorState: compressor and ICL state machine status number': 'CompressorState: compressor and ICL state machine status number'
+Conditions sw. input 1: Bedingungen Schalteingang 1
+Conditions sw. input 2: Bedingungen Schalteingang 2
 Configuration: Konfiguration
 configuration of the VR61 relay-output: Konfuguration VR61 Relaisausgang
 configures which room temperature is assigned to zone 1: configures which room temperature is assigned to zone 1
@@ -595,6 +630,8 @@ configures which room temperature is assigned to zone 3: configures which room t
 'Connection error retry delay [minutes]: Delay between two connection tries in case of a connection error': >-
   Verzögerungszeit nach Verbindungsfehler [min]: Wartezeit zwischen zwei
   Verbindungsversuchen, wenn der Verbindungsversuch fehlgeschlagen ist
+Contact 1 position: Position Schalteingang 1
+Contact 2 position: Position Schalteingang 2
 continous heating: Durchgehendes Heizen
 continuos heating: Durchgehendes Heizen
 'ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)': >-
@@ -993,6 +1030,7 @@ DCF_TimeDate_DK: DCF Datum/Uhrzeit
 'DcfIsValid: validity of DCF signal': 'DcfIsValid: validity of DCF signal'
 De-activation autosync: Deaktivierung Autosync
 DeaerateBrineCircuit: DeaerateBrineCircuit
+Default position switch: Schaltergrundstellung
 default value: default Wert
 'DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done in the production)': >-
   DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done in
@@ -1188,6 +1226,7 @@ Dieses Jahr Stromverbrauch gesamt: Dieses Jahr Stromverbrauch gesamt
 Digital input actual values: Aktueller Wert 230V Alarmeingänge
 digital ionisation voltage: digital ionisation voltage
 digital ionisation voltage> 80 no flame< 40 good flame: 'Ionisationsspannung: größer 80 = keine Flammekleiner 40 = gutes Flammensignal'
+Dipswitch value: Wert DIP-Schalter
 display language: display language
 Displayed Room Temp: 'Displayed Room Temp: Angezeigte Raumtemperatur'
 'DisplayedDHWTankTemperature: display of the storage''s temperature (also in case of an SP1error)': >-
@@ -1205,6 +1244,9 @@ DisplayedRoomSetpoint: DisplayedRoomSetpoint
 'DisplayMode_DK: Display mode of the appliance': 'DisplayMode_DK: Display mode of the appliance'
 'DisplayMode: Display mode of the appliance': 'DisplayMode: Display mode of the aplliance'
 'DisplayTyp: display misubishi=0x07, mtek=0x70': 'DisplayTyp: display misubishi=0x07, mtek=0x70'
+Does not reset after one minute with Sky300 with latest SW; this message is sent by Brink AirControl wall panel: >-
+  Does not reset after one minute with Sky300 with latest SW; this message is
+  sent by Brink AirControl wall panel
 Domestic hot water switch: WW aus/ein
 DSN Start adress: DSN Startadresse
 DSN starting address: DSN Startadresse
@@ -1242,6 +1284,7 @@ e.08 SD_CO_R0_DK: e.08 SD_CO_R0_DK
   Übertragung auf Austauschplatinen benötigt.
 EarnedEnergySum: Earned energy UI display value
 'EarnedEnvironmentEnergy: sum of earned environmental energy in kWh': Gesamtsumme Energieertrag
+EBus SyncGen Errors: eBus Synch. Fehler
 eBUS voltage feedback: Rückmeldung der eBUS Spannung
 'eBUS_CRC: last calculated eBUS CRC': 'eBUS_CRC: last calculated eBUS CRC'
 'eBUSCommErrorPending: eBUS communication fails': 'eBUSCommErrorPending: eBUS Kommunikationsfehler'
@@ -1323,6 +1366,7 @@ error number: Fehlernummer
 Error_Actual: Error_Actual
 Error_History: Fehlerhistorie
 Estrichtrocknungstag: Estrichtrocknungstag
+EWT status: Status Erdreichwärmetauscher
 excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range): >-
   excess temperature of Hc1 (flow temperature's setpoint is increased by this
   value to keep the mixing valve in its control range)
@@ -1347,6 +1391,7 @@ Exhaust air internal actual flow: Interner Istwert Volumenstrom Abluft
 Exhaust air internal target flow: Interner Sollwert Volumenstrom Abluft
 Exhaust air speed: Drehzahl Abluft
 Exhaust air temperature: Ablufttemperatur
+Exhaust flow setting: Abluftmenge
 'Ext_Backup: Configuration of backup heater installation location': >-
   Zusatzheizung: Eingestellt wird, ob und wo eine Zusatzheizung hydraulisch
   angebunden ist:- intern (Elektro-Zusatzheizung in der Wärmepumpe)- WW + HK:
@@ -1368,8 +1413,12 @@ External DHW temperature sensor: 'Speichertemp. IST: Temperatur im Warmwasserspe
 'ExternalDHWRequest: 0: No request; 1: Request': 'Externe Warmwasseranforderung: 0: No request; 1: Request'
 'ExternalDHWSetpoint: Requested temperature for DHW': 'Externer Warmwassersollwert: Requested temperature for DHW'
 'ExternGasvalve_DK: external gasvalve activated': 'Ext. Gasventil: Externes Magnetventil'
+Extra heater type: Typ zusätsliches Heizregister
+Extract fan mode sw. input 1: Funktion Abluftventilator Eingang 1
+Extract fan mode sw. input 2: Funktion Abluftventilator Eingang 2
 'ExtTankModulCon_DK: external tank modul connected (VR65)': 'VR65 angeschlossen: Externes Speichermodul (VR65) angeschlosssen'
 'F_coll: Ventilator im Luftkollektor': 'F_coll: Ventilator im Luftkollektor'
+Factory reset: Rücksetzen auf Werkseinstellung
 'FactoryTestAktiv: Factory Test Pin': 'Fertigungstest aktiv: Factory Test Pin'
 'Failed ignition (3rd attempt): Number of unsuccessful ignition attempts (in the 3rd attempt)': 'Zündfehler 3. Versuch: Anzahl der erfolglosen Zündversuche (im 3. Versuch)'
 'Failed ignition (4th attempt): Number of unsuccessful ignition attempts (in the 4th attempt)': 'Zündfehler 4. Versuch: Anzahl der erfolglosen Zündversuche (im 4. Versuch)'
@@ -1378,12 +1427,15 @@ Fan maximum speed: Lüfter Maximaldrehzahl
 Fan maximum speed offset: Offset max. Drehzahl
 Fan minimum speed: Lüfter Minimaldrehzahl
 Fan minimum speed offset: Offset min. Drehzahl
+Fan mode: Ventilatorbetrieb
+Fan modeAlternative: VentilatorbetriebAlternative
 'Fan number of starts: Number of times fan switched on': 'FanCommunt: Anzahl der Lüfterschaltspiele'
 'Fan operating hours: Operating hours of the fan': 'Betriebsstunden Lüfter: Betriebsstunden des Lüfters'
 Fan operation hours: 'Betriebsstunden Lüfter: Betriebsstunden des Lüfters'
 fan run time: fan run time
 fan speed actual value: Aktuelle Lüfterdrehzahl
 Fan speed setpoint: Drehzahlsollwert des Lüfters
+Fan status: Status Ventilator
 'Fan_Brine_Port: port feedback; only needed by UI in actuator test': 'Fan_Brine_Port: port feedback; only needed by UI in actuator test'
 'Fan_DK: Fan (non modulating one) activated': Lüfter eingeschaltet (bei nicht modulierenden Lüfter)
 'Fan_DK: Fan activation signal': 'Lüfter: Fan activation signal'
@@ -1420,12 +1472,18 @@ Ferienzeitraum Start Zone 3: Ferienzeitraum Start Zone 3
 'FiFoResetCnt: counter how often eBUS Fifo was cleared': 'FiFoResetCnt: counter how often eBUS Fifo was cleared'
 FillBrineCircuit: Befüllprogramm Solarkreis
 FillDearatePrimCircuit: FillDearatePrimCircuit
+Filter days before warning: Tage vor Filterwarnung
+Filter dirty: Filter verdreckt
+Filter Maximum Flow: Maximaler Durchsatz Filter
+Filter usage: Filterverwendung
+Filter usage (days): Filterverwendung (Tage)
 First = Zones maybe? Rest unknown; needs some other configured ctlv2: Erstes Byte = Zonenanzahl?
 first part of the installer's telephone number: first part of the installer's telephone number
 'FirstCHEnergySavingPumpOffTime: CH pump off time for pump switch off during heating operation with direct heating circuits. Function is off from factory but can be activated in service menus via Code1.': >-
   Ausschaltzeit interne Heizkreispumpe: Heizkreispumpenabschaltzeit in min
   während des Heizbetriebes über einen direkten Heizkreis sofern der Kompressor
   nicht läuft. Die Funktion muss per Code im Servicemenü aktiviert werden.
+Fixed imbalance: Ständiges Ungleichgewicht
 'FixValueDay: Fix value day flow set point': Festwert Tag
 'FixValueNight: Fix value night flow set point': Festwert Nacht
 FlagsBoiler_1: FlagsBoiler_1
@@ -1454,6 +1512,7 @@ FloorPavingDryingDay: Estrichtrocknung Tag
 'FloorPavingDryingTemperature: flow temperature setpoint for the current day of floor pavement drying': >-
   Estrichtrocknungstemperatur: flow temperature setpoint for the current day of
   floor pavement drying
+Flow Correction: Durchsatzkorrektur
 Flow rate the collector pumps are able to deliver for 100% power: Flow rate the collector pumps are able to deliver for 100% power
 'Flow setpoint: 1/2 °C resolution': 'Vorlaufsolltemperatur: 1/2 °C resolution'
 'Flow setpoint: BMR:flow temperature that is actually desired by circuit': >-
@@ -1508,6 +1567,7 @@ Friday recirculation time: Freitag Umluftzeit
 from: von
 frost delay time: Frostschutz-Verzögerung
 Frost protection element: Frostschutzelement
+Frost status: Status Frostschutz
 FrostOverRideTime: Frostschutz-Verzögerung
 'FrostOverRideTime: delay before frost protection is activated': 'Frostschutz-Verzögerung: delay before frost protection is activated'
 'FrostOverRideTime: frost over ride time': 'Frostschutz-Verzögerung: Frostschutzverzögerung'
@@ -1541,6 +1601,7 @@ Function of optional relay: Option relais function
 'FunctionFlags_DK: differrent function flags': 'FunctionFlags_DK: differrent function flags'
 'FwsModulDetected: detected VPM-W (bit counted)': 'FwsModulDetected: detected VPM-W (bit counted)'
 'Gasventil 3: Gas valve switching signal (from the processor)': 'Gasventil 3: Gasventil Schaltsignal (vom Prozessor)'
+Geo heat exchanger: Erdreichwärmetauscher
 gerundete mittlere Außentemperatur (alle 3h aktualisiert): gerundete mittlere Außentemperatur (alle 3h aktualisiert)
 gewünschte Temperatur Warmwasserkreis: gewünschte Temperatur Warmwasserkreis
 GFA_Stoerung: GFA Störung
@@ -1819,6 +1880,7 @@ How often the volume sensor has to pulse for the detection of 10 liters: How oft
   Vorlauf Quellenpumpe: Zeitspanne, um die sich die Quellenpumpe vor dem
   Kompressor einschaltet
 'HT_Soll: °C': 'HT_Soll: °C'
+Humidity Boost State: Feuchtesensor Status
 hwc bank holiday end period: HwcHolidayEndPeriod
 hwc bank holiday start period: HwcHolidayStartPeriod
 hwc flow temperature: HwcFlowTemp
@@ -1863,6 +1925,7 @@ identifier for the variant: Identifikator zur Variantenerkennung
 if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint: >-
   if outside temperature > summer limit => heating is OFF;applies to comfort and
   night setback setpoint
+Imbalance permissible: Ungleichgewicht möglich
 increase of minimum power: increase of minimum power
 Information which provider has been selectet. Only valid in case of GSM/GPRS modem.: Aktuell verwendeter GSM/GPRS Provider
 'InhibitT1T2T3Counting: stoppt Zeitglieder t1, t2, t3': 'InhibitT1T2T3Counting: stoppt Zeitglieder t1, t2, t3'
@@ -1875,7 +1938,9 @@ Information which provider has been selectet. Only valid in case of GSM/GPRS mod
   defaultvalues (done in the production)
 Initiates and indicates the bleeding function: 'Entlüftung Sole: Solepumpe ist abwechselnd 50 min in Betrieb und 10 min aus'
 Injection: Injection
+Inlet flow setting: Zuluftmenge
 Inquiry of existence: Existenzanfrage
+Inside temperature: Ablufttemperatur
 'InstallAssistant: install assistant not active (0 = active, 1 = not active)': 'InstallAssistant: install assistant not active (0 = active, 1 = not active)'
 InstallAssistantFinished: InstallAssistantFinished
 Installation height: Installationshöhe
@@ -2059,6 +2124,7 @@ Max. Speichersollwert. Limits the maximum adjustment range of the potentiometer 
   Max. Speichersollwert. Begrenzt den max. Einstellbereich des Potentiometers
   (Rechtsanschlag).
 Max. switch-on diff. solar cylinder [K]: max. Einschaltdiff. Solarspeicher [K]
+Max. temp. geo heat exchanger: Max. Temp. Erdreichwärmetauscher
 Max. temp. solar cylinder [C]: Max. Temp. Solarspeicher [°C]
 Max. Voraufheizung: Max. Voraufheizung
 'Max. WW Vorlauftemp.: Maximalwert des Warmwassersensors': 'Max. WW Vorlauftemp.: Maximalwert des Warmwassersensors'
@@ -2117,6 +2183,8 @@ maximum room humidity: maximale Raumluftfeuchte
 'Maximum storage temperature: Maximum storage tank temperature': 'Max. Speichertemp.: Maximaltemperatur gemessen am Speichersensor'
 maximum value: maximaler Wert
 maximum value of calculated gas-adaptive correction-factor: maximum value of calculated gas-adaptive correction-factor
+Maximum voltage input 1: Maximale Spannung Eingang 1
+Maximum voltage input 2: Maximale Spannung Eingang 2
 Maximum water storing time for storage without own controls: Max. Speicherladezeit für Speicher ohne eigene Regelung
 maximum waterpressure threshold: maximum waterpressure threshold
 'MaxLaufzeitDauer: des Primärkreisumschalters': 'MaxLaufzeitDauer: des Primärkreisumschalters'
@@ -2156,6 +2224,7 @@ min_Ignitiontime_DK: Min. Zündzeit
 min. / max powervalues: min. / max powervalues
 'Min. signal strength GSM/GPRS: Min. value since last power on (0..31)': 'Min. Signalstärke GSM/GPRS: Min. Wert seit dem letzten Netz ein (0..31)'
 Min. switch-on diff. solar cylinder [K]: min. Einschaltdiff. Solarspeicher [K]
+Min. temp. geo heat exchanger: Min. Temp. Erdreichwärmetauscher
 MinCoolingTempDesired Heizkreis 1: MinCoolingTempDesired Heizkreis 1
 MinCoolingTempDesired Heizkreis 2: MinCoolingTempDesired Heizkreis 2
 MinCoolingTempDesired Heizkreis 3: MinCoolingTempDesired Heizkreis 3
@@ -2202,6 +2271,8 @@ minimum flow temperature setpoint (end emphasis) of Hc2: minimum flow temperatur
 minimum flow temperature setpoint (end emphasis) of Hc3: minimum flow temperature setpoint (end emphasis) of Hc3
 minimum ignition time: Minimale Zündzeit
 minimum value: minimaler Wert
+Minimum voltage input 1: Minimale Spannung Eingang 1
+Minimum voltage input 2: Minimale Spannung Eingang 2
 minimum waterpressure threshold: minimum waterpressure threshold
 'MinSpeedTemp: temperature for minimum speed': 'MinSpeedTemp: temperature for minimum speed'
 MinThresholdWaterpressure_DK: MinThresholdWaterpressure_DK
@@ -2237,6 +2308,10 @@ MixerMovement Heizkreis 1: MixerMovement Heizkreis 1
 MixerMovement Heizkreis 2: MixerMovement Heizkreis 2
 MixerMovement Heizkreis 3: MixerMovement Heizkreis 3
 'Mk2Detected: detected VR60 (bit counted)': 'Erkannte VR60: detected VR60 (bit counted)'
+Modbus Interface: Schnittstelle Modbus
+Modbus Parity: Parität Modbus
+Modbus Slave Address: Adresse Modbus-Slave
+Modbus Speed: Geschwindigkeit Modbus
 Modem country code: Modem Landescode
 Modem dial prefix: Modem Wahlprefix
 Modem init string: Modem Initialisierungs Zeichenkette
@@ -2291,6 +2366,10 @@ No. of solar panels: Anzahl Kollektoren
   schedule
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
 Nominal flow NL: Nennvolumenstrom NL
+NoResetRequested is a dummy message doing nothing. It might be useful for integration in MQTT and HA automation. ErrorsAndFilter seems not working for me - but is specified.: >-
+  NoResetRequested is a dummy message doing nothing. It might be useful for
+  integration in MQTT and HA automation. ErrorsAndFilter seems not working for
+  me - but is specified.
 'NormalDhwHysteresis: The hysteresis for DHW loading': 'Hysterese Warmwasserladung: The hysteresis for DHW loading'
 noSystem=0, SSR=1, VRC=2, eSys=3, mixedSys=4: noSystem=0, SSR=1, VRC=2, eSys=3, mixedSys=4
 'not_tested_yet: Merker für erfolgreichen Selbsttest': 'not_tested_yet: Merker für erfolgreichen Selbsttest'
@@ -2335,6 +2414,7 @@ OffsetFlowSetpointBufToBoiler: OffsetFlowSetpointBufToBoiler
 OneTimeCirculationSwitch: 1x ZP Schalter
 'OneTimeCirculationSwitch: non-recurring circulation pump running period': '1x ZP Schalter: non-recurring circulation pump running period'
 Operating mode of mixer circuit: 'Betriebsart: Operating mode of mixer circuit'
+Operating time: Betriebsdauer
 OperatingMode: Betriebsart
 'OperatingMode: 1=Ein 2=Aus 3=Auto': 'Betriebsart: 1=Ein 2=Aus 3=Auto'
 'OperatingMode: 1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken': 'Betriebsart: 1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken'
@@ -2354,6 +2434,7 @@ OperatingMode430: OperatingMode430
 'OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on)': >-
   OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 =
   off, 4 = on)
+Operation bypass valve: Bypassbetrieb
 operation during the auto-off period: operation during the auto-off period
 operation during the lowering time: operation during the lowering time
 operation hours: Betriebsstunden
@@ -2392,6 +2473,7 @@ operation of Hc3 during the lowering time; no influence if room temperature modu
 Operation time solar pump: Laufzeit Solarpumpe
 OpModeEffect: OpModeEffect
 Option relais function: Option relais function
+Option temperature: zusätzlicher Temperaturfühler
 'OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung': 'Außentemp. Abschaltgrenze: Bedarfsabhängige Heizungsabschaltung'
 'OtShutdownLimit: BMR: Outside temperature above which heating circuits switch off': >-
   Außentemp. Abschaltgrenze: AT-Abschaltgrenze: Temperaturgrenze für Abschaltung
@@ -2496,6 +2578,7 @@ Partymodus aktiv: Partymodus aktiv
 'PartyStart: Start Party Mode': 'Start Partyfunktion: Start Party Mode'
 Password for the first internet provider: Passwort für ersten Internetprovider
 Paswword for second internetprovider: Passwort für den zweiten Internetprovider
+Perilex position: Position Perilexschalter
 Periods Friday: Zeitfenster Freitag
 Periods Monday: Zeitfenster Montag
 Periods Saturday: Zeitfenster Samstag
@@ -2523,6 +2606,8 @@ Phone number provider 1: Telefonnummer Provider 2
 'PollutionDetect: unusual low brine temperaure at high air inlet temperature': 'PollutionDetect: unusual low brine temperaure at high air inlet temperature'
 'Pos1: Umschalterposition Direktheizbetrieb': 'Start: Umschalterposition Direktheizbetrieb'
 'Pos2: Umschalterposition Desorption mit Bypass': 'Pos2: Umschalterposition Desorption mit Bypass'
+Postheater power: Leistung Nachheizregister
+Postheater status: Status Nachheizregister
 Power number: Leistungsdaten
 'Power on alarm: If on a alarm message is sent after power on': 'Netz ein Alarm: Ein = Alarmmeldung nach Netz ein'
 Power solar pump [%]: Leistung Solarpumpe [%]
@@ -2572,6 +2657,8 @@ Predictive Maintenance data: Wartungsdaten
 Predictive maintenance date of the actoSTOR: Predictive maintenance date of the actoSTOR
 Prefix which will be sent to the modem befor dialing: Diese Zeichenkette wird vor dem Wählen an das Modem gesendet
 Preheat: 'Preheat: vorheizen'
+Preheater power: Leistung Vorheizregister
+Preheater status: Status Vorheizregister
 'PreheatingTime: in steps of 10, maximum time of enabling the heating before the heating time window starts': >-
   Vorheizzeit: in steps of 10, maximum time of enabling the heating before the
   heating time window starts
@@ -2730,6 +2817,7 @@ register number: Registernummer
 register value range: Register Wertebereich
 'Relais Solarpumpe: Solar pump relay: 0: OFF; 1: ON': 'Relais Solarpumpe: Solar pump relay: 0: OFF; 1: ON'
 'RelaisOut: reserved': 'RelaisOut: reserved'
+Relative Humidity: relative Feuchte (RH-Sensor)
 Relay outputs: Relaisausgänge
 'RelayCommutations: reserved': 'RelayCommutations: reserved'
 RemoteControlMode: Raumaufschaltung
@@ -2737,6 +2825,7 @@ RemoteControlMode: Raumaufschaltung
 'RequestForExternalDateTimeSetting: 0: Time and Date is set; 1: Time and Date is not set': 'Status Datum/Uhrzeit: 0: Time and Date is set; 1: Time and Date is not set'
 'reserve 1: for future use': 'reserve 1: for future use'
 Reset: Reset
+Reset Notifications: Fehlerliste
 Reset operation hours: Rücksetzen Betriebsstunden
 Reset solar gain: Rücksetzen Solarertrag
 Reset to factory defaults: Werkseinstellungen
@@ -2752,6 +2841,8 @@ RestartBlockingTimer: RestartBlockingTimer
 'RfCommErrorPending: radio communication fails': >-
   Übertragungsfehler auf der Funkstrecke: Kommunikationsstörung auf der
   Funkstrecke
+RH Sensor Present: Feuchtesensor vorhanden
+RH Sensor Sensitivity: Empfindlichkeit Feuchtesensor
 'Rings before pickup: Only for analog modems used. 0 = will never pick up.': >-
   Klingelzeichen bis zum Aufheben: Wird nur für das analoge Modem verwendet.
   Null bedeutet, das Modem nimmt nie an.
@@ -2845,6 +2936,8 @@ selected zone: Selektierte Zone
 'SelectedHeatCircuit: number of heating circuit to which this remote control is assigned': >-
   SelectedHeatCircuit: number of heating circuit to which this remote control is
   assigned
+Selection input 1: Auswahl Eingang 1
+Selection input 2: Auswahl Eingang 2
 selection which heating circuit is affected by changing parameters in the basic display: >-
   selection which heating circuit is affected by changing parameters in the
   basic display
@@ -2924,7 +3017,7 @@ SM_GV_Current_DK: SM_GV_Current_DK
 SMGV_CorrFactorHigh_sum_DK: SMGV_CorrFactorHigh_sum_DK
 SMGV_CorrFactorLow_sum_DK: SMGV_CorrFactorLow_sum_DK
 SMGV_CurrentPos_DK: SMGV_CurrentPos_DK
-software version: Software-Version
+software version: Software Version
 'SoftwareCode: 4 Bytes holding several software status info': 'SoftwareCode: 4 Bytes holding several software status info'
 Solar flow rate [l/h]: Volumenstrom Solarkreis [l/h]
 Solar gain: Solarertrag
@@ -3175,11 +3268,14 @@ Supply air internal actual flow: Interner Istwert Volumenstrom Zuluft
 Supply air internal target flow: Interner Sollwert Volumenstrom Zuluft
 Supply air speed: Drehzahl Zuluft
 Supply air temperature: Zulufttemperatur
+Supply fan mode sw. input 1: Funktion Zuluftventilator Eingang 1
+Supply fan mode sw. input 2: Funktion Zuluftventilator Eingang 2
 'SVUV1: Sole-Vuv1': 'SVUV1: Sole-Vuv1'
 'SVUV2: Sole-Vuv2': 'SVUV2: Sole-Vuv2'
 switch from weekly program over to a daily one: >-
   Umschaltung von Tagesprogramm (die Zeitprogramme sind dann jeden Tag
   identisch) zum Wochenprogramm (jeder Tag kann idividuell programmiert werden)
+Switch position: Position Stufenschalter
 Switch-on diff. solar cyl. [K]: Einschaltdiff. Solarspeicher [K]
 Switch/off diff. solar cyl. [K]: Ausschaltdiff. Solarspeicher [K]
 switching on threshold for recognition of water tapping0 = 1,5 l/min and no delay, 1 = 3,7 l/min and 2s delay: >-
@@ -3373,6 +3469,7 @@ Temp.fühler WW, unten: Temp.fühler WW, unten
 TemperaturDiffInOutdoor: Zulässige Raum zu Außentemperaturunterschreitung
 temperature: Temperatur
 'Temperature gradient failures: Number of boiler shutdown due to high gradient (S.54)': 'Gradientenfehler: Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)'
+Temperature postheater: Temperatur Nachheizregister
 temperature sensor HW storage bottom: Temp.fühler Hz, unten
 temperature sensor HW storage top: Temp.fühler Hz, oben
 temperature sensor HWC storage bottom: Temp.fühler WW, unten
@@ -3391,6 +3488,7 @@ TempFailDetectTime: Temperaturfehlererkennung nach
 'TempGradientFailure_DK: Number of cut offs of the boilers cause of to high gradient (S.54)': 'Gradientenfehler: Anzahl der Boilerabschaltung wegen zu hohem Gradient (S.54)'
 TempIncrease: Temperaturüberhöhung
 'TempIncrease: temperature increase': Temperaturüberhöhung
+Temporary settings which resets after few minutes: Temporary settings which resets after few minutes
 Test_Fan: Test_Fan
 'Test_Heater: reserved': 'Test_Heater: reserved'
 testbetrieb: Testbetrieb
@@ -3547,6 +3645,7 @@ total energy consumption: TotalEConsumption
 total energy consumption heating: TotalEConsumptionHc
 total energy consumption hot water: TotalEConsumptionHwc
 total environmental yield: TotalEnvironmentalYield
+Total Flow: Gesamtdurchsatz
 total fuel consumption: TotalFConsumption
 total fuel consumption heating: TotalFConsumptionHc
 total fuel consumption hot water: TotalFConsumptionHwc

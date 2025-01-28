@@ -7,6 +7,7 @@ using Ebus.Str;
 using Ebus.Contrib;
 
 namespace Tem;
+alias MF = 0x10; // Ebus.Id.Values_manufacturers.TEM
 // Bartl TEM
 
 /** Datentyp */
