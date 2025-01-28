@@ -302,7 +302,12 @@ const addI18n = (location: string, str?: string): string|undefined => {
   i18n.set(key, {...add, first, [i18nLang]: str, locations});
   return first;
 };
-const normComment = (location: string, str?: string) => str && addI18n(location, str.replace(/@/g, 'at').replaceAll('**', '^'));
+const normComment = (location: string, str?: string) => {
+  if (!str || commentI18nIgnore && commentI18nIgnore.test(str)) {
+    return str;
+  }
+  return addI18n(location, str.replace(/@/g, 'at').replaceAll('**', '^'));
+};
 const templateTrans: Trans<TemplateLine> = (location, line, header, additions): OptStrs => {
   if (header) return templateHeader;
   if (header===false) {
@@ -346,7 +351,12 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
   ]
 }
 const knownManufacturers = new Map<string, [number, string]>([
+  ['tem', [0x10, 'TEM']],
+  ['wolf', [0x19, 'Wolf']], // actually under kromschroeder below
+  ['encon', [0x40, 'ENCON']],
+  ['kromschroeder', [0x50, 'Kromschröder']],
   ['vaillant', [0xb5, 'Vaillant']],
+  ['weishaupt', [0xc5, 'Weishaupt']],
 ])
 const setSubdirManuf = (subdir: string): string|undefined => {
   const [id, name] = knownManufacturers.get(subdir)||[];
@@ -466,7 +476,7 @@ const isSimpleField = (line: FieldOfLine, singleField?: string): {comm?: string,
   }
   return {comm: line[5], typ};
 }
-const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, additions: Additions, singleField?: string): OptStrs => {
+const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<string, number>, additions: Additions, singleField?: string, optional?: true): OptStrs => {
   if (!line) return;
   const {id, typ, typLen, comm, divisor, values, constValue}
   = divisorValues(line[0], line[2], line[3], line[5], singleField);
@@ -495,7 +505,7 @@ const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<str
     divisor||values,
     typLen,
     constValue!==undefined ? `@constValue(${constValue})` : '',
-    `${suffName}: ${typ},`,
+    `${suffName}${optional?'?':''}: ${typ},`,
   ]
 };
 const messageHeader = [
@@ -557,7 +567,7 @@ const namespaceWithZz = (header: string, additions: Additions) => {
   //   // drop component index suffix
   //   parts.splice(parts.length-1, 1);
   // }
-  circuit = parts.map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_'+p:pascalCase(p))).join('.');
+  circuit = parts.filter(p=>!!p).map(p=>normId(p)).map(p=>(p[0]>='0'&&p[0]<='9'?'_'+p:pascalCase(p))).join('.');
   return [
     zz,
     `namespace ${circuit} {`,
@@ -617,7 +627,9 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       let circuit = line[1];
       const model = line[2];
       let field = line[4];
+      const zz = hex(fromHex(line[5])[0] as number) || '';
       let value = line[6]||'';
+      let noNs = '';
       if (circuit==='scan') {
         if (!model) {
           // refers to Ebus.Id.Id
@@ -628,7 +640,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
         }
       }
       const fname = field||(value&&normalize?'value':'');
-      additions.conditions.set(name, [[pascalCase(circuit),pascalCase(model),fname].filter(p=>p).join('.'), value]);
+      additions.conditions.set(name, [[pascalCase(circuit),pascalCase(model),fname].filter(p=>p).join('.'), value, zz, noNs]);
       return;
     }
     // conditional
@@ -636,16 +648,22 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
     conditions.forEach(cond => {
       // SW<1,SW>1,SW=1,SW<=1,SW>=1
       let [,name, values] = cond.match(/^([^=<>]*)(.*)$/)||[,cond];
-      const [field, value] = additions.conditions.get(name)||additions.conditions.get(cond)||[];
+      const [field, value, zz, noNs] = additions.conditions.get(name)||additions.conditions.get(cond)||[];
       if (value && !values) {
         values = value;
       }
-      conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
+      if (zz) {
+        conds.push(`@conditionExt(${field}, ${zz}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
+      } else {
+        conds.push(`@condition(${field}${values?`, ${values.split(';').map(v=>'"'+v+'"').join(',')}`:''})`);
+      }
       let nsAdd;
       if (value) {
         nsAdd = name;
+      } else if (noNs) {
+        nsAdd = '';
       } else {
-        nsAdd = values||'';
+        nsAdd = (zz?'_'+zz.substring(2)+(values?'_':''):'')+(values||'');
         if (loadInclude && nsAdd.startsWith("='") && field.includes('.Id.')) {
           nsAdd = '_'+loadInclude.split('.').reverse()[0]; // reduce multiple product ids with filename instead
         }
@@ -795,7 +813,14 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
   }
   if (!model) {
     const fields: OptStrs = [];
-    fieldLines.forEach(fieldLine => fields.push(...fieldTrans(location, fieldLine, seenFields, additions, fieldLines.length===1?modelName:'')||[]));
+    let optional: undefined|true = undefined;
+    fieldLines.forEach(fieldLine => {
+      if (fieldLine[0]?.startsWith('?')) {
+        fieldLine[0] = fieldLine[0].substring(1);
+        optional = true;
+      }
+      fields.push(...fieldTrans(location, fieldLine, seenFields, additions, fieldLines.length===1?modelName:'', optional)||[]);
+    });
     model = [
       (line[3]||isDefault)&&`/** ${normComment(location, line[3])||isDefault} */`,
       single
@@ -860,6 +885,7 @@ const helpTxt = [
   '  -p mapfile   the file name of a previously generated multi-language mapping to read for seeding the i18n normalization',
   '  -s i18ndir   the directory in which to store i18n file(s) per language ("<lang>.yaml")',
   '  -i regex     pattern for file names (including relative dir) to ignore',
+  '  -I regex     pattern for comment strings to ignore for i18n',
   '  -n           add extra namespace for explicitly named circuit',
   '  csvfile      the csv file(s) to transform (unless to traverse the whole basedir)'
 ];
@@ -871,6 +897,7 @@ let i18nLang: keyof Omit<I18n, 'locations'> = 'en';
 let warnI18n = false;
 let i18nMap: Map<string, [string, Partial<I18n>]>; // map from message/field/template key to i18n key and language+text
 let i18nMapRev: Map<string, string>; // map from non-en language to en from previous mapping
+let commentI18nIgnore: RegExp|undefined;
 export const csv2tsp = async (args: string[] = []) => {
   let indir = 'latest/en';
   let outdir = 'outtsp';
@@ -921,6 +948,9 @@ export const csv2tsp = async (args: string[] = []) => {
         break;
       case '-i':
         ignorePattern = new RegExp(args[++i]);
+        break;
+      case '-I':
+        commentI18nIgnore = new RegExp(args[++i]);
         break;
       case '-n':
         namespacePerCircuit = true;

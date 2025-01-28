@@ -520,6 +520,24 @@ actualenvironmentpowerpercentageonlyforgraphicdisplayamountoffillingofthebigener
     filling of the big energy arrow
   locations:
     - vaillant/08.ehp.csv::r,u::0xbb,0
+actualexhaustfanspeed:
+  de: Tatsächliche Drehzahl Abluft
+  en: Actual exhaustfan speed
+  first: Actual exhaustfan speed
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x3
+actualexhaustflow:
+  de: Tatsächliche Abluftmenge
+  en: Actual exhaust flow
+  first: Actual exhaust flow
+  locations:
+    - encon/3c..Excellent.csv::r_2::0xc
+actualexhaustpressure:
+  de: Istwert Abluftdruck
+  en: Actual exhaust pressure
+  first: Actual exhaust pressure
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x15
 actualfanspeed:
   de: actual fan speed
   en: actual fan speed
@@ -568,6 +586,24 @@ actualgsmgprsprovider:
   first: Actual GSM/GPRS provider
   locations:
     - vaillant/05.vd4.csv::r,wi::0x1b,0
+actualinletfanspeed:
+  de: Tatsächliche Drehzahl Zuluft
+  en: Actual inletfan speed
+  first: Actual inletfan speed
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2
+actualinletflow:
+  de: Tatsächliche Zuluftmenge
+  en: Actual inlet flow
+  first: Actual inlet flow
+  locations:
+    - encon/3c..Excellent.csv::r_2::0xb
+actualinletpressure:
+  de: Istwert Zuluftdruck
+  en: Actual inlet pressure
+  first: Actual inlet pressure
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x14
 actualkrm:
   de: Actual_Krm
   en: Actual_Krm
@@ -771,6 +807,30 @@ airearthcollectoravailable:
   first: Air-earth collector available
   locations:
     - vaillant/08.recov.csv::r,w::0x28,0xe
+airflowratemode0:
+  de: Luftmenge Stufe 0
+  en: Air flow rate mode 0
+  first: Air flow rate mode 0
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x21
+airflowratemode1:
+  de: Luftmenge Stufe 1
+  en: Air flow rate mode 1
+  first: Air flow rate mode 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::1
+airflowratemode2:
+  de: Luftmenge Stufe 2
+  en: Air flow rate mode 2
+  first: Air flow rate mode 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x2
+airflowratemode3:
+  de: Luftmenge Stufe 3
+  en: Air flow rate mode 3
+  first: Air flow rate mode 3
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x3
 airinletsensoroffsetcalibrationvalueforairinletsensor:
   de: 'AirInletSensor_Offset: calibration value for air inlet sensor'
   en: 'AirInletSensor_Offset: calibration value for air inlet sensor'
@@ -1459,6 +1519,12 @@ b51000setpointloadingpumploadingpumpssetpointsentviab51000tothebmu:
     - vaillant/15.f37.csv::r::0x7b,0
     - vaillant/15.f43.csv::r::0x7b,0
     - vaillant/15.f47.csv::r::0x7b,0
+backlightlevel:
+  de: Beleuchtung Display
+  en: Backlight level
+  first: Backlight level
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x1d
 backupcommutationschnumberofcommutationsof:
   de: 'Backup_Commutations_CH: Number of commutations of'
   en: 'Backup_Commutations_CH: Number of commutations of'
@@ -2318,12 +2384,36 @@ bwwwch1ppreruntimepreruntimeoftheinternalheatcircuitpumpinsrelativetotheheatsour
     - vaillant/08.ehp.csv:brinetowater_sw_350_400:r,wi::0x9f,1
     - vaillant/08.ehp.csv:brinetowater_sw_ge403:r,wi::0xc8,1
     - vaillant/08.ehp.csv:airtobrinetowater_sw_ge403:r,wi::0xc9,1
+bypasscurrent:
+  de: Strom Bypass
+  en: Bypass current
+  first: Bypass current
+  locations:
+    - encon/3c..Excellent.csv::r_2::0xd
 bypassflapposition:
   de: Position Bypassklappe
   en: Bypass flap position
   first: Bypass flap position
   locations:
     - vaillant/08.recov.csv::r::0xb,0xe
+bypasshysteresis:
+  de: Bypass Hysterese
+  en: Bypass hysteresis
+  first: Bypass hysteresis
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x30
+bypassstatus:
+  de: Status Bypass
+  en: Bypass status
+  first: Bypass status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0xe
+bypasstemperature:
+  de: Bypass Temperatur
+  en: Bypass temperature
+  first: Bypass temperature
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x4
 bypassvalve:
   de: Bypass-Ventil
   en: Bypass valve
@@ -2365,6 +2455,12 @@ callbackdelaygsmgprsstimebetweenthelastringandthecallback:
   first: 'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.'
   locations:
     - vaillant/05.vd4.csv::r,wi::0x1e,0
+centralheatingheatrecovery:
+  de: Zentralheizung + WRG
+  en: Central heating + heat recovery
+  first: Central heating + heat recovery
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x7
 centralheatingonoffswitch:
   de: Wintermodus aktiv (Heizbetrieb und Warmwasser)
   en: Central heating on/off switch
@@ -2890,6 +2986,108 @@ cmresetcntclockmonitorresets:
   locations:
     - vaillant/15.e7f.csv::r::0x31,0
     - vaillant/75.v81.csv::r::0x17,0
+co2sensor1level:
+  de: Niveau CO2-Sensor 1
+  en: CO2 Sensor 1 level
+  first: CO2 Sensor 1 level
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x29
+co2sensor1lowerlimit:
+  de: CO2-Sensor 1; unterer Grenzwert
+  en: CO2 Sensor 1 lower limit
+  first: CO2 Sensor 1 lower limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x34
+co2sensor1status:
+  de: Status CO2-Sensor 1
+  en: CO2 Sensor 1 status
+  first: CO2 Sensor 1 status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x28
+co2sensor1upperlimit:
+  de: CO2-Sensor 1; oberer Grenzwert
+  en: CO2 Sensor 1 upper limit
+  first: CO2 Sensor 1 upper limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x35
+co2sensor2level:
+  de: Niveau CO2-Sensor 2
+  en: CO2 Sensor 2 level
+  first: CO2 Sensor 2 level
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2b
+co2sensor2lowerlimit:
+  de: CO2-Sensor 2; unterer Grenzwert
+  en: CO2 Sensor 2 lower limit
+  first: CO2 Sensor 2 lower limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x36
+co2sensor2status:
+  de: Status CO2-Sensor 2
+  en: CO2 Sensor 2 status
+  first: CO2 Sensor 2 status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2a
+co2sensor2upperlimit:
+  de: CO2-Sensor 2; oberer Grenzwert
+  en: CO2 Sensor 2 upper limit
+  first: CO2 Sensor 2 upper limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x37
+co2sensor3level:
+  de: Niveau CO2-Sensor 3
+  en: CO2 Sensor 3 level
+  first: CO2 Sensor 3 level
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2d
+co2sensor3lowerlimit:
+  de: CO2-Sensor 3; unterer Grenzwert
+  en: CO2 Sensor 3 lower limit
+  first: CO2 Sensor 3 lower limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x38
+co2sensor3status:
+  de: Status CO2-Sensor 3
+  en: CO2 Sensor 3 status
+  first: CO2 Sensor 3 status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2c
+co2sensor3upperlimit:
+  de: CO2-Sensor 3; oberer Grenzwert
+  en: CO2 Sensor 3 upper limit
+  first: CO2 Sensor 3 upper limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x39
+co2sensor4level:
+  de: Niveau CO2-Sensor 4
+  en: CO2 Sensor 4 level
+  first: CO2 Sensor 4 level
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2f
+co2sensor4lowerlimit:
+  de: CO2-Sensor 4; unterer Grenzwert
+  en: CO2 Sensor 4 lower limit
+  first: CO2 Sensor 4 lower limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x3a
+co2sensor4status:
+  de: Status CO2-Sensor 4
+  en: CO2 Sensor 4 status
+  first: CO2 Sensor 4 status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x2e
+co2sensor4upperlimit:
+  de: CO2-Sensor 4; oberer Grenzwert
+  en: CO2 Sensor 4 upper limit
+  first: CO2 Sensor 4 upper limit
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x3b
+co2sensorsactivated:
+  de: CO2-Sensoren aktiviert
+  en: CO2 Sensors activated
+  first: CO2 Sensors activated
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x3c
 cocorrfactormaxdk:
   de: CO_CorrFactor_max_DK
   en: CO_CorrFactor_max_DK
@@ -3218,6 +3416,18 @@ compressorstatecompressorandiclstatemachinestatusnumber:
   first: 'CompressorState: compressor and ICL state machine status number'
   locations:
     - vaillant/08.ehp.csv::r::0xe4,0
+conditionsswinput1:
+  de: Bedingungen Schalteingang 1
+  en: Conditions sw. input 1
+  first: Conditions sw. input 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0xf
+conditionsswinput2:
+  de: Bedingungen Schalteingang 2
+  en: Conditions sw. input 2
+  first: Conditions sw. input 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x15
 configuration:
   de: Konfiguration
   en: Configuration
@@ -3297,6 +3507,18 @@ connectionerrorretrydelayminutesdelaybetweentwoconnectiontriesincaseofaconnectio
     in case of a connection error
   locations:
     - vaillant/05.vd4.csv::r,wi::0x10,0
+contact1position:
+  de: Position Schalteingang 1
+  en: Contact 1 position
+  first: Contact 1 position
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x1b
+contact2position:
+  de: Position Schalteingang 2
+  en: Contact 2 position
+  first: Contact 2 position
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x1c
 continousheating:
   de: Durchgehendes Heizen
   en: continous heating
@@ -6145,6 +6367,7 @@ days:
   locations:
     - vaillant/_templates.csv:daysel
     - vaillant/_templates.csv:days
+    - encon/_templates.csv:days
 daysetpointforzone1:
   de: day setpoint for zone 1
   en: day setpoint for zone 1
@@ -6248,6 +6471,12 @@ deaeratebrinecircuit:
   first: DeaerateBrineCircuit
   locations:
     - vaillant/84.zeo.csv::r::0xf7,0
+defaultpositionswitch:
+  de: Schaltergrundstellung
+  en: Default position switch
+  first: Default position switch
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x40
 defaultsettingeepromdkdefaultvaluesettingoffalleepromvaluesdoneintheproduction:
   de: >-
     DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done
@@ -7426,6 +7655,12 @@ digitalionisationvoltage80noflame40goodflame:
     - vaillant/bai.0010021961.inc::r::0xa4,0:value
     - vaillant/bai.0020066007.inc::r::0xa4,0:value
     - vaillant/bai.308523.inc::r::0xa4,0:value
+dipswitchvalue:
+  de: Wert DIP-Schalter
+  en: Dipswitch value
+  first: Dipswitch value
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x4
 displayeddhwtanktemperaturedisplayofthestoragestemperaturealsoincaseofansp1error:
   de: >-
     DisplayedDHWTankTemperature: display of the storage's temperature (also in
@@ -7544,6 +7779,18 @@ displaytypdisplaymisubishi0x07mtek0x70:
   first: 'DisplayTyp: display misubishi=0x07, mtek=0x70'
   locations:
     - vaillant/15.ui.csv::r::0x8d,0
+doesnotresetafteroneminutewithsky300withlatestswthismessageissentbybrinkaircontrolwallpanel:
+  de: >-
+    Does not reset after one minute with Sky300 with latest SW; this message is
+    sent by Brink AirControl wall panel
+  en: >-
+    Does not reset after one minute with Sky300 with latest SW; this message is
+    sent by Brink AirControl wall panel
+  first: >-
+    Does not reset after one minute with Sky300 with latest SW; this message is
+    sent by Brink AirControl wall panel
+  locations:
+    - encon/3c..Excellent.csv::w::MF,0xcb,1,1:value
 domestichotwaterswitch:
   de: WW aus/ein
   en: Domestic hot water switch
@@ -7819,6 +8066,12 @@ ebussourceondkactivationsignaloftheebussource:
     - vaillant/bai.0010015600.inc::r::0x34,0
     - vaillant/bai.0010021961.inc::r::0x34,0
     - vaillant/bai.308523.inc::r::0x34,0
+ebussyncgenerrors:
+  de: eBus Synch. Fehler
+  en: EBus SyncGen Errors
+  first: EBus SyncGen Errors
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x64
 ebusvoltagedkfeedbacksignaloftheebussource:
   de: Rückmeldung der eBUS Spannung
   en: 'EbusVoltage_DK: feedback signal of the eBus source'
@@ -8227,6 +8480,7 @@ errorhistory:
     - vaillant/84.zeo.csv::r::0x47,0
     - vaillant/84.zeo.csv::r::0x47,0x2
     - vaillant/errors.inc::r_2::1
+    - encon/3c..Excellent.csv::r::MF,0x90
 errormessage:
   de: Fehlernachricht
   en: error message
@@ -8245,6 +8499,12 @@ estrichtrocknungstag:
   first: Estrichtrocknungstag
   locations:
     - vaillant/50.vr630.mc.csv::r::0x3b,0
+ewtstatus:
+  de: Status Erdreichwärmetauscher
+  en: EWT status
+  first: EWT status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x1f
 excesstemperatureexcesstemperatureflowtemperaturessetpointisincreasedbythisvaluetokeepthemixingvalveinitscontrolrange:
   de: >-
     ExcessTemperature: excess temperature (flow temperature's setpoint is
@@ -8371,6 +8631,12 @@ exhaustairtemperature:
   first: Exhaust air temperature
   locations:
     - vaillant/08.recov.csv::r::0xb4,0xd
+exhaustflowsetting:
+  de: Abluftmenge
+  en: Exhaust flow setting
+  first: Exhaust flow setting
+  locations:
+    - encon/3c..Excellent.csv::r_2::0xa
 extbackupconfigurationofbackupheaterinstallationlocation:
   de: >-
     Zusatzheizung: Eingestellt wird, ob und wo eine Zusatzheizung hydraulisch
@@ -8501,6 +8767,24 @@ externgasvalvedkexternalgasvalveactivated:
     - vaillant/bai.0010008045.inc::r::0xe4,0
     - vaillant/bai.0010010674.inc::r::0xe4,0
     - vaillant/bai.308523.inc::r::0xe4,0
+extractfanmodeswinput1:
+  de: Funktion Abluftventilator Eingang 1
+  en: Extract fan mode sw. input 1
+  first: Extract fan mode sw. input 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x11
+extractfanmodeswinput2:
+  de: Funktion Abluftventilator Eingang 2
+  en: Extract fan mode sw. input 2
+  first: Extract fan mode sw. input 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x17
+extraheatertype:
+  de: Typ zusätsliches Heizregister
+  en: Extra heater type
+  first: Extra heater type
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0xa
 extreturntemperatureexternalreturntemperaturesensor:
   de: Externer Rücklauftemperatursensor
   en: 'Ext. return temperature: External return temperature sensor'
@@ -8524,6 +8808,13 @@ exttankmodulcondkexternaltankmodulconnectedvr65:
     - vaillant/bai.0010008045.inc::r::0xbf,0
     - vaillant/bai.0010010674.inc::r::0xbf,0
     - vaillant/bai.308523.inc::r::0xbf,0
+factoryreset:
+  de: Rücksetzen auf Werkseinstellung
+  en: Factory reset
+  first: Factory reset
+  locations:
+    - >-
+      encon/3c..Excellent.csv::w::MF,0xff,0x46,0x61,0x63,0x74,0x6f,0x72,0x79,0x52,0x65,0x73,0x65,0x74
 factorytestaktivfactorytestpin:
   de: 'Fertigungstest aktiv: Factory Test Pin'
   en: 'FactoryTestAktiv: Factory Test Pin'
@@ -8680,6 +8971,19 @@ fanminspeedoperation:
     - vaillant/bai.0010010674.inc::r::0xdf,0
     - vaillant/bai.0020066007.inc::r::0xdf,0
     - vaillant/bai.308523.inc::r::0xdf,0
+fanmode:
+  de: Ventilatorbetrieb
+  en: Fan mode
+  first: Fan mode
+  locations:
+    - encon/3c..Excellent.csv::w::MF,0xa1
+    - encon/3c..Excellent.csv::r_2::1
+fanmodealternative:
+  de: VentilatorbetriebAlternative
+  en: Fan modeAlternative
+  first: Fan modeAlternative
+  locations:
+    - encon/3c..Excellent.csv::w::MF,0xcb,1,1
 fanmodefutureuse:
   de: 'FanMode: future use'
   en: 'FanMode: future use'
@@ -8830,6 +9134,12 @@ fanstartspeedreserved:
   first: 'FanStartSpeed: reserved'
   locations:
     - vaillant/e0.omu.csv::r::0x22,0
+fanstatus:
+  de: Status Ventilator
+  en: Fan status
+  first: Fan status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x11
 faultlistdk:
   de: Faultlist_DK
   en: Faultlist_DK
@@ -8938,6 +9248,36 @@ filldearateprimcircuit:
   first: FillDearatePrimCircuit
   locations:
     - vaillant/84.zeo.csv::r::0xfe,0
+filterdaysbeforewarning:
+  de: Tage vor Filterwarnung
+  en: Filter days before warning
+  first: Filter days before warning
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x45
+filterdirty:
+  de: Filter verdreckt
+  en: Filter dirty
+  first: Filter dirty
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x18
+filtermaximumflow:
+  de: Maximaler Durchsatz Filter
+  en: Filter Maximum Flow
+  first: Filter Maximum Flow
+  locations:
+    - encon/3c..Excellent.csv::r_1::0x1c
+filterusage:
+  de: Filterverwendung
+  en: Filter usage
+  first: Filter usage
+  locations:
+    - encon/3c..Excellent.csv::r_1::0x23
+filterusagedays:
+  de: Filterverwendung (Tage)
+  en: Filter usage (days)
+  first: Filter usage (days)
+  locations:
+    - encon/3c..Excellent.csv::r_1::0x22
 firstchenergysavingpumpofftimechpumpofftimeforpumpswitchoffduringheatingoperationwithdirectheatingcircuitsfunctionisofffromfactorybutcanbeactivatedinservicemenusviacode1:
   de: >-
     Ausschaltzeit interne Heizkreispumpe: Heizkreispumpenabschaltzeit in min
@@ -8966,6 +9306,12 @@ firstzonesmayberestunknownneedssomeotherconfiguredctlv2:
   first: First = Zones maybe? Rest unknown; needs some other configured ctlv2
   locations:
     - vaillant/15.ctlv2.csv::r::MF,0x55,0xa0:value
+fixedimbalance:
+  de: Ständiges Ungleichgewicht
+  en: Fixed imbalance
+  first: Fixed imbalance
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x9
 fixvaluedayfixvaluedayflowsetpoint:
   de: Festwert Tag
   en: 'FixValueDay: Fix value day flow set point'
@@ -9168,6 +9514,12 @@ flow2sensor3flowtemperature:
   first: 'Flow2Sensor3: Flow temperature'
   locations:
     - vaillant/53.mc2.mc.5.csv::r::0x3,0
+flowcorrection:
+  de: Durchsatzkorrektur
+  en: Flow Correction
+  first: Flow Correction
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x3f
 flowrate:
   de: Volumenstrom
   en: FlowRate
@@ -9601,6 +9953,12 @@ frostprotstate0fpsnofrost1fpsdelay2fpspumpkick3fpskickoff4fpsactive:
     _Fps_KickOff, 4 = _Fps_Active
   locations:
     - vaillant/50.v61.mc.csv::r::0x4b,0
+froststatus:
+  de: Status Frostschutz
+  en: Frost status
+  first: Frost status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x16
 fuelquantity:
   de: Brennstoffmenge
   en: fuel quantity
@@ -9665,6 +10023,12 @@ gasventil3gasvalveswitchingsignalfromtheprocessor:
   locations:
     - vaillant/bai.0010015600.inc::r::0xdb,0
     - vaillant/bai.0010021961.inc::r::0xdb,0
+geoheatexchanger:
+  de: Erdreichwärmetauscher
+  en: Geo heat exchanger
+  first: Geo heat exchanger
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x18
 gerundetemittlereauentemperaturalle3haktualisiert:
   de: gerundete mittlere Außentemperatur (alle 3h aktualisiert)
   en: gerundete mittlere Außentemperatur (alle 3h aktualisiert)
@@ -11165,6 +11529,7 @@ hours:
     - vaillant/_templates.csv:hours
     - vaillant/_templates.csv:hours1
     - vaillant/_templates.csv:hours12
+    - encon/_templates.csv:hours5
 hoursleftbeforeserviceisneeded:
   de: Wartungsintervall:Anzahl der Stunden bis zur nächsten Wartung
   en: Hours left before service is needed
@@ -11215,6 +11580,12 @@ htsollc:
   first: 'HT_Soll: °C'
   locations:
     - vaillant/50.zeo.mc.csv::r::0xd9,0
+humiditybooststate:
+  de: Feuchtesensor Status
+  en: Humidity Boost State
+  first: Humidity Boost State
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x21
 hwcbankholidayendperiod:
   de: HwcHolidayEndPeriod
   en: hwc bank holiday end period
@@ -11491,6 +11862,12 @@ ifoutsidetemperaturesummerlimitheatingisoffappliestocomfortandnightsetbacksetpoi
     - vaillant/15.ctlv2.csv::r_3,w_3::0x14,0:value
     - vaillant/15.ctlv2.csv::r_4,w_4::0x14,0:value
     - vaillant/15.ctlv2.csv::r_5,w_5::0x14,0:value
+imbalancepermissible:
+  de: Ungleichgewicht möglich
+  en: Imbalance permissible
+  first: Imbalance permissible
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x8
 increaseofminimumpower:
   de: increase of minimum power
   en: increase of minimum power
@@ -11583,12 +11960,24 @@ injection:
   first: Injection
   locations:
     - vaillant/08.ehp.csv::r::0x1f,0
+inletflowsetting:
+  de: Zuluftmenge
+  en: Inlet flow setting
+  first: Inlet flow setting
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x9
 inquiryofexistence:
   de: Existenzanfrage
   en: Inquiry of existence
   first: Inquiry of existence
   locations:
     - broadcast.csv::w::0x7,0xfe
+insidetemperature:
+  de: Ablufttemperatur
+  en: Inside temperature
+  first: Inside temperature
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x7
 installassistantfinished:
   de: InstallAssistantFinished
   en: InstallAssistantFinished
@@ -12997,6 +13386,18 @@ maximumvalueofcalculatedgasadaptivecorrectionfactor:
   first: maximum value of calculated gas-adaptive correction-factor
   locations:
     - vaillant/bai.0010004121.inc::r::0x1a,1:value
+maximumvoltageinput1:
+  de: Maximale Spannung Eingang 1
+  en: Maximum voltage input 1
+  first: Maximum voltage input 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0xe
+maximumvoltageinput2:
+  de: Maximale Spannung Eingang 2
+  en: Maximum voltage input 2
+  first: Maximum voltage input 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x14
 maximumwaterpressurethreshold:
   de: maximum waterpressure threshold
   en: maximum waterpressure threshold
@@ -13191,6 +13592,12 @@ maxtempdiffexttftpredictivemaintenancedata:
   locations:
     - vaillant/bai.0010015600.inc::r::0x27,0
     - vaillant/bai.0010021961.inc::r::0x27,0
+maxtempgeoheatexchanger:
+  de: Max. Temp. Erdreichwärmetauscher
+  en: Max. temp. geo heat exchanger
+  first: Max. temp. geo heat exchanger
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x1a
 maxtempsolarcylinderc:
   de: Max. Temp. Solarspeicher [°C]
   en: Max. temp. solar cylinder [C]
@@ -13581,6 +13988,18 @@ minimumvalue:
   first: minimum value
   locations:
     - vaillant/general.csv::r_1::0x4:min
+minimumvoltageinput1:
+  de: Minimale Spannung Eingang 1
+  en: Minimum voltage input 1
+  first: Minimum voltage input 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0xd
+minimumvoltageinput2:
+  de: Minimale Spannung Eingang 2
+  en: Minimum voltage input 2
+  first: Minimum voltage input 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x13
 minimumwaterpressurethreshold:
   de: minimum waterpressure threshold
   en: minimum waterpressure threshold
@@ -13617,6 +14036,12 @@ minswitchondiffsolarcylinderk:
   first: Min. switch-on diff. solar cylinder [K]
   locations:
     - vaillant/15.sdr_p.csv::r,wi::0x52,0
+mintempgeoheatexchanger:
+  de: Min. Temp. Erdreichwärmetauscher
+  en: Min. temp. geo heat exchanger
+  first: Min. temp. geo heat exchanger
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x19
 minthresholdwaterpressuredk:
   de: MinThresholdWaterpressure_DK
   en: MinThresholdWaterpressure_DK
@@ -13781,6 +14206,30 @@ mk2detecteddetectedvr60bitcounted:
   first: 'Mk2Detected: detected VR60 (bit counted)'
   locations:
     - vaillant/15.ui.csv::r::0x18,0
+modbusinterface:
+  de: Schnittstelle Modbus
+  en: Modbus Interface
+  first: Modbus Interface
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x41
+modbusparity:
+  de: Parität Modbus
+  en: Modbus Parity
+  first: Modbus Parity
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x44
+modbusslaveaddress:
+  de: Adresse Modbus-Slave
+  en: Modbus Slave Address
+  first: Modbus Slave Address
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x42
+modbusspeed:
+  de: Geschwindigkeit Modbus
+  en: Modbus Speed
+  first: Modbus Speed
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x43
 modemcountrycode:
   de: Modem Landescode
   en: Modem country code
@@ -14142,6 +14591,21 @@ noofsolarpanels:
   first: No. of solar panels
   locations:
     - vaillant/15.sdr_p.csv::r,wi::0x44,0
+noresetrequestedisadummymessagedoingnothingitmightbeusefulforintegrationinmqttandhaautomationerrorsandfilterseemsnotworkingformebutisspecified:
+  de: >-
+    NoResetRequested is a dummy message doing nothing. It might be useful for
+    integration in MQTT and HA automation. ErrorsAndFilter seems not working for
+    me - but is specified.
+  en: >-
+    NoResetRequested is a dummy message doing nothing. It might be useful for
+    integration in MQTT and HA automation. ErrorsAndFilter seems not working for
+    me - but is specified.
+  first: >-
+    NoResetRequested is a dummy message doing nothing. It might be useful for
+    integration in MQTT and HA automation. ErrorsAndFilter seems not working for
+    me - but is specified.
+  locations:
+    - encon/3c..Excellent.csv::w::MF,0x91:value
 normaldhwhysteresisthehysteresisfordhwloading:
   de: 'Hysterese Warmwasserladung: The hysteresis for DHW loading'
   en: 'NormalDhwHysteresis: The hysteresis for DHW loading'
@@ -14518,6 +14982,18 @@ operatingmodeoperatingmodeofcpcircuit1auto2manual3off4on:
     4 = on)
   locations:
     - vaillant/a1.sol.cc.csv::r::0xf,0
+operatingtime:
+  de: Betriebsdauer
+  en: Operating time
+  first: Operating time
+  locations:
+    - encon/3c..Excellent.csv::r_1::0x24
+operationbypassvalve:
+  de: Bypassbetrieb
+  en: Operation bypass valve
+  first: Operation bypass valve
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x1b
 operationduringtheautooffperiod:
   de: operation during the auto-off period
   en: operation during the auto-off period
@@ -14760,6 +15236,12 @@ optionrelaisfunction:
     - vaillant/bai.0010006341.inc::r,wi::0xb8,0:value
     - vaillant/bai.0010007508.inc::r,wi::0xb8,0:value
     - vaillant/bai.0010010674.inc::r,wi::0xb8,0:value
+optiontemperature:
+  de: zusätzlicher Temperaturfühler
+  en: Option temperature
+  first: Option temperature
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x1a
 otshutdownlimit1cresolutionbedarfsabhngigeheizungsabschaltung:
   de: 'Außentemp. Abschaltgrenze: Bedarfsabhängige Heizungsabschaltung'
   en: 'OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung'
@@ -14911,6 +15393,7 @@ outsidetemperature:
     - vaillant/hcmode.inc::rm::0x16
     - vaillant/hwcmode.inc::rm::0x16
     - vaillant/mcmode.inc::rm::0x16
+    - encon/3c..Excellent.csv::r_2::0x8
 outsidetempsensorcorrection05cresolution:
   de: 'Außentemp. Sensor Korrektur: 0,5 °C Auflösung'
   en: 'OutsideTempSensorCorrection: 0,5°C resolution'
@@ -15352,6 +15835,12 @@ pcstartseinschaltungenpc:
   first: 'P_c_starts: Einschaltungen P_c'
   locations:
     - vaillant/84.zeo.csv::r::0xef,0
+perilexposition:
+  de: Position Perilexschalter
+  en: Perilex position
+  first: Perilex position
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x5
 periodsfriday:
   de: Zeitfenster Freitag
   en: Periods Friday
@@ -15575,6 +16064,18 @@ pos2umschalterpositiondesorptionmitbypass:
   first: 'Pos2: Umschalterposition Desorption mit Bypass'
   locations:
     - vaillant/84.zeo.csv::r::0x66,0
+postheaterpower:
+  de: Leistung Nachheizregister
+  en: Postheater power
+  first: Postheater power
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x1e
+postheaterstatus:
+  de: Status Nachheizregister
+  en: Postheater status
+  first: Postheater status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x1d
 powercutindicatorthatevuhascutthepoweraccordingewd:
   de: >-
     Status Stromunterbrechung durch Ansteuerung des EVUKontaktes (Sperrzeit
@@ -15946,6 +16447,18 @@ preheat:
   first: Preheat
   locations:
     - vaillant/15.e7c.csv::r,wi::0x6c,0
+preheaterpower:
+  de: Leistung Vorheizregister
+  en: Preheater power
+  first: Preheater power
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x10
+preheaterstatus:
+  de: Status Vorheizregister
+  en: Preheater status
+  first: Preheater status
+  locations:
+    - encon/3c..Excellent.csv::r_2::0xf
 preheatingtimeinstepsof10maximumtimeofenablingtheheatingbeforetheheatingtimewindowstarts:
   de: >-
     Vorheizzeit: in steps of 10, maximum time of enabling the heating before the
@@ -17160,6 +17673,12 @@ relaissolarpumpesolarpumprelay0off1on:
   locations:
     - vaillant/06.pms.csv::r,wi::0xf,0
     - vaillant/06.vms.csv::r,wi::0xf,0
+relativehumidity:
+  de: relative Feuchte (RH-Sensor)
+  en: Relative Humidity
+  first: Relative Humidity
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x20
 relaycommutationsreserved:
   de: 'RelayCommutations: reserved'
   en: 'RelayCommutations: reserved'
@@ -17207,6 +17726,12 @@ reset:
   first: Reset
   locations:
     - vaillant/84.zeo.csv::r::0x48,0
+resetnotifications:
+  de: Fehlerliste
+  en: Reset Notifications
+  first: Reset Notifications
+  locations:
+    - encon/3c..Excellent.csv::w::MF,0x91
 resetoperationhours:
   de: Rücksetzen Betriebsstunden
   en: Reset operation hours
@@ -17295,6 +17820,18 @@ rfqualityotdcfrfqualityoftheconnectionbetweenvr2021andbasestation:
     station
   locations:
     - vaillant/15.f43.csv::r::0xba,0
+rhsensorpresent:
+  de: Feuchtesensor vorhanden
+  en: RH Sensor Present
+  first: RH Sensor Present
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x32
+rhsensorsensitivity:
+  de: Empfindlichkeit Feuchtesensor
+  en: RH Sensor Sensitivity
+  first: RH Sensor Sensitivity
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x33
 ringsbeforepickuponlyforanalogmodemsused0willneverpickup:
   de: >-
     Klingelzeichen bis zum Aufheben: Wird nur für das analoge Modem verwendet.
@@ -17976,6 +18513,18 @@ selectedzone:
   first: selected zone
   locations:
     - vaillant/_templates.csv:zonesel
+selectioninput1:
+  de: Auswahl Eingang 1
+  en: Selection input 1
+  first: Selection input 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0xc
+selectioninput2:
+  de: Auswahl Eingang 2
+  en: Selection input 2
+  first: Selection input 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x12
 selectionwhichheatingcircuitisaffectedbychangingparametersinthebasicdisplay:
   de: >-
     selection which heating circuit is affected by changing parameters in the
@@ -18451,11 +19000,12 @@ softwarecode4bytesholdingseveralsoftwarestatusinfo:
   locations:
     - vaillant/08.ehp.csv::r::0x18,1
 softwareversion:
-  de: Software-Version
+  de: Software Version
   en: software version
   first: software version
   locations:
     - broadcast.csv::r,b::0x7,0x4:software
+    - encon/3c..Excellent.csv::r_2::0
 solarcircuitprotectionhysteresisaftercollectorpumpprotectionincaseoftoohightemperaturesthecollectorhastocooldownatleastthistemperature:
   de: 'Hysterese Schutzfunktion: Hysterese für die Kollektorkreisschutzfunktion'
   en: >-
@@ -19924,6 +20474,18 @@ supplyairtemperature:
   first: Supply air temperature
   locations:
     - vaillant/08.recov.csv::r::0xb3,0xd
+supplyfanmodeswinput1:
+  de: Funktion Zuluftventilator Eingang 1
+  en: Supply fan mode sw. input 1
+  first: Supply fan mode sw. input 1
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x10
+supplyfanmodeswinput2:
+  de: Funktion Zuluftventilator Eingang 2
+  en: Supply fan mode sw. input 2
+  first: Supply fan mode sw. input 2
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0x16
 svuv1solevuv1:
   de: 'SVUV1: Sole-Vuv1'
   en: 'SVUV1: Sole-Vuv1'
@@ -19969,6 +20531,12 @@ switchondiffsolarcylk:
   first: Switch-on diff. solar cyl. [K]
   locations:
     - vaillant/15.sdr_p.csv::r,wi::0x3f,0
+switchposition:
+  de: Position Stufenschalter
+  en: Switch position
+  first: Switch position
+  locations:
+    - encon/3c..Excellent.csv::r_2::0x6
 syncdeicingsynchronizedeicingprocess:
   de: 'SyncDeicing: synchronize deicing process'
   en: 'SyncDeicing: synchronize deicing process'
@@ -20744,6 +21312,12 @@ temperaturegradientfailuresnumberofboilershutdownduetohighgradients54:
   locations:
     - vaillant/bai.0010015600.inc::r::0x11,0
     - vaillant/bai.0010021961.inc::r::0x11,0
+temperaturepostheater:
+  de: Temperatur Nachheizregister
+  en: Temperature postheater
+  first: Temperature postheater
+  locations:
+    - encon/3c..Excellent.csv::r_3,w_1::0xb
 temperaturesensorhwcstoragebottom:
   de: Temp.fühler WW, unten
   en: temperature sensor HWC storage bottom
@@ -20894,6 +21468,12 @@ tempincreasetemperatureincrease:
   first: 'TempIncrease: temperature increase'
   locations:
     - vaillant/15.uih.csv::r,wi::0x2f,0
+temporarysettingswhichresetsafterfewminutes:
+  de: Temporary settings which resets after few minutes
+  en: Temporary settings which resets after few minutes
+  first: Temporary settings which resets after few minutes
+  locations:
+    - encon/3c..Excellent.csv::w::MF,0xa1:value
 tempstoragemaxmaximumtemperaturemeasuredbytheexternaltanksensor:
   de: 'Max. Speichertemp.: Maximaltemperatur gemessen am Speichersensor'
   en: 'Temp storage max: maximum temperature measured by the external tank sensor'
@@ -22067,6 +22647,12 @@ totalenvironmentalyield:
   locations:
     - vaillant/15.700.csv::r_1,w_1::0x3e,0
     - vaillant/15.ctlv2.csv::r_1,w_1::0x3e,0
+totalflow:
+  de: Gesamtdurchsatz
+  en: Total Flow
+  first: Total Flow
+  locations:
+    - encon/3c..Excellent.csv::r_1::0x25
 totalfuelconsumption:
   de: TotalFConsumption
   en: total fuel consumption

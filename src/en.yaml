@@ -65,8 +65,14 @@ actoSTOR_EE_PreventiveCounter_DK: actoSTOR_EE_PreventiveCounter_DK
 actual CO-sensor resistance: actual CO-sensor resistance
 Actual Date: Actual Date
 actual energy balancing integral: actual energy balancing integral
+Actual exhaust flow: Actual exhaust flow
+Actual exhaust pressure: Actual exhaust pressure
+Actual exhaustfan speed: Actual exhaustfan speed
 actual fan speed: actual fan speed
 Actual GSM/GPRS provider: Actual GSM/GPRS provider
+Actual inlet flow: Actual inlet flow
+Actual inlet pressure: Actual inlet pressure
+Actual inletfan speed: Actual inletfan speed
 actual room temperature [°C/Sensor state]: actual room temperature [°C/Sensor state]
 Actual roomtemperature setpoint [°C]: Actual roomtemperature setpoint [°C]
 Actual Time: Actual Time
@@ -119,6 +125,10 @@ adpPreH_RoomSetpoint: adpPreH_RoomSetpoint
 adpPreH_RoomTempStart: adpPreH_RoomTempStart
 adpPreH_Starttime: adpPreH_Starttime
 AdvancedPowerValues_DK: AdvancedPowerValues_DK
+Air flow rate mode 0: Air flow rate mode 0
+Air flow rate mode 1: Air flow rate mode 1
+Air flow rate mode 2: Air flow rate mode 2
+Air flow rate mode 3: Air flow rate mode 3
 Air quality sensor number: Air quality sensor number
 Air-earth collector available: Air-earth collector available
 'AirInletSensor_Offset: calibration value for air inlet sensor': 'AirInletSensor_Offset: calibration value for air inlet sensor'
@@ -234,6 +244,7 @@ AWPC_EE_MinThreshold_DK: AWPC_EE_MinThreshold_DK
 'B51000SetPointLoadingPump: loading pump''s setpoint sent via B5 10 00 to the BMU': >-
   B51000SetPointLoadingPump: loading pump's setpoint sent via B5 10 00 to the
   BMU
+Backlight level: Backlight level
 Backup heater output: Backup heater output
 'Backup_Commutations_CH: Number of commutations of': 'Backup_Commutations_CH: Number of commutations of'
 'Backup_Commutations_DHW: Number of commutations of': 'Backup_Commutations_DHW: Number of commutations of'
@@ -374,7 +385,11 @@ BW_Anfo: BW_Anfo
 'BW_WW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.': >-
   BW_WW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s.
   Relative to the heat source pump prerun time.
+Bypass current: Bypass current
 Bypass flap position: Bypass flap position
+Bypass hysteresis: Bypass hysteresis
+Bypass status: Bypass status
+Bypass temperature: Bypass temperature
 Bypass valve: Bypass valve
 calculated CO-concentration: calculated CO-concentration
 'CalculatedKickStopTime: calculated time in between two pump kicks during frostprotection (time depends on outside temperature)': >-
@@ -382,6 +397,7 @@ calculated CO-concentration: calculated CO-concentration
   frostprotection (time depends on outside temperature)
 'CalculatedMixerPosition: 0: primary open; 220: primary closed': 'CalculatedMixerPosition: 0: primary open; 220: primary closed'
 'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.': 'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.'
+Central heating + heat recovery: Central heating + heat recovery
 Central heating on/off switch: Central heating on/off switch
 'CfgHeatSinkType: BMR: configuration of heating circuit; for heat pumps, only "mixer circuit" or "fix value circuit" possible': >-
   CfgHeatSinkType: BMR: configuration of heating circuit; for heat pumps, only
@@ -479,6 +495,23 @@ CO_PTC_U1_DK: CO_PTC_U1_DK
 CO_PTC_U2_DK: CO_PTC_U2_DK
 CO_Sensor_SNR: CO_Sensor_SNR
 CO-sensor resistance at 0ppm CO: CO-sensor resistance at 0ppm CO
+CO2 Sensor 1 level: CO2 Sensor 1 level
+CO2 Sensor 1 lower limit: CO2 Sensor 1 lower limit
+CO2 Sensor 1 status: CO2 Sensor 1 status
+CO2 Sensor 1 upper limit: CO2 Sensor 1 upper limit
+CO2 Sensor 2 level: CO2 Sensor 2 level
+CO2 Sensor 2 lower limit: CO2 Sensor 2 lower limit
+CO2 Sensor 2 status: CO2 Sensor 2 status
+CO2 Sensor 2 upper limit: CO2 Sensor 2 upper limit
+CO2 Sensor 3 level: CO2 Sensor 3 level
+CO2 Sensor 3 lower limit: CO2 Sensor 3 lower limit
+CO2 Sensor 3 status: CO2 Sensor 3 status
+CO2 Sensor 3 upper limit: CO2 Sensor 3 upper limit
+CO2 Sensor 4 level: CO2 Sensor 4 level
+CO2 Sensor 4 lower limit: CO2 Sensor 4 lower limit
+CO2 Sensor 4 status: CO2 Sensor 4 status
+CO2 Sensor 4 upper limit: CO2 Sensor 4 upper limit
+CO2 Sensors activated: CO2 Sensors activated
 code for installer menu: code for installer menu
 code for the installer's menues: code for the installer's menues
 'Code1: together with code 2, this enables/disables several sw features, in hex format': >-
@@ -539,6 +572,8 @@ Compressor: Compressor
   CompressorRestartTimer: Delay until next compressor start, only updated and
   displayed in UI if compressor demanded but locked by runtime conditions.
 'CompressorState: compressor and ICL state machine status number': 'CompressorState: compressor and ICL state machine status number'
+Conditions sw. input 1: Conditions sw. input 1
+Conditions sw. input 2: Conditions sw. input 2
 Configuration: Configuration
 configuration of the VR61 relay-output: configuration of the VR61 relay-output
 configures which room temperature is assigned to zone 1: configures which room temperature is assigned to zone 1
@@ -553,6 +588,8 @@ configures which room temperature is assigned to zone 3: configures which room t
 'Connection error retry delay [minutes]: Delay between two connection tries in case of a connection error': >-
   Connection error retry delay [minutes]: Delay between two connection tries in
   case of a connection error
+Contact 1 position: Contact 1 position
+Contact 2 position: Contact 2 position
 continous heating: continous heating
 continuos heating: continuos heating
 'ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)': >-
@@ -932,6 +969,7 @@ DCF_TimeDate_DK: DCF_TimeDate_DK
 'DcfIsValid: validity of DCF signal': 'DcfIsValid: validity of DCF signal'
 De-activation autosync: De-activation autosync
 DeaerateBrineCircuit: DeaerateBrineCircuit
+Default position switch: Default position switch
 default value: default value
 'DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done in the production)': >-
   DefaultSettingEEPROM_DK: default value setting off all EEPROM values (done in
@@ -1117,6 +1155,7 @@ Dieses Jahr Stromverbrauch gesamt: Dieses Jahr Stromverbrauch gesamt
 Digital input actual values: Digital input actual values
 digital ionisation voltage: digital ionisation voltage
 digital ionisation voltage> 80 no flame< 40 good flame: digital ionisation voltage> 80 no flame< 40 good flame
+Dipswitch value: Dipswitch value
 display language: display language
 Displayed Room Temp: Displayed Room Temp
 'DisplayedDHWTankTemperature: display of the storage''s temperature (also in case of an SP1error)': >-
@@ -1134,6 +1173,9 @@ DisplayedRoomSetpoint: DisplayedRoomSetpoint
 'DisplayMode_DK: Display mode of the appliance': 'DisplayMode_DK: Display mode of the appliance'
 'DisplayMode: Display mode of the appliance': 'DisplayMode: Display mode of the appliance'
 'DisplayTyp: display misubishi=0x07, mtek=0x70': 'DisplayTyp: display misubishi=0x07, mtek=0x70'
+Does not reset after one minute with Sky300 with latest SW; this message is sent by Brink AirControl wall panel: >-
+  Does not reset after one minute with Sky300 with latest SW; this message is
+  sent by Brink AirControl wall panel
 Domestic hot water switch: Domestic hot water switch
 DSN Start adress: DSN Start adress
 DSN starting address: DSN starting address
@@ -1170,6 +1212,7 @@ e.08 SD_CO_R0_DK: e.08 SD_CO_R0_DK
   Required for data transmission between PCBs.
 EarnedEnergySum: EarnedEnergySum
 'EarnedEnvironmentEnergy: sum of earned environmental energy in kWh': 'EarnedEnvironmentEnergy: sum of earned environmental energy in kWh'
+EBus SyncGen Errors: EBus SyncGen Errors
 eBUS voltage feedback: eBUS voltage feedback
 'eBUS_CRC: last calculated eBUS CRC': 'eBUS_CRC: last calculated eBUS CRC'
 'eBUSCommErrorPending: eBUS communication fails': 'eBUSCommErrorPending: eBUS communication fails'
@@ -1245,6 +1288,7 @@ error number: error number
 Error_Actual: Error_Actual
 Error_History: Error history
 Estrichtrocknungstag: Estrichtrocknungstag
+EWT status: EWT status
 excess temperature of Hc1 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range): >-
   excess temperature of Hc1 (flow temperature's setpoint is increased by this
   value to keep the mixing valve in its control range)
@@ -1269,6 +1313,7 @@ Exhaust air internal actual flow: Exhaust air internal actual flow
 Exhaust air internal target flow: Exhaust air internal target flow
 Exhaust air speed: Exhaust air speed
 Exhaust air temperature: Exhaust air temperature
+Exhaust flow setting: Exhaust flow setting
 'Ext_Backup: Configuration of backup heater installation location': 'Ext_Backup: Configuration of backup heater installation location'
 'Ext. return temperature: External return temperature sensor': 'Ext. return temperature: External return temperature sensor'
 'ExtChPump: s. Mantis 7915': 'ExtChPump: s. Mantis 7915'
@@ -1286,8 +1331,12 @@ External DHW temperature sensor: External DHW temperature sensor
 'ExternalDHWRequest: 0: No request; 1: Request': 'ExternalDHWRequest: 0: No request; 1: Request'
 'ExternalDHWSetpoint: Requested temperature for DHW': 'ExternalDHWSetpoint: Requested temperature for DHW'
 'ExternGasvalve_DK: external gasvalve activated': 'ExternGasvalve_DK: external gasvalve activated'
+Extra heater type: Extra heater type
+Extract fan mode sw. input 1: Extract fan mode sw. input 1
+Extract fan mode sw. input 2: Extract fan mode sw. input 2
 'ExtTankModulCon_DK: external tank modul connected (VR65)': 'ExtTankModulCon_DK: external tank modul connected (VR65)'
 'F_coll: Ventilator im Luftkollektor': 'F_coll: Ventilator im Luftkollektor'
+Factory reset: Factory reset
 'FactoryTestAktiv: Factory Test Pin': 'FactoryTestAktiv: Factory Test Pin'
 'Failed ignition (3rd attempt): Number of unsuccessful ignition attempts (in the 3rd attempt)': >-
   Failed ignition (3rd attempt): Number of unsuccessful ignition attempts (in
@@ -1300,12 +1349,15 @@ Fan maximum speed: Fan maximum speed
 Fan maximum speed offset: Fan maximum speed offset
 Fan minimum speed: Fan minimum speed
 Fan minimum speed offset: Fan minimum speed offset
+Fan mode: Fan mode
+Fan modeAlternative: Fan modeAlternative
 'Fan number of starts: Number of times fan switched on': 'Fan number of starts: Number of times fan switched on'
 'Fan operating hours: Operating hours of the fan': 'Fan operating hours: Operating hours of the fan'
 Fan operation hours: Fan operation hours
 fan run time: fan run time
 fan speed actual value: fan speed actual value
 Fan speed setpoint: Fan speed setpoint
+Fan status: Fan status
 'Fan_Brine_Port: port feedback; only needed by UI in actuator test': 'Fan_Brine_Port: port feedback; only needed by UI in actuator test'
 'Fan_DK: Fan (non modulating one) activated': 'Fan_DK: Fan (non modulating one) activated'
 'Fan_DK: Fan activation signal': 'Fan_DK: Fan activation signal'
@@ -1340,12 +1392,18 @@ Ferienzeitraum Start Zone 3: Ferienzeitraum Start Zone 3
 'FiFoResetCnt: counter how often eBUS Fifo was cleared': 'FiFoResetCnt: counter how often eBUS Fifo was cleared'
 FillBrineCircuit: FillBrineCircuit
 FillDearatePrimCircuit: FillDearatePrimCircuit
+Filter days before warning: Filter days before warning
+Filter dirty: Filter dirty
+Filter Maximum Flow: Filter Maximum Flow
+Filter usage: Filter usage
+Filter usage (days): Filter usage (days)
 First = Zones maybe? Rest unknown; needs some other configured ctlv2: First = Zones maybe? Rest unknown; needs some other configured ctlv2
 first part of the installer's telephone number: first part of the installer's telephone number
 'FirstCHEnergySavingPumpOffTime: CH pump off time for pump switch off during heating operation with direct heating circuits. Function is off from factory but can be activated in service menus via Code1.': >-
   FirstCHEnergySavingPumpOffTime: CH pump off time for pump switch off during
   heating operation with direct heating circuits. Function is off from factory
   but can be activated in service menus via Code1.
+Fixed imbalance: Fixed imbalance
 'FixValueDay: Fix value day flow set point': 'FixValueDay: Fix value day flow set point'
 'FixValueNight: Fix value night flow set point': 'FixValueNight: Fix value night flow set point'
 FlagsBoiler_1: FlagsBoiler_1
@@ -1371,6 +1429,7 @@ FloorPavingDryingDay: FloorPavingDryingDay
 'FloorPavingDryingTemperature: flow temperature setpoint for the current day of floor pavement drying': >-
   FloorPavingDryingTemperature: flow temperature setpoint for the current day of
   floor pavement drying
+Flow Correction: Flow Correction
 Flow rate the collector pumps are able to deliver for 100% power: Flow rate the collector pumps are able to deliver for 100% power
 'Flow setpoint: 1/2 °C resolution': 'Flow setpoint: 1/2 °C resolution'
 'Flow setpoint: BMR:flow temperature that is actually desired by circuit': 'Flow setpoint: BMR:flow temperature that is actually desired by circuit'
@@ -1421,6 +1480,7 @@ Friday recirculation time: Friday recirculation time
 from: from
 frost delay time: frost delay time
 Frost protection element: Frost protection element
+Frost status: Frost status
 FrostOverRideTime: FrostOverRideTime
 'FrostOverRideTime: delay before frost protection is activated': 'FrostOverRideTime: delay before frost protection is activated'
 'FrostOverRideTime: frost over ride time': 'FrostOverRideTime: frost over ride time'
@@ -1449,6 +1509,7 @@ Function of optional relay: Function of optional relay
 'FunctionFlags_DK: differrent function flags': 'FunctionFlags_DK: differrent function flags'
 'FwsModulDetected: detected VPM-W (bit counted)': 'FwsModulDetected: detected VPM-W (bit counted)'
 'Gasventil 3: Gas valve switching signal (from the processor)': 'Gasventil 3: Gas valve switching signal (from the processor)'
+Geo heat exchanger: Geo heat exchanger
 gerundete mittlere Außentemperatur (alle 3h aktualisiert): gerundete mittlere Außentemperatur (alle 3h aktualisiert)
 gewünschte Temperatur Warmwasserkreis: gewünschte Temperatur Warmwasserkreis
 GFA_Stoerung: GFA_Stoerung
@@ -1714,6 +1775,7 @@ How often the volume sensor has to pulse for the detection of 10 liters: How oft
 'HS_Pump_Prerun_BW: Heat source pump prerun in heat source circuit - BW': 'HS_Pump_Prerun_BW: Heat source pump prerun in heat source circuit - BW'
 'HS_Pump_Prerun_WW: Heat source pump prerun in heat source circuit - WW': 'HS_Pump_Prerun_WW: Heat source pump prerun in heat source circuit - WW'
 'HT_Soll: °C': 'HT_Soll: °C'
+Humidity Boost State: Humidity Boost State
 hwc bank holiday end period: hwc bank holiday end period
 hwc bank holiday start period: hwc bank holiday start period
 hwc flow temperature: hwc flow temperature
@@ -1758,6 +1820,7 @@ identifier for the variant: identifier for the variant
 if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint: >-
   if outside temperature > summer limit => heating is OFF;applies to comfort and
   night setback setpoint
+Imbalance permissible: Imbalance permissible
 increase of minimum power: increase of minimum power
 Information which provider has been selectet. Only valid in case of GSM/GPRS modem.: >-
   Information which provider has been selectet. Only valid in case of GSM/GPRS
@@ -1774,7 +1837,9 @@ Information which provider has been selectet. Only valid in case of GSM/GPRS mod
   defaultvalues (done in the production)
 Initiates and indicates the bleeding function: Initiates and indicates the bleeding function
 Injection: Injection
+Inlet flow setting: Inlet flow setting
 Inquiry of existence: Inquiry of existence
+Inside temperature: Inside temperature
 'InstallAssistant: install assistant not active (0 = active, 1 = not active)': 'InstallAssistant: install assistant not active (0 = active, 1 = not active)'
 InstallAssistantFinished: InstallAssistantFinished
 Installation height: Installation height
@@ -1949,6 +2014,7 @@ Max. Speichersollwert. Limits the maximum adjustment range of the potentiometer 
   Max. Speichersollwert. Limits the maximum adjustment range of the
   potentiometer (right stop).
 Max. switch-on diff. solar cylinder [K]: Max. switch-on diff. solar cylinder [K]
+Max. temp. geo heat exchanger: Max. temp. geo heat exchanger
 Max. temp. solar cylinder [C]: Max. temp. solar cylinder [C]
 Max. Voraufheizung: Max. Voraufheizung
 'Max. WW Vorlauftemp.: Maximalwert des Warmwassersensors': 'Max. WW Vorlauftemp.: Maximalwert des Warmwassersensors'
@@ -2009,6 +2075,8 @@ maximum room humidity: maximum room humidity
 'Maximum storage temperature: Maximum storage tank temperature': 'Maximum storage temperature: Maximum storage tank temperature'
 maximum value: maximum value
 maximum value of calculated gas-adaptive correction-factor: maximum value of calculated gas-adaptive correction-factor
+Maximum voltage input 1: Maximum voltage input 1
+Maximum voltage input 2: Maximum voltage input 2
 Maximum water storing time for storage without own controls: Maximum water storing time for storage without own controls
 maximum waterpressure threshold: maximum waterpressure threshold
 'MaxLaufzeitDauer: des Primärkreisumschalters': 'MaxLaufzeitDauer: des Primärkreisumschalters'
@@ -2048,6 +2116,7 @@ min_Ignitiontime_DK: min_Ignitiontime_DK
 min. / max powervalues: min. / max powervalues
 'Min. signal strength GSM/GPRS: Min. value since last power on (0..31)': 'Min. signal strength GSM/GPRS: Min. value since last power on (0..31)'
 Min. switch-on diff. solar cylinder [K]: Min. switch-on diff. solar cylinder [K]
+Min. temp. geo heat exchanger: Min. temp. geo heat exchanger
 MinCoolingTempDesired Heizkreis 1: MinCoolingTempDesired Heizkreis 1
 MinCoolingTempDesired Heizkreis 2: MinCoolingTempDesired Heizkreis 2
 MinCoolingTempDesired Heizkreis 3: MinCoolingTempDesired Heizkreis 3
@@ -2090,6 +2159,8 @@ minimum flow temperature setpoint (end emphasis) of Hc2: minimum flow temperatur
 minimum flow temperature setpoint (end emphasis) of Hc3: minimum flow temperature setpoint (end emphasis) of Hc3
 minimum ignition time: minimum ignition time
 minimum value: minimum value
+Minimum voltage input 1: Minimum voltage input 1
+Minimum voltage input 2: Minimum voltage input 2
 minimum waterpressure threshold: minimum waterpressure threshold
 'MinSpeedTemp: temperature for minimum speed': 'MinSpeedTemp: temperature for minimum speed'
 MinThresholdWaterpressure_DK: MinThresholdWaterpressure_DK
@@ -2119,6 +2190,10 @@ MixerMovement Heizkreis 1: MixerMovement Heizkreis 1
 MixerMovement Heizkreis 2: MixerMovement Heizkreis 2
 MixerMovement Heizkreis 3: MixerMovement Heizkreis 3
 'Mk2Detected: detected VR60 (bit counted)': 'Mk2Detected: detected VR60 (bit counted)'
+Modbus Interface: Modbus Interface
+Modbus Parity: Modbus Parity
+Modbus Slave Address: Modbus Slave Address
+Modbus Speed: Modbus Speed
 Modem country code: Modem country code
 Modem dial prefix: Modem dial prefix
 Modem init string: Modem init string
@@ -2172,6 +2247,10 @@ No. of solar panels: No. of solar panels
   schedule
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
 Nominal flow NL: Nominal flow NL
+NoResetRequested is a dummy message doing nothing. It might be useful for integration in MQTT and HA automation. ErrorsAndFilter seems not working for me - but is specified.: >-
+  NoResetRequested is a dummy message doing nothing. It might be useful for
+  integration in MQTT and HA automation. ErrorsAndFilter seems not working for
+  me - but is specified.
 'NormalDhwHysteresis: The hysteresis for DHW loading': 'NormalDhwHysteresis: The hysteresis for DHW loading'
 noSystem=0, SSR=1, VRC=2, eSys=3, mixedSys=4: noSystem=0, SSR=1, VRC=2, eSys=3, mixedSys=4
 'not_tested_yet: Merker für erfolgreichen Selbsttest': 'not_tested_yet: Merker für erfolgreichen Selbsttest'
@@ -2214,6 +2293,7 @@ OffsetFlowSetpointBufToBoiler: OffsetFlowSetpointBufToBoiler
 OneTimeCirculationSwitch: OneTimeCirculationSwitch
 'OneTimeCirculationSwitch: non-recurring circulation pump running period': 'OneTimeCirculationSwitch: non-recurring circulation pump running period'
 Operating mode of mixer circuit: Operating mode of mixer circuit
+Operating time: Operating time
 OperatingMode: OperatingMode
 'OperatingMode: 1=Ein 2=Aus 3=Auto': 'OperatingMode: 1=Ein 2=Aus 3=Auto'
 'OperatingMode: 1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken': 'OperatingMode: 1=Heizen 2=Aus 3=Auto 4=Eco 5=Absenken'
@@ -2233,6 +2313,7 @@ OperatingMode430: OperatingMode430
 'OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on)': >-
   OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 =
   off, 4 = on)
+Operation bypass valve: Operation bypass valve
 operation during the auto-off period: operation during the auto-off period
 operation during the lowering time: operation during the lowering time
 operation hours: operation hours
@@ -2271,6 +2352,7 @@ operation of Hc3 during the lowering time; no influence if room temperature modu
 Operation time solar pump: Operation time solar pump
 OpModeEffect: op mode effect
 Option relais function: Option relais function
+Option temperature: Option temperature
 'OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung': 'OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung'
 'OtShutdownLimit: BMR: Outside temperature above which heating circuits switch off': >-
   OtShutdownLimit: BMR: Outside temperature above which heating circuits switch
@@ -2379,6 +2461,7 @@ Partymodus aktiv: Partymodus aktiv
 'PartyStart: Start Party Mode': 'PartyStart: Start Party Mode'
 Password for the first internet provider: Password for the first internet provider
 Paswword for second internetprovider: Paswword for second internetprovider
+Perilex position: Perilex position
 Periods Friday: Periods Friday
 Periods Monday: Periods Monday
 Periods Saturday: Periods Saturday
@@ -2406,6 +2489,8 @@ Phone number provider 1: Phone number provider 1
 'PollutionDetect: unusual low brine temperaure at high air inlet temperature': 'PollutionDetect: unusual low brine temperaure at high air inlet temperature'
 'Pos1: Umschalterposition Direktheizbetrieb': 'Pos1: Umschalterposition Direktheizbetrieb'
 'Pos2: Umschalterposition Desorption mit Bypass': 'Pos2: Umschalterposition Desorption mit Bypass'
+Postheater power: Postheater power
+Postheater status: Postheater status
 Power number: Power number
 'Power on alarm: If on a alarm message is sent after power on': 'Power on alarm: If on a alarm message is sent after power on'
 Power solar pump [%]: Power solar pump [%]
@@ -2452,6 +2537,8 @@ Predictive Maintenance data: Predictive Maintenance data
 Predictive maintenance date of the actoSTOR: Predictive maintenance date of the actoSTOR
 Prefix which will be sent to the modem befor dialing: Prefix which will be sent to the modem befor dialing
 Preheat: Preheat
+Preheater power: Preheater power
+Preheater status: Preheater status
 'PreheatingTime: in steps of 10, maximum time of enabling the heating before the heating time window starts': >-
   PreheatingTime: in steps of 10, maximum time of enabling the heating before
   the heating time window starts
@@ -2610,6 +2697,7 @@ register number: register number
 register value range: register value range
 'Relais Solarpumpe: Solar pump relay: 0: OFF; 1: ON': 'Relais Solarpumpe: Solar pump relay: 0: OFF; 1: ON'
 'RelaisOut: reserved': 'RelaisOut: reserved'
+Relative Humidity: Relative Humidity
 Relay outputs: Relay outputs
 'RelayCommutations: reserved': 'RelayCommutations: reserved'
 RemoteControlMode: RemoteControlMode
@@ -2619,6 +2707,7 @@ RemoteControlMode: RemoteControlMode
   is not set
 'reserve 1: for future use': 'reserve 1: for future use'
 Reset: Reset
+Reset Notifications: Reset Notifications
 Reset operation hours: Reset operation hours
 Reset solar gain: Reset solar gain
 Reset to factory defaults: Reset to factory defaults
@@ -2632,6 +2721,8 @@ RestartBlockingTimer: RestartBlockingTimer
   RF_Quality_OT_DCF: RF quality of the connection between VR20/21 and base
   station
 'RfCommErrorPending: radio communication fails': 'RfCommErrorPending: radio communication fails'
+RH Sensor Present: RH Sensor Present
+RH Sensor Sensitivity: RH Sensor Sensitivity
 'Rings before pickup: Only for analog modems used. 0 = will never pick up.': 'Rings before pickup: Only for analog modems used. 0 = will never pick up.'
 RO: RO
 Room Name: Room Name
@@ -2730,6 +2821,8 @@ selected zone: selected zone
 'SelectedHeatCircuit: number of heating circuit to which this remote control is assigned': >-
   SelectedHeatCircuit: number of heating circuit to which this remote control is
   assigned
+Selection input 1: Selection input 1
+Selection input 2: Selection input 2
 selection which heating circuit is affected by changing parameters in the basic display: >-
   selection which heating circuit is affected by changing parameters in the
   basic display
@@ -3041,9 +3134,12 @@ Supply air internal actual flow: Supply air internal actual flow
 Supply air internal target flow: Supply air internal target flow
 Supply air speed: Supply air speed
 Supply air temperature: Supply air temperature
+Supply fan mode sw. input 1: Supply fan mode sw. input 1
+Supply fan mode sw. input 2: Supply fan mode sw. input 2
 'SVUV1: Sole-Vuv1': 'SVUV1: Sole-Vuv1'
 'SVUV2: Sole-Vuv2': 'SVUV2: Sole-Vuv2'
 switch from weekly program over to a daily one: switch from weekly program over to a daily one
+Switch position: Switch position
 Switch-on diff. solar cyl. [K]: Switch-on diff. solar cyl. [K]
 Switch/off diff. solar cyl. [K]: Switch/off diff. solar cyl. [K]
 switching on threshold for recognition of water tapping0 = 1,5 l/min and no delay, 1 = 3,7 l/min and 2s delay: >-
@@ -3203,6 +3299,7 @@ temperature: temperature
 'Temperature gradient failures: Number of boiler shutdown due to high gradient (S.54)': >-
   Temperature gradient failures: Number of boiler shutdown due to high gradient
   (S.54)
+Temperature postheater: Temperature postheater
 temperature sensor HW storage bottom: temperature sensor HW storage bottom
 temperature sensor HW storage top: temperature sensor HW storage top
 temperature sensor HWC storage bottom: temperature sensor HWC storage bottom
@@ -3223,6 +3320,7 @@ TempFailDetectTime: TempFailDetectTime
   gradient (S.54)
 TempIncrease: TempIncrease
 'TempIncrease: temperature increase': 'TempIncrease: temperature increase'
+Temporary settings which resets after few minutes: Temporary settings which resets after few minutes
 Test_Fan: Test_Fan
 'Test_Heater: reserved': 'Test_Heater: reserved'
 testbetrieb: testbetrieb
@@ -3375,6 +3473,7 @@ total energy consumption: total energy consumption
 total energy consumption heating: total energy consumption heating
 total energy consumption hot water: total energy consumption hot water
 total environmental yield: total environmental yield
+Total Flow: Total Flow
 total fuel consumption: total fuel consumption
 total fuel consumption heating: total fuel consumption heating
 total fuel consumption hot water: total fuel consumption hot water
