@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # helper for generating compiled output from `src` into `outcsv` for checking before publishing
 cd "$(dirname "$0")/.."
 rm -rf outcsv*
