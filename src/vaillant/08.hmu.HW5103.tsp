@@ -104,19 +104,19 @@ namespace Hmu.Hw5103 {
 
   @inherit(r_0)
   @ext(0xb8, 0xb)
-  model HmuHours {
+  model HoursTotal {
     value: hoursum2;
   }
 
   @inherit(r_0)
   @ext(0xb9, 0xb)
-  model HeatingHours {
+  model HoursHeating {
     value: hoursum2;
   }
 
   @inherit(r_0)
   @ext(0xbc, 0xb)
-  model HwcHours {
+  model HoursHwc {
     value: hoursum2;
   }
 
@@ -219,7 +219,7 @@ namespace Hmu.Hw5103 {
   @condition(Id.Id.sw, ">=902")
   @inherit(r_1)
   @ext(0x18, 1)
-  model CompressorHeating {
+  model CompressorHc {
     @maxLength(1) ign: IGN;
     runtime: minutes4;
     cycles: cntstarts;
@@ -244,7 +244,7 @@ namespace Hmu.Hw5103 {
 
   @inherit(r_2)
   @ext(0x14)
-  model HmuPowerConsumption {
+  model PowerConsumptionHmu {
     @unit("W")
     value: EXP;
   }
