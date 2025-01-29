@@ -1,6 +1,6 @@
 import "./broadcast.tsp";
 import "./encon/0a..co2.tsp";
-import "./encon/3c..Excellent.tsp";
+import "./encon/3c..excellent.tsp";
 import "./memory.tsp";
 import "./ochsner/15.22102.tsp";
 import "./tem/15.tsp";

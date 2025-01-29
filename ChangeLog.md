@@ -18,6 +18,7 @@ https://ebus.github.io/ only:
 * add vaillant/15.ctlv3 link according to #35, #418, #449
 * fix some message IDs in vaillant/15.ctlv2 and ochsner
 * fix wolf file names
+* fix missing reference to product id in vaillant/08.bai condition
 
 # 2024-12-08
 https://ebus.github.io/ only:
