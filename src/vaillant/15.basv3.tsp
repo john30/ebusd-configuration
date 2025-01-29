@@ -1,6 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
+//import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -1404,6 +1404,7 @@ namespace Basv3 {
   @ext(0x26, 0)
   model Z1QuickVetoDuration {
     /** Valid values are 0.5-12 in 0.5 increments (default 3); writing enables quick veto mode */
+    @unit("h")
     value: EXP;
   }
 
@@ -1618,6 +1619,7 @@ namespace Basv3 {
   @ext(0x26, 0)
   model Z2QuickVetoDuration {
     /** Valid values are 0.5-12 in 0.5 increments (default 3); writing enables quick veto mode */
+    @unit("h")
     value: EXP;
   }
 
@@ -1832,6 +1834,7 @@ namespace Basv3 {
   @ext(0x26, 0)
   model Z3QuickVetoDuration {
     /** Valid values are 0.5-12 in 0.5 increments (default 3); writing enables quick veto mode */
+    @unit("h")
     value: EXP;
   }
 
@@ -2991,7 +2994,9 @@ namespace Basv3 {
   // includes
 
   /** included parts */
+/**
   union _includes {
     Errors_inc,
   }
+*/
 }
