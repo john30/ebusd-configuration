@@ -48,7 +48,7 @@ namespace Basv3 {
   /** frost delay time */
   @inherit(r_1, w_1)
   @ext(0x3, 0)
-  model FrostOverRideTime {
+  model FrostOverrideTime {
     /** Delay before frost protection is activated */
     value: hoursum2;
   }
@@ -195,7 +195,7 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0x2d, 0)
   model OffsetOutsideTemp {
-    /* Offset outside temperature (used to determined DisplayedOutsideTemp) */
+    /* Offset outside temperature (used to determined OutsideTemp) */
     value: calibrationv;
   }
 
@@ -266,10 +266,10 @@ namespace Basv3 {
     value: escomode;
   }
 
-  /** hwc max flow temp desired */
+  /** hwc max flow temp */
   @inherit(r_1, w_1)
   @ext(0x46, 0)
-  model HwcMaxFlowTempDesired {
+  model HwcFlowTempMax {
     /** Maximum flow temperature setpoint of Hwc */
     value: tempv;
   }
@@ -437,7 +437,7 @@ namespace Basv3 {
   /** outside temperature */
   @inherit(r_1)
   @ext(0x73, 0)
-  model DisplayedOutsideTemp {
+  model OutsideTemp {
     value: tempv;
   }
 
@@ -570,7 +570,7 @@ namespace Basv3 {
   /** hwc flow temperature */
   @inherit(r_2)
   @ext(0x8, 0)
-  model HwcFlowTemp {
+  model HwcFlowTempTarget {
     /** Desired flow temp for Hwc */
     value: tempv;
   }
@@ -668,7 +668,7 @@ namespace Basv3 {
   /** ActualFlowTempDesired heating circuit 1 */
   @inherit(r_3)
   @ext(0x7, 0)
-  model Hc1ActualFlowTempDesired {
+  model Hc1FlowTempTarget {
     /** Current flow temperature setpoint of Hc1 */
     value: tempv;
   }
@@ -707,14 +707,14 @@ namespace Basv3 {
   /** DesiredTemp heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xc, 0)
-  model Hc1DesiredTemp {
+  model Hc1FixedDesiredTemp {
     value: tempv;
   }
 
   /** DesiredSetbackTemp heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xd, 0)
-  model Hc1DesiredSetbackTemp {
+  model Hc1FixedSetbackTemp {
     /* Target setback temperatur Hc1 (fixed circuit type) */
     value: tempv;
   }
@@ -737,7 +737,7 @@ namespace Basv3 {
   /** HeatingMaxFlowTempDesired heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x10, 0)
-  model Hc1HeatingMaxFlowTempDesired {
+  model Hc1HeatingFlowTempMax {
     /** Maximum flow temperature setpoint (end emphasis) of Hc1 */
     value: tempv;
   }
@@ -745,14 +745,14 @@ namespace Basv3 {
   /** CoolingMaxFlowTempDesired heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x11, 0)
-  model Hc1CoolingMaxFlowTempDesired {
+  model Hc1CoolingFlowTempMax {
     value: tempv;
   }
 
   /** HeatingMinFlowTempDesired heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x12, 0)
-  model Hc1HeatingMinFlowTempDesired {
+  model Hc1HeatingFlowTempMin {
     /** Minimum flow temperature setpoint (end emphasis) of Hc1 */
     value: tempv;
   }
@@ -869,9 +869,9 @@ namespace Basv3 {
   }
 
   /** ActualFlowTempDesired heating circuit 2 */
-  @inherit(r_4)
+  @inherit(r_3)
   @ext(0x7, 0)
-  model Hc2ActualFlowTempDesired {
+  model Hc2FlowTempTarget {
     /** Current flow temperature setpoint of Hc2 */
     value: tempv;
   }
@@ -907,6 +907,21 @@ namespace Basv3 {
     value: calibrationv;
   }
 
+  /** DesiredTemp heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0xc, 0)
+  model Hc2FixedDesiredTemp {
+    value: tempv;
+  }
+
+  /** DesiredSetbackTemp heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0xd, 0)
+  model Hc2FixedSetbackTemp {
+    /* Target setback temperatur Hc2 (fixed circuit type) */
+    value: tempv;
+  }
+
   /** SetbackMode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xe, 0)
@@ -925,7 +940,7 @@ namespace Basv3 {
   /** HeatingMaxFlowTempDesired heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x10, 0)
-  model Hc2HeatingMaxFlowTempDesired {
+  model Hc2HeatingFlowTempMax {
     /** Maximum flow temperature setpoint (end emphasis) of Hc2 */
     value: tempv;
   }
@@ -933,14 +948,14 @@ namespace Basv3 {
   /** CoolingMaxFlowTempDesired heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x11, 0)
-  model Hc2CoolingMaxFlowTempDesired {
+  model Hc2CoolingFlowTempMax {
     value: tempv;
   }
 
   /** HeatingMinFlowTempDesired heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x12, 0)
-  model Hc2HeatingMinFlowTempDesired {
+  model Hc2HeatingFlowTempMin {
     /** Minimum flow temperature setpoint (end emphasis) of Hc2 */
     value: tempv;
   }
@@ -976,11 +991,11 @@ namespace Basv3 {
   }
 
   /** ExtHeatDemand heating circuit 2 */
-    @inherit(r_4)
-    @ext(0x19, 0)
-    model Hc2ExtHeatDemand {
-      value: onoff;
-    }
+  @inherit(r_4)
+  @ext(0x19, 0)
+  model Hc2ExtHeatDemand {
+    value: onoff;
+  }
 
   /** MixerMovement heating circuit 2 */
   @inherit(r_4)
@@ -1059,7 +1074,7 @@ namespace Basv3 {
   /** ActualFlowTempDesired heating circuit 3 */
   @inherit(r_5)
   @ext(0x7, 0)
-  model Hc3ActualFlowTempDesired {
+  model Hc3FlowTempTarget {
     /** Current flow temperature setpoint of Hc3 */
     value: tempv;
   }
@@ -1095,6 +1110,21 @@ namespace Basv3 {
     value: calibrationv;
   }
 
+  /** DesiredTemp heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0xc, 0)
+  model Hc3FixedDesiredTemp {
+    value: tempv;
+  }
+
+  /** DesiredSetbackTemp heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0xd, 0)
+  model Hc3FixedSetbackTemp {
+    /* Target setback temperatur Hc3 (fixed circuit type) */
+    value: tempv;
+  }
+
   /** SetbackMode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xe, 0)
@@ -1113,7 +1143,7 @@ namespace Basv3 {
   /** HeatingMaxFlowTempDesired heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x10, 0)
-  model Hc3HeatingMaxFlowTempDesired {
+  model Hc3HeatingFlowTempMax {
     /** Maximum flow temperature setpoint (end emphasis) of Hc3 */
     value: tempv;
   }
@@ -1121,14 +1151,14 @@ namespace Basv3 {
   /** CoolingMaxFlowTempDesired heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x11, 0)
-  model Hc3CoolingMaxFlowTempDesired {
+  model Hc3CoolingFlowTempMax {
     value: tempv;
   }
 
   /** HeatingMinFlowTempDesired heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x12, 0)
-  model Hc3HeatingMinFlowTempDesired {
+  model Hc3HeatingFlowTempMin {
     /** Minimum flow temperature setpoint (end emphasis) of Hc3 */
     value: tempv;
   }
@@ -1225,7 +1255,7 @@ namespace Basv3 {
   /** cooling setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x2, 0)
-  model Z1CoolingTempDesiredTimeControlled {
+  model Z1CoolingSetbackTemp {
     /** Time controlled desired cooling room temperature for zone 1 */
     value: tempv;
   }
@@ -1273,7 +1303,7 @@ namespace Basv3 {
   /** set back temperature zone 1 */
   @inherit(r_6, w_6)
   @ext(0x9, 0)
-  model Z1SetBackTemp {
+  model Z1HeatingSetbackTemp {
     /** Set back temperature zone 1 (time controlled heating) */
     value: tempv;
   }
@@ -1312,7 +1342,7 @@ namespace Basv3 {
   /** heating room temperature desired zone 1 */
   @inherit(r_6)
   @ext(0x14, 0)
-  model Z1HeatingActualRoomTempDesired {
+  model Z1HeatingRoomTempTarget {
     /** Current room setpoint considering all basic conditions passed to the control algorithms (0 = heating inactive) */
     value: tempv;
   }
@@ -1320,7 +1350,7 @@ namespace Basv3 {
   /** cooling room temperature desired zone 1 */
   @inherit(r_6)
   @ext(0x15, 0)
-  model Z1CoolingActualRoomTempDesired {
+  model Z1CoolingRoomTempTarget {
     /** Current room setpoint considering all basic conditions passed to the control algorithms (99 = cooling inactive) */
     value: tempv;
   }
@@ -1379,7 +1409,7 @@ namespace Basv3 {
   /** manual heating setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x22, 0)
-  model Z1HeatingTempDesiredManual {
+  model Z1HeatingSetpointTemp {
     /** Desired heating setpoint in manual mode for zone 1 */
     value: tempv;
   }
@@ -1387,7 +1417,7 @@ namespace Basv3 {
   /** manual cooling setpoint zone 1 */
   @inherit(r_6, w_6)
   @ext(0x23, 0)
-  model Z1CoolingTempDesiredManual {
+  model Z1CoolingSetpointTemp {
     /** Desired cooling setpoint in manual mode for zone 1 */
     value: tempv;
   }
@@ -1440,7 +1470,7 @@ namespace Basv3 {
   /** cooling setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x2, 0)
-  model Z2CoolingTempDesiredTimeControlled {
+  model Z2CoolingSetbackTemp {
     /** Time controlled desired cooling room temperature for zone 2 */
     value: tempv;
   }
@@ -1469,7 +1499,7 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** operation mode zone 2 */
+  /** heating operation mode zone 2 */
   @inherit(r_7, w_7)
   @ext(0x6, 0)
   model Z2HeatingOpMode {
@@ -1488,7 +1518,7 @@ namespace Basv3 {
   /** set back temperature zone 2 */
   @inherit(r_7, w_7)
   @ext(0x9, 0)
-  model Z2SetBackTemp {
+  model Z2HeatingSetbackTemp {
     /** Set back temperature zone 2 (time controlled heating) */
     value: tempv;
   }
@@ -1527,7 +1557,7 @@ namespace Basv3 {
   /** heating room temperature desired zone 2 */
   @inherit(r_7)
   @ext(0x14, 0)
-  model Z2HeatingActualRoomTempDesired {
+  model Z2HeatingRoomTempTarget {
     /** Current room setpoint considering all basic conditions passed to the control algorithms (0 = heating inactive) */
     value: tempv;
   }
@@ -1535,7 +1565,7 @@ namespace Basv3 {
   /** cooling room temperature desired zone 2 */
   @inherit(r_7)
   @ext(0x15, 0)
-  model Z2CoolingActualRoomTempDesired {
+  model Z2CoolingRoomTempTarget {
     /** Current room setpoint considering all basic conditions passed to the control algorithms (99 = cooling inactive) */
     value: tempv;
   }
@@ -1594,7 +1624,7 @@ namespace Basv3 {
   /** manual heating setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x22, 0)
-  model Z2HeatingTempDesiredManual {
+  model Z2HeatingSetpointTemp {
     /** Desired heating setpoint in manual mode for zone 2 */
     value: tempv;
   }
@@ -1602,7 +1632,7 @@ namespace Basv3 {
   /** manual cooling setpoint zone 2 */
   @inherit(r_7, w_7)
   @ext(0x23, 0)
-  model Z2CoolingTempDesiredManual {
+  model Z2CoolingSetpointTemp {
     /** Desired cooling setpoint in manual mode for zone 2 */
     value: tempv;
   }
@@ -1655,7 +1685,7 @@ namespace Basv3 {
   /** cooling setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x2, 0)
-  model Z3CoolingTempDesiredTimeControlled {
+  model Z3CoolingSetbackTemp {
     /** Time controlled desired cooling room temperature for zone 3 */
     value: tempv;
   }
@@ -1684,7 +1714,7 @@ namespace Basv3 {
     value: tempv;
   }
 
-  /** operation mode zone 3 */
+  /** heating operation mode zone 3 */
   @inherit(r_8, w_8)
   @ext(0x6, 0)
   model Z3HeatingOpMode {
@@ -1703,8 +1733,8 @@ namespace Basv3 {
   /** set back temperature zone 3 */
   @inherit(r_8, w_8)
   @ext(0x9, 0)
-  model Z3SetBackTemp {
-    /** Set back temperature zone 1 (time controlled heating) */
+  model Z3HeatingSetbackTemp {
+    /** Set back temperature zone 3 (time controlled heating) */
     value: tempv;
   }
 
@@ -1742,15 +1772,15 @@ namespace Basv3 {
   /** heating room temperature desired zone 3 */
   @inherit(r_8)
   @ext(0x14, 0)
-  model Z3HeatingActualRoomTempDesired {
+  model Z3HeatingRoomTempTarget {
     /** Current room setpoint considering all basic conditions passed to the control algorithms (0 = heating inactive) */
     value: tempv;
   }
 
-  /** cooling room temperature desired zone 2 */
+  /** cooling room temperature desired zone 3 */
   @inherit(r_8)
   @ext(0x15, 0)
-  model Z3CoolingActualRoomTempDesired {
+  model Z3CoolingRoomTempTarget {
     /** Current room setpoint considering all basic conditions passed to the control algorithms (99 = cooling inactive) */
     value: tempv;
   }
@@ -1809,7 +1839,7 @@ namespace Basv3 {
   /** manual heating setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x22, 0)
-  model Z3HeatingTempDesiredManual {
+  model Z3HeatingSetpointTemp {
     /** Desired heating setpoint in manual mode for zone 3 */
     value: tempv;
   }
@@ -1817,7 +1847,7 @@ namespace Basv3 {
   /** manual cooling setpoint zone 3 */
   @inherit(r_8, w_8)
   @ext(0x23, 0)
-  model Z3CoolingTempDesiredManual {
+  model Z3CoolingSetpointTemp {
     /** Desired cooling setpoint in manual mode for zone 3 */
     value: tempv;
   }
