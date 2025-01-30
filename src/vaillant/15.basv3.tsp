@@ -869,7 +869,7 @@ namespace Basv3 {
   }
 
   /** ActualFlowTempDesired heating circuit 2 */
-  @inherit(r_3)
+  @inherit(r_4)
   @ext(0x7, 0)
   model Hc2FlowTempTarget {
     /** Current flow temperature setpoint of Hc2 */
