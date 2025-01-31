@@ -402,6 +402,9 @@ scalar zonesel extends UIN;
 @values(Values_zonestatus)
 scalar zonestatus extends UIN;
 
+@values(Values_zonestatus2)
+scalar zonestatus2 extends UIN;
+
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
@@ -774,6 +777,13 @@ enum Values_zonestatus {
   onedayathome: 6,
   holidayaway: 7,
   holidayathome: 8,
+  load: 9,
+  off: 10,
+}
+
+enum Values_zonestatus2 {
+  auto: 0,
+  holidayaway: 7,
   load: 9,
   off: 10,
 }
