@@ -68,7 +68,7 @@ namespace Basv3 {
   }
 
   /** hwc parallel loading */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0xa, 0)
   model HwcParallelLoading {
     value: onoff;
@@ -96,21 +96,21 @@ namespace Basv3 {
   }
 
   /** adaptive heat curve */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x14, 0)
   model AdaptHeatCurve {
     value: yesno;
   }
 
   /** hwc cylinder maximum charging time */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x17, 0)
   model HwcCylinderChargeMaxTime {
     value: minutes2;
   }
 
   /** hwc lock time */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x18, 0)
   model HwcLockTime {
     value: minutes2;
@@ -177,7 +177,7 @@ namespace Basv3 {
     value: HTM;
   }
 
-  /** ohwc legionella day */
+  /** hwc legionella day */
   @inherit(r_1, w_1)
   @ext(0x2b, 0)
   model HwcLegionellaDay {
@@ -265,7 +265,7 @@ namespace Basv3 {
   }
 
   /** hwc max flow temp */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x46, 0)
   model HwcFlowTempMax {
     @minValue(15) @maxValue(80) @step(1)
@@ -280,7 +280,7 @@ namespace Basv3 {
   }
 
   /** multifunction relay setting */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x4d, 0)
   model MultiRelaySetting {
     value: mamode;
@@ -371,28 +371,28 @@ namespace Basv3 {
   }
 
   /** installer name 1 */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x6c, 0)
   model Installer1 {
     value: shortname;
   }
 
   /** installer name 2 */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x6d, 0)
   model Installer2 {
     value: shortname;
   }
 
   /** phone number 1 (first part) */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x6f, 0)
   model PhoneNumber1 {
     value: shortphone;
   }
 
   /** phone number 2 (second part) */
-  @inherit(r_1, wi_1)
+  @inherit(r_1, w_1)
   @ext(0x70, 0)
   model PhoneNumber2 {
     value: shortphone;
@@ -649,6 +649,7 @@ namespace Basv3 {
   /** ExtHwcTempDesired heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x9, 0)
+  @condition(Basv3.Hc1ExtHwcActive.value, "1")
   model Hc1ExtHwcTempDesired {
     value: tempv;
   }
@@ -658,6 +659,7 @@ namespace Basv3 {
   @ext(0xa, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
+  @condition(Basv3.Hc1DewPointMonitoring.value, "1")
   model Hc1DewPointOffset {
     @minValue(-10) @maxValue(10) @step(1)
     value: calibrationv;
@@ -693,6 +695,7 @@ namespace Basv3 {
   /** SetbackMode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xe, 0)
+  @condition(Basv3.Hc1CircuitType.value, "1")
   model Hc1SetbackMode {
     value: offmode2;
   }
@@ -734,6 +737,7 @@ namespace Basv3 {
   /** ExtHwcOpMode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x13, 0)
+  @condition(Basv3.Hc1ExtHwcActive.value, "1")
   model Hc1ExtHwcOpMode {
     value: opmode2;
   }
@@ -858,6 +862,7 @@ namespace Basv3 {
   /** ExtHwcTempDesired heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x9, 0)
+  @condition(Basv3.Hc2ExtHwcActive.value, "1")
   model Hc2ExtHwcTempDesired {
     value: tempv;
   }
@@ -867,6 +872,7 @@ namespace Basv3 {
   @ext(0xa, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
+  @condition(Basv3.Hc2DewPointMonitoring.value, "1")
   model Hc2DewPointOffset {
     @minValue(-10) @maxValue(10) @step(1)
     value: calibrationv;
@@ -902,6 +908,7 @@ namespace Basv3 {
   /** SetbackMode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xe, 0)
+  @condition(Basv3.Hc2CircuitType.value, "1")
   model Hc2SetbackMode {
     value: offmode2;
   }
@@ -943,6 +950,7 @@ namespace Basv3 {
   /** ExtHwcOpMode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x13, 0)
+  @condition(Basv3.Hc2ExtHwcActive.value, "1")
   model Hc2ExtHwcOpMode {
     value: opmode2;
   }
@@ -1067,6 +1075,7 @@ namespace Basv3 {
   /** ExtHwcTempDesired heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x9, 0)
+  @condition(Basv3.Hc3ExtHwcActive.value, "1")
   model Hc3ExtHwcTempDesired {
     value: tempv;
   }
@@ -1076,6 +1085,7 @@ namespace Basv3 {
   @ext(0xa, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
+  @condition(Basv3.Hc3DewPointMonitoring.value, "1")
   model Hc3DewPointOffset {
     @minValue(-10) @maxValue(10) @step(1)
     value: calibrationv;
@@ -1111,6 +1121,7 @@ namespace Basv3 {
   /** SetbackMode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xe, 0)
+  @condition(Basv3.Hc3CircuitType.value, "1")
   model Hc3SetbackMode {
     value: offmode2;
   }
@@ -1152,6 +1163,7 @@ namespace Basv3 {
   /** ExtHwcOpMode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x13, 0)
+  @condition(Basv3.Hc3ExtHwcActive.value, "1")
   model Hc3ExtHwcOpMode {
     value: opmode2;
   }
@@ -1365,7 +1377,7 @@ namespace Basv3 {
   @inherit(r_6)
   @ext(0x1b, 0)
   model Z1Status {
-    value: zonestatus;
+    value: zonestatus3;
   }
 
   /** quick veto end time zone 1 */
@@ -1584,7 +1596,7 @@ namespace Basv3 {
   @inherit(r_7)
   @ext(0x1b, 0)
   model Z2Status {
-    value: zonestatus2;
+    value: zonestatus3;
   }
 
   /** quick veto end time zone 2 */
@@ -1803,7 +1815,7 @@ namespace Basv3 {
   @inherit(r_8)
   @ext(0x1b, 0)
   model Z3Status {
-    value: zonestatus2;
+    value: zonestatus3;
   }
 
   /** quick veto end time zone 3 */
@@ -1897,6 +1909,7 @@ namespace Basv3 {
   /** hwc timer Configuration */
   @inherit(r_9)
   @ext(MF, 0x55, 0xa3, 0, 0x2)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Config {
     /** Configuration */
     @maxLength(9)
@@ -1906,6 +1919,7 @@ namespace Basv3 {
   /** hwc timer amount */
   @inherit(r_9)
   @ext(MF, 0x55, 0xa4, 0, 0x2)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_TimeSlotsPerWeekday {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
@@ -1914,6 +1928,7 @@ namespace Basv3 {
   /** hwc timer monday read */
   @inherit(r_10)
   @ext(0, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Monday {
     value: rTimeSlotWithoutTemp;
   }
@@ -1921,6 +1936,7 @@ namespace Basv3 {
   /** hwc timer monday write */
   @inherit(w_9)
   @ext(0, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_MondayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -1928,6 +1944,7 @@ namespace Basv3 {
   /** hwc timer tuesday read */
   @inherit(r_10)
   @ext(1, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Tuesday {
     value: rTimeSlotWithoutTemp;
   }
@@ -1935,6 +1952,7 @@ namespace Basv3 {
   /** hwc timer tuesday write */
   @inherit(w_9)
   @ext(1, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_TuesdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -1942,6 +1960,7 @@ namespace Basv3 {
   /** hwc timer wednesday read */
   @inherit(r_10)
   @ext(2, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Wednesday {
     value: rTimeSlotWithoutTemp;
   }
@@ -1949,6 +1968,7 @@ namespace Basv3 {
   /** hwc timer wednesday write */
   @inherit(w_9)
   @ext(2, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_WednesdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -1956,6 +1976,7 @@ namespace Basv3 {
   /** hwc timer thursday read */
   @inherit(r_10)
   @ext(3, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Thursday {
     value: rTimeSlotWithoutTemp;
   }
@@ -1963,6 +1984,7 @@ namespace Basv3 {
   /** hwc timer thursday write */
   @inherit(w_9)
   @ext(3, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_ThursdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -1970,6 +1992,7 @@ namespace Basv3 {
   /** hwc timer friday read */
   @inherit(r_10)
   @ext(4, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Friday {
     value: rTimeSlotWithoutTemp;
   }
@@ -1977,6 +2000,7 @@ namespace Basv3 {
   /** hwc timer friday write */
   @inherit(w_9)
   @ext(4, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_FridayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -1984,6 +2008,7 @@ namespace Basv3 {
   /** hwc timer saturday read */
   @inherit(r_10)
   @ext(5, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Saturday {
     value: rTimeSlotWithoutTemp;
   }
@@ -1991,6 +2016,7 @@ namespace Basv3 {
   /** hwc timer saturday write */
   @inherit(w_9)
   @ext(5, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_SaturdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -1998,6 +2024,7 @@ namespace Basv3 {
   /** hwc timer sunday read */
   @inherit(r_10)
   @ext(6, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_Sunday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2005,6 +2032,7 @@ namespace Basv3 {
   /** hwc timer sunday write */
   @inherit(w_9)
   @ext(6, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcTimer_SundayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2023,6 +2051,7 @@ namespace Basv3 {
   /** cc timer Configuration */
   @inherit(r_9)
   @ext(MF, 0x55, 0xa3, 0, 0x3)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Config {
     /** Configuration */
     @maxLength(9)
@@ -2032,6 +2061,7 @@ namespace Basv3 {
   /** cc timer amount */
   @inherit(r_9)
   @ext(MF, 0x55, 0xa4, 0, 0x3)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Timeframes {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
@@ -2040,6 +2070,7 @@ namespace Basv3 {
   /** cc timer monday read */
   @inherit(r_11)
   @ext(0, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Monday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2047,6 +2078,7 @@ namespace Basv3 {
   /** cc timer monday write */
   @inherit(w_10)
   @ext(0, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_MondayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2054,6 +2086,7 @@ namespace Basv3 {
   /** cc timer tuesday read */
   @inherit(r_11)
   @ext(1, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Tuesday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2061,6 +2094,7 @@ namespace Basv3 {
   /** cc timer tuesday write */
   @inherit(w_10)
   @ext(1, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_TuesdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2068,6 +2102,7 @@ namespace Basv3 {
   /** cc timer wednesday read */
   @inherit(r_11)
   @ext(0x2, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Wednesday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2075,6 +2110,7 @@ namespace Basv3 {
   /** cc timer wednesday write */
   @inherit(w_10)
   @ext(0x2, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_WednesdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2082,6 +2118,7 @@ namespace Basv3 {
   /** cc timer thursday read */
   @inherit(r_11)
   @ext(0x3, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Thursday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2089,6 +2126,7 @@ namespace Basv3 {
   /** cc timer thursday write */
   @inherit(w_10)
   @ext(0x3, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_ThursdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2096,6 +2134,7 @@ namespace Basv3 {
   /** cc timer friday read */
   @inherit(r_11)
   @ext(0x4, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Friday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2103,6 +2142,7 @@ namespace Basv3 {
   /** cc timer friday write */
   @inherit(w_10)
   @ext(0x4, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_FridayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2110,6 +2150,7 @@ namespace Basv3 {
   /** cc timer saturday read */
   @inherit(r_11)
   @ext(0x5, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Saturday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2117,6 +2158,7 @@ namespace Basv3 {
   /** cc timer saturday write */
   @inherit(w_10)
   @ext(0x5, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_SaturdayWrite {
     value: wTimeSlotWithoutTemp;
   }
@@ -2124,6 +2166,7 @@ namespace Basv3 {
   /** cc timer sunday read */
   @inherit(r_11)
   @ext(0x6, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_Sunday {
     value: rTimeSlotWithoutTemp;
   }
@@ -2131,6 +2174,7 @@ namespace Basv3 {
   /** cc timer sunday write */
   @inherit(w_10)
   @ext(0x6, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model CcTimer_SundayWrite {
     value: wTimeSlotWithoutTemp;
   }
