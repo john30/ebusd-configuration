@@ -431,10 +431,12 @@ scalar zmapping extends UIN;
 scalar hcname extends STR;
 
 /** zone name */
+@minLength(0)
 @maxLength(5)
 scalar zname extends STR;
 
 /** name */
+@minLength(0)
 @maxLength(6)
 scalar shortname extends STR;
 
@@ -443,6 +445,7 @@ scalar shortname extends STR;
 scalar phone extends STR;
 
 /** phone number */
+@minLength(0)
 @maxLength(6)
 scalar shortphone extends STR;
 
