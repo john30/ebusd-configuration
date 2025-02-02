@@ -888,6 +888,7 @@ namespace Bai._0010015600_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_OptionalRelais {
