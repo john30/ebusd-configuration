@@ -8,8 +8,29 @@ namespace Vaillant;
 
 // @zz(0x15)
 namespace Basv3 {
-  // ,BASV3,sensoCOMFORT VRC 720/3f via Base Station D (SW=0760;HW=7304)
-  // ##### General #####
+  // BASV3,sensoCOMFORT VRC 720/3f via Base Station D (SW=0760;HW=7304)
+  
+  // Errors
+
+  /** default *r */
+  @base(MF, 0x3, 0)
+  model r_0 {}
+
+  model ErrorList {
+    @values(Values_720ErrorCode)
+    error: UIN;
+    error_1: UIN;
+    error_2: UIN;
+    error_3: UIN;
+    error_4: UIN;
+  }
+
+  /** Current errors */
+  @inherit(r_0)
+  @ext(1)
+  model CurrentErrors {
+    value: ErrorList;
+  }
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0, 0)
@@ -3193,5 +3214,65 @@ namespace Basv3 {
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
   model Z3CoolingTimer_SundayWrite {
     value: wTimeSlotWithoutTemp;
+  }
+
+  enum Values_720ErrorCode {
+    None: 0,
+    RECOVAIR_comm_error: 509,
+    IOModule_comm_error: 511,
+    AF_Sensor_error: 521,
+    RF_comm_error: 599,
+    RC_1_comm_error: 1192,
+    RC_2_comm_error: 1193,
+    RC_3_comm_error: 1194,
+    RC_4_comm_error: 1195,
+    Boiler_1_comm_error: 1200,
+    Boiler_2_comm_error: 1201,
+    Boiler_3_comm_error: 1202,
+    Boiler_4_comm_error: 1203,
+    Boiler_5_comm_error: 1204,
+    Boiler_6_comm_error: 1205,
+    Heatpump_1_comm_error: 1206,
+    Heatpump_2_comm_error: 1207,
+    Heatpump_3_comm_error: 1208,
+    Heatpump_4_comm_error: 1209,
+    Heatpump_5_comm_error: 1210,
+    Heatpump_6_comm_error: 1211,
+    FM3_1_comm_error: 1212,
+    FM3_2_comm_error: 1213,
+    FM3_3_comm_error: 1214,
+    FM5_comm_error: 1218,
+    VR92_1_comm_error: 1219,
+    VR92_2_comm_error: 1220,
+    VR92_3_comm_error: 1221,
+    VR92_4_comm_error: 1222,
+    VPM_W_comm_error: 1227,
+    VPM_S_comm_error: 1228,
+    VMS_comm_error: 1229,
+    FM3_1_config_error: 1231,
+    FM3_2_config_error: 1232,
+    FM3_3_config_error: 1233,
+    Not_supported_VR61: 1237,
+    Not_supported_VR68: 1238,
+    Not_supported_VR81: 1239,
+    Hydraulic_scheme_invalid: 1240,
+    FM3_missing: 1244,
+    FM3_sensor_S1_missing: 1245,
+    Solar_pump_1_error: 1246,
+    Solar_pump_2_error: 1247,
+    Not_supported_actoSTOR: 1248,
+    MA2_VWZ_AI_config_error: 1249,
+    VR71_config_error: 1251,
+    Boiler_7_comm_error: 1252,
+    Boiler_8_comm_error: 1253,
+    Heatpump_7_comm_error: 1254,
+    Heatpump_8_comm_error: 1255,
+    FM3_1_MA_config_error: 1257,
+    FM5_MA_config_error: 1263,
+    Room_sensor_error: 1361,
+    RC_1_temp_sensor_signal_invalid: 1363,
+    RC_2_temp_sensor_signal_invalid: 1364,
+    RC_3_temp_sensor_signal_invalid: 1365,
+    RC_4_temp_sensor_signal_invalid: 1366,
   }
 }
