@@ -19,9 +19,17 @@ namespace Basv3 {
   model ErrorList {
     @values(Values_720ErrorCode)
     error: UIN;
+
+    @values(Values_720ErrorCode)
     error_1: UIN;
+
+    @values(Values_720ErrorCode)
     error_2: UIN;
+
+    @values(Values_720ErrorCode)
     error_3: UIN;
+
+    @values(Values_720ErrorCode)
     error_4: UIN;
   }
 
