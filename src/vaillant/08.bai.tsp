@@ -369,6 +369,12 @@ namespace Bai {
     @condition(Id.Id.hw, "=7401")
     hw_7401: Bai._308523_inc,
 
+    @condition(Id.Id.hw, "=3302")
+    hw_3302: Bai._0010021901_inc,
+
+    @condition(Id.Id.hw, "=7803")
+    hw_7803: Bai._0010021961_inc,
+
     @condition(Id.Id.hw, "=4702")
     hw_4702: Bai._0010008045_inc,
 
