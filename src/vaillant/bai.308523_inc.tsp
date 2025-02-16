@@ -67,6 +67,20 @@ namespace Bai._308523_inc {
   @ext(0x7b, 0)
   model CirPump is ReadonlyRegister<onoff>;
 
+  /** d.14 Desired heating pump power */
+  @inherit(r, wi)
+  @ext(0xa1, 0)
+  model PumpPowerDesired {
+    /** PWM-Desired central heating pump power */
+    @unit("%")
+    @values(Values_PumpPowerDesired)
+    value: UCH;
+  }
+
+  /** d.15 Current heating pump power: Current central heating pump power */
+  @ext(0x73, 0)
+  model PumpPower is ReadonlyRegister<UCH>;
+
   /** d.16 room thermostat 24 V: External controls heat demand (Clamp 3'-4') */
   @ext(0xe, 0)
   model DCRoomthermostat is ReadonlyRegister<onoff>;
@@ -768,6 +782,15 @@ namespace Bai._308523_inc {
   /** PrEnergyCountCH3_DK: Predictive Maintenance data */
   @ext(0xfa, 0)
   model PrEnergyCountHc3 is InstallRegister<ULG>;
+
+  enum Values_PumpPowerDesired {
+    auto: 0,
+    _53: 1,
+    _60: 2,
+    _70: 3,
+    _85: 4,
+    _100: 5,
+  }
 
   enum Values_HcPumpMode {
     post_run: 0,
