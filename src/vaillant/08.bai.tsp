@@ -16,6 +16,7 @@ import "./bai.0010011701_inc.tsp";
 import "./bai.0010015600_inc.tsp";
 import "./bai.0020066007_inc.tsp";
 import "./bai.308523_inc.tsp";
+import "./bai.0010021901_inc.tsp";
 import "./bai.0010021961_inc.tsp";
 import "./bai.0010008045_inc.tsp";
 import "./hcmode_inc.tsp";
@@ -325,6 +326,9 @@ namespace Bai {
       "'174'"
     )
     Scan_Id_product_308523: Bai._308523_inc,
+
+    @condition(Scan.Id.product, "='0010021901'")
+    Scan_Id_product_0010021901: Bai._0010021901_inc,
 
     @condition(
       Scan.Id.product,
