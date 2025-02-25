@@ -79,7 +79,7 @@ r;w,,HwcBivalencePoint,,,,,0100,,,EXP,,,"Bivalence point heating HWC"
 *w,,,,,,B524,02010100,,,,,,
 r;w,,HwcEnabled,,,,,0100,,,yesno,,,Indicates if Hwc is enabled/disabled
 r,,HwcCircPumpStatus,,,,,0200,,,onoff,,,Hwc circulation pump status (also turns on during a legionella run)
-r;w,,HwcOpMode,hwc operation mode,,,,0300,,,opmode,,,operation mode of Hwc
+r;w,,HwcOpMode,hwc operation mode,,,,0300,,,opmode3,,,operation mode of Hwc
 r;w,,HwcTempDesired,hwc temperature desired,,,,0400,,,tempv,,,setpoint of domestic hot water circuit
 r,,HwcStorageTemp,hwc storage temperature,,,,0500,,,tempv,,,Speicheristtemperatur
 r,,HwcReheatingActive,,,,,0600,,,yesno,,,Indicates ongoing hot/legionella water run
@@ -453,23 +453,23 @@ r;w,,z3Name2,label zone 3 part 2,,,,1800,,,zname,,,name of zone 3
 b,,NoiseReduction,noise reduction state,,,b508,,onoff,,onoff,,,
 # includes,,,,,,,,,,,,,
 # Timers silent mode,,,,,,,,,,,,,
-*r,,,,,,B555,a50004,,,,,,
-*w,,,,,,B555,a60004,,,,,,
-r,,silentTimer.Config,timer Configuration(static atm? describes featue set?),,,B555,a30004,,,HEX:9,,,Configuration
-r,,silentTimer.TimeSlotsPerWeekday,Configured slot count for each weekday,,,B555,a40004,,,slotCountWeek,,,Amount of configured slots per weekday
-r,,silentTimer.Monday,timer monday read,,,,00,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Monday,timer monday write,,,,00,,,wTimeSlotWithoutTemp,,,
-r,,silentTimer.Tuesday,timer tuesday read,,,,01,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Tuesday,timer tuesday write,,,,01,,,wTimeSlotWithoutTemp,,,
-r,,silentTimer.Wednesday,timer wednesday read,,,,02,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Wednesday,timer wednesday write,,,,02,,,wTimeSlotWithoutTemp,,,
-r,,silentTimer.Thursday,timer thursday read,,,,03,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Thursday,timer thursday write,,,,03,,,wTimeSlotWithoutTemp,,,
-r,,silentTimer.Friday,timer friday read,,,,04,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Friday,timer friday write,,,,04,,,wTimeSlotWithoutTemp,,,
-r,,silentTimer.Saturday,timer saturday read,,,,05,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Saturday,timer saturday write,,,,05,,,wTimeSlotWithoutTemp,,,
-r,,silentTimer.Sunday,timer sunday read,,,,06,index,m,UCH,,,,,,rTimeSlotWithoutTemp
-w,,silentTimer.Sunday,timer sunday write,,,,06,,,wTimeSlotWithoutTemp,,,
+#*r,,,,,,B555,a50004,,,,,,
+#*w,,,,,,B555,a60004,,,,,,
+#r,,silentTimer.Config,timer Configuration(static atm? describes featue set?),,,B555,a30004,,,HEX:9,,,Configuration
+#r,,silentTimer.TimeSlotsPerWeekday,Configured slot count for each weekday,,,B555,a40004,,,slotCountWeek,,,Amount of configured slots per weekday
+#r,,silentTimer.Monday,timer monday read,,,,00,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Monday,timer monday write,,,,00,,,wTimeSlotWithoutTemp,,,
+#r,,silentTimer.Tuesday,timer tuesday read,,,,01,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Tuesday,timer tuesday write,,,,01,,,wTimeSlotWithoutTemp,,,
+#r,,silentTimer.Wednesday,timer wednesday read,,,,02,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Wednesday,timer wednesday write,,,,02,,,wTimeSlotWithoutTemp,,,
+#r,,silentTimer.Thursday,timer thursday read,,,,03,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Thursday,timer thursday write,,,,03,,,wTimeSlotWithoutTemp,,,
+#r,,silentTimer.Friday,timer friday read,,,,04,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Friday,timer friday write,,,,04,,,wTimeSlotWithoutTemp,,,
+#r,,silentTimer.Saturday,timer saturday read,,,,05,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Saturday,timer saturday write,,,,05,,,wTimeSlotWithoutTemp,,,
+#r,,silentTimer.Sunday,timer sunday read,,,,06,index,m,UCH,,,,,,rTimeSlotWithoutTemp
+#w,,silentTimer.Sunday,timer sunday write,,,,06,,,wTimeSlotWithoutTemp,,,
 
 !include,errors.inc,,,,,,,,,,,,
