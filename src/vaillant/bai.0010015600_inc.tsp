@@ -435,7 +435,7 @@ namespace Bai._0010015600_inc {
   @inherit(r, wi_1)
   @ext(0xb7, 0)
   model HcPumpMode {
-    /** Pump mode for central heating */
+    /** Pump mode */
     @values(Values_HcPumpMode)
     value: UCH;
   }
@@ -888,6 +888,7 @@ namespace Bai._0010015600_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_OptionalRelais {

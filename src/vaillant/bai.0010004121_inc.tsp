@@ -682,7 +682,7 @@ namespace Bai._0010004121_inc {
   @inherit(r, wi)
   @ext(0x49, 0x4)
   model HcPumpMode {
-    /** Pump mode: 0=post run, 1=continous, 2=Winter, 3=intermittend */
+    /** Pump mode */
     @values(Values_HcPumpMode)
     value: UCH;
   }
@@ -1178,6 +1178,7 @@ namespace Bai._0010004121_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_OptionRelais {
