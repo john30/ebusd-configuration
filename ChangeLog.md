@@ -1,3 +1,10 @@
+# 2025-02-16
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * encon/0a + 3c + 7c from #406
+  * vaillant/08.bai from #442, #436
+  * vaillant/08.hmu from #479
+
 # 2025-01-21
 https://ebus.github.io/ only:
 * reworked+merged several PRs:
@@ -12,7 +19,7 @@ https://ebus.github.io/ only:
   * vaillant/e0.omu from #368
   * vaillant/15.ctls2 from #422
   * vaillant/15.ctlv2 from #423
-  * vaillant/06.pms + 06.vms from #430and #454
+  * vaillant/06.pms + 06.vms from #430 and #454
   * vaillant/mcmode from #328 
   * tem/15 from #129
 * add vaillant/15.ctlv3 link according to #35, #418, #449
