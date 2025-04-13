@@ -11,6 +11,7 @@ import "./vaillant/06.vms.tsp";
 import "./vaillant/08.bai.tsp";
 import "./vaillant/08.ehp.tsp";
 import "./vaillant/08.hmu.tsp";
+import "./vaillant/08.hmu.HW5103.tsp";
 import "./vaillant/08.recov.tsp";
 import "./vaillant/08.v3x.tsp";
 import "./vaillant/0a.pmw.hwc.tsp";
