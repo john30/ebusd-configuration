@@ -3,17 +3,26 @@
 # ########### general ################,,,,,,,,,,,,,
 *r,,,,,,B509,0D,,,,,,
 *w,,,,,,B509,0E,,,,,,
-r;w,,BypassValve,,,,,0a00,,,onoff,,,
-r;w,,FrostProtection,,,,,4700,,,onoff,,,
+r;w,,ventilation,ventilation level,,,,1500,,,UIN,166=50;183=55;200=60;216=65;233=70;250=75;266=80;283=85;300=90;316=95;333=100;350=105;366=110;383=115;400=120;416=125;433=130;450=135;466=140;483=145;500=150;516=155;533=160;550=165;566=170;583=175;600=180;616=185;633=190;650=195;666=200;683=205;700=210;716=215;733=220;750=225;766=230;783=235;800=240;816=245;833=250;850=255;866=260;883=265;900=270,m³/h, wartosc do wymnozenia przez 3/10
 r;w,,FlowCorrection,Set volume flow correction,,,,2000,,,D1B,,,
-r;w,,room_temperature,,,,,0000,,,temp,,,
-w,,ventilation,ventilation level,,,,1500,,,UIN,,m³/h, wartosc do wymnozenia przez 3/10
-#r,,VolumeFlowAct,,,,,1500,,,UIN,,,
-####### #####,,,,,,,,,,,,,
-*r,,,,,,B509,29,,,IGN:2,,,
-*w,,,,,,B509,,,,,,,
-r;w,,SAI_temperature,Supply air temperature,,,,0100,,,temp,,,
-r;w,,SAO_temperature,Outside air temperature,,,,0200,,,temp,,,
-r;w,,EAI_temperature,Exhaust air temperature,,,,0300,,,temp,,,
-r;w,,EAO_temperature,Extract air temperature,,,,0400,,,temp,,,
-r;w,,YieldTotal,,,,,4d00,,,UIN,,kWh,
+r9;w,,Cooling,Cooling - Summer Bypass,,,,0a00,,,UCH,1=Off;2=On,,,,
+r;w,,VentHI,Ventilation High time,,,,5800,,,HCD:2,,,
+#29 seems to ask for info/status information
+*r,,,,,c0,B509,29,,,IGN:2,,,first 2 bytes in response are the ID field again
+r9,,BypassValye,Bypass Position,,,,0900,,,percent0,,,
+r1,,TempInletAir_SAI,Temperatur Aussenluft,,,,0100,,,temp,,°C,
+r1,,TempOutsideAir_SAO,Temperatur Zuluft (Bypass),,,,0200,,,temp,,°C,
+r1,,TempWasteAir_EAI,Temperatur Abluft,,,,0300,,,temp,,°C,
+r1,,TempOutgoingAir_EAO,Temperatur Fortluft,,,,0400,,,temp,,°C,
+# This is either wrong or room temp correction is missing
+r1;w,,room_temperature,Room Temperature,,,,0000,,,temp;sensor,,°C,
+#r1;w,,RoomTempOffset,Raumisttemp. Korrekturwert,,,,"1F00",,,temp,,,
+#r1,,RoomTempOffsetSelfWarming,Offset Eigenerwärmung,,,,"2000",,,temp,,,
+# Mike Kopp thinks this is "Unterdruckschutz
+r;w,,FrostProtection,,,,,4700,,,onoff,,,
+r;w,,Filter,Filter Days,,,,4600,,,HCD:2,,,
+#r;w,,UNKOWN_2,,,,,4300,,,,,,2 bytes
+#r9;w,,UNKOWN_3,,,,,0e00,,,,,,1 byte, seems an on off, very often
+#r9;w,,UNKOWN_3,,,,,0f00,,,,,,1 byte, seems an on off, very often
+#r5;w,,Ertrag_Gesamt_kWh,Ertrag_Gesamt_kWh,,,,4d00,,,UIN,,kW/h,
+
