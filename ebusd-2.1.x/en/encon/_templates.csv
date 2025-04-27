@@ -1,0 +1,20 @@
+# template name,type / templates,divider / values,unit,comment
+days,UIR,,days,days
+hours5,UIR,-5,h,hours
+onoff,UIR,0=off;1=on,,
+yesno,UIR,0=no;1=yes,,
+temp10,SIR,10,°C,
+volume,UIR,-1000,m³
+speed,UIR,,m³/h
+sspeed,SIR,,m³/h
+percentr,UIR,,%,
+heaterstatus,UIR,0=Initializing;1=Off;2=On,,
+sensorstate,UIR,0=Error;1=NotInitialized;2=Idle;3=WarmingUp;4=Running;5=Calibrating;6=SelfTest
+position,UIR,0=_0;1=_1;2=_2;3=_3,,
+autocloseopen,UIR,0=Auto;1=Closed;2=Open,
+voltage,SIR,10,V,
+onoffbypass,UIR,0=off;1=on;2=on if bypass open condition satisfied;3=bypass control;4=Bedroom valve,
+fanmode,UIR,0=FanOff;1=Minimal flow 50m³/h;2=FanMode1;3=FanMode2;4=FanMode3;5=ManualSwitch;6=MaximalFlow;7=FanNotActive,
+inputmode,UIR,0=Normally Closed;1=0-10V input;2=Normally Open;3=12V Bypass Open/0V Bypass Closed;4=0V Bypass Open/12V Bypass Closed,,
+baud,UIR,0=1k2;1=2k4;2=4k8;3=9k6;4=19k2;5=38k4;6=56k;7=115k,baud,
+parity,UIR,0=None;1=Even;2=Odd;3=Unknown,,

@@ -1,0 +1,15 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/temp$
+### BRINK CO2 sensor
+##
+## This ebus config is based on information from https://gathering.tweakers.net/forum/list_messages/1979992
+## It is untested and likely incomplete.
+
+## Brink CO2 sensor
+*r,co2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*w,co2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+#### SENSOR DATA ####
+r,,SensorValue,40a100,,,40a1,,,,UIR,,,Address,,,UIR,,,,,,UIR,,ppm,Value
+*w,,,,,,4080,
+w,,SensorUpperLimit,4080039103e8,,,,91,,,UIR,,ppm
+w,,SensorLowerLimit,4080039002bc,,,,90,,,UIR,,ppm

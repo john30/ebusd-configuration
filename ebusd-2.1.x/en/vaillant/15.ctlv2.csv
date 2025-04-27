@@ -153,6 +153,9 @@ r;w,,z1HolidayEndPeriod,Ferienzeitraum Ende Zone 1,,,,0400,,,hto,,,end date of h
 r;w,,z1HolidayTemp,Raumsollwert Ferienbetrieb Zone 1,,,,0500,,,tempv,,,holiday setpoint for zone 1
 r;w,,z1OpMode,Betriebsart Zone 1,,,,0600,,,opmode,,,operation mode of zone 1
 r;w,,z1QuickVetoTemp,Quick Veto Temperatur Zone 1,,,,0800,,,tempv,,,manual override setpoint for zone 1
+r;w,,z1QuickVetoDuration,Duration of Quick Veto mode Zone 1,,,,2600,,,EXP,,h,valid values are 0.5-12 in steps of 0.5 and writing enables quick veto mode
+r,,z1QuickVetoEndTime,Quick Veto end time Zone 1,,,,1E00,,,HTI,,,
+r,,z1QuickVetoEndDate,Quick Veto end date Zone 1,,,,2400,,,date,,,
 r;w,,z1NightTemp,Absenktemperatur Zone 1,,,,0900,,,tempv,,,night setpoint for zone 1
 r;w,,z1BankHolidayStartPeriod,Bank Feiertag Start Zone 1,,,,0C00,,,hfrom,,,start date of bank holidays for zone 1
 r;w,,z1BankHolidayEndPeriod,Bank Feiertag Ende Zone 1,,,,0D00,,,hto,,,end date of bank holidays for zone 1
@@ -176,6 +179,9 @@ r;w,,z2HolidayEndPeriod,Ferienzeitraum Ende Zone 2,,,,0400,,,hto,,,end date of h
 r;w,,z2HolidayTemp,Raumsollwert Ferienbetrieb Zone 2,,,,0500,,,tempv,,,holiday setpoint for zone 2
 r;w,,z2OpMode,Betriebsart Zone 2,,,,0600,,,opmode,,,operation mode of zone 2
 r;w,,z2QuickVetoTemp,Quick Veto Temperatur Zone 2,,,,0800,,,tempv,,,manual override setpoint for zone 2
+r;w,,z2QuickVetoDuration,Duration of Quick Veto mode Zone 2,,,,2600,,,EXP,,h,valid values are 0.5-12 in steps of 0.5 and writing enables quick veto mode
+r,,z2QuickVetoEndTime,Quick Veto end time Zone 2,,,,1E00,,,HTI,,,
+r,,z2QuickVetoEndDate,Quick Veto end date Zone 2,,,,2400,,,date,,,
 r;w,,z2NightTemp,Absenktemperatur Zone 2,,,,0900,,,tempv,,,night setpoint for zone 2
 r;w,,z2BankHolidayStartPeriod,Bank Feiertag Start Zone 2,,,,0C00,,,hfrom,,,start date of bank holidays for zone 2
 r;w,,z2BankHolidayEndPeriod,Bank Feiertag Ende Zone 2,,,,0D00,,,hto,,,end date of bank holidays for zone 2
@@ -198,6 +204,9 @@ r;w,,z3HolidayEndPeriod,Ferienzeitraum Ende Zone 3,,,,0400,,,hto,,,end date of h
 r;w,,z3HolidayTemp,Raumsollwert Ferienbetrieb Zone 3,,,,0500,,,tempv,,,holiday setpoint for zone 3
 r;w,,z3OpMode,Betriebsart Zone 3,,,,0600,,,opmode,,,operation mode of zone 3
 r;w,,z3QuickVetoTemp,Quick Veto Temperatur Zone 3,,,,0800,,,tempv,,,manual override setpoint for zone 3
+r;w,,z3QuickVetoDuration,Duration of Quick Veto mode Zone 3,,,,2600,,,EXP,,h,valid values are 0.5-12 in steps of 0.5 and writing enables quick veto mode
+r,,z3QuickVetoEndTime,Quick Veto end time Zone 3,,,,1E00,,,HTI,,,
+r,,z3QuickVetoEndDate,Quick Veto end date Zone 3,,,,2400,,,date,,,
 r;w,,z3NightTemp,Absenktemperatur Zone 3,,,,0900,,,tempv,,,night setpoint for zone 3
 r;w,,z3BankHolidayStartPeriod,Bank Feiertag Start Zone 3,,,,0C00,,,hfrom,,,start date of bank holidays for zone 3
 r;w,,z3BankHolidayEndPeriod,Bank Feiertag Ende Zone 3,,,,0D00,,,hto,,,end date of bank holidays for zone 3
@@ -212,8 +221,8 @@ r;w,,z3Name1,Bezeichnung Zone 3 Teil 1,,,,1700,,,zname,,,name of zone 3
 r;w,,z3Name2,Bezeichnung Zone 3 Teil 2,,,,1800,,,zname,,,name of zone 3
 r;w,,z3DayTemp,Solltemperatur Zone 3,,,,2200,,,tempv,,,day setpoint for zone 3
 # ##### timers #####,,,,,,,,,,,,,
-*r,,,,,,,,,,,,,
-r,,unknownValue.a0,(3Zones;HWC&CC = constant value. General configuration?),,,B555,a0,,,HEX:8,,,First = Zones maybe? Rest unknown; needs some other configured ctlv2
+#*r,,,,,,,,,,,,,
+#r,,unknownValue.a0,(3Zones;HWC&CC = constant value. General configuration?),,,B555,a0,,,HEX:8,,,First = Zones maybe? Rest unknown; needs some other configured ctlv2
 #r,,unknownValue.a1,(3Zones;HWC&CC = Empty value. air;tariff;etc or Errors?),,,B555,a1,,,,,,
 #r,,unknownValue.a2,(3Zones;HWC&CC = Empty value. air;tariff;etc or Errors?),,,B555,a2,,,,,,
 # timers hot water,,,,,,,,,,,,,

@@ -1,5 +1,0 @@
-# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field1,part (m;s),type / templates,divider / values,unit,comment,field2,part (m;s),type / templates,divider / values,unit,comment,field3,part (m;s),type / templates,divider / values,unit,comment,field4,part (m;s),type / templates,divider / values,unit,comment,field5,part (m;s),type / templates,divider / values,unit,comment,field6,part (m;s),type / templates,divider / values,unit,comment,field7,part (m;s),type / templates,divider / values,unit,comment
-*w,solar,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-w,,ertraege,,,,5018,,leistung,,D2B,,,Solarleistung,ertraglow,,UCH,,,ErtragTagLow,ertraghigh,,UCH,,,ErtragTagHigh,ertragsummelow,,UCH,,,SummeErtragLow,summertraghigh,,UCH,,,SummeErtragHigh,ertragsumme,,UCH,,,SummeErtragM,,,,,,
-w,,temp,,,,5017,,pumpe,,UCH,0xbc=off;0xbd=on,,SolarPumpe,,,IGN:1,,,,kollektortemp,,temp,,,Kollektortemperatur,wwsolartemp,,temp,,,WW Solartemperatur,,,,,,,,,,,,,,,,,,
-w,,regler,,,,5014,,status,,HEX,,,StatusSolar,,,IGN:1,,,,mischersolltemp,,temp2,,,MischerSolltemperatur,raumtemp,,temp1,,,Raumtemperatur,wwsolltemp,,temp1,,,SollWarmwasser,,,,,,,,,,,,

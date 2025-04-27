@@ -11,8 +11,10 @@ days,UCH,,,days
 time,VTI,,,time
 time2,VTM,,,time
 minutes,ULG,120,min,minutes
+minutes4,ULG,,min,minutes
 minutes0,UCH,,min,minutes
 minutes2,UIN,,min,minutes
+minutes5,UCH,-5,min,minutes
 hoursum,ULG,,h,hours
 hoursum2,UIN,,h,hours
 hours,UCH,,h,hours
@@ -29,7 +31,7 @@ calibration1,D1C,,K,
 calibrations,SCH,2,K,
 calibrationv,EXP,,K,
 integral,SIN,,°min,
-hcmode,UCH,0=auto;1=off;2=heat;2=water,,boiler mode
+hcmode,UCH,0=auto;1=off;2=heat;3=water,,boiler mode
 hcmode2,UCH,0=off;3=heat;4=water,,boiler mode
 mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,mixer mode
 mctype,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
@@ -106,3 +108,4 @@ wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Complete Slot for
 wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;HEX:2,,,Complete slot for writing the time table settings without a temperature. FF FF has to be appended.
 rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Complete Slot for reading the time table settings.
 rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Complete slot for reading the time table settings without a temperature.
+appliancecode,UCH,0=off;1=prerun;2=pump_prerun;3=ignition;4=on;5=overrun;6=fan_overrun;7=pump_overrun;8=shutdown;9=measure;10=hwc_desired;11=hwc_prerun;12=hwc_pump_prerun;13=hwc_ignition;14=hwc_on;15=hwc_overrun;16=hwc_fan_overrun;17=hwc_pump_overrun;18=hwc_shutdown;34=frost_protect,,Status code

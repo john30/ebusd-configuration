@@ -19,7 +19,7 @@ r;w,,OtShutdownLimit,OtShutdownLimit,,,,"3600",,,desiredtemp,,,BMR: Outside temp
 r;wi,,FlowTempMin,MinFlowTemp,,,,"3000",,,temp0,,,BMR:Minimum Flow Temperature for circuit
 r;w;u,,FlowTempDesired,Flow setpoint,,,,"4600",,,temp1,,,BMR:flow temperature that is actually desired by circuit
 r;wi,,FlowTempMax,MaxFlowTemp,,,,"3100",,,temp0,,,BMR:Maximum Flow Temperature for circuit
-r;wi,,HcMaxPreHeating,HcMaxPreHeating,,,,"3800",,,UCH,,hours,BMR: Maximum Preheating time in minutes
+r;wi,,HcMaxPreHeating,HcMaxPreHeating,,,,"3800",,,minutes5,,,BMR: Maximum Preheating time in minutes
 [SW<=339]r;wi,,FloorProtectionLimit,Floor_Protection_Limit,,,,"7B01",,,desiredtemp,,,Floor protection temperature at which the heat pump goes to error mode.
 [SW>=340]r,,FloorProtectionLimit,Floor_Protection_Limit,,,,"7B01",,,desiredtemp,,,Floor protection temperature at which the heat pump goes to error mode.
 r;wi,,FloorPavingDryingDay,FloorPavingDryingDay,,,,"3B00",,,UCH,,,BMR: actual day of floor paving drying program (1...29)

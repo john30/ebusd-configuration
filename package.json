@@ -1,0 +1,45 @@
+{
+  "name": "ebusd-configuration",
+  "version": "0.1.0",
+  "description": "utilities for converting ebusd-configuration files",
+  "scripts": {
+    "csv2tsp": "tsx ./utils/src/index.ts -i ^tem/ -I '^\\['",
+    "csv2tsp-combine": "tsx ./utils/src/index.ts -b latest/de -L de -m outtsp/i18n.yaml -p src/i18n.yaml -s outtsp -o outtsp.de -I '^\\['",
+    "csv2tsp-extra": "tsx ./utils/src/index.ts -n -b latest/en -m outtsp/i18n.yaml -s outtsp -o outtsp -I '^\\[' latest/en/tem/*",
+    "maintsp": "find outtsp/ -name '*.tsp' -not -type l|grep -Ev 'main.tsp|_templates.tsp'|sort|grep -v '_inc.'|sed -e 's#outtsp/##' -e 's#^#import \"./#' -e 's#$#\";#' > outtsp/main.tsp",
+    "format": "npx tsp format outtsp/*.tsp outtsp/**/*.tsp outtsp.de/*.tsp outtsp.de/**/*.tsp",
+    "lint": "npx tsp compile outtsp/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
+    "csvall": "./csvall.sh",
+    "compile-en": "npx tsp compile --emit @ebusd/ebus-typespec src/main.tsp --output-dir outcsv",
+    "compile-de": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/de.yaml src/main.tsp --output-dir outcsv.de",
+    "compile": "npm run compile-en && npm run compile-de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john30/ebusd-configuration.git"
+  },
+  "keywords": [
+    "ebusd",
+    "configuration"
+  ],
+  "author": "John Baier",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/john30/ebusd-configuration/issues"
+  },
+  "homepage": "https://github.com/john30/ebusd-configuration#readme",
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.14.8",
+    "@typespec/json-schema": "~0.64.0",
+    "@typespec/library-linter": "~0.64.0",
+    "csv-parser": "^3.1.0",
+    "js-yaml": "^4.1.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@ebusd/ebus-typespec": ">=0.21.0",
+    "@typespec/compiler": "~0.64.0",
+    "tsx": "^4.19.2"
+  }
+}

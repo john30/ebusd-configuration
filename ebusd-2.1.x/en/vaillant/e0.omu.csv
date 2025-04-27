@@ -39,14 +39,14 @@ r,,NoiseReduction,NoiseReduction,,,,"3500",,,yesno,,,noise reduction is active
 [SW>=104]r;wi,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,percent0,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
 r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,percent0,,,noise reduction factor to reduce fan speed
 r;wi,,SourceMAXTemp,T_AirMAX,,,,"4300",,,temp,,,maximum allowed air inlet temperature
-[SW>=130]r,,CoolingActive,CoolingActive,,,,"5900",,,yesno,,,cooling active
+[SW>=130]r,,CoolingActive,cooling active,,,,"5900",,,yesno,,,
 [SW>=130]r;wi,,CoolingFanStartTemp,CoolingFanStartTemp,,,,"5A00",,,temp0,,,brine temperature to start fan while cooling
 [SW>=130]r;wi,,CoolingFanStopTemp,CoolingFanStopTemp,,,,"5B00",,,temp0,,,reserved
 [SW>=130]r;wi,,CoolingMaxFanSpeed,CoolingMaxFanSpeed,,,,"5C00",,,percent0,,,max. fan speed while cooling
 [SW>=130]r;wi,,CoolingTest,CoolingTest,,,,"5D00",,,UCH,,,reserved
 # ##### testing #####,,,,,,,,,,,,,
 r,,ZustandOAWLogic,ZustandOAWLogic,,,,"2A00",,,UIN,,,"Output of ""OAW_control"" statemachine"
-r,,IDUApplianceCode,IDU_appliance_code,,,,"3E00",,,UCH,,,"appliance code, copy from AMU"
+r,,IDUApplianceCode,IDU_appliance_code,,,,"3E00",,,appliancecode,,,"appliance code, copy from AMU"
 [SW>=104]r,,FrostProtection,FrostProtection,,,,"4100",,,temp,,,copy from AMU: frost protection
 r,,CompActive,CompressorActive,,,,"1700",,,onoff,,,compressor is running or pre or post running
 r,,CompDemand,CompressorDemand,,,,"3200",,,yesno,,,compressor wants to start or is running
@@ -55,7 +55,7 @@ r,,SourceOK,BrineOK,,,,"3400",,,yesno,,,brine pressure is ok and pump is running
 r,,FanMode,FanMode,,,,"3600",,,yesno,,,future use
 [SW>=104]r,,SyncHeaterDeicing,SyncHeaterDeicing,,,,"4700",,,yesno,,,synchronize heater while deicing
 [SW>=104]r,,SyncDeicing,SyncDeicing,,,,"4900",,,yesno,,,synchronize deicing process
-r;wi,,OAWControlPumpPWM,OAW_Control_Pump_PWM,,,,"3700",,,UIN,,,reserved
+r;wi,,OAWControlPumpPWM,OAW_Control_Pump_PWM,,,,"3700",,,UCH,,,reserved
 r,,TestFan,Test_Fan,,,,"3A00",,,UCH,,,
 r,,Pumin,Pumin,,,,"3D00",,,UCH,,,reserved
 [SW>=104]r,,RelayStarts,RelayCommutations,,,,"4D00",,,ULG,,,reserved
@@ -64,13 +64,13 @@ r,,Pumin,Pumin,,,,"3D00",,,UCH,,,reserved
 [SW>=104]r,,TestHeater,Test_Heater,,,,"4800",,,UCH,,,reserved
 r,,ODUReady,ODUReady,,,,"2B00",,,yesno,,,start-up test of ODU was successful
 [SW>=104]r,,SourceTempMin,T_AirMin,,,,"2500",,,temp,,,minimum allowed air temperature
-r,,FanStartSpeed,FanStartSpeed,,,,"2200",,,UIN,,,reserved
+r,,FanStartSpeed,FanStartSpeed,,,,"2200",,,percent0,,,reserved
 r,,Free2,Free2,,,,"2100",,,UIN,,,reserved
-r,,FanstableTime,FanstableTime,,,,"2000",,,UIN,,,reserved
-r,,OffsetFanSpeed,OffsetFanSpeed,,,,"1F00",,,UIN,,,reserved
+r,,FanstableTime,FanstableTime,,,,"2000",,,minutes0,,,reserved
+r,,OffsetFanSpeed,OffsetFanSpeed,,,,"1F00",,,UCH,,,reserved
 r,,RelaisOut,RelaisOut,,,,"1E00",,,onoff,,,reserved
 r,,PumpSpeedControl,PumpSpeedControl,,,,"1900",,,UIN,,,reserved
-r,,fanPWM,fan_PWM,,,,"1400",,,UIN,,,PWM value from hardware
+r,,fanPWM,fan_PWM,,,,"1400",,,UCH,,,PWM value from hardware
 # ##### statistics #####,,,,,,,,,,,,,
 [SW>=104]r,,FanRuntimeMinutes,FanRuntimeMinutes,,,,"4C00",,,ULG,,min,fan run time
 [SW>=104]r,,HeaterRuntimeMinutes,HeaterRuntimeMinutes,,,,"4E00",,,ULG,,min,defroster run time
@@ -80,6 +80,10 @@ r,,fanPWM,fan_PWM,,,,"1400",,,UIN,,,PWM value from hardware
 [SW>=104]r,,DeiceErrorStarts,DeiceErrorCommutations,,,,"5300",,,ULG,,,deice error cycles
 [SW>=104]r,,STBErrorStarts,STBErrorCommutations,,,,"5000",,,ULG,,,STB cycles
 [SW>=104]r,,PowerOnStarts,PowerOnCommutations,,,,"5400",,,ULG,,,power on cycles
+# B521 service commands
+*uw,,,,,,"B521","00",,,,,,
+ [SW<131]uw,,OMUControl,Control command from HMU to OMU,,,,,NewStatus,,appliancecode,,,new status,,,IGN:3,,,,Status,s,appliancecode,,,current status,LastStatus,s,appliancecode,,,last status,BrineOutletTemp,s,D2C,16,°C,brine outlet temperature,TempAirInlet,s,D2C,16,°C,air inlet temperature,,s,IGN,,,,FanSpeed,s,UCH,-10,/min,fan speed,FanPower,s,percent0,,,fan power
+[SW>=131]uw,,OMUControl,Control command from HMU to OMU,,,,,NewStatus,,appliancecode,,,new status,,,IGN:7,,,,Status,s,appliancecode,,,current status,LastStatus,s,appliancecode,,,last status,BrineOutletTemp,s,D2C,16,°C,brine outlet temperature,TempAirInlet,s,D2C,16,°C,air inlet temperature,,s,IGN,,,,FanSpeed,s,UCH,-10,/min,fan speed,FanPower,s,percent0,,,fan power
 !include,hwcmode.inc,,,,,,,,,,,,
 !include,timer.inc,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

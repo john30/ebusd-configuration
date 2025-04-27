@@ -1,0 +1,11 @@
+{
+  "i18n-ally.enabledFrameworks": [
+    "custom"
+  ],
+  "i18n-ally.keystyle": "flat",
+  "i18n-ally.localesPaths": [
+    "src"
+  ],
+  "i18n-ally.pathMatcher": "{locale}.yaml",
+  "i18n-ally.sourceLanguage": "en"
+}

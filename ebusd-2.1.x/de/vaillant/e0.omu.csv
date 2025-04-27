@@ -39,7 +39,7 @@ r,,NoiseReduction,NoiseReduction,,,,"3500",,,yesno,,,noise reduction is active
 [SW>=104]r;wi,,FanSpeedMax,MaxFanSpeed,,,,"3F00",,,percent0,,,"maximum allowed fan speed, set by look-up-table according to IDU power"
 r;w,,NoiseReductionFactor,NoiseReductionFactor,,,,"4000",,,percent0,,,noise reduction factor to reduce fan speed
 r;wi,,SourceMAXTemp,T_AirMAX,,,,"4300",,,temp,,,maximum allowed air inlet temperature
-[SW>=130]r,,CoolingActive,Kühlung aktiv,,,,"5900",,,yesno,,,cooling active
+[SW>=130]r,,CoolingActive,Kühlung aktiv,,,,"5900",,,yesno,,,
 [SW>=130]r;wi,,CoolingFanStartTemp,CoolingFanStartTemp,,,,"5A00",,,temp0,,,brine temperature to start fan while cooling
 [SW>=130]r;wi,,CoolingFanStopTemp,CoolingFanStopTemp,,,,"5B00",,,temp0,,,reserved
 [SW>=130]r;wi,,CoolingMaxFanSpeed,CoolingMaxFanSpeed,,,,"5C00",,,percent0,,,max. fan speed while cooling
