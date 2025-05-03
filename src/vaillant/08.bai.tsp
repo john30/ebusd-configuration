@@ -20,6 +20,7 @@ import "./bai.0010021901_inc.tsp";
 import "./bai.0010021961_inc.tsp";
 import "./bai.0010008045_inc.tsp";
 import "./hcmode_inc.tsp";
+import "./b516_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -381,5 +382,6 @@ namespace Bai {
 
     default: Bai._308523_inc, // final load alternative
     Hcmode_inc,
+    B516_inc,
   }
 }
