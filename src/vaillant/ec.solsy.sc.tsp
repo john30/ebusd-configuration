@@ -160,7 +160,9 @@ namespace Solsy.Sc {
   @inherit(r, ws)
   @ext(0x9d, 0)
   model ColKickGradient {
-    @unit("0.1 K / 30 min")
+    @unit("°min")
+    // originally 0.1 K / 30 min, equivalent to 1/300 °min
+    @divisor(300)
     value: UCH;
   }
 
@@ -190,7 +192,6 @@ namespace Solsy.Sc {
   @ext(0xb0, 0)
   model SolCollVolumeSensorTicksPer10Lite {
     /** How often the volume sensor has to pulse for the detection of 10 liters */
-    @unit("ticks")
     value: UCH;
   }
 

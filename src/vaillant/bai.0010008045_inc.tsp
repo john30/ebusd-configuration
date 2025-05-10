@@ -425,7 +425,6 @@ namespace Bai._0010008045_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Predictive Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 
@@ -581,7 +580,7 @@ namespace Bai._0010008045_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** output fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -656,7 +655,7 @@ namespace Bai._0010008045_inc {
   @ext(0xdf, 0)
   model FanMinSpeedOperation {
     /** Minimum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -665,7 +664,7 @@ namespace Bai._0010008045_inc {
   @ext(0xe0, 0)
   model FanMaxSpeedOperation {
     /** Maximum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 

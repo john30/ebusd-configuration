@@ -581,7 +581,7 @@ namespace Bai._0010006341_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** output fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -739,7 +739,7 @@ namespace Bai._0010006341_inc {
   @ext(0x12, 1)
   model AWPCEEMinThreshold {
     /** minimum waterpressure threshold */
-    @unit("bar/10")
+    @unit("bar")
     @divisor(10)
     value: SIN;
   }
@@ -749,7 +749,7 @@ namespace Bai._0010006341_inc {
   @ext(0x13, 1)
   model AWPCEEMaxThreshold {
     /** maximum waterpressure threshold */
-    @unit("bar/10")
+    @unit("bar")
     @divisor(10)
     value: SIN;
   }

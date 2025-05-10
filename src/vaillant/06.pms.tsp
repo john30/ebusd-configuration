@@ -158,7 +158,8 @@ namespace Pms {
   @ext(0x2e, 0)
   model CurrentFlow {
     /** Flow thru buffer circuit if loading the storage */
-    @unit("ml / min")
+    @unit("l/min")
+    @divisor(1000)
     value: UIN;
   }
 

@@ -96,7 +96,7 @@ namespace Bai._0010006101_inc {
   @ext(0x24, 0)
   model TargetFanSpeed {
     /** Fan speed setpoint */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -105,7 +105,7 @@ namespace Bai._0010006101_inc {
   @ext(0x83, 0)
   model FanSpeed {
     /** fan speed actual value */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -220,7 +220,7 @@ namespace Bai._0010006101_inc {
   @ext(0xdf, 0)
   model FanMinSpeedOperation {
     /** Minimum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -229,7 +229,7 @@ namespace Bai._0010006101_inc {
   @ext(0xe0, 0)
   model FanMaxSpeedOperation {
     /** Maximum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -502,14 +502,9 @@ namespace Bai._0010006101_inc {
   @ext(0x20, 0x4)
   model HoursTillService is InstallRegister<hoursum2>;
 
-  /** d.85 AntiCondensValue */
-  @inherit(r, wi)
+  /** d.85 AntiCondensValue: increase of minimum power */
   @ext(0x77, 0x4)
-  model AntiCondensValue {
-    /** increase of minimum power */
-    @unit("kW / %")
-    value: UCH;
-  }
+  model AntiCondensValue is InstallRegister<power>;
 
   /** d.88 SpecialAdj: switching on threshold for recognition of water tapping0 = 1,5 l/min and no delay, 1 = 3,7 l/min and 2s delay */
   @ext(0x76, 0x4)
@@ -579,7 +574,7 @@ namespace Bai._0010006101_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** output fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 

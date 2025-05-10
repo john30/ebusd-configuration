@@ -719,7 +719,8 @@ namespace Ehp {
     @ext(0xe2, 1)
     model ActualEnvironmentPowerFine {
       /** environment power in higher resolution (100W) */
-      @unit("hW")
+      @unit("kW")
+      @divisor(10)
       value: UCH;
     }
 

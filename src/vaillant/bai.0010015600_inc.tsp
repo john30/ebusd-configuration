@@ -823,7 +823,6 @@ namespace Bai._0010015600_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 

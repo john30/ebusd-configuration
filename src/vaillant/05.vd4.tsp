@@ -388,7 +388,7 @@ namespace Vd4 {
     @inherit(r, ws)
     @ext(0x43, 0)
     model ComErrorDelay {
-      @unit("Control interface")
+      /** Control interface */
       value: UIN;
     }
   }

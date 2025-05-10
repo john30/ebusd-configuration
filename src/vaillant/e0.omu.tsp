@@ -35,7 +35,7 @@ namespace Omu {
   @ext(0x39, 0)
   model FanSpeedIs {
     /** actual fan speed */
-    @unit("/min")
+    @unit("rpm")
     @factor(10)
     value: UCH;
   }
@@ -377,7 +377,7 @@ namespace Omu {
 
       /** fan speed */
       @in
-      @unit("/min")
+      @unit("rpm")
       @factor(10)
       FanSpeed: UCH;
 
@@ -423,7 +423,7 @@ namespace Omu {
 
       /** fan speed */
       @in
-      @unit("/min")
+      @unit("rpm")
       @factor(10)
       FanSpeed: UCH;
 

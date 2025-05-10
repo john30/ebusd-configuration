@@ -137,7 +137,6 @@ namespace Bai._0010002315_inc {
   @ext(0x6, 0)
   model SMGVCurrent {
     /** current for the gasvalve */
-    @unit("ADC")
     value: UIN;
   }
 
@@ -591,7 +590,6 @@ namespace Bai._0010002315_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Predictive Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 

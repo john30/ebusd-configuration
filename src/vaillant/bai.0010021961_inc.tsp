@@ -136,7 +136,7 @@ namespace Bai._0010021961_inc {
   @ext(0x24, 0)
   model TargetFanSpeed {
     /** Fan speed setpoint */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -145,7 +145,7 @@ namespace Bai._0010021961_inc {
   @ext(0x83, 0)
   model FanSpeed {
     /** Current fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -314,7 +314,7 @@ namespace Bai._0010021961_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** Target fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -385,7 +385,7 @@ namespace Bai._0010021961_inc {
   @ext(0xdf, 0)
   model FanMinSpeedOperation {
     /** Fan minimum speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -394,7 +394,7 @@ namespace Bai._0010021961_inc {
   @ext(0xe0, 0)
   model FanMaxSpeedOperation {
     /** Fan maximum speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -489,7 +489,7 @@ namespace Bai._0010021961_inc {
   @ext(0xa7, 0)
   model FanSpeedOffsetMin {
     /** Fan minimum speed offset */
-    @unit("1/min")
+    @unit("rpm")
     value: SIN;
   }
 
@@ -498,7 +498,7 @@ namespace Bai._0010021961_inc {
   @ext(0xa8, 0)
   model FanSpeedOffsetMax {
     /** Fan maximum speed offset */
-    @unit("1/min")
+    @unit("rpm")
     value: SIN;
   }
 
@@ -652,8 +652,7 @@ namespace Bai._0010021961_inc {
   @ext(0xec, 0)
   model AntiCondensValue {
     /** Minimal power to avoid condensation */
-    @unit("kW / %")
-    value: UCH;
+    value: power;
   }
 
   /** d.88 SpecialAdj */
@@ -868,7 +867,6 @@ namespace Bai._0010021961_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 
