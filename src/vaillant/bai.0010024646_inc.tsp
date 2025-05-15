@@ -348,6 +348,114 @@ namespace Bai._0010024646_inc {
   @ext(0xde, 0)
   model TimerInputHc is ReadonlyRegister<onoff>;
 
+  /** PrEnergySumHwc1: Energy sum hot water circuit 1 */
+  @ext(0xc5, 0)
+  model PrEnergySumHwc1 is ReadonlyRegister<UIN>;
+
+  /** PrEnergyCountHwc1: Energy count hot water circuit 1 */
+  @ext(0xc6, 0)
+  model PrEnergyCountHwc1 is ReadonlyRegister<UIN>;
+
+  /** PrEnergySumHwc2: Energy sum hot water circuit 2 */
+  @ext(0xc7, 0)
+  model PrEnergySumHwc2 is ReadonlyRegister<UIN>;
+
+  /** PrEnergyCountHwc2: Energy count hot water circuit 2 */
+  @ext(0xc8, 0)
+  model PrEnergyCountHwc2 is ReadonlyRegister<UIN>;
+
+  /** PrEnergySumHwc3: Energy sum hot water circuit 3 */
+  @ext(0xc9, 0)
+  model PrEnergySumHwc3 is ReadonlyRegister<UIN>;
+
+  /** PrEnergyCountHwc3: Energy count hot water circuit 3 */
+  @ext(0xca, 0)
+  model PrEnergyCountHwc3 is ReadonlyRegister<UIN>;
+
+  /** PrEnergySumHc1: Energy sum heating circuit 1 */
+  @ext(0xf5, 0)
+  model PrEnergySumHc1 is ReadonlyRegister<UIN>;
+
+  /** PrEnergyCountHc1: Energy count heating circuit 1 */
+  @ext(0xf6, 0)
+  model PrEnergyCountHc1 is ReadonlyRegister<UIN>;
+
+  /** PrEnergySumHc2: Energy sum heating circuit 2 */
+  @ext(0xf7, 0)
+  model PrEnergySumHc2 is ReadonlyRegister<UIN>;
+
+  /** PrEnergyCountHc2: Energy count heating circuit 2 */
+  @ext(0xf8, 0)
+  model PrEnergyCountHc2 is ReadonlyRegister<UIN>;
+
+  /** PrEnergySumHc3: Energy sum heating circuit 3 */
+  @ext(0xf9, 0)
+  model PrEnergySumHc3 is ReadonlyRegister<UIN>;
+
+  /** PrEnergyCountHc3: Energy count heating circuit 3 */
+  @ext(0xfa, 0)
+  model PrEnergyCountHc3 is ReadonlyRegister<UIN>;
+
+  /** PumpHwcFlowSum: Pump hot water flow sum */
+  @ext(0xc1, 0)
+  model PumpHwcFlowSum is ReadonlyRegister<UIN>;
+
+  /** PumpHwcFlowNumber: Pump hot water flow number */
+  @ext(0xc2, 0)
+  model PumpHwcFlowNumber is ReadonlyRegister<UIN>;
+
+  /** PrAPSCounter: APS counter */
+  @ext(0xf2, 0)
+  model PrAPSCounter is ReadonlyRegister<UCH>;
+
+  /** PrVortexFlowSensorValue: Vortex flow sensor value (legacy name) */
+  @ext(0xf4, 0)
+  model PrVortexFlowSensorValue is ReadonlyRegister<UIN>;
+
+  /** HwcPostrunTime: Hot water pump overrun time */
+  @ext(0x11, 0x4)
+  model HwcPostrunTime is ReadonlyRegister<minutes0>;
+
+  /** ChangesDSN: Numbers adjusting (storing) the DSN */
+  @ext(0x0c, 0)
+  model ChangesDSN is ReadonlyRegister<UCH>;
+
+  /** ExternalFlowTempDesired: External flow temperature desired */
+  @ext(0x25, 0)
+  model ExternalFlowTempDesired is ReadonlyRegister<temp>;
+
+  /** TempMaxDiffExtTFT: Maximum temperature difference */
+  @ext(0x27, 0)
+  model TempMaxDiffExtTFT is ReadonlyRegister<temp>;
+
+  /** Expertlevel_ReturnTemp: Return temperature expert level */
+  @ext(0x6b, 0)
+  model Expertlevel_ReturnTemp is ReadonlyRegister<tempmirrorsensor>;
+
+  /** PowerValue: Power value of the boiler */
+  @ext(0xaa, 0)
+  model PowerValue is ReadonlyRegister<HEX:6>;
+
+  /** Status: System status */
+  @ext(0x11, 0x3)
+  model Status is ReadonlyRegister<UCH>;
+
+  /** Status01: Status information 1 */
+  @ext(0x11, 0x1)
+  model Status01 is ReadonlyRegister<HEX:10>;
+
+  /** Status02: Status information 2 */
+  @ext(0x11, 0x2)
+  model Status02 is ReadonlyRegister<HEX:7>;
+
+  /** Status16: Status information 16 */
+  @ext(0x04, 0x16)
+  model Status16 is ReadonlyRegister<UCH>;
+
+  /** TempGradientFailure: Number of cut offs of the boilers cause of to high gradient (S.54) */
+  @ext(0x11, 0)
+  model TempGradientFailure is ReadonlyRegister<temp0>;
+
   /** included parts */
   union _includes {
     Errors_inc,

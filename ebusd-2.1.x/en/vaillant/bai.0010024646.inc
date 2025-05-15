@@ -7,12 +7,17 @@
 *[SW],scan,,,SW,,,,,,,,,
 # ##### dia level 1 #####,,,,,,,,,,,,,
 r,,Statenumber,Statenumber_DK,,,,"AB00",,,UCH,,,status number
+r,,Status,Status,,,,"1103",,,UCH,,,System status
+r,,Status01,Status01,,,,"1101",,,HEX:10,,,Status information 1
+r,,Status02,Status02,,,,"1102",,,HEX:7,,,Status information 2
+r,,Status16,Status16,,,,"0416",,,UCH,,,Status information 16
 r;wi,,PartloadHcKW,d.00 heating partload,,,,"0704",,,power,,,Heating part load
 r;wi,,WPPostrunTime,d.01 central heating overruntime,,,,"F703",,,minutes0,,,water pump overrun time for heating mode
 r;wi,,BlockTimeHcMax,d.02 Max blocking time CH,,,,"0904",,,minutes0,,,max. burner anti cycling period at 20°C Flow temperature setpoint
 r,,HwcTemp,d.03 Temp DHW,,,,"1600",,,tempsensor,,,hot water flow temperature (combination boiler only)
 r,,StorageTemp,d.04 Temp storage / she,,,,"1700",,,tempsensor,,,current temperature for warm start sensor (combination boiler only) Current storage tank sensor (system boiler only)
 r,,FlowTempDesired,d.05 flow/return setpoint,,,,"3900",,,temp,,,Flow temperature target value or return target value when return regulation is set
+r,,HwcPostrunTime,Hot water pump overrun time,,,,"1104",,,minutes0,,,Hot water pump overrun time
 r,,StorageTempDesired,d.07 Storage setpoint,,,,"0400",,,temp,,,"Warm start temperature value (combination boiler plus only), Storage temperature target value (system boiler only)"
 r,,ACRoomthermostat,d.08 Room thermostat 230 V,,,,"2A00",,,onoff,,,External controls heat demand (Clamp 3-4)
 r,,ExtFlowTempDesiredMin,d.09 ext flowsetpoint,,,,"6E04",,,temp,,,minimum out of Kl.7 and eBus flow setpoint
@@ -23,12 +28,16 @@ r,,CirPump,d.13 Circulation pump,,,,"7B00",,,onoff,,,Hot water circulation pump 
 r,,HwcDemand,d.22 DHW demand,,,,"5800",,,yesno,,,domestic hot water (tapping or tank contact) demand
 r,,HeatingSwitch,d.23 operation mode,,,,"F203",,,onoff,,,Wintermode active
 r,,StoragereleaseClock,d.25 DHW demand enabled,,,,"4704",,,yesno,,,hot water release (tank storage) via eBus Control
+r,,ChangesDSN,ChangesDSN_DK,,,,"0C00",,,UCH,,,Numbers adjusting (storing) the DSN
+r,,ExternalFlowTempDesired,External flow temperature desired,,,,"2500",,,temp,,,External flow temperature desired
+r,,TempMaxDiffExtTFT,Maximum temperature difference,,,,"2700",,,temp,,,Maximum difference between external and flow temperature
 r,,Gasvalve,d.30 Gasvalve,,,,"BB00",,,onoff2,,,Gasvalve activation signal
 r,,TargetFanSpeed,d.33 Target fan speed,,,,"2400",,,UIN,,rpm,Fan speed setpoint
 r,,FanSpeed,d.34 Actual fan speed,,,,"8300",,,UIN,,rpm,fan speed actual value
 r,,PositionValveSet,d.35 Position TWV,,,,"5400",,,UCH,,,Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position
 r,,FlowTemp,d.40 TFT_DK,,,,"1800",,,tempsensor,,,flow temperature
 r,,ReturnTemp,d.41 Temp heating return,,,,"9800",,,tempmirrorsensor,,,return temperature
+r,,Expertlevel_ReturnTemp,Return temperature expert level,,,,"6B00",,,tempmirrorsensor,,,Return temperature on expert level
 r,,IonisationVoltageLevel,d.44 Dig. ionisation voltage,,,,"A400",,,SIN,10,,digital ionisation voltage> 80 no flame< 40 good flame
 r,,OutdoorstempSensor,d.47 Temp outside,,,,"7600",,,tempsensor,,,Outside temperature (uncorrected value)
 r,,RemainingBoilerblocktime,d.67 Remaining burner block time,,,,"3800",,,minutes0,,,Remaining burner anti cycling time
@@ -40,6 +49,7 @@ r,,CounterStartattempts1,d.68 ignition attempts 1,,,,"6E00",,,temp0,,,unsuccessf
 r,,CounterStartattempts2,d.69 ignition attempts 2,,,,"6F00",,,temp0,,,unsuccessfull ignitions in the second attempt
 r,,EBusHeatcontrol,d.90 Digital control recognized,,,,"0004",,,yesno,,,Digital regulator status
 r,,Flame,Flame,,,,"0500",,,onoff2,,,Flame status
+r,,PowerValue,Power value of the boiler,,,,"AA00",,,HEX:6,,,Power Values of the Boiler
 r,,FanHours,Fan operation hours,,,,"1B00",,,hoursum2,,h,Operating hours of the fan
 r,,FanStarts,FanCommunt_DK,,,,"1C00",,,cntstarts2,,,commutations of the fan
 r,,CounterStartAttempts3,CounterStartAttempts3_DK,,,,"8100",,,temp0,,,unsuccessfull ignitions in the third attempt
@@ -57,4 +67,46 @@ r,,PumpHours,PumpHours,,,,"5601",,,hoursum,,h,Pump operation hours
 r,,StorageLoadPumpHours,StorageLoadPumpHours,,,,"7301",,,hoursum,,h,Storage load pump operation hours
 r,,StorageloadPumpStarts,StorageloadPumpStarts,,,,"7303",,,cntstarts2,,,Storage load pump starts
 r,,ValveMode,ValveMode,,,,"F403",,,UCH,,,Valve mode
-r,,HcPumpMode,HcPumpMode,,,,"4E04",,,pumpmode,,,Heating pump mode 
+r,,HcPumpMode,HcPumpMode,,,,"4E04",,,pumpmode,,,Heating pump mode
+# Additional parameters found in grab result,,,,,,,,,,,,,
+r,,PumpHwcFlowSum,Pump hot water flow sum,,,,"C100",,,UIN,,,Pump hot water flow sum
+r,,PumpHwcFlowNumber,Pump hot water flow number,,,,"C200",,,UIN,,,Pump hot water flow number
+r,,DisplayMode,Display operation mode,,,,"DA00",,,UCH,,,Display operation mode
+r,,WaterpressureMeasureCounter,Water pressure measurement counter,,,,"F100",,,UCH,,,Water pressure measurement counter
+r,,PrAPSCounter,APS counter,,,,"F200",,,UCH,,,APS counter
+r,,PrVortexFlowSensorValue,Vortex flow sensor value,,,,"F400",,,UIN,,,Vortex flow sensor value
+r,,HwcUnderHundredStarts,Hot water starts under hundred counter,,,,"3100",,,UCH,,,Hot water starts under hundred counter
+r,,HcUnderHundredStarts,Heating starts under hundred counter,,,,"3000",,,UCH,,,Heating starts under hundred counter
+r,,SHEMaxFlowTemp,Secondary heat exchanger maximum flow temperature,,,,"C300",,,temp,,,Secondary heat exchanger maximum flow temperature
+r,,HwcTempMax,Maximum hot water temperature,,,,"4304",,,temp,,,Maximum hot water temperature
+r,,Maintenancedata_HwcTempMax,Maximum hot water temperature from maintenance,,,,"3500",,,temp,,,Maximum hot water temperature from maintenance data
+r,,StorageTempMax,Maximum storage temperature,,,,"3600",,,temp,,,Maximum storage temperature
+r,,FlowTempMax,Maximum flow temperature,,,,"3700",,,temp,,,Maximum flow temperature
+r,,ReturnTempMax,Maximum return temperature,,,,"BE00",,,temp,,,Maximum return temperature
+r,,ModulationTempDesired,Desired modulation temperature,,,,"2E00",,,temp,,,Desired modulation temperature
+r,,PumpPower,Pump power value,,,,"7300",,,UCH,,,Pump power value
+r,,PumpPowerDesired,Desired pump power,,,,"A100",,,UCH,,,Desired pump power
+r,,HwcWaterflow,Hot water flow rate,,,,"5500",,,uin100,,,Hot water flow rate
+r,,HwcWaterflowMax,Maximum hot water flow rate,,,,"5600",,,uin100,,,Maximum hot water flow rate
+r,,HwcImpellorSwitch,Hot water impellor switch,,,,"5700",,,yesno,,,Hot water impellor switch
+r,,VortexFlowSensor,Vortex flow sensor value,,,,"D500",,,UIN,,,Vortex flow sensor value
+r,,OverflowCounter,Overflow counter,,,,"1E00",,,yesno,,,Overflow counter
+r,,SecondPumpMode,Second pump mode,,,,"0B04",,,UCH,,,Second pump mode
+r,,ExternalHwcSwitch,External hot water circuit switch,,,,"0000",,,onoff,,,External hot water circuit switch
+r,,HwcTempDesired,Hot water temperature desired value,,,,"EA03",,,temp,,,Hot water temperature desired value
+r,,WarmstartDemand,Warm start demand,,,,"3A04",,,onoff,,,Warm start demand
+r,,Templimiter,Temperature limiter status,,,,"7700",,,onoff,,,Temperature limiter status
+r,,HoursTillService,Hours till next service,,,,"2004",,,ULG,,,Hours till next service
+r,,TimerInputHc,Timer input for heating circuit,,,,"DE00",,,onoff,,,Timer input for heating circuit
+r,,PrEnergySumHwc1,Energy sum hot water circuit 1,,,,"C500",,,UIN,,,Energy sum hot water circuit 1
+r,,PrEnergyCountHwc1,Energy count hot water circuit 1,,,,"C600",,,UIN,,,Energy count hot water circuit 1
+r,,PrEnergySumHwc2,Energy sum hot water circuit 2,,,,"C700",,,UIN,,,Energy sum hot water circuit 2
+r,,PrEnergyCountHwc2,Energy count hot water circuit 2,,,,"C800",,,UIN,,,Energy count hot water circuit 2
+r,,PrEnergySumHwc3,Energy sum hot water circuit 3,,,,"C900",,,UIN,,,Energy sum hot water circuit 3
+r,,PrEnergyCountHwc3,Energy count hot water circuit 3,,,,"CA00",,,UIN,,,Energy count hot water circuit 3
+r,,PrEnergySumHc1,Energy sum heating circuit 1,,,,"F500",,,UIN,,,Energy sum heating circuit 1
+r,,PrEnergyCountHc1,Energy count heating circuit 1,,,,"F600",,,UIN,,,Energy count heating circuit 1
+r,,PrEnergySumHc2,Energy sum heating circuit 2,,,,"F700",,,UIN,,,Energy sum heating circuit 2
+r,,PrEnergyCountHc2,Energy count heating circuit 2,,,,"F800",,,UIN,,,Energy count heating circuit 2
+r,,PrEnergySumHc3,Energy sum heating circuit 3,,,,"F900",,,UIN,,,Energy sum heating circuit 3
+r,,PrEnergyCountHc3,Energy count heating circuit 3,,,,"FA00",,,UIN,,,Energy count heating circuit 3 
