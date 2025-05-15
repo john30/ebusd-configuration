@@ -212,11 +212,11 @@ namespace Bai._0010024646_inc {
 
   /** HcPumpStarts: Central heating pump starts */
   @ext(0x56, 0x3)
-  model HcPumpStarts is ReadonlyRegister<cntstarts3>;
+  model HcPumpStarts is ReadonlyRegister<UCH>;
 
   /** HcStarts: Central heating burner starts */
   @ext(0x38, 0x3)
-  model HcStarts is ReadonlyRegister<cntstarts2>;
+  model HcStarts is ReadonlyRegister<UCH>;
 
   /** HwcHours: Hot water operation hours */
   @ext(0x77, 1)
@@ -244,7 +244,7 @@ namespace Bai._0010024646_inc {
 
   /** HcPumpMode: Heating pump mode */
   @ext(0x4e, 0x4)
-  model HcPumpMode is ReadonlyRegister<pumpmode>;
+  model HcPumpMode is ReadonlyRegister<UCH>;
 
   /** Dodane parametry na podstawie wyników komendy grab */
 
@@ -433,20 +433,24 @@ namespace Bai._0010024646_inc {
   model Expertlevel_ReturnTemp is ReadonlyRegister<tempmirrorsensor>;
 
   /** PowerValue: Power value of the boiler */
+  @inherit(r)
   @ext(0xaa, 0)
-  model PowerValue is ReadonlyRegister<HEX:6>;
-
+  model PowerValue {
+      /** Power value of the boiler (minimum and maximum) */
+      @maxLength(6)
+      value: HEX;
+  }
   /** Status: System status */
   @ext(0x11, 0x3)
   model Status is ReadonlyRegister<UCH>;
 
   /** Status01: Status information 1 */
   @ext(0x11, 0x1)
-  model Status01 is ReadonlyRegister<HEX:10>;
+  model Status01 is ReadonlyRegister<HEX>;
 
   /** Status02: Status information 2 */
   @ext(0x11, 0x2)
-  model Status02 is ReadonlyRegister<HEX:7>;
+  model Status02 is ReadonlyRegister<HEX>;
 
   /** Status16: Status information 16 */
   @ext(0x04, 0x16)
@@ -461,4 +465,5 @@ namespace Bai._0010024646_inc {
     Errors_inc,
     Service_inc,
   }
-} 
+}
+
