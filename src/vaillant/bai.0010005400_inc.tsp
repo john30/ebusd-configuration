@@ -539,7 +539,7 @@ namespace Bai._0010005400_inc {
   /** Modulationsetpoint_DK */
   @inherit(r)
   @ext(0x2e, 0)
-  model ModulationTempDesired {
+  model ModulationDesired {
     /** Modulation set point */
     @unit("%")
     @divisor(10)

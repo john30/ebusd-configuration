@@ -182,7 +182,7 @@ namespace Bai._0010011701_inc {
   /** Modulation set point */
   @inherit(r)
   @ext(0x2e, 0)
-  model ModulationTempDesired {
+  model ModulationDesired {
     /** Modulation set point */
     @unit("%")
     @divisor(10)
