@@ -195,7 +195,7 @@ namespace Mc2.Mc._4 {
 
   /** TemperaturDiffInOutdoor */
   @ext(0xc1, 0)
-  model TempDiffInOutdoor is ReadonlyRegister<D1C>;
+  model TempDiffInOutdoor is ReadonlyRegister<temp1>;
 
   /** HCManualWorkingModeTriggeringActive */
   @ext(0xc2, 0)

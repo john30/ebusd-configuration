@@ -25,7 +25,7 @@ namespace V61.Mc {
 
   /** DesiredHolidayTemperature: 4.5=frostprotect, holiday temperature of the second heating circuit */
   @ext(0x14, 0)
-  model HolidayTempDesired is Register<D1C>;
+  model HolidayTempDesired is Register<temp1>;
 
   /** HC2_ManualOPRoomSetpoint: room setpoint in operation mode manual of the second heating circuit */
   @ext(0x34, 0)

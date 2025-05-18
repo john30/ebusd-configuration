@@ -769,7 +769,7 @@ namespace Bai._0010010674_inc {
 
   /** TR_Manag_EE.Virtual_CH_Partload_Enable_DK: enable the adaptive CH-partload calulation */
   @ext(0xe3, 0)
-  model RManagEE_VirtualHcPartloadEnableDTemp is ReadonlyRegister<onoff>;
+  model RManagEE_VirtualHcPartloadEnable is ReadonlyRegister<onoff>;
 
   /** ExternGasvalve_DK: external gasvalve activated */
   @ext(0xe4, 0)

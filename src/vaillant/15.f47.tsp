@@ -71,7 +71,7 @@ namespace F47 {
 
   /** HC1_HolidayRoomSetTemp: 4.5=frostprotect, room setpoint during holidays */
   @ext(0x40, 0)
-  model Hc1HolidayRoomTemp is Register<D1C>;
+  model Hc1HolidayRoomTemp is Register<temp1>;
 
   /** HC1_SFMode */
   @inherit(r, w)

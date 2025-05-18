@@ -1271,8 +1271,8 @@ namespace Hmu {
     @maxLength(2)
     ign: IGN;
 
-    /** °C */
     @divisor(10)
+    @unit("°C")
     sin: SIN;
   }
   // Values from Live Monitor. EnableLiveMonitorMain message needs to be sent before the read message works.

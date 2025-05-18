@@ -761,7 +761,7 @@ namespace Bai._0010005400_inc {
 
   /** TR_Manag_EE.Virtual_Partload_Enable_DK: enable the adaptive CH- and or DHW-partload calulation */
   @ext(0xe3, 0)
-  model RManagEE_VirtualPartloadEnableTemp is InstallRegister<UCH>;
+  model RManagEE_VirtualPartloadEnable is InstallRegister<UCH>;
 
   /** ExternGasvalve_DK: external gasvalve activated */
   @ext(0xe4, 0)

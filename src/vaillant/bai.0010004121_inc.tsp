@@ -252,14 +252,14 @@ namespace Bai._0010004121_inc {
 
   /** TTM_MaxTime_DK: maximum time for calibration-routine */
   @ext(0x18, 1)
-  model TMMaxTimeTemp is ReadonlyRegister<seconds2>;
+  model TMMaxTime is ReadonlyRegister<seconds2>;
 
   /** TTM_AverageTime_sum_DK */
   @inherit(r)
   @ext(0x19, 1)
-  model TMAverageTimeSumTemp {
+  model TMAverageTimeSum {
     /** average time for calibration-routine */
-    @unit("_1S * 100")
+    // @unit("_1S * 100") //todo unclear what that means, maybe 100/s
     value: UIN;
   }
 
