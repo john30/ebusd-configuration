@@ -541,6 +541,7 @@ enum Values_mixer {
 enum Values_daynight {
   night: 0,
   day: 1,
+  load: 4,
   floorpaving: 7,
 }
 
