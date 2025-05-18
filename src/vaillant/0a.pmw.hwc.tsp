@@ -241,13 +241,13 @@ namespace Pmw.Hwc {
 
     /** ZaehlerBetriebsStunden: Working Hours */
     @ext(0x45, 0)
-    model ZaehlerBetriebsStunden is ReadonlyRegister<UIN>;
+    model OperatingHours is ReadonlyRegister<hoursum2>;
   }
   @condition(Id.Id.sw, ">=39")
   namespace Sw_ge39 {
     /** TDurchfluss: flow in l/min */
     @ext(0x46, 0)
-    model DurchflussTemp is ReadonlyRegister<temp>;
+    model FlowTemp is ReadonlyRegister<temp>;
   }
   @condition(Id.Id.sw, ">=112")
   namespace Sw_ge112 {

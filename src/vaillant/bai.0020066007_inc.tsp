@@ -17,7 +17,7 @@ namespace Bai._0020066007_inc {
 
   /** d.08 Thermostatkontakt_an_Kl_3_4: External controls heat demand (Clamp 3-4) */
   @ext(0x2a, 0)
-  model ThermostatkontaktAnKl34 is ReadonlyRegister<onoff>;
+  model ThermostatContactOnKl34 is ReadonlyRegister<onoff>;
 
   /** d.30 Gasvalve: Gasvalve activation signal */
   @ext(0xbb, 0)

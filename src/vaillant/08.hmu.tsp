@@ -428,8 +428,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Hysteresis Hwc charging (°K) */
-    @unit("°K")
+    /** Hysteresis Hwc charging */
+    @unit("K")
     d2c: D2C;
   }
 
@@ -450,8 +450,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Compressor hysteresis central heating (°K) */
-    @unit("°K")
+    /** Compressor hysteresis central heating */
+    @unit("K")
     d2c: D2C;
   }
 
@@ -459,9 +459,10 @@ namespace Hmu {
   @ext(0x86, 0x35, 0x3f)
   model CompressorHysteresisCooling {
     @maxLength(3)
+    @unit("K")
     ign: IGN;
 
-    /** Compressor hysteresis cooling (°K) */
+    /** Compressor hysteresis cooling */
     d2c: D2C;
   }
 

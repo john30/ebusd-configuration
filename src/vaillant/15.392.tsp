@@ -310,7 +310,7 @@ namespace _392 {
     /** MonitorEEpromInkonsiNumber */
     @inherit(r)
     @ext(0x9f, 0)
-    model MonitorEEpromInkonsiNumber {
+    model MonitorEEpromInconsCnt {
       /** identification of the last eight EEPROM inconsistencies */
       @maxLength(8)
       value: HEX;

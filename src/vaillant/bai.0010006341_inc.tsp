@@ -429,9 +429,9 @@ namespace Bai._0010006341_inc {
   @ext(0xc, 0)
   model ChangesDSN is ReadonlyRegister<UCH>;
 
-  /** Brennstoffventil: Activation signal of the gasvalve (activated via micrcontroller) */
+  /** fuel valve: Activation signal of the gasvalve (activated via micrcontroller) */
   @ext(0xd, 0)
-  model Brennstoffventil is ReadonlyRegister<onoff2>;
+  model FuelValve is ReadonlyRegister<onoff2>;
 
   /** SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is not volataile */
   @ext(0x10, 0)
@@ -480,13 +480,13 @@ namespace Bai._0010006341_inc {
   @ext(0x3e, 0)
   model ExternalFaultmessage is ReadonlyRegister<onoff>;
 
-  /** Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC) */
+  /** fuel valve feedback 1: feedback gasvalve (from ASIC) */
   @ext(0x47, 0)
-  model RueckmeldungBrennstoffventil1 is ReadonlyRegister<onoff2>;
+  model FuelValveFeedback1 is ReadonlyRegister<onoff2>;
 
-  /** Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller) */
+  /** fuel valve feedback 2: feedback gasvalve (from Microcontroller) */
   @ext(0x48, 0)
-  model RueckmeldungBrennstoffventil2 is ReadonlyRegister<onoff2>;
+  model FuelValveFeedback2 is ReadonlyRegister<onoff2>;
 
   /** SD_Ignitor_DK: igniton activated */
   @ext(0x49, 0)
@@ -635,9 +635,9 @@ namespace Bai._0010006341_inc {
   @ext(0xda, 0)
   model DisplayMode is ReadonlyRegister<UCH>;
 
-  /** Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from Microcontroller) */
+  /** fuel valve feedback 3: Gasvalve activation signal (from Microcontroller) */
   @ext(0xdb, 0)
-  model RueckmeldungBrennstoffventil3 is ReadonlyRegister<onoff2>;
+  model FuelValveFeedback3 is ReadonlyRegister<onoff2>;
 
   /** InitialisationEEPROM: Initialisation off all EEPROM values (done in the production) */
   @ext(0xdc, 0)

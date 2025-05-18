@@ -223,7 +223,7 @@ namespace V61.Mc {
   /** MonitorEEpromInkonsiNumber */
   @inherit(r)
   @ext(0x46, 0)
-  model MonitorEEpromInkonsiNumber {
+  model MonitorEEpromInconsCnt {
     /** identification of the last eight EEPROM inconsistencies */
     @maxLength(8)
     value: HEX;

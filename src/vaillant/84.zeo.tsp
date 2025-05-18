@@ -251,7 +251,7 @@ namespace Zeo {
 
   /** OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung */
   @ext(0x11, 0)
-  model OtShutdownLimit is ReadonlyRegister<UCH>;
+  model OtShutdownLimit is ReadonlyRegister<temp0>;
 
   /** BoilerMaxPreShutdown: 15..120min */
   @ext(0x14, 0)

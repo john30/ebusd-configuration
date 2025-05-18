@@ -61,7 +61,7 @@ namespace Zeo.Mc {
 
   /** RemoteControlRtOffset: 0,5°C */
   @ext(0x25, 0)
-  model RemoteControlRtOffset is ReadonlyRegister<SCH>;
+  model RemoteControlRtOffset is ReadonlyRegister<temp1>;
 
   /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0x4)
