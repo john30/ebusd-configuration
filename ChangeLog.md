@@ -1,3 +1,11 @@
+# 2025-05-18
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * vaillant/08.bai from #480, #494
+  * vaillant/08.hmu from #496
+* add pump mode eco to some vaillant/08.bai
+* fix missed vaillant/08.bai 0010002465 association
+
 # 2025-02-16
 https://ebus.github.io/ only:
 * reworked+merged several PRs:
