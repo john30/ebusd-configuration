@@ -11,9 +11,9 @@ namespace Zeo {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Boiler
   // ##### ZEO: Zeolite #####
 
-  /** EnergyDemand: vom UI */
+  /** FlowDemand: vom UI */
   @ext(0x27, 0)
-  model EnergyDemand is ReadonlyRegister<onoff>;
+  model FlowDemand is ReadonlyRegister<onoff>;
 
   /** BurnerDemand: von der BMU */
   @ext(0x4f, 0)
