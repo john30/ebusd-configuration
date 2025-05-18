@@ -23,40 +23,40 @@ namespace Vr_71 {
   @inherit(w_1)
   @ext(0x5)
   model SetActorState {
-    @values(Values_)
+    @values(Values_ActorState)
     r1: UCH;
 
-    @values(Values__1)
+    @values(Values_ActorState)
     r2: UCH;
 
-    @values(Values__2)
+    @values(Values_ActorState)
     r3: UCH;
 
-    @values(Values__3)
+    @values(Values_ActorState)
     r4: UCH;
 
-    @values(Values__4)
+    @values(Values_ActorState)
     r5: UCH;
 
-    @values(Values__5)
+    @values(Values_ActorState)
     r6: UCH;
 
-    @values(Values__6)
+    @values(Values_ActorState)
     r7: UCH;
 
-    @values(Values__7)
+    @values(Values_ActorState)
     r8: UCH;
 
-    @values(Values__8)
+    @values(Values_ActorState)
     r9: UCH;
 
-    @values(Values__9)
+    @values(Values_ActorState)
     r10: UCH;
 
-    @values(Values__10)
+    @values(Values_ActorState)
     r11: UCH;
 
-    @values(Values__11)
+    @values(Values_ActorState)
     r12: UCH;
 
     @maxLength(2)
@@ -65,41 +65,41 @@ namespace Vr_71 {
 
   @inherit(w_1)
   @ext(0x2, 0)
-  model Mc1FlowTempDesired {
-    FTStatus: onoff;
-    FTDesired: temp1;
+  model Mc1Operation {
+    status: onoff;
+    flowtempdesired: temp1;
 
     @in
-    MixerStatus: onoff;
+    pump: onoff;
 
     @in
-    MixerMovement: percents;
+    mixer: percents;
   }
 
   @inherit(w_1)
   @ext(0x2, 1)
-  model Mc2FlowTempDesired {
-    FTStatus: onoff;
-    FTDesired: temp1;
+  model Mc2Operation {
+    status: onoff;
+    flowtempdesired: temp1;
 
     @in
-    MixerStatus: onoff;
+    pump: onoff;
 
     @in
-    MixerMovement: percents;
+    mixer: percents;
   }
 
   @inherit(w_1)
   @ext(0x2, 0x2)
-  model Mc3FlowTempDesired {
-    FTStatus: onoff;
-    FTDesired: temp1;
+  model Mc3Operation {
+    status: onoff;
+    flowtempdesired: temp1;
 
     @in
-    MixerStatus: onoff;
+    pump: onoff;
 
     @in
-    MixerMovement: percents;
+    mixer: percents;
   }
 
   @inherit(r_1)
@@ -131,62 +131,7 @@ namespace Vr_71 {
     ignore: HEX;
   }
 
-  enum Values_ {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__1 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__2 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__3 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__4 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__5 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__6 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__7 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__8 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__9 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__10 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__11 {
+  enum Values_ActorState {
     off: 0,
     on: 20,
   }
