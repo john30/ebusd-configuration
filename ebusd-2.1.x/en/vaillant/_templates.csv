@@ -32,7 +32,7 @@ calibrations,SCH,2,K,
 calibrationv,EXP,,K,
 integral,SIN,,°min,
 hcmode,UCH,0=auto;1=off;2=heat;3=water,,boiler mode
-hcmode2,UCH,0=off;3=heat;4=water,,boiler mode
+hcmode2,UCH,0=off;1=cooling;3=heat;4=water,,boiler mode
 mcmode,UCH,0=disabled;1=on;2=off;3=auto;4=eco;5=low,,mixer mode
 mctype,UCH,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool,,mixer type
 mctype7,BI0:7,0=inactive;1=mixer;2=fixed;3=hwc;4=returnincr;5=pool;6=circulation,,mixer type
