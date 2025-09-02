@@ -323,5 +323,7 @@ r;w,,z3CoolingTimer.Thursday,Zeitfenster Kühlen Donnerstag,,,,03,,,slot1-3,,,
 r;w,,z3CoolingTimer.Friday,Zeitfenster Kühlen Freitag,,,,04,,,slot1-3,,,
 r;w,,z3CoolingTimer.Saturday,Zeitfenster Kühlen Samstag,,,,05,,,slot1-3,,,
 r;w,,z3CoolingTimer.Sunday,Zeitfenster Kühlen Sonntag,,,,06,,,slot1-3,,,
+*r,,,,,,B524,06000901,,,IGN:4,,,
+r,,RoomHumidity,Akt. Raumluftfeuchte,,,,0700,,,exp,,,room humidity shown by regulator
 # includes,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,

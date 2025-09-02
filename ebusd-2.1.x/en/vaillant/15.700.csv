@@ -323,5 +323,7 @@ r;w,,z3CoolingTimer.Thursday,timer cooling thursday,,,,03,,,slot1-3,,,
 r;w,,z3CoolingTimer.Friday,timer cooling friday,,,,04,,,slot1-3,,,
 r;w,,z3CoolingTimer.Saturday,timer cooling saturday,,,,05,,,slot1-3,,,
 r;w,,z3CoolingTimer.Sunday,timer cooling sunday,,,,06,,,slot1-3,,,
+*r,,,,,,B524,06000901,,,IGN:4,,,
+r,,RoomHumidity,room humidity shown by regulator,,,,0700,,,exp,,,room humidity shown by regulator
 # includes,,,,,,,,,,,,,
 !include,errors.inc,,,,,,,,,,,,
