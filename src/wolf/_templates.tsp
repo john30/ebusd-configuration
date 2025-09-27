@@ -19,11 +19,11 @@ scalar temp10 extends UIN;
 scalar percent extends UIN;
 
 /** minutes */
-@unit("minutes")
+@unit("min")
 scalar minutes extends UIN;
 
 /** hours */
-@unit("hours")
+@unit("h")
 scalar hours extends UIN;
 
 @unit("U/sec")

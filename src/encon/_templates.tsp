@@ -65,7 +65,7 @@ scalar fanmode extends UIR;
 @values(Values_inputmode)
 scalar inputmode extends UIR;
 
-@unit("baud")
+/** Baudrate */
 @values(Values_baud)
 scalar baud extends UIR;
 

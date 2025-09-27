@@ -349,7 +349,6 @@ namespace Excellent {
   @inherit(r_2)
   @ext(0x21)
   model HumidityBoostState {
-    @unit("Pa")
     @values(Values_HumidityBoostState)
     value: UIR;
   }
