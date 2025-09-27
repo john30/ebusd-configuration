@@ -97,7 +97,7 @@ namespace Uih {
 
   /** TempFailDetectTime: temperature fail detection time */
   @ext(0x33, 0)
-  model TempFailDetectTime is InstallRegister<temp0>;
+  model TempFailDetectTime is InstallRegister<UCH>;
 
   /** EhpHeatBufferAvailable: heat buffer is available */
   @ext(0x5c, 0)
