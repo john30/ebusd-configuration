@@ -195,11 +195,11 @@ namespace Uih {
   namespace Sw_ge220 {
     /** CoolingDay */
     @ext(0x7c, 0)
-    model CoolingDay is ReadonlyRegister<UCH>;
+    model CoolingDay is Register<UCH>;
 
     /** CoolingActive */
     @ext(0x83, 0)
-    model CoolingActive is ReadonlyRegister<onoff>;
+    model CoolingActive is Register<onoff>;
   }
   @condition(Id.Id.sw, ">=250")
   namespace Sw_ge250 {
