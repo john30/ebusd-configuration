@@ -23830,22 +23830,6 @@ weekdayprogswitch:
   first: WeekDayProgSwitch
   locations:
     - vaillant/15.e7f.csv::r,wi::0x2b,0
-whethertimeslotisvalid:
-  de: whether timeslot is valid
-  en: whether timeslot is valid
-  first: whether timeslot is valid
-  locations:
-    - vaillant/15.700.csv::r_9::MF,0x24,0x3,0,0,1:value
-    - vaillant/15.700.csv::r_10::MF,0x24,0x3,0,0,0x2:value
-    - vaillant/15.700.csv::r_11::MF,0x24,0x3,0,0,0x3:value
-    - vaillant/15.700.csv::r_12::MF,0x24,0x3,1,0,1:value
-    - vaillant/15.700.csv::r_13::MF,0x24,0x3,1,0,0x2:value
-    - vaillant/15.700.csv::r_14::MF,0x24,0x3,0x3,0,0x2:value
-    - vaillant/15.700.csv::r_15::MF,0x24,0x3,0x3,0,1:value
-    - vaillant/15.700.csv::r_16::MF,0x24,0x3,0x3,1,0x2:value
-    - vaillant/15.700.csv::r_17::MF,0x24,0x3,0x3,1,1:value
-    - vaillant/15.700.csv::r_18::MF,0x24,0x3,0x3,0x2,0x2:value
-    - vaillant/15.700.csv::r_19::MF,0x24,0x3,0x3,0x2,1:value
 windoffdkwindfunctionnotactive:
   de: 'Wind_Off_DK: Wind-function not active'
   en: 'Wind_Off_DK: Wind-function not active'

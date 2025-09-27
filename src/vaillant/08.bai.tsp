@@ -379,7 +379,9 @@ namespace Bai {
     @condition(Id.Id.hw, "=4702")
     hw_4702: Bai._0010008045_inc,
 
-    default: Bai._308523_inc, // final load alternative
+    // final load alternative
+    default: Bai._308523_inc,
+
     Hcmode_inc,
   }
 }

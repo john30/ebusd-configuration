@@ -30,7 +30,7 @@ namespace Hmu {
   @base(MF, 0x1a, 0x5, 0xff, 0x32)
   model r_2 {
     @maxLength(3)
-    value: IGN;
+    ign: IGN;
   }
 
   @inherit(r_2)
@@ -249,7 +249,7 @@ namespace Hmu {
   @base(MF, 0x1a, 0x5, 0xff, 0x34)
   model r_3 {
     @maxLength(3)
-    value: IGN;
+    ign: IGN;
   }
   // TODO ff34 prefix also seen as e534 in PR 330,see also duplication in StatCompressorHours with b434 and others. this seems to be HW/SW specific and needs to be sorted out.
 
@@ -258,7 +258,7 @@ namespace Hmu {
   @base(MF, 0x1a, 0x5, 0xe5, 0x34)
   model u_1 {
     @maxLength(3)
-    value: IGN;
+    ign: IGN;
   }
 
   @inherit(r_3, u_1)
@@ -493,7 +493,7 @@ namespace Hmu {
   @base(MF, 0x16, 0x18)
   model r_4 {
     @maxLength(1)
-    value: IGN;
+    ign: IGN;
   }
 
   @inherit(r_4)
@@ -514,7 +514,7 @@ namespace Hmu {
   @base(MF, 0x16, 0x1a, 1)
   model r_5 {
     @maxLength(1)
-    value: IGN;
+    ign: IGN;
   }
 
   @inherit(r_5)
@@ -654,7 +654,7 @@ namespace Hmu {
   @base(MF, 0x16, 0x1a, 0x2)
   model r_6 {
     @maxLength(1)
-    value: IGN;
+    ign: IGN;
   }
 
   @inherit(r_6)
@@ -796,7 +796,7 @@ namespace Hmu {
   @base(MF, 0x14, 0x5)
   model rs {
     @maxLength(2)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ws for user level "service" */
@@ -1243,7 +1243,7 @@ namespace Hmu {
   @base(MF, 0x14, 0x5)
   model rs_1 {
     @maxLength(2)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ws for user level "service" */
@@ -1313,7 +1313,7 @@ namespace Hmu {
   @base(MF, 0x1a, 0x5, 0, 0x32)
   model rs_2 {
     @maxLength(3)
-    value: IGN;
+    ign: IGN;
   }
   // example: 3108b51a040500321f / 0a000805f0000000000000
 
@@ -1375,7 +1375,7 @@ namespace Hmu {
   @base(MF, 0x1a, 0x5)
   model ri {
     @maxLength(3)
-    value: IGN;
+    ign: IGN;
   }
 
   /** compressor hours */
@@ -1446,7 +1446,7 @@ namespace Hmu {
   @base(MF, 0x9, 0x54, 0x2, 0)
   model r_7 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   @inherit(r_7)

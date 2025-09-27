@@ -89,7 +89,7 @@ model w {}
 @base(MF, 0x9, 0x29)
 model u {
   @maxLength(2) 
-  value: IGN,
+  ign: IGN,
 }
 
 /** default *wi for register with user level "install" */
@@ -167,7 +167,7 @@ model wm {
 @base(MF, 0x15)
 model rt {
   @maxLength(1)
-  value: IGN;
+  ign: IGN;
 }
 
 /** default *w for timer */
@@ -340,7 +340,7 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
        '}',
     ];
   }
-  const name = normalize && id===typ ? 'value' : normFieldName(id);
+  const name = normalize && id===typ && typ!=='IGN' ? 'value' : normFieldName(id);
   return [
     '',
     comm&&comm!==line[1]&&`/** ${normComment(`${location}:${name}`, comm)} */`,
@@ -496,7 +496,7 @@ const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<str
     });
     return ret;
   }
-  const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
+  const name = normalize && singleField && id===typ && typ!=='IGN' ? 'value' : normFieldName(id);
   const suffName = `${name}${suffix(name, seen)}`;
   return [
     comm&&comm!=id&&`/** ${normComment(`${location}:${suffName}`, comm)} */`,
@@ -683,7 +683,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       const fileComp = fileNoExt.split('.').reverse()[0];
       let name = condNamespace || fileComp;
       name = normId(name.replace(/(__[^_]+_?)+/, '_'+fileComp)); // reduce multiple product ids with filename instead
-      additions.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
+      additions.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? '// final load alternative\ndefault:' : name+': ' : '']]);
     }
     return;
   }
