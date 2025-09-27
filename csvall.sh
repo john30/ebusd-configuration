@@ -37,6 +37,8 @@ sed -i \
   -e 's#ReglerCurrentTEMP#ReglerCurrentTemp#' \
   -e 's#\(,CounterStartattempts[.*],\)temp0,#\1UCH,#' \
   -e 's#ForWay#FourWay#g' \
+  -e 's#punp#pump#g' \
+  -e 's#IGN:1,,,[^,]*#IGN:1,,,#g' \
   \{\} \; \
 && npm run csv2tsp \
 && npm run csv2tsp-combine \

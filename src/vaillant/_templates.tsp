@@ -744,7 +744,7 @@ model w {}
 @base(MF, 0x9, 0x29)
 model u {
   @maxLength(2)
-  value: IGN;
+  ign: IGN;
 }
 
 /** default *wi for register with user level "install" */
@@ -820,7 +820,7 @@ model wm {}
 @base(MF, 0x15)
 model rt {
   @maxLength(1)
-  value: IGN;
+  ign: IGN;
 }
 
 /** default *w for timer */

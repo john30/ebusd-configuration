@@ -3546,7 +3546,6 @@ weekday on which legionella protection is started (may also be every day of the 
   the week)
 'Weekday: current day of week': 'Weekday: current day of week'
 WeekDayProgSwitch: WeekDayProgSwitch
-whether timeslot is valid: whether timeslot is valid
 'Wind_Off_DK: Wind-function not active': 'Wind_Off_DK: Wind-function not active'
 'WP_SecondStage_DK: Second stage of the pump activated': 'WP_SecondStage_DK: Second stage of the pump activated'
 'WP_SecondStage: Second stage of the pump activated': 'WP_SecondStage: Second stage of the pump activated'

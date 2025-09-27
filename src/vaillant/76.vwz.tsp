@@ -16,7 +16,7 @@ namespace Vwz {
   @base(MF, 0x14, 0x5)
   model rs {
     @maxLength(2)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ws for user level "service" */
