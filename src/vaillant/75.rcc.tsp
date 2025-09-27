@@ -39,5 +39,5 @@ namespace Rcc {
 
   /** LcdContrastPwmValue: contrast for the display */
   @ext(0x36, 0)
-  model LcdContrastPwmValue is InstallRegister<UCH>;
+  model LcdContrastPwmValue is InstallRegister<displaycontrast>;
 }

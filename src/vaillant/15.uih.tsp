@@ -99,6 +99,10 @@ namespace Uih {
   @ext(0x33, 0)
   model TempFailDetectTime is InstallRegister<UCH>;
 
+  /** LcdContrastPwmValue: contrast for the display */
+  @ext(0x36, 0)
+  model LcdContrastPwmValue is InstallRegister<displaycontrast>;
+
   /** EhpHeatBufferAvailable: heat buffer is available */
   @ext(0x5c, 0)
   model EhpHeatBufferAvailable is InstallRegister<onoff>;
