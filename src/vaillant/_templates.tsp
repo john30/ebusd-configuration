@@ -407,13 +407,13 @@ scalar offmode extends UIN;
 @values(Values_rcmode)
 scalar rcmode extends UIN;
 
-/** array index for the zones. Array Index start at 0 for the first element */
+/** index of a time slot */
 scalar slotIndex extends UCH;
 
-/** Number of total slots in the array. May be Zero. */
+/** number of slots on a day */
 scalar slotCount extends UCH;
 
-/** Number of total slots in the array for a week. Mon-Sun */
+/** number of slots per weekday */
 model slotCountWeek {
   @maxLength(1) ign: IGN;
   slotCount: slotCount;
@@ -426,17 +426,18 @@ model slotCountWeek {
   @maxLength(1) ign_1: IGN;
 }
 
-/** Timeslot from/until */
+/** timeslot from/until */
 model slotTimeFrame {
   htm: HTM;
   htm_1: HTM;
 }
 
-/** Temperature stored in the slot. Degrees Celsius */
+/** desired temperature of a slot */
+@unit("°C")
 @divisor(10)
 scalar slotTemp extends UIN;
 
-/** Complete Slot for writing the time table settings. */
+/** complete slot for writing with target temperature */
 model wTimeSlotWithTemp {
   slotIndex: slotIndex;
   slotCount: slotCount;
@@ -444,22 +445,26 @@ model wTimeSlotWithTemp {
   slotTemp: slotTemp;
 }
 
-/** Complete slot for writing the time table settings without a temperature. FF FF has to be appended. */
+/** constant value for writing a slot without target temperature */
+@constValue(0xffff)
+scalar wTimeSlotConst extends U2L;
+
+/** complete slot for writing without target temperature */
 model wTimeSlotWithoutTemp {
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
-  @maxLength(2) hex: HEX;
+  wTimeSlotConst: wTimeSlotConst;
 }
 
-/** Complete Slot for reading the time table settings. */
+/** complete slot for reading with target temperature */
 model rTimeSlotWithTemp {
   @maxLength(1) ign: IGN;
   slotTimeFrame: slotTimeFrame;
   slotTemp: slotTemp;
 }
 
-/** Complete slot for reading the time table settings without a temperature. */
+/** complete slot for reading without target temperature */
 model rTimeSlotWithoutTemp {
   @maxLength(1) ign: IGN;
   slotTimeFrame: slotTimeFrame;

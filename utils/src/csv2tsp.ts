@@ -320,7 +320,7 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
   }
   line = objSlice(line);
   if (!line) return;
-  const {id, renameTo, typ, typLen, comm, divisor, values}
+  const {id, renameTo, typ, typLen, comm, divisor, values, constValue}
   = divisorValues(line[0], line[1], line[2], line[4], undefined, true, additions.renamedTemplates);
   if (renameTo) {
     additions.renamedTemplates.set(id, renameTo);
@@ -347,6 +347,7 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
     line[3]&&`@unit("${line[3]}")`,
     divisor||values,
     typLen,
+    constValue!==undefined ? `@constValue(${constValue})` : '',
     `scalar ${name} extends ${typ};`,
   ]
 }
