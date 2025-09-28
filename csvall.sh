@@ -31,14 +31,29 @@ sed -i \
   -e 's#,,night-\?time#,,NightTime#i' \
   -e 's#,,Time&Date#,,TimeDate#i' \
   -e 's#,UCH,240=off;15=on,#,onoff2,,#' \
-  -e 's#,UCH,,,"Off=0, On=1"#,onoff,,,#' \
-  -e 's#,UCH,240=no;15=yes,#,yesno2,,#' \
+  -e 's#,UCH,,,"Off=0, On=1"#,onoff,,,#i' \
+  -e 's#,UCH,0=off;1=on,#,onoff,,#i' \
+  -e 's#,UCH,240=no;15=yes,#,yesno2,,#i' \
+  -e 's#,UCH,0=no;1=yes,#,yesno,,#i' \
   -e 's#,RückmeldungB#,RueckmeldungB#' \
   -e 's#ReglerCurrentTEMP#ReglerCurrentTemp#' \
   -e 's#\(,CounterStartattempts[.*],\)temp0,#\1UCH,#' \
   -e 's#ForWay#FourWay#g' \
   -e 's#punp#pump#g' \
   -e 's#IGN:1,,,[^,]*#IGN:1,,,#g' \
+  -e 's#\(temp[^,*]\),,,\([^,]*\)1/2 \?°C \(resolution|Auflösung\)#\1,,,\2#gi' \
+  -e 's#,,,\([^,]*\)1/2 \?°C \(resolution|Auflösung\)#,2,°C,\1#g' \
+  -e 's#,,,\([^,]*\)1 \?°C \(resolution|Auflösung\)#,,°C,\1#g' \
+  -e 's#°K#K#g' \
+  -e 's#,,,\([^,]*\)1 \?K \(resolution|Auflösung\)#,,K,\1#g' \
+  -e 's#,,,\([^,]*\) (°C)#,,°C,\1#g' \
+  -e 's#,,,\([^,]*\) (K)#,,K,\1#g' \
+  -e 's# (°C)##g' \
+  -e 's# (K)##g' \
+  -e 's# (yes \?/ \?no)##gi' \
+  -e 's# (on \?/ \?off)##gi' \
+  -e 's#D2C,,°C#temp,,#g' \
+  -e 's#D2C,,K#calibration,,#g' \
   \{\} \; \
 && npm run csv2tsp-extra \
 && npm run csv2tsp \

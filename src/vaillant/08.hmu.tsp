@@ -205,15 +205,13 @@ namespace Hmu {
   @inherit(r_2)
   @ext(0x1c)
   model TargetTempHc {
-    @unit("°C")
-    value: D2C;
+    value: temp;
   }
 
   @inherit(r_2)
   @ext(0x27)
   model SourceTempOutput {
-    @unit("°C")
-    value: D2C;
+    value: temp;
   }
 
   @inherit(r_2)
@@ -351,9 +349,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Switch-off temperature summer (°C) */
-    @unit("°C")
-    d2c: D2C;
+    /** Switch-off temperature summer */
+    temp: temp;
   }
 
   @inherit(r_3)
@@ -362,9 +359,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Central heating bivalence point (°C) */
-    @unit("°C")
-    d2c: D2C;
+    /** Central heating bivalence point */
+    temp: temp;
   }
 
   @inherit(r_3)
@@ -373,9 +369,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Bivalence point domestic hot water (°C) */
-    @unit("°C")
-    d2c: D2C;
+    /** Bivalence point domestic hot water */
+    temp: temp;
   }
 
   @inherit(r_3)
@@ -384,9 +379,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Maximum flow temperature (°C) */
-    @unit("°C")
-    d2c: D2C;
+    /** Maximum flow temperature */
+    temp: temp;
   }
 
   @inherit(r_3)
@@ -395,9 +389,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Minimum flow temperature (°C) */
-    @unit("°C")
-    d2c: D2C;
+    /** Minimum flow temperature */
+    temp: temp;
   }
 
   @inherit(r_3)
@@ -406,9 +399,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Central heating mode active (yes/no) */
-    @values(Values_Central_heating_mode_active__yes_no_)
-    uch: UCH;
+    /** Central heating mode active */
+    yesno: yesno;
   }
 
   @inherit(r_3)
@@ -417,9 +409,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Domestic hot water mode active (yes/no) */
-    @values(Values_Domestic_hot_water_mode_active__yes_no_)
-    uch: UCH;
+    /** Domestic hot water mode active */
+    yesno: yesno;
   }
 
   @inherit(r_3)
@@ -429,8 +420,7 @@ namespace Hmu {
     ign: IGN;
 
     /** Hysteresis Hwc charging */
-    @unit("K")
-    d2c: D2C;
+    calibration: calibration;
   }
 
   @inherit(r_3)
@@ -439,9 +429,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Immersion heater mode (on/off) */
-    @values(Values_Immersion_heater_mode__on_off_)
-    uch: UCH;
+    /** Immersion heater mode */
+    onoff: onoff;
   }
 
   @inherit(r_3)
@@ -451,19 +440,17 @@ namespace Hmu {
     ign: IGN;
 
     /** Compressor hysteresis central heating */
-    @unit("K")
-    d2c: D2C;
+    calibration: calibration;
   }
 
   @inherit(r_3)
   @ext(0x86, 0x35, 0x3f)
   model CompressorHysteresisCooling {
     @maxLength(3)
-    @unit("K")
     ign: IGN;
 
     /** Compressor hysteresis cooling */
-    d2c: D2C;
+    calibration: calibration;
   }
 
   @inherit(r_3)
@@ -483,9 +470,8 @@ namespace Hmu {
     @maxLength(3)
     ign: IGN;
 
-    /** Target Hwc temperature (°C) */
-    @unit("°C")
-    d2c: D2C;
+    /** Target Hwc temperature */
+    temp: temp;
   }
   // Total heating yields
 
@@ -1651,21 +1637,6 @@ namespace Hmu {
     heating: 0x09,
     cooling: 0x11,
     heating_water: 0x81,
-  }
-
-  enum Values_Central_heating_mode_active__yes_no_ {
-    no: 0,
-    yes: 1,
-  }
-
-  enum Values_Domestic_hot_water_mode_active__yes_no_ {
-    no: 0,
-    yes: 1,
-  }
-
-  enum Values_Immersion_heater_mode__on_off_ {
-    off: 0,
-    on: 1,
   }
 
   enum Values_Domestic_hot_water_mod__eco_normal_balance_ {

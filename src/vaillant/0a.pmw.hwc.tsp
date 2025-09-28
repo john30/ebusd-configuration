@@ -120,7 +120,7 @@ namespace Pmw.Hwc {
     value: hwcmode;
   }
 
-  /** TeleSwitchState: Teleswitch port state (On / Off) */
+  /** TeleSwitchState: Teleswitch port state */
   @ext(0x3a, 0)
   model TeleSwitchState is ReadonlyRegister<onoff>;
 
