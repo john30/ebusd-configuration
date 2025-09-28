@@ -314,6 +314,10 @@ scalar energyr extends UIR;
 @unit("kWh")
 scalar energy4 extends ULG;
 
+@unit("kWh")
+@divisor(1000)
+scalar energye extends EXP;
+
 /** start count */
 scalar cntstarts extends ULG;
 

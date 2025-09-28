@@ -12,7 +12,7 @@
     "csvall": "./csvall.sh",
     "compile-en": "npx tsp compile --emit @ebusd/ebus-typespec src/main.tsp --output-dir outcsv",
     "compile-de": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/de.yaml src/main.tsp --output-dir outcsv.de",
-    "compile": "npm run compile-en && npm run compile-de"
+    "compile": "npm run compile-en && npm run compile-de && sed -i -e 's#.*id_15_id.*##' outcsv*/@ebusd/ebus-typespec/vaillant/08.bai.csv"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@ebusd/ebus-typespec": ">=0.23.0",
+    "@ebusd/ebus-typespec": ">=0.24.0",
     "@typespec/compiler": "~1.4.0",
     "tsx": "^4.20.6"
   }
