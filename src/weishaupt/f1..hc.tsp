@@ -2,10 +2,22 @@ import "@ebusd/ebus-typespec";
 import "../_templates.tsp";
 using Ebus;
 
-/** Process values of the heating controller/burner control unit. */
- // broadcast address
-namespace weishaupt {
+enum OperatingPhase {
+  BurnerOff: 0x00,
+  StandbyFanCheck: 0x01,
+  PreIgnitionSpeedReached: 0x02,
+  PreIgnitionCountdown: 0x03,
+  IgnitionSpeedReached: 0x04,
+  FlameFormationTime: 0x05,
+  BurnerInOperation: 0x06,
+  GasValveCheckV1: 0x07,
+  GasValveCheckV2: 0x08,
+  PostIgnitionPurge: 0x09,
+}
 
+/** Process values of the heating controller/burner control unit. */
+// broadcast address
+namespace weishaupt {
   /** Process values message. */
   @qq(0xf1)
   @zz(0xfe)
@@ -13,36 +25,37 @@ namespace weishaupt {
   @id(0x50, 0x0A)
   model process_values {
     /** Status1 byte (bitfield) */
-    status1: Num.UCH, // M6
+    status1: Num.UCH; // M6
 
     /** Operating phase */
-    operating_phase: Num.UCH, // M7
+    @values(OperatingPhase)
+    operating_phase: Num.UCH; // M7
 
     /** Status2 byte (bitfield) */
-    status2: Num.UCH, // M8
+    status2: Num.UCH; // M8
 
     /** Status3 byte (bitfield) */
-    status3: Num.UCH, // M9
+    status3: Num.UCH; // M9
 
     /** Load position */
-    load_position: Num.UCH, // M10
+    load_position: Num.UCH; // M10
 
     /** Flow temperature (°C, 0.5 steps) */
-    flow_temp: temp1, // D1C, M11
+    flow_temp: temp1; // D1C, M11
 
     /** Exhaust temperature (°C, 0.5 steps) */
-    exhaust_temp: temp1, // D1C, M12
+    exhaust_temp: temp1; // D1C, M12
 
     /** Hot water temperature (°C, 0.5 steps) */
-    hotwater_temp: temp1, // D1C, M13
+    hotwater_temp: temp1; // D1C, M13
 
     /** Outside temperature (°C, signed, 1 step) */
-    outside_temp: temp2, // D1B, M15
+    outside_temp: temp2; // D1B, M15
 
     /** Temperature trend (2 bytes, signed) */
-    temp_trend: temp2, // D2B, M16+M17
+    temp_trend: temp2; // D2B, M16+M17
 
     /** Flow setpoint temperature (°C) */
-    flow_setpoint: Num.UCH, // M18
+    flow_setpoint: Num.UCH; // M18
   }
 }
