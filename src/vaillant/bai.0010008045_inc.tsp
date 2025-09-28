@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -729,8 +728,4 @@ namespace Bai._0010008045_inc {
     remotecontrol: 8,
   }
 
-  /** included parts */
-  union _includes {
-    Errors_inc,
-  }
 }

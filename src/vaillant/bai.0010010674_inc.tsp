@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 import "./service_inc.tsp";
 using Ebus;
 using Ebus.Num;
@@ -911,7 +910,6 @@ namespace Bai._0010010674_inc {
 
   /** included parts */
   union _includes {
-    Errors_inc,
     Service_inc,
   }
 }

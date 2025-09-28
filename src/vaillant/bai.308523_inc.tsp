@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -829,8 +828,4 @@ namespace Bai._308523_inc {
     model APCComStatus is ReadonlyRegister<UCH>;
   }
 
-  /** included parts */
-  union _includes {
-    Errors_inc,
-  }
 }
