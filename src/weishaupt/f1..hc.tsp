@@ -1,11 +1,15 @@
 import "@ebusd/ebus-typespec";
-import "./_templates.tsp";
+import "../_templates.tsp";
 using Ebus;
 
 /** Process values of the heating controller/burner control unit. */
-@zz(0xfe) // broadcast address
-namespace heating_controller {
+ // broadcast address
+namespace weishaupt {
+
   /** Process values message. */
+  @qq(0xf1)
+  @zz(0xfe)
+  @passive
   @id(0x50, 0x0A)
   model process_values {
     /** Status1 byte (bitfield) */
@@ -31,9 +35,6 @@ namespace heating_controller {
 
     /** Hot water temperature (°C, 0.5 steps) */
     hotwater_temp: temp1, // D1C, M13
-
-    /** Unknown (reserved) */
-    unknown1: Num.UCH, // M14
 
     /** Outside temperature (°C, signed, 1 step) */
     outside_temp: temp2, // D1B, M15

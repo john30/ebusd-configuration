@@ -64,5 +64,6 @@ import "./vaillant/ec.solsy.sc.tsp";
 import "./vaillant/ec.zeo.sc.tsp";
 import "./vaillant/general.tsp";
 import "./vaillant/scan.tsp";
+import "./weishaupt/f1..hc.tsp";
 import "./wolf/08..hc.tsp";
 import "./wolf/50..mc.tsp";
