@@ -941,7 +941,6 @@ namespace Bai.Emm_inc {
     value: wTimeSlotWithTemp;
   }
 
-
   // ##### consumption #####
 
   /** default *r */
@@ -992,5 +991,4 @@ namespace Bai.Emm_inc {
   model YieldHwc {
     value: energye;
   }
-
 }

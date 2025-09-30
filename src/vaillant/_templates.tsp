@@ -848,5 +848,6 @@ model Timer<T> {
 }
 
 /** display contrast */
-@minValue(0) @maxValue(15)
+@minValue(0)
+@maxValue(15)
 scalar displaycontrast extends UCH;

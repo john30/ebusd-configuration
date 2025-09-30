@@ -622,5 +622,4 @@ namespace Bai._0010021901_inc {
     solarpump: 7,
     remotecontrol: 8,
   }
-
 }

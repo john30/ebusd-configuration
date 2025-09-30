@@ -296,5 +296,4 @@ namespace Bai._0020066007_inc {
   /** T4_max: Maximaltemperatur am PWT-Eingang */
   @ext(0xbe, 0)
   model T4Max is ReadonlyRegister<temp>;
-
 }

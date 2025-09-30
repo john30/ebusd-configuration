@@ -827,5 +827,4 @@ namespace Bai._308523_inc {
     @ext(0x62, 0)
     model APCComStatus is ReadonlyRegister<UCH>;
   }
-
 }
