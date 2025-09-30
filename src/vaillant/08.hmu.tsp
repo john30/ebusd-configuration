@@ -790,7 +790,6 @@ namespace Hmu {
   @auth("service")
   @base(MF, 0x14, 0x5)
   model ws_1 {
-    @out
     @maxLength(3)
     @constValue("03FFFF")
     ignore: HEX;
@@ -1224,14 +1223,6 @@ namespace Hmu {
     value: SIN;
   }
 
-  /** default *rs for user level "service" */
-  @auth("service")
-  @base(MF, 0x14, 0x5)
-  model rs_1 {
-    @maxLength(2)
-    ign: IGN;
-  }
-
   /** default *ws for user level "service" */
   @write
   @auth("service")
@@ -1252,7 +1243,7 @@ namespace Hmu {
   }
 
   /** EEV temperature */
-  @inherit(rs_1)
+  @inherit(rs)
   @ext(0x3b, 0, 0, 0)
   model TestEEVTemp {
     @maxLength(2)
@@ -1609,12 +1600,8 @@ namespace Hmu {
     value: tempv;
   }
 
-  /** default *r */
-  @base(MF, 0x11)
-  model r_8 {}
-
   /** compressor runtime in min and starts in Hc mode */
-  @inherit(r_8)
+  @inherit(r_1)
   @ext(0x18, 1)
   model RunStatsCompressorHc {
     @maxLength(1) ign: IGN;
@@ -1623,7 +1610,7 @@ namespace Hmu {
   }
 
   /** compressor runtime in min and starts in Hwc mode */
-  @inherit(r_8)
+  @inherit(r_1)
   @ext(0x18, 0x2)
   model RunStatsCompressorHwc {
     @maxLength(1) ign: IGN;
