@@ -32,6 +32,13 @@ namespace Bai.Emm_inc {
     value: yesno;
   }
 
+  /** desired room temperature in holiday for zone 1 */
+  @inherit(r_1)
+  @ext(0xf6, 0)
+  model Z1HolidayTempStatus { // todo this can be dropped if Z1HolidayTemp works as well
+    value: tempv;
+  }
+
   /** date */
   @inherit(r_1, w_1)
   @ext(0x34, 0)
