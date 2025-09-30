@@ -1,12 +1,12 @@
 #!/bin/bash
 sed -i \
   -e 's/^id,/#id,/' \
-  latest/en/_templates.csv latest/de/_templates.csv \
+  ./en/_templates.csv ./de/_templates.csv \
 && sed -i \
   -e 's#^errorok,#onoff2,UCH,240=off;15=on,,\nyesno2,UCH,240=no;15=yes,,\nerrorok,#' \
   -e 's#^errorok,#yesno2,UCH,240=no;15=yes,,\nerrorok,#' \
-  latest/en/vaillant/_templates.csv latest/de/vaillant/_templates.csv \
-&& find latest/ -mindepth 3 -type f -not -name "_templates.csv" -exec sed -i \
+  ./en/vaillant/_templates.csv ./de/vaillant/_templates.csv \
+&& find . -mindepth 3 -type f -not -name "_templates.csv" -exec sed -i \
   -e 's#\(HcName.*\),STR:11,#\1,hcname,#i' \
   -e 's#\(phone.*\),STR:9,#\1,phone,#i' \
   -e 's#,UCH,hour,#,hours,,#i' \

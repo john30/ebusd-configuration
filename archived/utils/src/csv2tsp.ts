@@ -876,7 +876,7 @@ const helpTxt = [
   'converts ebusd csv files to tsp for use with ebus typespec library.',
   'with:',
   '  -N           do not normalize names',
-  '  -b basedir   the base directory for determining namespace of each csvfile (default "latest/en")',
+  '  -b basedir   the base directory for determining namespace of each csvfile (default "en")',
   '  -o outdir    the output directory (default "outtsp")',
   '  -l langfile  the file name in which to store the multi-language mapping (default "i18n.yaml" in outdir)',
   '  -L lang      the language code for -l option (default "en")',
@@ -900,7 +900,7 @@ let i18nMap: Map<string, [string, Partial<I18n>]>; // map from message/field/tem
 let i18nMapRev: Map<string, string>; // map from non-en language to en from previous mapping
 let commentI18nIgnore: RegExp|undefined;
 export const csv2tsp = async (args: string[] = []) => {
-  let indir = 'latest/en';
+  let indir = 'en';
   let outdir = 'outtsp';
   let files: string[] = [];
   let langFile: string|undefined;
