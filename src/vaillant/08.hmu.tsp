@@ -224,6 +224,7 @@ namespace Hmu {
   @inherit(r_2)
   @ext(0x3d)
   model FlowPressure {
+    @unit("bar")
     @divisor(4)
     value: D2C;
   }
@@ -231,6 +232,7 @@ namespace Hmu {
   @inherit(r_2)
   @ext(0x3e)
   model SourcePressure {
+    @unit("bar")
     @divisor(4)
     value: D2C;
   }
@@ -1457,8 +1459,7 @@ namespace Hmu {
   @inherit(r_7)
   @ext(0x53, 0xd)
   model RunDataStatuscode {
-    @values(Values_RunDataStatuscode)
-    value: UIN;
+    value: hmucode;
   }
 
   @inherit(r_7)
@@ -1690,62 +1691,6 @@ namespace Hmu {
   enum Values_function {
     Heating: 0x01,
     Cooling: 0x02,
-  }
-
-  enum Values_RunDataStatuscode {
-    Frost_protection: 34,
-    Standby: 100,
-    Heating_Compressor_shutdown: 101,
-    Heating_Compressor_blocked: 102,
-    Heating_Prerun: 103,
-    Heating_Compressor_active: 104,
-    Heating_Overrun: 107,
-    Cooling_Compressor_shutdown: 111,
-    Cooling_Compressor_blocked: 112,
-    Cooling_Prerun: 113,
-    Cooling_Compressor_active: 114,
-    Cooling_Overrun: 117,
-    Heating_Immersion_heater_active: 125,
-    Warm_Water_Compressor_blocked: 132,
-    Warm_Water_Prerun: 133,
-    Warm_Water_Compressor_active: 134,
-    Warm_Water_Immersion_Heater_active: 135,
-    Warm_Water_Overrun: 137,
-    Heating_Immersion_Heater_shutdown: 141,
-    Heating_Immersion_Heater_blocked: 142,
-    Warm_Water_Immersion_Heater_shutdown: 151,
-    Warm_Water_Immersion_Heater_blocked: 152,
-    Air_purging_program_active: 202,
-    Compressor_oil_heating_activated: 240,
-    Fan_1_blocked: 252,
-    Fan_1_air_inlet_too_high: 255,
-    Fan_1_air_inlet_too_low: 256,
-    Fan_2_blocked: 260,
-    Building_circuit_flow_too_low: 275,
-    Building_circuit_pump_fault: 277,
-    Frequency_converter_fault_Compressor: 280,
-    Frequency_converter_fault_Mains_voltage: 281,
-    Frequency_converter_fault_Overheating: 282,
-    Deicing_time_too_long: 283,
-    Deicing_flow_temperature_too_low: 284,
-    Compressor_outlet_temperature_too_high: 285,
-    Hot_gas_temperature_switch_open: 286,
-    Fan_1_Wind: 287,
-    Fan_2_Wind: 288,
-    Current_limt_active: 289,
-    High_pressure_switch_open: 302,
-    Compressor_outlet_temperature_too_high_1: 303,
-    Evaporation_temperature_too_low: 304,
-    Condensation_temperature_too_low: 305,
-    Evaporation_temperature_too_high: 306,
-    Condensation_temperature_too_high: 308,
-    Building_circuit_return_temperature_too_low: 312,
-    Building_circuit_return_temperature_too_high: 314,
-    Immersion_heater_Flow_temperature_too_high: 351,
-    Deicing_active: 516,
-    Frequency_converter_fault: 575,
-    Connection_fault_frequency_converter: 581,
-    _4_port_valve_position_fault: 590,
   }
 
   /** included parts */
