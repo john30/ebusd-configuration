@@ -42,8 +42,8 @@ namespace Sdr_p {
   @inherit(r, wi)
   @ext(0x7, 0)
   model CollPump1ActualPower {
-    @maxLength(2)
-    value: HEX;
+    value: percent0;
+    ignore: IGN;
   }
 
   /** Status solar panel pump 2 */
@@ -74,7 +74,7 @@ namespace Sdr_p {
   @ext(0xe, 0)
   model BypassValve is InstallRegister<onoff>;
 
-  /** Target temperature [C] */
+  /** Target temperature */
   @ext(0x14, 0)
   model ActualTempDesired is InstallRegister<temp1>;
 
@@ -96,13 +96,9 @@ namespace Sdr_p {
   model Yield is InstallRegister<UIN>;
 
   /** Operation time solar pump */
-  @inherit(r, wi)
   @poll(1)
   @ext(0x1f, 0)
-  model CollPumpHRuntime {
-    uin: UIN;
-    uin_1: UIN;
-  }
+  model CollPumpHRuntime is InstallRegister<ULG>;
 
   /** date */
   @ext(0x20, 0)
@@ -124,28 +120,28 @@ namespace Sdr_p {
   @ext(0x3d, 0)
   model HydraulicScheme is InstallRegister<UCH>;
 
-  /** Max. temp. solar cylinder [C] */
+  /** Max. temp. solar cylinder */
   @inherit(r, wi)
   @ext(0x3e, 0)
   model SolHwcMaxLoadTemp {
-    @maxLength(2)
-    value: HEX;
+    value: temp0;
+    ignore: IGN;
   }
 
-  /** Switch-on diff. solar cyl. [K] */
+  /** Switch-on diff. solar cyl. */
   @inherit(r, wi)
   @ext(0x3f, 0)
   model SolEnableDiffTemp {
-    @maxLength(2)
-    value: HEX;
+    value: calibration0;
+    ignore: IGN;
   }
 
-  /** Switch/off diff. solar cyl. [K] */
+  /** Switch/off diff. solar cyl. */
   @inherit(r, wi)
   @ext(0x40, 0)
   model SolDisableDiffTemp {
-    @maxLength(2)
-    value: HEX;
+    value: calibration0;
+    ignore: IGN;
   }
 
   /** Legionella protection */

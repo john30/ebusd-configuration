@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -209,7 +208,7 @@ namespace Bai._0010015600_inc {
   /** Modulationsetpoint_DK */
   @inherit(r)
   @ext(0x2e, 0)
-  model ModulationTempDesired {
+  model ModulationDesired {
     /** Modulation set point */
     @unit("%")
     @divisor(10)
@@ -435,7 +434,7 @@ namespace Bai._0010015600_inc {
   @inherit(r, wi_1)
   @ext(0xb7, 0)
   model HcPumpMode {
-    /** Pump mode for central heating */
+    /** Pump mode */
     @values(Values_HcPumpMode)
     value: UCH;
   }
@@ -823,7 +822,6 @@ namespace Bai._0010015600_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 
@@ -888,6 +886,7 @@ namespace Bai._0010015600_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_OptionalRelais {
@@ -931,10 +930,5 @@ namespace Bai._0010015600_inc {
       /** Legionella protection for internal storage */
       value: UCH;
     }
-  }
-
-  /** included parts */
-  union _includes {
-    Errors_inc,
   }
 }

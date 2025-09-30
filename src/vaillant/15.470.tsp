@@ -73,7 +73,7 @@ namespace _470 {
 
   /** HC1_HolidayRoomSetTemp: 4.5=frostprotect, room setpoint during holidays */
   @ext(0x40, 0)
-  model Hc1HolidayRoomTemp is Register<D1C>;
+  model Hc1HolidayRoomTemp is Register<temp1>;
 
   /** HC1_SFMode */
   @inherit(r)
@@ -572,7 +572,7 @@ namespace _470 {
   /** MonitorEEpromInkonsiNumber */
   @inherit(r)
   @ext(0x9f, 0)
-  model MonitorEEpromInkonsiNumber {
+  model MonitorEEpromInconsCnt {
     /** identification of the last eight EEPROM inconsistencies */
     @maxLength(8)
     value: HEX;
@@ -592,7 +592,7 @@ namespace _470 {
 
   /** RaumtempIstUnten: lower room temp sensor value */
   @ext(0xc1, 0)
-  model RaumtempIstUnten is ReadonlyRegister<tempsensor>;
+  model RoomTempLower is ReadonlyRegister<tempsensor>;
 
   /** ADCValue_T_below: lower room temp sensor ADC value */
   @ext(0x4e, 0)

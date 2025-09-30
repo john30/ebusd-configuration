@@ -220,6 +220,7 @@ model tempsensor {
   sensor: sensor;
 }
 
+@unit("°C")
 scalar tempmirror extends UIN;
 
 model tempmirrorsensor {
@@ -343,6 +344,10 @@ scalar energyr extends UIR;
 @unit("kWh")
 scalar energy4 extends ULG;
 
+@unit("kWh")
+@divisor(1000)
+scalar energye extends EXP;
+
 /** start count */
 scalar cntstarts extends ULG;
 
@@ -464,13 +469,13 @@ scalar rcmode extends UIN;
 @values(Values_rcmode2)
 scalar rcmode2 extends UIN;
 
-/** array index for the zones. Array Index start at 0 for the first element */
+/** index of a time slot */
 scalar slotIndex extends UCH;
 
-/** Number of total slots in the array. May be Zero. */
+/** number of slots on a day */
 scalar slotCount extends UCH;
 
-/** Number of total slots in the array for a week. Mon-Sun */
+/** number of slots per weekday */
 model slotCountWeek {
   @maxLength(1) ign: IGN;
   slotCount: slotCount;
@@ -483,17 +488,18 @@ model slotCountWeek {
   @maxLength(1) ign_1: IGN;
 }
 
-/** Timeslot from/until */
+/** timeslot from/until */
 model slotTimeFrame {
   htm: HTM;
   htm_1: HTM;
 }
 
-/** Temperature stored in the slot. Degrees Celsius */
+/** desired temperature of a slot */
+@unit("°C")
 @divisor(10)
 scalar slotTemp extends UIN;
 
-/** Complete Slot for writing the time table settings. */
+/** complete slot for writing with target temperature */
 model wTimeSlotWithTemp {
   slotIndex: slotIndex;
   slotCount: slotCount;
@@ -501,22 +507,26 @@ model wTimeSlotWithTemp {
   slotTemp: slotTemp;
 }
 
-/** Complete slot for writing the time table settings without a temperature. FF FF has to be appended. */
+/** constant value for writing a slot without target temperature */
+@constValue(0xffff)
+scalar wTimeSlotConst extends U2L;
+
+/** complete slot for writing without target temperature */
 model wTimeSlotWithoutTemp {
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
-  @maxLength(2) hex: HEX;
+  wTimeSlotConst: wTimeSlotConst;
 }
 
-/** Complete Slot for reading the time table settings. */
+/** complete slot for reading with target temperature */
 model rTimeSlotWithTemp {
   @maxLength(1) ign: IGN;
   slotTimeFrame: slotTimeFrame;
   slotTemp: slotTemp;
 }
 
-/** Complete slot for reading the time table settings without a temperature. */
+/** complete slot for reading without target temperature */
 model rTimeSlotWithoutTemp {
   @maxLength(1) ign: IGN;
   slotTimeFrame: slotTimeFrame;
@@ -526,6 +536,10 @@ model rTimeSlotWithoutTemp {
 /** Status code */
 @values(Values_appliancecode)
 scalar appliancecode extends UCH;
+
+/** HMU Status code */
+@values(Values_hmucode)
+scalar hmucode extends UIN;
 
 enum Values_daysel {
   selected: 0,
@@ -555,6 +569,7 @@ enum Values_hcmode {
 
 enum Values_hcmode2 {
   off: 0,
+  cooling: 1,
   heat: 3,
   water: 4,
 }
@@ -644,6 +659,7 @@ enum Values_closeopen {
 enum Values_daynight {
   night: 0,
   day: 1,
+  load: 4,
   floorpaving: 7,
 }
 
@@ -897,6 +913,62 @@ enum Values_appliancecode {
   frost_protect: 34,
 }
 
+enum Values_hmucode {
+  frost_protect: 34,
+  standby: 100,
+  heat_compressor_shutdown: 101,
+  heat_compressor_blocked: 102,
+  heat_prerun: 103,
+  heat_compressor_active: 104,
+  heat_overrun: 107,
+  cool_compressor_shutdown: 111,
+  cool_compressor_blocked: 112,
+  cool_prerun: 113,
+  cool_compressor_active: 114,
+  cool_overrun: 117,
+  heat_immersion_heater_active: 125,
+  hwc_compressor_blocked: 132,
+  hwc_prerun: 133,
+  hwc_compressor_active: 134,
+  hwc_immersion_heater_active: 135,
+  hwc_overrun: 137,
+  heat_immersion_heater_shutdown: 141,
+  heat_immersion_heater_blocked: 142,
+  hwc_immersion_heater_shutdown: 151,
+  hwc_immersion_heater_blocked: 152,
+  air_purging_program_active: 202,
+  compressor_oil_heating_active: 240,
+  fan1_blocked: 252,
+  fan1_airinlet_too_high: 255,
+  fan1_airinlet_too_low: 256,
+  fan2_blocked: 260,
+  building_circuit_flow_too_low: 275,
+  building_circuit_pump_fault: 277,
+  frequency_converter_fault_compressor: 280,
+  frequency_converter_fault_mains_voltage: 281,
+  frequency_converter_fault_overheating: 282,
+  deicing_time_too_long: 283,
+  deicing_flow_temp_too_low: 284,
+  compressor_outlet_temp_too_high: 285,
+  hot_gas_temp_switch_open: 286,
+  fan1_wind: 287,
+  fan2_wind: 288,
+  current_limt_active: 289,
+  high_pressure_switch_open: 302,
+  compressor_outlet_temp_too_high_1: 303,
+  evaporation_temp_too_low: 304,
+  condensation_temp_too_low: 305,
+  evaporation_temp_too_high: 306,
+  condensation_temp_too_high: 308,
+  building_circuit_return_temp_too_low: 312,
+  building_circuit_return_temp_too_high: 314,
+  immersion_heater_flow_temp_too_high: 351,
+  deicing_active: 516,
+  frequency_converter_fault: 575,
+  connection_fault_frequency_converter: 581,
+  four_port_valve_position_fault: 590,
+}
+
 /** default *r for register */
 @base(MF, 0x9, 0xd)
 model r {}
@@ -911,7 +983,7 @@ model w {}
 @base(MF, 0x9, 0x29)
 model u {
   @maxLength(2)
-  value: IGN;
+  ign: IGN;
 }
 
 /** default *wi for register with user level "install" */
@@ -987,7 +1059,7 @@ model wm {}
 @base(MF, 0x15)
 model rt {
   @maxLength(1)
-  value: IGN;
+  ign: IGN;
 }
 
 /** default *w for timer */
@@ -1001,3 +1073,8 @@ model Timer<T> {
   /** timer value */
   value: T;
 }
+
+/** display contrast */
+@minValue(0)
+@maxValue(15)
+scalar displaycontrast extends UCH;

@@ -21,7 +21,7 @@ namespace Solsy.Hc {
 
   /** StatOperatingHours */
   @ext(0xcd, 0)
-  model StatOperatingHours is ReadonlyRegister<UIN>;
+  model StatOperatingHours is ReadonlyRegister<hoursum2>;
 
   /** StatMonthOfInstallation */
   @ext(0xce, 0)
@@ -41,7 +41,7 @@ namespace Solsy.Hc {
 
   /** StatRestarts */
   @ext(0xd2, 0)
-  model StatRestarts is ReadonlyRegister<UIN>;
+  model StatRestarts is ReadonlyRegister<cntstarts2>;
 
   /** StatRTOSErrorCounter */
   @ext(0xd3, 0)
@@ -105,9 +105,9 @@ namespace Solsy.Hc {
   @ext(0x60, 0)
   model HydraulicScheme is ReadonlyRegister<UCH>;
 
-  /** EnergyDemandPercentage: Flow temperature's maximum deviation from setpoint for set delay time */
+  /** FlowDemandPercentage: Flow temperature's maximum deviation from setpoint for set delay time */
   @ext(0x7e, 0)
-  model EnergyDemandPercentage is ReadonlyRegister<percent0>;
+  model FlowDemandPercentage is ReadonlyRegister<percent0>;
 
   /** OtShutdownLimit: For outside temperatures higher than this, there is no heat demand generated anymore */
   @ext(0x36, 0)
@@ -146,9 +146,9 @@ namespace Solsy.Hc {
   model TeleswitchOperatingMode is Register<mcmode>;
   @condition(Id.Id.sw, ">=401")
   namespace Sw_ge401 {
-    /** EnergyDemandNotReachedDelay: Delay time for not reached temperature */
+    /** FlowDemandNotReachedDelay: Delay time for not reached temperature */
     @ext(0x7b, 0)
-    model EnergyDemandNotReachedDelay is ReadonlyRegister<hours>;
+    model FlowDemandNotReachedDelay is ReadonlyRegister<hours>;
 
     /** HcMaxPreHeating: maximum time central heating is released in advance of the first time window (time is adjusted according to current outside temperature) */
     @ext(0x38, 0)

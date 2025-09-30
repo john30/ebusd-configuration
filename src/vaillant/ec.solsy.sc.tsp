@@ -19,7 +19,7 @@ namespace Solsy.Sc {
 
   /** StatOperatingHours */
   @ext(0xcd, 0)
-  model StatOperatingHours is ReadonlyRegister<UIN>;
+  model StatOperatingHours is ReadonlyRegister<hoursum2>;
 
   /** StatMonthOfInstallation */
   @ext(0xce, 0)
@@ -39,7 +39,7 @@ namespace Solsy.Sc {
 
   /** StatRestarts */
   @ext(0xd2, 0)
-  model StatRestarts is ReadonlyRegister<UIN>;
+  model StatRestarts is ReadonlyRegister<cntstarts2>;
 
   /** StatRTOSErrorCounter */
   @ext(0xd3, 0)
@@ -160,7 +160,9 @@ namespace Solsy.Sc {
   @inherit(r, ws)
   @ext(0x9d, 0)
   model ColKickGradient {
-    @unit("0.1 K / 30 min")
+    @unit("°min")
+    // originally 0.1 K / 30 min, equivalent to 1/300 °min
+    @divisor(300)
     value: UCH;
   }
 
@@ -190,7 +192,6 @@ namespace Solsy.Sc {
   @ext(0xb0, 0)
   model SolCollVolumeSensorTicksPer10Lite {
     /** How often the volume sensor has to pulse for the detection of 10 liters */
-    @unit("ticks")
     value: UCH;
   }
 

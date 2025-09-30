@@ -82,12 +82,12 @@ namespace E7f {
   @ext(0x23, 0)
   model HeatingCurve is InstallRegister<curve>;
 
-  /** ZweipunktAnalogSlct */
+  /** two point analog control */
   @inherit(r, wi)
   @ext(0x29, 0)
-  model ZweipunktAnalogSlct {
+  model TwoPointAnalogCtrl {
     /** two-point / analogue control */
-    @values(Values_ZweipunktAnalogSlct)
+    @values(Values_TwoPointAnalogCtrl)
     value: UCH;
   }
 
@@ -123,7 +123,7 @@ namespace E7f {
 
   /** EEpromMaxInkonsCnt: EEPROM inconsistency counter */
   @ext(0x2d, 0)
-  model EEpromMaxInkonsCnt is ReadonlyRegister<UIN>;
+  model EEpromMaxInconsCnt is ReadonlyRegister<UIN>;
 
   /** POCResetCnt: power on resets */
   @ext(0x2e, 0)
@@ -165,7 +165,7 @@ namespace E7f {
   @ext(0x39, 0)
   model EBUSCommErrorPending is ReadonlyRegister<onoff>;
 
-  enum Values_ZweipunktAnalogSlct {
+  enum Values_TwoPointAnalogCtrl {
     two_point_control: 0,
     analogue_control: 1,
   }

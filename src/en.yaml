@@ -1,7 +1,6 @@
 '-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)': >-
   -26=off, when the outside temperature falls below this threshold temperature
   the continuous heating function is started (off <=> function is disabled)
-(3Zones;HWC&CC = constant value. General configuration?): (3Zones;HWC&CC = constant value. General configuration?)
 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick: 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick
 0 = _OffConfig_Off, 1 = _OffConfig_Low: 0 = _OffConfig_Off, 1 = _OffConfig_Low
 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day: 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day
@@ -153,7 +152,6 @@ Anpassung Heizkurve Heizkreis 2: Anpassung Heizkurve Heizkreis 2
 Anpassung Heizkurve Heizkreis 3: Anpassung Heizkurve Heizkreis 3
 Appliance_Code: Appliance_Code
 'Appliance_Code: appliance code': 'Appliance_Code: appliance code'
-array index for the zones. Array Index start at 0 for the first element: array index for the zones. Array Index start at 0 for the first element
 ASC_OFF=0, ASC_CH=1, ASC_DHW=2: ASC_OFF=0, ASC_CH=1, ASC_DHW=2
 ASC_Status: ASC_Status
 'AscBigModulDetected: detected VPM-S (bit counted)': 'AscBigModulDetected: detected VPM-S (bit counted)'
@@ -539,12 +537,10 @@ ColKickPumpTime: ColKickPumpTime
 'CollectorPumpSRuntime: runtime in seconds base for runtime in hours': 'CollectorPumpSRuntime: runtime in seconds base for runtime in hours'
 'COMErrorCnt: eBUS-communication errors': 'COMErrorCnt: eBUS-communication errors'
 'COmon_Off_DK: CO-monitoring not active': 'COmon_Off_DK: CO-monitoring not active'
-Complete slot for reading the time table settings without a temperature.: Complete slot for reading the time table settings without a temperature.
-Complete Slot for reading the time table settings.: Complete Slot for reading the time table settings.
-Complete slot for writing the time table settings without a temperature. FF FF has to be appended.: >-
-  Complete slot for writing the time table settings without a temperature. FF FF
-  has to be appended.
-Complete Slot for writing the time table settings.: Complete Slot for writing the time table settings.
+complete slot for reading with target temperature: complete slot for reading with target temperature
+complete slot for reading without target temperature: complete slot for reading without target temperature
+complete slot for writing with target temperature: complete slot for writing with target temperature
+complete slot for writing without target temperature: complete slot for writing without target temperature
 Compressor: Compressor
 'Compressor_Commutations_CH: Number of commutations of': 'Compressor_Commutations_CH: Number of commutations of'
 'Compressor_Commutations_DHW: Number of commutations of': 'Compressor_Commutations_DHW: Number of commutations of'
@@ -590,6 +586,7 @@ configures which room temperature is assigned to zone 3: configures which room t
   case of a connection error
 Contact 1 position: Contact 1 position
 Contact 2 position: Contact 2 position
+constant value for writing a slot without target temperature: constant value for writing a slot without target temperature
 continous heating: continous heating
 continuos heating: continuos heating
 'ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)': >-
@@ -654,7 +651,6 @@ Counter inputs actual values: Counter inputs actual values
   CP_LPLast24started: circulation respectively loading pump has been started
   during the last 24h
 Current calculated partload: Current calculated partload
-current compressor utilization in percent: current compressor utilization in percent
 Current cylinder temp.: Current cylinder temp.
 current date: current date
 current date (calendar must be enabled previously!): current date (calendar must be enabled previously!)
@@ -1010,6 +1006,7 @@ desired cooling setpoint for zone 3: desired cooling setpoint for zone 3
 desired flow temp for Hwc: desired flow temp for Hwc
 Desired flow/status/flow/desired temperature: Desired flow/status/flow/desired temperature
 desired temperature: desired temperature
+desired temperature of a slot: desired temperature of a slot
 desired temperature zone 1: desired temperature zone 1
 desired temperature zone 2: desired temperature zone 2
 desired temperature zone 3: desired temperature zone 3
@@ -1397,7 +1394,6 @@ Filter dirty: Filter dirty
 Filter Maximum Flow: Filter Maximum Flow
 Filter usage: Filter usage
 Filter usage (days): Filter usage (days)
-First = Zones maybe? Rest unknown; needs some other configured ctlv2: First = Zones maybe? Rest unknown; needs some other configured ctlv2
 first part of the installer's telephone number: first part of the installer's telephone number
 'FirstCHEnergySavingPumpOffTime: CH pump off time for pump switch off during heating operation with direct heating circuits. Function is off from factory but can be activated in service menus via Code1.': >-
   FirstCHEnergySavingPumpOffTime: CH pump off time for pump switch off during
@@ -1822,6 +1818,7 @@ if outside temperature > summer limit => heating is OFF;applies to comfort and n
   night setback setpoint
 Imbalance permissible: Imbalance permissible
 increase of minimum power: increase of minimum power
+index of a time slot: index of a time slot
 Information which provider has been selectet. Only valid in case of GSM/GPRS modem.: >-
   Information which provider has been selectet. Only valid in case of GSM/GPRS
   modem.
@@ -2269,8 +2266,8 @@ number of bytes: number of bytes
 Number of CH mode starts: Number of CH mode starts
 number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp): number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp)
 Number of DHW mode starts: Number of DHW mode starts
-Number of total slots in the array for a week. Mon-Sun: Number of total slots in the array for a week. Mon-Sun
-Number of total slots in the array. May be Zero.: Number of total slots in the array. May be Zero.
+number of slots on a day: number of slots on a day
+number of slots per weekday: number of slots per weekday
 'Number_Comp_Starts: maximum number of compressor starts per hour': 'Number_Comp_Starts: maximum number of compressor starts per hour'
 'NumberOfBoiler: active boiler in the system': 'NumberOfBoiler: active boiler in the system'
 'O_Multifunction: multifunction relay: 0 = 2nd storage, 1 = differential control': >-
@@ -3061,6 +3058,7 @@ StatRTOSErrorCounter: StatRTOSErrorCounter
 Status: Status
 Status C1/C2: Status C1/C2
 Status circulation pump: Status circulation pump
+Status code: Status code
 Status electrical heater: Status electrical heater
 Status flow desired/current: Status flow desired/current
 Status flow temperature/mixer/pump/desired flow temperature: Status flow temperature/mixer/pump/desired flow temperature
@@ -3255,7 +3253,7 @@ TeleSwitch Operating Mode (0=disabled, 1=ON, 2=OFF, 3=AUTO: TeleSwitch Operating
 'TeleswitchOperatingMode3: If the tele switch port is activated the mixer circuit operates in this mode': >-
   TeleswitchOperatingMode3: If the tele switch port is activated the mixer
   circuit operates in this mode
-'TeleSwitchState: Teleswitch port state (On / Off)': 'TeleSwitchState: Teleswitch port state (On / Off)'
+'TeleSwitchState: Teleswitch port state': 'TeleSwitchState: Teleswitch port state'
 'Temp DHW max: maximum temperature measured by the domestic hot water outlet sensor': >-
   Temp DHW max: maximum temperature measured by the domestic hot water outlet
   sensor
@@ -3304,7 +3302,6 @@ temperature sensor HW storage bottom: temperature sensor HW storage bottom
 temperature sensor HW storage top: temperature sensor HW storage top
 temperature sensor HWC storage bottom: temperature sensor HWC storage bottom
 temperature sensor HWC storage top: temperature sensor HWC storage top
-Temperature stored in the slot. Degrees Celsius: Temperature stored in the slot. Degrees Celsius
 Temperature target in solar flow at sensor Ntc1Sensor: Temperature target in solar flow at sensor Ntc1Sensor
 Temperatures Friday: Temperatures Friday
 Temperatures Monday: Temperatures Monday
@@ -3452,7 +3449,7 @@ timer wednesday 1: timer wednesday 1
 timer wednesday 2: timer wednesday 2
 timer wednesday 3: timer wednesday 3
 'TimerInputCH_DK: timer input (block heatdemand)': 'TimerInputCH_DK: timer input (block heatdemand)'
-Timeslot from/until: Timeslot from/until
+timeslot from/until: timeslot from/until
 'TimeTicker: Sekunden des Tages': 'TimeTicker: Sekunden des Tages'
 Tm: Tm
 Tnm: Tnm
@@ -3645,7 +3642,6 @@ weekday on which legionella protection is started (may also be every day of the 
   the week)
 'Weekday: current day of week': 'Weekday: current day of week'
 WeekDayProgSwitch: WeekDayProgSwitch
-whether timeslot is valid: whether timeslot is valid
 'Wind_Off_DK: Wind-function not active': 'Wind_Off_DK: Wind-function not active'
 'WP_SecondStage_DK: Second stage of the pump activated': 'WP_SecondStage_DK: Second stage of the pump activated'
 'WP_SecondStage: Second stage of the pump activated': 'WP_SecondStage: Second stage of the pump activated'

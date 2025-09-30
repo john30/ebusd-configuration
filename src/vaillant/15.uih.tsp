@@ -97,7 +97,11 @@ namespace Uih {
 
   /** TempFailDetectTime: temperature fail detection time */
   @ext(0x33, 0)
-  model TempFailDetectTime is InstallRegister<temp0>;
+  model TempFailDetectTime is InstallRegister<UCH>;
+
+  /** LcdContrastPwmValue: contrast for the display */
+  @ext(0x36, 0)
+  model LcdContrastPwmValue is InstallRegister<displaycontrast>;
 
   /** EhpHeatBufferAvailable: heat buffer is available */
   @ext(0x5c, 0)
@@ -191,11 +195,11 @@ namespace Uih {
   namespace Sw_ge220 {
     /** CoolingDay */
     @ext(0x7c, 0)
-    model CoolingDay is ReadonlyRegister<UCH>;
+    model CoolingDay is Register<UCH>;
 
     /** CoolingActive */
     @ext(0x83, 0)
-    model CoolingActive is ReadonlyRegister<onoff>;
+    model CoolingActive is Register<onoff>;
   }
   @condition(Id.Id.sw, ">=250")
   namespace Sw_ge250 {

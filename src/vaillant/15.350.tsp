@@ -302,7 +302,7 @@ namespace _350 {
   model EBUSFifoDiffCntMax is InstallRegister<UCH>;
 
   @ext(0x56, 0)
-  model ZweipunktAnalogSlct is InstallRegister<UCH>;
+  model TwoPointAnalogCtrl is InstallRegister<UCH>;
 
   /** Actual roomtemperature setpoint [°C] */
   @ext(0x57, 0)
@@ -318,7 +318,7 @@ namespace _350 {
   model RTCAdjustment is InstallRegister<SIN>;
 
   @ext(0x5b, 0)
-  model EEpromMaxInkonsCnt is InstallRegister<UIN>;
+  model EEpromMaxInconsCnt is InstallRegister<UIN>;
 
   @ext(0x5c, 0)
   model POCResetCnt is InstallRegister<UIN>;

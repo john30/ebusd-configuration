@@ -11,9 +11,9 @@ namespace Zeo {
   // ,ZEO00,Zeolite AMU,ZEO00 197 Boiler
   // ##### ZEO: Zeolite #####
 
-  /** EnergyDemand: vom UI */
+  /** FlowDemand: vom UI */
   @ext(0x27, 0)
-  model EnergyDemand is ReadonlyRegister<onoff>;
+  model FlowDemand is ReadonlyRegister<onoff>;
 
   /** BurnerDemand: von der BMU */
   @ext(0x4f, 0)
@@ -49,27 +49,27 @@ namespace Zeo {
 
   /** Ventilatorfreigabe: Kollektorventilator */
   @ext(0x6a, 0)
-  model Ventilatorfreigabe is ReadonlyRegister<onoff>;
+  model VentilatorRelease is ReadonlyRegister<onoff>;
 
   /** Volumenstrom_P_P1: in % */
   @ext(0x6b, 0)
-  model VolumenstromPumpP1 is ReadonlyRegister<UIN>;
+  model FlowPumpP1 is ReadonlyRegister<UIN>;
 
   /** Volumenstrom_P_P2: in % */
   @ext(0x6c, 0)
-  model VolumenstromPumpP2 is ReadonlyRegister<UIN>;
+  model FlowPumpP2 is ReadonlyRegister<UIN>;
 
   /** man_weiter */
   @ext(0x70, 0)
-  model ManWeiter is ServiceRegister<onoff>;
+  model ManualContinue is ServiceRegister<onoff>;
 
   /** W_Anfo */
   @ext(0x72, 0)
-  model WAnfo is ReadonlyRegister<onoff>;
+  model HeatDemand is ReadonlyRegister<onoff>;
 
   /** Quelle: 1=DHB 2=Kollektorbetrieb 3=Wärmetauscherbetrieb */
   @ext(0x73, 0)
-  model Quelle is ReadonlyRegister<UCH>;
+  model Source is ReadonlyRegister<UCH>;
 
   /** PrimaryCircuitPumpsControlState */
   @ext(0x74, 0)
@@ -85,15 +85,15 @@ namespace Zeo {
 
   /** testbetrieb */
   @ext(0x7a, 0)
-  model Testbetrieb is ReadonlyRegister<onoff>;
+  model TestMode is ReadonlyRegister<onoff>;
 
   /** BW_Anfo */
   @ext(0x7b, 0)
-  model HwcAnfo is ReadonlyRegister<onoff>;
+  model HwcDemand is ReadonlyRegister<onoff>;
 
   /** Br_Anfo: Ansteuerung Gasventil */
   @ext(0x82, 0)
-  model BrAnfo is ReadonlyRegister<onoff>;
+  model BrDemand is ReadonlyRegister<onoff>;
 
   /** DesiredPositionReached */
   @ext(0x83, 0)
@@ -101,11 +101,11 @@ namespace Zeo {
 
   /** GFA_Stoerung */
   @ext(0x85, 0)
-  model GFAStoerung is ReadonlyRegister<onoff>;
+  model GFAError is ReadonlyRegister<onoff>;
 
   /** Tads_aus: °C */
   @ext(0x86, 0)
-  model TadsAus is ReadonlyRegister<temp>;
+  model TadsOff is ReadonlyRegister<temp>;
 
   /** MSW_max: in % */
   @ext(0x88, 0)
@@ -113,7 +113,7 @@ namespace Zeo {
 
   /** Tdes_ein: °C */
   @ext(0x89, 0)
-  model TdesEin is ReadonlyRegister<temp>;
+  model TdesOn is ReadonlyRegister<temp>;
 
   /** ActualEnvironmentalPower: in kW (Näherungswert) */
   @ext(0x8a, 0)
@@ -121,7 +121,7 @@ namespace Zeo {
 
   /** PWT_Soll: °C */
   @ext(0x8b, 0)
-  model PWTSoll is ReadonlyRegister<temp>;
+  model PWTDesired is ReadonlyRegister<temp>;
 
   /** Prim_Vol: in % */
   @ext(0x8c, 0)
@@ -129,11 +129,11 @@ namespace Zeo {
 
   /** Tsole_ein: °C; hinten */
   @ext(0x8f, 0)
-  model TsoleEin is ReadonlyRegister<tempsensor>;
+  model TsolOn is ReadonlyRegister<tempsensor>;
 
   /** Tsole_aus: °C; vorne */
   @ext(0x90, 0)
-  model TsoleAus is ReadonlyRegister<tempsensor>;
+  model TsolOff is ReadonlyRegister<tempsensor>;
 
   /** PL_H: Umschalterposition Desorption ohne Bypass */
   @ext(0x91, 0)
@@ -161,7 +161,7 @@ namespace Zeo {
 
   /** tdes_um */
   @ext(0xba, 0)
-  model TdesUm is ReadonlyRegister<temp>;
+  model TdesSwitch is ReadonlyRegister<temp>;
 
   /** Q_zeo: in kWh */
   @ext(0xdd, 0)
@@ -173,11 +173,11 @@ namespace Zeo {
 
   /** Z_Sp_nach: Nachlaufzeit Speicherpumpe/min */
   @ext(0xdf, 0)
-  model ZSpNach is ReadonlyRegister<UCH>;
+  model ZSpAfter is ReadonlyRegister<UCH>;
 
   /** Partload: 0..100% MSW_max in Testbetrieb */
   @ext(0xf8, 0)
-  model Teillast is ReadonlyRegister<UCH>;
+  model Partload is ReadonlyRegister<UCH>;
 
   /** PrimaryCircuitMicroSwitchPattern: 1=Des.o.B. 2=Adsorption 4=Des.m.B. 8=Direktheizbetrieb */
   @ext(0xf9, 0)
@@ -230,7 +230,7 @@ namespace Zeo {
 
   /** Anlegethermostat */
   @ext(0xa1, 0)
-  model Anlegethermostat is ReadonlyRegister<onoff>;
+  model ContactThermostat is ReadonlyRegister<onoff>;
   // ##### ZEO: BMR #####
 
   /** Holiday function active */
@@ -251,7 +251,7 @@ namespace Zeo {
 
   /** OtShutdownLimit: 1 °C resolution Bedarfsabhängige Heizungsabschaltung */
   @ext(0x11, 0)
-  model OtShutdownLimit is ReadonlyRegister<UCH>;
+  model OtShutdownLimit is ReadonlyRegister<temp0>;
 
   /** BoilerMaxPreShutdown: 15..120min */
   @ext(0x14, 0)
@@ -370,9 +370,9 @@ namespace Zeo {
   @ext(0x58, 0)
   model ApplianceCode is ReadonlyRegister<UCH>;
 
-  /** ForcedParametersatz: 0=no forcing 1=kleinste Leistung 2=mittlere Leistung 3=max. Leistung */
+  /** Forced Parameter: 0=no forcing 1=kleinste Leistung 2=mittlere Leistung 3=max. Leistung */
   @ext(0xa8, 0)
-  model ForcedParametersatz is ReadonlyRegister<UCH>;
+  model ForcedParameter is ReadonlyRegister<UCH>;
 
   /** TwoPointRegulatorHysteresis_CH */
   @ext(0xb5, 0)
@@ -431,53 +431,53 @@ namespace Zeo {
   @ext(0x6f, 0)
   model Timer3 is ReadonlyRegister<ULG>;
 
-  /** ZeitgliedAusgleichszeit1: in Sekunden */
+  /** ZeitgliedAusgleichszeit1: in s */
   @ext(0x75, 0)
-  model ZeitgliedAusgleichszeit1 is ReadonlyRegister<ULG>;
+  model TimerCompensation1 is ReadonlyRegister<seconds4>;
 
-  /** ZeitgliedAusgleichszeit2: in Sekunden */
+  /** ZeitgliedAusgleichszeit2: in s */
   @ext(0x76, 0)
-  model ZeitgliedAusgleichszeit2 is ReadonlyRegister<ULG>;
+  model TimerCompensation2 is ReadonlyRegister<seconds4>;
 
-  /** ZeitgliedMaxLaufzeit: des Primärkreisumschalters in Sekunden */
+  /** ZeitgliedMaxLaufzeit: des Primärkreisumschalters in s */
   @ext(0x7e, 0)
-  model ZeitgliedMaxLaufzeit is ServiceRegister<ULG>;
+  model TimerMaxRuntime is ServiceRegister<seconds4>;
 
-  /** PrimPumpPostrunTimer: in Sekunden */
+  /** PrimPumpPostrunTimer: in s */
   @ext(0xa6, 0)
-  model PrimPumpPostrunTimer is ReadonlyRegister<UIN>;
+  model PrimPumpPostrunTimer is ReadonlyRegister<seconds2>;
 
-  /** PrimPumpPostrunTime: in Sekunden */
+  /** PrimPumpPostrunTime: in s */
   @ext(0xaa, 0)
-  model PrimPumpPostrunTime is ReadonlyRegister<UIN>;
+  model PrimPumpPostrunTime is ReadonlyRegister<seconds2>;
 
-  /** Ausgleichszeit1Dauer: in Sekunden */
+  /** Ausgleichszeit1Dauer: in s */
   @ext(0xab, 0)
-  model Ausgleichszeit1Dauer is ReadonlyRegister<UIN>;
+  model Compensation1Duration is ReadonlyRegister<seconds2>;
 
-  /** ParamSatz_1_Ausgleichszeit1Dauer: in Sekunden */
+  /** ParamSatz_1_Ausgleichszeit1Dauer: in s */
   @ext(0xab, 0x2)
-  model ParamSatz1Ausgleichszeit1Dauer is ServiceRegister<UIN>;
+  model Param1Compensation1Duration is ServiceRegister<seconds2>;
 
-  /** ParamSatz_2_Ausgleichszeit1Dauer: in Sekunden */
+  /** ParamSatz_2_Ausgleichszeit1Dauer: in s */
   @ext(0xab, 0x4)
-  model ParamSatz2Ausgleichszeit1Dauer is ServiceRegister<UIN>;
+  model Param2Compensation1Duration is ServiceRegister<seconds2>;
 
-  /** ParamSatz_3_Ausgleichszeit1Dauer: in Sekunden */
+  /** ParamSatz_3_Ausgleichszeit1Dauer: in s */
   @ext(0xab, 0x6)
-  model ParamSatz3Ausgleichszeit1Dauer is ServiceRegister<UIN>;
+  model Param3Compensation1Duration is ServiceRegister<seconds2>;
 
   /** t1Dauer: in Minuten */
   @ext(0xac, 0)
-  model T1Dauer is ServiceRegister<UCH>;
+  model T1Duration is ServiceRegister<UCH>;
 
   /** t2Dauer: in Minuten */
   @ext(0xad, 0)
-  model T2Dauer is ServiceRegister<UCH>;
+  model T2Duration is ServiceRegister<UCH>;
 
   /** t3Dauer: in Minuten */
   @ext(0xae, 0)
-  model T3Dauer is ServiceRegister<UCH>;
+  model T3Duration is ServiceRegister<UCH>;
 
   /** RestartBlockingTimer */
   @ext(0xb2, 0)
@@ -489,27 +489,27 @@ namespace Zeo {
 
   /** Z_Hz_nach: Nachlaufzeit Heizpumpe/min */
   @ext(0xe1, 0)
-  model ZHzNach is ReadonlyRegister<UCH>;
+  model ZHzAfter is ReadonlyRegister<UCH>;
 
-  /** ParamSatz_AusglZeit2: in Sekunden */
+  /** ParamSatz_AusglZeit2: in s */
   @ext(0xe7, 0)
-  model ParamSatzAusglZeit2 is ReadonlyRegister<UIN>;
+  model ParamCompensationTime2 is ReadonlyRegister<seconds2>;
 
   /** MaxLaufzeitDauer: des Primärkreisumschalters */
   @ext(0xe8, 0)
-  model LaufzeitDauerMax is ReadonlyRegister<UCH>;
+  model RuntimeDurationMax is ReadonlyRegister<UCH>;
 
-  /** ParamSatz_1_Ausgleichszeit2Dauer: in Sekunden */
+  /** ParamSatz_1_Ausgleichszeit2Dauer: in s */
   @ext(0xe7, 0x2)
-  model ParamSatz1Ausgleichszeit2Dauer is ReadonlyRegister<UIN>;
+  model Param1Compensation2Duration is ReadonlyRegister<seconds2>;
 
-  /** ParamSatz_2_Ausgleichszeit2Dauer: in Sekunden */
+  /** ParamSatz_2_Ausgleichszeit2Dauer: in s */
   @ext(0xe7, 0x4)
-  model ParamSatz2Ausgleichszeit2Dauer is ReadonlyRegister<UIN>;
+  model Param2Compensation2Duration is ReadonlyRegister<seconds2>;
 
-  /** ParamSatz_3_Ausgleichszeit2Dauer: in Sekunden */
+  /** ParamSatz_3_Ausgleichszeit2Dauer: in s */
   @ext(0xe7, 0x6)
-  model ParamSatz3Ausgleichszeit2Dauer is ReadonlyRegister<UIN>;
+  model Param3Compensation2Duration is ReadonlyRegister<seconds2>;
 
   /** P2Peaktime: Dauer in sec, die P2 beim Einschalten mit 100% gefahren wird */
   @ext(0xff, 0)
@@ -518,56 +518,56 @@ namespace Zeo {
 
   /** P_P1_starts: Einschaltungen P1 */
   @ext(0xe9, 0)
-  model P1PressStarts is ReadonlyRegister<ULG>;
+  model P1PressStarts is ReadonlyRegister<cntstarts>;
 
   /** P_P1_hours: Laufzeit P1/h */
   @ext(0xea, 0)
-  model P1PressHours is ReadonlyRegister<ULG>;
+  model P1PressHours is ReadonlyRegister<hoursum>;
 
   /** P_P2_starts: Einschaltungen P2 */
   @ext(0xeb, 0)
-  model P2PressStarts is ReadonlyRegister<ULG>;
+  model P2PressStarts is ReadonlyRegister<cntstarts>;
 
   /** P_P2_hours: Laufzeit P2/h */
   @ext(0xec, 0)
-  model P2PressHours is ReadonlyRegister<ULG>;
+  model P2PressHours is ReadonlyRegister<hoursum>;
 
   /** P_H_starts: Einschaltungen P_H */
   @ext(0xed, 0)
-  model HPressStarts is ReadonlyRegister<ULG>;
+  model HPressStarts is ReadonlyRegister<cntstarts>;
 
   /** P_H_hours: Laufzeit P_H */
   @ext(0xee, 0)
-  model HPressHours is ReadonlyRegister<ULG>;
+  model HPressHours is ReadonlyRegister<hoursum>;
 
   /** P_c_starts: Einschaltungen P_c */
   @ext(0xef, 0)
-  model CPressStarts is ReadonlyRegister<ULG>;
+  model CPressStarts is ReadonlyRegister<cntstarts>;
 
   /** P_c_hours: Laufzeit P_c */
   @ext(0xf0, 0)
-  model CPressHours is ReadonlyRegister<ULG>;
+  model CPressHours is ReadonlyRegister<hoursum>;
 
   /** P_s_starts: Einschaltungen P_s */
   @ext(0xf1, 0)
-  model SPressStarts is ReadonlyRegister<ULG>;
+  model SPressStarts is ReadonlyRegister<cntstarts>;
 
   /** P_s_hours: Laufzeit P_s */
   @ext(0xf2, 0)
-  model SPressHours is ReadonlyRegister<ULG>;
+  model SPressHours is ReadonlyRegister<hoursum>;
 
   /** VDHW_starts: Einschaltungen VDHW */
   @ext(0xf3, 0)
-  model VHwcStarts is ReadonlyRegister<ULG>;
+  model VHwcStarts is ReadonlyRegister<cntstarts>;
 
   /** VDHW_hours: Laufzeit VDHW */
   @ext(0xf4, 0)
-  model VHwcHours is ReadonlyRegister<ULG>;
+  model VHwcHours is ReadonlyRegister<hoursum>;
   // ##### ZEO: Zeolite1 #####
 
   /** EckpunktDhb: Grenze für Direktheizbetrieb */
   @ext(0x45, 0)
-  model EckpunktDhb is ServiceRegister<temp>;
+  model LimitDirectHeat is ServiceRegister<temp>;
 
   /** FlowTemperatureSetPoint */
   @ext(0x50, 0)
@@ -668,47 +668,47 @@ namespace Zeo {
 
   /** ZeitgliedAdsorption1 */
   @ext(0x71, 0)
-  model ZeitgliedAdsorption1 is ReadonlyRegister<ULG>;
+  model TimerAdsorption1 is ReadonlyRegister<ULG>;
 
   /** ParamSatz_1_Vol: Parametersatz 1: Volumenstrom (Ads 2) */
   @ext(0x7f, 0x2)
-  model ParamSatz1Vol is ServiceRegister<UIN>;
+  model Param1Vol is ServiceRegister<UIN>;
 
   /** ParamSatz_2_Vol: Parametersatz 2: Volumenstrom (Ads 2) */
   @ext(0x7f, 0x4)
-  model ParamSatz2Vol is ServiceRegister<UIN>;
+  model Param2Vol is ServiceRegister<UIN>;
 
   /** ParamSatz_3_Vol: Parametersatz 3: Volumenstrom (Ads 2) */
   @ext(0x7f, 0x6)
-  model ParamSatz3Vol is ServiceRegister<UIN>;
+  model Param3Vol is ServiceRegister<UIN>;
 
   /** ParamSatz_1_dTads_end: Parametersatz 1: Dauer (Ads 1) */
   @ext(0x80, 0x2)
-  model ParamSatz1DTadsEnd is ServiceRegister<temp>;
+  model Param1DTadsEnd is ServiceRegister<temp>;
 
   /** ParamSatz_2_dTads_end: Parametersatz 2: Dauer (Ads 1) */
   @ext(0x80, 0x4)
-  model ParamSatz2DTadsEnd is ServiceRegister<temp>;
+  model Param2DTadsEnd is ServiceRegister<temp>;
 
   /** ParamSatz_3_dTads_end: Parametersatz 3: Dauer (Ads 1) */
   @ext(0x80, 0x6)
-  model ParamSatz3DTadsEnd is ServiceRegister<temp>;
+  model Param3DTadsEnd is ServiceRegister<temp>;
 
   /** ParamSatz_1_Zeit: Parametersatz 1: Adsorptionsende (Temp.Differenz) */
   @ext(0x81, 0x2)
-  model ParamSatz1Zeit is ServiceRegister<UIN>;
+  model Param1Time is ServiceRegister<UIN>;
 
   /** ParamSatz_2_Zeit: Parametersatz 2: Adsorptionsende (Temp.Differenz) */
   @ext(0x81, 0x4)
-  model ParamSatz2Zeit is ServiceRegister<UIN>;
+  model Param2Time is ServiceRegister<UIN>;
 
   /** ParamSatz_3_Zeit: Parametersatz 3: Adsorptionsende (Temp.Differenz) */
   @ext(0x81, 0x6)
-  model ParamSatz3Zeit is ServiceRegister<UIN>;
+  model Param3Time is ServiceRegister<UIN>;
 
   /** Tdes_soll: °C */
   @ext(0x84, 0)
-  model TdesSoll is ReadonlyRegister<temp>;
+  model TdesDesired is ReadonlyRegister<temp>;
 
   /** d_um_3: Offset Desorptionsendtemperatur */
   @ext(0xe5, 0)
@@ -741,7 +741,7 @@ namespace Zeo {
 
   /** HeatingPumpFaktor: % pro Kelvin Regelabweichung */
   @ext(0x5, 1)
-  model HeatingPumpFaktor is ServiceRegister<UCH>;
+  model HeatingPumpFactor is ServiceRegister<UCH>;
 
   /** aktiviert/deaktiviert die SHU-Funktionalität */
   @ext(0x6, 1)
@@ -757,19 +757,19 @@ namespace Zeo {
 
   /** Solepumpenleistung_SHU: Solepumpenleistung während SHU */
   @ext(0x9, 1)
-  model SolepumpenleistungSHU is ServiceRegister<UCH>;
+  model BrinePumpPowerSHU is ServiceRegister<UCH>;
 
   /** Solepumpenleistung_Desorption: Solepumpenleistung während Desorption */
   @ext(0xa, 1)
-  model SolepumpenleistungDesorption is ServiceRegister<UCH>;
+  model BrinePumpPowerDesorption is ServiceRegister<UCH>;
 
   /** Solepumpenleistung_Adsorption: Solepumpenleistung während Adsorption */
   @ext(0xb, 1)
-  model SolepumpenleistungAdsorption is ServiceRegister<UCH>;
+  model BrinePumpPowerAdsorption is ServiceRegister<UCH>;
 
   /** dHR_aus: delta-Rücklauftemp für SHU */
   @ext(0xc, 1)
-  model DHRAus is ServiceRegister<temp>;
+  model DHROff is ServiceRegister<temp>;
 
   /** Tvmax */
   @ext(0xd, 1)
@@ -785,19 +785,19 @@ namespace Zeo {
 
   /** ZeitgliedStartupTest: aktuelle Selbsttestzeit */
   @ext(0x10, 1)
-  model ZeitgliedStartupTest is ReadonlyRegister<UCH>;
+  model TimerStartupTest is ReadonlyRegister<UCH>;
 
   /** ZeitgliedTestDesDauer: in sec */
   @ext(0x11, 1)
-  model ZeitgliedTestDesDauer is ReadonlyRegister<UIN>;
+  model TimerTestDesDuration is ReadonlyRegister<UIN>;
 
   /** ZeitgliedTestAdsDauer: in sec */
   @ext(0x12, 1)
-  model ZeitgliedTestAdsDauer is ReadonlyRegister<UIN>;
+  model TimerTestAdsDuration is ReadonlyRegister<UIN>;
 
   /** startup_test_fehler: zeigt Fehler im selbsttest an */
   @ext(0x13, 1)
-  model StartupTestFehler is ServiceRegister<onoff>;
+  model StartupTestError is ServiceRegister<onoff>;
 
   /** ExtChPump: s. Mantis 7915 */
   @ext(0x14, 1)
@@ -821,9 +821,9 @@ namespace Zeo {
 
   /** dHR_ein: delta-Rücklauftemp für SHU */
   @ext(0x19, 1)
-  model DHREin is ServiceRegister<temp>;
+  model DHROn is ServiceRegister<temp>;
 
   /** dT_schnell: Nötige Temp.differenz für sofortigen DHB (Mantis 8305) */
   @ext(0x1a, 1)
-  model DTSchnell is ServiceRegister<UCH>;
+  model DTQuick is ServiceRegister<UCH>;
 }

@@ -93,7 +93,8 @@ namespace Vms {
   @ext(0x2e, 0)
   model CurrentFlow {
     /** Flow thru buffer circuit if loading the storage */
-    @unit("ml / min")
+    @unit("l/min")
+    @divisor(1000)
     value: UIN;
   }
 
@@ -107,11 +108,11 @@ namespace Vms {
 
   /** InternalDHWSetpoint: Temperature target for DHW loading if solar module is in stand alone appliccation without external control */
   @ext(0x35, 0)
-  model InternalHwcTempDesired is ReadonlyRegister<UCH>;
+  model InternalHwcTempDesired is ReadonlyRegister<temp0>;
 
   /** InternalCHSetpoint: Temperature target for CW loading if solar module is in stand alone appliccation without external control */
   @ext(0x36, 0)
-  model InternalHcTempDesired is ReadonlyRegister<UCH>;
+  model InternalHcTempDesired is ReadonlyRegister<temp0>;
 
   /** ASIDetected */
   @ext(0x38, 0)

@@ -28,14 +28,14 @@ namespace Omu {
 
   /** ODU_brine_Warm: brine_warm sensor on ODU */
   @ext(0x6, 0)
-  model Parametersandinformation_ODUSourceInput is ReadonlyRegister<tempsensor>;
+  model ODUSourceInputBrine is ReadonlyRegister<tempsensor>;
 
   /** Fan_Speed_Is */
   @inherit(r)
   @ext(0x39, 0)
   model FanSpeedIs {
     /** actual fan speed */
-    @unit("/min")
+    @unit("rpm")
     @factor(10)
     value: UCH;
   }
@@ -192,8 +192,7 @@ namespace Omu {
 
     /** Brine_warmSensor_Offset: calibration value for brine sensor */
     @ext(0x4b, 0)
-    model Parametersandinformation_SourceInputSensorOffset
-      is InstallRegister<temp>;
+    model SourceInputSensorOffsetBrine is InstallRegister<temp>;
 
     /** MaxDeiceTime: max. deicing time. By exceeding this value, message unsuccessful deicing is released */
     @ext(0x45, 0)
@@ -253,7 +252,7 @@ namespace Omu {
 
     /** RelayCommutations: reserved */
     @ext(0x4d, 0)
-    model RelayStarts is ReadonlyRegister<ULG>;
+    model RelayStarts is ReadonlyRegister<cntstarts>;
 
     /** CheckByte: factory EOL test */
     @ext(0x55, 0)
@@ -291,11 +290,11 @@ namespace Omu {
 
     /** HeaterCommutations: defroster cycles */
     @ext(0x4f, 0)
-    model HeaterStarts is ReadonlyRegister<ULG>;
+    model HeaterStarts is ReadonlyRegister<cntstarts>;
 
     /** DeicingCommutations: deicing cycles */
     @ext(0x51, 0)
-    model DeicingStarts is ReadonlyRegister<ULG>;
+    model DeicingStarts is ReadonlyRegister<cntstarts>;
 
     /** DeicingRuntimeMinutes */
     @inherit(r)
@@ -308,15 +307,15 @@ namespace Omu {
 
     /** DeiceErrorCommutations: deice error cycles */
     @ext(0x53, 0)
-    model DeiceErrorStarts is ReadonlyRegister<ULG>;
+    model DeiceErrorStarts is ReadonlyRegister<cntstarts>;
 
     /** STBErrorCommutations: STB cycles */
     @ext(0x50, 0)
-    model STBErrorStarts is ReadonlyRegister<ULG>;
+    model STBErrorStarts is ReadonlyRegister<cntstarts>;
 
     /** PowerOnCommutations: power on cycles */
     @ext(0x54, 0)
-    model PowerOnStarts is ReadonlyRegister<ULG>;
+    model PowerOnStarts is ReadonlyRegister<cntstarts>;
   }
   @condition(Id.Id.sw, ">=130")
   namespace Sw_ge130 {
@@ -377,7 +376,7 @@ namespace Omu {
 
       /** fan speed */
       @in
-      @unit("/min")
+      @unit("rpm")
       @factor(10)
       FanSpeed: UCH;
 
@@ -423,7 +422,7 @@ namespace Omu {
 
       /** fan speed */
       @in
-      @unit("/min")
+      @unit("rpm")
       @factor(10)
       FanSpeed: UCH;
 

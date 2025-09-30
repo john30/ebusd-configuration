@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 import "./service_inc.tsp";
 using Ebus;
 using Ebus.Num;
@@ -89,7 +88,7 @@ namespace Bai._0010010674_inc {
   @ext(0x24, 0)
   model TargetFanSpeed {
     /** Fan speed setpoint */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -98,7 +97,7 @@ namespace Bai._0010010674_inc {
   @ext(0x83, 0)
   model FanSpeed {
     /** fan speed actual value */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -218,7 +217,7 @@ namespace Bai._0010010674_inc {
   @ext(0xa7, 0)
   model FanSpeedOffsetMin {
     /** Offset for minimum fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: SIN;
   }
 
@@ -227,7 +226,7 @@ namespace Bai._0010010674_inc {
   @ext(0xa8, 0)
   model FanSpeedOffsetMax {
     /** Offset for maximum fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: SIN;
   }
 
@@ -527,9 +526,9 @@ namespace Bai._0010010674_inc {
   @ext(0xc, 0)
   model ChangesDSN is ReadonlyRegister<UCH>;
 
-  /** Brennstoffventil: Activation signal of the gasvalve (activated via micrcontroller) */
+  /** fuel valve: Activation signal of the gasvalve (activated via micrcontroller) */
   @ext(0xd, 0)
-  model Brennstoffventil is ReadonlyRegister<onoff2>;
+  model FuelValve is ReadonlyRegister<onoff2>;
 
   /** SD_VolatileLockout_DK: TRUE: STB failures is volatileFALSE: STB failure is not volataile */
   @ext(0x10, 0)
@@ -547,7 +546,7 @@ namespace Bai._0010010674_inc {
   /** Modulationsetpoint_DK */
   @inherit(r)
   @ext(0x2e, 0)
-  model ModulationTempDesired {
+  model ModulationDesired {
     /** Modulation set point */
     @unit("%")
     @divisor(10)
@@ -578,13 +577,13 @@ namespace Bai._0010010674_inc {
   @ext(0x3e, 0)
   model ExternalFaultmessage is ReadonlyRegister<onoff>;
 
-  /** Rückmeldung Brennstoffventil 1: feedback gasvalve (from ASIC) */
+  /** fuel valve feedback 1: feedback gasvalve (from ASIC) */
   @ext(0x47, 0)
-  model RueckmeldungBrennstoffventil1 is ReadonlyRegister<onoff2>;
+  model FuelValveFeedback1 is ReadonlyRegister<onoff2>;
 
-  /** Rückmeldung Brennstoffventil 2: feedback gasvalve (from Microcontroller) */
+  /** fuel valve feedback 2: feedback gasvalve (from Microcontroller) */
   @ext(0x48, 0)
-  model RueckmeldungBrennstoffventil2 is ReadonlyRegister<onoff2>;
+  model FuelValveFeedback2 is ReadonlyRegister<onoff2>;
 
   /** SD_Ignitor_DK: igniton activated */
   @ext(0x49, 0)
@@ -679,7 +678,7 @@ namespace Bai._0010010674_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** output fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -733,9 +732,9 @@ namespace Bai._0010010674_inc {
   @ext(0xda, 0)
   model DisplayMode is ReadonlyRegister<UCH>;
 
-  /** Rückmeldung Brennstoffventil 3: Gasvalve activation signal (from Microcontroller) */
+  /** fuel valve feedback 3: Gasvalve activation signal (from Microcontroller) */
   @ext(0xdb, 0)
-  model RueckmeldungBrennstoffventil3 is ReadonlyRegister<onoff2>;
+  model FuelValveFeedback3 is ReadonlyRegister<onoff2>;
 
   /** InitialisationEEPROM: Initialisation off all EEPROM values (done in the production) */
   @ext(0xdc, 0)
@@ -754,7 +753,7 @@ namespace Bai._0010010674_inc {
   @ext(0xdf, 0)
   model FanMinSpeedOperation {
     /** Minimum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -763,13 +762,13 @@ namespace Bai._0010010674_inc {
   @ext(0xe0, 0)
   model FanMaxSpeedOperation {
     /** Maximum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
   /** TR_Manag_EE.Virtual_CH_Partload_Enable_DK: enable the adaptive CH-partload calulation */
   @ext(0xe3, 0)
-  model RManagEE_VirtualHcPartloadEnableDTemp is ReadonlyRegister<onoff>;
+  model RManagEE_VirtualHcPartloadEnable is ReadonlyRegister<onoff>;
 
   /** ExternGasvalve_DK: external gasvalve activated */
   @ext(0xe4, 0)
@@ -855,7 +854,7 @@ namespace Bai._0010010674_inc {
   @ext(0x12, 1)
   model AWPCEEMinThreshold {
     /** minimum waterpressure threshold */
-    @unit("bar/10")
+    @unit("bar")
     @divisor(10)
     value: SIN;
   }
@@ -865,7 +864,7 @@ namespace Bai._0010010674_inc {
   @ext(0x13, 1)
   model AWPCEEMaxThreshold {
     /** maximum waterpressure threshold */
-    @unit("bar/10")
+    @unit("bar")
     @divisor(10)
     value: SIN;
   }
@@ -911,7 +910,6 @@ namespace Bai._0010010674_inc {
 
   /** included parts */
   union _includes {
-    Errors_inc,
     Service_inc,
   }
 }

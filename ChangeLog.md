@@ -1,3 +1,29 @@
+# 2025-09-28
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * vaillant/15.uih from #512
+  * vaillant/08.bai from #411
+* fix name and comment of several IGN fields
+* fix some invalid units, e.g. in vaillant/15.uih and vaillant/08.hmu
+* add display contrast template
+* add allow writing to some cooling messages in vaillant/15.uih
+* add better writable timeslots, e.g. in vaillant/15.ctlv2 (and links)
+
+# 2025-05-18
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * vaillant/08.bai from #480, #494
+  * vaillant/08.hmu from #496
+* add pump mode eco to some vaillant/08.bai
+* fix missed vaillant/08.bai 0010002465 association
+
+# 2025-02-16
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * encon/0a + 3c + 7c from #406
+  * vaillant/08.bai from #442, #436
+  * vaillant/08.hmu from #479
+
 # 2025-01-21
 https://ebus.github.io/ only:
 * reworked+merged several PRs:
@@ -12,12 +38,13 @@ https://ebus.github.io/ only:
   * vaillant/e0.omu from #368
   * vaillant/15.ctls2 from #422
   * vaillant/15.ctlv2 from #423
-  * vaillant/06.pms + 06.vms from #430and #454
+  * vaillant/06.pms + 06.vms from #430 and #454
   * vaillant/mcmode from #328 
   * tem/15 from #129
 * add vaillant/15.ctlv3 link according to #35, #418, #449
 * fix some message IDs in vaillant/15.ctlv2 and ochsner
 * fix wolf file names
+* fix missing reference to product id in vaillant/08.bai condition
 
 # 2024-12-08
 https://ebus.github.io/ only:

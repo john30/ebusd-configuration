@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -136,7 +135,7 @@ namespace Bai._0010021961_inc {
   @ext(0x24, 0)
   model TargetFanSpeed {
     /** Fan speed setpoint */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -145,7 +144,7 @@ namespace Bai._0010021961_inc {
   @ext(0x83, 0)
   model FanSpeed {
     /** Current fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -218,7 +217,7 @@ namespace Bai._0010021961_inc {
   /** Modulationsetpoint_DK */
   @inherit(r)
   @ext(0x2e, 0)
-  model ModulationTempDesired {
+  model ModulationDesired {
     /** Modulation set point */
     @unit("%")
     @divisor(10)
@@ -314,7 +313,7 @@ namespace Bai._0010021961_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** Target fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -385,7 +384,7 @@ namespace Bai._0010021961_inc {
   @ext(0xdf, 0)
   model FanMinSpeedOperation {
     /** Fan minimum speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -394,7 +393,7 @@ namespace Bai._0010021961_inc {
   @ext(0xe0, 0)
   model FanMaxSpeedOperation {
     /** Fan maximum speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -444,7 +443,7 @@ namespace Bai._0010021961_inc {
   @inherit(r, wi_1)
   @ext(0xb7, 0)
   model HcPumpMode {
-    /** Pump mode for central heating */
+    /** Pump mode */
     @values(Values_HcPumpMode)
     value: UCH;
   }
@@ -489,7 +488,7 @@ namespace Bai._0010021961_inc {
   @ext(0xa7, 0)
   model FanSpeedOffsetMin {
     /** Fan minimum speed offset */
-    @unit("1/min")
+    @unit("rpm")
     value: SIN;
   }
 
@@ -498,7 +497,7 @@ namespace Bai._0010021961_inc {
   @ext(0xa8, 0)
   model FanSpeedOffsetMax {
     /** Fan maximum speed offset */
-    @unit("1/min")
+    @unit("rpm")
     value: SIN;
   }
 
@@ -652,8 +651,7 @@ namespace Bai._0010021961_inc {
   @ext(0xec, 0)
   model AntiCondensValue {
     /** Minimal power to avoid condensation */
-    @unit("kW / %")
-    value: UCH;
+    value: power;
   }
 
   /** d.88 SpecialAdj */
@@ -868,7 +866,6 @@ namespace Bai._0010021961_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 
@@ -933,6 +930,7 @@ namespace Bai._0010021961_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_OptionalRelais {
@@ -980,10 +978,5 @@ namespace Bai._0010021961_inc {
       /** Legionella protection for internal storage */
       value: UCH;
     }
-  }
-
-  /** included parts */
-  union _includes {
-    Errors_inc,
   }
 }

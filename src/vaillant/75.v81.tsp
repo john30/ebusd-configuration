@@ -86,7 +86,7 @@ namespace V81 {
 
   /** EEpromMaxInkonsCnt: EEPROM inconsistency counter */
   @ext(0x13, 0)
-  model EEpromMaxInkonsCnt is ReadonlyRegister<UIN>;
+  model EEpromMaxInconsCnt is ReadonlyRegister<UIN>;
 
   /** POCResetCnt: power on resets */
   @ext(0x14, 0)

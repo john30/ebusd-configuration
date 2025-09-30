@@ -45,7 +45,7 @@ namespace Zeo.Mc {
 
   /** Kreisart: 1=Brennerkreis 2=BrennerFestwert */
   @ext(0x17, 0)
-  model Kreisart is ServiceRegister<UCH>;
+  model CircuitType is ServiceRegister<UCH>;
 
   /** CircuitDiaState */
   @ext(0x18, 0x4)
@@ -61,7 +61,7 @@ namespace Zeo.Mc {
 
   /** RemoteControlRtOffset: 0,5°C */
   @ext(0x25, 0)
-  model RemoteControlRtOffset is ReadonlyRegister<SCH>;
+  model RemoteControlRtOffset is ReadonlyRegister<temp1>;
 
   /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0x4)
@@ -69,11 +69,11 @@ namespace Zeo.Mc {
 
   /** Regelungsart: 1 : Rücklaufregelung 2 : Vorlaufregelung */
   @ext(0x35, 0)
-  model Regelungsart is ServiceRegister<UCH>;
+  model ControlMode is ServiceRegister<UCH>;
 
   /** Configuration */
   @ext(0xc4, 0)
-  model Konfiguration is ServiceRegister<UCH>;
+  model Configuration is ServiceRegister<UCH>;
 
   /** T_Hz: Vorlauf- oder Rücklauftemperatur je nach gewählter Regelungsart */
   @ext(0xd8, 0)
@@ -81,7 +81,7 @@ namespace Zeo.Mc {
 
   /** HT_Soll: °C */
   @ext(0xd9, 0)
-  model HTSoll is ReadonlyRegister<temp>;
+  model HTDesired is ReadonlyRegister<temp>;
 
   /** included parts */
   union _includes {

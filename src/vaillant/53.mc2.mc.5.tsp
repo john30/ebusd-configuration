@@ -23,7 +23,7 @@ namespace Mc2.Mc._5 {
 
   /** StatOperatingHours */
   @ext(0xcd, 0)
-  model StatOperatingHours is ReadonlyRegister<UIN>;
+  model StatOperatingHours is ReadonlyRegister<hoursum2>;
 
   /** StatMonthOfInstallation */
   @ext(0xce, 0)
@@ -43,7 +43,7 @@ namespace Mc2.Mc._5 {
 
   /** StatRestarts */
   @ext(0xd2, 0)
-  model StatRestarts is ReadonlyRegister<UIN>;
+  model StatRestarts is ReadonlyRegister<cntstarts2>;
 
   /** StatRTOSErrorCounter */
   @ext(0xd3, 0)
@@ -179,7 +179,7 @@ namespace Mc2.Mc._5 {
 
   /** TemperaturDiffInOutdoor */
   @ext(0xc1, 0)
-  model TempDiffInOutdoor is ReadonlyRegister<D1C>;
+  model TempDiffInOutdoor is ReadonlyRegister<temp1>;
 
   /** HCManualWorkingModeTriggeringActive */
   @ext(0xc2, 0)

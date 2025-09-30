@@ -19,7 +19,7 @@ namespace Ehp {
   @base(MF, 0x9, 0x29)
   model uhwc {
     @maxLength(2)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *whwc */
@@ -719,7 +719,8 @@ namespace Ehp {
     @ext(0xe2, 1)
     model ActualEnvironmentPowerFine {
       /** environment power in higher resolution (100W) */
-      @unit("hW")
+      @unit("kW")
+      @divisor(10)
       value: UCH;
     }
 

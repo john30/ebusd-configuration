@@ -107,7 +107,7 @@ namespace F43 {
 
   /** HolidayRoomSetTemp: 4.5=frostprotect, room setpoint during holidays */
   @ext(0x40, 0)
-  model HolidayRoomTemp is Register<D1C>;
+  model HolidayRoomTemp is Register<temp1>;
 
   /** HolidayStartPeriod: start date of holidays */
   @ext(0x11, 0)
@@ -468,7 +468,7 @@ namespace F43 {
   /** MonitorEEpromInkonsiNumber */
   @inherit(r)
   @ext(0x9f, 0)
-  model MonitorEEpromInkonsiNumber {
+  model MonitorEEpromInconsCnt {
     /** identification of the last eight EEPROM inconsistencies */
     @maxLength(8)
     value: HEX;
@@ -503,7 +503,7 @@ namespace F43 {
 
   /** B50418actDesFlowTemp: flow temperature setpoint calculated by actoSTOR (S3 of B5 04 18) */
   @ext(0x6b, 0)
-  model B50418actDesFlowTemp is ReadonlyRegister<D1C>;
+  model B50418actDesFlowTemp is ReadonlyRegister<temp1>;
 
   /** Net_ID */
   @inherit(r)

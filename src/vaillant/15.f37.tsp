@@ -62,7 +62,7 @@ namespace F37 {
 
   /** HC1_HolidayRoomSetTemp: 4.5=frostprotect, room setpoint during holidays */
   @ext(0x40, 0)
-  model Hc1HolidayRoomTemp is Register<D1C>;
+  model Hc1HolidayRoomTemp is Register<temp1>;
 
   /** HC1_SFMode */
   @inherit(r)
@@ -333,7 +333,7 @@ namespace F37 {
   /** MonitorEEpromInkonsiNumber */
   @inherit(r)
   @ext(0x9f, 0)
-  model MonitorEEpromInkonsiNumber {
+  model MonitorEEpromInconsCnt {
     /** identification of the last eight EEPROM inconsistencies */
     @maxLength(8)
     value: HEX;
@@ -353,7 +353,7 @@ namespace F37 {
 
   /** RaumtempIstOben */
   @ext(0xc0, 0)
-  model RaumtempIstOben is ReadonlyRegister<tempsensor>;
+  model RoomTempUpper is ReadonlyRegister<tempsensor>;
 
   /** ADCValue_T_above */
   @ext(0x2d, 0)
@@ -361,7 +361,7 @@ namespace F37 {
 
   /** RaumtempIstUnten */
   @ext(0xc1, 0)
-  model RaumtempIstUnten is ReadonlyRegister<tempsensor>;
+  model RoomTempLower is ReadonlyRegister<tempsensor>;
 
   /** ADCValue_T_below */
   @ext(0x4e, 0)

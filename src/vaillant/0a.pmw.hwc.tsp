@@ -80,7 +80,8 @@ namespace Pmw.Hwc {
   @ext(0x10, 0)
   model LegioStartDay {
     /** 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day */
-    @unit("0..8")
+    @minValue(0)
+    @maxValue(8)
     value: UCH;
   }
 
@@ -116,12 +117,11 @@ namespace Pmw.Hwc {
   @inherit(r)
   @ext(0x39, 0)
   model TeleSwitch {
-    /** TeleSwitch Operating Mode (0=disabled, 1=ON, 2=OFF, 3=AUTO */
-    @unit("0..3")
-    value: UCH;
+    /** TeleSwitch Operating Mode */
+    value: hwcmode;
   }
 
-  /** TeleSwitchState: Teleswitch port state (On / Off) */
+  /** TeleSwitchState: Teleswitch port state */
   @ext(0x3a, 0)
   model TeleSwitchState is ReadonlyRegister<onoff>;
 
@@ -135,7 +135,7 @@ namespace Pmw.Hwc {
   @ext(0x14, 0)
   model Krm {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
 
@@ -144,7 +144,7 @@ namespace Pmw.Hwc {
   @ext(0x15, 0)
   model Tm {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
 
@@ -153,7 +153,7 @@ namespace Pmw.Hwc {
   @ext(0x16, 0)
   model Tnm {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
 
@@ -162,7 +162,7 @@ namespace Pmw.Hwc {
   @ext(0x17, 0)
   model Tvm {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
 
@@ -171,7 +171,7 @@ namespace Pmw.Hwc {
   @ext(0x18, 0)
   model Krp {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
 
@@ -180,7 +180,7 @@ namespace Pmw.Hwc {
   @ext(0x19, 0)
   model Tvp {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
 
@@ -189,7 +189,7 @@ namespace Pmw.Hwc {
   @ext(0x1a, 0)
   model Tp {
     /** enter value in 1/1000: 25=0.025, 250=0,25, 2500=2,5 */
-    @unit("in 1/1000")
+    @divisor(1000)
     value: SIN;
   }
   // ##### Statemachine #####
@@ -242,13 +242,13 @@ namespace Pmw.Hwc {
 
     /** ZaehlerBetriebsStunden: Working Hours */
     @ext(0x45, 0)
-    model ZaehlerBetriebsStunden is ReadonlyRegister<UIN>;
+    model OperatingHours is ReadonlyRegister<hoursum2>;
   }
   @condition(Id.Id.sw, ">=39")
   namespace Sw_ge39 {
     /** TDurchfluss: flow in l/min */
     @ext(0x46, 0)
-    model DurchflussTemp is ReadonlyRegister<temp>;
+    model FlowTemp is ReadonlyRegister<temp>;
   }
   @condition(Id.Id.sw, ">=112")
   namespace Sw_ge112 {
@@ -273,7 +273,7 @@ namespace Pmw.Hwc {
     @ext(0x48, 0)
     model HExThreshold {
       /** RO */
-      @unit("in 1/100")
+      @divisor(100)
       value: SIN;
     }
 
@@ -282,7 +282,7 @@ namespace Pmw.Hwc {
     @ext(0x49, 0)
     model BigHExThreshold {
       /** RW */
-      @unit("in 1/100")
+      @divisor(100)
       value: SIN;
     }
 
@@ -291,7 +291,7 @@ namespace Pmw.Hwc {
     @ext(0x4a, 0)
     model HExIndex {
       /** RO */
-      @unit("in 1/100")
+      @divisor(100)
       value: SIN;
     }
   }
@@ -302,7 +302,7 @@ namespace Pmw.Hwc {
     @ext(0x4c, 0)
     model ActualKrm {
       /** Krm used for calculation (set in DynamicTnm), valid after 1. Tapping */
-      @unit("in 1/1000")
+      @divisor(1000)
       value: SIN;
     }
 
@@ -311,7 +311,7 @@ namespace Pmw.Hwc {
     @ext(0x4d, 0)
     model ActualTnm {
       /** Tnm used for calculation (set in DynamicTnm), valid after 1. Tapping */
-      @unit("in 1/1000")
+      @divisor(1000)
       value: SIN;
     }
   }
@@ -322,7 +322,7 @@ namespace Pmw.Hwc {
     @ext(0x4e, 0)
     model KrmFaktorSmall {
       /** Krm Verstärkungsfaktor Small (1/1000) */
-      @unit("in 1/1000")
+      @divisor(1000)
       value: SIN;
     }
 
@@ -331,7 +331,7 @@ namespace Pmw.Hwc {
     @ext(0x4f, 0)
     model KrmFaktorMiddl {
       /** Krm Verstärkungsfaktor Middl (1/1000) */
-      @unit("in 1/1000")
+      @divisor(1000)
       value: SIN;
     }
 
@@ -340,7 +340,7 @@ namespace Pmw.Hwc {
     @ext(0x50, 0)
     model TnmFaktorSmall {
       /** Tnm Verstärkungsfaktor Small (1/1000) */
-      @unit("in 1/1000")
+      @divisor(1000)
       value: SIN;
     }
 
@@ -349,7 +349,7 @@ namespace Pmw.Hwc {
     @ext(0x51, 0)
     model TnmFaktorMiddl {
       /** Tnm Verstärkungsfaktor Middl (1/1000) */
-      @unit("in 1/1000")
+      @divisor(1000)
       value: SIN;
     }
   }

@@ -23,52 +23,52 @@ namespace Vr_70 {
   @inherit(w_1)
   @ext(1)
   model SetActorState {
-    @values(Values_)
+    @values(Values_ActorState)
     r1: UCH;
 
-    @values(Values__1)
+    @values(Values_ActorState)
     r2: UCH;
 
-    @values(Values__2)
+    @values(Values_ActorState)
     r3: UCH;
 
-    @values(Values__3)
+    @values(Values_ActorState)
     r4: UCH;
 
-    @values(Values__4)
+    @values(Values_ActorState)
     r5: UCH;
 
-    @values(Values__5)
+    @values(Values_ActorState)
     r6: UCH;
 
-    @values(Values__6)
+    @values(Values_ActorState)
     s7: UCH;
   }
 
   @inherit(w_1)
   @ext(0x2, 0)
-  model Mc1FlowTempDesired {
-    FTStatus: onoff;
-    FTDesired: temp1;
+  model Mc1Operation {
+    status: onoff;
+    flowtempdesired: temp1;
 
     @in
-    MixerStatus: onoff;
+    pump: onoff;
 
     @in
-    MixerMovement: percents;
+    mixer: percents;
   }
 
   @inherit(w_1)
   @ext(0x2, 1)
-  model Mc2FlowTempDesired {
-    FTStatus: onoff;
-    FTDesired: temp1;
+  model Mc2Operation {
+    status: onoff;
+    flowtempdesired: temp1;
 
     @in
-    MixerStatus: onoff;
+    pump: onoff;
 
     @in
-    MixerMovement: percents;
+    mixer: percents;
   }
 
   @inherit(r_1)
@@ -85,37 +85,7 @@ namespace Vr_70 {
     ignore: HEX;
   }
 
-  enum Values_ {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__1 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__2 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__3 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__4 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__5 {
-    off: 0,
-    on: 20,
-  }
-
-  enum Values__6 {
+  enum Values_ActorState {
     off: 0,
     on: 20,
   }

@@ -1,6 +1,6 @@
 import "./broadcast.tsp";
 import "./encon/0a..co2.tsp";
-import "./encon/3c..Excellent.tsp";
+import "./encon/3c..excellent.tsp";
 import "./memory.tsp";
 import "./ochsner/15.22102.tsp";
 import "./tem/15.tsp";
@@ -29,8 +29,8 @@ import "./vaillant/15.f37.tsp";
 import "./vaillant/15.f43.tsp";
 import "./vaillant/15.f47.tsp";
 import "./vaillant/15.sdr_p.tsp";
-import "./vaillant/15.ui.tsp";
 import "./vaillant/15.uih.tsp";
+import "./vaillant/15.ui.tsp";
 import "./vaillant/23.ehp.cc.tsp";
 import "./vaillant/23.solsy.cc.tsp";
 import "./vaillant/23.vr630.cc.tsp";

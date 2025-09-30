@@ -93,7 +93,7 @@ namespace _392 {
 
   /** HolidayRoomSetTemp: 4.5=frostprotect, room setpoint during holidays */
   @ext(0x40, 0)
-  model HolidayRoomTemp is Register<D1C>;
+  model HolidayRoomTemp is Register<temp1>;
 
   /** HolidayStartPeriod: start date of holidays */
   @ext(0x11, 0)
@@ -310,7 +310,7 @@ namespace _392 {
     /** MonitorEEpromInkonsiNumber */
     @inherit(r)
     @ext(0x9f, 0)
-    model MonitorEEpromInkonsiNumber {
+    model MonitorEEpromInconsCnt {
       /** identification of the last eight EEPROM inconsistencies */
       @maxLength(8)
       value: HEX;

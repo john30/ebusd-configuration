@@ -21,7 +21,7 @@ namespace Vr630.Hwc {
 
   /** StatOperatingHours */
   @ext(0xcd, 0)
-  model StatOperatingHours is ReadonlyRegister<UIN>;
+  model StatOperatingHours is ReadonlyRegister<hoursum2>;
 
   /** StatMonthOfInstallation */
   @ext(0xce, 0)
@@ -41,7 +41,7 @@ namespace Vr630.Hwc {
 
   /** StatRestarts */
   @ext(0xd2, 0)
-  model StatRestarts is ReadonlyRegister<UIN>;
+  model StatRestarts is ReadonlyRegister<cntstarts2>;
 
   /** StatRTOSErrorCounter */
   @ext(0xd3, 0)

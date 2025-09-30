@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -425,7 +424,6 @@ namespace Bai._0010008045_inc {
   @ext(0xf4, 0)
   model PrVortexFlowSensorValue {
     /** Predictive Maintenance data */
-    @unit("ADC")
     value: SIN;
   }
 
@@ -485,7 +483,7 @@ namespace Bai._0010008045_inc {
   /** Modulationsetpoint_DK */
   @inherit(r)
   @ext(0x2e, 0)
-  model ModulationTempDesired {
+  model ModulationDesired {
     /** Modulation set point */
     @unit("%")
     @divisor(10)
@@ -581,7 +579,7 @@ namespace Bai._0010008045_inc {
   @ext(0x9f, 0)
   model TargetFanSpeedOutput {
     /** output fan speed */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -656,7 +654,7 @@ namespace Bai._0010008045_inc {
   @ext(0xdf, 0)
   model FanMinSpeedOperation {
     /** Minimum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -665,7 +663,7 @@ namespace Bai._0010008045_inc {
   @ext(0xe0, 0)
   model FanMaxSpeedOperation {
     /** Maximum Fan speed of the appliance */
-    @unit("1/min")
+    @unit("rpm")
     value: UIN;
   }
 
@@ -705,6 +703,7 @@ namespace Bai._0010008045_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_AccessoriesOne {
@@ -727,10 +726,5 @@ namespace Bai._0010008045_inc {
     externalerrormessage: 6,
     solarpump: 7,
     remotecontrol: 8,
-  }
-
-  /** included parts */
-  union _includes {
-    Errors_inc,
   }
 }

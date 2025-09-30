@@ -13,7 +13,7 @@ namespace Tempsetpoints_inc {
   @base(MF, 0x4, 0x19)
   model r_1 {
     @maxLength(1)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */

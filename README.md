@@ -11,17 +11,17 @@ If you mess up these files or even just a single line in one of them, you might 
 **If you don't know what you're doing: better keep your hands off!!!**
 
 ## IMPORTANT NOTICE
-The old web service at [cfg.ebusd.eu](https://cfg.ebusd.eu) (https and http) is at its end of life and will be shutdown soon (likely end of 2024).
+The old web service at [cfg.ebusd.eu](https://cfg.ebusd.eu) (https and http) is at its end of life and is subject to shutdown (no longer updated since end of 2024, complete shutdown end of 2025).
 
 If you want to continue using web based configuration files, you need to
-* move to [ebusd version >= 24.1](https://github.com/john30/ebusd/releases/tag/24.1), or
-* use local CSV files from [here](ebusd-2.1.x/) (old frozen version kept for convenience), or
-* use local CSV files from the new [CDN repository](https://github.com/eBUS/ebus.github.io) (can also be cloned for local use, see below)
+move to [ebusd version >= 24.1](https://github.com/john30/ebusd/releases/tag/24.1).
+
+Alternatively you can clone the new [CDN repository](https://github.com/eBUS/ebus.github.io) locally ([see below](#using-the-cdn)), or use the old archived and no longer maintained CSV files locally from [here](archived/) (old frozen version kept for convenience).
 
 
 ## Usage with ebusd
 
-For many years, the CSV file based definitions served a great purpose, the last published version of which are still kept for convenience in the [ebusd-2.1.x folder](ebusd-2.1.x/).
+For many years, the CSV file based definitions served a great purpose, the last published version of which are still kept for convenience in the [archived folder](archived/).
 
 However, the CSV files are hard to read and understand and as such, there is a new approach of working with eBUS message defintions.
 
@@ -33,7 +33,7 @@ See the [guidelines](guidelines.md) for further reading.
 
 ### Using the CDN
 
-For use with ebusd, the [TypeSpec files](src/) are converted back to CSV by using the [eBUS TypeSpec library](https://github.com/john30/ebus-typespec) which was developed explicitly for this purpose.
+For use with ebusd, the [TypeSpec files](src/) are converted to CSV by using the [eBUS TypeSpec library](https://github.com/john30/ebus-typespec) which was developed explicitly for this purpose.
 
 The CSV output is made available via github CDN on [https://ebus.github.io/](https://ebus.github.io/) and this is used as the default definition source since [ebusd version 24.1](https://github.com/john30/ebusd/releases/tag/24.1).
 
