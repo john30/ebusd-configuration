@@ -1,6 +1,7 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./errors_inc.tsp";
+import "./b516_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -2551,5 +2552,6 @@ namespace Ctlv2 {
   /** included parts */
   union _includes {
     Errors_inc,
+    B516_inc,
   }
 }
