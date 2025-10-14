@@ -27,7 +27,7 @@ jobs:
         run: pwd
 
       - name: Vylistuj soubory (rekurzivně)
-        run: ls -ltra
+        run: ls -ltra ./utils/outcsv/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
