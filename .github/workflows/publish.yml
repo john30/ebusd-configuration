@@ -63,7 +63,6 @@ jobs:
           tag_name: ${{ github.event.inputs.tag }}
           name: ${{ github.event.inputs.tag }}
           body: ${{ github.event.inputs.body || 'Release s multi-jazykovými assety' }}
-          files: |
-            downloads/*.zip
+          files: downloads/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

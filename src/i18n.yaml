@@ -251,6 +251,7 @@ aauchcnameshk1labellingofthefirstheatingcircuitonlyaz09blank:
     Heizkreisname HK1: labelling of the first heating circuit (only
     A-Z,0-9,blank)
   en: 'aaucHcNames_HK1: labelling of the first heating circuit (only A-Z,0-9,blank)'
+  cs: 'aaucHcNames_HK1: označení prvního topného okruhu (pouze A-Z,0-9, mezera)'
   first: 'aaucHcNames_HK1: labelling of the first heating circuit (only A-Z,0-9,blank)'
   locations:
     - vaillant/15.370.csv::r,w::0x3f,0
@@ -264,6 +265,7 @@ aauchcnameshk2labellingofthesecondheatingcircuitonlyaz09blank:
   en: >-
     aaucHcNames_HK2: labelling of the second heating circuit (only
     A-Z,0-9,blank)
+  cs: 'aaucHcNames_HK2: označení druhého topného okruhu (pouze A-Z,0-9, mezera)'
   first: >-
     aaucHcNames_HK2: labelling of the second heating circuit (only
     A-Z,0-9,blank)
