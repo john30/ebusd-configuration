@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "description": "utilities for converting ebusd-configuration files",
   "scripts": {
-    "csv2tsp": "tsx ./utils/src/index.ts -i ^tem/ -I '^\\['",
-    "csv2tsp-combine": "tsx ./utils/src/index.ts -b latest/de -L de -m outtsp/i18n.yaml -p src/i18n.yaml -s outtsp -o outtsp.de -I '^\\['",
-    "csv2tsp-extra": "tsx ./utils/src/index.ts -n -b latest/en -m outtsp/i18n.yaml -s outtsp -o outtsp -I '^\\[' latest/en/tem/*",
-    "maintsp": "find outtsp/ -name '*.tsp' -not -type l|grep -Ev 'main.tsp|_templates.tsp'|sort|grep -v '_inc.'|sed -e 's#outtsp/##' -e 's#^#import \"./#' -e 's#$#\";#' > outtsp/main.tsp",
-    "format": "npx tsp format outtsp/*.tsp outtsp/**/*.tsp outtsp.de/*.tsp outtsp.de/**/*.tsp",
-    "lint": "npx tsp compile outtsp/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
-    "csvall": "./csvall.sh",
+    "maintsp": "find src/ -name '*.tsp' -not -type l|grep -Ev 'main.tsp|_templates.tsp'|sort|grep -v '_inc.'|sed -e 's#src/##' -e 's#^#import \"./#' -e 's#$#\";#' > src/main.tsp",
+    "format": "npx tsp format src/*.tsp src/**/*.tsp",
+    "lint": "npx tsp compile src/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
     "compile-en": "npx tsp compile --emit @ebusd/ebus-typespec src/main.tsp --output-dir outcsv",
     "compile-de": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/de.yaml src/main.tsp --output-dir outcsv.de",
-    "compile": "npm run compile-en && npm run compile-de"
+    "compile": "npm run compile-en && npm run compile-de",
+    "preparepublish": "./utils/precheck.sh"
   },
   "repository": {
     "type": "git",
@@ -29,17 +26,12 @@
   },
   "homepage": "https://github.com/john30/ebusd-configuration#readme",
   "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
-    "@types/node": "^22.15.21",
-    "@typespec/json-schema": "~1.0.0",
-    "@typespec/library-linter": "~0.70.0",
-    "csv-parser": "^3.2.0",
-    "js-yaml": "^4.1.0",
-    "typescript": "^5.8.3"
+    "@types/node": "^24.5.2",
+    "@typespec/library-linter": "~0.74.0",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@ebusd/ebus-typespec": "^0.22.0",
-    "@typespec/compiler": "~1.0.0",
-    "tsx": "^4.19.4"
+    "@ebusd/ebus-typespec": ">=0.25.0",
+    "@typespec/compiler": "~1.4.0"
   }
 }

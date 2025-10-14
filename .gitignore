@@ -1,6 +1,4 @@
 *~
-/ebusd-configuration-*.deb
-/ebusd-configuration-*.tgz
-node_modules
+node_modules/
 out*
-utils/dist
+dist/

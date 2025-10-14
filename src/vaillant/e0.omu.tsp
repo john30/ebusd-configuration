@@ -192,8 +192,7 @@ namespace Omu {
 
     /** Brine_warmSensor_Offset: calibration value for brine sensor */
     @ext(0x4b, 0)
-    model SourceInputSensorOffsetBrine
-      is InstallRegister<temp>;
+    model SourceInputSensorOffsetBrine is InstallRegister<temp>;
 
     /** MaxDeiceTime: max. deicing time. By exceeding this value, message unsuccessful deicing is released */
     @ext(0x45, 0)

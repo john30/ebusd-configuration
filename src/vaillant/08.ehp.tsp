@@ -19,7 +19,7 @@ namespace Ehp {
   @base(MF, 0x9, 0x29)
   model uhwc {
     @maxLength(2)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *whwc */

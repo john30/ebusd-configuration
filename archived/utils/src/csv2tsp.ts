@@ -89,7 +89,7 @@ model w {}
 @base(MF, 0x9, 0x29)
 model u {
   @maxLength(2) 
-  value: IGN,
+  ign: IGN,
 }
 
 /** default *wi for register with user level "install" */
@@ -167,7 +167,7 @@ model wm {
 @base(MF, 0x15)
 model rt {
   @maxLength(1)
-  value: IGN;
+  ign: IGN;
 }
 
 /** default *w for timer */
@@ -320,7 +320,7 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
   }
   line = objSlice(line);
   if (!line) return;
-  const {id, renameTo, typ, typLen, comm, divisor, values}
+  const {id, renameTo, typ, typLen, comm, divisor, values, constValue}
   = divisorValues(line[0], line[1], line[2], line[4], undefined, true, additions.renamedTemplates);
   if (renameTo) {
     additions.renamedTemplates.set(id, renameTo);
@@ -340,13 +340,14 @@ const templateTrans: Trans<TemplateLine> = (location, line, header, additions): 
        '}',
     ];
   }
-  const name = normalize && id===typ ? 'value' : normFieldName(id);
+  const name = normalize && id===typ && typ!=='IGN' ? 'value' : normFieldName(id);
   return [
     '',
     comm&&comm!==line[1]&&`/** ${normComment(`${location}:${name}`, comm)} */`,
     line[3]&&`@unit("${line[3]}")`,
     divisor||values,
     typLen,
+    constValue!==undefined ? `@constValue(${constValue})` : '',
     `scalar ${name} extends ${typ};`,
   ]
 }
@@ -496,7 +497,7 @@ const fieldTrans = (location: string, line: FieldOfLine|undefined, seen: Map<str
     });
     return ret;
   }
-  const name = normalize && singleField && id===typ ? 'value' : normFieldName(id);
+  const name = normalize && singleField && id===typ && typ!=='IGN' ? 'value' : normFieldName(id);
   const suffName = `${name}${suffix(name, seen)}`;
   return [
     comm&&comm!=id&&`/** ${normComment(`${location}:${suffName}`, comm)} */`,
@@ -683,7 +684,7 @@ const messageTrans: Trans<MessageLine> = (location, wholeLine, header, additions
       const fileComp = fileNoExt.split('.').reverse()[0];
       let name = condNamespace || fileComp;
       name = normId(name.replace(/(__[^_]+_?)+/, '_'+fileComp)); // reduce multiple product ids with filename instead
-      additions.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? 'default: // final load alternative\n' : name+': ' : '']]);
+      additions.includes.push([fileNoExt, [...conds, isLoad ? !conds.length ? '// final load alternative\ndefault:' : name+': ' : '']]);
     }
     return;
   }
@@ -875,7 +876,7 @@ const helpTxt = [
   'converts ebusd csv files to tsp for use with ebus typespec library.',
   'with:',
   '  -N           do not normalize names',
-  '  -b basedir   the base directory for determining namespace of each csvfile (default "latest/en")',
+  '  -b basedir   the base directory for determining namespace of each csvfile (default "en")',
   '  -o outdir    the output directory (default "outtsp")',
   '  -l langfile  the file name in which to store the multi-language mapping (default "i18n.yaml" in outdir)',
   '  -L lang      the language code for -l option (default "en")',
@@ -899,7 +900,7 @@ let i18nMap: Map<string, [string, Partial<I18n>]>; // map from message/field/tem
 let i18nMapRev: Map<string, string>; // map from non-en language to en from previous mapping
 let commentI18nIgnore: RegExp|undefined;
 export const csv2tsp = async (args: string[] = []) => {
-  let indir = 'latest/en';
+  let indir = 'en';
   let outdir = 'outtsp';
   let files: string[] = [];
   let langFile: string|undefined;

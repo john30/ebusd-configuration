@@ -43,12 +43,6 @@
   locations:
     - vaillant/bai.0010015600.inc::r::0x1a,0
     - vaillant/bai.0010021961.inc::r::0x1a,0
-3zoneshwcccconstantvaluegeneralconfiguration:
-  de: (3Zonen;HWC&CC = konstanter Wert. Generelle Konfiguration?)
-  en: (3Zones;HWC&CC = constant value. General configuration?)
-  first: (3Zones;HWC&CC = constant value. General configuration?)
-  locations:
-    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa0
 aauchcnames10nameofheatingcircuitno10:
   de: 'Name HK10: Name für den 2. Heizkreis'
   en: 'aaucHcNames_10: name of heating circuit No 10'
@@ -865,6 +859,11 @@ aktiviertdeaktiviertdieshufunktionalitt:
   first: aktiviert/deaktiviert die SHU-Funktionalität
   locations:
     - vaillant/84.zeo.csv::r::0x6,1
+aktuellekompressorauslastunginprozent:
+  de: aktuelle Kompressorauslastung in Prozent
+  first: aktuelle Kompressorauslastung in Prozent
+  locations:
+    - vaillant/08.hmu.csv::r_2::0x25:value
 aktuelleraumtemperaturinzone1:
   de: aktuelle Raumtemperatur in Zone 1
   en: aktuelle Raumtemperatur in Zone 1
@@ -980,12 +979,6 @@ appliancecodeappliancecode:
   first: 'Appliance_Code: appliance code'
   locations:
     - vaillant/08.ehp.csv::r,wi,u::0x43,1
-arrayindexforthezonesarrayindexstartat0forthefirstelement:
-  de: Index eines Zeitslots. Start by 0 für den ersten Zeitslot.
-  en: array index for the zones. Array Index start at 0 for the first element
-  first: array index for the zones. Array Index start at 0 for the first element
-  locations:
-    - vaillant/_templates.csv:slotIndex
 ascbigmoduldetecteddetectedvpmsbitcounted:
   de: 'AscBigModulDetected: detected VPM-S (bit counted)'
   en: 'AscBigModulDetected: detected VPM-S (bit counted)'
@@ -3248,38 +3241,30 @@ comonoffdkcomonitoringnotactive:
   first: 'COmon_Off_DK: CO-monitoring not active'
   locations:
     - vaillant/bai.0010004121.inc::r::0x29,1
-completeslotforreadingthetimetablesettings:
-  de: Einzelner Zeitslot mit Temperatur
-  en: Complete Slot for reading the time table settings.
-  first: Complete Slot for reading the time table settings.
-  locations:
-    - vaillant/_templates.csv:rTimeSlotWithTemp
-completeslotforreadingthetimetablesettingswithoutatemperature:
-  de: Einzelner Zeitslot ohne Temperatur
-  en: Complete slot for reading the time table settings without a temperature.
-  first: Complete slot for reading the time table settings without a temperature.
+completeslotforreadingwithouttargettemperature:
+  de: etter Slot zum Lesen ohne Solltemperatur
+  en: complete slot for reading without target temperature
+  first: complete slot for reading without target temperature
   locations:
     - vaillant/_templates.csv:rTimeSlotWithoutTemp
-completeslotforwritingthetimetablesettings:
-  de: >-
-    Index des Slot; gesamt Anzahl der aktiven Slots und einzelner Zeitslot mit
-    Temperatur
-  en: Complete Slot for writing the time table settings.
-  first: Complete Slot for writing the time table settings.
+completeslotforreadingwithtargettemperature:
+  de: kompletter Slot zum Lesen mit Solltemperatur
+  en: complete slot for reading with target temperature
+  first: complete slot for reading with target temperature
   locations:
-    - vaillant/_templates.csv:wTimeSlotWithTemp
-completeslotforwritingthetimetablesettingswithoutatemperatureffffhastobeappended:
-  de: >-
-    Index des Slot; gesamt Anzahl der aktiven Slots und einzelner Zeitslot ohne
-    Temperatur;FF FF muss angehangen werden
-  en: >-
-    Complete slot for writing the time table settings without a temperature. FF
-    FF has to be appended.
-  first: >-
-    Complete slot for writing the time table settings without a temperature. FF
-    FF has to be appended.
+    - vaillant/_templates.csv:rTimeSlotWithTemp
+completeslotforwritingwithouttargettemperature:
+  de: kompletter Slot zum Schreiben ohne Solltemperatur
+  en: complete slot for writing without target temperature
+  first: complete slot for writing without target temperature
   locations:
     - vaillant/_templates.csv:wTimeSlotWithoutTemp
+completeslotforwritingwithtargettemperature:
+  de: kompletter Slot zum Schreiben mit Solltemperatur
+  en: complete slot for writing with target temperature
+  first: complete slot for writing with target temperature
+  locations:
+    - vaillant/_templates.csv:wTimeSlotWithTemp
 compressor:
   de: 'Status Kompressor: AN/AUS'
   en: Compressor
@@ -3519,6 +3504,12 @@ contact2position:
   first: Contact 2 position
   locations:
     - encon/3c..excellent.csv::r_2::0x1c
+constantvalueforwritingaslotwithouttargettemperature:
+  de: konstanter Wert zum Schreiben eines Slots ohne Solltemperatur
+  en: constant value for writing a slot without target temperature
+  first: constant value for writing a slot without target temperature
+  locations:
+    - vaillant/_templates.csv:wTimeSlotConst
 continousheating:
   de: Durchgehendes Heizen
   en: continous heating
@@ -3977,12 +3968,6 @@ currentcalculatedpartload:
     - vaillant/bai.0010005400.inc::r::0,1:value
     - vaillant/bai.0010007508.inc::r::0,1:value
     - vaillant/bai.0010010674.inc::r::0,1:value
-currentcompressorutilizationinpercent:
-  de: aktuelle Kompressorauslastung in Prozent
-  en: current compressor utilization in percent
-  first: current compressor utilization in percent
-  locations:
-    - vaillant/08.hmu.csv::r_2::0x25:value
 currentcylindertemp:
   de: Speichertemp. IST
   en: Current cylinder temp.
@@ -6998,6 +6983,12 @@ desiredtemperaturedesiredtemperaturedaytemperaturefordhw:
   first: 'DesiredTemperature: desired temperature (day temperature) for DHW'
   locations:
     - vaillant/a0.sol.hwc.csv::r,w::0x13,0
+desiredtemperatureofaslot:
+  de: Solltemperatur eines Slots
+  en: desired temperature of a slot
+  first: desired temperature of a slot
+  locations:
+    - vaillant/_templates.csv:slotTemp
 desiredtemperaturezone1:
   de: Solltemperatur Zone 1
   en: desired temperature zone 1
@@ -9300,12 +9291,6 @@ firstpartoftheinstallerstelephonenumber:
   first: first part of the installer's telephone number
   locations:
     - vaillant/15.f43.csv::r::0x54,0:value
-firstzonesmayberestunknownneedssomeotherconfiguredctlv2:
-  de: Erstes Byte = Zonenanzahl?
-  en: First = Zones maybe? Rest unknown; needs some other configured ctlv2
-  first: First = Zones maybe? Rest unknown; needs some other configured ctlv2
-  locations:
-    - vaillant/15.ctlv2.csv::r::MF,0x55,0xa0:value
 fixedimbalance:
   de: Ständiges Ungleichgewicht
   en: Fixed imbalance
@@ -11875,6 +11860,12 @@ increaseofminimumpower:
   locations:
     - vaillant/bai.0010002465.inc::r,wi::0x77,0x4:value
     - vaillant/bai.0010006101.inc::r,wi::0x77,0x4:value
+indexofatimeslot:
+  de: Index eines Slots
+  en: index of a time slot
+  first: index of a time slot
+  locations:
+    - vaillant/_templates.csv:slotIndex
 informationwhichproviderhasbeenselectetonlyvalidincaseofgsmgprsmodem:
   de: Aktuell verwendeter GSM/GPRS Provider
   en: >-
@@ -14084,6 +14075,7 @@ minutes:
   first: minutes
   locations:
     - vaillant/_templates.csv:minutes
+    - vaillant/_templates.csv:minutes4
     - vaillant/_templates.csv:minutes0
     - vaillant/_templates.csv:minutes2
     - vaillant/_templates.csv:minutes5
@@ -14737,18 +14729,18 @@ numberofdhwmodestarts:
   locations:
     - vaillant/bai.0010015600.inc::r::0x23,0:value
     - vaillant/bai.0010021961.inc::r::0x23,0:value
-numberoftotalslotsinthearrayforaweekmonsun:
-  de: Anzahl der aktiven Zeitslots pro Wochentag. Mo-So
-  en: Number of total slots in the array for a week. Mon-Sun
-  first: Number of total slots in the array for a week. Mon-Sun
-  locations:
-    - vaillant/_templates.csv:slotCountWeek
-numberoftotalslotsinthearraymaybezero:
-  de: Anzahl der aktiven Zeitslots an einem Tag. Kann 0 sein.
-  en: Number of total slots in the array. May be Zero.
-  first: Number of total slots in the array. May be Zero.
+numberofslotsonaday:
+  de: Anzahl der Slots an einem Tag
+  en: number of slots on a day
+  first: number of slots on a day
   locations:
     - vaillant/_templates.csv:slotCount
+numberofslotsperweekday:
+  de: Anzahl der Slots pro Wochentag
+  en: number of slots per weekday
+  first: number of slots per weekday
+  locations:
+    - vaillant/_templates.csv:slotCountWeek
 oawcontrolpumppwmreserved:
   de: 'OAW_Control_Pump_PWM: reserved'
   en: 'OAW_Control_Pump_PWM: reserved'
@@ -20000,6 +19992,12 @@ statuscirculationpump:
   first: Status circulation pump
   locations:
     - vaillant/hcmode.inc::uw_1::0
+statuscode:
+  de: Status code
+  en: Status code
+  first: Status code
+  locations:
+    - vaillant/_templates.csv:appliancecode
 statusdcf:
   de: Status DCF
   en: StatusDcf
@@ -21106,10 +21104,10 @@ teleswitchoperatingmodeiftheteleswitchportisactivatedtheburnercircuitoperatesint
     circuit operates in this mode
   locations:
     - vaillant/26.solsy.hc.csv::r,w::0x3f,0
-teleswitchstateteleswitchportstateonoff:
-  de: 'TeleSwitchState: Teleswitch port state (On / Off)'
-  en: 'TeleSwitchState: Teleswitch port state (On / Off)'
-  first: 'TeleSwitchState: Teleswitch port state (On / Off)'
+teleswitchstateteleswitchportstate:
+  de: 'TeleSwitchState: Teleswitch port state'
+  en: 'TeleSwitchState: Teleswitch port state'
+  first: 'TeleSwitchState: Teleswitch port state'
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x3a,0
 tempdhwmaxmaximumtemperaturemeasuredbythedomestichotwateroutletsensor:
@@ -21372,12 +21370,6 @@ temperaturesthursday:
   first: Temperatures Thursday
   locations:
     - vaillant/tempsetpoints.inc::r_1,w_1::0x4
-temperaturestoredintheslotdegreescelsius:
-  de: Temperatur die in einem Zeitslot gesetzt ist. Grad Celsius
-  en: Temperature stored in the slot. Degrees Celsius
-  first: Temperature stored in the slot. Degrees Celsius
-  locations:
-    - vaillant/_templates.csv:slotTemp
 temperaturestuesday:
   de: Temperaturen Dienstag
   en: Temperatures Tuesday
@@ -22516,8 +22508,8 @@ timerwednesday3:
     - vaillant/15.ctlv2.csv::r_10::0x2,0x2
 timeslotfromuntil:
   de: Zeitslot von/bis
-  en: Timeslot from/until
-  first: Timeslot from/until
+  en: timeslot from/until
+  first: timeslot from/until
   locations:
     - vaillant/_templates.csv:slotTimeFrame
 timetickersekundendestages:
@@ -23830,22 +23822,6 @@ weekdayprogswitch:
   first: WeekDayProgSwitch
   locations:
     - vaillant/15.e7f.csv::r,wi::0x2b,0
-whethertimeslotisvalid:
-  de: whether timeslot is valid
-  en: whether timeslot is valid
-  first: whether timeslot is valid
-  locations:
-    - vaillant/15.700.csv::r_9::MF,0x24,0x3,0,0,1:value
-    - vaillant/15.700.csv::r_10::MF,0x24,0x3,0,0,0x2:value
-    - vaillant/15.700.csv::r_11::MF,0x24,0x3,0,0,0x3:value
-    - vaillant/15.700.csv::r_12::MF,0x24,0x3,1,0,1:value
-    - vaillant/15.700.csv::r_13::MF,0x24,0x3,1,0,0x2:value
-    - vaillant/15.700.csv::r_14::MF,0x24,0x3,0x3,0,0x2:value
-    - vaillant/15.700.csv::r_15::MF,0x24,0x3,0x3,0,1:value
-    - vaillant/15.700.csv::r_16::MF,0x24,0x3,0x3,1,0x2:value
-    - vaillant/15.700.csv::r_17::MF,0x24,0x3,0x3,1,1:value
-    - vaillant/15.700.csv::r_18::MF,0x24,0x3,0x3,0x2,0x2:value
-    - vaillant/15.700.csv::r_19::MF,0x24,0x3,0x3,0x2,1:value
 windoffdkwindfunctionnotactive:
   de: 'Wind_Off_DK: Wind-function not active'
   en: 'Wind_Off_DK: Wind-function not active'

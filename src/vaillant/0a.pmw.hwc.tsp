@@ -80,7 +80,8 @@ namespace Pmw.Hwc {
   @ext(0x10, 0)
   model LegioStartDay {
     /** 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day */
-    @minValue(0) @maxValue(8)
+    @minValue(0)
+    @maxValue(8)
     value: UCH;
   }
 
@@ -120,7 +121,7 @@ namespace Pmw.Hwc {
     value: hwcmode;
   }
 
-  /** TeleSwitchState: Teleswitch port state (On / Off) */
+  /** TeleSwitchState: Teleswitch port state */
   @ext(0x3a, 0)
   model TeleSwitchState is ReadonlyRegister<onoff>;
 

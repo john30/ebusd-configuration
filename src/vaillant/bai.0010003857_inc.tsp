@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -772,10 +771,5 @@ namespace Bai._0010003857_inc {
     externalerrormessage: 6,
     solarpump: 7,
     remotecontrol: 8,
-  }
-
-  /** included parts */
-  union _includes {
-    Errors_inc,
   }
 }
