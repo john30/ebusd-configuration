@@ -1,6 +1,7 @@
 000999codefortheinstallersmenues:
   de: 000-999; code for the installer's menues
   en: 000-999; code for the installer's menues
+  cs: 000-999; kód pro nabídky instalatéra
   first: 000-999; code for the installer's menues
   locations:
     - vaillant/15.700.csv::r_1,w_1::0x76,0:value
@@ -14,6 +15,7 @@
 0monday1tue6sunday7legioprotectoff8everyday:
   de: 0=Montag1 = Dienstag..6 = Sonntag7 = Legionellenschutz aus8 = täglich
   en: 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day
+  cs: 0=Pondělí, 1=Út, … 6=Neděle, 7=LegioProtect vyp, 8=každý den
   first: 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x10,0:value
@@ -416,24 +418,28 @@ actostorstatestateoftheactostorcontrol0off1dhwreleased2dhwloading3pumpoverrun4st
 actoutsidetemperaturecsensorstate:
   de: Außentemperatur [°C]
   en: act. outside temperature [°C/sensor state]
+  cs: akt. venkovní teplota [°C/stav čidla]
   first: act. outside temperature [°C/sensor state]
   locations:
     - vaillant/15.350.csv::r,wi::0x12,0
 actualcosensorresistance:
   de: Aktueller Widderstand des CO-Sensors
   en: actual CO-sensor resistance
+  cs: aktuální odpor CO senzoru
   first: actual CO-sensor resistance
   locations:
     - vaillant/bai.0010004121.inc::r::0x5,1:value
 actualdate:
   de: Aktuelles Datum
   en: Actual Date
+  cs: Aktuální datum
   first: Actual Date
   locations:
     - vaillant/08.ehp.csv::r::0x29,0
 actualdesiredtemp12cauflsung:
   de: 'Akt. Solltemperatur: 1/2°C Auflösung'
   en: 'ActualDesiredTemp: 1/2°C Auflösung'
+  cs: 'Aktuální požadovaná teplota: rozlišení 1/2°C'
   first: 'ActualDesiredTemp: 1/2°C Auflösung'
   locations:
     - vaillant/23.zeo.cc.csv::r::0x33,0x2
@@ -446,6 +452,9 @@ actualdesiredtempcurrentsetpointforthesecondheatingcircuitconsideringallbasiccon
   en: >-
     ActualDesiredTemp: current setpoint for the second heating circuit
     considering all basic conditions passed to the control algorithms
+  cs: >-
+    Aktuální požadovaná teplota: aktuální požadavek pro druhý topný okruh se
+    zohledněním všech vstupních podmínek předaných regulačním algoritmům
   first: >-
     ActualDesiredTemp: current setpoint for the second heating circuit
     considering all basic conditions passed to the control algorithms
