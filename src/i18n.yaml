@@ -9,6 +9,7 @@
 0frostprotconfiglow1frostprotconfigpumpkick:
   de: 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick
   en: 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick
+  cs: 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick
   first: 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick
   locations:
     - vaillant/50.v61.mc.csv::r::0x4f,0
