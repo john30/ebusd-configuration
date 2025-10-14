@@ -25,9 +25,11 @@ jobs:
         working-directory: ./
       - name: Zobraz aktuální adresář
         run: pwd
+      - name: Najdi oitcsv
+        run: find -type d -name outcsv ../
 
       - name: Vylistuj soubory (rekurzivně)
-        run: ls -ltra ./utils/outcsv/
+        run: ls -ltra ./utils/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
