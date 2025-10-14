@@ -38,7 +38,7 @@ jobs:
       - name: Zip config CSVs
         run: |
           for i in cs en de; do
-            ( cd outcsv/$i/ && zip -r outcsv/$i.zip . )
+            ( cd outcsv/$i/ && zip -r ../$i.zip . )
           done
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
