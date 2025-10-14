@@ -80,7 +80,7 @@ namespace Hcmode_inc {
     pumpstate: pumpstate;
 
     // Protherm Ray 14 KE HW7503: electric current power (kW) = UCH * 14/60
-    @factor(14/60)
+    @factor(0.2333333333)
     currentpower: power;
   }
 
