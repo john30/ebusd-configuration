@@ -9693,6 +9693,7 @@ flowthrubuffercircuitifloadingthestorage:
 flueflapopenexhaustflueflapopen:
   de: 'Abgasklappe offen: Rückmeldung Flüssiggasventil'
   en: 'Flue flap open: Exhaust (flue) flap open'
+  cs: 'Klapka spalin otevřena: spalinová (výfuková) klapka otevřena'
   first: 'Flue flap open: Exhaust (flue) flap open'
   locations:
     - vaillant/bai.0010015600.inc::r::0x89,0
@@ -12384,6 +12385,7 @@ kreisart1brennerkreis2brennerfestwert:
 kreisdeaktivieren:
   de: Kreis deaktivieren
   en: Kreis deaktivieren
+  cs: Deaktivovat okruh
   first: Kreis deaktivieren
   locations:
     - vaillant/26.vr630.hc.csv::r,wi::0xaa,0
@@ -15729,6 +15731,7 @@ paramtokendktokenforparametermanagment:
 paramtokentokenforparametermanagment:
   de: 'ParamToken: token for parameter managment'
   en: 'ParamToken: Token for parameter managment'
+  cs: 'ParamToken: token pro správu parametrů'
   first: 'ParamToken: Token for parameter managment'
   locations:
     - vaillant/bai.0010015600.inc::r::0x60,0

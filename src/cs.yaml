@@ -1452,7 +1452,7 @@ FlowTemp Heizkreis 1: FlowTemp Heizkreis 1
 FlowTemp Heizkreis 2: FlowTemp Heizkreis 2
 FlowTemp Heizkreis 3: FlowTemp Heizkreis 3
 FlowTemperatureSetPoint: FlowTemperatureSetPoint
-'Flue flap open: Exhaust (flue) flap open': 'Flue flap open: Exhaust (flue) flap open'
+'Flue flap open: Exhaust (flue) flap open': 'Klapka spalin otevřena: spalinová (výfuková) klapka otevřena'
 'Fluegasvalve_DK: flue gasvalve activation signal': 'Fluegasvalve_DK: flue gasvalve activation signal'
 'FluegasvalveOpen_DK: Feedback from the flue gas valve': 'FluegasvalveOpen_DK: Feedback from the flue gas valve'
 'FluegasvalveOpen_DK: feedback of the flue gas valve': 'FluegasvalveOpen_DK: feedback of the flue gas valve'
@@ -1891,7 +1891,7 @@ KeyCodeforConfigMenue: KeyCodeforConfigMenue
 'KolMinTemperature2: Temperature COL2 sensor has to reach before starting pumps at least': >-
   KolMinTemperature2: Temperature COL2 sensor has to reach before starting pumps
   at least
-Kreis deaktivieren: Kreis deaktivieren
+Kreis deaktivieren: Deaktivovat okruh
 'Kreisart: 1=Brennerkreis 2=BrennerFestwert': 'Kreisart: 1=Brennerkreis 2=BrennerFestwert'
 Krm: Krm
 Krm used for calculation (set in DynamicTnm), valid after 1. Tapping: Krm used for calculation (set in DynamicTnm), valid after 1. Tapping
@@ -2450,7 +2450,7 @@ Parameters: Parameters
 'ParamSatz_3_Zeit: Parametersatz 3: Adsorptionsende (Temp.Differenz)': 'ParamSatz_3_Zeit: Parametersatz 3: Adsorptionsende (Temp.Differenz)'
 'ParamSatz_AusglZeit2: in Sekunden': 'ParamSatz_AusglZeit2: in Sekunden'
 'ParamToken_DK: token for parameter managment': 'ParamToken_DK: token for parameter managment'
-'ParamToken: Token for parameter managment': 'ParamToken: Token for parameter managment'
+'ParamToken: Token for parameter managment': 'ParamToken: token pro správu parametrů'
 part number of the eBox: part number of the eBox
 'Partload: 0..100% MSW_max in Testbetrieb': 'Partload: 0..100% MSW_max in Testbetrieb'
 Partnumber_Box: Partnumber_Box
@@ -2674,7 +2674,7 @@ RaumtemperaturIstOffset: RaumtemperaturIstOffset
 'RaumtemperaturIstOffset: room temperature correction': 'RaumtemperaturIstOffset: room temperature correction'
 RaumtempIstOben: RaumtempIstOben
 RaumtempIstUnten: RaumtempIstUnten
-'RaumtempIstUnten: lower room temp sensor value': 'RaumtempIstUnten: lower room temp sensor value'
+'RaumtempIstUnten: lower room temp sensor value': 'RaumtempIstUnten: hodnota spodního čidla pokojové teploty'
 RaumTempOffsetEigenErwaerm: RaumTempOffsetEigenErwaerm
 'RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset': 'RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset'
 RcRoomTemp: RcRoomTemp
