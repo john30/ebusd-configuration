@@ -9,8 +9,7 @@ mv outcsv/@ebusd/ebus-typespec outcsv/en
 mv outcsv.de/@ebusd/ebus-typespec outcsv/de
 mv outcsv.cs/@ebusd/ebus-typespec outcsv/cs
 rm -rf outcsv/@ebusd outcsv.de outcsv.cs
-find src -type l -exec ./utils/copylink.sh src \{\} outcsv/de outcsv/en  \;
-find src -type l -exec ./utils/copylink.sh src \{\} outcsv/cs outcsv/en  \;
+find src -type l -exec ./utils/copylink.sh src \{\} outcsv/de outcsv/en outcsv/cs  \;
 if [[ "$(realpath outcsv)" != "$targetdir" ]]; then
   echo "moving folders to $targetdir"
   mkdir -p "$targetdir/"
