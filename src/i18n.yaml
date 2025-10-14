@@ -366,6 +366,7 @@ activatedspecialfunctionoffirstheatingcircuit:
 activatedspecialfunctionofsecondheatingcircuit:
   de: activated special function of second heating circuit
   en: activated special function of second heating circuit
+  cs: aktivovaná speciální funkce druhého topného okruhu
   first: activated special function of second heating circuit
   locations:
     - vaillant/15.470.csv::r::0x1c,0:value
@@ -373,6 +374,7 @@ activatedspecialfunctionofsecondheatingcircuit:
 activationofthereturncontrol:
   de: Aktivierung der Rücklaufregelung
   en: Activation of the return control
+  cs: Aktivace regulace vratné vody
   first: Activation of the return control
   locations:
     - vaillant/bai.0010015600.inc::r,wi_1::0xb3,0:value
@@ -380,12 +382,14 @@ activationofthereturncontrol:
 actorfernsteuerungtrueremotecontrolofactors:
   de: 'ActorFernsteuerung: TRUE -> RemoteControl of actors'
   en: 'ActorFernsteuerung: TRUE -> RemoteControl of actors'
+  cs: 'ActorFernsteuerung: TRUE -> dálkové ovládání akčních členů'
   first: 'ActorFernsteuerung: TRUE -> RemoteControl of actors'
   locations:
     - vaillant/0a.pmw.hwc.csv::r::0x1b,0
 actostordetectedindicatesthatanactostorhasbeendetected:
   de: 'ACTOstorDetected: indicates that an ACTOstor has been detected'
   en: 'ACTOstorDetected: indicates that an ACTOstor has been detected'
+  cs: 'ACTOstorDetected: zjištěno zařízení ACTOstor'
   first: 'ACTOstorDetected: indicates that an ACTOstor has been detected'
   locations:
     - vaillant/15.370.csv::r::0x6f,0
@@ -406,12 +410,14 @@ actostoreepreventivecounterdk:
 actostormoduldetecteddetectedvlrbitcounted:
   de: 'ActoStorModulDetected: detected VLR (bit counted)'
   en: 'ActoStorModulDetected: detected VLR (bit counted)'
+  cs: 'ActoStorModulDetected: detekován modul VLR (počítáno po bitech)'
   first: 'ActoStorModulDetected: detected VLR (bit counted)'
   locations:
     - vaillant/15.ui.csv::r::0x5a,0
 actostoropmodestatediagramactostorcontrol:
   de: 'actoSTOR_OPMode: state diagram actoSTOR control'
   en: 'actoSTOR_OPMode: state diagram actoSTOR control'
+  cs: 'actoSTOR_OPMode: stavový diagram řízení actoSTOR'
   first: 'actoSTOR_OPMode: state diagram actoSTOR control'
   locations:
     - vaillant/15.370.csv::r::0x94,0
@@ -421,6 +427,7 @@ actostoropmodestatediagramactostorcontrol:
 actostoropmodezustandsautomatactstoransteuerung:
   de: 'actoSTOR_OPMode: Zustands-Automat actSTOR Ansteuerung'
   en: 'actoSTOR_OPMode: Zustands-Automat actSTOR Ansteuerung'
+  cs: 'actoSTOR_OPMode: stavový automat řízení actSTOR'
   first: 'actoSTOR_OPMode: Zustands-Automat actSTOR Ansteuerung'
   locations:
     - vaillant/15.430.csv::r::0x94,0
@@ -432,6 +439,9 @@ actostorstatestateoftheactostorcontrol0off1dhwreleased2dhwloading3pumpoverrun4st
   en: >-
     actostorstate: state of the actoSTOR control (0 = off; 1 = DHW released; 2 =
     DHW loading; 3 = Pump overrun; 4 = stop pump overrun)
+  cs: >-
+    actostorstate: stav řízení actoSTOR (0 = vyp; 1 = TUV povolena; 2 =
+    nabíjení TUV; 3 = doběh čerpadla; 4 = ukončit doběh čerpadla)
   first: >-
     actostorstate: state of the actoSTOR control (0 = off; 1 = DHW released; 2 =
     DHW loading; 3 = Pump overrun; 4 = stop pump overrun)
