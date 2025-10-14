@@ -1,0 +1,74 @@
+name: Generate csv configuration files.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag (např. v1.2.3)
+        required: false
+      body:
+        description: Release notes
+        required: false
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          submodules: true
+      - name: Use Node.js node 20.x
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20.x
+      - name: Install packages
+        run: npm install -omit=dev
+        working-directory: ./
+      - name: Convert typespec files (en+de+cs)
+        run: ./utils/precheck.sh
+        working-directory: ./
+      - name: Upload czech artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cs
+          path: ./outcsv/cs
+      - name: Upload english artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: en
+          path: ./outcsv/en
+      - name: Upload german artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: de
+          path: ./outcsv/de
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ github.event.inputs.tag != '' }}
+    steps:
+      - name: Stáhnout všechny artefakty
+        uses: actions/download-artifact@v5
+        with:
+          path: downloads
+
+      - name: Vypsat stažené soubory
+        run: ls -R downloads
+
+      - name: Vytvořit release s více assety
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          name: ${{ github.event.inputs.tag }}
+          body: ${{ github.event.inputs.body || 'Release s multi-jazykovými assety' }}
+          files: |
+            downloads/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
