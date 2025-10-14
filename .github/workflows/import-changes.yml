@@ -27,7 +27,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: conversion_result
-          path: |
-            ./utils/outcsv/en
-            ./utils/outcsv/de
-            ./utils/outcsv/cs
+          path: ./utils/outcsv/*/
