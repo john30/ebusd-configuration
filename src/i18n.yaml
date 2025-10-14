@@ -17571,6 +17571,7 @@ raumtempistunten:
 raumtempistuntenlowerroomtempsensorvalue:
   de: 'RaumtempIstUnten: lower room temp sensor value'
   en: 'RaumtempIstUnten: lower room temp sensor value'
+  cs: 'RaumtempIstUnten: hodnota spodního čidla pokojové teploty'
   first: 'RaumtempIstUnten: lower room temp sensor value'
   locations:
     - vaillant/15.370.csv::r::0xc1,0
@@ -20207,6 +20208,7 @@ statussolarpanelpump2:
 statustexteergnzen:
   de: Statustexte ergänzen
   en: Statustexte ergänzen
+  cs: Doplňující texty stavů
   first: Statustexte ergänzen
   locations:
     - vaillant/bai.0010004121.inc::r::0x11,1:value
@@ -21464,24 +21466,28 @@ tempfaildetecttimetemperaturefaildetectiontime:
 tempfhlerhzoben:
   de: Temp.fühler Hz, oben
   en: Temp.fühler Hz, oben
+  cs: Snímač teploty topné vody, nahoře
   first: Temp.fühler Hz, oben
   locations:
     - vaillant/15.700.csv::r_1::0x9f,0:value
 tempfhlerhzunten:
   de: Temp.fühler Hz, unten
   en: Temp.fühler Hz, unten
+  cs: Snímač teploty topné vody, dole
   first: Temp.fühler Hz, unten
   locations:
     - vaillant/15.700.csv::r_1::0xa0,0:value
 tempfhlerwwoben:
   de: Temp.fühler WW, oben
   en: Temp.fühler WW, oben
+  cs: Snímač teploty TUV, nahoře
   first: Temp.fühler WW, oben
   locations:
     - vaillant/15.700.csv::r_1::0x9d,0:value
 tempfhlerwwunten:
   de: Temp.fühler WW, unten
   en: Temp.fühler WW, unten
+  cs: Snímač teploty TUV, dole
   first: Temp.fühler WW, unten
   locations:
     - vaillant/15.700.csv::r_1::0x9e,0:value
@@ -23667,6 +23673,7 @@ warmstartdemandstatusofwarmstarrmode:
 wartungsdaten:
   de: Wartungsdaten
   en: Wartungsdaten
+  cs: Údržbová data
   first: Wartungsdaten
   locations:
     - vaillant/bai.0010015600.inc::r,wi_1::0xf8,0:value
@@ -23972,6 +23979,7 @@ yieldthisyear:
 zaehlerbetriebsstundenworkinghours:
   de: 'ZaehlerBetriebsStunden: Working Hours'
   en: 'ZaehlerBetriebsStunden: Working Hours'
+  cs: 'ZaehlerBetriebsStunden: Provozní hodiny'
   first: 'ZaehlerBetriebsStunden: Working Hours'
   locations:
     - vaillant/0a.pmw.hwc.csv:sw_ge38:r::0x45,0
