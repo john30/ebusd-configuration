@@ -33,21 +33,16 @@ jobs:
       - name: Convert typespec files (en+de+cs)
         run: ./utils/precheck.sh
         working-directory: ./
-      - name: Upload czech artifact
+      - name: Zip config CSVs
+        run: |
+          for i in cs en de; do
+            zip -r outcsv/$i.zip outcsv/$i/
+          done
+      - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: cs
-          path: ./outcsv/cs
-      - name: Upload english artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: en
-          path: ./outcsv/en
-      - name: Upload german artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: de
-          path: ./outcsv/de
+          name: config zips
+          path: ./outcsv/*.zip
 
   release:
     runs-on: ubuntu-latest
@@ -69,6 +64,6 @@ jobs:
           name: ${{ github.event.inputs.tag }}
           body: ${{ github.event.inputs.body || 'Release s multi-jazykovými assety' }}
           files: |
-            downloads/**
+            downloads/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

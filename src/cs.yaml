@@ -1,6 +1,6 @@
 '-26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled)': >-
-  -26=off, when the outside temperature falls below this threshold temperature
-  the continuous heating function is started (off <=> function is disabled)
+  -26=vyp, když venkovní teplota klesne pod tuto mezní teplotu,
+  spustí se funkce trvalého vytápění (vyp <=> funkce je deaktivována)
 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick: 0 = _FrostProtConfig_Low, 1 = _FrostProtConfig_PumpKick
 0 = _OffConfig_Off, 1 = _OffConfig_Low: 0 = _OffConfig_Off, 1 = _OffConfig_Low
 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day: 0=Pondělí, 1=Út, … 6=Neděle, 7=LegioProtect vyp, 8=každý den
@@ -21,23 +21,23 @@
 'aaucHcNames CH7: name of CH7': 'aaucHcNames CH7: název topného okruhu 7'
 'aaucHcNames CH8: name of CH8': 'aaucHcNames CH8: název topného okruhu 8'
 'aaucHcNames CH9: name of CH9': 'aaucHcNames CH9: název topného okruhu 9'
-'aaucHcNames_1: name of heating circuit No 1': 'aaucHcNames_1: name of heating circuit No 1'
-'aaucHcNames_10: name of heating circuit No 10': 'aaucHcNames_10: name of heating circuit No 10'
-'aaucHcNames_11: name of heating circuit No 11': 'aaucHcNames_11: name of heating circuit No 11'
-'aaucHcNames_12: name of heating circuit No 12': 'aaucHcNames_12: name of heating circuit No 12'
-'aaucHcNames_13: name of heating circuit No 13': 'aaucHcNames_13: name of heating circuit No 13'
-'aaucHcNames_14: name of heating circuit No 14': 'aaucHcNames_14: name of heating circuit No 14'
-'aaucHcNames_15: name of heating circuit No 15': 'aaucHcNames_15: name of heating circuit No 15'
-'aaucHcNames_2: name of heating circuit No 2': 'aaucHcNames_2: name of heating circuit No 2'
-'aaucHcNames_3: name of heating circuit No 3': 'aaucHcNames_3: name of heating circuit No 3'
-'aaucHcNames_4: name of heating circuit No 4': 'aaucHcNames_4: name of heating circuit No 4'
-'aaucHcNames_5: name of heating circuit No 5': 'aaucHcNames_5: name of heating circuit No 5'
-'aaucHcNames_6: name of heating circuit No 6': 'aaucHcNames_6: name of heating circuit No 6'
-'aaucHcNames_7: name of heating circuit No 7': 'aaucHcNames_7: name of heating circuit No 7'
-'aaucHcNames_8: name of heating circuit No 8': 'aaucHcNames_8: name of heating circuit No 8'
-'aaucHcNames_9: name of heating circuit No 9': 'aaucHcNames_9: name of heating circuit No 9'
-'aaucHcNames_HK1: labelling of the first heating circuit (only A-Z,0-9,blank)': 'aaucHcNames_HK1: labelling of the first heating circuit (only A-Z,0-9,blank)'
-'aaucHcNames_HK2: labelling of the second heating circuit (only A-Z,0-9,blank)': 'aaucHcNames_HK2: labelling of the second heating circuit (only A-Z,0-9,blank)'
+'aaucHcNames_1: name of heating circuit No 1': 'aaucHcNames_1: název topného okruhu 1'
+'aaucHcNames_10: name of heating circuit No 10': 'aaucHcNames_10: název topného okruhu 10'
+'aaucHcNames_11: name of heating circuit No 11': 'aaucHcNames_11: název topného okruhu 11'
+'aaucHcNames_12: name of heating circuit No 12': 'aaucHcNames_12: název topného okruhu 12'
+'aaucHcNames_13: name of heating circuit No 13': 'aaucHcNames_13: název topného okruhu 13'
+'aaucHcNames_14: name of heating circuit No 14': 'aaucHcNames_14: název topného okruhu 14'
+'aaucHcNames_15: name of heating circuit No 15': 'aaucHcNames_15: název topného okruhu 15'
+'aaucHcNames_2: name of heating circuit No 2': 'aaucHcNames_2: název topného okruhu 2'
+'aaucHcNames_3: name of heating circuit No 3': 'aaucHcNames_3: název topného okruhu 3'
+'aaucHcNames_4: name of heating circuit No 4': 'aaucHcNames_4: název topného okruhu 4'
+'aaucHcNames_5: name of heating circuit No 5': 'aaucHcNames_5: název topného okruhu 5'
+'aaucHcNames_6: name of heating circuit No 6': 'aaucHcNames_6: název topného okruhu 6'
+'aaucHcNames_7: name of heating circuit No 7': 'aaucHcNames_7: název topného okruhu 7'
+'aaucHcNames_8: name of heating circuit No 8': 'aaucHcNames_8: název topného okruhu 8'
+'aaucHcNames_9: name of heating circuit No 9': 'aaucHcNames_9: název topného okruhu 9'
+'aaucHcNames_HK1: labelling of the first heating circuit (only A-Z,0-9,blank)': 'aaucHcNames_HK1: označení prvního topného okruhu (pouze A-Z,0-9, mezera)'
+'aaucHcNames_HK2: labelling of the second heating circuit (only A-Z,0-9,blank)': 'aaucHcNames_HK2: označení druhého topného okruhu (pouze A-Z,0-9, mezera)'
 Abschaltung wegen Speicherladung: Vypnutí kvůli nabíjení zásobníku
 Absenktemperatur: Snížená teplota
 Absenktemperatur Zone 1: Snížená teplota Zóna 1

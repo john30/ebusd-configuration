@@ -23,6 +23,7 @@
 0offconfigoff1offconfiglow:
   de: 0 = _OffConfig_Off, 1 = _OffConfig_Low
   en: 0 = _OffConfig_Off, 1 = _OffConfig_Low
+  cs: 0 = _OffConfig_Off, 1 = _OffConfig_Low
   first: 0 = _OffConfig_Off, 1 = _OffConfig_Low
   locations:
     - vaillant/50.v61.mc.csv::r::0x4e,0
@@ -33,6 +34,9 @@
   en: >-
     -26=off, when the outside temperature falls below this threshold temperature
     the continuous heating function is started (off <=> function is disabled)
+  cs: >-
+    -26=vyp, když venkovní teplota klesne pod tuto mezní teplotu,
+    spustí se funkce trvalého vytápění (vyp <=> funkce je deaktivována)
   first: >-
     -26=off, when the outside temperature falls below this threshold temperature
     the continuous heating function is started (off <=> function is disabled)
@@ -42,6 +46,7 @@
 3wvschaltspielenumberoftimes3wvvalueoperated:
   de: '3WV Schaltspiele: Anzahl der 3WV Umschaltungen'
   en: '3WV Schaltspiele: Number of times 3WV value operated'
+  cs: '3WV Schaltspiele: Počet sepnutí 3cestného ventilu'
   first: '3WV Schaltspiele: Number of times 3WV value operated'
   locations:
     - vaillant/bai.0010015600.inc::r::0x1a,0
@@ -49,90 +54,105 @@
 aauchcnames10nameofheatingcircuitno10:
   de: 'Name HK10: Name für den 2. Heizkreis'
   en: 'aaucHcNames_10: name of heating circuit No 10'
+  cs: 'aaucHcNames_10: název topného okruhu 10'
   first: 'aaucHcNames_10: name of heating circuit No 10'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x48
 aauchcnames11nameofheatingcircuitno11:
   de: 'Name HK11: Name für den 11. Heizkreis'
   en: 'aaucHcNames_11: name of heating circuit No 11'
+  cs: 'aaucHcNames_11: název topného okruhu 11'
   first: 'aaucHcNames_11: name of heating circuit No 11'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x50
 aauchcnames12nameofheatingcircuitno12:
   de: 'Name HK12: Name für den 12. Heizkreis'
   en: 'aaucHcNames_12: name of heating circuit No 12'
+  cs: 'aaucHcNames_12: název topného okruhu 12'
   first: 'aaucHcNames_12: name of heating circuit No 12'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x58
 aauchcnames13nameofheatingcircuitno13:
   de: 'Name HK13: Name für den 13. Heizkreis'
   en: 'aaucHcNames_13: name of heating circuit No 13'
+  cs: 'aaucHcNames_13: název topného okruhu 13'
   first: 'aaucHcNames_13: name of heating circuit No 13'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x60
 aauchcnames14nameofheatingcircuitno14:
   de: 'Name HK14: Name für den 14. Heizkreis'
   en: 'aaucHcNames_14: name of heating circuit No 14'
+  cs: 'aaucHcNames_14: název topného okruhu 14'
   first: 'aaucHcNames_14: name of heating circuit No 14'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x68
 aauchcnames15nameofheatingcircuitno15:
   de: 'Name HK15: Name für den 15. Heizkreis'
   en: 'aaucHcNames_15: name of heating circuit No 15'
+  cs: 'aaucHcNames_15: název topného okruhu 15'
   first: 'aaucHcNames_15: name of heating circuit No 15'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x70
 aauchcnames1nameofheatingcircuitno1:
   de: 'Name HK1: Name für den 1. Heizkreis'
   en: 'aaucHcNames_1: name of heating circuit No 1'
+  cs: 'aaucHcNames_1: název topného okruhu 1'
   first: 'aaucHcNames_1: name of heating circuit No 1'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0
 aauchcnames2nameofheatingcircuitno2:
   de: 'Name HK2: Name für den 2. Heizkreis'
   en: 'aaucHcNames_2: name of heating circuit No 2'
+  cs: 'aaucHcNames_2: název topného okruhu 2'
   first: 'aaucHcNames_2: name of heating circuit No 2'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x8
 aauchcnames3nameofheatingcircuitno3:
   de: 'Name HK3: Name für den 3. Heizkreis'
   en: 'aaucHcNames_3: name of heating circuit No 3'
+  cs: 'aaucHcNames_3: název topného okruhu 3'
   first: 'aaucHcNames_3: name of heating circuit No 3'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x10
 aauchcnames4nameofheatingcircuitno4:
   de: 'Name HK4: Name für den 4. Heizkreis'
   en: 'aaucHcNames_4: name of heating circuit No 4'
+  cs: 'aaucHcNames_4: název topného okruhu 4'
   first: 'aaucHcNames_4: name of heating circuit No 4'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x18
 aauchcnames5nameofheatingcircuitno5:
   de: 'Name HK5: Name für den 5. Heizkreis'
   en: 'aaucHcNames_5: name of heating circuit No 5'
+  cs: 'aaucHcNames_5: název topného okruhu 5'
   first: 'aaucHcNames_5: name of heating circuit No 5'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x20
 aauchcnames6nameofheatingcircuitno6:
   de: 'Name HK6: Name für den 6. Heizkreis'
   en: 'aaucHcNames_6: name of heating circuit No 6'
+  cs: 'aaucHcNames_6: název topného okruhu 6'
   first: 'aaucHcNames_6: name of heating circuit No 6'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x28
 aauchcnames7nameofheatingcircuitno7:
   de: 'Name HK7: Name für den 8. Heizkreis'
   en: 'aaucHcNames_7: name of heating circuit No 7'
+  cs: 'aaucHcNames_7: název topného okruhu 7'
   first: 'aaucHcNames_7: name of heating circuit No 7'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x30
 aauchcnames8nameofheatingcircuitno8:
   de: 'Name HK8: Name für den 8. Heizkreis'
   en: 'aaucHcNames_8: name of heating circuit No 8'
+  cs: 'aaucHcNames_8: název topného okruhu 8'
   first: 'aaucHcNames_8: name of heating circuit No 8'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x38
 aauchcnames9nameofheatingcircuitno9:
   de: 'Name HK9: Name für den 9. Heizkreis'
   en: 'aaucHcNames_9: name of heating circuit No 9'
+  cs: 'aaucHcNames_9: název topného okruhu 9'
   first: 'aaucHcNames_9: name of heating circuit No 9'
   locations:
     - vaillant/15.ui.csv::r,w::0x41,0x40
