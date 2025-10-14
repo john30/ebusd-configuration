@@ -2180,30 +2180,30 @@ mixer type: mixer type
 'Mixer1DutyCycle1: Telswitch,Pump,Circulation pump,DHW rewquest,DHW permittion': 'Mixer1DutyCycle1: Telswitch,Pump,Circulation pump,DHW rewquest,DHW permittion'
 'Mixer1State: mixer''s state': 'Mixer1State: mixer''s state'
 'Mixer2DutyCycle3: Telswitch,Pump,Circulation pump,DHW rewquest,DHW permittion': 'Mixer2DutyCycle3: Telswitch,Pump,Circulation pump,DHW rewquest,DHW permittion'
-MixerMovement heating circuit 1: MixerMovement heating circuit 1
-MixerMovement heating circuit 2: MixerMovement heating circuit 2
-MixerMovement heating circuit 3: MixerMovement heating circuit 3
-MixerMovement Heizkreis 1: MixerMovement Heizkreis 1
-MixerMovement Heizkreis 2: MixerMovement Heizkreis 2
-MixerMovement Heizkreis 3: MixerMovement Heizkreis 3
-'Mk2Detected: detected VR60 (bit counted)': 'Mk2Detected: detected VR60 (bit counted)'
-Modbus Interface: Modbus Interface
-Modbus Parity: Modbus Parity
-Modbus Slave Address: Modbus Slave Address
-Modbus Speed: Modbus Speed
-Modem country code: Modem country code
-Modem dial prefix: Modem dial prefix
-Modem init string: Modem init string
-Modulation set point: Modulation set point
+MixerMovement heating circuit 1: Pohyb směšovače topný okruh 1
+MixerMovement heating circuit 2: Pohyb směšovače topný okruh 2
+MixerMovement heating circuit 3: Pohyb směšovače topný okruh 3
+MixerMovement Heizkreis 1: Pohyb směšovače topný okruh 1
+MixerMovement Heizkreis 2: Pohyb směšovače topný okruh 2
+MixerMovement Heizkreis 3: Pohyb směšovače topný okruh 3
+'Mk2Detected: detected VR60 (bit counted)': 'Mk2Detected: zjištěn VR60 (počítáno po bitech)'
+Modbus Interface: Rozhraní Modbus
+Modbus Parity: Parita Modbus
+Modbus Slave Address: Adresa slave Modbus
+Modbus Speed: Rychlost Modbus
+Modem country code: Kód země modemu
+Modem dial prefix: Předvolba vytáčení modemu
+Modem init string: Inicializační řetězec modemu
+Modulation set point: Požadavek modulace
 Modulationsetpoint_DK: Modulationsetpoint_DK
-'ModuleDisplayedFilling: Schwärzungsgrad in %': 'ModuleDisplayedFilling: Schwärzungsgrad in %'
-Monday DHW state: Monday DHW state
-Monday DHW time: Monday DHW time
-Monday Heating Temp: Monday Heating Temp
-Monday heating temperatures: Monday heating temperatures
-Monday heating time: Monday heating time
-Monday recirculation state: Monday recirculation state
-Monday recirculation time: Monday recirculation time
+'ModuleDisplayedFilling: Schwärzungsgrad in %': 'ModuleDisplayedFilling: stupeň zčernání v %'
+Monday DHW state: Stav TUV v pondělí
+Monday DHW time: Časy TUV v pondělí
+Monday Heating Temp: Teplota vytápění v pondělí
+Monday heating temperatures: Teploty vytápění v pondělí
+Monday heating time: Časy vytápění v pondělí
+Monday recirculation state: Stav cirkulace v pondělí
+Monday recirculation time: Časy cirkulace v pondělí
 Monitor_Matlab_CH_Calculation: Monitor_Matlab_CH_Calculation
 Monitor_Matlab_DHW_Calculation: Monitor_Matlab_DHW_Calculation
 MonitorBufferPIDValue: MonitorBufferPIDValue

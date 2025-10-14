@@ -14243,48 +14243,56 @@ mk2detecteddetectedvr60bitcounted:
 modbusinterface:
   de: Schnittstelle Modbus
   en: Modbus Interface
+  cs: Rozhraní Modbus
   first: Modbus Interface
   locations:
     - encon/3c..excellent.csv::r_3,w_1::0x41
 modbusparity:
   de: Parität Modbus
   en: Modbus Parity
+  cs: Parita Modbus
   first: Modbus Parity
   locations:
     - encon/3c..excellent.csv::r_3,w_1::0x44
 modbusslaveaddress:
   de: Adresse Modbus-Slave
   en: Modbus Slave Address
+  cs: Adresa slave Modbus
   first: Modbus Slave Address
   locations:
     - encon/3c..excellent.csv::r_3,w_1::0x42
 modbusspeed:
   de: Geschwindigkeit Modbus
   en: Modbus Speed
+  cs: Rychlost Modbus
   first: Modbus Speed
   locations:
     - encon/3c..excellent.csv::r_3,w_1::0x43
 modemcountrycode:
   de: Modem Landescode
   en: Modem country code
+  cs: Kód země modemu
   first: Modem country code
   locations:
     - vaillant/05.vd4.csv::r,wi::0x3f,0
 modemdialprefix:
   de: Modem Wahlprefix
   en: Modem dial prefix
+  cs: Předvolba vytáčení modemu
   first: Modem dial prefix
   locations:
     - vaillant/05.vd4.csv::r,wi::0x3d,0
 modeminitstring:
   de: Modem Initialisierungs Zeichenkette
   en: Modem init string
+  cs: Inicializační řetězec modemu
   first: Modem init string
   locations:
     - vaillant/05.vd4.csv::r,wi::0x1c,0
 modulationsetpoint:
   de: Modulationssollwert
   en: Modulation set point
+  cs: Požadavek modulace
   first: Modulation set point
   locations:
     - vaillant/bai.0010002315.inc::r::0x2e,0:value
@@ -14325,12 +14333,14 @@ modulationsetpointdk:
 moduledisplayedfillingschwrzungsgradin:
   de: 'ModuleDisplayedFilling: Schwärzungsgrad in %'
   en: 'ModuleDisplayedFilling: Schwärzungsgrad in %'
+  cs: 'ModuleDisplayedFilling: stupeň zčernání v %'
   first: 'ModuleDisplayedFilling: Schwärzungsgrad in %'
   locations:
     - vaillant/84.zeo.csv::r::0xcc,0
 mondaydhwstate:
   de: Montag Warmwasserzustand
   en: Monday DHW state
+  cs: Stav TUV v pondělí
   first: Monday DHW state
   locations:
     - vaillant/15.e7c.csv::r,w::0x4a,0:onoff
@@ -14338,6 +14348,7 @@ mondaydhwstate:
 mondaydhwtime:
   de: Montag Warmwasserzeit
   en: Monday DHW time
+  cs: Časy TUV v pondělí
   first: Monday DHW time
   locations:
     - vaillant/15.e7c.csv::r,w::0x43,0:ttm
@@ -14345,18 +14356,21 @@ mondaydhwtime:
 mondayheatingtemp:
   de: Monday Heating Temp
   en: Monday Heating Temp
+  cs: Teplota vytápění v pondělí
   first: Monday Heating Temp
   locations:
     - vaillant/15.e7c.csv::r,w::0xc,0
 mondayheatingtemperatures:
   de: Montag Heiztemperaturen
   en: Monday heating temperatures
+  cs: Teploty vytápění v pondělí
   first: Monday heating temperatures
   locations:
     - vaillant/15.e7c.csv::r,w::0xc,0:temp
 mondayheatingtime:
   de: Montag Heizzeit
   en: Monday heating time
+  cs: Časy vytápění v pondělí
   first: Monday heating time
   locations:
     - vaillant/15.e7c.csv::r,w::0x5,0:ttm
@@ -14364,6 +14378,7 @@ mondayheatingtime:
 mondayrecirculationstate:
   de: Umluftzustand Montag
   en: Monday recirculation state
+  cs: Stav cirkulace v pondělí
   first: Monday recirculation state
   locations:
     - vaillant/15.e7c.csv::r,wi::0x81,0:onoff
@@ -14371,6 +14386,7 @@ mondayrecirculationstate:
 mondayrecirculationtime:
   de: Montag Umluftzeit
   en: Monday recirculation time
+  cs: Časy cirkulace v pondělí
   first: Monday recirculation time
   locations:
     - vaillant/15.e7c.csv::r,wi::0x7a,0:ttm

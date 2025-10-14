@@ -20,52 +20,57 @@ jobs:
       image: john30/ebusd:devel
       folder: latest
     steps:
-      -
-        name: checkout
-        uses: actions/checkout@v4
-      -
-        name: pull image
+      - name: checkout
+        uses: actions/checkout@v5
+      - name: pull image
         run: docker pull $image
-      -
-        name: check validity
+      - name: check validity
         run: |
           docker run -v $PWD:/cfg $image --checkconfig -c /cfg/$folder/de \
-          && docker run -v $PWD:/cfg $image --checkconfig -c /cfg/$folder/en
+          && docker run -v $PWD:/cfg $image --checkconfig -c /cfg/$folder/en \
+          && docker run -v $PWD:/cfg $image --checkconfig -c /cfg/$folder/cs
       - name: check templates
         run: |
           (cd $folder/de && find . -name "_templates.csv" -exec cut -d ',' -f 1-3 \{\} \;) | sed -e 's#-So#-Su#g' > templ.de \
           && (cd $folder/en && find . -name "_templates.csv" -exec cut -d ',' -f 1-3 \{\} \;) > templ.en \
-          && diff templ.de templ.en        
-      -
-        name: dump json
+          && (cd $folder/cs && find . -name "_templates.csv" -exec cut -d ',' -f 1-3 \{\} \;) > templ.cs \
+          && diff templ.de templ.en \
+          && diff templ.de templ.cs \
+          && diff templ.cs templ.en
+      - name: dump json
         run: |
           docker run -v $PWD:/cfg $image --dumpconfig=json --dumpconfigto=/cfg/de.json -c /cfg/$folder/de \
-          && docker run -v $PWD:/cfg $image --dumpconfig=json --dumpconfigto=/cfg/en.json -c /cfg/$folder/en
-      -
-        name: dump csv
+          && docker run -v $PWD:/cfg $image --dumpconfig=json --dumpconfigto=/cfg/en.json -c /cfg/$folder/en \
+          && docker run -v $PWD:/cfg $image --dumpconfig=json --dumpconfigto=/cfg/cs.json -c /cfg/$folder/cs
+      - name: dump csv
         run: |
           docker run -v $PWD:/cfg $image --dumpconfig -c /cfg/$folder/de | sed -e 's#.*main notice. *##' > dump.de \
-          && docker run -v $PWD:/cfg $image --dumpconfig -c /cfg/$folder/en | sed -e 's#.*main notice. *##' > dump.en
-      -
-        name: check count
+          && docker run -v $PWD:/cfg $image --dumpconfig -c /cfg/$folder/en | sed -e 's#.*main notice. *##' > dump.en \
+          && docker run -v $PWD:/cfg $image --dumpconfig -c /cfg/$folder/cs | sed -e 's#.*main notice. *##' > dump.cs
+      - name: check count
         run: |
           (cd $folder/de && find . -name "*.csv" -exec wc -l \{\} \;) > wc.de \
           && (cd $folder/de && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.de \
+          (cd $folder/cs && find . -name "*.csv" -exec wc -l \{\} \;) > wc.cs \
+          && (cd $folder/cs && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.cs \
           && (cd $folder/en && find . -name "*.csv" -exec wc -l \{\} \;) > wc.en \
           && (cd $folder/en && find . -name "*.inc" -exec wc -l \{\} \;) >> wc.en \
-          && diff wc.de wc.en
-      -
-        name: check names
+          && diff wc.de wc.en \
+          && diff wc.de wc.cs \
+          && diff wc.cs wc.en
+      - name: check names
         run: |
           sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.de|cut -d , -f 1,2,3,6,7,8 > norm.de \
           && sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.en|cut -d , -f 1,2,3,6,7,8 > norm.en \
-          && diff norm.de norm.en
-      -
-        name: archive
+          && sed -e 's#""##g' -e 's#,"[^"]*",#,,#g' dump.cs|cut -d , -f 1,2,3,6,7,8 > norm.cs \
+          && diff norm.de norm.en \
+          && diff norm.de norm.cs \
+          && diff norm.cs norm.en
+      - name: archive
         uses: actions/upload-artifact@v4
         with:
           name: results
           path: |
             dump.de
             dump.en
-          
+            dump.cs
