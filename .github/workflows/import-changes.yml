@@ -26,7 +26,9 @@ jobs:
       - name: Zobraz aktuální adresář
         run: pwd
       - name: Najdi oitcsv
-        run: find -type d -name outcsv ../
+        run: find ./ -type d -name outcsv
+      - name: Najdi oitcsv
+        run: find ../ -type d -name outcsv
 
       - name: Vylistuj soubory (rekurzivně)
         run: ls -ltra ./utils/
