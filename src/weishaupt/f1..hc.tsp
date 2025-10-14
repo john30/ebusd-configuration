@@ -15,15 +15,32 @@ enum OperatingPhase {
   PostIgnitionPurge: 0x09,
 }
 
-/** Process values of the heating controller/burner control unit. */
-// broadcast address
+enum OperationMode {
+  BurnerOff: 0x00,
+  NoAction: 0x01,
+  DomesticHotWater: 0x55,
+  HeatingMode: 0xAA,
+  EmissionControl: 0xCC,
+  InspectionFunction: 0xDD,
+  ControllerStop: 0xEE,
+  DHWWithHeating: 0xBB,
+  ControllerStopStepMode: 0x44,
+}
+
+enum Action {
+  NoAction: 0x00,
+  SwitchOffBoilerPump: 0x01,
+  SwitchOnBoilerPump: 0x02,
+  SwitchOffVariableConsumer: 0x03,
+  SwitchOnVariableConsumer: 0x04,
+}
+
+/** Process values of the heating controller unit. */
 namespace weishaupt {
-  /** Process values message. */
+  /** Data from the heater. */
   @qq(0xf1)
-  @zz(0xfe)
-  @passive
   @id(0x50, 0x0A)
-  model process_values {
+  model heater_data {
     /** Status1 byte (bitfield) */
     status1: Num.UCH; // M6
 
@@ -57,5 +74,35 @@ namespace weishaupt {
 
     /** Flow setpoint temperature (°C) */
     flow_setpoint: Num.UCH; // M18
+  }
+
+  /** Command to the heater. */
+  @zz(0xf1)
+  @qq(0x30)
+  @write(true)
+  @id(0x05, 0x07)
+  model heater_control {
+    @values(OperationMode)
+    operation_mode: Num.UCH; // M6
+
+    @values(Action)
+    action: Num.UCH; // M7
+
+    /** Boiler setpoint temperature (°C, 1/16 °C per step) */
+    boiler_setpoint_temp: temp; // M8+M9, DATA2c, 0-2000 / 1/16
+
+    /** Boiler setpoint pressure (0–100, 1/256 per step) */
+    @unit("bar")
+    @divisor(256)
+    boiler_setpoint_pressure: Num.UIR; // M10+M11, DATA2b
+
+    /** Control degree / load (%) */
+    control_degree: percent0; // M12, 0–100
+
+    /** Domestic hot water setpoint (%) */
+    dhw_setpoint: percent1; // M13, DATA1c
+
+    /** Fuel selection */
+    fuel_selection: fueltype; // M14
   }
 }
