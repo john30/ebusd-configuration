@@ -8,7 +8,8 @@
     "lint": "npx tsp compile src/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
     "compile-en": "npx tsp compile --emit @ebusd/ebus-typespec src/main.tsp --output-dir outcsv",
     "compile-de": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/de.yaml src/main.tsp --output-dir outcsv.de",
-    "compile": "npm run compile-en && npm run compile-de",
+		"compile-cs": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/cs.yaml src/main.tsp --output-dir outcsv.cs",
+    "compile": "npm run compile-en && npm run compile-de && npm run compile-cs",
     "preparepublish": "./utils/precheck.sh"
   },
   "repository": {
