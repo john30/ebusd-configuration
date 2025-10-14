@@ -28,6 +28,6 @@ jobs:
         with:
           name: conversion_result
           path: |
-            ./en
-            ./de
-            ./cs
+            ./utils/outcsv/en
+            ./utils/outcsv/de
+            ./utils/outcsv/cs
