@@ -93,11 +93,6 @@ namespace Hwcmode_inc {
     onoff: onoff;
     temp_1: temp;
     temp_2: temp0;
-
-    // Protherm Ray 14 KE HW7503: electric current power (kW) = UCH * 14/60
-    @condition(Scan.Id.product, "='0010023673'")
-    @factor(0.2333333333)
-    currentpower: power;
   }
 
   /** outside temperature */

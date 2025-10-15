@@ -78,11 +78,6 @@ namespace Hcmode_inc {
     temp_3: temp1;
     temp_4: temp1;
     pumpstate: pumpstate;
-
-    // Protherm Ray 14 KE HW7503: electric current power (kW) = UCH * 14/60
-    @condition(Scan.Id.product, "='0010023673'")
-    @factor(0.2333333333)
-    currentpower: power;
   }
 
   /** Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp */
