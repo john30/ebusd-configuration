@@ -560,6 +560,15 @@ namespace Bai._0010023673_inc {
   /** d.77 hot water partload: storage part load (storage charging capacity limit) */
   @ext(0x8, 0x4)
   model PartloadHwcKW is InstallRegister<power>;
+  /** d.77 Partload_DHW_KW_DK */
+  @inherit(r, wi)
+  @ext(0xb1, 0)
+  model PartloadHwcKW1 {
+    /** DHW part load */
+    @unit("kW")
+    @divisor(10)
+    value: SIN;
+  }
 
   /** d.78 Max value flow temp storage: storage charging temperature limit (target flow temperature in storage mode) */
   @ext(0xf, 0x4)
