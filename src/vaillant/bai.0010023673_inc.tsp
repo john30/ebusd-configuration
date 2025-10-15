@@ -22,17 +22,9 @@ namespace Bai._0010023673_inc {
     @divisor(10)
     value: SIN;
   }
-  @inherit(r, wi_1)
-  @ext(0x6c, 0)
-  model PartloadHcKW2 {
-    /** Heating part load */
-    value: power;
-  }
   /** d.00 heating partload: Heating part load */
   @ext(0x6c, 0)
-  model PartloadHcKW3 is InstallRegister<power>;
-  @ext(0x6c, 0)
-  model PartloadHcKW4 is InstallRegister<power>;
+  model PartloadHcKW2 is InstallRegister<power>;
 
 
   /** d.01 central heating overruntime: water pump overrun time for heating mode */
