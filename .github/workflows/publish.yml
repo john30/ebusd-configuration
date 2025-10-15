@@ -35,16 +35,21 @@ jobs:
       - name: Convert typespec files (en+de+cs)
         run: ./utils/precheck.sh
         working-directory: ./
-      - name: Zip config CSVs
-        run: |
-          for i in cs en de; do
-            ( cd outcsv/$i/ && zip -r ../$i.zip . )
-          done
       - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: config zips
-          path: ./outcsv/*.zip
+          name: cs
+          path: ./outcsv/cs
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: en
+          path: ./outcsv/en
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: de
+          path: ./outcsv/de
 
   release:
     runs-on: ubuntu-latest
@@ -55,10 +60,11 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           path: downloads
-
-      - name: Vypsat stažené soubory
-        run: ls -R downloads
-
+      - name: Zip config CSVs
+        run: |
+          for i in cs en de; do
+            ( cd downloads/$i/ && zip -r ../$i.zip . )
+          done
       - name: Vytvořit release s více assety
         uses: softprops/action-gh-release@v2
         with:
