@@ -10,6 +10,20 @@ namespace Bai._0010023673_inc {
   // ,BAI00,RAY PROTHERM,
   // ##### dia level 1 #####
 
+    /** ActualEnvironmentPowerFine */
+    @inherit(r, u)
+    @ext(0xe2, 1)
+    model ActualEnvironmentPowerFine {
+      /** environment power in higher resolution (100W) */
+      @unit("kW")
+      @divisor(10)
+      value: UCH;
+    }
+
+  /** ActualEnvironmentPower: only for graphic display: the environmental power that is actually displayed in kW */
+  @ext(0xba, 0)
+  model ActualEnvironmentPower is ReadonlyUpdateRegister<power>;
+
   /** d.00 heating partload: Heating part load */
   @ext(0x7, 0x4)
   model PartloadHcKW is InstallRegister<power>;
