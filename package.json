@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/john30/ebusd-configuration.git"
+    "url": "git+https://github.com/konikvranik/ebusd-configuration.git"
   },
   "keywords": [
     "ebusd",
@@ -23,9 +23,9 @@
   "author": "John Baier",
   "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/john30/ebusd-configuration/issues"
+    "url": "https://github.com/konikvranik/ebusd-configuration/issues"
   },
-  "homepage": "https://github.com/john30/ebusd-configuration#readme",
+  "homepage": "https://github.com/konikvranik/ebusd-configuration#readme",
   "devDependencies": {
     "@types/node": "^24.5.2",
     "@typespec/library-linter": "~0.74.0",
