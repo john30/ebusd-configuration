@@ -1,5 +1,7 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./hcmode_inc.tsp";
+import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -7,7 +9,7 @@ using Ebus.Str;
 namespace Vaillant;
 
 // @zz(0x08)
-namespace Hmu.HW5103 {
+namespace Hmu_HW5103 {
   /** default *r */
   @base(MF, 0x11)
   model r_1 {}
@@ -398,5 +400,11 @@ namespace Hmu.HW5103 {
     @unit("kW")
     @divisor(1000)
     value: EXP;
+  }
+
+  /** included parts */
+  union _includes {
+    Hcmode_inc,
+    Errors_inc,
   }
 }
