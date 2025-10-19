@@ -985,6 +985,136 @@ namespace _700 {
     /** pump status of zone 3 */
     value: UIN;
   }
+// ##### heating circuit 4 #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x2, 0, 0x2, 0x3)
+  model r_20 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x2, 1, 0x2, 0x3)
+  model w_20 {}
+
+  /** CircuitType heating circuit 4 */
+  @inherit(r_20)
+  @ext(0x2, 0)
+  model Hc4CircuitType {
+    mctype: mctype;
+    @maxLength(1) ign: IGN;
+  }
+  // r;w,Hc4Unknown04,(constant 30) temperature heating circuit 4,0400,tempv,unknown value for Hc4
+
+  /** ActualFlowTempDesired heating circuit 4 */
+  @inherit(r_20)
+  @ext(0x7, 0)
+  model Hc4ActualFlowTempDesired {
+    /** current flow temperature setpoint of Hc4 */
+    value: tempv;
+  }
+
+  /** FlowTemp heating circuit 4 */
+  @inherit(r_20)
+  @ext(0x8, 0)
+  model Hc4FlowTemp {
+    /** current flow temperature of Hc4 */
+    value: tempv;
+  }
+  // r;w,Hc4Unknown09,(constant 60) temperature,0900,tempv,unknown value for Hc4
+
+  /** ExcessTemp heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0xb, 0)
+  model Hc4ExcessTemp {
+    /** excess temperature of Hc4 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range) */
+    value: calibrationv;
+  }
+  // r;w,Hc4Unknown0c,(constant 65) temperature heating circuit 4,0C00,tempv,unknown value for Hc4
+  // r;w,Hc4Unknown0d,(constant 65) temperature heating circuit 4,0D00,tempv,unknown value for Hc4
+
+  /** AutoOffMode heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0xe, 0)
+  model Hc4AutoOffMode {
+    /** operation of Hc4 during the lowering time; no influence if room temperature modulation is set to thermostat */
+    value: offmode;
+  }
+
+  /** HeatCurve heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0xf, 0)
+  model Hc4HeatCurve {
+    /** heating curve of Hc4 */
+    value: EXP;
+  }
+
+  /** MaxFlowTempDesired heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0x10, 0)
+  model Hc4MaxFlowTempDesired {
+    /** maximum flow temperature setpoint (end emphasis) of Hc4 */
+    value: tempv;
+  }
+  // r;w,Hc4Unknown11,(constant 20) temperature heating circuit 4,1100,tempv,unknown value for Hc4
+
+  /** MinFlowTempDesired heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0x12, 0)
+  model Hc4MinFlowTempDesired {
+    /** minimum flow temperature setpoint (end emphasis) of Hc4 */
+    value: tempv;
+  }
+
+  /** summer outside switchoff temperature heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0x14, 0)
+  model Hc4SummerTempLimit {
+    /** if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint */
+    value: tempv;
+  }
+
+  /** RoomTempSwitchOn heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0x15, 0)
+  model Hc4RoomTempSwitchOn {
+    /** room temperature modulation of Hc4 */
+    value: rcmode;
+  }
+
+  /** MixerMovement heating circuit 4 */
+  @inherit(r_20)
+  @ext(0x1a, 0)
+  model Hc4MixerMovement {
+    /** status of mixer (<0 closing, >0 opening) */
+    value: EXP;
+  }
+
+  /** HeatCurveAdaption heating circuit 4 */
+  @inherit(r_20)
+  @ext(0x1c, 0)
+  model Hc4HeatCurveAdaption {
+    /** adaption applied to heating curve of Hc4 */
+    value: EXP;
+  }
+
+  /** Status heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0x1b, 0)
+  model Hc4Status {
+    /** status of Hc4 */
+    value: UCH;
+  }
+
+  /** PumpStatus heating circuit 4 */
+  @inherit(r_20, w_20)
+  @ext(0x1e, 0)
+  model Hc4PumpStatus {
+    /** pump status of Hc4 */
+    value: UIN;
+  }
   // ##### zone 1 #####
 
   /** default *r */
@@ -1478,6 +1608,336 @@ namespace _700 {
   @ext(0x18, 0)
   model Z3Name2 {
     /** name of zone 3 */
+    value: zname;
+  }
+  // ##### zone 4 #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x2, 0, 0x3, 0x3)
+  model r_21 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x2, 1, 0x3, 0x3)
+  model w_21 {}
+
+  /** cooling operation mode zone 4 */
+  @inherit(r_21, w_21)
+  @ext(1, 0)
+  model Z4OpModeCooling {
+    /** operation mode for cooling of zone 4 */
+    value: opmode;
+  }
+
+  /** cooling setpoint zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x2, 0)
+  model Z4CoolingTemp {
+    /** desired cooling setpoint for zone 4 */
+    value: tempv;
+  }
+
+  /** holiday period start zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x3, 0)
+  model Z4HolidayStartPeriod {
+    /** start date of holidays for zone 4 */
+    value: hfrom;
+  }
+
+  /** holiday period end zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x4, 0)
+  model Z4HolidayEndPeriod {
+    /** end date of holidays for zone 4 */
+    value: hto;
+  }
+
+  /** room setpoint holiday period zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x5, 0)
+  model Z4HolidayTemp {
+    /** holiday setpoint for zone 4 */
+    value: tempv;
+  }
+
+  /** operation mode zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x6, 0)
+  model Z4OpMode {
+    /** operation mode of zone 4 */
+    value: opmode;
+  }
+
+  /** desired temperature zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x7, 0)
+  model Z4DayTemp {
+    /** day setpoint for zone 4 */
+    value: tempv;
+  }
+
+  /** quick veto temperature zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x8, 0)
+  model Z4QuickVetoTemp {
+    /** manual override setpoint for zone 4 */
+    value: tempv;
+  }
+
+  /** night temperature zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x9, 0)
+  model Z4NightTemp {
+    /** night setpoint for zone 4 */
+    value: tempv;
+  }
+
+  /** bank holiday start zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0xc, 0)
+  model Z4BankHolidayStartPeriod {
+    /** start date of bank holidays for zone 4 */
+    value: hfrom;
+  }
+
+  /** bank holiday end zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0xd, 0)
+  model Z4BankHolidayEndPeriod {
+    /** end date of bank holidays for zone 4 */
+    value: hto;
+  }
+
+  /** SF mode zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0xe, 0)
+  model Z4SFMode {
+    value: sfmode;
+  }
+
+  /** room temperature zone 4 */
+  @inherit(r_21)
+  @ext(0xf, 0)
+  model Z4RoomTemp {
+    /** current room temperature in zone 4 */
+    value: tempv;
+  }
+
+  /** valve status zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x12, 0)
+  model Z4ValveStatus {
+    /** valve status of zone 4 */
+    value: UCH;
+  }
+
+  /** room zone mapping zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x13, 0)
+  model Z4RoomZoneMapping {
+    /** configures which room temperature is assigned to zone 4 */
+    value: zmapping;
+  }
+
+  /** room temperature desired zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x14, 0)
+  model Z4ActualRoomTempDesired {
+    /** current room setpoint considering all basic conditions passed to the control algorithms */
+    value: tempv;
+  }
+  // r;w,z3Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 4,1500,tempv,unknown value for zone 4
+
+  /** shortlabel zone 4 */
+  @inherit(r_21, w_21)
+  @ext(0x16, 0)
+  model Z4Shortname {
+    /** short name of zone 4 */
+    value: shortname;
+  }
+
+  /** label zone 4 part 1 */
+  @inherit(r_21, w_21)
+  @ext(0x17, 0)
+  model Z4Name1 {
+    /** name of zone 4 */
+    value: zname;
+  }
+
+  /** label zone 4 part 2 */
+  @inherit(r_21, w_21)
+  @ext(0x18, 0)
+  model Z4Name2 {
+    /** name of zone 4 */
+    value: zname;
+  }
+  // ##### zone 5 #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x2, 0, 0x3, 0x4)
+  model r_24 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x2, 1, 0x3, 0x4)
+  model w_24 {}
+
+  /** cooling operation mode zone 5 */
+  @inherit(r_24, w_24)
+  @ext(1, 0)
+  model Z5OpModeCooling {
+    /** operation mode for cooling of zone 5 */
+    value: opmode;
+  }
+
+  /** cooling setpoint zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x2, 0)
+  model Z5CoolingTemp {
+    /** desired cooling setpoint for zone 5 */
+    value: tempv;
+  }
+
+  /** holiday period start zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x3, 0)
+  model Z5HolidayStartPeriod {
+    /** start date of holidays for zone 5 */
+    value: hfrom;
+  }
+
+  /** holiday period end zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x4, 0)
+  model Z5HolidayEndPeriod {
+    /** end date of holidays for zone 5 */
+    value: hto;
+  }
+
+  /** room setpoint holiday period zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x5, 0)
+  model Z5HolidayTemp {
+    /** holiday setpoint for zone 5 */
+    value: tempv;
+  }
+
+  /** operation mode zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x6, 0)
+  model Z5OpMode {
+    /** operation mode of zone 5 */
+    value: opmode;
+  }
+
+  /** desired temperature zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x7, 0)
+  model Z5DayTemp {
+    /** day setpoint for zone 5 */
+    value: tempv;
+  }
+
+  /** quick veto temperature zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x8, 0)
+  model Z5QuickVetoTemp {
+    /** manual override setpoint for zone 5 */
+    value: tempv;
+  }
+
+  /** night temperature zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x9, 0)
+  model Z5NightTemp {
+    /** night setpoint for zone 5 */
+    value: tempv;
+  }
+
+  /** bank holiday start zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0xc, 0)
+  model Z5BankHolidayStartPeriod {
+    /** start date of bank holidays for zone 5 */
+    value: hfrom;
+  }
+
+  /** bank holiday end zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0xd, 0)
+  model Z5BankHolidayEndPeriod {
+    /** end date of bank holidays for zone 5 */
+    value: hto;
+  }
+
+  /** SF mode zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0xe, 0)
+  model Z5SFMode {
+    value: sfmode;
+  }
+
+  /** room temperature zone 5 */
+  @inherit(r_24)
+  @ext(0xf, 0)
+  model Z5RoomTemp {
+    /** current room temperature in zone 5 */
+    value: tempv;
+  }
+
+  /** valve status zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x12, 0)
+  model Z5ValveStatus {
+    /** valve status of zone 5 */
+    value: UCH;
+  }
+
+  /** room zone mapping zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x13, 0)
+  model Z5RoomZoneMapping {
+    /** configures which room temperature is assigned to zone 5 */
+    value: zmapping;
+  }
+
+  /** room temperature desired zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x14, 0)
+  model Z5ActualRoomTempDesired {
+    /** current room setpoint considering all basic conditions passed to the control algorithms */
+    value: tempv;
+  }
+  // r;w,z3Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 5,1500,tempv,unknown value for zone 5
+
+  /** shortlabel zone 5 */
+  @inherit(r_24, w_24)
+  @ext(0x16, 0)
+  model Z5Shortname {
+    /** short name of zone 5 */
+    value: shortname;
+  }
+
+  /** label zone 5 part 1 */
+  @inherit(r_24, w_24)
+  @ext(0x17, 0)
+  model Z5Name1 {
+    /** name of zone 5 */
+    value: zname;
+  }
+
+  /** label zone 5 part 2 */
+  @inherit(r_24, w_24)
+  @ext(0x18, 0)
+  model Z5Name2 {
+    /** name of zone 5 */
     value: zname;
   }
   // ##### timers #####
@@ -2158,6 +2618,256 @@ namespace _700 {
   @inherit(r_19, w_19)
   @ext(0x6)
   model Z3CoolingTimer_Sunday {
+    value: slot1_3;
+  }
+  // timers zone 4
+
+  /** default *r */
+  @base(MF, 0x24, 0x3, 0x3, 0x2, 0x3)
+  model r_22 {
+    /** whether timeslot is valid */
+    @maxLength(1)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x4, 0x3, 0x2, 0x3)
+  model w_22 {}
+
+  /** timer heating monday */
+  @inherit(r_22, w_22)
+  @ext(0)
+  model Z4Timer_Monday {
+    value: slot1_3;
+  }
+
+  /** timer heating tuesday */
+  @inherit(r_22, w_22)
+  @ext(1)
+  model Z4Timer_Tuesday {
+    value: slot1_3;
+  }
+
+  /** timer heating wednesday */
+  @inherit(r_22, w_22)
+  @ext(0x2)
+  model Z4Timer_Wednesday {
+    value: slot1_3;
+  }
+
+  /** timer heating thursday */
+  @inherit(r_22, w_22)
+  @ext(0x3)
+  model Z4Timer_Thursday {
+    value: slot1_3;
+  }
+
+  /** timer heating friday */
+  @inherit(r_22, w_22)
+  @ext(0x4)
+  model Z4Timer_Friday {
+    value: slot1_3;
+  }
+
+  /** timer heating saturday */
+  @inherit(r_22, w_22)
+  @ext(0x5)
+  model Z4Timer_Saturday {
+    value: slot1_3;
+  }
+
+  /** timer heating sunday */
+  @inherit(r_22, w_22)
+  @ext(0x6)
+  model Z4Timer_Sunday {
+    value: slot1_3;
+  }
+
+  /** default *r */
+  @base(MF, 0x24, 0x3, 0x3, 0x3, 1)
+  model r_23 {
+    /** whether timeslot is valid */
+    @maxLength(1)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x4, 0x3, 0x3, 1)
+  model w_23 {}
+
+  /** timer cooling monday */
+  @inherit(r_23, w_23)
+  @ext(0)
+  model Z4CoolingTimer_Monday {
+    value: slot1_3;
+  }
+
+  /** timer cooling tuesday */
+  @inherit(r_23, w_23)
+  @ext(1)
+  model Z4CoolingTimer_Tuesday {
+    value: slot1_3;
+  }
+
+  /** timer cooling wednesday */
+  @inherit(r_23, w_23)
+  @ext(0x2)
+  model Z4CoolingTimer_Wednesday {
+    value: slot1_3;
+  }
+
+  /** timer cooling thursday */
+  @inherit(r_23, w_23)
+  @ext(0x3)
+  model Z4CoolingTimer_Thursday {
+    value: slot1_3;
+  }
+
+  /** timer cooling friday */
+  @inherit(r_23, w_23)
+  @ext(0x4)
+  model Z4CoolingTimer_Friday {
+    value: slot1_3;
+  }
+
+  /** timer cooling saturday */
+  @inherit(r_23, w_23)
+  @ext(0x5)
+  model Z4CoolingTimer_Saturday {
+    value: slot1_3;
+  }
+
+  /** timer cooling sunday */
+  @inherit(r_23, w_23)
+  @ext(0x6)
+  model Z4CoolingTimer_Sunday {
+    value: slot1_3;
+  }
+  // timers zone 5
+
+  /** default *r */
+  @base(MF, 0x24, 0x3, 0x3, 0x2, 0x4)
+  model r_25 {
+    /** whether timeslot is valid */
+    @maxLength(1)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x4, 0x3, 0x2, 0x4)
+  model w_25 {}
+
+  /** timer heating monday */
+  @inherit(r_25, w_25)
+  @ext(0)
+  model Z5Timer_Monday {
+    value: slot1_3;
+  }
+
+  /** timer heating tuesday */
+  @inherit(r_25, w_25)
+  @ext(1)
+  model Z5Timer_Tuesday {
+    value: slot1_3;
+  }
+
+  /** timer heating wednesday */
+  @inherit(r_25, w_25)
+  @ext(0x2)
+  model Z5Timer_Wednesday {
+    value: slot1_3;
+  }
+
+  /** timer heating thursday */
+  @inherit(r_25, w_25)
+  @ext(0x3)
+  model Z5Timer_Thursday {
+    value: slot1_3;
+  }
+
+  /** timer heating friday */
+  @inherit(r_25, w_25)
+  @ext(0x4)
+  model Z5Timer_Friday {
+    value: slot1_3;
+  }
+
+  /** timer heating saturday */
+  @inherit(r_25, w_25)
+  @ext(0x5)
+  model Z5Timer_Saturday {
+    value: slot1_3;
+  }
+
+  /** timer heating sunday */
+  @inherit(r_25, w_25)
+  @ext(0x6)
+  model Z5Timer_Sunday {
+    value: slot1_3;
+  }
+
+  /** default *r */
+  @base(MF, 0x24, 0x3, 0x3, 0x4, 1)
+  model r_26 {
+    /** whether timeslot is valid */
+    @maxLength(1)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x4, 0x3, 0x4, 1)
+  model w_26 {}
+
+  /** timer cooling monday */
+  @inherit(r_26, w_26)
+  @ext(0)
+  model Z5CoolingTimer_Monday {
+    value: slot1_3;
+  }
+
+  /** timer cooling tuesday */
+  @inherit(r_26, w_26)
+  @ext(1)
+  model Z5CoolingTimer_Tuesday {
+    value: slot1_3;
+  }
+
+  /** timer cooling wednesday */
+  @inherit(r_26, w_26)
+  @ext(0x2)
+  model Z5CoolingTimer_Wednesday {
+    value: slot1_3;
+  }
+
+  /** timer cooling thursday */
+  @inherit(r_26, w_26)
+  @ext(0x3)
+  model Z5CoolingTimer_Thursday {
+    value: slot1_3;
+  }
+
+  /** timer cooling friday */
+  @inherit(r_26, w_26)
+  @ext(0x4)
+  model Z5CoolingTimer_Friday {
+    value: slot1_3;
+  }
+
+  /** timer cooling saturday */
+  @inherit(r_26, w_26)
+  @ext(0x5)
+  model Z5CoolingTimer_Saturday {
+    value: slot1_3;
+  }
+
+  /** timer cooling sunday */
+  @inherit(r_26, w_26)
+  @ext(0x6)
+  model Z5CoolingTimer_Sunday {
     value: slot1_3;
   }
   // includes
