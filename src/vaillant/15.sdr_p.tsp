@@ -98,7 +98,7 @@ namespace Sdr_p {
   /** Operation time solar pump */
   @poll(1)
   @ext(0x1f, 0)
-  model CollPumpHRuntime is InstallRegister<ULG>;
+  model CollPumpHours is InstallRegister<hoursum>;
 
   /** date */
   @ext(0x20, 0)
