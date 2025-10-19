@@ -1,9 +1,12 @@
 import "./broadcast.tsp";
 import "./encon/0a..co2.tsp";
 import "./encon/3c..excellent.tsp";
+import "./encon/broadcast.tsp";
 import "./memory.tsp";
 import "./ochsner/15.22102.tsp";
+import "./ochsner/broadcast.tsp";
 import "./tem/15.tsp";
+import "./tem/broadcast.tsp";
 import "./vaillant/05.vd4.tsp";
 import "./vaillant/06.pms.tsp";
 import "./vaillant/06.vmd.tsp";
@@ -66,3 +69,4 @@ import "./vaillant/general.tsp";
 import "./vaillant/scan.tsp";
 import "./wolf/08..hc.tsp";
 import "./wolf/50..mc.tsp";
+import "./wolf/broadcast.tsp";
