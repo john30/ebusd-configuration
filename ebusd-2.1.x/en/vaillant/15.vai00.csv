@@ -1,0 +1,12 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,recov,RecoVair 275 remote control,,,,,,,,,,,
+*r,,,,,,B509,0D,,,,,,
+*w,,,,,,B509,0E,,,,,,
+#*wi,#install,,,,,B509,0F,,,,,,
+# ##### general #####,,,,,,,,,,,,,
+r9;w,,VentMode,,,,,2400,,,UCH,1=Day;2=Off;3=Auto;5=Night,,
+r;w,,VentHI,Ventilation High time,,,,5800,,,HCD:2,,,
+#Writing works but seems to have no effect, might be pass through to RecoVair itself
+r9;w,,Cooling,Cooling - Summer Bypass,,,,0a00,,,UCH,1=Off;2=On,,,,
+r9;w,,Cooling_days,Days that the cooling is enabled,,,,3600,,,UCH,,,,,
+r,,Time,,,,,2C00,,,VTI,,,
