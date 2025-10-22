@@ -1,8 +1,0 @@
-# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit
-*b,quick,,,,FE,B505,,,,,,
-*w,quick,,,,50,B505,,,,,,
-*w4,quick_mc4,,,,52,B505,,,,,,
-*w5,quick_mc5,,,,53,B505,,,,,,
-w;w4;w5,,party,Quick - Party,,,,05,,,onoff,,
-w;b,,load,Quick - WW Speicherladung,,,,06,,,onoff,,
-w;w4;w5,,save,Quick - Sparen bis,,,,07,,,TTH,,

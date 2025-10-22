@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "mhutchie.git-graph",
+    "typespec.typespec-vscode",
+    "ebusd.ebus-notebook",
+    "redhat.vscode-yaml",
+    "lokalise.i18n-ally",
+  ]
+}

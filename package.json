@@ -1,0 +1,37 @@
+{
+  "name": "ebusd-configuration",
+  "version": "0.1.0",
+  "description": "utilities for converting ebusd-configuration files",
+  "scripts": {
+    "maintsp": "find src/ -name '*.tsp' -not -type l|grep -Ev 'main.tsp|_templates.tsp'|sort|grep -v '_inc.'|sed -e 's#src/##' -e 's#^#import \"./#' -e 's#$#\";#' > src/main.tsp",
+    "format": "npx tsp format src/*.tsp src/**/*.tsp",
+    "lint": "npx tsp compile src/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
+    "compile-en": "npx tsp compile --emit @ebusd/ebus-typespec src/main.tsp --output-dir outcsv",
+    "compile-de": "npx tsp compile --emit @ebusd/ebus-typespec --option @ebusd/ebus-typespec.translations=src/de.yaml src/main.tsp --output-dir outcsv.de",
+    "compile": "npm run compile-en && npm run compile-de",
+    "preparepublish": "./utils/precheck.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john30/ebusd-configuration.git"
+  },
+  "keywords": [
+    "ebusd",
+    "configuration"
+  ],
+  "author": "John Baier",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/john30/ebusd-configuration/issues"
+  },
+  "homepage": "https://github.com/john30/ebusd-configuration#readme",
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@typespec/library-linter": "~0.74.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@ebusd/ebus-typespec": ">=0.25.0",
+    "@typespec/compiler": "~1.4.0"
+  }
+}

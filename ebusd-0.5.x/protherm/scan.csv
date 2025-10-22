@@ -1,6 +1,0 @@
-# type (r;w;u;1-9),class,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),type / templates,divider / values,unit,comment,field,part (m;s),type / templates,divider / values,unit,comment
-*r,scan,,,,,B509,,,,,,,,,,,,,
-r,,id1,Scan ID,,,,24,,,IGN,,,,,,STR:8,,,
-r,,id2,Scan ID,,,,25,,,STR:9,,,,,,,,,
-r,,id3,Scan ID,,,,26,,,STR:9,,,,,,,,,
-r,,id4,Scan ID,,,,27,,,STR:2,,,,,,IGN:7,,,

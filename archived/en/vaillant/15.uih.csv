@@ -1,0 +1,67 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,UIH00,CI,UIH00 169,,,,,,,,,,
+*r,,,,,,"B509","0D",,,,,,
+*w,,,,,,"B509","0E",,,,,,
+*wi,#install,,,,,"B509","0E",,,,,,
+*ws,#service,,,,,"B509","0E",,,,,,
+*[SW],scan,,,SW,,,,,,,,,
+# ##### Earned energy #####,,,,,,,,,,,,,
+[SW<=349]!include,yield8485.inc,,,,,,,,,,,,
+[SW=350-363]!include,yield8485r.inc,,,,,,,,,,,,
+[SW>=364]!include,yield8485.inc,,,,,,,,,,,,
+[SW>=202]r,,YieldSum,EarnedEnergySum,,,,"8700",,,ULG,,,
+# ##### Parameters and information #####,,,,,,,,,,,,,
+r,,OutsideTemp,Aussentemperatur,,,,"0100",,,tempsensor,,,outdoor temperature
+r;ws,,EhpHydraulicMap,EhpHydraulicMap,,,,"2900",,,UCH,,,hydraulic scheme
+r,,EhpBasicStatus,EhpBasicStatus,,,,"5000",,,UCH,,,AMU basic state (copy from AMU)
+r,,StateEM,StateEM,,,,"4B00",,,UCH,,,"state of energie manager:0: EmOff,1: EmDhwRequest,2: EmDhw,3: EmTankPunmpOverrun,4: EmHeating,5: EmOverpressureFromDhw,6: EmOverpressureFromCh,7: EmWaitForChDemandOverpressure,8: EmWaitForChDemandHeating,9: EmWaitForChDemandEndOfDhw"
+r;w,,LanguageVariant,LanguageVariant,,,,"2600",,,UCH,,,language of the menue
+r;w,,HolidayPeriods,HolidayPeriods,,,,"4300",,,hfrom;hto;hfrom;hto,,,Holiday periods
+r;w,,RoomTempHoliday,RoomSetTempHoliday,,,,"2200",,,temp,,,desired room setpoint for holiday
+r;wi,,KeyCodeforConfigMenu,KeyCodeforConfigMenue,,,,"2C00",,,HEX:4,,,key code for the config menue
+r,,FlowTempDesired,SystemDesiredFlowTemp,,,,"0500",,,temp,,,
+r,,FlowTemp,SystemFlowTemp,,,,"0200",,,tempsensor,,,systen flow temperature
+r;wi,,HcSupportTimeMax,MaxChSupportTime,,,,"4D00",,,minutes0,,,Maximum CH loading period when there is a DHW simultaneous demand
+r;wi,,HwcLoadingTimeMax,MaxDhwLoadingTime,,,,"4C00",,,minutes0,,,Maximum DHW loading period when there is a Central Heating simultaneous demand
+r;wi,,TempIncrease,TempIncrease,,,,"2F00",,,temp,,,temperature increase
+r;wi,,PreShutDownTime,PreShutDownTime,,,,"2D00",,,minutes0,,,pre shut down time
+r;wi,,FrostOverRideTime,FrostOverRideTime,,,,"2E00",,,UCH,,hours,frost over ride time
+r,,EhpBackupRelease,EhpBackupHeaterRelease,,,,"7100",,,onoff,,,backup heater release
+r,,EhpTimeOfPredictedPowerCut,EhpTimeOfPredictedPowerCut,,,,"7300",,,time,,,time of the next predicted power cut
+r;wi,,TempFailDetectTime,TempFailDetectTime,,,,"3300",,,temp0,,,temperature fail detection time
+r;wi,,EhpHeatBufferAvailable,EhpHeatBufferAvailable,,,,"5C00",,,onoff,,,heat buffer is available
+[SW<=345]r,,ChildProtection,Child protection,,,,"6E00",,,yesno,,,child protection
+[SW>=220]r,,CoolingDay,CoolingDay,,,,"7C00",,,UCH,,,
+[SW>=220]r,,CoolingActive,CoolingActive,,,,"8300",,,onoff,,,
+[SW>=202]r;wi,,YieldOld,EarnedEnergyOld,,,,"8600",,,ULG,,,Contains earned energy sum stored from AMU last midnight. Required for data transmission between PCBs.
+[SW>=250]r,,DiagnoseMode,DiagnoseMode,,,,"8F00",,,UCH,,,"_DiaMode_Not=0, _DiaMode_Off, _DiaMode_CH, _DiaMode_DhwLoading, _DiaMode_Cooling, _DiaMode_Deicing"
+[SW>=250]r,,EmStateWorkingMode,EmState_WorkingMode,,,,"9000",,,UCH,,,0 = Standby1 = CH2 = Cooling
+[SW>=250]r,,EmStateCooling,EmStateCooling,,,,"9100",,,UCH,,,0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby
+[SW>=250]r,,EmStateStandby,EmStateStandby,,,,"9200",,,UCH,,,0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby
+[SW>=250]r,,EmStateHc,EmStateCH,,,,"9300",,,UCH,,,0=off1=DhwReq2=Dhw3=TankPOverrun4=Heating5=OverpresFDhw6=OverpresFCh7=WaitChDemOverp8=WaitChDemCH9=WaitChDemEndDhw10=CoolingHSOff11=CoolingHSOn12=DhwWhileCool13=CoolingDhw14=StandbyHSOff15=DhwWhileStandby
+[SW>=250]r,,HwcDemand,DHW_Demand,,,,"9400",,,onoff,,,
+[SW>=250]r,,HcDemand,CH_Demand,,,,"9500",,,onoff,,,
+[SW>=250]r,,CoolingDemand,Cooling_Demand,,,,"9600",,,onoff,,,
+[SW>=250]r,,EmSystemMode,EmSystemMode,,,,"9700",,,UCH,,,0 = Off1 = Heating2 = Cooling3 = Dhw4 = DhwDuringCH5 = DhwDuringCooling
+[SW>=250]r,,ParallelCoolingHwcPossible,ParallelCoolingDhwPossible,,,,"9800",,,onoff,,,
+[SW>=250]r,,DesiredWorkingMode,DesiredWorkingMode,,,,"9A00",,,UCH,,,0 = Standby1 = CH2 = Cooling
+[SW>=250]r,,SysWithCoolingSupport,SysWithCoolingSupport,,,,"9B00",,,onoff,,,
+[SW>=362]r,,reserve1,reserve 1,,,,"9D00",,,UCH,,,for future use
+# ##### HC Names and Tel No #####,,,,,,,,,,,,,
+r;w,,HcName2,aaucHcNames CH2,,,,"4108",,,hcname,,,name of CH2
+r;w,,HcName3,aaucHcNames CH3,,,,"4110",,,hcname,,,name of CH3
+r;w,,HcName4,aaucHcNames CH4,,,,"4118",,,hcname,,,name of CH4
+r;w,,HcName5,aaucHcNames CH5,,,,"4120",,,hcname,,,name of CH5
+r;w,,HcName6,aaucHcNames CH6,,,,"4128",,,hcname,,,name of CH6
+r;w,,HcName7,aaucHcNames CH7,,,,"4130",,,hcname,,,name of CH7
+r;w,,HcName8,aaucHcNames CH8,,,,"4138",,,hcname,,,name of CH8
+r;w,,HcName9,aaucHcNames CH9,,,,"4140",,,hcname,,,name of CH9
+r;w,,HcName10,aaucHcNames CH10,,,,"4148",,,hcname,,,name of CH10
+r;w,,HcName11,aaucHcNames CH11,,,,"4150",,,hcname,,,name of CH11
+r;w,,HcName12,aaucHcNames CH12,,,,"4158",,,hcname,,,name of CH12
+r;w,,HcName13,aaucHcNames CH13,,,,"4160",,,hcname,,,name of CH13
+r;w,,HcName14,aaucHcNames CH14,,,,"4168",,,hcname,,,name of CH14
+r;w,,HcName15,aaucHcNames CH15,,,,"4170",,,hcname,,,name of CH15
+r;w,,HcName16,aaucHcNames CH16,,,,"4178",,,hcname,,,name of CH16
+r;wi,,PhoneNumberPart1,aucPhoneNumber part 1,,,,"4200",,,phone,,,phone number part 1
+r;wi,,PhoneNumberPart2,aucPhoneNumber part 2,,,,"4208",,,phone,,,phone number part 2
