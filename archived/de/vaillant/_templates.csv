@@ -11,6 +11,7 @@ days,UCH,,,Tage
 time,VTI,,,Zeit
 time2,VTM,,,Zeit
 minutes,ULG,120,min,Minuten
+minutes4,ULG,,min,Minuten
 minutes0,UCH,,min,Minuten
 minutes2,UIN,,min,Minuten
 minutes5,UCH,-5,min,Minuten
@@ -98,12 +99,14 @@ shortphone,STR:6,,,Telefonnummer
 mamode,UIN,0=circulation;1=dryer;2=zone;3=legiopump,,
 offmode,UIN,0=eco;1=night,,
 rcmode,UIN,0=off;1=modulating;2=thermostat,,
-slotIndex,UCH,,,Index eines Zeitslots. Start by 0 für den ersten Zeitslot.
-slotCount,UCH,,,Anzahl der aktiven Zeitslots an einem Tag. Kann 0 sein.
-slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,,Anzahl der aktiven Zeitslots pro Wochentag. Mo-So
+slotIndex,UCH,,,Index eines Slots, 0-basiert
+slotCount,UCH,,,Anzahl der Slots an einem Tag
+slotCountWeek,IGN:1;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;slotCount;IGN:1,,,Anzahl der Slots pro Wochentag, Mo-So
 slotTimeFrame,HTM;HTM,,,Zeitslot von/bis
-slotTemp,UIN,10,,Temperatur die in einem Zeitslot gesetzt ist. Grad Celsius
-wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,Index des Slot; gesamt Anzahl der aktiven Slots und einzelner Zeitslot mit Temperatur
-wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;HEX:2,,,Index des Slot; gesamt Anzahl der aktiven Slots und einzelner Zeitslot ohne Temperatur;FF FF muss angehangen werden
-rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,Einzelner Zeitslot mit Temperatur
-rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,Einzelner Zeitslot ohne Temperatur
+slotTemp,UIN,10,°C,Solltemperatur eines Slots
+wTimeSlotWithTemp,slotIndex;slotCount;slotTimeFrame;slotTemp,,,kompletter Slot zum Schreiben mit Solltemperatur
+wTimeSlotConst,U2L,,=0xffff,konstanter Wert zum Schreiben eines Slots ohne Solltemperatur
+wTimeSlotWithoutTemp,slotIndex;slotCount;slotTimeFrame;wTimeSlotConst,,,kompletter Slot zum Schreiben ohne Solltemperatur
+rTimeSlotWithTemp,IGN:1;slotTimeFrame;slotTemp,,,kompletter Slot zum Lesen mit Solltemperatur
+rTimeSlotWithoutTemp,IGN:1;slotTimeFrame;IGN:2,,,etter Slot zum Lesen ohne Solltemperatur
+appliancecode,UCH,0=off;1=prerun;2=pump_prerun;3=ignition;4=on;5=overrun;6=fan_overrun;7=pump_overrun;8=shutdown;9=measure;10=hwc_desired;11=hwc_prerun;12=hwc_pump_prerun;13=hwc_ignition;14=hwc_on;15=hwc_overrun;16=hwc_fan_overrun;17=hwc_pump_overrun;18=hwc_shutdown;34=frost_protect,,Status code

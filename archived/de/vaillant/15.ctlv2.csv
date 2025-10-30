@@ -213,7 +213,7 @@ r;w,,z3Name2,Bezeichnung Zone 3 Teil 2,,,,1800,,,zname,,,name of zone 3
 r;w,,z3DayTemp,Solltemperatur Zone 3,,,,2200,,,tempv,,,day setpoint for zone 3
 # ##### Zeitprogramme #####,,,,,,,,,,,,,
 *r,,,,,,,,,,,,,
-r,,unknownValue.a0,(3Zonen;HWC&CC = konstanter Wert. Generelle Konfiguration?),,,B555,a0,,,HEX:8,,,Erstes Byte = Zonenanzahl?
+#r,,unknownValue.a0,(3Zonen;HWC&CC = konstanter Wert. Generelle Konfiguration?),,,B555,a0,,,HEX:8,,,Erstes Byte = Zonenanzahl?
 #r,,unknownValue.a1,(3Zonen;HWC&CC = Leerer Wert. Lüftung;Pumpe;etc oder Fehler?),,,B555,a1,,,,,,
 #r,,unknownValue.a2,(3Zonen;HWC&CC = Leerer Wert. Lüftung;Pumpe;etc oder Fehler?),,,B555,a2,,,,,,
 # Schaltzeiten Warmwasser,,,,,,,,,,,,,

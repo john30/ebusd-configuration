@@ -1,3 +1,14 @@
+# 2025-09-28
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * vaillant/15.uih from #512
+  * vaillant/08.bai from #411
+* fix name and comment of several IGN fields
+* fix some invalid units, e.g. in vaillant/15.uih and vaillant/08.hmu
+* add display contrast template
+* add allow writing to some cooling messages in vaillant/15.uih
+* add better writable timeslots, e.g. in vaillant/15.ctlv2 (and links)
+
 # 2025-05-18
 https://ebus.github.io/ only:
 * reworked+merged several PRs:
