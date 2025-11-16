@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "csv2tsp": "tsx ./utils/src/index.ts -i ^tem/ -I '^\\['",
+    "csv2tsp-combine": "tsx ./utils/src/index.ts -b ./de -L de -m outtsp/i18n.yaml -p src/i18n.yaml -s outtsp -o outtsp.de -I '^\\['",
+    "csv2tsp-extra": "tsx ./utils/src/index.ts -n -b ./en -m outtsp/i18n.yaml -s outtsp -o outtsp -I '^\\[' ./en/tem/*",
+    "maintsp": "find outtsp/ -name '*.tsp' -not -type l|grep -Ev 'main.tsp|_templates.tsp'|sort|grep -v '_inc.'|sed -e 's#outtsp/##' -e 's#^#import \"./#' -e 's#$#\";#' > outtsp/main.tsp",
+    "format": "npx tsp format outtsp/*.tsp outtsp/**/*.tsp outtsp.de/*.tsp outtsp.de/**/*.tsp",
+    "lint": "npx tsp compile outtsp/main.tsp --import @typespec/library-linter --emit @ebusd/ebus-typespec --no-emit",
+    "csvall": "./csvall.sh"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "csv-parser": "^3.2.0",
+    "js-yaml": "^4.1.0",
+    "tsx": "^4.20.6"
+  }
+}

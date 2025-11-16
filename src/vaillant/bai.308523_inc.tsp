@@ -1,6 +1,5 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
-import "./errors_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -827,10 +826,5 @@ namespace Bai._308523_inc {
     /** d.92 APC_ComStatus_DK: actoSTORE communication status */
     @ext(0x62, 0)
     model APCComStatus is ReadonlyRegister<UCH>;
-  }
-
-  /** included parts */
-  union _includes {
-    Errors_inc,
   }
 }

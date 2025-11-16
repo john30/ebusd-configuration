@@ -28,15 +28,23 @@ scalar press extends FLT;
 @unit("bar")
 scalar pressv extends EXP;
 
+/** percentage */
+@unit("%")
+scalar percentv extends EXP;
+
 /** date */
 scalar date extends HDA3;
 
 /** weekday */
 scalar day extends BDY;
 
-/** days */
+/** day selector */
 @values(Values_daysel)
 scalar daysel extends UCH;
+
+/** day selector */
+@values(Values_daysel2)
+scalar daysel2 extends UCH;
 
 /** days */
 scalar days extends UCH;
@@ -138,6 +146,14 @@ scalar hcmode extends UCH;
 @values(Values_hcmode2)
 scalar hcmode2 extends UCH;
 
+/** hc pump mode */
+@values(Values_hcpumpmode)
+scalar hcpumpmode extends UCH;
+
+/** hybrid manager mode */
+@values(Values_hmmode)
+scalar hmmode extends UCH;
+
 /** mixer mode */
 @values(Values_mcmode)
 scalar mcmode extends UCH;
@@ -162,12 +178,20 @@ scalar hwcmode2 extends UCH;
 @values(Values_mixer)
 scalar mixer extends UCH;
 
+/** zone valve state */
+@values(Values_openclose)
+scalar openclose extends UCH;
+
 /** day/night mode */
 @values(Values_daynight)
 scalar daynight extends UCH;
 
 /** Status */
 scalar status extends UCH;
+
+/** ESCO */
+@values(Values_escomode)
+scalar escomode extends UCH;
 
 @values(Values_onoff)
 scalar onoff extends UCH;
@@ -302,6 +326,9 @@ scalar backtype extends UCH;
 @values(Values_backmode)
 scalar backmode extends UCH;
 
+@values(Values_backmode2)
+scalar backmode2 extends UCH;
+
 @unit("kW")
 scalar power extends UCH;
 
@@ -313,6 +340,10 @@ scalar energyr extends UIR;
 
 @unit("kWh")
 scalar energy4 extends ULG;
+
+@unit("kWh")
+@divisor(1000)
+scalar energye extends EXP;
 
 /** start count */
 scalar cntstarts extends ULG;
@@ -370,11 +401,23 @@ scalar frequency extends UIN;
 @values(Values_zonesel)
 scalar zonesel extends UIN;
 
+@values(Values_zonestatus)
+scalar zonestatus extends UIN;
+
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
+@values(Values_sfmodezone)
+scalar sfmodezone extends UCH;
+
+@values(Values_sfmodehwc)
+scalar sfmodehwc extends UCH;
+
 @values(Values_opmode)
 scalar opmode extends UIN;
+
+@values(Values_opmode2)
+scalar opmode2 extends UIN;
 
 @values(Values_zmapping)
 scalar zmapping extends UIN;
@@ -405,16 +448,22 @@ scalar mamode extends UIN;
 @values(Values_offmode)
 scalar offmode extends UIN;
 
+@values(Values_offmode2)
+scalar offmode2 extends UIN;
+
 @values(Values_rcmode)
 scalar rcmode extends UIN;
 
-/** array index for the zones. Array Index start at 0 for the first element */
+@values(Values_rcmode2)
+scalar rcmode2 extends UIN;
+
+/** index of a time slot */
 scalar slotIndex extends UCH;
 
-/** Number of total slots in the array. May be Zero. */
+/** number of slots on a day */
 scalar slotCount extends UCH;
 
-/** Number of total slots in the array for a week. Mon-Sun */
+/** number of slots per weekday */
 model slotCountWeek {
   @maxLength(1) ign: IGN;
   slotCount: slotCount;
@@ -427,18 +476,18 @@ model slotCountWeek {
   @maxLength(1) ign_1: IGN;
 }
 
-/** Timeslot from/until */
+/** timeslot from/until */
 model slotTimeFrame {
   htm: HTM;
   htm_1: HTM;
 }
 
-/** Temperature stored in the slot. */
-@divisor(10)
+/** desired temperature of a slot */
 @unit("°C")
+@divisor(10)
 scalar slotTemp extends UIN;
 
-/** Complete Slot for writing the time table settings. */
+/** complete slot for writing with target temperature */
 model wTimeSlotWithTemp {
   slotIndex: slotIndex;
   slotCount: slotCount;
@@ -446,22 +495,26 @@ model wTimeSlotWithTemp {
   slotTemp: slotTemp;
 }
 
-/** Complete slot for writing the time table settings without a temperature. FF FF has to be appended. */
+/** constant value for writing a slot without target temperature */
+@constValue(0xffff)
+scalar wTimeSlotConst extends U2L;
+
+/** complete slot for writing without target temperature */
 model wTimeSlotWithoutTemp {
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
-  @maxLength(2) hex: HEX;
+  wTimeSlotConst: wTimeSlotConst;
 }
 
-/** Complete Slot for reading the time table settings. */
+/** complete slot for reading with target temperature */
 model rTimeSlotWithTemp {
   @maxLength(1) ign: IGN;
   slotTimeFrame: slotTimeFrame;
   slotTemp: slotTemp;
 }
 
-/** Complete slot for reading the time table settings without a temperature. */
+/** complete slot for reading without target temperature */
 model rTimeSlotWithoutTemp {
   @maxLength(1) ign: IGN;
   slotTimeFrame: slotTimeFrame;
@@ -472,11 +525,27 @@ model rTimeSlotWithoutTemp {
 @values(Values_appliancecode)
 scalar appliancecode extends UCH;
 
+/** HMU Status code */
+@values(Values_hmucode)
+scalar hmucode extends UIN;
+
 enum Values_daysel {
   selected: 0,
   Mo_Fr: 1,
   Sa_Su: 2,
   Mo_Su: 3,
+}
+
+enum Values_daysel2 {
+  off: 0,
+  Mo: 1,
+  Tu: 2,
+  We: 3,
+  Th: 4,
+  Fr: 5,
+  Sa: 6,
+  Su: 7,
+  daily: 8,
 }
 
 enum Values_hcmode {
@@ -491,6 +560,18 @@ enum Values_hcmode2 {
   cooling: 1,
   heat: 3,
   water: 4,
+}
+
+enum Values_hcpumpmode {
+  off: 0,
+  heat: 1,
+  cool: 2,
+  exthwc: 3,
+}
+
+enum Values_hmmode {
+  trivalence: 0,
+  bivalence: 1,
 }
 
 enum Values_mcmode {
@@ -521,6 +602,15 @@ enum Values_mctype7 {
   circulation: 6,
 }
 
+enum Values_escomode {
+  heatpump: 0,
+  backup: 1,
+  heatpumpandbackup: 2,
+  heat: 3,
+  cool: 4,
+  heatandcool: 5,
+}
+
 enum Values_hwcmode {
   disabled: 0,
   on: 1,
@@ -539,6 +629,11 @@ enum Values_mixer {
   off: 0,
   open: 1,
   close: 2,
+}
+
+enum Values_openclose {
+  close: 0,
+  open: 1,
 }
 
 enum Values_daynight {
@@ -608,6 +703,13 @@ enum Values_backmode {
   onlybackup: 2,
 }
 
+enum Values_backmode2 {
+  off: 0,
+  heat: 1,
+  water: 2,
+  heatandwater: 3,
+}
+
 enum Values_pumppow {
   _0: 0,
   _1: 1,
@@ -668,6 +770,19 @@ enum Values_zonesel {
   _6: 6,
 }
 
+enum Values_zonestatus {
+  auto: 0,
+  ventilation: 1,
+  party: 3,
+  veto: 4,
+  onedayaway: 5,
+  onedayathome: 6,
+  holidayaway: 7,
+  holidayathome: 8,
+  load: 9,
+  off: 10,
+}
+
 enum Values_sfmode {
   auto: 0,
   ventilation: 1,
@@ -678,11 +793,28 @@ enum Values_sfmode {
   load: 6,
 }
 
+enum Values_sfmodezone {
+  auto: 0,
+  ventilation: 1,
+  veto: 3,
+}
+
+enum Values_sfmodehwc {
+  auto: 0,
+  load: 6,
+}
+
 enum Values_opmode {
   off: 0,
   auto: 1,
   day: 2,
   night: 3,
+}
+
+enum Values_opmode2 {
+  off: 0,
+  auto: 1,
+  manual: 2,
 }
 
 enum Values_zmapping {
@@ -705,10 +837,21 @@ enum Values_offmode {
   night: 1,
 }
 
+enum Values_offmode2 {
+  eco: 0,
+  normal: 1,
+}
+
 enum Values_rcmode {
   off: 0,
   modulating: 1,
   thermostat: 2,
+}
+
+enum Values_rcmode2 {
+  inactive: 0,
+  active: 1,
+  expanded: 2,
 }
 
 enum Values_appliancecode {
@@ -732,6 +875,62 @@ enum Values_appliancecode {
   hwc_pump_overrun: 17,
   hwc_shutdown: 18,
   frost_protect: 34,
+}
+
+enum Values_hmucode {
+  frost_protect: 34,
+  standby: 100,
+  heat_compressor_shutdown: 101,
+  heat_compressor_blocked: 102,
+  heat_prerun: 103,
+  heat_compressor_active: 104,
+  heat_overrun: 107,
+  cool_compressor_shutdown: 111,
+  cool_compressor_blocked: 112,
+  cool_prerun: 113,
+  cool_compressor_active: 114,
+  cool_overrun: 117,
+  heat_immersion_heater_active: 125,
+  hwc_compressor_blocked: 132,
+  hwc_prerun: 133,
+  hwc_compressor_active: 134,
+  hwc_immersion_heater_active: 135,
+  hwc_overrun: 137,
+  heat_immersion_heater_shutdown: 141,
+  heat_immersion_heater_blocked: 142,
+  hwc_immersion_heater_shutdown: 151,
+  hwc_immersion_heater_blocked: 152,
+  air_purging_program_active: 202,
+  compressor_oil_heating_active: 240,
+  fan1_blocked: 252,
+  fan1_airinlet_too_high: 255,
+  fan1_airinlet_too_low: 256,
+  fan2_blocked: 260,
+  building_circuit_flow_too_low: 275,
+  building_circuit_pump_fault: 277,
+  frequency_converter_fault_compressor: 280,
+  frequency_converter_fault_mains_voltage: 281,
+  frequency_converter_fault_overheating: 282,
+  deicing_time_too_long: 283,
+  deicing_flow_temp_too_low: 284,
+  compressor_outlet_temp_too_high: 285,
+  hot_gas_temp_switch_open: 286,
+  fan1_wind: 287,
+  fan2_wind: 288,
+  current_limt_active: 289,
+  high_pressure_switch_open: 302,
+  compressor_outlet_temp_too_high_1: 303,
+  evaporation_temp_too_low: 304,
+  condensation_temp_too_low: 305,
+  evaporation_temp_too_high: 306,
+  condensation_temp_too_high: 308,
+  building_circuit_return_temp_too_low: 312,
+  building_circuit_return_temp_too_high: 314,
+  immersion_heater_flow_temp_too_high: 351,
+  deicing_active: 516,
+  frequency_converter_fault: 575,
+  connection_fault_frequency_converter: 581,
+  four_port_valve_position_fault: 590,
 }
 
 /** default *r for register */
@@ -840,5 +1039,6 @@ model Timer<T> {
 }
 
 /** display contrast */
-@minValue(0) @maxValue(15)
+@minValue(0)
+@maxValue(15)
 scalar displaycontrast extends UCH;

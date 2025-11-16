@@ -72,11 +72,22 @@ namespace Hcmode_inc {
   @inherit(r_1)
   @ext(1)
   model Status01 {
+    /** flow temperature */
     temp: temp1;
+
+    /** return temperature */
     temp_1: temp1;
+
+    /** outside temperature */
     temp_2: temp2;
+
+    /** hot water temperature */
     temp_3: temp1;
+
+    /** storage temperature */
     temp_4: temp1;
+
+    /** pump status */
     pumpstate: pumpstate;
   }
 
@@ -84,10 +95,19 @@ namespace Hcmode_inc {
   @inherit(r_1)
   @ext(0x2)
   model Status02 {
+    /** hot water mode */
     hwcmode: hwcmode;
+
+    /** max temperature */
     temp: temp0;
+
+    /** current temperature */
     temp_1: temp1;
+
+    /** max temperature */
     temp_2: temp0;
+
+    /** current temperature */
     temp_3: temp1;
   }
 

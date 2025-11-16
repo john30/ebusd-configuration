@@ -1460,10 +1460,10 @@ namespace Ctlv2 {
     value: HEX;
   }
 
-  /** timer Anzahl */
+  /** timer count hot water */
   @id(MF, 0x55, 0xa4, 0, 0x2)
   model HwcTimer_Timeframes {
-    /** Amount of configured slots per weekday */
+    /** Number of configured slots per weekday */
     value: slotCountWeek;
   }
 
@@ -1681,10 +1681,10 @@ namespace Ctlv2 {
     value: HEX;
   }
 
-  /** timer Anzahl */
+  /** timer count circulation */
   @id(MF, 0x55, 0xa4, 0, 0x3)
   model CcTimer_Timeframes {
-    /** Amount of configured slots per weekday */
+    /** Number of configured slots per weekday */
     value: slotCountWeek;
   }
 
@@ -1902,10 +1902,10 @@ namespace Ctlv2 {
     value: HEX;
   }
 
-  /** timer Anzahl */
+  /** timer count zone 1 */
   @id(MF, 0x55, 0xa4, 0, 0)
   model Z1Timer_Timeframes {
-    /** Amount of configured slots per weekday */
+    /** Number of configured slots per weekday */
     value: slotCountWeek;
   }
 
@@ -2123,10 +2123,10 @@ namespace Ctlv2 {
     value: HEX;
   }
 
-  /** timer Anzahl */
+  /** timer count zone 2 */
   @id(MF, 0x55, 0xa4, 1, 0)
   model Z2Timer_Timeframes {
-    /** Amount of configured slots per weekday */
+    /** Number of configured slots per weekday */
     value: slotCountWeek;
   }
 
@@ -2344,10 +2344,10 @@ namespace Ctlv2 {
     value: HEX;
   }
 
-  /** timer Anzahl */
+  /** timer count zone 3 */
   @id(MF, 0x55, 0xa4, 0x2, 0)
   model Z3Timer_Timeframes {
-    /** Amount of configured slots per weekday */
+    /** Number of configured slots per weekday */
     value: slotCountWeek;
   }
 

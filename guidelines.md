@@ -69,7 +69,7 @@ Each `.tsp` file basically looks similar, i.e. starts with imports and uses, fol
 ## Migrating from existing CSVs
 In order to ease the move to TypeSpec,the [`csv2tsp.ts` utility](utils/src/csv2tsp.ts) utility is available for converting existing CSV files.
 
-Converting the latest CSV files prepared for i18n can be done with the npm tasks like this:
+Converting CSV files prepared for i18n (from the "archived/" folder) can be done with the npm tasks like this:
 1. `npm run csv2tsp`: generates English tsp files in directory `outtsp` including a helper file `i18n.yml` for the combination below
 2. `npm run csv2tsp-combine`: generates German tsp files in directory `outtsp.de` including a helper file `i18n.yml` as well as i18n files `en.yaml` and `de.yaml` in `outtsp`
 3. `npm run maintsp`: generates the `main.tsp` file from the list of the other tsp files
