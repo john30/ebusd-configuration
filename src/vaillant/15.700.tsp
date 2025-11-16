@@ -982,7 +982,7 @@ namespace _700 {
   @inherit(r_5, w_5)
   @ext(0x1e, 0)
   model Hc3PumpStatus {
-    /** pump status of zone 3 */
+	  /** pump status of zone 3 */
     value: UIN;
   }
 // ##### heating circuit 4 #####
@@ -1113,6 +1113,137 @@ namespace _700 {
   @ext(0x1e, 0)
   model Hc4PumpStatus {
     /** pump status of Hc4 */
+    value: UIN;
+  }
+
+// ##### heating circuit 5 #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x2, 0, 0x2, 0x4)
+  model r_27 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** default *w */
+  @write
+  @base(MF, 0x24, 0x2, 1, 0x2, 0x4)
+  model w_27 {}
+
+  /** CircuitType heating circuit 5 */
+  @inherit(r_27)
+  @ext(0x2, 0)
+  model Hc5CircuitType {
+    mctype: mctype;
+    @maxLength(1) ign: IGN;
+  }
+  // r;w,Hc5Unknown04,(constant 30) temperature heating circuit 5,0400,tempv,unknown value for Hc5
+
+  /** ActualFlowTempDesired heating circuit 5 */
+  @inherit(r_27)
+  @ext(0x7, 0)
+  model Hc5ActualFlowTempDesired {
+    /** current flow temperature setpoint of Hc5 */
+    value: tempv;
+  }
+
+  /** FlowTemp heating circuit 5 */
+  @inherit(r_27)
+  @ext(0x8, 0)
+  model Hc5FlowTemp {
+    /** current flow temperature of Hc5 */
+    value: tempv;
+  }
+  // r;w,Hc5Unknown09,(constant 60) temperature,0900,tempv,unknown value for Hc5
+
+  /** ExcessTemp heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0xb, 0)
+  model Hc5ExcessTemp {
+    /** excess temperature of Hc5 (flow temperature's setpoint is increased by this value to keep the mixing valve in its control range) */
+    value: calibrationv;
+  }
+  // r;w,Hc5Unknown0c,(constant 65) temperature heating circuit 5,0C00,tempv,unknown value for Hc5
+  // r;w,Hc5Unknown0d,(constant 65) temperature heating circuit 5,0D00,tempv,unknown value for Hc5
+
+  /** AutoOffMode heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0xe, 0)
+  model Hc5AutoOffMode {
+    /** operation of Hc5 during the lowering time; no influence if room temperature modulation is set to thermostat */
+    value: offmode;
+  }
+
+  /** HeatCurve heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0xf, 0)
+  model Hc5HeatCurve {
+    /** heating curve of Hc5 */
+    value: EXP;
+  }
+
+  /** MaxFlowTempDesired heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0x10, 0)
+  model Hc5MaxFlowTempDesired {
+    /** maximum flow temperature setpoint (end emphasis) of Hc5 */
+    value: tempv;
+  }
+  // r;w,Hc5Unknown11,(constant 20) temperature heating circuit 5,1100,tempv,unknown value for Hc5
+
+  /** MinFlowTempDesired heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0x12, 0)
+  model Hc5MinFlowTempDesired {
+    /** minimum flow temperature setpoint (end emphasis) of Hc5 */
+    value: tempv;
+  }
+
+  /** summer outside switchoff temperature heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0x14, 0)
+  model Hc5SummerTempLimit {
+    /** if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint */
+    value: tempv;
+  }
+
+  /** RoomTempSwitchOn heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0x15, 0)
+  model Hc5RoomTempSwitchOn {
+    /** room temperature modulation of Hc5 */
+    value: rcmode;
+  }
+
+  /** MixerMovement heating circuit 5 */
+  @inherit(r_27)
+  @ext(0x1a, 0)
+  model Hc5MixerMovement {
+    /** status of mixer (<0 closing, >0 opening) */
+    value: EXP;
+  }
+
+  /** HeatCurveAdaption heating circuit 5 */
+  @inherit(r_27)
+  @ext(0x1c, 0)
+  model Hc5HeatCurveAdaption {
+    /** adaption applied to heating curve of Hc5 */
+    value: EXP;
+  }
+
+  /** Status heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0x1b, 0)
+  model Hc5Status {
+    /** status of Hc5 */
+    value: UCH;
+  }
+
+  /** PumpStatus heating circuit 5 */
+  @inherit(r_27, w_27)
+  @ext(0x1e, 0)
+  model Hc5PumpStatus {
+    /** pump status of Hc5 */
     value: UIN;
   }
   // ##### zone 1 #####
