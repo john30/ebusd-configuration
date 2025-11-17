@@ -127,6 +127,7 @@ namespace Bai._0010023673_inc {
   @inherit(r)
   @ext(0xfb, 0)
   model PrimaryCircuitFlowrate {
+    /** průtok v hlavním ohruhu */
     @unit("l/min")
     value: uin100;
   }
