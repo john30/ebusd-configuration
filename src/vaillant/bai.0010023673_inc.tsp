@@ -14,7 +14,6 @@ namespace Bai._0010023673_inc {
   @ext(0x6c, 0)
   model PartloadHcKW is InstallRegister<power>;
 
-
   /** d.01 central heating overruntime: water pump overrun time for heating mode */
   @ext(0xf7, 0x3)
   model WPPostrunTime is InstallRegister<minutes0>;
@@ -548,15 +547,6 @@ namespace Bai._0010023673_inc {
   /** d.77 hot water partload: storage part load (storage charging capacity limit) */
   @ext(0xb1, 0)
   model PartloadHwcKW is InstallRegister<power>;
-  /** d.77 hot water partload */
-  @inherit(r, wi)
-  @ext(0x8, 0x4)
-  model PartloadHwcKW1 {
-    /** storage part load (storage charging capacity limit) */
-    value: power;
-  }
-
-
 
   /** d.78 Max value flow temp storage: storage charging temperature limit (target flow temperature in storage mode) */
   @ext(0xf, 0x4)

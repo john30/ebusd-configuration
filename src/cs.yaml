@@ -124,23 +124,23 @@ adpPreH_RoomSetpoint: adpPreH_RoomSetpoint
 adpPreH_RoomTempStart: adpPreH_RoomTempStart
 adpPreH_Starttime: adpPreH_Starttime
 AdvancedPowerValues_DK: AdvancedPowerValues_DK
-Air flow rate mode 0: Air flow rate mode 0
-Air flow rate mode 1: Air flow rate mode 1
-Air flow rate mode 2: Air flow rate mode 2
-Air flow rate mode 3: Air flow rate mode 3
-Air quality sensor number: Air quality sensor number
-Air-earth collector available: Air-earth collector available
-'AirInletSensor_Offset: calibration value for air inlet sensor': 'AirInletSensor_Offset: calibration value for air inlet sensor'
-'AirOutlet: heat source outlet temperature for air to water machines': 'AirOutlet: heat source outlet temperature for air to water machines'
+Air flow rate mode 0: Režim průtoku vzduchu 0
+Air flow rate mode 1: Režim průtoku vzduchu 1
+Air flow rate mode 2: Režim průtoku vzduchu 2
+Air flow rate mode 3: Režim průtoku vzduchu 3
+Air quality sensor number: Číslo čidla kvality vzduchu
+Air-earth collector available: Kolektor vzduch–země k dispozici
+'AirInletSensor_Offset: calibration value for air inlet sensor': 'AirInletSensor_Offset: kalibrační hodnota pro čidlo přívodu vzduchu'
+'AirOutlet: heat source outlet temperature for air to water machines': 'AirOutlet: výstupní teplota zdroje tepla u vzduch–voda jednotek'
 'AirOutlet: Offset for air outlet temperature sensor': 'AirOutlet: Offset for air outlet temperature sensor'
-aktiviert/deaktiviert die SHU-Funktionalität: aktiviert/deaktiviert die SHU-Funktionalität
-aktuelle Raumtemperatur in Zone 1: aktuelle Raumtemperatur in Zone 1
-aktuelle Raumtemperatur in Zone 2: aktuelle Raumtemperatur in Zone 2
-aktuelle Raumtemperatur in Zone 3: aktuelle Raumtemperatur in Zone 3
-Aktuelle Uhrzeit: Aktuelle Uhrzeit
-Aktueller Monat Brennstoffverbrauch Heizung: Aktueller Monat Brennstoffverbrauch Heizung
-Aktueller Monat Brennstoffverbrauch hot water: Aktueller Monat Brennstoffverbrauch hot water
-Aktueller Monat Stromverbrauch Heizung: Aktueller Monat Stromverbrauch Heizung
+aktiviert/deaktiviert die SHU-Funktionalität: aktivuje/deaktivuje funkci SHU
+aktuelle Raumtemperatur in Zone 1: aktuální pokojová teplota v zóně 1
+aktuelle Raumtemperatur in Zone 2: aktuální pokojová teplota v zóně 2
+aktuelle Raumtemperatur in Zone 3: aktuální pokojová teplota v zóně 3
+Aktuelle Uhrzeit: Aktuální čas
+Aktueller Monat Brennstoffverbrauch Heizung: Aktuální měsíc – spotřeba paliva topení
+Aktueller Monat Brennstoffverbrauch hot water: Aktuální měsíc – spotřeba paliva teplá voda
+Aktueller Monat Stromverbrauch Heizung: Aktuální měsíc – spotřeba elektřiny topení
 Aktueller Monat Stromverbrauch hot water: Aktueller Monat Stromverbrauch hot water
 Aktuelles Datum: Aktuelles Datum
 Amount of configured slots per weekday: Amount of configured slots per weekday
