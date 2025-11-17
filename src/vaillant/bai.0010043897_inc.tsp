@@ -16,6 +16,6 @@ namespace Bai._0010043897_inc {
     Bai._308523_inc,
 
     @conditionExt(Id.Id.id, 0x15, "='EMM00'")
-    emm: Bai.Emm_inc,
+    Bai.Emm_inc,
   }
 }

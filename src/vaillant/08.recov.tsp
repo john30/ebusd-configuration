@@ -117,7 +117,7 @@ namespace Recov {
   @ext(0x1d, 0xe)
   model ReducedVolumeFlow is Register<percent>;
 
-  /** Intenstive ventilation to NL */
+  /** Intensive ventilation to NL */
   @ext(0x1e, 0xe)
   model IntensiveVolumeFlow is Register<percent>;
 
