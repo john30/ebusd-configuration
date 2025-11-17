@@ -11,20 +11,8 @@ namespace Bai._0010023673_inc {
   // ##### dia level 1 #####
 
   /** d.00 heating partload: Heating part load */
-  @ext(0x7, 0x4)
-  model PartloadHcKW is InstallRegister<power>;
-  /** d.00 heating partload */
-  @inherit(r, wi)
-  @ext(0xb0, 0)
-  model PartloadHcKW1 {
-    /** Heating part load */
-    @unit("kW")
-    @divisor(10)
-    value: SIN;
-  }
-  /** d.00 heating partload: Heating part load */
   @ext(0x6c, 0)
-  model PartloadHcKW2 is InstallRegister<power>;
+  model PartloadHcKW is InstallRegister<power>;
 
 
   /** d.01 central heating overruntime: water pump overrun time for heating mode */
@@ -558,24 +546,12 @@ namespace Bai._0010023673_inc {
   model StorageLoadTimeMax is InstallRegister<minutes0>;
 
   /** d.77 hot water partload: storage part load (storage charging capacity limit) */
-  @ext(0x8, 0x4)
+  @ext(0xb1, 0)
   model PartloadHwcKW is InstallRegister<power>;
-  /** d.77 Partload_DHW_KW_DK */
-  @inherit(r, wi)
-  @ext(0xb1, 0)
-  model PartloadHwcKW1 {
-    /** DHW part load */
-    @unit("kW")
-    @divisor(10)
-    value: SIN;
-  }
-  /** d.77 hot water partload: storage part load (storage charging capacity limit) */
-  @ext(0xb1, 0)
-  model PartloadHwcKW2 is InstallRegister<power>;
   /** d.77 hot water partload */
   @inherit(r, wi)
   @ext(0x8, 0x4)
-  model PartloadHwcKW3 {
+  model PartloadHwcKW1 {
     /** storage part load (storage charging capacity limit) */
     value: power;
   }
