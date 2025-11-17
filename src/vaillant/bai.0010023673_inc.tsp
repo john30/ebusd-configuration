@@ -573,7 +573,7 @@ namespace Bai._0010023673_inc {
   @ext(0xb1, 0)
   model PartloadHwcKW2 is InstallRegister<power>;
   /** d.77 hot water partload */
-  @inherit(r, wi_1)
+  @inherit(r, wi)
   @ext(0x8, 0x4)
   model PartloadHwcKW3 {
     /** storage part load (storage charging capacity limit) */
