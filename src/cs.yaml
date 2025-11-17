@@ -2243,7 +2243,7 @@ No. of solar panels: Počet solárních panelů
   NoiseReductionFactor: amount of noise reduction when activated by time
   schedule
 'NoiseReductionFactor: noise reduction factor to reduce fan speed': 'NoiseReductionFactor: noise reduction factor to reduce fan speed'
-Nominal flow NL: Nominal flow NL
+Nominal flow NL: jmenovitý průtok NL
 NoResetRequested is a dummy message doing nothing. It might be useful for integration in MQTT and HA automation. ErrorsAndFilter seems not working for me - but is specified.: >-
   NoResetRequested is a dummy message doing nothing. It might be useful for
   integration in MQTT and HA automation. ErrorsAndFilter seems not working for
@@ -2262,7 +2262,7 @@ Ntc3RawData: Ntc3RawData
 'Ntc3Sensor: Temperature in buffer flow (to buffer)': 'Ntc3Sensor: Temperature in buffer flow (to buffer)'
 Ntc4RawData: Ntc4RawData
 'Ntc4Sensor: Temperature in buffer back flow (from buffer)': 'Ntc4Sensor: Temperature in buffer back flow (from buffer)'
-number of bytes: number of bytes
+number of bytes: počet bajtů
 Number of CH mode starts: Number of CH mode starts
 number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp): number of days of manual cooling (max. 99, 0=off, set temp via z1CoolingTemp)
 Number of DHW mode starts: Number of DHW mode starts
@@ -2310,10 +2310,10 @@ OperatingMode430: OperatingMode430
 'OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 = off, 4 = on)': >-
   OperatingMode470: Operating mode of solar DHW circuit for 470 (1 = auto, 3 =
   off, 4 = on)
-Operation bypass valve: Operation bypass valve
-operation during the auto-off period: operation during the auto-off period
-operation during the lowering time: operation during the lowering time
-operation hours: operation hours
+Operation bypass valve: Provoz obtokového ventilu
+operation during the auto-off period: provoz během období automatického vypnutí
+operation during the lowering time: provoz během doby snížení
+operation hours: provozní hodiny
 operation minutes: operation minutes
 Operation mode: operation mode
 operation mode for cooling of all/configured zone(s): operation mode for cooling of all/configured zone(s)
@@ -2878,7 +2878,7 @@ short name of zone 1: krátký název zóny 1
 short name of zone 2: krátký název zóny 2
 short name of zone 3: krátký název zóny 3
 shortlabel zone 3: krátký štítek zóny 3
-Shows the last state where the connection has failed.: Shows the last state where the connection has failed.
+Shows the last state where the connection has failed.: Zobrazí poslední stav, ve kterém došlo k chybě připojení.
 shows whether maintenance is due: shows whether maintenance is due
 shows, if assert is enabled, the name of the module where the 'assert fail' occured: >-
   shows, if assert is enabled, the name of the module where the 'assert fail'
