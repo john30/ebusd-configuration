@@ -132,21 +132,21 @@ Air quality sensor number: Číslo čidla kvality vzduchu
 Air-earth collector available: Kolektor vzduch–země k dispozici
 'AirInletSensor_Offset: calibration value for air inlet sensor': 'AirInletSensor_Offset: kalibrační hodnota pro čidlo přívodu vzduchu'
 'AirOutlet: heat source outlet temperature for air to water machines': 'AirOutlet: výstupní teplota zdroje tepla u vzduch–voda jednotek'
-'AirOutlet: Offset for air outlet temperature sensor': 'AirOutlet: Offset for air outlet temperature sensor'
+'AirOutlet: Offset for air outlet temperature sensor': 'AirOutlet: offset pro čidlo výstupní teploty vzduchu'
 aktiviert/deaktiviert die SHU-Funktionalität: aktivuje/deaktivuje funkci SHU
 aktuelle Raumtemperatur in Zone 1: aktuální pokojová teplota v zóně 1
 aktuelle Raumtemperatur in Zone 2: aktuální pokojová teplota v zóně 2
 aktuelle Raumtemperatur in Zone 3: aktuální pokojová teplota v zóně 3
 Aktuelle Uhrzeit: Aktuální čas
 Aktueller Monat Brennstoffverbrauch Heizung: Aktuální měsíc – spotřeba paliva topení
-Aktueller Monat Brennstoffverbrauch hot water: Aktuální měsíc – spotřeba paliva teplá voda
+Aktueller Monat Brennstoffverbrauch hot water: Aktuální měsíc – spotřeba paliva TUV
 Aktueller Monat Stromverbrauch Heizung: Aktuální měsíc – spotřeba elektřiny topení
-Aktueller Monat Stromverbrauch hot water: Aktueller Monat Stromverbrauch hot water
-Aktuelles Datum: Aktuelles Datum
-Amount of configured slots per weekday: Amount of configured slots per weekday
-Analog inputs actual values: Analog inputs actual values
-Anlegethermostat: Anlegethermostat
-'Anode_IN_Feedback_DK: feedback signal of the anode': 'Anode_IN_Feedback_DK: feedback signal of the anode'
+Aktueller Monat Stromverbrauch hot water: Aktuální měsíc – spotřeba elektřiny TUV
+Aktuelles Datum: Aktuální datum
+Amount of configured slots per weekday: Počet nakonfigurovaných časových úseků na den
+Analog inputs actual values: Aktuální hodnoty analogových vstupů
+Anlegethermostat: Přiložný termostat
+'Anode_IN_Feedback_DK: feedback signal of the anode': 'Anode_IN_Feedback_DK: zpětný signál anody'
 Anpassung Heizkurve Heizkreis 1: Anpassung Heizkurve Heizkreis 1
 Anpassung Heizkurve Heizkreis 2: Anpassung Heizkurve Heizkreis 2
 Anpassung Heizkurve Heizkreis 3: Anpassung Heizkurve Heizkreis 3
