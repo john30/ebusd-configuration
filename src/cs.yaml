@@ -2216,29 +2216,29 @@ MonitorMatlab_Last5minSolarAverage: MonitorMatlab_Last5minSolarAverage
   221: In Overheat protection
 MonitorSolarPIDValue: MonitorSolarPIDValue
 'MSW_max: in %': 'MSW_max: in %'
-multifunction relay setting: multifunction relay setting
-'MultifunctionOutput: Output of multifunction relay': 'MultifunctionOutput: Output of multifunction relay'
-name: name
-name of zone 1: name of zone 1
-name of zone 2: name of zone 2
-name of zone 3: name of zone 3
-'NativeDhwCircuitDisabled: Disable DHW': 'NativeDhwCircuitDisabled: Disable DHW'
-net ID from teach in: net ID from teach in
+multifunction relay setting: nastavení multifunkčního relé
+'MultifunctionOutput: Output of multifunction relay': 'MultifunctionOutput: výstup multifunkčního relé'
+name: název
+name of zone 1: název zóny 1
+name of zone 2: název zóny 2
+name of zone 3: název zóny 3
+'NativeDhwCircuitDisabled: Disable DHW': 'NativeDhwCircuitDisabled: Zakázat TUV'
+net ID from teach in: síťové ID z naučení
 Net_ID: Net_ID
-next maintenance: next maintenance
-night setpoint for zone 1: night setpoint for zone 1
-night setpoint for zone 2: night setpoint for zone 2
-night setpoint for zone 3: night setpoint for zone 3
-night temperature zone 1: night temperature zone 1
-night temperature zone 2: night temperature zone 2
-night temperature zone 3: night temperature zone 3
-night ventilation: night ventilation
+next maintenance: příští údržba
+night setpoint for zone 1: noční požadavek zóna 1
+night setpoint for zone 2: noční požadavek zóna 2
+night setpoint for zone 3: noční požadavek zóna 3
+night temperature zone 1: noční teplota zóna 1
+night temperature zone 2: noční teplota zóna 2
+night temperature zone 3: noční teplota zóna 3
+night ventilation: noční větrání
 'Night-time offset (Specific function for Belgium and NL: RT does not stop the burner but change the set-point. Do not use in other countries)': >-
   Night-time offset (Specific function for Belgium and NL: RT does not stop the
   burner but change the set-point. Do not use in other countries)
 'NightRoomSetPoint_MC: Room set point for night operation and mixer circuit': 'NightRoomSetPoint_MC: Room set point for night operation and mixer circuit'
-No. of solar panels: No. of solar panels
-'NoiseReduction: noise reduction is active': 'NoiseReduction: noise reduction is active'
+No. of solar panels: Počet solárních panelů
+'NoiseReduction: noise reduction is active': 'NoiseReduction: redukce hluku je aktivní'
 'NoiseReductionFactor: amount of noise reduction when activated by time schedule': >-
   NoiseReductionFactor: amount of noise reduction when activated by time
   schedule
@@ -2874,10 +2874,10 @@ SF mode zone 3: SF mode zone 3
   temperature
 'SHE_MaxFlowTemp_DK: maximum flow temperature DHW': 'SHE_MaxFlowTemp_DK: maximum flow temperature DHW'
 'Shiftloadtankpump_DK: current status of the shift load pump': 'Shiftloadtankpump_DK: current status of the shift load pump'
-short name of zone 1: short name of zone 1
-short name of zone 2: short name of zone 2
-short name of zone 3: short name of zone 3
-shortlabel zone 3: shortlabel zone 3
+short name of zone 1: krátký název zóny 1
+short name of zone 2: krátký název zóny 2
+short name of zone 3: krátký název zóny 3
+shortlabel zone 3: krátký štítek zóny 3
 Shows the last state where the connection has failed.: Shows the last state where the connection has failed.
 shows whether maintenance is due: shows whether maintenance is due
 shows, if assert is enabled, the name of the module where the 'assert fail' occured: >-
