@@ -100,7 +100,6 @@ namespace Bai._308523_inc {
   @inherit(r)
   @ext(0xfb, 0)
   model PrimaryCircuitFlowrate {
-    /** Průtok hlavním okruhem */
     @unit("l/min")
     value: uin100;
   }

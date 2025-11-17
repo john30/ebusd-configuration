@@ -10,20 +10,6 @@ namespace Bai._0010023673_inc {
   // ,BAI00,RAY PROTHERM,
   // ##### dia level 1 #####
 
-    /** ActualEnvironmentPowerFine */
-    @inherit(r, u)
-    @ext(0xe2, 1)
-    model ActualEnvironmentPowerFine {
-      /** environment power in higher resolution (100W) */
-      @unit("kW")
-      @divisor(10)
-      value: UCH;
-    }
-
-  /** ActualEnvironmentPower: only for graphic display: the environmental power that is actually displayed in kW */
-  @ext(0xba, 0)
-  model ActualEnvironmentPower is ReadonlyUpdateRegister<power>;
-
   /** d.00 heating partload: Heating part load */
   @ext(0x7, 0x4)
   model PartloadHcKW is InstallRegister<power>;
@@ -127,7 +113,6 @@ namespace Bai._0010023673_inc {
   @inherit(r)
   @ext(0xfb, 0)
   model PrimaryCircuitFlowrate {
-    /** průtok v hlavním ohruhu */
     @unit("l/min")
     value: uin100;
   }
@@ -584,6 +569,18 @@ namespace Bai._0010023673_inc {
     @divisor(10)
     value: SIN;
   }
+  /** d.77 hot water partload: storage part load (storage charging capacity limit) */
+  @ext(0xb1, 0)
+  model PartloadHwcKW2 is InstallRegister<power>;
+  /** d.77 hot water partload */
+  @inherit(r, wi_1)
+  @ext(0x8, 0x4)
+  model PartloadHwcKW3 {
+    /** storage part load (storage charging capacity limit) */
+    value: power;
+  }
+
+
 
   /** d.78 Max value flow temp storage: storage charging temperature limit (target flow temperature in storage mode) */
   @ext(0xf, 0x4)

@@ -3545,25 +3545,25 @@ UV 1: UV 1
 'V430_PluggedIn: false if calorMATIC 470 is set inside a wall socket and not plugged in': >-
   V430_PluggedIn: false if calorMATIC 470 is set inside a wall socket and not
   plugged in
-Vacation Enable: Vacation Enable
-Vacation End Time: Vacation End Time
-Vacation Start Time: Vacation Start Time
-Vacation Temp Manual Set: Vacation Temp Manual Set
-value and sensorstate of lower tank temperature sensor SP2: value and sensorstate of lower tank temperature sensor SP2
-value and sensorstate of middle tank temperature sensor TD1: value and sensorstate of middle tank temperature sensor TD1
-value and sensorstate of the system's return flow sensor TD2: value and sensorstate of the system's return flow sensor TD2
-value and sensorstate of upper tank temperature sensor SP1: value and sensorstate of upper tank temperature sensor SP1
-value of airpressure-sensor: value of airpressure-sensor
-value of flowrate: value of flowrate
-value of waterpressure-sensor: value of waterpressure-sensor
-valve position: valve position
-valve status of zone 1: valve status of zone 1
-valve status of zone 2: valve status of zone 2
-valve status of zone 3: valve status of zone 3
-valve status zone 1: valve status zone 1
-valve status zone 2: valve status zone 2
+Vacation Enable: Dovolená povolena
+Vacation End Time: Konec dovolené (čas)
+Vacation Start Time: Začátek dovolené (čas)
+Vacation Temp Manual Set: Ruční nastavení teploty během dovolené
+value and sensorstate of lower tank temperature sensor SP2: hodnota a stav čidla spodní teploty zásobníku SP2
+value and sensorstate of middle tank temperature sensor TD1: hodnota a stav čidla střední teploty zásobníku TD1
+value and sensorstate of the system's return flow sensor TD2: hodnota a stav čidla zpátečky systému TD2
+value and sensorstate of upper tank temperature sensor SP1: hodnota a stav čidla horní teploty zásobníku SP1
+value of airpressure-sensor: hodnota snímače tlaku vzduchu
+value of flowrate: hodnota průtoku
+value of waterpressure-sensor: hodnota snímače tlaku vody
+valve position: poloha ventilu
+valve status of zone 1: stav ventilu zóny 1
+valve status of zone 2: stav ventilu zóny 2
+valve status of zone 3: stav ventilu zóny 3
+valve status zone 1: stav ventilu zóny 1
+valve status zone 2: stav ventilu zóny 2
 valve status zone 3: valve status zone 3
-Variant: Variant
+Variant: Varianta
 'VariantDKRefreshCnt: counts how often variant ID has been corrected': 'VariantDKRefreshCnt: counts how often variant ID has been corrected'
 'Variante: 1: VMS 30 2: VPM 20 S 3: VPM 60 S (identified by resistor in harness)': >-
   Variante: 1: VMS 30 2: VPM 20 S 3: VPM 60 S (identified by resistor in
@@ -3572,15 +3572,15 @@ Variant: Variant
 'VDHW_starts: Einschaltungen VDHW': 'VDHW_starts: Einschaltungen VDHW'
 'Ventilation level day: 1-6': 'Ventilation level day: 1-6'
 'Ventilation level night: 1-6': 'Ventilation level night: 1-6'
-Ventilation speed during day: Ventilation speed during day
-Ventilation speed during night: Ventilation speed during night
-Ventilation stage: Ventilation stage
+Ventilation speed during day: Rychlost větrání během dne
+Ventilation speed during night: Rychlost větrání během noci
+Ventilation stage: Stupeň větrání
 'Ventilatorfreigabe: Kollektorventilator': 'Ventilatorfreigabe: Kollektorventilator'
-Ventilstatus Zone 1: Ventilstatus Zone 1
+Ventilstatus Zone 1: Stav ventilu zóna 1
 Ventilstatus Zone 2: Ventilstatus Zone 2
 Ventilstatus Zone 3: Ventilstatus Zone 3
-version: version
-'VF_1: current external flow temperature and sensorstate': 'VF_1: current external flow temperature and sensorstate'
+version: verze
+'VF_1: current external flow temperature and sensorstate': 'VF_1: aktuální externí teplota přívodu a stav čidla'
 'Volumenstrom_P_P1: in %': 'Volumenstrom_P_P1: in %'
 'Volumenstrom_P_P2: in %': 'Volumenstrom_P_P2: in %'
 Vorlauftemp. IST: Vorlauftemp. IST
