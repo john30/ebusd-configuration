@@ -451,38 +451,38 @@ ChRequestAsc: ChRequestAsc
 'CircoPump: Power in %': 'CircoPump: výkon v %'
 CircuitDiaState: Stav schématu okruhu
 CircuitPeriods: Období okruhu
-Circuits_Name_DHW: Circuits_Name_DHW
-Circuits_Name_HC: Circuits_Name_HC
-Circuits_Name_HC1: Circuits_Name_HC1
-Circuits_Name_HC2: Circuits_Name_HC2
-CircuitsStates: CircuitsStates
-CircuitType heating circuit 1: CircuitType heating circuit 1
-CircuitType heating circuit 2: CircuitType heating circuit 2
-CircuitType heating circuit 3: CircuitType heating circuit 3
-CircuitType Heizkreis 1: CircuitType Heizkreis 1
-CircuitType Heizkreis 2: CircuitType Heizkreis 2
-CircuitType Heizkreis 3: CircuitType Heizkreis 3
-Circulation pump: Circulation pump
-'CirculationPump: circulation pump': 'CirculationPump: circulation pump'
-'CirculationPump: Circulation Pump ZP': 'CirculationPump: Circulation Pump ZP'
+Circuits_Name_DHW: Název okruhů TUV
+Circuits_Name_HC: Název topných okruhů
+Circuits_Name_HC1: Název topného okruhu 1
+Circuits_Name_HC2: Název topného okruhu 2
+CircuitsStates: Stavy okruhů
+CircuitType heating circuit 1: Typ topného okruhu 1
+CircuitType heating circuit 2: Typ topného okruhu 2
+CircuitType heating circuit 3: Typ topného okruhu 3
+CircuitType Heizkreis 1: Typ okruhu HK1
+CircuitType Heizkreis 2: Typ okruhu HK2
+CircuitType Heizkreis 3: Typ okruhu HK3
+Circulation pump: Oběhové čerpadlo
+'CirculationPump: circulation pump': 'CirculationPump: oběhové čerpadlo'
+'CirculationPump: Circulation Pump ZP': 'CirculationPump: oběhové čerpadlo ZP'
 'CirculationPump: control state of the circulation respectively loading pump (functionality of the pump depends on the configuration)': >-
-  CirculationPump: control state of the circulation respectively loading pump
-  (functionality of the pump depends on the configuration)
-'CirculationPump2: State of the circulation pump': 'CirculationPump2: State of the circulation pump'
+  CirculationPump: stav řízení oběhového resp. nabíjecího čerpadla (funkčnost
+  čerpadla závisí na konfiguraci)
+'CirculationPump2: State of the circulation pump': 'CirculationPump2: stav oběhového čerpadla'
 'CirculationPumpED: defines the percentage of a 10 minutes period to power the pump': >-
-  CirculationPumpED: defines the percentage of a 10 minutes period to power the
-  pump
-'CircuPumpRunning: circulation pump''s state': 'CircuPumpRunning: circulation pump''s state'
-'CleaningLady: 0,5h': 'CleaningLady: 0,5h'
-'CleaningLady: saving function is activated until read value * 1/2 h': 'CleaningLady: saving function is activated until read value * 1/2 h'
-'CleaningRequest: problems in air flow detected': 'CleaningRequest: problems in air flow detected'
-Clear error history: Clear error history
-Clear service message history: Clear service message history
-ClockSwitchSummerWinterDone: ClockSwitchSummerWinterDone
+  CirculationPumpED: definuje procento z 10minutového období, kdy má být čerpadlo
+  napájeno
+'CircuPumpRunning: circulation pump''s state': 'CircuPumpRunning: stav oběhového čerpadla'
+'CleaningLady: 0,5h': 'CleaningLady: 0,5 h'
+'CleaningLady: saving function is activated until read value * 1/2 h': 'CleaningLady: úsporná funkce je aktivní do hodnoty * 1/2 h'
+'CleaningRequest: problems in air flow detected': 'CleaningRequest: zjištěny problémy s prouděním vzduchu'
+Clear error history: Vymazat historii chyb
+Clear service message history: Vymazat historii servisních hlášení
+ClockSwitchSummerWinterDone: Přepnutí léto/zima provedeno
 'ClockSwitchSummerWinterDone: automatic switching over to/from daylight saving''s time has been done': >-
-  ClockSwitchSummerWinterDone: automatic switching over to/from daylight
-  saving's time has been done
-'CMResetCnt: clock monitor resets': 'CMResetCnt: clock monitor resets'
+  ClockSwitchSummerWinterDone: automatické přepnutí na/ze letního času bylo
+  provedeno
+'CMResetCnt: clock monitor resets': 'CMResetCnt: resety monitoru hodin'
 CO_CorrFactor_max_DK: CO_CorrFactor_max_DK
 CO_CorrFactor_sum_DK: CO_CorrFactor_sum_DK
 CO_PTC_ADC1_DK: CO_PTC_ADC1_DK
@@ -492,34 +492,32 @@ CO_PTC_PWM_Test_DK: CO_PTC_PWM_Test_DK
 CO_PTC_U1_DK: CO_PTC_U1_DK
 CO_PTC_U2_DK: CO_PTC_U2_DK
 CO_Sensor_SNR: CO_Sensor_SNR
-CO-sensor resistance at 0ppm CO: CO-sensor resistance at 0ppm CO
-CO2 Sensor 1 level: CO2 Sensor 1 level
-CO2 Sensor 1 lower limit: CO2 Sensor 1 lower limit
-CO2 Sensor 1 status: CO2 Sensor 1 status
-CO2 Sensor 1 upper limit: CO2 Sensor 1 upper limit
-CO2 Sensor 2 level: CO2 Sensor 2 level
-CO2 Sensor 2 lower limit: CO2 Sensor 2 lower limit
-CO2 Sensor 2 status: CO2 Sensor 2 status
-CO2 Sensor 2 upper limit: CO2 Sensor 2 upper limit
-CO2 Sensor 3 level: CO2 Sensor 3 level
-CO2 Sensor 3 lower limit: CO2 Sensor 3 lower limit
-CO2 Sensor 3 status: CO2 Sensor 3 status
-CO2 Sensor 3 upper limit: CO2 Sensor 3 upper limit
-CO2 Sensor 4 level: CO2 Sensor 4 level
-CO2 Sensor 4 lower limit: CO2 Sensor 4 lower limit
-CO2 Sensor 4 status: CO2 Sensor 4 status
-CO2 Sensor 4 upper limit: CO2 Sensor 4 upper limit
-CO2 Sensors activated: CO2 Sensors activated
-code for installer menu: code for installer menu
-code for the installer's menues: code for the installer's menues
+CO-sensor resistance at 0ppm CO: odpor CO senzoru při 0 ppm CO
+CO2 Sensor 1 level: Úroveň senzoru CO2 1
+CO2 Sensor 1 lower limit: Dolní mez senzoru CO2 1
+CO2 Sensor 1 status: Stav senzoru CO2 1
+CO2 Sensor 1 upper limit: Horní mez senzoru CO2 1
+CO2 Sensor 2 level: Úroveň senzoru CO2 2
+CO2 Sensor 2 lower limit: Dolní mez senzoru CO2 2
+CO2 Sensor 2 status: Stav senzoru CO2 2
+CO2 Sensor 2 upper limit: Horní mez senzoru CO2 2
+CO2 Sensor 3 level: Úroveň senzoru CO2 3
+CO2 Sensor 3 lower limit: Dolní mez senzoru CO2 3
+CO2 Sensor 3 status: Stav senzoru CO2 3
+CO2 Sensor 3 upper limit: Horní mez senzoru CO2 3
+CO2 Sensor 4 level: Úroveň senzoru CO2 4
+CO2 Sensor 4 lower limit: Dolní mez senzoru CO2 4
+CO2 Sensor 4 status: Stav senzoru CO2 4
+CO2 Sensor 4 upper limit: Horní mez senzoru CO2 4
+CO2 Sensors activated: Senzory CO2 aktivovány
+code for installer menu: kód pro instalační nabídku
+code for the installer's menues: kód pro nabídky instalatéra
 'Code1: together with code 2, this enables/disables several sw features, in hex format': >-
-  Code1: together with code 2, this enables/disables several sw features, in hex
-  format
+  Code1: spolu s kódem 2 umožňuje/zakazuje několik funkcí SW, v hex formátu
 Code1Code2Valid: Code1Code2Valid
-'Code1Code2Valid: changes of Code 1 /2 have to be commited by setting this flag': 'Code1Code2Valid: changes of Code 1 /2 have to be commited by setting this flag'
+'Code1Code2Valid: changes of Code 1 /2 have to be commited by setting this flag': 'Code1Code2Valid: změny kódu 1/2 je nutné potvrdit nastavením tohoto příznaku'
 'Code2: together with code 1, this enables/disables several sw features, in hex format': >-
-  Code2: together with code 1, this enables/disables several sw features, in hex
-  format
+  Code2: spolu s kódem 1 umožňuje/zakazuje několik funkcí SW, v hex formátu
 ColKickGradient: ColKickGradient
 ColKickPumpTime: ColKickPumpTime
 'ColKickPumpTime: time pump is running when collector kick function is activated': >-
