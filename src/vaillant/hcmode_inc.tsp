@@ -90,6 +90,7 @@ namespace Hcmode_inc {
     /** pump status */
     pumpstate: pumpstate;
 
+    @maxLength(2)
     extra: HEX;
   }
 
@@ -112,6 +113,7 @@ namespace Hcmode_inc {
     /** current temperature */
     temp_3: temp1;
 
+    @maxLength(1)
     extra: HEX;
   }
 
@@ -123,7 +125,6 @@ namespace Hcmode_inc {
     press: press;
     press_1: press;
     hcmode: hcmode2;
-    hex: HEX;
   }
 
   /** default *uw */
