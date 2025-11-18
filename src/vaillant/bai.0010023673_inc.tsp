@@ -22,6 +22,14 @@ namespace Bai._0010023673_inc {
   @ext(0x9, 0x4)
   model BlockTimeHcMax is InstallRegister<minutes0>;
 
+  @unit("kW")
+  @divisor(4.28571428571)
+  scalar pwr extends UCH;
+
+  /** r;wi,,CurrentPower,Aktualni vykon,,,"08b5110101",,6,"UCH",,"*14/60",kW,Aktualni elektricky vykon kotle */
+  @base(MF, 0x11, 0x01)
+  model CurrentPower is InstallRegister<pwr>;
+
   /** d.03 Temp DHW: hot water flow temperature (combination boiler only) */
   @ext(0x16, 0)
   model HwcTemp is ReadonlyRegister<tempsensor>;
