@@ -299,76 +299,76 @@ BigHExThreshold: BigHExThreshold
 'BivalentPoint2_Temperature: temperature to force backup heater even if it is disabled': >-
   BivalentPoint2_Temperature: teplota pro vynucení záložního ohřívače, i když je
   zakázán
-'BkDetected: detected bus coppler e.g. VR30,31,32 (bit counted)': 'BkDetected: detected bus coppler e.g. VR30,31,32 (bit counted)'
+'BkDetected: detected bus coppler e.g. VR30,31,32 (bit counted)': 'BkDetected: detekován sběrnicový spojovací modul např. VR30,31,32 (počítáno po bitech)'
 BKMK1ConfigCPLP: BKMK1ConfigCPLP
 BKMK1ConfigCPLPAsLP: BKMK1ConfigCPLPAsLP
-'BKMK1CPLPState: nominal condition of the VR61''s circulation or loading pump': 'BKMK1CPLPState: nominal condition of the VR61''s circulation or loading pump'
-'BKMK1Detected: indicates that a VR61 has been detected': 'BKMK1Detected: indicates that a VR61 has been detected'
-Blocking time solar pumps (tBLK): Blocking time solar pumps (tBLK)
-BMR:Heating curve for whole system: BMR:Heating curve for whole system
-'BMU_ErrorStatus_DK: error status of the BMU': 'BMU_ErrorStatus_DK: error status of the BMU'
+'BKMK1CPLPState: nominal condition of the VR61''s circulation or loading pump': 'BKMK1CPLPState: jmenovitý stav cirkulačního nebo nabíjecího čerpadla VR61'
+'BKMK1Detected: indicates that a VR61 has been detected': 'BKMK1Detected: indikuje, že byl detekován VR61'
+Blocking time solar pumps (tBLK): Blokovací doba solárních čerpadel (tBLK)
+'BMR:Heating curve for whole system': 'BMR: Topná křivka pro celý systém'
+'BMU_ErrorStatus_DK: error status of the BMU': 'BMU_ErrorStatus_DK: stav chyby BMU'
 'BMU_FlowTempOrVF_1: value of either an externally connected flow temperature sensor or the BMU''s internal flow sensor if an external sensor is missing': >-
-  BMU_FlowTempOrVF_1: value of either an externally connected flow temperature
-  sensor or the BMU's internal flow sensor if an external sensor is missing
-'BMUB51101_BoilerFlowTemp: current flow temperature inside the BMU': 'BMUB51101_BoilerFlowTemp: current flow temperature inside the BMU'
-'BMUB51101_DHWState: flame is on because of either tapping or tank loading': 'BMUB51101_DHWState: flame is on because of either tapping or tank loading'
-'BMUB51101_ErrorStatus: error state of BMU received via eBUS service B51101': 'BMUB51101_ErrorStatus: error state of BMU received via eBUS service B51101'
+  BMU_FlowTempOrVF_1: hodnota z externího čidla teploty topné vody nebo z
+  interního čidla BMU, pokud externí čidlo chybí
+'BMUB51101_BoilerFlowTemp: current flow temperature inside the BMU': 'BMUB51101_BoilerFlowTemp: aktuální teplota topné vody v BMU'
+'BMUB51101_DHWState: flame is on because of either tapping or tank loading': 'BMUB51101_DHWState: plamen je zapnut kvůli odběru nebo nabíjení zásobníku'
+'BMUB51101_ErrorStatus: error state of BMU received via eBUS service B51101': 'BMUB51101_ErrorStatus: stav chyby BMU přijatý službou eBUS B5 11 01'
 'BMUB51101_TankTemp: hot water storage temperature received via eBUS service B5 11 01': >-
-  BMUB51101_TankTemp: hot water storage temperature received via eBUS service B5
-  11 01
-boiler identification resistor: boiler identification resistor
-boiler mode: boiler mode
+  BMUB51101_TankTemp: teplota zásobníku TUV přijatá prostřednictvím služby eBUS
+  B5 11 01
+boiler identification resistor: identifikační odpor kotle
+boiler mode: režim kotle
 'BoilerMaxPreShutdown: 15..120min': 'BoilerMaxPreShutdown: 15..120min'
 'BoilerMaxPreShutdown: in steps of 10, maximum time of starting the lowering operation before the heating time window ends': >-
-  BoilerMaxPreShutdown: in steps of 10, maximum time of starting the lowering
-  operation before the heating time window ends
-'BoilerMaxPreShutdown: Maximal Boiler preshutdown time': 'BoilerMaxPreShutdown: Maximal Boiler preshutdown time'
+  BoilerMaxPreShutdown: v krocích po 10; maximální doba zahájení snížení před
+  koncem časového okna vytápění
+'BoilerMaxPreShutdown: Maximal Boiler preshutdown time': 'BoilerMaxPreShutdown: maximální doba předvypnutí kotle'
 BoilerMaxTemp: BoilerMaxTemp
 BoilerMinTemp: BoilerMinTemp
-'BoilerSequence: activation of boiler sequence': 'BoilerSequence: activation of boiler sequence'
+'BoilerSequence: activation of boiler sequence': 'BoilerSequence: aktivace sekvence kotlů'
 'BoilerSequenceChangeTime: if this xx hours reachred between the first and the last boiler in the actual sequence then the boiler sequensce is new sorted': >-
-  BoilerSequenceChangeTime: if this xx hours reachred between the first and the
-  last boiler in the actual sequence then the boiler sequensce is new sorted
+  BoilerSequenceChangeTime: pokud je mezi prvním a posledním kotlem v aktuální
+  sekvenci rozdíl xx hodin, sekvence se nově seřadí
 BoilerSwitchHyster: BoilerSwitchHyster
-'BoilerSwitchSteps: set of the steps from the switching boiler': 'BoilerSwitchSteps: set of the steps from the switching boiler'
+'BoilerSwitchSteps: set of the steps from the switching boiler': 'BoilerSwitchSteps: sada kroků přepínaného kotle'
 BoilerType_2_DK: BoilerType_2_DK
-'BoilerType_2_DK: second Boiler typ of the bmu': 'BoilerType_2_DK: second Boiler typ of the bmu'
-'BoilerType_DK: Boiler typ of the bmu': 'BoilerType_DK: Boiler typ of the bmu'
-'BoilerType: Boiler typ of the BMU': 'BoilerType: Boiler typ of the BMU'
-'Br_Anfo: Ansteuerung Gasventil': 'Br_Anfo: Ansteuerung Gasventil'
+'BoilerType_2_DK: second Boiler typ of the bmu': 'BoilerType_2_DK: druhý typ kotle v BMU'
+'BoilerType_DK: Boiler typ of the bmu': 'BoilerType_DK: typ kotle v BMU'
+'BoilerType: Boiler typ of the BMU': 'BoilerType: typ kotle v BMU'
+'Br_Anfo: Ansteuerung Gasventil': 'Br_Anfo: ovládání plynového ventilu'
 'Brennstoffventil: Activation signal of the gasvalve (activated via micrcontroller)': >-
-  Brennstoffventil: Activation signal of the gasvalve (activated via
-  micrcontroller)
-Brennstoffverbrauch Heizung gesamt: Brennstoffverbrauch Heizung gesamt
-Brennstoffverbrauch hot water gesamt: Brennstoffverbrauch hot water gesamt
-Brightness: Brightness
-'Brine_Fan_Commutations: Number of commutations of': 'Brine_Fan_Commutations: Number of commutations of'
-'Brine_Fan_Hours: operating hours of Fan_Brine': 'Brine_Fan_Hours: operating hours of Fan_Brine'
-'Brine_P_Cooling_Hours: Brine pump run time during cooling': 'Brine_P_Cooling_Hours: Brine pump run time during cooling'
-'Brine_warmSensor_Offset: calibration value for brine sensor': 'Brine_warmSensor_Offset: calibration value for brine sensor'
-'Brine2_P_Hours: operating hours of Sk2P': 'Brine2_P_Hours: operating hours of Sk2P'
-'Brine2_P: external Brine or water pump': 'Brine2_P: external Brine or water pump'
+  Brennstoffventil: aktivační signál plynového ventilu (aktivováno přes
+  mikrokontrolér)
+Brennstoffverbrauch Heizung gesamt: Celková spotřeba paliva topení
+Brennstoffverbrauch hot water gesamt: Celková spotřeba paliva TUV
+Brightness: Jas
+'Brine_Fan_Commutations: Number of commutations of': 'Brine_Fan_Commutations: Počet sepnutí'
+'Brine_Fan_Hours: operating hours of Fan_Brine': 'Brine_Fan_Hours: provozní hodiny ventilátoru solanky'
+'Brine_P_Cooling_Hours: Brine pump run time during cooling': 'Brine_P_Cooling_Hours: doba chodu čerpadla solanky během chlazení'
+'Brine_warmSensor_Offset: calibration value for brine sensor': 'Brine_warmSensor_Offset: kalibrační hodnota pro čidlo solanky'
+'Brine2_P_Hours: operating hours of Sk2P': 'Brine2_P_Hours: provozní hodiny Sk2P'
+'Brine2_P: external Brine or water pump': 'Brine2_P: externí čerpadlo solanky nebo vody'
 BrineFlowReversed: BrineFlowReversed
 'BrineLimitAtMaxFlow: lowest allowed brine temperature to achieve max. flow temperature': >-
-  BrineLimitAtMaxFlow: lowest allowed brine temperature to achieve max. flow
-  temperature
+  BrineLimitAtMaxFlow: nejnižší povolená teplota solanky pro dosažení max.
+  teploty topné vody
 'BrineLimitSlope: Slope to calculate pressure switchpoint below lowest brine temperature': >-
-  BrineLimitSlope: Slope to calculate pressure switchpoint below lowest brine
-  temperature
-'BrineOK: brine pressure is ok and pump is running': 'BrineOK: brine pressure is ok and pump is running'
-'BrineOutlet: heat source outlet temperature for brine to water machines': 'BrineOutlet: heat source outlet temperature for brine to water machines'
-'BrineOutlet: Offset for heat source outlet temperature sensor - BW': 'BrineOutlet: Offset for heat source outlet temperature sensor - BW'
-'BrinePumpPWM: actual speed of brine pump (7%=off)': 'BrinePumpPWM: actual speed of brine pump (7%=off)'
-'BrinePumpSpeedControlDefrost: brine pump speed setpoint while defrosting': 'BrinePumpSpeedControlDefrost: brine pump speed setpoint while defrosting'
-'BrinePumpSpeedControlHeating: brine pump speed setpoint when compressor=on': 'BrinePumpSpeedControlHeating: brine pump speed setpoint when compressor=on'
-'BrinePumpStatus: 0=HEP_ok: 1= HEP_error; >=2=noHEP': 'BrinePumpStatus: 0=HEP_ok: 1= HEP_error; >=2=noHEP'
-'BrineSwitch: brine pressure switch; 1 = switch has tripped': 'BrineSwitch: brine pressure switch; 1 = switch has tripped'
+  BrineLimitSlope: sklon pro výpočet spínacího tlakového bodu pod nejnižší
+  teplotou solanky
+'BrineOK: brine pressure is ok and pump is running': 'BrineOK: tlak solanky je v pořádku a čerpadlo běží'
+'BrineOutlet: heat source outlet temperature for brine to water machines': 'BrineOutlet: výstupní teplota zdroje tepla u solanka–voda jednotek'
+'BrineOutlet: Offset for heat source outlet temperature sensor - BW': 'BrineOutlet: offset pro čidlo výstupní teploty zdroje tepla – BW'
+'BrinePumpPWM: actual speed of brine pump (7%=off)': 'BrinePumpPWM: aktuální rychlost čerpadla solanky (7%=vyp)'
+'BrinePumpSpeedControlDefrost: brine pump speed setpoint while defrosting': 'BrinePumpSpeedControlDefrost: požadavek rychlosti čerpadla solanky při odmrazování'
+'BrinePumpSpeedControlHeating: brine pump speed setpoint when compressor=on': 'BrinePumpSpeedControlHeating: požadavek rychlosti čerpadla solanky při zapnutém kompresoru'
+'BrinePumpStatus: 0=HEP_ok: 1= HEP_error; >=2=noHEP': 'BrinePumpStatus: 0=HEP_ok; 1= HEP_error; >=2=noHEP'
+'BrineSwitch: brine pressure switch; 1 = switch has tripped': 'BrineSwitch: tlakový spínač solanky; 1 = spínač sepnut'
 BufferFlowThreshold_Off: BufferFlowThreshold_Off
 BufferFlowThreshold_On: BufferFlowThreshold_On
-'BufferPumpPower: Performance of buffer pump: (15 - 100%)': 'BufferPumpPower: Performance of buffer pump: (15 - 100%)'
-'BurnerCircuitDisabled: Disable the burner circuit?': 'BurnerCircuitDisabled: Disable the burner circuit?'
-'BurnerCircuitPump: first heating circuit (burner circuit) pump''s state': 'BurnerCircuitPump: first heating circuit (burner circuit) pump''s state'
-'BurnerDemand: von der BMU': 'BurnerDemand: von der BMU'
+'BufferPumpPower: Performance of buffer pump: (15 - 100%)': 'BufferPumpPower: výkon vyrovnávacího čerpadla: (15–100%)'
+'BurnerCircuitDisabled: Disable the burner circuit?': 'BurnerCircuitDisabled: Zakázat hořákový okruh?'
+'BurnerCircuitPump: first heating circuit (burner circuit) pump''s state': 'BurnerCircuitPump: stav čerpadla prvního topného (hořákového) okruhu'
+'BurnerDemand: von der BMU': 'BurnerDemand: požadavek hořáku z BMU'
 BurnerHours_boiler1: BurnerHours_boiler1
 BurnerHours_boiler2: BurnerHours_boiler2
 BurnerHours_boiler3: BurnerHours_boiler3
@@ -378,65 +378,65 @@ BurnerHours_boiler6: BurnerHours_boiler6
 BurnerHours_boiler7: BurnerHours_boiler7
 BurnerHours_boiler8: BurnerHours_boiler8
 BW_Anfo: BW_Anfo
-'BW_UnderHundred_SwiActi_DK: DHW switch cycles under hundred': 'BW_UnderHundred_SwiActi_DK: DHW switch cycles under hundred'
-'BW_UnderHundred_SwiActi: DHW switch cycles under hundred': 'BW_UnderHundred_SwiActi: DHW switch cycles under hundred'
+'BW_UnderHundred_SwiActi_DK: DHW switch cycles under hundred': 'BW_UnderHundred_SwiActi_DK: počet sepnutí TUV pod sto'
+'BW_UnderHundred_SwiActi: DHW switch cycles under hundred': 'BW_UnderHundred_SwiActi: počet sepnutí TUV pod sto'
 'BW_WW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s. Relative to the heat source pump prerun time.': >-
-  BW_WW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s.
-  Relative to the heat source pump prerun time.
-Bypass current: Bypass current
-Bypass flap position: Bypass flap position
-Bypass hysteresis: Bypass hysteresis
-Bypass status: Bypass status
-Bypass temperature: Bypass temperature
-Bypass valve: Bypass valve
-calculated CO-concentration: calculated CO-concentration
+  BW_WW_CH1P_Prerun_Time: doba předběhu vnitřního čerpadla topného okruhu v s.
+  Vztahováno k době předběhu čerpadla zdroje tepla.
+Bypass current: Obchvatový proud
+Bypass flap position: Poloha obchvatové klapky
+Bypass hysteresis: Hystereze obchvatu
+Bypass status: Stav obchvatu
+Bypass temperature: Teplota obchvatu
+Bypass valve: Obchvatový ventil
+calculated CO-concentration: vypočtená koncentrace CO
 'CalculatedKickStopTime: calculated time in between two pump kicks during frostprotection (time depends on outside temperature)': >-
-  CalculatedKickStopTime: calculated time in between two pump kicks during
-  frostprotection (time depends on outside temperature)
-'CalculatedMixerPosition: 0: primary open; 220: primary closed': 'CalculatedMixerPosition: 0: primary open; 220: primary closed'
-'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.': 'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.'
-Central heating + heat recovery: Central heating + heat recovery
-Central heating on/off switch: Central heating on/off switch
+  CalculatedKickStopTime: vypočtený čas mezi dvěma protočeními čerpadla během
+  protimrazové ochrany (čas závisí na venkovní teplotě)
+'CalculatedMixerPosition: 0: primary open; 220: primary closed': 'CalculatedMixerPosition: 0: primární otevřeno; 220: primární zavřeno'
+'Call back delay GSM/GPRS [s]: Time between the last ring and the call back.': 'Call back delay GSM/GPRS [s]: Čas mezi posledním zazvoněním a zpětným voláním.'
+Central heating + heat recovery: Topení + rekuperace tepla
+Central heating on/off switch: Spínač topení zap/vyp
 'CfgHeatSinkType: BMR: configuration of heating circuit; for heat pumps, only "mixer circuit" or "fix value circuit" possible': >-
-  CfgHeatSinkType: BMR: configuration of heating circuit; for heat pumps, only
-  "mixer circuit" or "fix value circuit" possible
+  CfgHeatSinkType: BMR: konfigurace topného okruhu; u tepelných čerpadel možné
+  pouze „směšovaný okruh“ nebo „okruh s pevnou hodnotou“
 CfgHeatSinkType1: CfgHeatSinkType1
 CfgHeatSinkType3: CfgHeatSinkType3
-CH water pressure: CH water pressure
-CH_Demand: CH_Demand
-'CH_Mode_Demand_Hours: total time EHP was in CH mode (energy manager)': 'CH_Mode_Demand_Hours: total time EHP was in CH mode (energy manager)'
+CH water pressure: Tlak topné vody
+CH_Demand: Požadavek topení
+'CH_Mode_Demand_Hours: total time EHP was in CH mode (energy manager)': 'CH_Mode_Demand_Hours: celkový čas, kdy bylo EHP v režimu topení (energetický manažer)'
 'CH_Mode_Fulfilled_Hours: total time EHP was in CH mode AND compr. Or backup heater was running': >-
-  CH_Mode_Fulfilled_Hours: total time EHP was in CH mode AND compr. Or backup
-  heater was running
-'CH_PumpCommunt_DK: pump switchings': 'CH_PumpCommunt_DK: pump switchings'
-'CH_PumpCommunt: Pump times switched on': 'CH_PumpCommunt: Pump times switched on'
-'CH1_P_Commutations: Number of commutations of': 'CH1_P_Commutations: Number of commutations of'
-'CH1_P_Hours: operating hours of CH1P': 'CH1_P_Hours: operating hours of CH1P'
-'CH1_P_Port: port feedback; only needed by UI in actuator test': 'CH1_P_Port: port feedback; only needed by UI in actuator test'
-'CH1_P: internal CH pump': 'CH1_P: internal CH pump'
+  CH_Mode_Fulfilled_Hours: celkový čas, kdy bylo EHP v režimu topení A běžel
+  kompresor nebo záložní ohřívač
+'CH_PumpCommunt_DK: pump switchings': 'CH_PumpCommunt_DK: sepnutí čerpadla'
+'CH_PumpCommunt: Pump times switched on': 'CH_PumpCommunt: doby zapnutí čerpadla'
+'CH1_P_Commutations: Number of commutations of': 'CH1_P_Commutations: Počet sepnutí'
+'CH1_P_Hours: operating hours of CH1P': 'CH1_P_Hours: provozní hodiny CH1P'
+'CH1_P_Port: port feedback; only needed by UI in actuator test': 'CH1_P_Port: zpětná vazba portu; potřeba pouze v testu akčních členů'
+'CH1_P: internal CH pump': 'CH1_P: vnitřní čerpadlo topení'
 'CH1P_PumpSpeed_coil_tank: CH pump speed setpoint while loading DHW tank with coils [%]': >-
-  CH1P_PumpSpeed_coil_tank: CH pump speed setpoint while loading DHW tank with
-  coils [%]
+  CH1P_PumpSpeed_coil_tank: požadavek rychlosti čerpadla topení při nabíjení
+  zásobníku TUV se spirálou [%]
 'CH1P_PumpSpeed_layered_tank: CH pump speed setpoint while shiftloading DHW tank [%]': >-
-  CH1P_PumpSpeed_layered_tank: CH pump speed setpoint while shiftloading DHW
-  tank [%]
+  CH1P_PumpSpeed_layered_tank: požadavek rychlosti čerpadla topení při
+  překládacím nabíjení vrstveného zásobníku TUV [%]
 'CH1P_PumpSpeedControlDirectCircuit: CH pump speed setpoint while energybalancing and compressor=on [%]': >-
-  CH1P_PumpSpeedControlDirectCircuit: CH pump speed setpoint while
-  energybalancing and compressor=on [%]
+  CH1P_PumpSpeedControlDirectCircuit: požadavek rychlosti čerpadla topení při
+  energetickém vyrovnávání a zapnutém kompresoru [%]
 'CH1P_PumpSpeedControlDirectCircuitWhileOff: CH pump speed setpoint while energybalancing and compressor=off': >-
-  CH1P_PumpSpeedControlDirectCircuitWhileOff: CH pump speed setpoint while
-  energybalancing and compressor=off
+  CH1P_PumpSpeedControlDirectCircuitWhileOff: požadavek rychlosti čerpadla
+  topení při energetickém vyrovnávání a vypnutém kompresoru
 'CH1P_PumpSpeedControlHeatBuffer: CH pump speed setpoint while buffer is loaded [%]': >-
-  CH1P_PumpSpeedControlHeatBuffer: CH pump speed setpoint while buffer is loaded
-  [%]
-'CH2_P_Hours: operating hours of HK2P': 'CH2_P_Hours: operating hours of HK2P'
-'CH2_P: external CH pump (HK2P)': 'CH2_P: external CH pump (HK2P)'
-'Changes_DSN_DK: Numbers adjusting (storing) the DSN': 'Changes_DSN_DK: Numbers adjusting (storing) the DSN'
-chargepump additional operationtime: chargepump additional operationtime
-'CheckByte: factory EOL test': 'CheckByte: factory EOL test'
-Child protection: Child protection
-'ChimneySweepModeActive: chimney sweep mode has been enabled by the BMU': 'ChimneySweepModeActive: chimney sweep mode has been enabled by the BMU'
-chosen flow rate of the collector pump (to calculate solar gain): chosen flow rate of the collector pump (to calculate solar gain)
+  CH1P_PumpSpeedControlHeatBuffer: požadavek rychlosti čerpadla topení při
+  nabíjení vyrovnávacího zásobníku [%]
+'CH2_P_Hours: operating hours of HK2P': 'CH2_P_Hours: provozní hodiny HK2P'
+'CH2_P: external CH pump (HK2P)': 'CH2_P: externí čerpadlo topení (HK2P)'
+'Changes_DSN_DK: Numbers adjusting (storing) the DSN': 'Changes_DSN_DK: čísla upravující (ukládající) DSN'
+chargepump additional operationtime: dodatečná doba provozu nabíjecího čerpadla
+'CheckByte: factory EOL test': 'CheckByte: tovární EOL test'
+Child protection: Dětská pojistka
+'ChimneySweepModeActive: chimney sweep mode has been enabled by the BMU': 'ChimneySweepModeActive: režim kominíka byl povolen BMU'
+chosen flow rate of the collector pump (to calculate solar gain): zvolený průtok čerpadla kolektoru (pro výpočet solárního zisku)
 ChPumpBoiler_1: ChPumpBoiler_1
 ChPumpBoiler_2: ChPumpBoiler_2
 ChPumpBoiler_3: ChPumpBoiler_3
@@ -445,12 +445,12 @@ ChPumpBoiler_5: ChPumpBoiler_5
 ChPumpBoiler_6: ChPumpBoiler_6
 ChPumpBoiler_7: ChPumpBoiler_7
 ChPumpBoiler_8: ChPumpBoiler_8
-'CHPumpPWM: actual speed of central heating CH pump (7%=off)': 'CHPumpPWM: actual speed of central heating CH pump (7%=off)'
-'CHPumpStatus: 0=HEP_ok: 1= HEP_error; >=2=noHEP': 'CHPumpStatus: 0=HEP_ok: 1= HEP_error; >=2=noHEP'
+'CHPumpPWM: actual speed of central heating CH pump (7%=off)': 'CHPumpPWM: aktuální rychlost čerpadla topení (7%=vyp)'
+'CHPumpStatus: 0=HEP_ok: 1= HEP_error; >=2=noHEP': 'CHPumpStatus: 0=HEP_ok; 1= HEP_error; >=2=noHEP'
 ChRequestAsc: ChRequestAsc
-'CircoPump: Power in %': 'CircoPump: Power in %'
-CircuitDiaState: CircuitDiaState
-CircuitPeriods: CircuitPeriods
+'CircoPump: Power in %': 'CircoPump: výkon v %'
+CircuitDiaState: Stav schématu okruhu
+CircuitPeriods: Období okruhu
 Circuits_Name_DHW: Circuits_Name_DHW
 Circuits_Name_HC: Circuits_Name_HC
 Circuits_Name_HC1: Circuits_Name_HC1
