@@ -26,19 +26,6 @@ namespace Bai._0010023673_inc {
   @divisor(4.28571428571)
   scalar pwr extends UCH;
 
-  /** r;wi,,CurrentPower,Aktualni vykon,,,"08b5110101",,6,"UCH",,"*14/60",kW,Aktualni elektricky vykon kotle */
-  /** Aktualni vykon */
-  @inherit(r, wi)
-  @zz(0x8)
-  @ext(0xb5, 0x11, 1)
-  model CurrentPower {
-    /** Aktualni elektricky vykon kotle */
-    @in
-    @unit("kW")
-    @divisor(4.28571428571)
-    value: UCH;
-  }
-
   /** d.03 Temp DHW: hot water flow temperature (combination boiler only) */
   @ext(0x16, 0)
   model HwcTemp is ReadonlyRegister<tempsensor>;

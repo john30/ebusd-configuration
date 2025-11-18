@@ -89,6 +89,8 @@ namespace Hcmode_inc {
 
     /** pump status */
     pumpstate: pumpstate;
+
+    extra: HEX;
   }
 
   /** Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp */
@@ -109,6 +111,8 @@ namespace Hcmode_inc {
 
     /** current temperature */
     temp_3: temp1;
+
+    extra: HEX;
   }
 
   /** Status */
