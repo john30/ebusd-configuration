@@ -101,16 +101,16 @@ namespace Hcmode_inc {
     /** hot water mode */
     hwcmode: hwcmode;
 
-    /** max temperature */
+    /** Nastavená hodnota pro teplotu nabíjení zásobníku */
     temp: temp0;
 
-    /** current temperature */
+    /** Překročení teploty nabíjení zásobníku */
     temp_1: temp1;
 
-    /** max temperature */
+    /** Max. teplota TV */
     temp_2: temp0;
 
-    /** current temperature */
+    /** Max. teplota TV */
     temp_3: temp1;
 
     @maxLength(1)
