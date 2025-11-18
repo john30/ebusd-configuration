@@ -147,61 +147,61 @@ Amount of configured slots per weekday: Počet nakonfigurovaných časových ús
 Analog inputs actual values: Aktuální hodnoty analogových vstupů
 Anlegethermostat: Přiložný termostat
 'Anode_IN_Feedback_DK: feedback signal of the anode': 'Anode_IN_Feedback_DK: zpětný signál anody'
-Anpassung Heizkurve Heizkreis 1: Anpassung Heizkurve Heizkreis 1
-Anpassung Heizkurve Heizkreis 2: Anpassung Heizkurve Heizkreis 2
-Anpassung Heizkurve Heizkreis 3: Anpassung Heizkurve Heizkreis 3
+Anpassung Heizkurve Heizkreis 1: Úprava topné křivky HK1
+Anpassung Heizkurve Heizkreis 2: Úprava topné křivky HK2
+Anpassung Heizkurve Heizkreis 3: Úprava topné křivky HK3
 Appliance_Code: Appliance_Code
-'Appliance_Code: appliance code': 'Appliance_Code: appliance code'
+'Appliance_Code: appliance code': 'Appliance_Code: kód zařízení'
 ASC_OFF=0, ASC_CH=1, ASC_DHW=2: ASC_OFF=0, ASC_CH=1, ASC_DHW=2
 ASC_Status: ASC_Status
-'AscBigModulDetected: detected VPM-S (bit counted)': 'AscBigModulDetected: detected VPM-S (bit counted)'
-'ASCDetected: indicates that a VMS has been detected': 'ASCDetected: indicates that a VMS has been detected'
-'AscSmallModulDetected: detected VMS (bit counted)': 'AscSmallModulDetected: detected VMS (bit counted)'
+'AscBigModulDetected: detected VPM-S (bit counted)': 'AscBigModulDetected: detekován VPM-S (počítáno po bitech)'
+'ASCDetected: indicates that a VMS has been detected': 'ASCDetected: indikuje, že byl detekován VMS'
+'AscSmallModulDetected: detected VMS (bit counted)': 'AscSmallModulDetected: detekován VMS (počítáno po bitech)'
 ASIDetected: ASIDetected
 AssertFileName: AssertFileName
-'AssertLineNumber: assert fail occured in this line': 'AssertLineNumber: assert fail occured in this line'
-AT-Abschaltgrenze: AT-Abschaltgrenze
-AT-Abschaltgrenze Heizkreis 1: AT-Abschaltgrenze Heizkreis 1
-AT-Abschaltgrenze Heizkreis 2: AT-Abschaltgrenze Heizkreis 2
-AT-Abschaltgrenze Heizkreis 3: AT-Abschaltgrenze Heizkreis 3
-aucContactName: aucContactName
-aucPhoneNumber: aucPhoneNumber
-'aucPhoneNumber part 1: phone number part 1': 'aucPhoneNumber part 1: phone number part 1'
-'aucPhoneNumber part 2: phone number part 2': 'aucPhoneNumber part 2: phone number part 2'
+'AssertLineNumber: assert fail occured in this line': 'AssertLineNumber: k selhání assertu došlo na tomto řádku'
+AT-Abschaltgrenze: Mez vypnutí (AT)
+AT-Abschaltgrenze Heizkreis 1: Mez vypnutí (AT) HK1
+AT-Abschaltgrenze Heizkreis 2: Mez vypnutí (AT) HK2
+AT-Abschaltgrenze Heizkreis 3: Mez vypnutí (AT) HK3
+aucContactName: název kontaktu
+aucPhoneNumber: telefonní číslo
+'aucPhoneNumber part 1: phone number part 1': 'aucPhoneNumber part 1: část 1 telefonního čísla'
+'aucPhoneNumber part 2: phone number part 2': 'aucPhoneNumber part 2: část 2 telefonního čísla'
 aucPhoneNumber_1: aucPhoneNumber_1
-'aucPhoneNumber_1: first part of the installer''s telephone number': 'aucPhoneNumber_1: first part of the installer''s telephone number'
-'aucPhoneNumber_2: second part of the installer''s telephone number': 'aucPhoneNumber_2: second part of the installer''s telephone number'
-aucPhoneNumber_part1: aucPhoneNumber_part1
-aucPhoneNumber_part2: aucPhoneNumber_part2
-'Ausgleichszeit1Dauer: in Sekunden': 'Ausgleichszeit1Dauer: in Sekunden'
-Außentemperatur: Außentemperatur
-'Aussentemperatur: out door temperature': 'Aussentemperatur: out door temperature'
-Auto Heat Curve Regulation: Auto Heat Curve Regulation
-Auto Time Correction: Auto Time Correction
-AutocoolTestModeActive: AutocoolTestModeActive
-'AutocoolTestModeActive_HK2: Test mode, only for developement!': 'AutocoolTestModeActive_HK2: Test mode, only for developement!'
-automatic correction of configured heat curve: automatic correction of configured heat curve
-AutoOFF_Mode: AutoOFF_Mode
-AutoOffMode heating circuit 1: AutoOffMode heating circuit 1
-AutoOffMode heating circuit 2: AutoOffMode heating circuit 2
-AutoOffMode heating circuit 3: AutoOffMode heating circuit 3
-AutoOffMode Heizkreis 1: AutoOffMode Heizkreis 1
-AutoOffMode Heizkreis 2: AutoOffMode Heizkreis 2
-AutoOffMode Heizkreis 3: AutoOffMode Heizkreis 3
+'aucPhoneNumber_1: first part of the installer''s telephone number': 'aucPhoneNumber_1: první část telefonního čísla instalatéra'
+'aucPhoneNumber_2: second part of the installer''s telephone number': 'aucPhoneNumber_2: druhá část telefonního čísla instalatéra'
+aucPhoneNumber_part1: část 1 telefonního čísla
+aucPhoneNumber_part2: část 2 telefonního čísla
+'Ausgleichszeit1Dauer: in Sekunden': 'Ausgleichszeit1Dauer: v sekundách'
+Außentemperatur: Venkovní teplota
+'Aussentemperatur: out door temperature': 'Aussentemperatur: venkovní teplota'
+Auto Heat Curve Regulation: Automatická regulace topné křivky
+Auto Time Correction: Automatická korekce času
+AutocoolTestModeActive: Aktivní testovací režim Autocool
+'AutocoolTestModeActive_HK2: Test mode, only for developement!': 'AutocoolTestModeActive_HK2: Testovací režim, pouze pro vývoj!'
+automatic correction of configured heat curve: automatická korekce nastavené topné křivky
+AutoOFF_Mode: Režim AutoOFF
+AutoOffMode heating circuit 1: Režim AutoOff topný okruh 1
+AutoOffMode heating circuit 2: Režim AutoOff topný okruh 2
+AutoOffMode heating circuit 3: Režim AutoOff topný okruh 3
+AutoOffMode Heizkreis 1: Režim AutoOff HK1
+AutoOffMode Heizkreis 2: Režim AutoOff HK2
+AutoOffMode Heizkreis 3: Režim AutoOff HK3
 'AutoSync enabled: Enabling or disabling of the AutoYync on the eBUS. Only usefull if there problems with outher AutoSync devices on the eBUS.': >-
-  AutoSync enabled: Enabling or disabling of the AutoYync on the eBUS. Only
-  usefull if there problems with outher AutoSync devices on the eBUS.
-AutoTappingSetpoint: AutoTappingSetpoint
-average ignition time: average ignition time
-average outside temperature: average outside temperature
-average time for calibration-routine: average time for calibration-routine
-average value of calculated correction-factor high-load: average value of calculated correction-factor high-load
-average value of calculated correction-factor low-load: average value of calculated correction-factor low-load
-average value of calculated gas-adaptive correction-factor: average value of calculated gas-adaptive correction-factor
+  AutoSync povoleno: povolení či zakázání AutoSync na eBUSu. Použijte pouze,
+  pokud jsou problémy s jinými zařízeními AutoSync na eBUSu.
+AutoTappingSetpoint: Automatický požadavek odběru
+average ignition time: průměrná doba zapalování
+average outside temperature: průměrná venkovní teplota
+average time for calibration-routine: průměrný čas kalibrační rutiny
+average value of calculated correction-factor high-load: průměrná hodnota vypočteného korekčního faktoru při vysoké zátěži
+average value of calculated correction-factor low-load: průměrná hodnota vypočteného korekčního faktoru při nízké zátěži
+average value of calculated gas-adaptive correction-factor: průměrná hodnota vypočteného plynově adaptivního korekčního faktoru
 'AW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s. Relative to the fan prerun time.': >-
-  AW_CH1P_Prerun_Time: Prerun time of the internal heat circuit pump in s.
-  Relative to the fan prerun time.
-'AW_Fan_Prerun_Time: Prerun time of the fan in s': 'AW_Fan_Prerun_Time: Prerun time of the fan in s'
+  AW_CH1P_Prerun_Time: Doba předběhu vnitřního čerpadla topného okruhu v s.
+  Vztahováno k době předběhu ventilátoru.
+'AW_Fan_Prerun_Time: Prerun time of the fan in s': 'AW_Fan_Prerun_Time: Doba předběhu ventilátoru v s'
 AWPC_EE_MaxThreshold_DK: AWPC_EE_MaxThreshold_DK
 AWPC_EE_MinThreshold_DK: AWPC_EE_MinThreshold_DK
 'B50418actDesFlowTemp: flow temperature setpoint calculated by actoSTOR (S3 of B5 04 18)': >-
@@ -242,63 +242,63 @@ AWPC_EE_MinThreshold_DK: AWPC_EE_MinThreshold_DK
 'B51000SetPointLoadingPump: loading pump''s setpoint sent via B5 10 00 to the BMU': >-
   B51000SetPointLoadingPump: loading pump's setpoint sent via B5 10 00 to the
   BMU
-Backlight level: Backlight level
-Backup heater output: Backup heater output
-'Backup_Commutations_CH: Number of commutations of': 'Backup_Commutations_CH: Number of commutations of'
-'Backup_Commutations_DHW: Number of commutations of': 'Backup_Commutations_DHW: Number of commutations of'
-'Backup_Commutations: Number of commutations of backup heater': 'Backup_Commutations: Number of commutations of backup heater'
+Backlight level: Úroveň podsvícení
+Backup heater output: Výstup záložního ohřívače
+'Backup_Commutations_CH: Number of commutations of': 'Backup_Commutations_CH: Počet sepnutí'
+'Backup_Commutations_DHW: Number of commutations of': 'Backup_Commutations_DHW: Počet sepnutí'
+'Backup_Commutations: Number of commutations of backup heater': 'Backup_Commutations: Počet sepnutí záložního ohřívače'
 'Backup_Heater_Mode_CH: backup heater mode for CH: no backup, comfort or backup only': >-
-  Backup_Heater_Mode_CH: backup heater mode for CH: no backup, comfort or backup
-  only
+  Backup_Heater_Mode_CH: režim záložního ohřívače pro topení: bez zálohy,
+  komfort nebo pouze záloha
 'Backup_Heater_Mode_DHW: backup heater mode for DHW: no backup, comfort or backup only': >-
-  Backup_Heater_Mode_DHW: backup heater mode for DHW: no backup, comfort or
-  backup only
-'Backup_Hours_CH: operating hours of Backup Heater for CH': 'Backup_Hours_CH: operating hours of Backup Heater for CH'
-'Backup_Hours_DHW: operating hours of Backup Heater for DHW': 'Backup_Hours_DHW: operating hours of Backup Heater for DHW'
-'Backup_Hours: operating hours of Backup Heater': 'Backup_Hours: operating hours of Backup Heater'
+  Backup_Heater_Mode_DHW: režim záložního ohřívače pro TUV: bez zálohy, komfort
+  nebo pouze záloha
+'Backup_Hours_CH: operating hours of Backup Heater for CH': 'Backup_Hours_CH: provozní hodiny záložního ohřívače pro topení'
+'Backup_Hours_DHW: operating hours of Backup Heater for DHW': 'Backup_Hours_DHW: provozní hodiny záložního ohřívače pro TUV'
+'Backup_Hours: operating hours of Backup Heater': 'Backup_Hours: provozní hodiny záložního ohřívače'
 'Backup_Hysteresis: difference between actual flow temperature and setpoit at which backup heater should start': >-
-  Backup_Hysteresis: difference between actual flow temperature and setpoit at
-  which backup heater should start
+  Backup_Hysteresis: rozdíl mezi aktuální teplotou topné vody a požadavkem, při
+  kterém by měl záložní ohřívač startovat
 'Backup_Power_Cut: This enables the backup heater to run while power cuts as compressor replacement, only applicable if electrical scheme is two.': >-
-  Backup_Power_Cut: This enables the backup heater to run while power cuts as
-  compressor replacement, only applicable if electrical scheme is two.
-'BadWeather: too cold to start compressor': 'BadWeather: too cold to start compressor'
-Bank Feiertag Ende Zone 1: Bank Feiertag Ende Zone 1
-Bank Feiertag Ende Zone 2: Bank Feiertag Ende Zone 2
-Bank Feiertag Ende Zone 3: Bank Feiertag Ende Zone 3
-Bank Feiertag Start Zone 1: Bank Feiertag Start Zone 1
-Bank Feiertag Start Zone 2: Bank Feiertag Start Zone 2
-Bank Feiertag Start Zone 3: Bank Feiertag Start Zone 3
-bank holiday end period: bank holiday end period
-bank holiday end zone 1: bank holiday end zone 1
-bank holiday end zone 2: bank holiday end zone 2
-bank holiday end zone 3: bank holiday end zone 3
-bank holiday start period: bank holiday start period
-bank holiday start zone 1: bank holiday start zone 1
-bank holiday start zone 2: bank holiday start zone 2
-bank holiday start zone 3: bank holiday start zone 3
-BaseDisplay: BaseDisplay
-'BatteryError: low battery': 'BatteryError: low battery'
-Betriebsart Zone 1: Betriebsart Zone 1
-Betriebsart Zone 2: Betriebsart Zone 2
-Betriebsart Zone 3: Betriebsart Zone 3
+  Backup_Power_Cut: umožní provoz záložního ohřívače při výpadku (jako náhrada
+  kompresoru); použitelné pouze pokud je elektrické schéma 2.
+'BadWeather: too cold to start compressor': 'BadWeather: příliš chladno pro start kompresoru'
+Bank Feiertag Ende Zone 1: Konec bankovního svátku zóna 1
+Bank Feiertag Ende Zone 2: Konec bankovního svátku zóna 2
+Bank Feiertag Ende Zone 3: Konec bankovního svátku zóna 3
+Bank Feiertag Start Zone 1: Začátek bankovního svátku zóna 1
+Bank Feiertag Start Zone 2: Začátek bankovního svátku zóna 2
+Bank Feiertag Start Zone 3: Začátek bankovního svátku zóna 3
+bank holiday end period: konec období bankovního svátku
+bank holiday end zone 1: konec bankovního svátku zóna 1
+bank holiday end zone 2: konec bankovního svátku zóna 2
+bank holiday end zone 3: konec bankovního svátku zóna 3
+bank holiday start period: začátek období bankovního svátku
+bank holiday start zone 1: začátek bankovního svátku zóna 1
+bank holiday start zone 2: začátek bankovního svátku zóna 2
+bank holiday start zone 3: začátek bankovního svátku zóna 3
+BaseDisplay: Základní zobrazení
+'BatteryError: low battery': 'BatteryError: slabá baterie'
+Betriebsart Zone 1: Provozní režim zóna 1
+Betriebsart Zone 2: Provozní režim zóna 2
+Betriebsart Zone 3: Provozní režim zóna 3
 Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp: >-
   Betriebsart/Maximaltemperatur/ReglerCurrentTemp/Maximaltemperatur/ReglerCurrentTemp
-'Betriebsstunden Pumpe: Pump operating hours': 'Betriebsstunden Pumpe: Pump operating hours'
-Bezeichnung Zone 1 Teil 1: Bezeichnung Zone 1 Teil 1
-Bezeichnung Zone 1 Teil 2: Bezeichnung Zone 1 Teil 2
-Bezeichnung Zone 2 Teil 1: Bezeichnung Zone 2 Teil 1
-Bezeichnung Zone 2 Teil 2: Bezeichnung Zone 2 Teil 2
-Bezeichnung Zone 3 Teil 1: Bezeichnung Zone 3 Teil 1
-Bezeichnung Zone 3 Teil 2: Bezeichnung Zone 3 Teil 2
+'Betriebsstunden Pumpe: Pump operating hours': 'Betriebsstunden Pumpe: provozní hodiny čerpadla'
+Bezeichnung Zone 1 Teil 1: Označení zóna 1 část 1
+Bezeichnung Zone 1 Teil 2: Označení zóna 1 část 2
+Bezeichnung Zone 2 Teil 1: Označení zóna 2 část 1
+Bezeichnung Zone 2 Teil 2: Označení zóna 2 část 2
+Bezeichnung Zone 3 Teil 1: Označení zóna 3 část 1
+Bezeichnung Zone 3 Teil 2: Označení zóna 3 část 2
 BigHExThreshold: BigHExThreshold
 'Bivalent_Temperature: outside temperature must be lower than this temperature in order to use backup heater for CH': >-
-  Bivalent_Temperature: outside temperature must be lower than this temperature
-  in order to use backup heater for CH
-'BivalentMode: reserved for special bivalent setting': 'BivalentMode: reserved for special bivalent setting'
+  Bivalent_Temperature: venkovní teplota musí být nižší než tato, aby bylo možné
+  použít záložní ohřívač pro topení
+'BivalentMode: reserved for special bivalent setting': 'BivalentMode: vyhrazeno pro speciální bivalentní nastavení'
 'BivalentPoint2_Temperature: temperature to force backup heater even if it is disabled': >-
-  BivalentPoint2_Temperature: temperature to force backup heater even if it is
-  disabled
+  BivalentPoint2_Temperature: teplota pro vynucení záložního ohřívače, i když je
+  zakázán
 'BkDetected: detected bus coppler e.g. VR30,31,32 (bit counted)': 'BkDetected: detected bus coppler e.g. VR30,31,32 (bit counted)'
 BKMK1ConfigCPLP: BKMK1ConfigCPLP
 BKMK1ConfigCPLPAsLP: BKMK1ConfigCPLPAsLP
