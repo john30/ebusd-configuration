@@ -26,6 +26,30 @@ namespace Bai._0010023673_inc {
   @divisor(4.28571428571)
   scalar pwr extends UCH;
 
+  /** CurrentPartload */
+  @inherit(r)
+  @ext(0, 1)
+  model CurrentPartload {
+    /** Current calculated partload */
+    @unit("kW")
+    value: UIN;
+  }
+
+  /** Aktualni vykon */
+  @base(MF, 0x11,  0x02, 0x64, 0x0e, 0x64, 0x0e)
+  model CurrentPower {
+    /** Aktualni elektricky vykon kotle */
+    @unit("kW")
+    @divisor(10)
+    value: UIN;
+    @unit("kW")
+    @divisor(10)
+    min: UIN;
+    @unit("kW")
+    @divisor(10)
+    max: UIN;
+  }
+
   /** d.03 Temp DHW: hot water flow temperature (combination boiler only) */
   @ext(0x16, 0)
   model HwcTemp is ReadonlyRegister<tempsensor>;
