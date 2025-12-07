@@ -3001,6 +3001,23 @@ namespace _700 {
   model Z5CoolingTimer_Sunday {
     value: slot1_3;
   }
+
+  // ##### Humidity #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x9, 0x1)
+  model r_28 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** Room humidity Controller */
+  @inherit(r_28)
+  @ext(0x7, 0x0)
+  model RoomHumidityController {
+    value: EXP;
+  }
+
   // includes
 
   /** included parts */
