@@ -1454,7 +1454,7 @@ namespace Basv3 {
   @inherit(r_6)
   @ext(0x14, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
-  model Z1HeatingRoomTempTarget {
+  model Z1EffectiveHeatingRoomTempDesired {
     value: tempv;
   }
 
@@ -1673,7 +1673,7 @@ namespace Basv3 {
   @inherit(r_7)
   @ext(0x14, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
-  model Z2HeatingRoomTempTarget {
+  model Z2EffectiveHeatingRoomTempDesired {
     value: tempv;
   }
 
@@ -1892,7 +1892,7 @@ namespace Basv3 {
   @inherit(r_8)
   @ext(0x14, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
-  model Z3HeatingRoomTempTarget {
+  model Z3EffectiveHeatingRoomTempDesired {
     value: tempv;
   }
 
