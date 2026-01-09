@@ -38,10 +38,11 @@ scalar date extends HDA3;
 /** weekday */
 scalar day extends BDY;
 
-/** days */
+/** day selector */
 @values(Values_daysel)
 scalar daysel extends UCH;
 
+/** day selector */
 @values(Values_daysel2)
 scalar daysel2 extends UCH;
 
@@ -182,8 +183,8 @@ scalar hwcmode2 extends UCH;
 scalar mixer extends UCH;
 
 /** zone valve state */
-@values(Values_closeopen)
-scalar closeopen extends UCH;
+@values(Values_openclose)
+scalar openclose extends UCH;
 
 /** day/night mode */
 @values(Values_daynight)
@@ -416,11 +417,11 @@ scalar zonestatus3 extends UIN;
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
-@values(Values_sfmode2)
-scalar sfmode2 extends UCH;
+@values(Values_sfmodezone)
+scalar sfmodezone extends UCH;
 
-@values(Values_sfmode3)
-scalar sfmode3 extends UCH;
+@values(Values_sfmodehwc)
+scalar sfmodehwc extends UCH;
 
 @values(Values_opmode)
 scalar opmode extends UIN;
@@ -550,13 +551,13 @@ enum Values_daysel {
 
 enum Values_daysel2 {
   off: 0,
-  Mon: 1,
-  Tue: 2,
-  Wed: 3,
-  Thu: 4,
-  Fri: 5,
-  Sat: 6,
-  Sun: 7,
+  Mo: 1,
+  Tu: 2,
+  We: 3,
+  Th: 4,
+  Fr: 5,
+  Sa: 6,
+  Su: 7,
   daily: 8,
 }
 
@@ -651,7 +652,7 @@ enum Values_mixer {
   close: 2,
 }
 
-enum Values_closeopen {
+enum Values_openclose {
   close: 0,
   open: 1,
 }
@@ -829,13 +830,13 @@ enum Values_sfmode {
   load: 6,
 }
 
-enum Values_sfmode2 {
+enum Values_sfmodezone {
   auto: 0,
   ventilation: 1,
   veto: 3,
 }
 
-enum Values_sfmode3 {
+enum Values_sfmodehwc {
   auto: 0,
   load: 6,
 }
@@ -849,7 +850,7 @@ enum Values_opmode {
 
 enum Values_opmode2 {
   off: 0,
-  time_controlled: 1,
+  auto: 1,
   manual: 2,
 }
 
