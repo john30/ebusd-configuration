@@ -9,7 +9,7 @@ namespace Vaillant;
 // @zz(0x15)
 namespace Basv3 {
   // BASV3,sensoCOMFORT VRC 720/3f via Base Station D (SW=0760;HW=7304)
-  
+
   // Errors
 
   /** default *r */
@@ -70,7 +70,9 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x1, 0)
   model HwcBivalencePoint {
-    @minValue(-20) @maxValue(50) @step(1)
+    @minValue(-20)
+    @maxValue(50)
+    @step(1)
     value: tempv;
   }
 
@@ -78,7 +80,10 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x2, 0)
   model ContinuosHeating {
-    @minValue(-26) @maxValue(10) @step(1)
+    /** -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
+    @minValue(-26)
+    @maxValue(10)
+    @step(1)
     value: tempv;
   }
 
@@ -107,6 +112,7 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0xe, 0)
   model MaxRoomHumidity {
+    @unit("%")
     value: UIN;
   }
 
@@ -121,6 +127,7 @@ namespace Basv3 {
   @inherit(ri_1)
   @ext(0x10, 0)
   model TariffAuxHeater {
+    @minValue(0)
     value: UIN;
   }
 
@@ -134,7 +141,7 @@ namespace Basv3 {
   /** hwc cylinder maximum charging time */
   @inherit(r_1, w_1)
   @ext(0x17, 0)
-  model HwcCylinderChargeMaxTime {
+  model HwcStorageChargeMaxTime {
     value: minutes2;
   }
 
@@ -156,7 +163,9 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x22, 0)
   model HcAlternativePoint {
-    @minValue(-21) @maxValue(40) @step(1)
+    @minValue(-21)
+    @maxValue(40)
+    @step(1)
     value: tempv;
   }
 
@@ -164,7 +173,9 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x23, 0)
   model HcBivalencePoint {
-    @minValue(-20) @maxValue(30) @step(1)
+    @minValue(-20)
+    @maxValue(30)
+    @step(1)
     value: tempv;
   }
 
@@ -179,23 +190,29 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x26, 0)
   model HcEmergencyTemperature {
-    @minValue(20) @maxValue(80) @step(1)
+    @minValue(20)
+    @maxValue(80)
+    @step(1)
     value: tempv;
   }
 
   /** hysteresis cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x27, 0)
-  model HwcCylinderChargeHyst {
-    @minValue(3) @maxValue(20) @step(0.5)
+  model HwcStorageChargeHyst {
+    @minValue(3)
+    @maxValue(20)
+    @step(0.5)
     value: calibrationv;
   }
 
   /** offset cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x29, 0)
-  model HwcCylinderChargeOffset {
-    @minValue(0) @maxValue(40) @step(1)
+  model HwcStorageChargeOffset {
+    @minValue(0)
+    @maxValue(40)
+    @step(1)
     value: calibrationv;
   }
 
@@ -224,7 +241,9 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0x2d, 0)
   model OffsetOutsideTemp {
-    @minValue(-3) @maxValue(3) @step(0.5)
+    @minValue(-3)
+    @maxValue(3)
+    @step(0.5)
     value: calibrationv;
   }
 
@@ -246,6 +265,9 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x36, 0)
   model HydraulicScheme {
+    @minValue(1)
+    @maxValue(16)
+    @step(1)
     value: UIN;
   }
 
@@ -253,7 +275,9 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x38, 0)
   model CoolingOutsideTempThreshold {
-    @minValue(10) @maxValue(30) @step(1)
+    @minValue(10)
+    @maxValue(30)
+    @step(1)
     value: tempv;
   }
 
@@ -268,21 +292,23 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x3A, 0)
   model DewPointOffset {
-    @minValue(-10) @maxValue(10) @step(1)
+    @minValue(-10)
+    @maxValue(10)
+    @step(1)
     value: tempv;
   }
 
   /** total solar yield */
-  @inherit(r_1)
+  @inherit(r_1, wi_1)
   @ext(0x3d, 0)
   model SolarYieldTotal {
     value: energy4;
   }
 
   /** total environmental yield */
-  @inherit(r_1)
+  @inherit(r_1, wi_1)
   @ext(0x3e, 0)
-  model EnvYieldTotal {
+  model YieldTotal {
     value: energy4;
   }
 
@@ -297,7 +323,9 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0x46, 0)
   model HwcFlowTempMax {
-    @minValue(15) @maxValue(80) @step(1)
+    @minValue(15)
+    @maxValue(80)
+    @step(1)
     value: tempv;
   }
 
@@ -438,7 +466,9 @@ namespace Basv3 {
   @inherit(ri_1, wi_1)
   @ext(0x76, 0)
   model KeyCodeforConfigMenu {
-    @minValue(0) @maxValue(999) @step(1)
+    @minValue(0)
+    @maxValue(999)
+    @step(1)
     value: UIN;
   }
 
@@ -466,14 +496,14 @@ namespace Basv3 {
   /** hwc cylinder temperature top */
   @inherit(r_1)
   @ext(0x9d, 0)
-  model HwcCylinderTempTop {
+  model HwcStorageTempTop {
     value: tempv;
   }
 
   /** hwc cylinder temperature bottom */
   @inherit(r_1)
   @ext(0x9e, 0)
-  model HwcCylinderTempBottom {
+  model HwcStorageTempBottom {
     value: tempv;
   }
 
@@ -495,7 +525,9 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0xa2, 0)
   model BufferChargeOffset {
-    @minValue(0) @maxValue(15) @step(1)
+    @minValue(0)
+    @maxValue(15)
+    @step(1)
     value: calibrationv;
   }
 
@@ -541,7 +573,9 @@ namespace Basv3 {
   @ext(0x4, 0)
   @condition(Basv3.HwcEnabled.value, "1")
   model HwcTempDesired {
-    @minValue(35) @maxValue(70) @step(1)
+    @minValue(35)
+    @maxValue(70)
+    @step(1)
     value: tempv;
   }
 
@@ -549,7 +583,7 @@ namespace Basv3 {
   @inherit(r_2)
   @ext(0x5, 0)
   @condition(Basv3.HwcEnabled.value, "1")
-  model HwcCylinderTemp {
+  model HwcStorageTemp {
     value: tempv;
   }
 
@@ -565,7 +599,7 @@ namespace Basv3 {
   @inherit(r_2)
   @ext(0x8, 0)
   @condition(Basv3.HwcEnabled.value, "1")
-  model HwcFlowTempTarget {
+  model HwcFlowTempDesired {
     value: tempv;
   }
 
@@ -590,7 +624,7 @@ namespace Basv3 {
   @ext(0xd, 0)
   @condition(Basv3.HwcEnabled.value, "1")
   model HwcSFMode {
-    value: sfmode3;
+    value: sfmodehwc;
   }
 
   /** hwc status */
@@ -643,7 +677,9 @@ namespace Basv3 {
   @ext(0x4, 0)
   @condition(Basv3.Hc1CircuitType.value, "4")
   model Hc1DesiredReturnTemp {
-    @minValue(15) @maxValue(80) @step(1)
+    @minValue(15)
+    @maxValue(80)
+    @step(1)
     value: tempv;
   }
 
@@ -690,7 +726,9 @@ namespace Basv3 {
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
   @condition(Basv3.Hc1DewPointMonitoring.value, "1")
   model Hc1DewPointOffset {
-    @minValue(-10) @maxValue(10) @step(1)
+    @minValue(-10)
+    @maxValue(10)
+    @step(1)
     value: calibrationv;
   }
 
@@ -699,7 +737,9 @@ namespace Basv3 {
   @ext(0xb, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Hc1ExcessTemp {
-    @minValue(0) @maxValue(20) @step(1)
+    @minValue(0)
+    @maxValue(20)
+    @step(1)
     value: calibrationv;
   }
 
@@ -708,7 +748,9 @@ namespace Basv3 {
   @ext(0xc, 0)
   @condition(Basv3.Hc1CircuitType.value, "2")
   model Hc1FixedDesiredTemp {
-    @minValue(5) @maxValue(90) @step(1)
+    @minValue(5)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -716,8 +758,10 @@ namespace Basv3 {
   @inherit(r_3, w_3)
   @ext(0xd, 0)
   @condition(Basv3.Hc1CircuitType.value, "2")
-  model Hc1FixedSetbackTemp {
-    @minValue(0) @maxValue(90) @step(1)
+  model Hc1SetbackModeTemp {
+    @minValue(0)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -733,7 +777,9 @@ namespace Basv3 {
   @inherit(r_3, w_3)
   @ext(0xf, 0)
   model Hc1HeatCurve {
-    @minValue(0.1) @maxValue(4) @step(0.05)
+    @minValue(0.1)
+    @maxValue(4)
+    @step(0.05)
     value: EXP;
   }
 
@@ -741,7 +787,9 @@ namespace Basv3 {
   @inherit(r_3, w_3)
   @ext(0x10, 0)
   model Hc1HeatingFlowTempMax {
-    @minValue(15) @maxValue(90) @step(1)
+    @minValue(15)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -751,7 +799,9 @@ namespace Basv3 {
   @condition(Basv3.Hc1CircuitType.value, "1")
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
   model Hc1CoolingFlowTempMin {
-    @minValue(7) @maxValue(24) @step(1)
+    @minValue(7)
+    @maxValue(24)
+    @step(1)
     value: tempv;
   }
 
@@ -759,7 +809,9 @@ namespace Basv3 {
   @inherit(r_3, w_3)
   @ext(0x12, 0)
   model Hc1HeatingFlowTempMin {
-    @minValue(15) @maxValue(90) @step(1)
+    @minValue(15)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -775,14 +827,16 @@ namespace Basv3 {
   @inherit(r_3, w_3)
   @ext(0x14, 0)
   model Hc1SummerTempLimit {
-    @minValue(10) @maxValue(99) @step(1)
+    @minValue(10)
+    @maxValue(99)
+    @step(1)
     value: tempv;
   }
 
-  /** RoomTempMod heating circuit 1 */
+  /** RoomTempModulation heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x15, 0)
-  model Hc1RoomTempMod {
+  model Hc1RoomTempModulation {
     value: rcmode2;
   }
 
@@ -854,9 +908,11 @@ namespace Basv3 {
   /** DesiredReturnTemp heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x4, 0)
-  @condition(Basv3.Hc1CircuitType.value, "4")
+  @condition(Basv3.Hc2CircuitType.value, "4")
   model Hc2DesiredReturnTemp {
-    @minValue(15) @maxValue(80) @step(1)
+    @minValue(15)
+    @maxValue(80)
+    @step(1)
     value: tempv;
   }
 
@@ -903,7 +959,9 @@ namespace Basv3 {
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
   @condition(Basv3.Hc2DewPointMonitoring.value, "1")
   model Hc2DewPointOffset {
-    @minValue(-10) @maxValue(10) @step(1)
+    @minValue(-10)
+    @maxValue(10)
+    @step(1)
     value: calibrationv;
   }
 
@@ -912,7 +970,9 @@ namespace Basv3 {
   @ext(0xb, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Hc2ExcessTemp {
-    @minValue(0) @maxValue(20) @step(1)
+    @minValue(0)
+    @maxValue(20)
+    @step(1)
     value: calibrationv;
   }
 
@@ -921,7 +981,9 @@ namespace Basv3 {
   @ext(0xc, 0)
   @condition(Basv3.Hc2CircuitType.value, "2")
   model Hc2FixedDesiredTemp {
-    @minValue(5) @maxValue(90) @step(1)
+    @minValue(5)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -929,8 +991,10 @@ namespace Basv3 {
   @inherit(r_4, w_4)
   @ext(0xd, 0)
   @condition(Basv3.Hc2CircuitType.value, "2")
-  model Hc2FixedSetbackTemp {
-    @minValue(0) @maxValue(90) @step(1)
+  model Hc2SetbackModeTemp {
+    @minValue(0)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -946,7 +1010,9 @@ namespace Basv3 {
   @inherit(r_4, w_4)
   @ext(0xf, 0)
   model Hc2HeatCurve {
-    @minValue(0.1) @maxValue(4) @step(0.05)
+    @minValue(0.1)
+    @maxValue(4)
+    @step(0.05)
     value: EXP;
   }
 
@@ -954,7 +1020,9 @@ namespace Basv3 {
   @inherit(r_4, w_4)
   @ext(0x10, 0)
   model Hc2HeatingFlowTempMax {
-    @minValue(15) @maxValue(90) @step(1)
+    @minValue(15)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -964,7 +1032,9 @@ namespace Basv3 {
   @condition(Basv3.Hc2CircuitType.value, "1")
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
   model Hc2CoolingFlowTempMin {
-    @minValue(7) @maxValue(24) @step(1)
+    @minValue(7)
+    @maxValue(24)
+    @step(1)
     value: tempv;
   }
 
@@ -972,7 +1042,9 @@ namespace Basv3 {
   @inherit(r_4, w_4)
   @ext(0x12, 0)
   model Hc2HeatingFlowTempMin {
-    @minValue(15) @maxValue(90) @step(1)
+    @minValue(15)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -988,14 +1060,16 @@ namespace Basv3 {
   @inherit(r_4, w_4)
   @ext(0x14, 0)
   model Hc2SummerTempLimit {
-    @minValue(10) @maxValue(99) @step(1)
+    @minValue(10)
+    @maxValue(99)
+    @step(1)
     value: tempv;
   }
 
-  /** RoomTempMod heating circuit 2 */
+  /** RoomTempModulation heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x15, 0)
-  model Hc2RoomTempMod {
+  model Hc2RoomTempModulation {
     value: rcmode2;
   }
 
@@ -1069,7 +1143,9 @@ namespace Basv3 {
   @ext(0x4, 0)
   @condition(Basv3.Hc3CircuitType.value, "4")
   model Hc3DesiredReturnTemp {
-    @minValue(15) @maxValue(80) @step(1)
+    @minValue(15)
+    @maxValue(80)
+    @step(1)
     value: tempv;
   }
 
@@ -1116,7 +1192,9 @@ namespace Basv3 {
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
   @condition(Basv3.Hc3DewPointMonitoring.value, "1")
   model Hc3DewPointOffset {
-    @minValue(-10) @maxValue(10) @step(1)
+    @minValue(-10)
+    @maxValue(10)
+    @step(1)
     value: calibrationv;
   }
 
@@ -1125,7 +1203,9 @@ namespace Basv3 {
   @ext(0xb, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Hc3ExcessTemp {
-    @minValue(0) @maxValue(20) @step(1)
+    @minValue(0)
+    @maxValue(20)
+    @step(1)
     value: calibrationv;
   }
 
@@ -1134,7 +1214,9 @@ namespace Basv3 {
   @ext(0xc, 0)
   @condition(Basv3.Hc3CircuitType.value, "2")
   model Hc3FixedDesiredTemp {
-    @minValue(5) @maxValue(90) @step(1)
+    @minValue(5)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -1142,8 +1224,10 @@ namespace Basv3 {
   @inherit(r_5, w_5)
   @ext(0xd, 0)
   @condition(Basv3.Hc3CircuitType.value, "2")
-  model Hc3FixedSetbackTemp {
-    @minValue(0) @maxValue(90) @step(1)
+  model Hc3SetbackModeTemp {
+    @minValue(0)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -1159,7 +1243,9 @@ namespace Basv3 {
   @inherit(r_5, w_5)
   @ext(0xf, 0)
   model Hc3HeatCurve {
-    @minValue(0.1) @maxValue(4) @step(0.05)
+    @minValue(0.1)
+    @maxValue(4)
+    @step(0.05)
     value: EXP;
   }
 
@@ -1167,7 +1253,9 @@ namespace Basv3 {
   @inherit(r_5, w_5)
   @ext(0x10, 0)
   model Hc3HeatingFlowTempMax {
-    @minValue(15) @maxValue(90) @step(1)
+    @minValue(15)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -1177,7 +1265,9 @@ namespace Basv3 {
   @condition(Basv3.Hc3CircuitType.value, "1")
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
   model Hc3CoolingFlowTempMin {
-    @minValue(7) @maxValue(24) @step(1)
+    @minValue(7)
+    @maxValue(24)
+    @step(1)
     value: tempv;
   }
 
@@ -1185,7 +1275,9 @@ namespace Basv3 {
   @inherit(r_5, w_5)
   @ext(0x12, 0)
   model Hc3HeatingFlowTempMin {
-    @minValue(15) @maxValue(90) @step(1)
+    @minValue(15)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -1201,14 +1293,16 @@ namespace Basv3 {
   @inherit(r_5, w_5)
   @ext(0x14, 0)
   model Hc3SummerTempLimit {
-    @minValue(10) @maxValue(99) @step(1)
+    @minValue(10)
+    @maxValue(99)
+    @step(1)
     value: tempv;
   }
 
-  /** RoomTempMod heating circuit 3 */
+  /** RoomTempModulation heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x15, 0)
-  model Hc3RoomTempMod {
+  model Hc3RoomTempModulation {
     value: rcmode2;
   }
 
@@ -1340,7 +1434,7 @@ namespace Basv3 {
   @ext(0xe, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1SFMode {
-    value: sfmode2;
+    value: sfmodezone;
   }
 
   /** room temperature zone 1 */
@@ -1354,7 +1448,7 @@ namespace Basv3 {
   @inherit(r_6)
   @ext(0x12, 0)
   model Z1ValveStatus {
-    value: closeopen;
+    value: openclose;
   }
 
   /** room zone mapping zone 1 */
@@ -1367,7 +1461,7 @@ namespace Basv3 {
   /** heating room temperature desired zone 1 */
   @inherit(r_6)
   @ext(0x14, 0)
-  @condition(Basv3.Hc3CircuitType.value, "1")
+  @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1HeatingRoomTempTarget {
     value: tempv;
   }
@@ -1559,7 +1653,7 @@ namespace Basv3 {
   @ext(0xe, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Z2SFMode {
-    value: sfmode2;
+    value: sfmodezone;
   }
 
   /** room temperature zone 2 */
@@ -1573,7 +1667,7 @@ namespace Basv3 {
   @inherit(r_7)
   @ext(0x12, 0)
   model Z2ValveStatus {
-    value: closeopen;
+    value: openclose;
   }
 
   /** room zone mapping zone 2 */
@@ -1778,7 +1872,7 @@ namespace Basv3 {
   @ext(0xe, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Z3SFMode {
-    value: sfmode2;
+    value: sfmodezone;
   }
 
   /** room temperature zone 3 */
@@ -1792,7 +1886,7 @@ namespace Basv3 {
   @inherit(r_8)
   @ext(0x12, 0)
   model Z3ValveStatus {
-    value: closeopen;
+    value: openclose;
   }
 
   /** room zone mapping zone 3 */
