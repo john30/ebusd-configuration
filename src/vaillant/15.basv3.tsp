@@ -264,7 +264,7 @@ namespace Basv3 {
   @ext(0x2a, 0)
   @condition(Basv3.HwcEnabled.value, "1")
   model HwcLegionellaTime {
-    value: HTM;
+    value: HTI;
   }
 
   /** hwc legionella day */
@@ -272,7 +272,7 @@ namespace Basv3 {
   @ext(0x2b, 0)
   @condition(Basv3.HwcEnabled.value, "1")
   model HwcLegionellaDay {
-    value: daysel2;
+    value: daysel3;
   }
 
   /** next maintenance */
@@ -385,7 +385,7 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0x4d, 0)
   model MultiRelaySetting {
-    value: mamode;
+    value: mamode2;
   }
 
   /** this month's fuel consumption heating */
@@ -3289,7 +3289,6 @@ namespace Basv3 {
   }
 
   enum Values_720ErrorCode {
-    None: 0,
     RECOVAIR_comm_error: 509,
     IOModule_comm_error: 511,
     AF_Sensor_error: 521,
@@ -3349,8 +3348,8 @@ namespace Basv3 {
   }
 
   enum Values_720ErrorStatus {
-    none: 0,
-    ongoing: 1,
-    resolved: 2,
+    None: 0,
+    Ongoing: 1,
+    Resolved: 2,
   }
 }

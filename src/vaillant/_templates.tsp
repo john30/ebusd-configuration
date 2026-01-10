@@ -46,6 +46,10 @@ scalar daysel extends UCH;
 @values(Values_daysel2)
 scalar daysel2 extends UCH;
 
+/** day selector */
+@values(Values_daysel2)
+scalar daysel3 extends UIN;
+
 /** days */
 scalar days extends UCH;
 
@@ -458,6 +462,9 @@ scalar shortphone extends STR;
 @values(Values_mamode)
 scalar mamode extends UIN;
 
+@values(Values_mamode2)
+scalar mamode2 extends UIN;
+
 @values(Values_offmode)
 scalar offmode extends UIN;
 
@@ -856,7 +863,7 @@ enum Values_opmode2 {
 
 enum Values_zmapping {
   none: 0,
-  VRC7XX: 1,
+  VRC720: 1,
   VR91_1: 2,
   VR91_2: 3,
   VR91_3: 4,
@@ -867,6 +874,15 @@ enum Values_mamode {
   dryer: 1,
   zone: 2,
   legiopump: 3,
+}
+
+enum Values_mamode2 {
+  circulation_pump: 0,
+  dehumidifier: 1,
+  zone: 2,
+  anti_legio_pump: 3,
+  not_connected: 4,
+  active_cool_period: 5,
 }
 
 enum Values_offmode {
