@@ -14,7 +14,7 @@ namespace Basv3 {
 
   /** default *r */
   @base(MF, 0x3, 0)
-  model r_0 {}
+  model r_0a {}
 
   model ErrorList {
     @values(Values_720ErrorCode)
@@ -34,10 +34,49 @@ namespace Basv3 {
   }
 
   /** Current errors */
-  @inherit(r_0)
+  @inherit(r_0a)
   @ext(1)
   model CurrentErrors {
     value: ErrorList;
+  }
+
+  /** default *r */
+  @base(MF, 0x3, 1)
+  model r_0b {}
+
+  /** default *wi for user level "install" */
+  @write
+  @auth("install")
+  @base(MF, 0x3, 0x2)
+  model wi_0b {}
+
+  model ErrorHistoryEntry {
+    @values(Values_720ErrorStatus)
+    status: UCH;
+
+    time: BTM;
+    date: BDA3;
+
+    @values(Values_720ErrorCode)
+    error: UIN;
+  }
+
+  /** Error history */
+  @inherit(r_0b)
+  @ext(1)
+  model ErrorHistory {
+    @out
+    index: UCH;
+
+    errorhistory: ErrorHistoryEntry;
+  }
+
+  /** Clear error history */
+  @inherit(wi_0b)
+  @ext(1)
+  model ClearErrorHistory {
+    @in
+    cleared: yesno;
   }
 
   /** default *r */
@@ -141,6 +180,7 @@ namespace Basv3 {
   /** hwc cylinder maximum charging time */
   @inherit(r_1, w_1)
   @ext(0x17, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcStorageChargeMaxTime {
     value: minutes2;
   }
@@ -148,6 +188,7 @@ namespace Basv3 {
   /** hwc lock time */
   @inherit(r_1, w_1)
   @ext(0x18, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcLockTime {
     value: minutes2;
   }
@@ -199,6 +240,7 @@ namespace Basv3 {
   /** hysteresis cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x27, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcStorageChargeHyst {
     @minValue(3)
     @maxValue(20)
@@ -209,6 +251,7 @@ namespace Basv3 {
   /** offset cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x29, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcStorageChargeOffset {
     @minValue(0)
     @maxValue(40)
@@ -219,6 +262,7 @@ namespace Basv3 {
   /** hwc legionella time */
   @inherit(r_1, w_1)
   @ext(0x2a, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcLegionellaTime {
     value: HTM;
   }
@@ -226,6 +270,7 @@ namespace Basv3 {
   /** hwc legionella day */
   @inherit(r_1, w_1)
   @ext(0x2b, 0)
+  @condition(Basv3.HwcEnabled.value, "1")
   model HwcLegionellaDay {
     value: daysel2;
   }
@@ -678,6 +723,9 @@ namespace Basv3 {
   /** DewPointMonitoring heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x5, 0)
+  @condition(Basv3.Hc1CircuitType.value, "1")
+  @condition(Basv3.Hc1CoolingEnabled.value, "1")
+  @condition(Basv3.Hc1RoomTempModulation.value, ">=1")
   model Hc1DewPointMonitoring {
     value: onoff;
   }
@@ -911,6 +959,9 @@ namespace Basv3 {
   /** DewPointMonitoring heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x5, 0)
+  @condition(Basv3.Hc2CircuitType.value, "1")
+  @condition(Basv3.Hc2CoolingEnabled.value, "1")
+  @condition(Basv3.Hc2RoomTempModulation.value, ">=1")
   model Hc2DewPointMonitoring {
     value: onoff;
   }
@@ -1144,6 +1195,9 @@ namespace Basv3 {
   /** DewPointMonitoring heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x5, 0)
+  @condition(Basv3.Hc3CircuitType.value, "1")
+  @condition(Basv3.Hc3CoolingEnabled.value, "1")
+  @condition(Basv3.Hc3RoomTempModulation.value, ">=1")
   model Hc3DewPointMonitoring {
     value: onoff;
   }
@@ -1370,6 +1424,9 @@ namespace Basv3 {
   @condition(Basv3.Hc1CircuitType.value, "1")
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
   model Z1CoolingSetbackTemp {
+    @minValue(15)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1394,6 +1451,9 @@ namespace Basv3 {
   @ext(0x5, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1HolidayTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1410,6 +1470,9 @@ namespace Basv3 {
   @ext(0x8, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1QuickVetoTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1418,6 +1481,9 @@ namespace Basv3 {
   @ext(0x9, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1HeatingSetbackTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1524,6 +1590,9 @@ namespace Basv3 {
   @ext(0x22, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1HeatingSetpointTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1533,6 +1602,9 @@ namespace Basv3 {
   @condition(Basv3.Hc1CircuitType.value, "1")
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
   model Z1CoolingSetpointTemp {
+    @minValue(15)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1549,6 +1621,9 @@ namespace Basv3 {
   @ext(0x26, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   model Z1QuickVetoDuration {
+    @minValue(0.5)
+    @maxValue(12)
+    @step(0.5)
     @unit("h")
     value: EXP;
   }
@@ -1589,6 +1664,9 @@ namespace Basv3 {
   @condition(Basv3.Hc2CircuitType.value, "1")
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
   model Z2CoolingSetbackTemp {
+    @minValue(15)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1613,6 +1691,9 @@ namespace Basv3 {
   @ext(0x5, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Z2HolidayTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1629,6 +1710,9 @@ namespace Basv3 {
   @ext(0x8, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Z2QuickVetoTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1637,6 +1721,9 @@ namespace Basv3 {
   @ext(0x9, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Z2HeatingSetbackTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1743,6 +1830,9 @@ namespace Basv3 {
   @ext(0x22, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Z2HeatingSetpointTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1752,6 +1842,9 @@ namespace Basv3 {
   @condition(Basv3.Hc2CircuitType.value, "1")
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
   model Z2CoolingSetpointTemp {
+    @minValue(15)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1768,6 +1861,9 @@ namespace Basv3 {
   @ext(0x26, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   model Z2QuickVetoDuration {
+    @minValue(0.5)
+    @maxValue(12)
+    @step(0.5)
     @unit("h")
     value: EXP;
   }
@@ -1808,6 +1904,9 @@ namespace Basv3 {
   @condition(Basv3.Hc3CircuitType.value, "1")
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
   model Z3CoolingSetbackTemp {
+    @minValue(15)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1832,6 +1931,9 @@ namespace Basv3 {
   @ext(0x5, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Z3HolidayTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1848,6 +1950,9 @@ namespace Basv3 {
   @ext(0x8, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Z3QuickVetoTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1856,6 +1961,9 @@ namespace Basv3 {
   @ext(0x9, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Z3HeatingSetbackTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1962,6 +2070,9 @@ namespace Basv3 {
   @ext(0x22, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Z3HeatingSetpointTemp {
+    @minValue(5)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1971,6 +2082,9 @@ namespace Basv3 {
   @condition(Basv3.Hc3CircuitType.value, "1")
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
   model Z3CoolingSetpointTemp {
+    @minValue(15)
+    @maxValue(30)
+    @step(0.5)
     value: tempv;
   }
 
@@ -1987,6 +2101,9 @@ namespace Basv3 {
   @ext(0x26, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   model Z3QuickVetoDuration {
+    @minValue(0.5)
+    @maxValue(12)
+    @step(0.5)
     @unit("h")
     value: EXP;
   }
@@ -3229,5 +3346,11 @@ namespace Basv3 {
     RC_2_temp_sensor_signal_invalid: 1364,
     RC_3_temp_sensor_signal_invalid: 1365,
     RC_4_temp_sensor_signal_invalid: 1366,
+  }
+
+  enum Values_720ErrorStatus {
+    none: 0,
+    ongoing: 1,
+    resolved: 2,
   }
 }
