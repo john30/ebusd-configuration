@@ -181,6 +181,7 @@ namespace Basv3 {
   @inherit(r_1, w_1)
   @ext(0x17, 0)
   @condition(Basv3.HwcEnabled.value, "1")
+  /** 15min=no limit */
   model HwcStorageChargeMaxTime {
     value: minutes2;
   }
@@ -740,7 +741,7 @@ namespace Basv3 {
   /** ActualFlowTempDesired heating circuit 1 */
   @inherit(r_3)
   @ext(0x7, 0)
-  model Hc1FlowTempTarget {
+  model Hc1FlowTempDesired {
     value: tempv;
   }
 
@@ -976,7 +977,7 @@ namespace Basv3 {
   /** ActualFlowTempDesired heating circuit 2 */
   @inherit(r_4)
   @ext(0x7, 0)
-  model Hc2FlowTempTarget {
+  model Hc2FlowTempDesired {
     value: tempv;
   }
 
@@ -1212,7 +1213,7 @@ namespace Basv3 {
   /** ActualFlowTempDesired heating circuit 3 */
   @inherit(r_5)
   @ext(0x7, 0)
-  model Hc3FlowTempTarget {
+  model Hc3FlowTempDesired {
     value: tempv;
   }
 
@@ -1520,7 +1521,7 @@ namespace Basv3 {
   @inherit(r_6)
   @ext(0x14, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
-  model Z1EffectiveHeatingRoomTempDesired {
+  model Z1HeatingTempDesired {
     value: tempv;
   }
 
@@ -1529,7 +1530,7 @@ namespace Basv3 {
   @ext(0x15, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
-  model Z1CoolingRoomTempTarget {
+  model Z1CoolingTempDesired {
     value: tempv;
   }
 
@@ -1589,7 +1590,7 @@ namespace Basv3 {
   @inherit(r_6, w_6)
   @ext(0x22, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
-  model Z1HeatingSetpointTemp {
+  model Z1HeatingManualTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -1601,7 +1602,7 @@ namespace Basv3 {
   @ext(0x23, 0)
   @condition(Basv3.Hc1CircuitType.value, "1")
   @condition(Basv3.Hc1CoolingEnabled.value, "1")
-  model Z1CoolingSetpointTemp {
+  model Z1CoolingManualTemp {
     @minValue(15)
     @maxValue(30)
     @step(0.5)
@@ -1760,7 +1761,7 @@ namespace Basv3 {
   @inherit(r_7)
   @ext(0x14, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
-  model Z2EffectiveHeatingRoomTempDesired {
+  model Z2HeatingTempDesired {
     value: tempv;
   }
 
@@ -1769,7 +1770,7 @@ namespace Basv3 {
   @ext(0x15, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
-  model Z2CoolingRoomTempTarget {
+  model Z2CoolingTempDesired {
     value: tempv;
   }
 
@@ -1829,7 +1830,7 @@ namespace Basv3 {
   @inherit(r_7, w_7)
   @ext(0x22, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
-  model Z2HeatingSetpointTemp {
+  model Z2HeatingManualTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -1841,7 +1842,7 @@ namespace Basv3 {
   @ext(0x23, 0)
   @condition(Basv3.Hc2CircuitType.value, "1")
   @condition(Basv3.Hc2CoolingEnabled.value, "1")
-  model Z2CoolingSetpointTemp {
+  model Z2CoolingManualTemp {
     @minValue(15)
     @maxValue(30)
     @step(0.5)
@@ -2000,7 +2001,7 @@ namespace Basv3 {
   @inherit(r_8)
   @ext(0x14, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
-  model Z3EffectiveHeatingRoomTempDesired {
+  model Z3HeatingTempDesired {
     value: tempv;
   }
 
@@ -2009,7 +2010,7 @@ namespace Basv3 {
   @ext(0x15, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
-  model Z3CoolingRoomTempTarget {
+  model Z3CoolingTempDesired {
     value: tempv;
   }
 
@@ -2069,7 +2070,7 @@ namespace Basv3 {
   @inherit(r_8, w_8)
   @ext(0x22, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
-  model Z3HeatingSetpointTemp {
+  model Z3HeatingManualTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -2081,7 +2082,7 @@ namespace Basv3 {
   @ext(0x23, 0)
   @condition(Basv3.Hc3CircuitType.value, "1")
   @condition(Basv3.Hc3CoolingEnabled.value, "1")
-  model Z3CoolingSetpointTemp {
+  model Z3CoolingManualTemp {
     @minValue(15)
     @maxValue(30)
     @step(0.5)
