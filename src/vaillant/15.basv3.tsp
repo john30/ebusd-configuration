@@ -1625,7 +1625,7 @@ namespace Basv3 {
     @minValue(0.5)
     @maxValue(12)
     @step(0.5)
-    @unit("h")
+    @unit("h") // TODO: Causes to be detected as read-only sensor
     value: EXP;
   }
 
@@ -1865,7 +1865,7 @@ namespace Basv3 {
     @minValue(0.5)
     @maxValue(12)
     @step(0.5)
-    @unit("h")
+    @unit("h") // TODO: Causes to be detected as read-only sensor
     value: EXP;
   }
 
@@ -2105,7 +2105,7 @@ namespace Basv3 {
     @minValue(0.5)
     @maxValue(12)
     @step(0.5)
-    @unit("h")
+    @unit("h") // TODO: Causes to be detected as read-only sensor
     value: EXP;
   }
 
