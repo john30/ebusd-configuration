@@ -3002,7 +3002,7 @@ namespace _700 {
     value: slot1_3;
   }
 
-  // ##### Humidity #####
+  // ##### Controller Sensors #####
 
   /** default *r */
   @base(MF, 0x24, 0x6, 0x0, 0x9, 0x1)
@@ -3011,10 +3011,192 @@ namespace _700 {
     value: IGN;
   }
 
-  /** Room humidity Controller */
+  /** controller room humidity*/
   @inherit(r_28)
   @ext(0x7, 0x0)
-  model RoomHumidityController {
+  model ControllerRoomHumidity {
+    value: EXP;
+  }
+  /** controller room temperature */
+  @inherit(r_28)
+  @ext(0xF, 0x0)
+  model ControllerRoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 1 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x1)
+  model r_29 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 1 room humidity */
+  @inherit(r_29)
+  @ext(0x7, 0x0)
+  model VR91Addr1RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 1 room temperature */
+  @inherit(r_29)
+  @ext(0xF, 0x0)
+  model VR91Addr1RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 2 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x2)
+  model r_30 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 2 room humidity */
+  @inherit(r_30)
+  @ext(0x7, 0x0)
+  model VR91Addr2RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 2 room temperature */
+  @inherit(r_30)
+  @ext(0xF, 0x0)
+  model VR91Addr2RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 3 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x3)
+  model r_31 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 3 room humidity */
+  @inherit(r_31)
+  @ext(0x7, 0x0)
+  model VR91Addr3RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 3 room temperature */
+  @inherit(r_31)
+  @ext(0xF, 0x0)
+  model VR91Addr3RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 4 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x4)
+  model r_32 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 4 room humidity */
+  @inherit(r_32)
+  @ext(0x7, 0x0)
+  model VR91Addr4RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 4 room temperature */
+  @inherit(r_32)
+  @ext(0xF, 0x0)
+  model VR91Addr4RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 5 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x5)
+  model r_33 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 5 room humidity */
+  @inherit(r_33)
+  @ext(0x7, 0x0)
+  model VR91Addr5RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 5 room temperature */
+  @inherit(r_33)
+  @ext(0xF, 0x0)
+  model VR91Addr5RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 6 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x6)
+  model r_34 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 6 room humidity */
+  @inherit(r_34)
+  @ext(0x7, 0x0)
+  model VR91Addr6RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 6 room temperature */
+  @inherit(r_34)
+  @ext(0xF, 0x0)
+  model VR91Addr6RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 7 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x7)
+  model r_35 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 7 room humidity */
+  @inherit(r_35)
+  @ext(0x7, 0x0)
+  model VR91Addr7RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 7 room temperature */
+  @inherit(r_35)
+  @ext(0xF, 0x0)
+  model VR91Addr7RoomTemp {
+    value: EXP;
+  }
+
+  // ##### VR91 Address 8 Sensors #####
+
+  /** default *r */
+  @base(MF, 0x24, 0x6, 0x0, 0x0a, 0x8)
+  model r_36 {
+    @maxLength(4)
+    value: IGN;
+  }
+
+  /** VR91 address 8 room humidity */
+  @inherit(r_36)
+  @ext(0x7, 0x0)
+  model VR91Addr8RoomHumidity {
+    value: EXP;
+  }
+  /** VR91 address 8 room temperature */
+  @inherit(r_36)
+  @ext(0xF, 0x0)
+  model VR91Addr8RoomTemp {
     value: EXP;
   }
 
