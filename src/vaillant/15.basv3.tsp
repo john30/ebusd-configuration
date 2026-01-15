@@ -3070,6 +3070,7 @@ namespace Basv3 {
 
     /** timer heating monday write */
     @inherit(w_16)
+    @ext(0, 0)
     model Z3HeatingTimer_MondayWrite {
       value: wTimeSlotWithTemp;
     }
