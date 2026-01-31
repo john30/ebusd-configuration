@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "@ebusd/ebus-typespec": ">=0.25.0",
-    "@typespec/compiler": "^1.8.0"
+    "@typespec/compiler": "~1.4.0"
   }
 }
