@@ -65,6 +65,7 @@ namespace _720 {
   /** Error history */
   @inherit(r_0b)
   @ext(1)
+  @passive
   model ErrorHistory {
     @out
     index: UCH;
@@ -499,6 +500,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x6c, 0)
   model Installer1 {
+    @minLength(0)
     value: shortname;
   }
 
@@ -506,6 +508,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x6d, 0)
   model Installer2 {
+    @minLength(0)
     value: shortname;
   }
 
@@ -513,6 +516,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x6f, 0)
   model PhoneNumber1 {
+    @minLength(0)
     value: shortphone;
   }
 
@@ -520,6 +524,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x70, 0)
   model PhoneNumber2 {
+    @minLength(0)
     value: shortphone;
   }
 
@@ -599,7 +604,7 @@ namespace _720 {
     value: calibrationv;
   }
 
-  // ##### hot water circuit #####
+  // ##### Hot water circuit #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 1, 0)
@@ -710,7 +715,7 @@ namespace _720 {
     }
   }
 
-  // ##### heating circuit 1 #####
+  // ##### Heating circuit 1 #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0x2, 0)
@@ -760,7 +765,7 @@ namespace _720 {
     value: onoff;
   }
 
-  /** ActualFlowTempDesired heating circuit 1 */
+  /** FlowTempDesired heating circuit 1 */
   @inherit(r_3)
   @ext(0x7, 0)
   model Hc1FlowTempDesired {
@@ -806,7 +811,7 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** DesiredTemp heating circuit 1 */
+  /** DesiredTemp (fixed) heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xc, 0)
   @condition(_720.Hc1CircuitType.value, "2")
@@ -817,7 +822,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DesiredSetbackTemp heating circuit 1 */
+  /** SetbackModeTemp (fixed) heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xd, 0)
   @condition(_720.Hc1CircuitType.value, "2")
@@ -846,7 +851,7 @@ namespace _720 {
     value: EXP;
   }
 
-  /** HeatingMaxFlowTempDesired heating circuit 1 */
+  /** HeatingFlowTempMax heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x10, 0)
   model Hc1HeatingFlowTempMax {
@@ -856,7 +861,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** CoolingMinFlowTempDesired heating circuit 1 */
+  /** CoolingFlowTempMin heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x11, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -868,7 +873,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** HeatingMinFlowTempDesired heating circuit 1 */
+  /** HeatingFlowTempMin heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x12, 0)
   model Hc1HeatingFlowTempMin {
@@ -946,7 +951,7 @@ namespace _720 {
     value: hcpumpmode;
   }
 
-  // ##### heating circuit 2 #####
+  // ##### Heating circuit 2 #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0x2, 1)
@@ -996,7 +1001,7 @@ namespace _720 {
     value: onoff;
   }
 
-  /** ActualFlowTempDesired heating circuit 2 */
+  /** FlowTempDesired heating circuit 2 */
   @inherit(r_4)
   @ext(0x7, 0)
   model Hc2FlowTempDesired {
@@ -1042,7 +1047,7 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** DesiredTemp heating circuit 2 */
+  /** DesiredTemp (fixed) heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xc, 0)
   @condition(_720.Hc2CircuitType.value, "2")
@@ -1053,7 +1058,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DesiredSetbackTemp heating circuit 2 */
+  /** SetbackModeTemp (fixed) heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xd, 0)
   @condition(_720.Hc2CircuitType.value, "2")
@@ -1082,7 +1087,7 @@ namespace _720 {
     value: EXP;
   }
 
-  /** HeatingMaxFlowTempDesired heating circuit 2 */
+  /** Hc2HeatingFlowTempMax heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x10, 0)
   model Hc2HeatingFlowTempMax {
@@ -1092,7 +1097,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** CoolingMinFlowTempDesired heating circuit 2 */
+  /** CoolingFlowTempMin heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x11, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1104,7 +1109,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** HeatingMinFlowTempDesired heating circuit 2 */
+  /** HeatingFlowTempMin heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x12, 0)
   model Hc2HeatingFlowTempMin {
@@ -1182,7 +1187,7 @@ namespace _720 {
     value: hcpumpmode;
   }
 
-  // ##### heating circuit 3 #####
+  // ##### Heating circuit 3 #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0x2, 0x2)
@@ -1232,7 +1237,7 @@ namespace _720 {
     value: onoff;
   }
 
-  /** ActualFlowTempDesired heating circuit 3 */
+  /** FlowTempDesired heating circuit 3 */
   @inherit(r_5)
   @ext(0x7, 0)
   model Hc3FlowTempDesired {
@@ -1278,7 +1283,7 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** DesiredTemp heating circuit 3 */
+  /** DesiredTemp (fixed) heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xc, 0)
   @condition(_720.Hc3CircuitType.value, "2")
@@ -1289,7 +1294,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DesiredSetbackTemp heating circuit 3 */
+  /** SetbackModeTemp (fixed) heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xd, 0)
   @condition(_720.Hc3CircuitType.value, "2")
@@ -1318,7 +1323,7 @@ namespace _720 {
     value: EXP;
   }
 
-  /** HeatingMaxFlowTempDesired heating circuit 3 */
+  /** HeatingFlowTempMax heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x10, 0)
   model Hc3HeatingFlowTempMax {
@@ -1328,7 +1333,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** CoolingMinFlowTempDesired heating circuit 3 */
+  /** CoolingFlowTempMin heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x11, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -1340,7 +1345,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** HeatingMinFlowTempDesired heating circuit 3 */
+  /** HeatingFlowTempMin heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x12, 0)
   model Hc3HeatingFlowTempMin {
@@ -1418,7 +1423,7 @@ namespace _720 {
     value: hcpumpmode;
   }
 
-  // ##### zone 1 #####
+  // ##### Zone 1 #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0x3, 0)
@@ -1441,7 +1446,7 @@ namespace _720 {
     value: opmode2;
   }
 
-  /** cooling setpoint zone 1 */
+  /** cooling setback temperature zone 1 */
   @inherit(r_6, w_6)
   @ext(0x2, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -1499,7 +1504,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** set back temperature zone 1 */
+  /** heating setback temperature zone 1 */
   @inherit(r_6, w_6)
   @ext(0x9, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -1560,6 +1565,7 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x16, 0)
   model Z1Shortname {
+    @minLength(0)
     value: shortname;
   }
 
@@ -1567,6 +1573,7 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x17, 0)
   model Z1Name1 {
+    @minLength(0)
     value: zname;
   }
 
@@ -1574,10 +1581,11 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x18, 0)
   model Z1Name2 {
+    @minLength(0)
     value: zname;
   }
 
-  /** zone 1 heating time slot active */
+  /** heating time slot active zone 1 */
   @inherit(r_6)
   @ext(0x19, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -1585,7 +1593,7 @@ namespace _720 {
     value: yesno;
   }
 
-  /** zone 1 cooling time slot active */
+  /** cooling time slot active zone 1 */
   @inherit(r_6)
   @ext(0x1A, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -1675,7 +1683,7 @@ namespace _720 {
     value: percentv;
   }
 
-  // ##### zone 2 #####
+  // ##### Zone 2 #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0x3, 1)
@@ -1698,7 +1706,7 @@ namespace _720 {
     value: opmode2;
   }
 
-  /** cooling setpoint zone 2 */
+  /** cooling setback temperature zone 2 */
   @inherit(r_7, w_7)
   @ext(0x2, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1756,7 +1764,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** set back temperature zone 2 */
+  /** heating setback temperature zone 2 */
   @inherit(r_7, w_7)
   @ext(0x9, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1817,6 +1825,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x16, 0)
   model Z2Shortname {
+    @minLength(0)
     value: shortname;
   }
 
@@ -1824,6 +1833,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x17, 0)
   model Z2Name1 {
+    @minLength(0)
     value: zname;
   }
 
@@ -1831,10 +1841,11 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x18, 0)
   model Z2Name2 {
+    @minLength(0)
     value: zname;
   }
 
-  /** zone 2 heating time slot active */
+  /** heating time slot active zone 2 */
   @inherit(r_7)
   @ext(0x19, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1842,7 +1853,7 @@ namespace _720 {
     value: yesno;
   }
 
-  /** zone 2 cooling time slot active */
+  /** cooling time slot active zone 2 */
   @inherit(r_7)
   @ext(0x1A, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1932,7 +1943,7 @@ namespace _720 {
     value: percentv;
   }
 
-  // ##### zone 3 #####
+  // ##### Zone 3 #####
 
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0x3, 0x2)
@@ -1955,7 +1966,7 @@ namespace _720 {
     value: opmode2;
   }
 
-  /** cooling setpoint zone 3 */
+  /** cooling setback zone 3 */
   @inherit(r_8, w_8)
   @ext(0x2, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -2013,7 +2024,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** set back temperature zone 3 */
+  /** setback temperature zone 3 */
   @inherit(r_8, w_8)
   @ext(0x9, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -2074,6 +2085,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x16, 0)
   model Z3Shortname {
+    @minLength(0)
     value: shortname;
   }
 
@@ -2081,6 +2093,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x17, 0)
   model Z3Name1 {
+    @minLength(0)
     value: zname;
   }
 
@@ -2088,10 +2101,11 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x18, 0)
   model Z3Name2 {
+    @minLength(0)
     value: zname;
   }
 
-  /** zone 3 heating time slot active */
+  /** heating time slot active zone 3 */
   @inherit(r_8)
   @ext(0x19, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -2099,7 +2113,7 @@ namespace _720 {
     value: yesno;
   }
 
-  /** zone 3 cooling time slot active */
+  /** cooling time slot active zone 3 */
   @inherit(r_8)
   @ext(0x1A, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -2302,7 +2316,7 @@ namespace _720 {
   }
   */
 
-  // timers hot water
+  // Hot water timers
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0x2)
   model r_10 {}
@@ -2430,7 +2444,7 @@ namespace _720 {
     }
   }
 
-  // timers circulation pump
+  // Circulation pump timers
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0x3)
@@ -2559,7 +2573,7 @@ namespace _720 {
     }
   }
 
-  // timers silent mode
+  // Silent mode timers
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0x4)
@@ -2685,7 +2699,7 @@ namespace _720 {
     value: wTimeSlotWithoutTemp;
   }
 
-  // heating timers zone 1
+  // Heating timers zone 1
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 0)
@@ -2814,7 +2828,7 @@ namespace _720 {
     }
   }
 
-  // cooling timers zone 1
+  // Cooling timers zone 1
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 0, 1)
@@ -2944,7 +2958,7 @@ namespace _720 {
     }
   }
 
-  // heating timers zone 2
+  // Heating timers zone 2
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 1, 0)
@@ -3073,7 +3087,7 @@ namespace _720 {
     }
   }
 
-  // cooling timers zone 2
+  // Cooling timers zone 2
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 1, 1)
@@ -3203,7 +3217,7 @@ namespace _720 {
     }
   }
 
-  // heating timers zone 3
+  // Heating timers zone 3
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 2, 0)
@@ -3332,7 +3346,7 @@ namespace _720 {
     }
   }
 
-  // cooling timers zone 3
+  // Cooling timers zone 3
 
   /** default *r */
   @base(MF, 0x55, 0xa5, 2, 1)
