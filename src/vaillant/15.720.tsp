@@ -200,6 +200,7 @@ namespace _720 {
   /** preset flow rate solar circuit for solar yield calculation */
   @inherit(r_1, w_1)
   @ext(0x19, 0)
+  @condition(_720.FM5Config.value, "<=2")
   model SolarFlowRateQuantity {
     @minValue(0)
     @unit("l/min")
@@ -908,6 +909,20 @@ namespace _720 {
     value: rcmode2;
   }
 
+  /** ScreedDryingDay heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x16, 0)
+  model Hc1ScreedDryingDay {
+    value: UIN;
+  }
+
+  /** ScreedDryingDesiredTemp heating circuit 1 */
+  @inherit(r_3, w_3)
+  @ext(0x17, 0)
+  model Hc1ScreedDryingDesiredTemp {
+    value: tempv;
+  }
+
   /** ExtHwcActive heating circuit 1 */
   @inherit(r_3)
   @ext(0x18, 0)
@@ -1144,6 +1159,20 @@ namespace _720 {
     value: rcmode2;
   }
 
+  /** ScreedDryingDay heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x16, 0)
+  model Hc2ScreedDryingDay {
+    value: UIN;
+  }
+
+  /** ScreedDryingDesiredTemp heating circuit 2 */
+  @inherit(r_4, w_4)
+  @ext(0x17, 0)
+  model Hc2ScreedDryingDesiredTemp {
+    value: tempv;
+  }
+
   /** ExtHwcActive heating circuit 2 */
   @inherit(r_4)
   @ext(0x18, 0)
@@ -1378,6 +1407,20 @@ namespace _720 {
   @ext(0x15, 0)
   model Hc3RoomTempModulation {
     value: rcmode2;
+  }
+
+  /** ScreedDryingDay heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x16, 0)
+  model Hc3ScreedDryingDay {
+    value: UIN;
+  }
+
+  /** ScreedDryingDesiredTemp heating circuit 3 */
+  @inherit(r_5, w_5)
+  @ext(0x17, 0)
+  model Hc3ScreedDryingDesiredTemp {
+    value: tempv;
   }
 
   /** ExtHwcActive heating circuit 3 */
@@ -2216,53 +2259,56 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 1, 0x4, 0)
   model w_18 {}
 
-  /** SolarPumpKick */
-  @inherit(r_19, w_18)
-  @ext(0x2, 0)
-  model SolarPumpKick {
-    value: onoff;
-  }
+  @condition(_720.FM5Config.value, "<=2")
+  namespace SolarCircuit {
+    /** SolarPumpKick */
+    @inherit(r_19, w_18)
+    @ext(0x2, 0)
+    model SolarPumpKick {
+      value: onoff;
+    }
 
-  /** SolarCollectorTemp */
-  @inherit(r_19)
-  @ext(0x3, 0)
-  model SolarCollectorTemp {
-    value: tempv;
-  }
+    /** SolarCollectorTemp */
+    @inherit(r_19)
+    @ext(0x3, 0)
+    model SolarCollectorTemp {
+      value: tempv;
+    }
 
-  /** SolarCollectorTempMin */
-  @inherit(r_19, w_18)
-  @ext(0x4, 0)
-  model SolarCollectorTempMin {
-    value: tempv;
-  }
+    /** SolarCollectorTempMin */
+    @inherit(r_19, w_18)
+    @ext(0x4, 0)
+    model SolarCollectorTempMin {
+      value: tempv;
+    }
 
-  /** SolarCollectorTempMax */
-  @inherit(r_19, w_18)
-  @ext(0x5, 0)
-  model SolarCollectorTempMax {
-    value: tempv;
-  }
+    /** SolarCollectorTempMax */
+    @inherit(r_19, w_18)
+    @ext(0x5, 0)
+    model SolarCollectorTempMax {
+      value: tempv;
+    }
 
-  /** SolarYieldTemp */
-  @inherit(r_19)
-  @ext(0x7, 0)
-  model SolarYieldTemp {
-    value: tempv;
-  }
+    /** SolarYieldTemp */
+    @inherit(r_19)
+    @ext(0x7, 0)
+    model SolarYieldTemp {
+      value: tempv;
+    }
 
-  /** SolarPump */
-  @inherit(r_19)
-  @ext(0x8, 0)
-  model SolarPump {
-    value: onoff;
-  }
+    /** SolarPump */
+    @inherit(r_19)
+    @ext(0x8, 0)
+    model SolarPump {
+      value: onoff;
+    }
 
-  /** SolarPumpHours */
-  @inherit(r_19)
-  @ext(0xb, 0)
-  model SolarPumpHours {
-    value: hoursum;
+    /** SolarPumpHours */
+    @inherit(r_19)
+    @ext(0xb, 0)
+    model SolarPumpHours {
+      value: hoursum;
+    }
   }
 
   // ##### Solar Cylinder 1 #####
@@ -2278,28 +2324,31 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 1, 0x5, 0)
   model w_19 {}
 
-  /** SolarCylinder1TempMax */
-  /** maximum cylinder charging temperature (BottomTemp sensor) */
-  @inherit(r_20, w_19)
-  @ext(0x1, 0)
-  model SolarCylinder1TempMax {
-    value: tempv;
-  }
+  @condition(_720.FM5Config.value, "<=2")
+  namespace SolarCylinder1 {
+    /** SolarCylinder1TempMax */
+    /** maximum cylinder charging temperature (BottomTemp sensor) */
+    @inherit(r_20, w_19)
+    @ext(0x1, 0)
+    model SolarCylinder1TempMax {
+      value: tempv;
+    }
 
-  /** SolarCylinder1SwitchOnDifferential */
-  /** charge if the temperature difference between the cylinder temperature sensor at the bottom and the collector temperature sensor is greater */
-  @inherit(r_20, w_19)
-  @ext(0x2, 0)
-  model SolarCylinder1SwitchOnDifferential {
-    value: calibrationv;
-  }
+    /** SolarCylinder1SwitchOnDifferential */
+    /** charge if the temperature difference between the cylinder temperature sensor at the bottom and the collector temperature sensor is greater */
+    @inherit(r_20, w_19)
+    @ext(0x2, 0)
+    model SolarCylinder1SwitchOnDifferential {
+      value: calibrationv;
+    }
 
-  /** SolarCylinder1SwitchOffDifferential */
-  /** turn charge off if temperature difference between the bottom cylinder temperature sensor and the collector temperature sensor is smaller */
-  @inherit(r_20, w_19)
-  @ext(0x3, 0)
-  model SolarCylinder1SwitchOffDifferential {
-    value: calibrationv;
+    /** SolarCylinder1SwitchOffDifferential */
+    /** turn charge off if temperature difference between the bottom cylinder temperature sensor and the collector temperature sensor is smaller */
+    @inherit(r_20, w_19)
+    @ext(0x3, 0)
+    model SolarCylinder1SwitchOffDifferential {
+      value: calibrationv;
+    }
   }
 
   // ##### Timers #####
