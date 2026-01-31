@@ -725,10 +725,24 @@ namespace _720 {
     value: IGN;
   }
 
+  /** default *ri for user level "install" */
+  @auth("install")
+  @base(MF, 0x24, 0x2, 0, 0x2, 0)
+  model ri_3 {
+    @maxLength(4)
+    value: IGN;
+  }
+
   /** default *w */
   @write
   @base(MF, 0x24, 0x2, 1, 0x2, 0)
   model w_3 {}
+
+  /** default *wi for user level "install" */
+  @write
+  @auth("install")
+  @base(MF, 0x24, 0x2, 1, 0x2, 0)
+  model wi_3 {}
 
   /** CircuitType heating circuit 1 */
   @inherit(r_3)
@@ -910,16 +924,22 @@ namespace _720 {
   }
 
   /** ScreedDryingDay heating circuit 1 */
-  @inherit(r_3, w_3)
+  @inherit(ri_3, wi_3)
   @ext(0x16, 0)
   model Hc1ScreedDryingDay {
+    @minValue(0)
+    @maxValue(29)
+    @step(1)
     value: UIN;
   }
 
   /** ScreedDryingDesiredTemp heating circuit 1 */
-  @inherit(r_3, w_3)
+  @inherit(ri_3)
   @ext(0x17, 0)
   model Hc1ScreedDryingDesiredTemp {
+    @minValue(0)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -975,10 +995,24 @@ namespace _720 {
     value: IGN;
   }
 
+  /** default *ri for user level "install" */
+  @auth("install")
+  @base(MF, 0x24, 0x2, 0, 0x2, 1)
+  model ri_4 {
+    @maxLength(4)
+    value: IGN;
+  }
+
   /** default *w */
   @write
   @base(MF, 0x24, 0x2, 1, 0x2, 1)
   model w_4 {}
+
+  /** default *wi for user level "install" */
+  @write
+  @auth("install")
+  @base(MF, 0x24, 0x2, 1, 0x2, 1)
+  model wi_4 {}
 
   /** CircuitType heating circuit 2 */
   @inherit(r_4)
@@ -1160,16 +1194,22 @@ namespace _720 {
   }
 
   /** ScreedDryingDay heating circuit 2 */
-  @inherit(r_4, w_4)
+  @inherit(ri_4, wi_4)
   @ext(0x16, 0)
   model Hc2ScreedDryingDay {
+    @minValue(0)
+    @maxValue(29)
+    @step(1)
     value: UIN;
   }
 
   /** ScreedDryingDesiredTemp heating circuit 2 */
-  @inherit(r_4, w_4)
+  @inherit(ri_4)
   @ext(0x17, 0)
   model Hc2ScreedDryingDesiredTemp {
+    @minValue(0)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
@@ -1225,10 +1265,24 @@ namespace _720 {
     value: IGN;
   }
 
+  /** default *ri for user level "install" */
+  @auth("install")
+  @base(MF, 0x24, 0x2, 0, 0x2, 0x2)
+  model ri_5 {
+    @maxLength(4)
+    value: IGN;
+  }
+
   /** default *w */
   @write
   @base(MF, 0x24, 0x2, 1, 0x2, 0x2)
   model w_5 {}
+
+  /** default *wi for user level "install" */
+  @write
+  @auth("install")
+  @base(MF, 0x24, 0x2, 1, 0x2, 0x2)
+  model wi_5 {}
 
   /** CircuitType heating circuit 3 */
   @inherit(r_5)
@@ -1410,16 +1464,22 @@ namespace _720 {
   }
 
   /** ScreedDryingDay heating circuit 3 */
-  @inherit(r_5, w_5)
+  @inherit(ri_5, wi_5)
   @ext(0x16, 0)
   model Hc3ScreedDryingDay {
+    @minValue(0)
+    @maxValue(29)
+    @step(1)
     value: UIN;
   }
 
   /** ScreedDryingDesiredTemp heating circuit 3 */
-  @inherit(r_5, w_5)
+  @inherit(ri_5)
   @ext(0x17, 0)
   model Hc3ScreedDryingDesiredTemp {
+    @minValue(0)
+    @maxValue(90)
+    @step(1)
     value: tempv;
   }
 
