@@ -90,31 +90,38 @@ namespace _720 {
     value: IGN;
   }
 
-  /** EnStatSolarSumSystem */
+  /** EnergyStatsSolarSumSystem */
   @inherit(r_0c)
   @ext(0x1, 0, 0x21, 0x32)
-  model EnStatSolarSumSystem {
+  @condition(_720.FM5Config.value, "<=2")
+  model EnergyStatsSolarSumSystem {
+    @unit("Wh")
     value: EXP;
   }
 
-  /** EnStatSolarHeatingSystem */
+  /** EnergyStatsSolarHeatingSystem */
   @inherit(r_0c)
   @ext(0x1, 0x3, 0x21, 0x32)
-  model EnStatSolarHeatingSystem {
+  @condition(_720.FM5Config.value, "<=2")
+  model EnergyStatsSolarHeatingSystem {
+    @unit("Wh")
     value: EXP;
   }
 
-  /** EnStatSolarHotWaterSystem */
+  /** EnergyStatsSolarHotWaterSystem */
   @inherit(r_0c)
   @ext(0x1, 0x4, 0x21, 0x32)
-  model EnStatSolarHotWaterSystem {
+  @condition(_720.FM5Config.value, "<=2")
+  model EnergyStatsSolarHotWaterSystem {
+    @unit("Wh")
     value: EXP;
   }
 
-  /** EnStatElectricalSumSystem */
+  /** EnergyStatsElectricalSumSystem */
   @inherit(r_0c)
   @ext(0x3, 0, 0x21, 0x32)
-  model EnStatElectricalSumSystem {
+  model EnergyStatsElectricalSumSystem {
+    @unit("Wh")
     value: EXP;
   }
 
@@ -408,6 +415,7 @@ namespace _720 {
   /** total solar yield */
   @inherit(r_1, wi_1)
   @ext(0x3d, 0)
+  @condition(_720.FM5Config.value, "<=2")
   model SolarYieldTotal {
     value: energy4;
   }
