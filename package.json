@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/john30/ebusd-configuration#readme",
   "devDependencies": {
-    "@types/node": "^24.5.2",
-    "@typespec/library-linter": "~0.74.0",
-    "typescript": "^5.9.2"
+    "@types/node": "^25.1.0",
+    "@typespec/library-linter": "~0.78.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@ebusd/ebus-typespec": ">=0.25.0",
-    "@typespec/compiler": "^1.8.0"
+    "@ebusd/ebus-typespec": ">=0.26.0",
+    "@typespec/compiler": "~1.8.0"
   }
 }
