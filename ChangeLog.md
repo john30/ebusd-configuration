@@ -1,3 +1,10 @@
+# 2026-02-01
+https://ebus.github.io/ only:
+* smaller corrections, remove unused top level broadcast items where appropriate
+* worked on some PRs:
+  * rework #481
+  * include #482 template adjustments
+
 # 2025-09-28
 https://ebus.github.io/ only:
 * reworked+merged several PRs:
