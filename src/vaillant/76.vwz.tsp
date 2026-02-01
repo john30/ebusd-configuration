@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./b516_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -73,5 +74,10 @@ namespace Vwz {
   enum Values_TestThreeWayValve {
     heating: 0,
     dhw: 1,
+  }
+
+  /** included parts */
+  union _includes {
+    B516_inc,
   }
 }

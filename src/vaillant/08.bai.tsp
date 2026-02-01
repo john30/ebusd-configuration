@@ -22,6 +22,7 @@ import "./bai.0010043897_inc.tsp";
 import "./bai.0010008045_inc.tsp";
 import "./errors_inc.tsp";
 import "./hcmode_inc.tsp";
+import "./b516_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -392,5 +393,6 @@ namespace Bai {
 
     Errors_inc,
     Hcmode_inc,
+    B516_inc,
   }
 }
