@@ -46,6 +46,10 @@ scalar daysel extends UCH;
 @values(Values_daysel2)
 scalar daysel2 extends UCH;
 
+/** day selector */
+@values(Values_daysel2)
+scalar daysel3 extends UIN;
+
 /** days */
 scalar days extends UCH;
 
@@ -165,6 +169,10 @@ scalar mctype extends UCH;
 /** mixer type */
 @values(Values_mctype7)
 scalar mctype7 extends BI0_7;
+
+/** hc type */
+@values(Values_hctype)
+scalar hctype extends UCH;
 
 /** hot water mode */
 @values(Values_hwcmode)
@@ -404,6 +412,12 @@ scalar zonesel extends UIN;
 @values(Values_zonestatus)
 scalar zonestatus extends UIN;
 
+@values(Values_zonestatus2)
+scalar zonestatus2 extends UIN;
+
+@values(Values_zonestatus3)
+scalar zonestatus3 extends UIN;
+
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
@@ -427,10 +441,12 @@ scalar zmapping extends UIN;
 scalar hcname extends STR;
 
 /** zone name */
+@minLength(0)
 @maxLength(5)
 scalar zname extends STR;
 
 /** name */
+@minLength(0)
 @maxLength(6)
 scalar shortname extends STR;
 
@@ -439,11 +455,15 @@ scalar shortname extends STR;
 scalar phone extends STR;
 
 /** phone number */
+@minLength(0)
 @maxLength(6)
 scalar shortphone extends STR;
 
 @values(Values_mamode)
 scalar mamode extends UIN;
+
+@values(Values_mamode2)
+scalar mamode2 extends UIN;
 
 @values(Values_offmode)
 scalar offmode extends UIN;
@@ -600,6 +620,14 @@ enum Values_mctype7 {
   returnincr: 4,
   pool: 5,
   circulation: 6,
+}
+
+enum Values_hctype {
+  inactive: 0,
+  heat: 1,
+  fixed: 2,
+  water: 3,
+  returnincr: 4,
 }
 
 enum Values_escomode {
@@ -783,6 +811,22 @@ enum Values_zonestatus {
   off: 10,
 }
 
+enum Values_zonestatus2 {
+  auto: 0,
+  holidayaway: 7,
+  load: 9,
+  off: 10,
+}
+
+enum Values_zonestatus3 {
+  auto: 0,
+  ventilation: 1,
+  veto: 4,
+  holidayaway: 7,
+  load: 9,
+  off: 10,
+}
+
 enum Values_sfmode {
   auto: 0,
   ventilation: 1,
@@ -819,7 +863,7 @@ enum Values_opmode2 {
 
 enum Values_zmapping {
   none: 0,
-  VRC700: 1,
+  VRC720: 1,
   VR91_1: 2,
   VR91_2: 3,
   VR91_3: 4,
@@ -830,6 +874,15 @@ enum Values_mamode {
   dryer: 1,
   zone: 2,
   legiopump: 3,
+}
+
+enum Values_mamode2 {
+  circulation_pump: 0,
+  dehumidifier: 1,
+  zone: 2,
+  anti_legio_pump: 3,
+  not_connected: 4,
+  active_cool_period: 5,
 }
 
 enum Values_offmode {
