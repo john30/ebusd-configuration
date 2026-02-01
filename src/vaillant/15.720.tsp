@@ -1689,7 +1689,7 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x13, 0)
   model Z1RoomZoneMapping {
-    value: Values_720ZoneMapping;
+    value: zmapping2;
   }
 
   /** heating room temperature desired zone 1 */
@@ -1949,7 +1949,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x13, 0)
   model Z2RoomZoneMapping {
-    value: Values_720ZoneMapping;
+    value: zmapping2;
   }
 
   /** heating room temperature desired zone 2 */
@@ -2209,7 +2209,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x13, 0)
   model Z3RoomZoneMapping {
-    value: Values_720ZoneMapping;
+    value: zmapping2;
   }
 
   /** heating room temperature desired zone 3 */
@@ -3902,13 +3902,5 @@ namespace _720 {
     None: 0,
     Ongoing: 1,
     Resolved: 2,
-  }
-
-  enum Values_720ZoneMapping {
-    none: 0,
-    VRC720: 1,
-    VR92_1: 2,
-    VR92_2: 3,
-    VR92_3: 4,
   }
 }

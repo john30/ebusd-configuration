@@ -436,6 +436,9 @@ scalar opmode2 extends UIN;
 @values(Values_zmapping)
 scalar zmapping extends UIN;
 
+@values(Values_zmapping2)
+scalar zmapping2 extends UIN;
+
 /** heat circuit name */
 @maxLength(11)
 scalar hcname extends STR;
@@ -867,6 +870,14 @@ enum Values_zmapping {
   VR91_1: 2,
   VR91_2: 3,
   VR91_3: 4,
+}
+
+enum Values_zmapping2 {
+  none: 0,
+  VRC720: 1,
+  VR92_1: 2,
+  VR92_2: 3,
+  VR92_3: 4,
 }
 
 enum Values_mamode {
