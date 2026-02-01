@@ -81,6 +81,43 @@ namespace _720 {
     cleared: yesno;
   }
 
+  // Energy Stats
+
+  /** default *r */
+  @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
+  model r_0c {
+    @maxLength(7)
+    value: IGN;
+  }
+
+  /** EnStatSolarSumSystem */
+  @inherit(r_0c)
+  @ext(0x1, 0, 0x21, 0x32)
+  model EnStatSolarSumSystem {
+    value: EXP;
+  }
+
+  /** EnStatSolarHeatingSystem */
+  @inherit(r_0c)
+  @ext(0x1, 0x3, 0x21, 0x32)
+  model EnStatSolarHeatingSystem {
+    value: EXP;
+  }
+
+  /** EnStatSolarHotWaterSystem */
+  @inherit(r_0c)
+  @ext(0x1, 0x4, 0x21, 0x32)
+  model EnStatSolarHotWaterSystem {
+    value: EXP;
+  }
+
+  /** EnStatElectricalSumSystem */
+  @inherit(r_0c)
+  @ext(0x3, 0, 0x21, 0x32)
+  model EnStatElectricalSumSystem {
+    value: EXP;
+  }
+
   /** default *r */
   @base(MF, 0x24, 0x2, 0, 0, 0)
   model r_1 {
