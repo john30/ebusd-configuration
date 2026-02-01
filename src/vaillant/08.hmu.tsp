@@ -188,9 +188,9 @@ namespace Hmu {
   /** current compressor utilization */
   @inherit(r_2)
   @ext(0x25)
+  @Ebus.example("22%", "3108b51a0405ff3225", "0aff083867010000000000")
   model CurrentCompressorUtil {
-    @unit("%")
-    value: D1B;
+    value: percent;
   }
 
   /** air intake temperature */
