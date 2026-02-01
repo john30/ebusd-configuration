@@ -863,7 +863,7 @@ enum Values_opmode2 {
 
 enum Values_zmapping {
   none: 0,
-  VRC720: 1,
+  VRC700: 1,
   VR91_1: 2,
   VR91_2: 3,
   VR91_3: 4,
