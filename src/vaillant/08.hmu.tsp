@@ -209,6 +209,12 @@ namespace Hmu {
   }
 
   @inherit(r_2)
+  @ext(0x22)
+  model SourceTempInput {
+    value: temp;
+  }
+
+  @inherit(r_2)
   @ext(0x27)
   model SourceTempOutput {
     value: temp;
