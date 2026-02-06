@@ -1,0 +1,11 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,recov,RecoVair 275,,,,,,,,,,,
+*r,,,,,,B509,0D,,,,,,
+*w,,,,,,B509,0F,,,,,,
+*wi,#install,,,,,B509,0F,,,,,,
+# ##### general #####,,,,,,,,,,,,,
+r;w,,VentMode,,,,,2400,,,UCH,1=Day;2=Out;3=Auto;5=Night,,
+r;w,,VentHI,Wietrzenie,,,,5800,,,BCD:2,,,
+r;w,,Waermerueckgewinnung,Waermerueckgewinnung,,,,0a00,,,UCH,1=An;2=Aus,,,,
+r,,Waermerueckgewinnung_Tage,Waermerueckgewinnung_Tage,,,,3600,,,,,,,,
+r,,Time,,,,,2C00,,,VTI,,,
