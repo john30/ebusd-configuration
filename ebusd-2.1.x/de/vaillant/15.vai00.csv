@@ -1,0 +1,18 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment
+#,recov,RecoVair 275 Fernbedienung,,,,,,,,,,,
+*r,,,,,,B509,0D,,,,,,
+*w,,,,,,B509,0E,,,,,,
+r9;w,,Lueftungsstufe,Lüftungsstufe,,,,2400,,,UCH,1=Tag;2=Aus;3=Auto;5=Nacht,,
+r;w,,Lueftung_HI,Lüftung_HI,,,,5800,,,HCD:2,,,
+# Writing works but seems to have no effect, might be pass through to RecoVair itself
+r9;w,,Kuehlung,Kühlung - Sommer Bypass,,,,0a00,,,UCH,1=AUS;2=EIN,,,,
+r9;w,,Kuehlung_Tage,Kühlung Tage,,,,3600,,,UCH,,,,,
+r,,Uhrzeit,Uhrzeit,,,,2C00,,,VTI,,,
+r;w,,Luftvolumen_High,Luftvolume in m3/h in Hi mode (HIGH),,,,4a00,,,UIN,,m3/h,
+r;w,,Luftvolumen_minimum_Cool,Minimum Luftvolume in m3/h mit offenem Bypass (AIR5),,,,4800,,,UIN,,m3/h,
+# not low something else
+r;w,,Luftvolumen_Ferien,Luftvolume in m3/h im Ferien modus (AIR4),,,,4900,,,UIN,,m3/h,
+r;w,,Luftvolumen_Nacht,Luftvolume in m3/h im Nacht modus (AIR1),,,,1800,,,UIN,,m3/h,
+r;w,,Luftvolumen_Tag,Luftvolume in m3/h im Tag modus (AIR2),,,,1700,,,UIN,,m3/h,
+r;w,,Ertrag_Gesamt_kWh,Ertrag_Gesamt_kWh,,,,4d00,,,UIN,,kW/h,
+r;w,,Alarm_Filter_FILT,Zeitraum zwischen 2 Alarmmeldungen fuer Filtertausch,,,,4500,,,UIN,,,
