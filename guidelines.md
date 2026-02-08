@@ -108,8 +108,9 @@ import "./hwcmode_inc.tsp";  // <= imports the `Hwcmode_inc` namespace for refer
 namespace Circuit {
   /** included parts */
   union _includes {
-    Hwcmode_inc,  // <= references the imported namespace and implicitly resolves to all contained models
-    named: Hwcmode_inc, // <= named entry emits a !load instruction instead
+    Hwcmode_inc, // <= unnamed entry inlines the referenced definition or emits an "!include" instruction (if includes is set in the emitter options)
+    _include: Hwcmode_inc, // <= entry with a name starting with "_include" explicitly emits an "!include" instruction
+    named: Hwcmode_inc, // <= named entry emits a !load instruction (if name does not start with "_include")
   }
 }
 ```

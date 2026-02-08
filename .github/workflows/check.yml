@@ -22,7 +22,7 @@ jobs:
     steps:
       -
         name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       -
         name: pull image
         run: docker pull $image
@@ -62,7 +62,7 @@ jobs:
           && diff norm.de norm.en
       -
         name: archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: results
           path: |
