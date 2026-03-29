@@ -39,6 +39,7 @@ scalar day extends BDY;
 scalar daysel extends UCH;
 
 /** days */
+@maxValue(60)
 scalar days extends UCH;
 
 /** time */
@@ -62,6 +63,7 @@ scalar minutes0 extends UCH;
 
 /** minutes */
 @unit("min")
+@maxValue(1440)
 scalar minutes2 extends UIN;
 
 /** minutes */
