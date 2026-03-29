@@ -47,33 +47,41 @@ scalar opdataaction extends UCH;
 
 /** desired temperature */
 @unit("°C")
+@maxValue(100)
 scalar desiredtemp extends UCH;
 
 /** outside temperature */
 @unit("°C")
+@minValue(-30) @maxValue(50)
 scalar outsidetemp extends SCH;
 
 @unit("%")
+@minValue(-100) @maxValue(100)
 scalar percent extends D2C;
 
 @unit("%")
+@maxValue(100)
 scalar percent0 extends UCH;
 
 @unit("%")
 scalar percent1 extends D1C;
 
 @unit("%")
+@minValue(-100) @maxValue(100)
 scalar percent2 extends D2B;
 
 @unit("%")
+@minValue(-100) @maxValue(100)
 scalar percents extends SCH;
 
 /** temperature */
 @unit("°C")
+@minValue(-50) @maxValue(180)
 scalar temp extends D2C;
 
 /** temperature */
 @unit("°C")
+@maxValue(180)
 scalar temp0 extends UCH;
 
 /** temperature */
@@ -82,10 +90,12 @@ scalar temp1 extends D1C;
 
 /** temperature */
 @unit("°C")
+@minValue(-50)
 scalar temp2 extends D2B;
 
 /** pressure */
 @unit("bar")
+@minValue(0)
 scalar press extends D2B;
 
 /** time */

@@ -10,22 +10,27 @@ alias MF = 0xb5; // Ebus.Id.Values_manufacturers.Vaillant
 
 /** temperature */
 @unit("°C")
+@minValue(-50)
 scalar temps extends SCH;
 
 /** temperature */
 @unit("°C")
+@minValue(-50) @maxValue(180)
 scalar temps2 extends SIN;
 
 /** temperature */
 @unit("°C")
+@minValue(-50) @maxValue(180)
 scalar tempv extends EXP;
 
 /** pressure */
 @unit("bar")
+@minValue(0) @maxValue(70)
 scalar press extends FLT;
 
 /** pressure */
 @unit("bar")
+@minValue(0) @maxValue(70)
 scalar pressv extends EXP;
 
 /** date */
@@ -114,6 +119,7 @@ scalar seconds2 extends UIN;
 scalar seconds4 extends ULG;
 
 @unit("K")
+@minValue(-450) @maxValue(450)
 scalar calibration extends D2C;
 
 @unit("K")
@@ -127,6 +133,7 @@ scalar calibration1 extends D1C;
 scalar calibrations extends SCH;
 
 @unit("K")
+@minValue(-450) @maxValue(450)
 scalar calibrationv extends EXP;
 
 @unit("°min")
@@ -210,6 +217,7 @@ model presssensor {
 
 /** pressure */
 @unit("mbar")
+@maxValue(70000)
 scalar pressm extends ULG;
 
 /** pressure */
@@ -221,6 +229,7 @@ scalar uin100 extends UIN;
 
 /** Heating curve */
 @divisor(100)
+@maxValue(500)
 scalar curve extends UIN;
 
 /** phase 1 state */
@@ -410,9 +419,11 @@ scalar offmode extends UIN;
 scalar rcmode extends UIN;
 
 /** index of a time slot */
+@maxValue(20)
 scalar slotIndex extends UCH;
 
 /** number of slots on a day */
+@maxValue(24)
 scalar slotCount extends UCH;
 
 /** number of slots per weekday */
@@ -437,6 +448,7 @@ model slotTimeFrame {
 /** desired temperature of a slot */
 @unit("°C")
 @divisor(10)
+@maxValue(1000)
 scalar slotTemp extends UIN;
 
 /** complete slot for writing with target temperature */
