@@ -72,9 +72,9 @@ namespace Solsy.Hc {
   @ext(0x47, 0)
   model IsInStorageFilling is ReadonlyRegister<yesno>;
 
-  /** CleaningLady: saving function is activated until read value * 1/2 h */
+  /** CleaningLady: saving function is activated for that duration */
   @ext(0x4b, 0)
-  model CleaningLady is ReadonlyRegister<UCH>;
+  model CleaningLady is ReadonlyRegister<hours1>;
 
   /** IsInParty: Every bit of this byte represents a heating circuit; if bit is set the party function is activated for the corresponding HC */
   @ext(0x4e, 0)

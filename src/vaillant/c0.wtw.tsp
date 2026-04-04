@@ -33,7 +33,7 @@ namespace Wtw {
 
   @values(Values_bypass)
   scalar bypass extends UCH;
-  
+
   enum Values_bypass {
     auto: 0,
     off: 1,

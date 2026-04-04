@@ -94,22 +94,12 @@ namespace Bai._0010005400_inc {
   model Gasvalve is ReadonlyRegister<onoff2>;
 
   /** d.33 Target fan speed */
-  @inherit(r)
   @ext(0x24, 0)
-  model TargetFanSpeed {
-    /** Fan speed setpoint */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.34 Actual fan speed */
-  @inherit(r)
   @ext(0x83, 0)
-  model FanSpeed {
-    /** fan speed actual value */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.40 TFT_DK: flow temperature */
   @ext(0x18, 0)
@@ -232,23 +222,13 @@ namespace Bai._0010005400_inc {
     value: SIN;
   }
 
-  /** d.50 MinFanSpeedOffset */
-  @inherit(r, wi)
+  /** d.50 MinFanSpeedOffset: Offset for minimum fan speed */
   @ext(0xa7, 0)
-  model FanSpeedOffsetMin {
-    /** Offset for minimum fan speed */
-    @unit("rpm")
-    value: SIN;
-  }
+  model FanSpeedOffsetMin is InstallRegister<fanspeedoffset>;
 
-  /** d.51 MaxFanSpeedOffset */
-  @inherit(r, wi)
+  /** d.51 MaxFanSpeedOffset: Offset for maximum fan speed */
   @ext(0xa8, 0)
-  model FanSpeedOffsetMax {
-    /** Offset for maximum fan speed */
-    @unit("rpm")
-    value: SIN;
-  }
+  model FanSpeedOffsetMax is InstallRegister<fanspeedoffset>;
 
   /** d.60 Number STL cut off: Number of safety temperature limiter cut offs */
   @ext(0x20, 0)
@@ -280,11 +260,11 @@ namespace Bai._0010005400_inc {
 
   /** d.68 ignition attempts 1: unsuccessfull ignitions in the first attempt */
   @ext(0x6e, 0)
-  model CounterStartattempts1 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts1 is ReadonlyRegister<UCH>;
 
   /** d.69 ignition attempts 2: unsuccessfull ignitions in the second attempt */
   @ext(0x6f, 0)
-  model CounterStartattempts2 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts2 is ReadonlyRegister<UCH>;
 
   /** d.71 Max value flow temp: Adjustment of maximum central heating setpoint range (maximum endposition of potmeter) */
   @ext(0xa5, 0)
@@ -430,11 +410,11 @@ namespace Bai._0010005400_inc {
 
   /** CounterStartAttempts3_DK: unsuccessfull ignitions in the third attempt */
   @ext(0x81, 0)
-  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts3 is ReadonlyRegister<UCH>;
 
   /** CounterStartAttempts4_DK: unsuccessfull ignitions in the fourth attempt */
   @ext(0x82, 0)
-  model CounterStartAttempts4 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts4 is ReadonlyRegister<UCH>;
 
   /** TRT_max_DK: max. return temperature */
   @ext(0xbe, 0)
@@ -665,14 +645,9 @@ namespace Bai._0010005400_inc {
   @ext(0x9a, 0)
   model DSN is ReadonlyRegister<UIN>;
 
-  /** TargetFan_Speed_Output_DK */
-  @inherit(r)
+  /** TargetFan_Speed_Output_DK: output fan speed */
   @ext(0x9f, 0)
-  model TargetFanSpeedOutput {
-    /** output fan speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeedOutput is ReadonlyRegister<fanspeed>;
 
   /** Statenumber_DK: status number */
   @ext(0xab, 0)
@@ -740,23 +715,13 @@ namespace Bai._0010005400_inc {
   @ext(0xde, 0)
   model TimerInputHc is ReadonlyRegister<onoff>;
 
-  /** FanMinSpeedOperation */
-  @inherit(r)
+  /** FanMinSpeedOperation: Minimum Fan speed of the appliance */
   @ext(0xdf, 0)
-  model FanMinSpeedOperation {
-    /** Minimum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMinSpeedOperation is ReadonlyRegister<fanspeed>;
 
-  /** FanMaxSpeedOperation */
-  @inherit(r)
+  /** FanMaxSpeedOperation: Maximum Fan speed of the appliance */
   @ext(0xe0, 0)
-  model FanMaxSpeedOperation {
-    /** Maximum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMaxSpeedOperation is ReadonlyRegister<fanspeed>;
 
   /** TR_Manag_EE.Virtual_Partload_Enable_DK: enable the adaptive CH- and or DHW-partload calulation */
   @ext(0xe3, 0)

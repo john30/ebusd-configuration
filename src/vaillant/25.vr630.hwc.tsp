@@ -74,11 +74,11 @@ namespace Vr630.Hwc {
 
   /** Ferienmodus aktiv */
   @ext(0x27, 0)
-  model IsInHoliday is ReadonlyRegister<UCH>;
+  model IsInHoliday is ReadonlyRegister<yesno>;
 
   /** Partymodus aktiv */
   @ext(0x4e, 0)
-  model IsInParty is ReadonlyRegister<UCH>;
+  model IsInParty is ReadonlyRegister<yesno>;
   // ##### DHW: Configuration #####
 
   /** Ladepumpennachlauf */

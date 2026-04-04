@@ -79,9 +79,8 @@ namespace Pmw.Hwc {
   @inherit(r)
   @ext(0x10, 0)
   model LegioStartDay {
-    /** 0=Monday, 1=Tue, … 6=Sunday, 7=LegioProtect off, 8=every day */
-    @minValue(0)
-    @maxValue(8)
+    /** Start day for legio protection */
+    @values(Values_LegioStartDay)
     value: UCH;
   }
 
@@ -352,6 +351,18 @@ namespace Pmw.Hwc {
       @divisor(1000)
       value: SIN;
     }
+  }
+
+  enum Values_LegioStartDay {
+    Mon: 0,
+    Tue: 1,
+    Wed: 2,
+    Thu: 3,
+    Fri: 4,
+    Sat: 5,
+    Sun: 6,
+    off: 7,
+    Mon_Sun: 8,
   }
 
   /** included parts */

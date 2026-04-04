@@ -106,12 +106,8 @@ namespace Recov {
   model ExhaustAirDisbalance is Register<percents>;
 
   /** Nominal flow NL */
-  @inherit(r, w)
   @ext(0x1c, 0xe)
-  model NominalFlow {
-    @unit("m3/h")
-    value: UIN;
-  }
+  model NominalFlow is Register<airflowrate>;
 
   /** Reduced ventilation to NL */
   @ext(0x1d, 0xe)
@@ -182,53 +178,29 @@ namespace Recov {
   model MaxAirHumidity is Register<percent0>;
 
   /** Supply air speed */
-  @inherit(r)
   @ext(1, 0xe)
-  model SupplyAirSpeed {
-    @unit("rpm")
-    value: UIN;
-  }
+  model SupplyAirSpeed is ReadonlyRegister<fanspeed>;
 
   /** Exhaust air speed */
-  @inherit(r)
   @ext(0x2, 0xe)
-  model ExhaustAirSpeed {
-    @unit("rpm")
-    value: UIN;
-  }
+  model ExhaustAirSpeed is ReadonlyRegister<fanspeed>;
 
   /** Supply air internal actual flow */
-  @inherit(r, u)
   @poll(2)
   @ext(0x3, 0xe)
-  model SupplyFlowActual {
-    @unit("m3/h")
-    value: UIN;
-  }
+  model SupplyFlowActual is ReadonlyUpdateRegister<airflowrate>;
 
   /** Supply air internal target flow */
-  @inherit(r)
   @ext(0x4, 0xe)
-  model SupplyFlowTarget {
-    @unit("m3/h")
-    value: UIN;
-  }
+  model SupplyFlowTarget is ReadonlyRegister<airflowrate>; //todo no measurement
 
   /** Exhaust air internal actual flow */
-  @inherit(r)
   @ext(0x5, 0xe)
-  model ExhaustFlowActual {
-    @unit("m3/h")
-    value: UIN;
-  }
+  model ExhaustFlowActual is ReadonlyRegister<airflowrate>;
 
   /** Exhaust air internal target flow */
-  @inherit(r)
   @ext(0x6, 0xe)
-  model ExhaustFlowTarget {
-    @unit("m3/h")
-    value: UIN;
-  }
+  model ExhaustFlowTarget is ReadonlyRegister<airflowrate>;
 
   /** Ventilation stage */
   @inherit(r, w)

@@ -106,7 +106,7 @@ namespace Sdr_p {
 
   /** Holiday */
   @ext(0x28, 0)
-  model IsInHoliday is InstallRegister<UCH>;
+  model IsInHoliday is InstallRegister<onoff>;
 
   /** override (partyfunction) */
   @ext(0x29, 0)
@@ -146,7 +146,7 @@ namespace Sdr_p {
 
   /** Legionella protection */
   @ext(0x41, 0)
-  model LegioProtectionEnabled is InstallRegister<UCH>;
+  model LegioProtectionEnabled is InstallRegister<yesno>;
 
   /** Starting time filling mode (tFIL) */
   @ext(0x42, 0)
@@ -168,9 +168,9 @@ namespace Sdr_p {
   @ext(0x46, 0)
   model HwcLoadingDelay is InstallRegister<onoff>;
 
-  /** Solar flow rate [l/h] */
+  /** Solar flow rate */
   @ext(0x47, 0)
-  model SolFlowRate is InstallRegister<UIN>;
+  model SolFlowRate is InstallRegister<flowrate>;
 
   /** Solarpump durat.ratio ctrl */
   @ext(0x48, 0)
@@ -186,7 +186,7 @@ namespace Sdr_p {
 
   /** Power solar pump [%] */
   @ext(0x4b, 0)
-  model SolPumpPower is InstallRegister<power>;
+  model SolPumpPower is InstallRegister<percent0>;
 
   /** De-activation autosync */
   @ext(0x51, 0)
@@ -196,15 +196,15 @@ namespace Sdr_p {
   @inherit(r, wi)
   @ext(0x52, 0)
   model SolEnableDiffTempMin {
-    @maxLength(2)
-    value: HEX;
+    value: calibration0;
+    ignore: IGN; // potentially for second tank
   }
 
   /** Max. switch-on diff. solar cylinder [K] */
   @inherit(r, wi)
   @ext(0x53, 0)
   model SolEnableDiffTempMax {
-    @maxLength(2)
-    value: HEX;
+    value: calibration0;
+    ignore: IGN;
   }
 }

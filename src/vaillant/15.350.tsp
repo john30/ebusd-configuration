@@ -60,17 +60,17 @@ namespace _350 {
   model BypassValve is InstallRegister<onoff>;
 
   @ext(0x10, 0)
-  model RoomTempOffsetSelfWarming is InstallRegister<temp>;
+  model RoomTempOffsetSelfWarming is InstallRegister<calibration>;
 
   @ext(0x11, 0)
-  model RoomTempOffset is InstallRegister<temp>;
+  model RoomTempOffset is InstallRegister<calibration>;
 
   /** act. outside temperature [°C/sensor state] */
   @ext(0x12, 0)
   model OutsideTemp is InstallRegister<tempsensor>;
 
   @ext(0x13, 0)
-  model OutsideTempOffset is InstallRegister<temp>;
+  model OutsideTempOffset is InstallRegister<calibration>;
 
   @ext(0x14, 0)
   model ActualTempDesired is InstallRegister<temp0>;
@@ -145,7 +145,7 @@ namespace _350 {
   model DcfDaten is InstallRegister<UIN>;
 
   @ext(0x28, 0)
-  model IsInHoliday is InstallRegister<UCH>;
+  model IsInHoliday is InstallRegister<onoff>;
 
   @ext(0x29, 0)
   model IsInParty is InstallRegister<onoff>;
@@ -219,7 +219,7 @@ namespace _350 {
   }
 
   @ext(0x3c, 0)
-  model FrostProtectDelay is InstallRegister<UCH>;
+  model FrostProtectDelay is InstallRegister<hours>;
 
   @ext(0x3d, 0)
   model HydraulicScheme is InstallRegister<UCH>;
@@ -255,9 +255,9 @@ namespace _350 {
   @ext(0x46, 0)
   model LoadingDelayEnabled is InstallRegister<onoff>;
 
-  /** Solar flow rate [l/h] */
+  /** Solar flow rate */
   @ext(0x47, 0)
-  model SolFlowRate is InstallRegister<UIN>;
+  model SolFlowRate is InstallRegister<flowrate>;
 
   @ext(0x48, 0)
   model EDControlEnabled is InstallRegister<onoff>;
@@ -287,7 +287,7 @@ namespace _350 {
   model FlowTempMin is InstallRegister<temp>;
 
   @ext(0x51, 0)
-  model DisableAutoSync is InstallRegister<UCH>;
+  model DisableAutoSync is InstallRegister<onoff>;
 
   @ext(0x52, 0)
   model ONMINDiff is InstallRegister<UCH>;
@@ -302,7 +302,7 @@ namespace _350 {
   model EBUSFifoDiffCntMax is InstallRegister<UCH>;
 
   @ext(0x56, 0)
-  model TwoPointAnalogCtrl is InstallRegister<UCH>;
+  model TwoPointAnalogCtrl is InstallRegister<twopointanalog>;
 
   /** Actual roomtemperature setpoint [°C] */
   @ext(0x57, 0)

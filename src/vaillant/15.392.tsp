@@ -103,14 +103,9 @@ namespace _392 {
   @ext(0x12, 0)
   model HolidayEndPeriod is Register<date>;
 
-  /** DHW_OPMode */
-  @inherit(r, w)
+  /** DHW_OPMode: operation mode of the domestic hot water circuit */
   @ext(0x42, 0)
-  model HwcOPMode {
-    /** operation mode of the domestic hot water circuit */
-    @values(Values_HwcOPMode)
-    value: UCH;
-  }
+  model HwcOPMode is Register<hwcmode7>;
 
   /** DHW_DesiredTemp: setpoint of domestic hot water circuit */
   @ext(0x44, 0)
@@ -219,7 +214,7 @@ namespace _392 {
 
   /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(0x15, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** CountryVariant: country variant (0 = west, 1 = east) */
   @ext(0x17, 0)
@@ -270,12 +265,6 @@ namespace _392 {
   model ChimneySweepModeActive is ReadonlyRegister<yesno>;
 
   enum Values_Hc1OPMode {
-    off: 0,
-    manual: 1,
-    auto: 2,
-  }
-
-  enum Values_HwcOPMode {
     off: 0,
     manual: 1,
     auto: 2,

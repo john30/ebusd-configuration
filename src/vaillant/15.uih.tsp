@@ -26,13 +26,29 @@ namespace Uih {
   @ext(0x50, 0)
   model EhpBasicStatus is ReadonlyRegister<UCH>;
 
-  /** StateEM: state of energie manager:0: EmOff,1: EmDhwRequest,2: EmDhw,3: EmTankPunmpOverrun,4: EmHeating,5: EmOverpressureFromDhw,6: EmOverpressureFromCh,7: EmWaitForChDemandOverpressure,8: EmWaitForChDemandHeating,9: EmWaitForChDemandEndOfDhw */
+  /** StateEM: state of energie manager */
   @ext(0x4b, 0)
-  model StateEM is ReadonlyRegister<UCH>;
+  model StateEM is ReadonlyRegister<stateEm>;
+
+  @values(Values_stateEM)
+  scalar stateEm extends UCH;
+
+  enum Values_stateEM {
+    off: 0,
+    waterrequest: 1,
+    water: 2,
+    tankpumpoverrun: 3,
+    heat: 4,
+    overpresswater: 5,
+    overpressheat: 6,
+    waitheatdemandoverpress: 7,
+    waitheatdemandheating: 8,
+    waitheatdemandendofwater: 9,
+  }
 
   /** LanguageVariant: language of the menue */
   @ext(0x26, 0)
-  model LanguageVariant is Register<UCH>;
+  model LanguageVariant is Register<languageVariant2>;
 
   /** Holiday periods */
   @inherit(r, w)

@@ -17,11 +17,11 @@ namespace Zeo.Sc {
 
   /** SolEnableDiffTemp: 5..12K / 1K Auflösung */
   @ext(0xcd, 0)
-  model SolEnableDiffTemp is ServiceRegister<temp0>;
+  model SolEnableDiffTemp is ServiceRegister<calibration0>;
 
   /** SolDisableDiffTemp: 1..10K / 1K Auflösung */
   @ext(0xce, 0)
-  model SolDisableDiffTemp is ServiceRegister<temp0>;
+  model SolDisableDiffTemp is ServiceRegister<calibration0>;
 
   /** SolDhwMaxLoadTemp: 35..80°C / 1°C */
   @ext(0xcf, 0)
@@ -33,7 +33,7 @@ namespace Zeo.Sc {
 
   /** SolarCollectorPumpED: 0..100% */
   @ext(0xd1, 0)
-  model SolCollPumpED is ReadonlyRegister<UCH>;
+  model SolCollPumpED is ReadonlyRegister<percent0>;
 
   /** CollectorPumpSRuntime: runtime in seconds base for runtime in hours */
   @ext(0xd2, 0)
@@ -53,5 +53,5 @@ namespace Zeo.Sc {
 
   /** SolarFlowRate: 0..20l/h Wert des Taco-Setters für Ertragsermittlung */
   @ext(0xd6, 0)
-  model SolFlowRate is ServiceRegister<UIN>;
+  model SolFlowRate is ServiceRegister<flowrate>;
 }

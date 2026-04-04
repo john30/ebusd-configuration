@@ -86,31 +86,21 @@ namespace Bai._0010003857_inc {
   @ext(0x47, 0x4)
   model StoragereleaseClock is ReadonlyRegister<yesno>;
 
-  /** d.29 PrimaryCircuitFlowRate_DK: primary circuit water flow rate */
+  /** d.29 Primary circuit flow rate */
   @ext(0xfb, 0)
-  model PrimaryCircuitFlowRate is ReadonlyRegister<uin100>;
+  model PrimaryCircuitFlowrate is ReadonlyRegister<flowrate100>;
 
   /** d.30 Gasvalve: Gasvalve activation signal */
   @ext(0xbb, 0)
   model Gasvalve is ReadonlyRegister<onoff2>;
 
   /** d.33 Target fan speed */
-  @inherit(r)
   @ext(0x24, 0)
-  model TargetFanSpeed {
-    /** Fan speed setpoint */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.34 Actual fan speed */
-  @inherit(r)
   @ext(0x83, 0)
-  model FanSpeed {
-    /** fan speed actual value */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
   @ext(0x54, 0)
@@ -272,14 +262,9 @@ namespace Bai._0010003857_inc {
   @ext(0x9a, 0)
   model DSN is ReadonlyRegister<UIN>;
 
-  /** TargetFan_Speed_Output_DK */
-  @inherit(r)
+  /** TargetFan_Speed_Output_DK: output fan speed */
   @ext(0x9f, 0)
-  model TargetFanSpeedOutput {
-    /** output fan speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeedOutput is ReadonlyRegister<fanspeed>;
 
   /** PowerValue */
   @inherit(r)
@@ -347,23 +332,13 @@ namespace Bai._0010003857_inc {
   @ext(0xde, 0)
   model TimerInputHc is ReadonlyRegister<onoff>;
 
-  /** FanMinSpeedOperation */
-  @inherit(r)
+  /** FanMinSpeedOperation: Minimum Fan speed of the appliance */
   @ext(0xdf, 0)
-  model FanMinSpeedOperation {
-    /** Minimum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMinSpeedOperation is ReadonlyRegister<fanspeed>;
 
-  /** FanMaxSpeedOperation */
-  @inherit(r)
+  /** FanMaxSpeedOperation: Maximum Fan speed of the appliance */
   @ext(0xe0, 0)
-  model FanMaxSpeedOperation {
-    /** Maximum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMaxSpeedOperation is ReadonlyRegister<fanspeed>;
 
   /** ExternGasvalve_DK: external gasvalve activated */
   @ext(0xe4, 0)
@@ -405,7 +380,7 @@ namespace Bai._0010003857_inc {
 
   /** d.14 PumpspeedSetpoint: PWM pump speed */
   @ext(0xa, 0x4)
-  model PumpspeedDesired is ReadonlyRegister<UCH>;
+  model PumpspeedDesired is ReadonlyRegister<percent0>;
 
   /** d.17 Return regulation: heating flow/return regulation activation */
   @ext(0xc, 0x4)
@@ -446,23 +421,13 @@ namespace Bai._0010003857_inc {
     value: UCH;
   }
 
-  /** d.50 MinFanSpeedOffset */
-  @inherit(r, wi)
+  /** d.50 MinFanSpeedOffset: Offset for minimum fan speed */
   @ext(0x24, 0x4)
-  model FanSpeedOffsetMin {
-    /** Offset for minimum fan speed */
-    @unit("rpm")
-    value: SIN;
-  }
+  model FanSpeedOffsetMin is InstallRegister<fanspeedoffset>;
 
-  /** d.51 MaxFanSpeedOffset */
-  @inherit(r, wi)
+  /** d.51 MaxFanSpeedOffset: Offset for maximum fan speed */
   @ext(0x25, 0x4)
-  model FanSpeedOffsetMax {
-    /** Offset for maximum fan speed */
-    @unit("rpm")
-    value: SIN;
-  }
+  model FanSpeedOffsetMax is InstallRegister<fanspeedoffset>;
 
   /** d.60 Number STL cut off: Number of safety temperature limiter cut offs */
   @ext(0x20, 0)
@@ -494,11 +459,11 @@ namespace Bai._0010003857_inc {
 
   /** d.68 ignition attempts 1: unsuccessfull ignitions in the first attempt */
   @ext(0x6e, 0)
-  model CounterStartattempts1 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts1 is ReadonlyRegister<UCH>;
 
   /** d.69 ignition attempts 2: unsuccessfull ignitions in the second attempt */
   @ext(0x6f, 0)
-  model CounterStartattempts2 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts2 is ReadonlyRegister<UCH>;
 
   /** d.70 diverter valve position: Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position */
   @ext(0x2a, 0x4)
@@ -643,11 +608,11 @@ namespace Bai._0010003857_inc {
 
   /** CounterStartAttempts3_DK: unsuccessfull ignitions in the third attempt */
   @ext(0x81, 0)
-  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts3 is ReadonlyRegister<UCH>;
 
   /** CounterStartAttempts4_DK: unsuccessfull ignitions in the fourth attempt */
   @ext(0x82, 0)
-  model CounterStartAttempts4 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts4 is ReadonlyRegister<UCH>;
 
   /** TRT_max_DK: max. return temperature */
   @ext(0xbe, 0)

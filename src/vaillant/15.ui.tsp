@@ -111,15 +111,15 @@ namespace Ui {
 
   /** RaumtemperaturIstOffset */
   @ext(0x1f, 0)
-  model RoomTempOffset is InstallRegister<temp>;
+  model RoomTempOffset is InstallRegister<calibration>;
 
   /** RaumTempOffsetEigenErwaerm */
   @ext(0x20, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** OutDoorTempCorr */
   @ext(0x21, 0)
-  model OutsideTempOffset is InstallRegister<temp>;
+  model OutsideTempOffset is InstallRegister<calibration>;
 
   /** RoomSetTempHoliday */
   @ext(0x22, 0)

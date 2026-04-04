@@ -29,13 +29,13 @@ namespace Zeo.Hwc {
   @ext(0x1e, 0)
   model CircuitsStates is ReadonlyRegister<UCH>;
 
-  /** CleaningLady: 0,5h */
+  /** CleaningLady: saving function is activated for that duration */
   @ext(0x23, 0)
-  model CleaningLady is ReadonlyRegister<UCH>;
+  model CleaningLady is ReadonlyRegister<hours1>;
 
-  /** DhwLegioProtectionMaxTimer */
+  /** DhwLegioProtectionMaxTimer: Maximal time the legio protection state is hold (indepent of reached temperature) */
   @ext(0x2d, 0)
-  model HwcLegioProtectionMaxTimer is ReadonlyRegister<UCH>;
+  model HwcLegioProtectionMaxTimer is ReadonlyRegister<minutes0>;
 
   /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0)

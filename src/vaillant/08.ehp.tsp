@@ -383,11 +383,11 @@ namespace Ehp {
 
   /** DhwLaggingTime: Backup heater use for CH */
   @ext(0x61, 0)
-  model HwcLaggingTime is ReadonlyRegister<UCH>;
+  model HwcLaggingTime is ReadonlyRegister<minutes0>;
 
   /** DhwLoadingDelay: Backup heater use for DHW */
   @ext(0x62, 0)
-  model HwcLoadingDelay is ReadonlyRegister<UCH>;
+  model HwcLoadingDelay is ReadonlyRegister<minutes0>;
 
   /** Brine_Fan_Hours: operating hours of Fan_Brine */
   @ext(0x9d, 0)

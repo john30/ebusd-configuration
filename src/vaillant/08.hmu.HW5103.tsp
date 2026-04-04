@@ -253,15 +253,13 @@ namespace Hmu_HW5103 {
   @inherit(r_7)
   @ext(0x47, 0xa)
   model RunDataFan1Speed {
-    @unit("rpm")
-    value: EXP;
+    value: fanspeedv;
   }
 
   @inherit(r_7)
   @ext(0x49, 0xa)
   model RunDataFan2Speed {
-    @unit("rpm")
-    value: EXP;
+    value: fanspeedv;
   }
 
   @inherit(r_7)

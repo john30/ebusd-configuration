@@ -17,11 +17,11 @@ namespace Rcc {
 
   /** RaumtemperaturIstOffset */
   @ext(0x1f, 0)
-  model RoomTempOffset is InstallRegister<temp>;
+  model RoomTempOffset is InstallRegister<calibration>;
 
   /** RaumTempOffsetEigenErwaerm */
   @ext(0x20, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** HolidayPeriod */
   @inherit(r, w)
@@ -36,6 +36,10 @@ namespace Rcc {
   /** RoomSetTempHoliday */
   @ext(0x22, 0)
   model RoomTempHoliday is Register<temp>;
+
+  /** LanguageVariant: language of the menue */
+  @ext(0x26, 0)
+  model LanguageVariant is Register<languageVariant2>;
 
   /** LcdContrastPwmValue: contrast for the display */
   @ext(0x36, 0)

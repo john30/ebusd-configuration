@@ -69,29 +69,25 @@ namespace Vai {
   @ext(0x2d, 0)
   model Date is Register<datesuf>;
 
-  @unit("m3/h")
-  @maxValue(400)
-  scalar volumeflowrate extends UIN;
-
   /** ventilation level in level 2 (day) */
   @ext(0x17, 0)
-  model NormalFlow is Register<volumeflowrate>;
+  model NormalFlow is Register<airflowrate>;
 
   /** ventilation level in level 1 (night) */
   @ext(0x18, 0)
-  model ReducedFlow is Register<volumeflowrate>;
+  model ReducedFlow is Register<airflowrate>;
 
   /** ventilation level in level high */
   @ext(0x4a, 0)
-  model IntenseFlow is Register<volumeflowrate>;
+  model IntenseFlow is Register<airflowrate>;
 
   /** ventilation level in level bypass */
   @ext(0x48, 0)
-  model BypassFlow is Register<volumeflowrate>;
+  model BypassFlow is Register<airflowrate>;
 
   /** ventilation level in level holiday */
   @ext(0x49, 0)
-  model HolidayFlow is Register<volumeflowrate>;
+  model HolidayFlow is Register<airflowrate>;
 
   /** filter days */
   @ext(0x46, 0)
@@ -114,5 +110,4 @@ namespace Vai {
     heat: 1,
     cool: 2,
   }
-
 }

@@ -148,7 +148,7 @@ namespace _370 {
 
   /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(0x15, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** HC1_2stepanalogCtrl */
   @inherit(r, wi)
@@ -258,17 +258,17 @@ namespace _370 {
   @ext(0xb, 0)
   model TestVarActivateFunction is ReadonlyRegister<UCH>;
 
-  /** DHW_OPMode: operation mode of the domestic hot water circuit set implicitly (0 = off, 1 = on, 2 = auto, 3 = auto sunday, 4 = party, 6 = one time tank loading, 7 = holiday) */
+  /** DHW_OPMode: operation mode of the domestic hot water circuit */
   @ext(0x42, 0)
-  model HwcOPMode is ReadonlyRegister<UCH>;
+  model HwcOPMode is ReadonlyRegister<hwcmode7>;
 
   /** BMUB51101_DHWState: flame is on because of either tapping or tank loading */
   @ext(0x75, 0)
-  model BMUB51101HwcState is ReadonlyRegister<UCH>;
+  model BMUB51101HwcState is ReadonlyRegister<onoff>;
 
   /** B51000SetPointLoadingPump: loading pump's setpoint sent via B5 10 00 to the BMU */
   @ext(0x7b, 0)
-  model B51000TempDesiredLoadingPump is ReadonlyRegister<D1C>;
+  model B51000TempDesiredLoadingPump is ReadonlyRegister<temp1>;
 
   /** BMUB51101_BoilerFlowTemp: current flow temperature inside the BMU */
   @ext(0x77, 0)

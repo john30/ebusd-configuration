@@ -116,14 +116,9 @@ namespace _430 {
   @ext(0x12, 0)
   model HolidayEndPeriod is Register<date>;
 
-  /** DHW_OPMode */
-  @inherit(r, w)
+  /** DHW_OPMode: operation mode of the domestic hot water circuit */
   @ext(0x42, 0)
-  model HwcOPMode {
-    /** operation mode of the domestic hot water circuit */
-    @values(Values_HwcOPMode)
-    value: UCH;
-  }
+  model HwcOPMode is Register<hwcmode7>;
 
   /** DHW_DesiredTemp: setpoint of domestic hot water circuit */
   @ext(0x44, 0)
@@ -241,7 +236,7 @@ namespace _430 {
 
   /** ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
   @ext(0x4f, 0)
-  model ContinuosHeating is InstallRegister<SCH>;
+  model ContinuosHeating is InstallRegister<temps>;
 
   /** PreheatingTime: in steps of 10, maximum time of enabling the heating before the heating time window starts */
   @ext(0x50, 0)
@@ -329,7 +324,7 @@ namespace _430 {
 
   /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(0x15, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** CountryVariant: country variant (0 = west, 1 = east) */
   @ext(0x17, 0)
@@ -385,7 +380,7 @@ namespace _430 {
 
   /** B51000SetPointLoadingPump: loading pump's setpoint sent via B5 10 00 to the BMU */
   @ext(0x7b, 0)
-  model B51000TempDesiredLoadingPump is ReadonlyRegister<D1C>;
+  model B51000TempDesiredLoadingPump is ReadonlyRegister<temp1>;
 
   /** BKMK1CPLPState: nominal condition of the VR61's circulation or loading pump */
   @ext(0x7f, 0)
@@ -493,12 +488,6 @@ namespace _430 {
   model AdpPreHActive is ReadonlyRegister<onoff>;
 
   enum Values_Hc1OPMode {
-    off: 0,
-    manual: 1,
-    auto: 2,
-  }
-
-  enum Values_HwcOPMode {
     off: 0,
     manual: 1,
     auto: 2,

@@ -33,6 +33,32 @@ scalar press extends FLT;
 @minValue(0) @maxValue(70)
 scalar pressv extends EXP;
 
+@unit("l/h")
+@maxValue(20)
+scalar flowrate extends UIN;
+
+@unit("l/min")
+@divisor(100)
+scalar flowrate100 extends UIN;
+
+@unit("m3/h")
+@maxValue(400)
+scalar airflowrate extends UIN;
+
+@unit("rpm")
+scalar fanspeed extends UIN;
+
+@unit("rpm")
+scalar fanspeedoffset extends SIN;
+
+@unit("rpm")
+@minValue(0)
+scalar fanspeedv extends EXP;
+
+/** two-point / analogue control */
+@values(Values_twopointanalog)
+scalar twopointanalog extends UCH;
+
 /** percentage */
 @unit("%")
 @minValue(0) @maxValue(100)
@@ -183,6 +209,10 @@ scalar hwcmode extends UCH;
 /** hot water mode */
 @values(Values_hwcmode2)
 scalar hwcmode2 extends UCH;
+
+/** hot water mode with holiday */
+@values(Values_hwcmode7)
+scalar hwcmode7 extends UCH;
 
 /** mixer State */
 @values(Values_mixer)
@@ -546,6 +576,28 @@ scalar appliancecode extends UCH;
 @values(Values_hmucode)
 scalar hmucode extends UIN;
 
+/** display language variant */
+@values(Values_languageVariant2)
+scalar languageVariant2 extends UCH;
+
+enum Values_languageVariant2 {
+  de: 0,
+  it: 1,
+  es: 2,
+  pt: 3,
+  fr: 4,
+  nl: 5,
+  dk: 6,
+  fin: 7,
+  se: 8,
+  no: 9,
+  en: 10,
+  ee: 11,
+  lt: 12,
+  lv: 13,
+  tr: 14,
+}
+
 enum Values_daysel {
   selected: 0,
   Mo_Fr: 1,
@@ -640,6 +692,16 @@ enum Values_hwcmode2 {
   on: 1,
   auto: 2,
   manual: 3,
+}
+
+enum Values_hwcmode7 {
+  off: 0,
+  on: 1,
+  auto: 2,
+  sunday: 3,
+  party: 4,
+  load: 6,
+  holiday: 7,
 }
 
 enum Values_mixer {
@@ -948,6 +1010,11 @@ enum Values_hmucode {
   frequency_converter_fault: 575,
   connection_fault_frequency_converter: 581,
   four_port_valve_position_fault: 590,
+}
+
+enum Values_twopointanalog {
+  two_point: 0,
+  analog: 1,
 }
 
 /** default *r for register */

@@ -74,9 +74,9 @@ namespace Mc2.Mc._5 {
   @ext(0x4e, 0)
   model IsInParty is ReadonlyRegister<UCH>;
 
-  /** CleaningLady: saving function is activated until read value * 1/2 h */
+  /** CleaningLady: saving function is activated for that duration */
   @ext(0x4b, 0)
-  model CleaningLady is ReadonlyRegister<UCH>;
+  model CleaningLady is ReadonlyRegister<hours1>;
 
   /** IsInTankFilling: heating circuit is locked because of ongoing tank loading unless parallel loading has been activated */
   @ext(0x47, 0)
