@@ -90,12 +90,12 @@ scalar temp1 extends D1C;
 
 /** temperature */
 @unit("°C")
-@minValue(-50)
+@minValue(-50) @maxValue(180)
 scalar temp2 extends D2B;
 
 /** pressure */
 @unit("bar")
-@minValue(0)
+@minValue(0) @maxValue(70)
 scalar press extends D2B;
 
 /** time */

@@ -35,6 +35,7 @@ scalar pressv extends EXP;
 
 /** percentage */
 @unit("%")
+@minValue(0) @maxValue(100)
 scalar percentv extends EXP;
 
 /** date */
@@ -255,6 +256,7 @@ scalar uin100 extends UIN;
 /** Heating curve */
 @divisor(100)
 @maxValue(500)
+@step(10)
 scalar curve extends UIN;
 
 /** phase 1 state */
@@ -354,6 +356,7 @@ scalar energy4 extends ULG;
 
 @unit("kWh")
 @divisor(1000)
+@minValue(0)
 scalar energye extends EXP;
 
 /** start count */
