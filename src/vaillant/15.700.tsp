@@ -1063,6 +1063,14 @@ namespace _700 {
     value: tempv;
   }
 
+  /** Room humidity (Zone 1 only?) */
+  @id(MF, 0x24, 0x6, 0, 0x9, 1, 0x07, 0)
+  model RoomHumidity {
+    @maxLength(4)
+    ign: IGN;
+    value: percentv;
+  }
+
   /** night temperature zone 1 */
   @inherit(r_6, w_6)
   @ext(0x9, 0)

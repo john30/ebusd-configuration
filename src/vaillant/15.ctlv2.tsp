@@ -987,6 +987,13 @@ namespace Ctlv2 {
     value: date;
   }
 
+  /** Room humidity Zone 1 */
+  @inherit(r_6)
+  @ext(0x28, 0)
+  model Z1RoomHumidity { // found in comment of #330
+    value: percentv;
+  }
+
   /** Absenktemperatur Zone 1 */
   @inherit(r_6, w_6)
   @ext(0x9, 0)
@@ -1168,6 +1175,13 @@ namespace Ctlv2 {
     value: date;
   }
 
+  /** Room humidity Zone 2 */
+  @inherit(r_7)
+  @ext(0x28, 0)
+  model Z2RoomHumidity { // found in comment of #330
+    value: percentv;
+  }
+
   /** Absenktemperatur Zone 2 */
   @inherit(r_7, w_7)
   @ext(0x9, 0)
@@ -1339,6 +1353,13 @@ namespace Ctlv2 {
   @ext(0x24, 0)
   model Z3QuickVetoEndDate {
     value: date;
+  }
+
+  /** Room humidity Zone 3 */
+  @inherit(r_8)
+  @ext(0x28, 0)
+  model Z3RoomHumidity { // found in comment of #330
+    value: percentv;
   }
 
   /** Absenktemperatur Zone 3 */
