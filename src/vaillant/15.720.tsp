@@ -398,56 +398,56 @@ namespace _720 {
     value: mamode2;
   }
 
-  /** this month's fuel consumption heating */
+  /** this month fuel consumption heating */
   @inherit(r_1)
   @ext(0x4e, 0)
   model PrFuelSumHcThisMonth {
     value: energy4;
   }
 
-  /** this month's energy consumption heating */
+  /** this month energy consumption heating */
   @inherit(r_1)
   @ext(0x4f, 0)
   model PrEnergySumHcThisMonth {
     value: energy4;
   }
 
-  /** this month's energy consumption hot water */
+  /** this month energy consumption hot water */
   @inherit(r_1)
   @ext(0x50, 0)
   model PrEnergySumHwcThisMonth {
     value: energy4;
   }
 
-  /** this month's fuel consumption hot water */
+  /** this month fuel consumption hot water */
   @inherit(r_1)
   @ext(0x51, 0)
   model PrFuelSumHwcThisMonth {
     value: energy4;
   }
 
-  /** last month's fuel consumption heating */
+  /** last month fuel consumption heating */
   @inherit(r_1)
   @ext(0x52, 0)
   model PrFuelSumHcLastMonth {
     value: energy4;
   }
 
-  /** last month's energy consumption heating */
+  /** last month energy consumption heating */
   @inherit(r_1)
   @ext(0x53, 0)
   model PrEnergySumHcLastMonth {
     value: energy4;
   }
 
-  /** last month's energy consumption hot water */
+  /** last month energy consumption hot water */
   @inherit(r_1)
   @ext(0x54, 0)
   model PrEnergySumHwcLastMonth {
     value: energy4;
   }
 
-  /** last month's fuel consumption hot water */
+  /** last month fuel consumption hot water */
   @inherit(r_1)
   @ext(0x55, 0)
   model PrFuelSumHwcLastMonth {
@@ -804,7 +804,7 @@ namespace _720 {
   @ext(0xb, 0)
   @condition(_720.Hc1CircuitType.value, "1")
   model Hc1ExcessTemp {
-    /** excess temperature: flow temperature's setpoint is increased by this value to keep the mixing valve in its control range */
+    /** excess temperature: flow temperature setpoint is increased by this value to keep the mixing valve in its control range */
     @minValue(0)
     @maxValue(20)
     @step(1)
@@ -1073,7 +1073,7 @@ namespace _720 {
   @ext(0xb, 0)
   @condition(_720.Hc2CircuitType.value, "1")
   model Hc2ExcessTemp {
-    /** excess temperature: flow temperature's setpoint is increased by this value to keep the mixing valve in its control range */
+    /** excess temperature: flow temperature setpoint is increased by this value to keep the mixing valve in its control range */
     @minValue(0)
     @maxValue(20)
     @step(1)
@@ -1342,7 +1342,7 @@ namespace _720 {
   @ext(0xb, 0)
   @condition(_720.Hc3CircuitType.value, "1")
   model Hc3ExcessTemp {
-    /** excess temperature: flow temperature's setpoint is increased by this value to keep the mixing valve in its control range */
+    /** excess temperature: flow temperature setpoint is increased by this value to keep the mixing valve in its control range */
     @minValue(0)
     @maxValue(20)
     @step(1)
