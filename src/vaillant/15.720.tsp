@@ -17,28 +17,11 @@ namespace _720 {
   @base(MF, 0x3, 0)
   model r_0a {}
 
-  model ErrorList {
-    @values(Values_720ErrorCode)
-    error: UIN;
-
-    @values(Values_720ErrorCode)
-    error_1: UIN;
-
-    @values(Values_720ErrorCode)
-    error_2: UIN;
-
-    @values(Values_720ErrorCode)
-    error_3: UIN;
-
-    @values(Values_720ErrorCode)
-    error_4: UIN;
-  }
-
   /** Current errors */
   @inherit(r_0a)
   @ext(1)
-  model CurrentErrors {
-    value: ErrorList;
+  model CurrentError {
+    value: errors;
   }
 
   /** default *r */
@@ -51,15 +34,14 @@ namespace _720 {
   @base(MF, 0x3, 0x2)
   model wi_0b {}
 
-  model ErrorHistoryEntry {
+  model errorHistoryEntry {
     @values(Values_720ErrorStatus)
     status: UCH;
 
     time: BTM;
     date: BDA3;
 
-    @values(Values_720ErrorCode)
-    error: UIN;
+    error: error;
   }
 
   /** Error history */
@@ -70,7 +52,7 @@ namespace _720 {
     @out
     index: UCH;
 
-    errorhistory: ErrorHistoryEntry;
+    errorhistory: errorHistoryEntry;
   }
 
   /** Clear error history */
@@ -87,7 +69,7 @@ namespace _720 {
   @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
   model r_0c {
     @maxLength(7)
-    value: IGN;
+    ign: IGN;
   }
 
   /** EnergyStatsSolarSumSystem */
@@ -129,7 +111,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0, 0)
   model r_1 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ri for user level "install" */
@@ -137,7 +119,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0, 0)
   model ri_1 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -161,10 +143,10 @@ namespace _720 {
     value: tempv;
   }
 
-  /** continuos heating */
+  /** continous heating */
   @inherit(ri_1, wi_1)
   @ext(0x2, 0)
-  model ContinuosHeating {
+  model ContinuousHeating {
     /** -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
     @minValue(-26)
     @maxValue(10)
@@ -176,6 +158,7 @@ namespace _720 {
   @inherit(ri_1, wi_1)
   @ext(0x3, 0)
   model FrostOverrideTime {
+    /** delay before frost protection is activated */
     value: hoursum2;
   }
 
@@ -190,6 +173,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0xa, 0)
   model HwcParallelLoading {
+    /** heating and hot water parallel */
     value: onoff;
   }
 
@@ -197,8 +181,10 @@ namespace _720 {
   @inherit(ri_1, wi_1)
   @ext(0xe, 0)
   model MaxRoomHumidity {
-    @unit("%")
-    value: UIN;
+    /** maximum room humidity */
+    value: percent0;
+    @maxLength(3)
+    ign: IGN;
   }
 
   /** hybrid manager */
@@ -212,7 +198,6 @@ namespace _720 {
   @inherit(ri_1)
   @ext(0x10, 0)
   model TariffAuxHeater {
-    @minValue(0)
     value: UIN;
   }
 
@@ -220,15 +205,15 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x14, 0)
   model AdaptHeatCurve {
+    /** automatic correction of configured heat curve */
     value: yesno;
   }
 
-  /** hwc cylinder maximum charging time */
-  /** 15min=no limit */
+  /** maximum cylinder charging time hwc (15=no limit) */
   @inherit(r_1, w_1)
   @ext(0x17, 0)
   @condition(_720.HwcEnabled.value, "1")
-  model HwcStorageChargeMaxTime {
+  model MaxCylinderChargeTime {
     value: minutes2;
   }
 
@@ -237,15 +222,15 @@ namespace _720 {
   @ext(0x18, 0)
   @condition(_720.HwcEnabled.value, "1")
   model HwcLockTime {
+    /** Lock time hot water current */
     value: minutes2;
   }
 
-  /** solar flow rate quantity */
-  /** preset flow rate solar circuit for solar yield calculation */
+  /** solar flow rate: preset flow rate solar circuit for solar yield calculation */
   @inherit(r_1, w_1)
   @ext(0x19, 0)
   @condition(_720.FM5Config.value, "<=2")
-  model SolarFlowRateQuantity {
+  model SolarFlowRate {
     @minValue(0)
     @unit("l/min")
     value: EXP;
@@ -255,6 +240,7 @@ namespace _720 {
   @inherit(ri_1, wi_1)
   @ext(0x1b, 0)
   model PumpAdditionalTime {
+    /** chargepump additional operationtime */
     value: minutes2;
   }
 
@@ -288,7 +274,7 @@ namespace _720 {
   /** hc emergency temperature */
   @inherit(ri_1, wi_1)
   @ext(0x26, 0)
-  model HcEmergencyTemperature {
+  model HcEmergencyTemp {
     @minValue(20)
     @maxValue(80)
     @step(1)
@@ -299,7 +285,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x27, 0)
   @condition(_720.HwcEnabled.value, "1")
-  model HwcStorageChargeHyst {
+  model CylinderChargeHyst {
     @minValue(3)
     @maxValue(20)
     @step(0.5)
@@ -310,7 +296,7 @@ namespace _720 {
   @inherit(r_1, w_1)
   @ext(0x29, 0)
   @condition(_720.HwcEnabled.value, "1")
-  model HwcStorageChargeOffset {
+  model CylinderChargeOffset {
     @minValue(0)
     @maxValue(40)
     @step(1)
@@ -350,25 +336,23 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** fm5 config */
-  /** FM5 VR71 module configuration (possible range 1-11 for VRC720 and FM5 used values are 1 2 3 and 6) */
+  /** fm5 config: FM5 VR71 module configuration (for VRC720 and FM5 used values are 1 2 3 and 6) */
   @inherit(r_1, w_1)
   @ext(0x2f, 0)
   model FM5Config {
     @minValue(1)
     @maxValue(11)
-    @step(1)
     value: UIN;
   }
 
-  /** date */
+  /** current date */
   @inherit(r_1)
   @ext(0x34, 0)
   model Date {
     value: date;
   }
 
-  /** time */
+  /** current time */
   @inherit(r_1)
   @ext(0x35, 0)
   model Time {
@@ -381,7 +365,6 @@ namespace _720 {
   model HydraulicScheme {
     @minValue(1)
     @maxValue(16)
-    @step(1)
     value: UIN;
   }
 
@@ -444,7 +427,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** system flow temp */
+  /** system flow temperature */
   @inherit(r_1)
   @ext(0x4b, 0)
   model SystemFlowTemp {
@@ -542,7 +525,7 @@ namespace _720 {
     value: energy4;
   }
 
-  /** installer name 1 */
+  /** installer name 1 (first part) */
   @inherit(r_1, w_1)
   @ext(0x6c, 0)
   model Installer1 {
@@ -550,7 +533,7 @@ namespace _720 {
     value: shortname;
   }
 
-  /** installer name 2 */
+  /** installer name 2 (second part) */
   @inherit(r_1, w_1)
   @ext(0x6d, 0)
   model Installer2 {
@@ -587,7 +570,6 @@ namespace _720 {
   model KeyCodeforConfigMenu {
     @minValue(0)
     @maxValue(999)
-    @step(1)
     value: UIN;
   }
 
@@ -629,14 +611,14 @@ namespace _720 {
   /** hc cylinder temperature top */
   @inherit(r_1)
   @ext(0x9f, 0)
-  model HcCylinderTempTop {
+  model HcStorageTempTop {
     value: tempv;
   }
 
   /** hc cylinder temperature bottom */
   @inherit(r_1)
   @ext(0xa0, 0)
-  model HcCylinderTempBottom {
+  model HcStorageTempBottom {
     value: tempv;
   }
 
@@ -656,7 +638,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 1, 0)
   model r_2 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -694,7 +676,7 @@ namespace _720 {
       value: opmode2;
     }
 
-    /** hwc temperature desired */
+    /** hwc desired temperature */
     @inherit(r_2, w_2)
     @ext(0x4, 0)
     model HwcTempDesired {
@@ -718,10 +700,10 @@ namespace _720 {
       value: yesno;
     }
 
-    /** hwc flow temperature */
+    /** hwc flow desired temperature */
     @inherit(r_2)
     @ext(0x8, 0)
-    model HwcFlowTempDesired {
+    model HwcFlowTemp {
       value: tempv;
     }
 
@@ -767,7 +749,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x2, 0)
   model r_3 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ri for user level "install" */
@@ -775,7 +757,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x2, 0)
   model ri_3 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -789,7 +771,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 1, 0x2, 0)
   model wi_3 {}
 
-  /** CircuitType heating circuit 1 */
+  /** Circuit type heating circuit 1 */
   @inherit(r_3)
   @ext(0x2, 0)
   model Hc1CircuitType {
@@ -797,7 +779,7 @@ namespace _720 {
     @maxLength(1) ign: IGN;
   }
 
-  /** DesiredReturnTemp heating circuit 1 */
+  /** Desired return temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x4, 0)
   @condition(_720.Hc1CircuitType.value, "4")
@@ -808,7 +790,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DewPointMonitoring heating circuit 1 */
+  /** Dew point monitoring heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x5, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -818,28 +800,28 @@ namespace _720 {
     value: onoff;
   }
 
-  /** CoolingEnabled heating circuit 1 */
+  /** Cooling enabled heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x6, 0)
   model Hc1CoolingEnabled {
     value: onoff;
   }
 
-  /** FlowTempDesired heating circuit 1 */
+  /** Desired flow temperature heating circuit 1 */
   @inherit(r_3)
   @ext(0x7, 0)
   model Hc1FlowTempDesired {
     value: tempv;
   }
 
-  /** FlowTemp heating circuit 1 */
+  /** Flow temperature heating circuit 1 */
   @inherit(r_3)
   @ext(0x8, 0)
   model Hc1FlowTemp {
     value: tempv;
   }
 
-  /** ExtHwcTempDesired heating circuit 1 */
+  /** External hot water desired temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x9, 0)
   @condition(_720.Hc1ExtHwcActive.value, "1")
@@ -847,7 +829,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DewPointOffset heating circuit 1 */
+  /** Dew point offset heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xa, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -860,18 +842,19 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** ExcessTemp heating circuit 1 */
+  /** Excess temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xb, 0)
   @condition(_720.Hc1CircuitType.value, "1")
   model Hc1ExcessTemp {
+    /** excess temperature: flow temperature's setpoint is increased by this value to keep the mixing valve in its control range */
     @minValue(0)
     @maxValue(20)
     @step(1)
     value: calibrationv;
   }
 
-  /** DesiredTemp (fixed) heating circuit 1 */
+  /** Desired temperature (fixed) heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xc, 0)
   @condition(_720.Hc1CircuitType.value, "2")
@@ -882,7 +865,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** SetbackModeTemp (fixed) heating circuit 1 */
+  /** Setback mode temperature (fixed) heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xd, 0)
   @condition(_720.Hc1CircuitType.value, "2")
@@ -893,7 +876,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** SetbackMode heating circuit 1 */
+  /** Setback mode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xe, 0)
   @condition(_720.Hc1CircuitType.value, "1")
@@ -901,17 +884,14 @@ namespace _720 {
     value: offmode2;
   }
 
-  /** HeatCurve heating circuit 1 */
+  /** Heating curve heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0xf, 0)
   model Hc1HeatCurve {
-    @minValue(0.1)
-    @maxValue(4)
-    @step(0.05)
-    value: EXP;
+    value: curvev;
   }
 
-  /** HeatingFlowTempMax heating circuit 1 */
+  /** Heating flow max temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x10, 0)
   model Hc1HeatingFlowTempMax {
@@ -921,19 +901,20 @@ namespace _720 {
     value: tempv;
   }
 
-  /** CoolingFlowTempMin heating circuit 1 */
+  /** Cooling flow min temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x11, 0)
   @condition(_720.Hc1CircuitType.value, "1")
   @condition(_720.Hc1CoolingEnabled.value, "1")
   model Hc1CoolingFlowTempMin {
+    /** minimum cooling temperature setpoint Hc1 */
     @minValue(7)
     @maxValue(24)
     @step(1)
     value: tempv;
   }
 
-  /** HeatingFlowTempMin heating circuit 1 */
+  /** Heating flow min temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x12, 0)
   model Hc1HeatingFlowTempMin {
@@ -943,7 +924,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** ExtHwcOpMode heating circuit 1 */
+  /** External hot water operation mode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x13, 0)
   @condition(_720.Hc1ExtHwcActive.value, "1")
@@ -951,7 +932,7 @@ namespace _720 {
     value: opmode2;
   }
 
-  /** summer outside switchoff temperature heating circuit 1 */
+  /** Summer outside switchoff temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x14, 0)
   model Hc1SummerTempLimit {
@@ -961,24 +942,23 @@ namespace _720 {
     value: tempv;
   }
 
-  /** RoomTempModulation heating circuit 1 */
+  /** Room temperature modulation heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x15, 0)
   model Hc1RoomTempModulation {
     value: rcmode2;
   }
 
-  /** ScreedDryingDay heating circuit 1 */
+  /** Screed drying day heating circuit 1 */
   @inherit(ri_3, wi_3)
   @ext(0x16, 0)
   model Hc1ScreedDryingDay {
     @minValue(0)
     @maxValue(29)
-    @step(1)
     value: UIN;
   }
 
-  /** ScreedDryingDesiredTemp heating circuit 1 */
+  /** Screed drying desired temperature heating circuit 1 */
   @inherit(ri_3)
   @ext(0x17, 0)
   model Hc1ScreedDryingDesiredTemp {
@@ -988,29 +968,30 @@ namespace _720 {
     value: tempv;
   }
 
-  /** ExtHwcActive heating circuit 1 */
+  /** External hot water active heating circuit 1 */
   @inherit(r_3)
   @ext(0x18, 0)
   model Hc1ExtHwcActive {
     value: onoff;
   }
 
-  /** ExtHeatDemand heating circuit 1 */
+  /** External heat demand heating circuit 1 */
   @inherit(r_3)
   @ext(0x19, 0)
   model Hc1ExtHeatDemand {
     value: onoff;
   }
 
-  /** MixerMovement heating circuit 1 */
+  /** Mixer movement heating circuit 1 */
   @inherit(r_3)
   @ext(0x1a, 0)
   @condition(_720.Hc1CircuitType.value, "1")
   model Hc1MixerMovement {
+    /** status of mixer (<0 closing, >0 opening) */
     value: EXP;
   }
 
-  /** HeatCurveAdaption heating circuit 1 */
+  /** Heating curve adaption heating circuit 1 */
   @inherit(r_3)
   @ext(0x1c, 0)
   model Hc1HeatCurveAdaption {
@@ -1024,7 +1005,7 @@ namespace _720 {
     value: onoff;
   }
 
-  /** PumpStatus heating circuit 1 */
+  /** Pump status heating circuit 1 */
   @inherit(r_3)
   @ext(0x1e, 0)
   model Hc1PumpStatus {
@@ -1037,7 +1018,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x2, 1)
   model r_4 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ri for user level "install" */
@@ -1045,7 +1026,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x2, 1)
   model ri_4 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -1059,7 +1040,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 1, 0x2, 1)
   model wi_4 {}
 
-  /** CircuitType heating circuit 2 */
+  /** Circuit type heating circuit 2 */
   @inherit(r_4)
   @ext(0x2, 0)
   model Hc2CircuitType {
@@ -1067,7 +1048,7 @@ namespace _720 {
     @maxLength(1) ign: IGN;
   }
 
-  /** DesiredReturnTemp heating circuit 2 */
+  /** Desired return temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x4, 0)
   @condition(_720.Hc2CircuitType.value, "4")
@@ -1078,7 +1059,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DewPointMonitoring heating circuit 2 */
+  /** Dew point monitoring heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x5, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1088,28 +1069,28 @@ namespace _720 {
     value: onoff;
   }
 
-  /** CoolingEnabled heating circuit 2 */
+  /** Cooling enabled heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x6, 0)
   model Hc2CoolingEnabled {
     value: onoff;
   }
 
-  /** FlowTempDesired heating circuit 2 */
+  /** Desired flow temperature heating circuit 2 */
   @inherit(r_4)
   @ext(0x7, 0)
   model Hc2FlowTempDesired {
     value: tempv;
   }
 
-  /** FlowTemp heating circuit 2 */
+  /** Flow temperature heating circuit 2 */
   @inherit(r_4)
   @ext(0x8, 0)
   model Hc2FlowTemp {
     value: tempv;
   }
 
-  /** ExtHwcTempDesired heating circuit 2 */
+  /** External hot water desired temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x9, 0)
   @condition(_720.Hc2ExtHwcActive.value, "1")
@@ -1117,7 +1098,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DewPointOffset heating circuit 2 */
+  /** Dew point offset heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xa, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1130,18 +1111,19 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** ExcessTemp heating circuit 2 */
+  /** Excess temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xb, 0)
   @condition(_720.Hc2CircuitType.value, "1")
   model Hc2ExcessTemp {
+    /** excess temperature: flow temperature's setpoint is increased by this value to keep the mixing valve in its control range */
     @minValue(0)
     @maxValue(20)
     @step(1)
     value: calibrationv;
   }
 
-  /** DesiredTemp (fixed) heating circuit 2 */
+  /** Desired temperature (fixed) heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xc, 0)
   @condition(_720.Hc2CircuitType.value, "2")
@@ -1152,7 +1134,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** SetbackModeTemp (fixed) heating circuit 2 */
+  /** Setback mode temperature (fixed) heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xd, 0)
   @condition(_720.Hc2CircuitType.value, "2")
@@ -1163,7 +1145,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** SetbackMode heating circuit 2 */
+  /** Setback mode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xe, 0)
   @condition(_720.Hc2CircuitType.value, "1")
@@ -1171,17 +1153,14 @@ namespace _720 {
     value: offmode2;
   }
 
-  /** HeatCurve heating circuit 2 */
+  /** Heating curve heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0xf, 0)
   model Hc2HeatCurve {
-    @minValue(0.1)
-    @maxValue(4)
-    @step(0.05)
-    value: EXP;
+    value: curvev;
   }
 
-  /** Hc2HeatingFlowTempMax heating circuit 2 */
+  /** Heating flow max temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x10, 0)
   model Hc2HeatingFlowTempMax {
@@ -1191,19 +1170,20 @@ namespace _720 {
     value: tempv;
   }
 
-  /** CoolingFlowTempMin heating circuit 2 */
+  /** Cooling flow min temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x11, 0)
   @condition(_720.Hc2CircuitType.value, "1")
   @condition(_720.Hc2CoolingEnabled.value, "1")
   model Hc2CoolingFlowTempMin {
+    /** minimum cooling temperature setpoint Hc2 */
     @minValue(7)
     @maxValue(24)
     @step(1)
     value: tempv;
   }
 
-  /** HeatingFlowTempMin heating circuit 2 */
+  /** Heating flow min temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x12, 0)
   model Hc2HeatingFlowTempMin {
@@ -1213,7 +1193,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** ExtHwcOpMode heating circuit 2 */
+  /** External hot water operation mode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x13, 0)
   @condition(_720.Hc2ExtHwcActive.value, "1")
@@ -1221,7 +1201,7 @@ namespace _720 {
     value: opmode2;
   }
 
-  /** summer outside switchoff temperature heating circuit 2 */
+  /** Summer outside switchoff temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x14, 0)
   model Hc2SummerTempLimit {
@@ -1231,24 +1211,23 @@ namespace _720 {
     value: tempv;
   }
 
-  /** RoomTempModulation heating circuit 2 */
+  /** Room temperature modulation heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x15, 0)
   model Hc2RoomTempModulation {
     value: rcmode2;
   }
 
-  /** ScreedDryingDay heating circuit 2 */
+  /** Screed drying day heating circuit 2 */
   @inherit(ri_4, wi_4)
   @ext(0x16, 0)
   model Hc2ScreedDryingDay {
     @minValue(0)
     @maxValue(29)
-    @step(1)
     value: UIN;
   }
 
-  /** ScreedDryingDesiredTemp heating circuit 2 */
+  /** Screed drying desired temperature heating circuit 2 */
   @inherit(ri_4)
   @ext(0x17, 0)
   model Hc2ScreedDryingDesiredTemp {
@@ -1258,29 +1237,30 @@ namespace _720 {
     value: tempv;
   }
 
-  /** ExtHwcActive heating circuit 2 */
+  /** External hot water active heating circuit 2 */
   @inherit(r_4)
   @ext(0x18, 0)
   model Hc2ExtHwcActive {
     value: onoff;
   }
 
-  /** ExtHeatDemand heating circuit 2 */
+  /** External heat demand heating circuit 2 */
   @inherit(r_4)
   @ext(0x19, 0)
   model Hc2ExtHeatDemand {
     value: onoff;
   }
 
-  /** MixerMovement heating circuit 2 */
+  /** Mixer movement heating circuit 2 */
   @inherit(r_4)
   @ext(0x1a, 0)
   @condition(_720.Hc2CircuitType.value, "1")
   model Hc2MixerMovement {
+    /** status of mixer (<0 closing, >0 opening) */
     value: EXP;
   }
 
-  /** HeatCurveAdaption heating circuit 2 */
+  /** Heating curve adaption heating circuit 2 */
   @inherit(r_4)
   @ext(0x1c, 0)
   model Hc2HeatCurveAdaption {
@@ -1294,7 +1274,7 @@ namespace _720 {
     value: onoff;
   }
 
-  /** PumpStatus heating circuit 2 */
+  /** Pump status heating circuit 2 */
   @inherit(r_4)
   @ext(0x1e, 0)
   model Hc2PumpStatus {
@@ -1307,7 +1287,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x2, 0x2)
   model r_5 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *ri for user level "install" */
@@ -1315,7 +1295,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x2, 0x2)
   model ri_5 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -1329,7 +1309,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 1, 0x2, 0x2)
   model wi_5 {}
 
-  /** CircuitType heating circuit 3 */
+  /** Circuit type heating circuit 3 */
   @inherit(r_5)
   @ext(0x2, 0)
   model Hc3CircuitType {
@@ -1337,7 +1317,7 @@ namespace _720 {
     @maxLength(1) ign: IGN;
   }
 
-  /** DesiredReturnTemp heating circuit 3 */
+  /** Desired return temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x4, 0)
   @condition(_720.Hc3CircuitType.value, "4")
@@ -1348,7 +1328,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DewPointMonitoring heating circuit 3 */
+  /** Dew point monitoring heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x5, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -1358,28 +1338,28 @@ namespace _720 {
     value: onoff;
   }
 
-  /** CoolingEnabled heating circuit 3 */
+  /** Cooling enabled heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x6, 0)
   model Hc3CoolingEnabled {
     value: onoff;
   }
 
-  /** FlowTempDesired heating circuit 3 */
+  /** Desired flow temperature heating circuit 3 */
   @inherit(r_5)
   @ext(0x7, 0)
   model Hc3FlowTempDesired {
     value: tempv;
   }
 
-  /** FlowTemp heating circuit 3 */
+  /** Flow temperature heating circuit 3 */
   @inherit(r_5)
   @ext(0x8, 0)
   model Hc3FlowTemp {
     value: tempv;
   }
 
-  /** ExtHwcTempDesired heating circuit 3 */
+  /** External hot water desired temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x9, 0)
   @condition(_720.Hc3ExtHwcActive.value, "1")
@@ -1387,7 +1367,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** DewPointOffset heating circuit 3 */
+  /** Dew point offset heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xa, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -1400,18 +1380,19 @@ namespace _720 {
     value: calibrationv;
   }
 
-  /** ExcessTemp heating circuit 3 */
+  /** Excess temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xb, 0)
   @condition(_720.Hc3CircuitType.value, "1")
   model Hc3ExcessTemp {
+    /** excess temperature: flow temperature's setpoint is increased by this value to keep the mixing valve in its control range */
     @minValue(0)
     @maxValue(20)
     @step(1)
     value: calibrationv;
   }
 
-  /** DesiredTemp (fixed) heating circuit 3 */
+  /** Desired temperature (fixed) heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xc, 0)
   @condition(_720.Hc3CircuitType.value, "2")
@@ -1422,7 +1403,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** SetbackModeTemp (fixed) heating circuit 3 */
+  /** Setback mode temperature (fixed) heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xd, 0)
   @condition(_720.Hc3CircuitType.value, "2")
@@ -1433,7 +1414,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** SetbackMode heating circuit 3 */
+  /** Setback mode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xe, 0)
   @condition(_720.Hc3CircuitType.value, "1")
@@ -1441,17 +1422,14 @@ namespace _720 {
     value: offmode2;
   }
 
-  /** HeatCurve heating circuit 3 */
+  /** Heating curve heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0xf, 0)
   model Hc3HeatCurve {
-    @minValue(0.1)
-    @maxValue(4)
-    @step(0.05)
-    value: EXP;
+    value: curvev;
   }
 
-  /** HeatingFlowTempMax heating circuit 3 */
+  /** Heating flow max temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x10, 0)
   model Hc3HeatingFlowTempMax {
@@ -1461,19 +1439,20 @@ namespace _720 {
     value: tempv;
   }
 
-  /** CoolingFlowTempMin heating circuit 3 */
+  /** Cooling flow min temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x11, 0)
   @condition(_720.Hc3CircuitType.value, "1")
   @condition(_720.Hc3CoolingEnabled.value, "1")
   model Hc3CoolingFlowTempMin {
+    /** minimum cooling temperature setpoint Hc1 */
     @minValue(7)
     @maxValue(24)
     @step(1)
     value: tempv;
   }
 
-  /** HeatingFlowTempMin heating circuit 3 */
+  /** Heating flow min temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x12, 0)
   model Hc3HeatingFlowTempMin {
@@ -1483,7 +1462,7 @@ namespace _720 {
     value: tempv;
   }
 
-  /** ExtHwcOpMode heating circuit 3 */
+  /** External hot water operation mode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x13, 0)
   @condition(_720.Hc3ExtHwcActive.value, "1")
@@ -1491,7 +1470,7 @@ namespace _720 {
     value: opmode2;
   }
 
-  /** summer outside switchoff temperature heating circuit 3 */
+  /** Summer outside switchoff temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x14, 0)
   model Hc3SummerTempLimit {
@@ -1501,24 +1480,23 @@ namespace _720 {
     value: tempv;
   }
 
-  /** RoomTempModulation heating circuit 3 */
+  /** Room temperature modulation heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x15, 0)
   model Hc3RoomTempModulation {
     value: rcmode2;
   }
 
-  /** ScreedDryingDay heating circuit 3 */
+  /** Screed drying day heating circuit 3 */
   @inherit(ri_5, wi_5)
   @ext(0x16, 0)
   model Hc3ScreedDryingDay {
     @minValue(0)
     @maxValue(29)
-    @step(1)
     value: UIN;
   }
 
-  /** ScreedDryingDesiredTemp heating circuit 3 */
+  /** Screed drying desired temperature heating circuit 3 */
   @inherit(ri_5)
   @ext(0x17, 0)
   model Hc3ScreedDryingDesiredTemp {
@@ -1528,29 +1506,30 @@ namespace _720 {
     value: tempv;
   }
 
-  /** ExtHwcActive heating circuit 3 */
+  /** External hot water active heating circuit 3 */
   @inherit(r_5)
   @ext(0x18, 0)
   model Hc3ExtHwcActive {
     value: onoff;
   }
 
-  /** ExtHeatDemand heating circuit 3 */
+  /** External heat demand heating circuit 3 */
   @inherit(r_5)
   @ext(0x19, 0)
   model Hc3ExtHeatDemand {
     value: onoff;
   }
 
-  /** MixerMovement heating circuit 3 */
+  /** Mixer movement heating circuit 3 */
   @inherit(r_5)
   @ext(0x1a, 0)
   @condition(_720.Hc3CircuitType.value, "1")
   model Hc3MixerMovement {
+    /** status of mixer (<0 closing, >0 opening) */
     value: EXP;
   }
 
-  /** HeatCurveAdaption heating circuit 3 */
+  /** Heating curve adaption heating circuit 3 */
   @inherit(r_5)
   @ext(0x1c, 0)
   model Hc3HeatCurveAdaption {
@@ -1564,7 +1543,7 @@ namespace _720 {
     value: onoff;
   }
 
-  /** PumpStatus heating circuit 3 */
+  /** Pump status heating circuit 3 */
   @inherit(r_5)
   @ext(0x1e, 0)
   model Hc3PumpStatus {
@@ -1577,7 +1556,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x3, 0)
   model r_6 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -1637,7 +1616,7 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x6, 0)
   @condition(_720.Hc1CircuitType.value, "1")
-  model Z1HeatingOpMode {
+  model Z1OpMode {
     value: opmode2;
   }
 
@@ -1656,7 +1635,7 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x9, 0)
   @condition(_720.Hc1CircuitType.value, "1")
-  model Z1HeatingSetbackTemp {
+  model Z1SetbackTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -1689,14 +1668,15 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x13, 0)
   model Z1RoomZoneMapping {
-    value: zmapping2;
+    /** configures which room temperature is assigned to zone 1 */
+    value: zmapping;
   }
 
   /** heating room temperature desired zone 1 */
   @inherit(r_6)
   @ext(0x14, 0)
   @condition(_720.Hc1CircuitType.value, "1")
-  model Z1HeatingTempDesired {
+  model Z1TempDesired {
     value: tempv;
   }
 
@@ -1737,7 +1717,7 @@ namespace _720 {
   @inherit(r_6)
   @ext(0x19, 0)
   @condition(_720.Hc1CircuitType.value, "1")
-  model Z1HeatingTimeSlotActive {
+  model Z1TimeSlotActive {
     value: yesno;
   }
 
@@ -1785,7 +1765,7 @@ namespace _720 {
   @inherit(r_6, w_6)
   @ext(0x22, 0)
   @condition(_720.Hc1CircuitType.value, "1")
-  model Z1HeatingManualTemp {
+  model Z1ManualTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -1820,7 +1800,7 @@ namespace _720 {
     @minValue(0.5)
     @maxValue(12)
     @step(0.5)
-    @unit("h") // TODO: Causes to be detected as read-only sensor in HA
+    @unit("h")
     value: EXP;
   }
 
@@ -1837,7 +1817,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x3, 1)
   model r_7 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -1897,7 +1877,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x6, 0)
   @condition(_720.Hc2CircuitType.value, "1")
-  model Z2HeatingOpMode {
+  model Z2OpMode {
     value: opmode2;
   }
 
@@ -1916,7 +1896,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x9, 0)
   @condition(_720.Hc2CircuitType.value, "1")
-  model Z2HeatingSetbackTemp {
+  model Z2SetbackTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -1949,6 +1929,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x13, 0)
   model Z2RoomZoneMapping {
+    /** configures which room temperature is assigned to zone 2 */
     value: zmapping2;
   }
 
@@ -1956,7 +1937,7 @@ namespace _720 {
   @inherit(r_7)
   @ext(0x14, 0)
   @condition(_720.Hc2CircuitType.value, "1")
-  model Z2HeatingTempDesired {
+  model Z2TempDesired {
     value: tempv;
   }
 
@@ -1997,7 +1978,7 @@ namespace _720 {
   @inherit(r_7)
   @ext(0x19, 0)
   @condition(_720.Hc2CircuitType.value, "1")
-  model Z2HeatingTimeSlotActive {
+  model Z2TimeSlotActive {
     value: yesno;
   }
 
@@ -2045,7 +2026,7 @@ namespace _720 {
   @inherit(r_7, w_7)
   @ext(0x22, 0)
   @condition(_720.Hc2CircuitType.value, "1")
-  model Z2HeatingManualTemp {
+  model Z2ManualTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -2080,7 +2061,7 @@ namespace _720 {
     @minValue(0.5)
     @maxValue(12)
     @step(0.5)
-    @unit("h") // TODO: Causes to be detected as read-only sensor in HA
+    @unit("h")
     value: EXP;
   }
 
@@ -2097,7 +2078,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x3, 0x2)
   model r_8 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -2157,7 +2138,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x6, 0)
   @condition(_720.Hc3CircuitType.value, "1")
-  model Z3HeatingOpMode {
+  model Z3OpMode {
     value: opmode2;
   }
 
@@ -2176,7 +2157,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x9, 0)
   @condition(_720.Hc3CircuitType.value, "1")
-  model Z3HeatingSetbackTemp {
+  model Z3SetbackTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -2209,6 +2190,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x13, 0)
   model Z3RoomZoneMapping {
+    /** configures which room temperature is assigned to zone 3 */
     value: zmapping2;
   }
 
@@ -2216,7 +2198,7 @@ namespace _720 {
   @inherit(r_8)
   @ext(0x14, 0)
   @condition(_720.Hc3CircuitType.value, "1")
-  model Z3HeatingTempDesired {
+  model Z3TempDesired {
     value: tempv;
   }
 
@@ -2257,7 +2239,7 @@ namespace _720 {
   @inherit(r_8)
   @ext(0x19, 0)
   @condition(_720.Hc3CircuitType.value, "1")
-  model Z3HeatingTimeSlotActive {
+  model Z3TimeSlotActive {
     value: yesno;
   }
 
@@ -2305,7 +2287,7 @@ namespace _720 {
   @inherit(r_8, w_8)
   @ext(0x22, 0)
   @condition(_720.Hc3CircuitType.value, "1")
-  model Z3HeatingManualTemp {
+  model Z3ManualTemp {
     @minValue(5)
     @maxValue(30)
     @step(0.5)
@@ -2340,7 +2322,7 @@ namespace _720 {
     @minValue(0.5)
     @maxValue(12)
     @step(0.5)
-    @unit("h") // TODO: Causes to be detected as read-only sensor
+    @unit("h")
     value: EXP;
   }
 
@@ -2356,7 +2338,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x4, 0)
   model r_19 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -2421,7 +2403,7 @@ namespace _720 {
   @base(MF, 0x24, 0x2, 0, 0x5, 0)
   model r_20 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** default *w */
@@ -2431,7 +2413,6 @@ namespace _720 {
 
   @condition(_720.FM5Config.value, "<=2")
   namespace SolarCylinder1 {
-    /** SolarCylinder1TempMax */
     /** maximum cylinder charging temperature (BottomTemp sensor) */
     @inherit(r_20, w_19)
     @ext(0x1, 0)
@@ -2439,7 +2420,6 @@ namespace _720 {
       value: tempv;
     }
 
-    /** SolarCylinder1SwitchOnDifferential */
     /** charge if the temperature difference between the cylinder temperature sensor at the bottom and the collector temperature sensor is greater */
     @inherit(r_20, w_19)
     @ext(0x2, 0)
@@ -2447,7 +2427,6 @@ namespace _720 {
       value: calibrationv;
     }
 
-    /** SolarCylinder1SwitchOffDifferential */
     /** turn charge off if temperature difference between the bottom cylinder temperature sensor and the collector temperature sensor is smaller */
     @inherit(r_20, w_19)
     @ext(0x3, 0)
@@ -2460,15 +2439,6 @@ namespace _720 {
 
   /** default *r */
   model r_9 {}
-
-  /**
-  @inherit(r_9)
-  @ext(0xb5, 0x55, 0xa0)
-  model UnknownValue_a0 {
-    @maxLength(8)
-    value: HEX;
-  }
-  */
 
   // Hot water timers
   /** default *r */
@@ -2483,117 +2453,117 @@ namespace _720 {
   @condition(_720.HwcEnabled.value, "1")
   namespace HotWaterCircutTimer {
     /** hwc timer Configuration */
-    @inherit(r_9)
-    @ext(MF, 0x55, 0xa3, 0, 0x2)
-    model HwcTimer_Config {
-      /** Configuration */
-      @maxLength(9)
-      value: HEX;
-    }
+    // @inherit(r_9)
+    // @ext(MF, 0x55, 0xa3, 0, 0x2)
+    // model HwcTimer_Config {
+    //   /** Configuration */
+    //   @maxLength(9)
+    //   value: HEX;
+    // }
 
     /** hwc timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 0x2)
-    model HwcTimer_TimeSlotsPerWeekday {
+    model HwcTimer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** hwc timer monday read */
+    /** hwc timer monday 1 */
     @inherit(r_10)
     @ext(0, 0)
+    model HwcTimer_Monday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** hwc timer monday */
+    @inherit(w_9)
+    @ext(0)
     model HwcTimer_Monday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** hwc timer monday write */
-    @inherit(w_9)
-    @ext(0, 0)
-    model HwcTimer_MondayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** hwc timer tuesday read */
+    /** hwc timer tuesday 1 */
     @inherit(r_10)
     @ext(1, 0)
+    model HwcTimer_Tuesday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** hwc timer tuesday */
+    @inherit(w_9)
+    @ext(1)
     model HwcTimer_Tuesday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** hwc timer tuesday write */
-    @inherit(w_9)
-    @ext(1, 0)
-    model HwcTimer_TuesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** hwc timer wednesday read */
+    /** hwc timer wednesday 1 */
     @inherit(r_10)
     @ext(2, 0)
+    model HwcTimer_Wednesday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** hwc timer wednesday */
+    @inherit(w_9)
+    @ext(2)
     model HwcTimer_Wednesday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** hwc timer wednesday write */
-    @inherit(w_9)
-    @ext(2, 0)
-    model HwcTimer_WednesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** hwc timer thursday read */
+    /** hwc timer thursday 1 */
     @inherit(r_10)
     @ext(3, 0)
+    model HwcTimer_Thursday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** hwc timer thursday */
+    @inherit(w_9)
+    @ext(3)
     model HwcTimer_Thursday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** hwc timer thursday write */
-    @inherit(w_9)
-    @ext(3, 0)
-    model HwcTimer_ThursdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** hwc timer friday read */
+    /** hwc timer friday 1 */
     @inherit(r_10)
     @ext(4, 0)
+    model HwcTimer_Friday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** hwc timer friday */
+    @inherit(w_9)
+    @ext(4)
     model HwcTimer_Friday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** hwc timer friday write */
-    @inherit(w_9)
-    @ext(4, 0)
-    model HwcTimer_FridayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** hwc timer saturday read */
+    /** hwc timer saturday 1 */
     @inherit(r_10)
     @ext(5, 0)
+    model HwcTimer_Saturday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** hwc timer saturday */
+    @inherit(w_9)
+    @ext(5)
     model HwcTimer_Saturday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** hwc timer saturday write */
-    @inherit(w_9)
-    @ext(5, 0)
-    model HwcTimer_SaturdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** hwc timer sunday read */
+    /** hwc timer sunday 1 */
     @inherit(r_10)
     @ext(6, 0)
-    model HwcTimer_Sunday {
+    model HwcTimer_Sunday0 {
       value: rTimeSlotWithoutTemp;
     }
 
-    /** hwc timer sunday write */
+    /** hwc timer sunday */
     @inherit(w_9)
-    @ext(6, 0)
-    model HwcTimer_SundayWrite {
+    @ext(6)
+    model HwcTimer_Sunday {
       value: wTimeSlotWithoutTemp;
     }
   }
@@ -2612,13 +2582,13 @@ namespace _720 {
   @condition(_720.HwcEnabled.value, "1")
   namespace CirculationCircuitTimer {
     /** cc timer Configuration */
-    @inherit(r_9)
-    @ext(MF, 0x55, 0xa3, 0, 0x3)
-    model CcTimer_Config {
-      /** Configuration */
-      @maxLength(9)
-      value: HEX;
-    }
+    // @inherit(r_9)
+    // @ext(MF, 0x55, 0xa3, 0, 0x3)
+    // model CcTimer_Config {
+    //   /** Configuration */
+    //   @maxLength(9)
+    //   value: HEX;
+    // }
 
     /** cc timer amount */
     @inherit(r_9)
@@ -2628,101 +2598,101 @@ namespace _720 {
       value: slotCountWeek;
     }
 
-    /** cc timer monday read */
+    /** cc timer monday 1 */
     @inherit(r_11)
     @ext(0, 0)
+    model CcTimer_Monday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** cc timer monday */
+    @inherit(w_10)
+    @ext(0)
     model CcTimer_Monday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** cc timer monday write */
-    @inherit(w_10)
-    @ext(0, 0)
-    model CcTimer_MondayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** cc timer tuesday read */
+    /** cc timer tuesday 1 */
     @inherit(r_11)
     @ext(1, 0)
+    model CcTimer_Tuesday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** cc timer tuesday */
+    @inherit(w_10)
+    @ext(1)
     model CcTimer_Tuesday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** cc timer tuesday write */
-    @inherit(w_10)
-    @ext(1, 0)
-    model CcTimer_TuesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** cc timer wednesday read */
+    /** cc timer wednesday 1 */
     @inherit(r_11)
     @ext(0x2, 0)
+    model CcTimer_Wednesday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** cc timer wednesday */
+    @inherit(w_10)
+    @ext(0x2)
     model CcTimer_Wednesday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** cc timer wednesday write */
-    @inherit(w_10)
-    @ext(0x2, 0)
-    model CcTimer_WednesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** cc timer thursday read */
+    /** cc timer thursday 1 */
     @inherit(r_11)
     @ext(0x3, 0)
+    model CcTimer_Thursday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** cc timer thursday */
+    @inherit(w_10)
+    @ext(0x3)
     model CcTimer_Thursday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** cc timer thursday write */
-    @inherit(w_10)
-    @ext(0x3, 0)
-    model CcTimer_ThursdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** cc timer friday read */
+    /** cc timer friday 1 */
     @inherit(r_11)
     @ext(0x4, 0)
+    model CcTimer_Friday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** cc timer friday */
+    @inherit(w_10)
+    @ext(0x4)
     model CcTimer_Friday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** cc timer friday write */
-    @inherit(w_10)
-    @ext(0x4, 0)
-    model CcTimer_FridayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** cc timer saturday read */
+    /** cc timer saturday 1 */
     @inherit(r_11)
     @ext(0x5, 0)
+    model CcTimer_Saturday0 {
+      value: rTimeSlotWithoutTemp;
+    }
+
+    /** cc timer saturday */
+    @inherit(w_10)
+    @ext(0x5)
     model CcTimer_Saturday {
-      value: rTimeSlotWithoutTemp;
-    }
-
-    /** cc timer saturday write */
-    @inherit(w_10)
-    @ext(0x5, 0)
-    model CcTimer_SaturdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** cc timer sunday read */
+    /** cc timer sunday 1 */
     @inherit(r_11)
     @ext(0x6, 0)
-    model CcTimer_Sunday {
+    model CcTimer_Sunday0 {
       value: rTimeSlotWithoutTemp;
     }
 
-    /** cc timer sunday write */
+    /** cc timer sunday */
     @inherit(w_10)
-    @ext(0x6, 0)
-    model CcTimer_SundayWrite {
+    @ext(0x6)
+    model CcTimer_Sunday {
       value: wTimeSlotWithoutTemp;
     }
   }
@@ -2739,13 +2709,13 @@ namespace _720 {
   model w_11 {}
 
   /** silent timer Configuration */
-  @inherit(r_9)
-  @ext(MF, 0x55, 0xa3, 0, 0x4)
-  model SilentTimer_Config {
-    /** Configuration */
-    @maxLength(9)
-    value: HEX;
-  }
+  // @inherit(r_9)
+  // @ext(MF, 0x55, 0xa3, 0, 0x4)
+  // model SilentTimer_Config {
+  //   /** Configuration */
+  //   @maxLength(9)
+  //   value: HEX;
+  // }
 
   /** silent timer amount */
   @inherit(r_9)
@@ -2755,101 +2725,101 @@ namespace _720 {
     value: slotCountWeek;
   }
 
-  /** silent timer monday read */
+  /** silent timer monday 1 */
   @inherit(r_12)
   @ext(0, 0)
+  model SilentTimer_Monday0 {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer monday */
+  @inherit(w_11)
+  @ext(0)
   model SilentTimer_Monday {
-    value: rTimeSlotWithoutTemp;
-  }
-
-  /** silent timer monday write */
-  @inherit(w_11)
-  @ext(0, 0)
-  model SilentTimer_MondayWrite {
     value: wTimeSlotWithoutTemp;
   }
 
-  /** silent timer tuesday read */
+  /** silent timer tuesday 1 */
   @inherit(r_12)
   @ext(1, 0)
+  model SilentTimer_Tuesday0 {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer tuesday */
+  @inherit(w_11)
+  @ext(1)
   model SilentTimer_Tuesday {
-    value: rTimeSlotWithoutTemp;
-  }
-
-  /** silent timer tuesday write */
-  @inherit(w_11)
-  @ext(1, 0)
-  model SilentTimer_TuesdayWrite {
     value: wTimeSlotWithoutTemp;
   }
 
-  /** silent timer wednesday read */
+  /** silent timer wednesday 1 */
   @inherit(r_12)
   @ext(0x2, 0)
+  model SilentTimer_Wednesday0 {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer wednesday */
+  @inherit(w_11)
+  @ext(0x2)
   model SilentTimer_Wednesday {
-    value: rTimeSlotWithoutTemp;
-  }
-
-  /** silent timer wednesday write */
-  @inherit(w_11)
-  @ext(0x2, 0)
-  model SilentTimer_WednesdayWrite {
     value: wTimeSlotWithoutTemp;
   }
 
-  /** silent timer thursday read */
+  /** silent timer thursday 1 */
   @inherit(r_12)
   @ext(0x3, 0)
+  model SilentTimer_Thursday0 {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer thursday */
+  @inherit(w_11)
+  @ext(0x3)
   model SilentTimer_Thursday {
-    value: rTimeSlotWithoutTemp;
-  }
-
-  /** silent timer thursday write */
-  @inherit(w_11)
-  @ext(0x3, 0)
-  model SilentTimer_ThursdayWrite {
     value: wTimeSlotWithoutTemp;
   }
 
-  /** silent timer friday read */
+  /** silent timer friday 1 */
   @inherit(r_12)
   @ext(0x4, 0)
+  model SilentTimer_Friday0 {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer friday */
+  @inherit(w_11)
+  @ext(0x4)
   model SilentTimer_Friday {
-    value: rTimeSlotWithoutTemp;
-  }
-
-  /** silent timer friday write */
-  @inherit(w_11)
-  @ext(0x4, 0)
-  model SilentTimer_FridayWrite {
     value: wTimeSlotWithoutTemp;
   }
 
-  /** silent timer saturday read */
+  /** silent timer saturday 1 */
   @inherit(r_12)
   @ext(0x5, 0)
+  model SilentTimer_Saturday0 {
+    value: rTimeSlotWithoutTemp;
+  }
+
+  /** silent timer saturday */
+  @inherit(w_11)
+  @ext(0x5)
   model SilentTimer_Saturday {
-    value: rTimeSlotWithoutTemp;
-  }
-
-  /** silent timer saturday write */
-  @inherit(w_11)
-  @ext(0x5, 0)
-  model SilentTimer_SaturdayWrite {
     value: wTimeSlotWithoutTemp;
   }
 
-  /** silent timer sunday read */
+  /** silent timer sunday 1 */
   @inherit(r_12)
   @ext(0x6, 0)
-  model SilentTimer_Sunday {
+  model SilentTimer_Sunday0 {
     value: rTimeSlotWithoutTemp;
   }
 
-  /** silent timer sunday write */
+  /** silent timer sunday */
   @inherit(w_11)
-  @ext(0x6, 0)
-  model SilentTimer_SundayWrite {
+  @ext(0x6)
+  model SilentTimer_Sunday {
     value: wTimeSlotWithoutTemp;
   }
 
@@ -2867,117 +2837,117 @@ namespace _720 {
   @condition(_720.Hc1CircuitType.value, "1")
   namespace Zone1HeatingTimer {
     /** timer Configuration */
-    @inherit(r_9)
-    @ext(MF, 0x55, 0xa3, 0, 0)
-    model Z1HeatingTimer_Config {
-      /** Configuration */
-      @maxLength(9)
-      value: HEX;
-    }
+    // @inherit(r_9)
+    // @ext(MF, 0x55, 0xa3, 0, 0)
+    // model Z1Timer_Config {
+    //   /** Configuration */
+    //   @maxLength(9)
+    //   value: HEX;
+    // }
 
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 0)
-    model Z1HeatingTimer_TimeSlotsPerWeekday {
+    model Z1Timer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** timer heating monday read */
+    /** timer heating monday 1 */
     @inherit(r_13)
     @ext(0, 0)
-    model Z1HeatingTimer_Monday {
+    model Z1Timer_Monday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating monday write */
+    /** timer heating monday */
     @inherit(w_12)
-    @ext(0, 0)
-    model Z1HeatingTimer_MondayWrite {
+    @ext(0)
+    model Z1Timer_Monday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating tuesday read */
+    /** timer heating tuesday 1 */
     @inherit(r_13)
     @ext(1, 0)
-    model Z1HeatingTimer_Tuesday {
+    model Z1Timer_Tuesday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating tuesday write */
+    /** timer heating tuesday */
     @inherit(w_12)
-    @ext(1, 0)
-    model Z1HeatingTimer_TuesdayWrite {
+    @ext(1)
+    model Z1Timer_Tuesday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating wednesday read */
+    /** timer heating wednesday 1 */
     @inherit(r_13)
     @ext(0x2, 0)
-    model Z1HeatingTimer_Wednesday {
+    model Z1Timer_Wednesday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating wednesday write */
+    /** timer heating wednesday */
     @inherit(w_12)
-    @ext(0x2, 0)
-    model Z1HeatingTimer_WednesdayWrite {
+    @ext(0x2)
+    model Z1Timer_Wednesday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating thursday read */
+    /** timer heating thursday 1 */
     @inherit(r_13)
     @ext(0x3, 0)
-    model Z1HeatingTimer_Thursday {
+    model Z1Timer_Thursday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating thursday write */
+    /** timer heating thursday */
     @inherit(w_12)
-    @ext(0x3, 0)
-    model Z1HeatingTimer_ThursdayWrite {
+    @ext(0x3)
+    model Z1Timer_Thursday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating friday read */
+    /** timer heating friday 1 */
     @inherit(r_13)
     @ext(0x4, 0)
-    model Z1HeatingTimer_Friday {
+    model Z1Timer_Friday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating friday write */
+    /** timer heating friday */
     @inherit(w_12)
-    @ext(0x4, 0)
-    model Z1HeatingTimer_FridayWrite {
+    @ext(0x4)
+    model Z1Timer_Friday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating saturday read */
+    /** timer heating saturday 1 */
     @inherit(r_13)
     @ext(0x5, 0)
-    model Z1HeatingTimer_Saturday {
+    model Z1Timer_Saturday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating saturday write */
+    /** timer heating saturday */
     @inherit(w_12)
-    @ext(0x5, 0)
-    model Z1HeatingTimer_SaturdayWrite {
+    @ext(0x5)
+    model Z1Timer_Saturday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating sunday read */
+    /** timer heating sunday 1 */
     @inherit(r_13)
     @ext(0x6, 0)
-    model Z1HeatingTimer_Sunday {
+    model Z1Timer_Sunday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating sunday write */
+    /** timer heating sunday */
     @inherit(w_12)
-    @ext(0x6, 0)
-    model Z1HeatingTimer_SundayWrite {
+    @ext(0x6)
+    model Z1Timer_Sunday {
       value: wTimeSlotWithTemp;
     }
   }
@@ -2994,13 +2964,13 @@ namespace _720 {
   model w_13 {}
 
   /** timer Configuration */
-  @inherit(r_9)
-  @ext(MF, 0x55, 0xa3, 0, 1)
-  model Z1CoolingTimer_Config {
-    /** Configuration */
-    @maxLength(9)
-    value: HEX;
-  }
+  // @inherit(r_9)
+  // @ext(MF, 0x55, 0xa3, 0, 1)
+  // model Z1CoolingTimer_Config {
+  //   /** Configuration */
+  //   @maxLength(9)
+  //   value: HEX;
+  // }
 
   @condition(_720.Hc1CircuitType.value, "1")
   @condition(_720.Hc1CoolingEnabled.value, "1")
@@ -3008,106 +2978,106 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 1)
-    model Z1CoolingTimer_TimeSlotsPerWeekday {
+    model Z1CoolingTimer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** timer cooling monday read */
+    /** timer cooling monday 1 */
     @inherit(r_14)
     @ext(0, 0)
+    model Z1CoolingTimer_Monday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling monday */
+    @inherit(w_13)
+    @ext(0)
     model Z1CoolingTimer_Monday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling monday write */
-    @inherit(w_13)
-    @ext(0, 0)
-    model Z1CoolingTimer_MondayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling tuesday read */
+    /** timer cooling tuesday 1 */
     @inherit(r_14)
     @ext(1, 0)
+    model Z1CoolingTimer_Tuesday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling tuesday */
+    @inherit(w_13)
+    @ext(1)
     model Z1CoolingTimer_Tuesday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling tuesday write */
-    @inherit(w_13)
-    @ext(1, 0)
-    model Z1CoolingTimer_TuesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling wednesday read */
+    /** timer cooling wednesday 1 */
     @inherit(r_14)
     @ext(0x2, 0)
+    model Z1CoolingTimer_Wednesday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling wednesday */
+    @inherit(w_13)
+    @ext(0x2)
     model Z1CoolingTimer_Wednesday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling wednesday write */
-    @inherit(w_13)
-    @ext(0x2, 0)
-    model Z1CoolingTimer_WednesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling thursday read */
+    /** timer cooling thursday 1 */
     @inherit(r_14)
     @ext(0x3, 0)
+    model Z1CoolingTimer_Thursday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling thursday */
+    @inherit(w_13)
+    @ext(0x3)
     model Z1CoolingTimer_Thursday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling thursday write */
-    @inherit(w_13)
-    @ext(0x3, 0)
-    model Z1CoolingTimer_ThursdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling friday read */
+    /** timer cooling friday 1 */
     @inherit(r_14)
     @ext(0x4, 0)
+    model Z1CoolingTimer_Friday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling friday */
+    @inherit(w_13)
+    @ext(0x4)
     model Z1CoolingTimer_Friday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling friday write */
-    @inherit(w_13)
-    @ext(0x4, 0)
-    model Z1CoolingTimer_FridayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling saturday read */
+    /** timer cooling saturday 1 */
     @inherit(r_14)
     @ext(0x5, 0)
+    model Z1CoolingTimer_Saturday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling saturday */
+    @inherit(w_13)
+    @ext(0x5)
     model Z1CoolingTimer_Saturday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling saturday write */
-    @inherit(w_13)
-    @ext(0x5, 0)
-    model Z1CoolingTimer_SaturdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling sunday read */
+    /** timer cooling sunday 1 */
     @inherit(r_14)
     @ext(0x6, 0)
-    model Z1CoolingTimer_Sunday {
+    model Z1CoolingTimer_Sunday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer cooling sunday write */
+    /** timer cooling sunday */
     @inherit(w_13)
-    @ext(0x6, 0)
-    model Z1CoolingTimer_SundayWrite {
+    @ext(0x6)
+    model Z1CoolingTimer_Sunday {
       value: wTimeSlotWithoutTemp;
     }
   }
@@ -3124,119 +3094,119 @@ namespace _720 {
   model w_14 {}
 
   /** timer Configuration */
-  @inherit(r_9)
-  @ext(MF, 0x55, 0xa3, 1, 0)
-  model Z2HeatingTimer_Config {
-    /** Configuration */
-    @maxLength(9)
-    value: HEX;
-  }
+  // @inherit(r_9)
+  // @ext(MF, 0x55, 0xa3, 1, 0)
+  // model Z2Timer_Config {
+  //   /** Configuration */
+  //   @maxLength(9)
+  //   value: HEX;
+  // }
 
   @condition(_720.Hc2CircuitType.value, "1")
   namespace Zone2HeatingTimer {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 1, 0)
-    model Z2HeatingTimer_TimeSlotsPerWeekday {
+    model Z2Timer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** timer heating monday read */
+    /** timer heating monday 1 */
     @inherit(r_15)
     @ext(0, 0)
-    model Z2HeatingTimer_Monday {
+    model Z2Timer_Monday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating monday write */
+    /** timer heating monday */
     @inherit(w_14)
-    @ext(0, 0)
-    model Z2HeatingTimer_MondayWrite {
+    @ext(0)
+    model Z2Timer_Monday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating tuesday read */
+    /** timer heating tuesday 1 */
     @inherit(r_15)
     @ext(1, 0)
-    model Z2HeatingTimer_Tuesday {
+    model Z2Timer_Tuesday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating tuesday write */
+    /** timer heating tuesday */
     @inherit(w_14)
-    @ext(1, 0)
-    model Z2HeatingTimer_TuesdayWrite {
+    @ext(1)
+    model Z2Timer_Tuesday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating wednesday read */
+    /** timer heating wednesday 1 */
     @inherit(r_15)
     @ext(0x2, 0)
-    model Z2HeatingTimer_Wednesday {
+    model Z2Timer_Wednesday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating wednesday write */
+    /** timer heating wednesday */
     @inherit(w_14)
-    @ext(0x2, 0)
-    model Z2HeatingTimer_WednesdayWrite {
+    @ext(0x2)
+    model Z2Timer_Wednesday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating thursday read */
+    /** timer heating thursday 1 */
     @inherit(r_15)
     @ext(0x3, 0)
-    model Z2HeatingTimer_Thursday {
+    model Z2Timer_Thursday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating thursday write */
+    /** timer heating thursday */
     @inherit(w_14)
-    @ext(0x3, 0)
-    model Z2HeatingTimer_ThursdayWrite {
+    @ext(0x3)
+    model Z2Timer_Thursday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating friday read */
+    /** timer heating friday 1 */
     @inherit(r_15)
     @ext(0x4, 0)
-    model Z2HeatingTimer_Friday {
+    model Z2Timer_Friday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating friday write */
+    /** timer heating friday */
     @inherit(w_14)
-    @ext(0x4, 0)
-    model Z2HeatingTimer_FridayWrite {
+    @ext(0x4)
+    model Z2Timer_Friday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating saturday read */
+    /** timer heating saturday 1 */
     @inherit(r_15)
     @ext(0x5, 0)
-    model Z2HeatingTimer_Saturday {
+    model Z2Timer_Saturday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating saturday write */
+    /** timer heating saturday */
     @inherit(w_14)
-    @ext(0x5, 0)
-    model Z2HeatingTimer_SaturdayWrite {
+    @ext(0x5)
+    model Z2Timer_Saturday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating sunday read */
+    /** timer heating sunday 1 */
     @inherit(r_15)
     @ext(0x6, 0)
-    model Z2HeatingTimer_Sunday {
+    model Z2Timer_Sunday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating sunday write */
+    /** timer heating sunday */
     @inherit(w_14)
-    @ext(0x6, 0)
-    model Z2HeatingTimer_SundayWrite {
+    @ext(0x6)
+    model Z2Timer_Sunday {
       value: wTimeSlotWithTemp;
     }
   }
@@ -3253,13 +3223,13 @@ namespace _720 {
   model w_15 {}
 
   /** timer Configuration */
-  @inherit(r_9)
-  @ext(MF, 0x55, 0xa3, 1, 1)
-  model Z2CoolingTimer_Config {
-    /** Configuration */
-    @maxLength(9)
-    value: HEX;
-  }
+  // @inherit(r_9)
+  // @ext(MF, 0x55, 0xa3, 1, 1)
+  // model Z2CoolingTimer_Config {
+  //   /** Configuration */
+  //   @maxLength(9)
+  //   value: HEX;
+  // }
 
   @condition(_720.Hc2CircuitType.value, "1")
   @condition(_720.Hc2CoolingEnabled.value, "1")
@@ -3267,106 +3237,106 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 1, 1)
-    model Z2CoolingTimer_TimeSlotsPerWeekday {
+    model Z2CoolingTimer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** timer cooling monday read */
+    /** timer cooling monday 1 */
     @inherit(r_16)
     @ext(0, 0)
+    model Z2CoolingTimer_Monday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling monday */
+    @inherit(w_15)
+    @ext(0)
     model Z2CoolingTimer_Monday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling monday write */
-    @inherit(w_15)
-    @ext(0, 0)
-    model Z2CoolingTimer_MondayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling tuesday read */
+    /** timer cooling tuesday 1 */
     @inherit(r_16)
     @ext(1, 0)
+    model Z2CoolingTimer_Tuesday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling tuesday */
+    @inherit(w_15)
+    @ext(1)
     model Z2CoolingTimer_Tuesday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling tuesday write */
-    @inherit(w_15)
-    @ext(1, 0)
-    model Z2CoolingTimer_TuesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling wednesday read */
+    /** timer cooling wednesday 1 */
     @inherit(r_16)
     @ext(0x2, 0)
+    model Z2CoolingTimer_Wednesday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling wednesday */
+    @inherit(w_15)
+    @ext(0x2)
     model Z2CoolingTimer_Wednesday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling wednesday write */
-    @inherit(w_15)
-    @ext(0x2, 0)
-    model Z2CoolingTimer_WednesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling thursday read */
+    /** timer cooling thursday 1 */
     @inherit(r_16)
     @ext(0x3, 0)
+    model Z2CoolingTimer_Thursday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling thursday */
+    @inherit(w_15)
+    @ext(0x3)
     model Z2CoolingTimer_Thursday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling thursday write */
-    @inherit(w_15)
-    @ext(0x3, 0)
-    model Z2CoolingTimer_ThursdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling friday read */
+    /** timer cooling friday 1 */
     @inherit(r_16)
     @ext(0x4, 0)
+    model Z2CoolingTimer_Friday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling friday */
+    @inherit(w_15)
+    @ext(0x4)
     model Z2CoolingTimer_Friday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling friday write */
-    @inherit(w_15)
-    @ext(0x4, 0)
-    model Z2CoolingTimer_FridayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling saturday read */
+    /** timer cooling saturday 1 */
     @inherit(r_16)
     @ext(0x5, 0)
+    model Z2CoolingTimer_Saturday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling saturday */
+    @inherit(w_15)
+    @ext(0x5)
     model Z2CoolingTimer_Saturday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling saturday write */
-    @inherit(w_15)
-    @ext(0x5, 0)
-    model Z2CoolingTimer_SaturdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling sunday read */
+    /** timer cooling sunday 1 */
     @inherit(r_16)
     @ext(0x6, 0)
-    model Z2CoolingTimer_Sunday {
+    model Z2CoolingTimer_Sunday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer cooling sunday write */
+    /** timer cooling sunday */
     @inherit(w_15)
-    @ext(0x6, 0)
-    model Z2CoolingTimer_SundayWrite {
+    @ext(0x6)
+    model Z2CoolingTimer_Sunday {
       value: wTimeSlotWithoutTemp;
     }
   }
@@ -3383,119 +3353,119 @@ namespace _720 {
   model w_16 {}
 
   /** timer Configuration */
-  @inherit(r_9)
-  @ext(MF, 0x55, 0xa3, 2, 0)
-  model Z3HeatingTimer_Config {
-    /** Configuration */
-    @maxLength(9)
-    value: HEX;
-  }
+  // @inherit(r_9)
+  // @ext(MF, 0x55, 0xa3, 2, 0)
+  // model Z3Timer_Config {
+  //   /** Configuration */
+  //   @maxLength(9)
+  //   value: HEX;
+  // }
 
   @condition(_720.Hc3CircuitType.value, "1")
   namespace Zone3HeatingTimer {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 2, 0)
-    model Z3HeatingTimer_TimeSlotsPerWeekday {
+    model Z3Timer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** timer heating monday read */
+    /** timer heating monday 1 */
     @inherit(r_17)
     @ext(0, 0)
-    model Z3HeatingTimer_Monday {
+    model Z3Timer_Monday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating monday write */
+    /** timer heating monday */
     @inherit(w_16)
-    @ext(0, 0)
-    model Z3HeatingTimer_MondayWrite {
+    @ext(0)
+    model Z3Timer_Monday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating tuesday read */
+    /** timer heating tuesday 1 */
     @inherit(r_17)
     @ext(1, 0)
-    model Z3HeatingTimer_Tuesday {
+    model Z3Timer_Tuesday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating tuesday write */
+    /** timer heating tuesday */
     @inherit(w_16)
-    @ext(1, 0)
-    model Z3HeatingTimer_TuesdayWrite {
+    @ext(1)
+    model Z3Timer_Tuesday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating wednesday read */
+    /** timer heating wednesday 1 */
     @inherit(r_17)
     @ext(0x2, 0)
-    model Z3HeatingTimer_Wednesday {
+    model Z3Timer_Wednesday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating wednesday write */
+    /** timer heating wednesday */
     @inherit(w_16)
-    @ext(0x2, 0)
-    model Z3HeatingTimer_WednesdayWrite {
+    @ext(0x2)
+    model Z3Timer_Wednesday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating thursday read */
+    /** timer heating thursday 1 */
     @inherit(r_17)
     @ext(0x3, 0)
-    model Z3HeatingTimer_Thursday {
+    model Z3Timer_Thursday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating thursday write */
+    /** timer heating thursday */
     @inherit(w_16)
-    @ext(0x3, 0)
-    model Z3HeatingTimer_ThursdayWrite {
+    @ext(0x3)
+    model Z3Timer_Thursday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating friday read */
+    /** timer heating friday 1 */
     @inherit(r_17)
     @ext(0x4, 0)
-    model Z3HeatingTimer_Friday {
+    model Z3Timer_Friday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating friday write */
+    /** timer heating friday */
     @inherit(w_16)
-    @ext(0x4, 0)
-    model Z3HeatingTimer_FridayWrite {
+    @ext(0x4)
+    model Z3Timer_Friday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating saturday read */
+    /** timer heating saturday 1 */
     @inherit(r_17)
     @ext(0x5, 0)
-    model Z3HeatingTimer_Saturday {
+    model Z3Timer_Saturday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating saturday write */
+    /** timer heating saturday */
     @inherit(w_16)
-    @ext(0x5, 0)
-    model Z3HeatingTimer_SaturdayWrite {
+    @ext(0x5)
+    model Z3Timer_Saturday {
       value: wTimeSlotWithTemp;
     }
 
-    /** timer heating sunday read */
+    /** timer heating sunday 1 */
     @inherit(r_17)
     @ext(0x6, 0)
-    model Z3HeatingTimer_Sunday {
+    model Z3Timer_Sunday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer heating sunday write */
+    /** timer heating sunday */
     @inherit(w_16)
-    @ext(0x6, 0)
-    model Z3HeatingTimer_SundayWrite {
+    @ext(0x6)
+    model Z3Timer_Sunday {
       value: wTimeSlotWithTemp;
     }
   }
@@ -3512,13 +3482,13 @@ namespace _720 {
   model w_17 {}
 
   /** timer Configuration */
-  @inherit(r_9)
-  @ext(MF, 0x55, 0xa3, 2, 1)
-  model Z3CoolingTimer_Config {
-    /** Configuration */
-    @maxLength(9)
-    value: HEX;
-  }
+  // @inherit(r_9)
+  // @ext(MF, 0x55, 0xa3, 2, 1)
+  // model Z3CoolingTimer_Config {
+  //   /** Configuration */
+  //   @maxLength(9)
+  //   value: HEX;
+  // }
 
   @condition(_720.Hc3CircuitType.value, "1")
   @condition(_720.Hc3CoolingEnabled.value, "1")
@@ -3526,106 +3496,106 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 2, 1)
-    model Z3CoolingTimer_TimeSlotsPerWeekday {
+    model Z3CoolingTimer_Timeframes {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
 
-    /** timer cooling monday read */
+    /** timer cooling monday 1 */
     @inherit(r_18)
     @ext(0, 0)
+    model Z3CoolingTimer_Monday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling monday */
+    @inherit(w_17)
+    @ext(0)
     model Z3CoolingTimer_Monday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling monday write */
-    @inherit(w_17)
-    @ext(0, 0)
-    model Z3CoolingTimer_MondayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling tuesday read */
+    /** timer cooling tuesday 1 */
     @inherit(r_18)
     @ext(1, 0)
+    model Z3CoolingTimer_Tuesday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling tuesday */
+    @inherit(w_17)
+    @ext(1)
     model Z3CoolingTimer_Tuesday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling tuesday write */
-    @inherit(w_17)
-    @ext(1, 0)
-    model Z3CoolingTimer_TuesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling wednesday read */
+    /** timer cooling wednesday 1 */
     @inherit(r_18)
     @ext(0x2, 0)
+    model Z3CoolingTimer_Wednesday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling wednesday */
+    @inherit(w_17)
+    @ext(0x2)
     model Z3CoolingTimer_Wednesday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling wednesday write */
-    @inherit(w_17)
-    @ext(0x2, 0)
-    model Z3CoolingTimer_WednesdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling thursday read */
+    /** timer cooling thursday 1 */
     @inherit(r_18)
     @ext(0x3, 0)
+    model Z3CoolingTimer_Thursday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling thursday */
+    @inherit(w_17)
+    @ext(0x3)
     model Z3CoolingTimer_Thursday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling thursday write */
-    @inherit(w_17)
-    @ext(0x3, 0)
-    model Z3CoolingTimer_ThursdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling friday read */
+    /** timer cooling friday 1 */
     @inherit(r_18)
     @ext(0x4, 0)
+    model Z3CoolingTimer_Friday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling friday */
+    @inherit(w_17)
+    @ext(0x4)
     model Z3CoolingTimer_Friday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling friday write */
-    @inherit(w_17)
-    @ext(0x4, 0)
-    model Z3CoolingTimer_FridayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling saturday read */
+    /** timer cooling saturday 1 */
     @inherit(r_18)
     @ext(0x5, 0)
+    model Z3CoolingTimer_Saturday0 {
+      value: rTimeSlotWithTemp;
+    }
+
+    /** timer cooling saturday */
+    @inherit(w_17)
+    @ext(0x5)
     model Z3CoolingTimer_Saturday {
-      value: rTimeSlotWithTemp;
-    }
-
-    /** timer cooling saturday write */
-    @inherit(w_17)
-    @ext(0x5, 0)
-    model Z3CoolingTimer_SaturdayWrite {
       value: wTimeSlotWithoutTemp;
     }
 
-    /** timer cooling sunday read */
+    /** timer cooling sunday 1 */
     @inherit(r_18)
     @ext(0x6, 0)
-    model Z3CoolingTimer_Sunday {
+    model Z3CoolingTimer_Sunday0 {
       value: rTimeSlotWithTemp;
     }
 
-    /** timer cooling sunday write */
+    /** timer cooling sunday */
     @inherit(w_17)
-    @ext(0x6, 0)
-    model Z3CoolingTimer_SundayWrite {
+    @ext(0x6)
+    model Z3CoolingTimer_Sunday {
       value: wTimeSlotWithoutTemp;
     }
   }
@@ -3638,7 +3608,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 9, 1)
   model r_21 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by regulator */
@@ -3661,7 +3631,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 1)
   model r_22 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 1 */
@@ -3684,7 +3654,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 2)
   model r_23 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 2 */
@@ -3707,7 +3677,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 3)
   model r_24 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 3 */
@@ -3730,7 +3700,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 4)
   model r_25 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 4 */
@@ -3753,7 +3723,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 5)
   model r_26 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 5 */
@@ -3776,7 +3746,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 6)
   model r_27 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 6 */
@@ -3799,7 +3769,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 7)
   model r_28 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 7 */
@@ -3822,7 +3792,7 @@ namespace _720 {
   @base(MF, 0x24, 0x6, 0, 0xa, 8)
   model r_29 {
     @maxLength(4)
-    value: IGN;
+    ign: IGN;
   }
 
   /** room humidity shown by VR92 address 8 */
@@ -3837,65 +3807,6 @@ namespace _720 {
   @ext(0xf, 0)
   model VR92Addr8RoomTemp {
     value: tempv;
-  }
-
-  enum Values_720ErrorCode {
-    RECOVAIR_comm_error: 509,
-    IOModule_comm_error: 511,
-    AF_Sensor_error: 521,
-    RF_comm_error: 599,
-    RC_1_comm_error: 1192,
-    RC_2_comm_error: 1193,
-    RC_3_comm_error: 1194,
-    RC_4_comm_error: 1195,
-    Boiler_1_comm_error: 1200,
-    Boiler_2_comm_error: 1201,
-    Boiler_3_comm_error: 1202,
-    Boiler_4_comm_error: 1203,
-    Boiler_5_comm_error: 1204,
-    Boiler_6_comm_error: 1205,
-    Heatpump_1_comm_error: 1206,
-    Heatpump_2_comm_error: 1207,
-    Heatpump_3_comm_error: 1208,
-    Heatpump_4_comm_error: 1209,
-    Heatpump_5_comm_error: 1210,
-    Heatpump_6_comm_error: 1211,
-    FM3_1_comm_error: 1212,
-    FM3_2_comm_error: 1213,
-    FM3_3_comm_error: 1214,
-    FM5_comm_error: 1218,
-    VR92_1_comm_error: 1219,
-    VR92_2_comm_error: 1220,
-    VR92_3_comm_error: 1221,
-    VR92_4_comm_error: 1222,
-    VPM_W_comm_error: 1227,
-    VPM_S_comm_error: 1228,
-    VMS_comm_error: 1229,
-    FM3_1_config_error: 1231,
-    FM3_2_config_error: 1232,
-    FM3_3_config_error: 1233,
-    Not_supported_VR61: 1237,
-    Not_supported_VR68: 1238,
-    Not_supported_VR81: 1239,
-    Hydraulic_scheme_invalid: 1240,
-    FM3_missing: 1244,
-    FM3_sensor_S1_missing: 1245,
-    Solar_pump_1_error: 1246,
-    Solar_pump_2_error: 1247,
-    Not_supported_actoSTOR: 1248,
-    MA2_VWZ_AI_config_error: 1249,
-    VR71_config_error: 1251,
-    Boiler_7_comm_error: 1252,
-    Boiler_8_comm_error: 1253,
-    Heatpump_7_comm_error: 1254,
-    Heatpump_8_comm_error: 1255,
-    FM3_1_MA_config_error: 1257,
-    FM5_MA_config_error: 1263,
-    Room_sensor_error: 1361,
-    RC_1_temp_sensor_signal_invalid: 1363,
-    RC_2_temp_sensor_signal_invalid: 1364,
-    RC_3_temp_sensor_signal_invalid: 1365,
-    RC_4_temp_sensor_signal_invalid: 1366,
   }
 
   enum Values_720ErrorStatus {
