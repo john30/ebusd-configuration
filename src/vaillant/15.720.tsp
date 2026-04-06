@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./b516_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -61,50 +62,6 @@ namespace _720 {
   model ClearErrorHistory {
     @in
     cleared: yesno;
-  }
-
-  // Energy Stats
-
-  /** default *r */
-  @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
-  model r_0c {
-    @maxLength(7)
-    ign: IGN;
-  }
-
-  /** EnergyStatsSolarSumSystem */
-  @inherit(r_0c)
-  @ext(0x1, 0, 0x21, 0x32)
-  @condition(_720.FM5Config.value, "<=2")
-  model EnergyStatsSolarSumSystem {
-    @unit("Wh")
-    value: EXP;
-  }
-
-  /** EnergyStatsSolarHeatingSystem */
-  @inherit(r_0c)
-  @ext(0x1, 0x3, 0x21, 0x32)
-  @condition(_720.FM5Config.value, "<=2")
-  model EnergyStatsSolarHeatingSystem {
-    @unit("Wh")
-    value: EXP;
-  }
-
-  /** EnergyStatsSolarHotWaterSystem */
-  @inherit(r_0c)
-  @ext(0x1, 0x4, 0x21, 0x32)
-  @condition(_720.FM5Config.value, "<=2")
-  model EnergyStatsSolarHotWaterSystem {
-    @unit("Wh")
-    value: EXP;
-  }
-
-  /** EnergyStatsElectricalSumSystem */
-  @inherit(r_0c)
-  @ext(0x3, 0, 0x21, 0x32)
-  model EnergyStatsElectricalSumSystem {
-    @unit("Wh")
-    value: EXP;
   }
 
   /** default *r */
@@ -3813,5 +3770,12 @@ namespace _720 {
     None: 0,
     Ongoing: 1,
     Resolved: 2,
+  }
+
+  // includes
+
+  /** included parts */
+  union _includes {
+    B516_inc,
   }
 }
