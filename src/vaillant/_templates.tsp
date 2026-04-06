@@ -294,8 +294,14 @@ scalar uin100 extends UIN;
 /** Heating curve */
 @divisor(100)
 @maxValue(500)
-@step(10)
+@step(5)
 scalar curve extends UIN;
+
+/** Heating curve */
+@minValue(0)
+@maxValue(5)
+@step(0.05)
+scalar curvev extends EXP;
 
 /** phase 1 state */
 @values(Values_phase1)
@@ -488,12 +494,10 @@ scalar zmapping2 extends UIN;
 scalar hcname extends STR;
 
 /** zone name */
-@minLength(0)
 @maxLength(5)
 scalar zname extends STR;
 
 /** name */
-@minLength(0)
 @maxLength(6)
 scalar shortname extends STR;
 
@@ -502,7 +506,6 @@ scalar shortname extends STR;
 scalar phone extends STR;
 
 /** phone number */
-@minLength(0)
 @maxLength(6)
 scalar shortphone extends STR;
 
@@ -967,12 +970,12 @@ enum Values_mamode {
 }
 
 enum Values_mamode2 {
-  circulation_pump: 0,
-  dehumidifier: 1,
+  circulation: 0,
+  dryer: 1,
   zone: 2,
-  anti_legio_pump: 3,
+  legiopump: 3,
   not_connected: 4,
-  active_cool_period: 5,
+  cool: 5,
 }
 
 enum Values_offmode {
