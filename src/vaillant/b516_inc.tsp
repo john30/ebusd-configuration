@@ -70,7 +70,7 @@ namespace B516_inc {
 
   enum Values_usage {
     all: 0,
-    heat: 2,
+    heat: 3,
     water: 4,
     cool: 5,
   }
