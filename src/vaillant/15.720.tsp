@@ -2409,7 +2409,7 @@ namespace _720 {
 
   @condition(_720.HwcEnabled.value, "1")
   namespace HotWaterCircutTimer {
-    /** hwc timer Configuration */
+    // /** hwc timer Configuration */
     // @inherit(r_9)
     // @ext(MF, 0x55, 0xa3, 0, 0x2)
     // model HwcTimer_Config {
@@ -2538,7 +2538,7 @@ namespace _720 {
 
   @condition(_720.HwcEnabled.value, "1")
   namespace CirculationCircuitTimer {
-    /** cc timer Configuration */
+    // /** cc timer Configuration
     // @inherit(r_9)
     // @ext(MF, 0x55, 0xa3, 0, 0x3)
     // model CcTimer_Config {
@@ -2665,7 +2665,7 @@ namespace _720 {
   @base(MF, 0x55, 0xa6, 0, 0x4)
   model w_11 {}
 
-  /** silent timer Configuration */
+  // /** silent timer Configuration */
   // @inherit(r_9)
   // @ext(MF, 0x55, 0xa3, 0, 0x4)
   // model SilentTimer_Config {
@@ -2793,7 +2793,7 @@ namespace _720 {
 
   @condition(_720.Hc1CircuitType.value, "1")
   namespace Zone1HeatingTimer {
-    /** timer Configuration */
+    // /** timer Configuration */
     // @inherit(r_9)
     // @ext(MF, 0x55, 0xa3, 0, 0)
     // model Z1Timer_Config {
@@ -2920,7 +2920,7 @@ namespace _720 {
   @base(MF, 0x55, 0xa6, 0, 1)
   model w_13 {}
 
-  /** timer Configuration */
+  // /** timer Configuration */
   // @inherit(r_9)
   // @ext(MF, 0x55, 0xa3, 0, 1)
   // model Z1CoolingTimer_Config {
@@ -3050,7 +3050,7 @@ namespace _720 {
   @base(MF, 0x55, 0xa6, 1, 0)
   model w_14 {}
 
-  /** timer Configuration */
+  // /** timer Configuration */
   // @inherit(r_9)
   // @ext(MF, 0x55, 0xa3, 1, 0)
   // model Z2Timer_Config {
@@ -3179,7 +3179,7 @@ namespace _720 {
   @base(MF, 0x55, 0xa6, 1, 1)
   model w_15 {}
 
-  /** timer Configuration */
+  // /** timer Configuration */
   // @inherit(r_9)
   // @ext(MF, 0x55, 0xa3, 1, 1)
   // model Z2CoolingTimer_Config {
@@ -3309,7 +3309,7 @@ namespace _720 {
   @base(MF, 0x55, 0xa6, 2, 0)
   model w_16 {}
 
-  /** timer Configuration */
+  // /** timer Configuration */
   // @inherit(r_9)
   // @ext(MF, 0x55, 0xa3, 2, 0)
   // model Z3Timer_Config {
@@ -3438,7 +3438,7 @@ namespace _720 {
   @base(MF, 0x55, 0xa6, 2, 1)
   model w_17 {}
 
-  /** timer Configuration */
+  // /** timer Configuration */
   // @inherit(r_9)
   // @ext(MF, 0x55, 0xa3, 2, 1)
   // model Z3CoolingTimer_Config {
