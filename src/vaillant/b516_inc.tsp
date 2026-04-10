@@ -28,7 +28,7 @@ namespace B516_inc {
 
   @inherit(rc)
   @ext(
-    3, // period=year
+    3,  // period=year
     0xff, 0xff // fix value
   )
   model StatEnergySumYear {
@@ -70,13 +70,13 @@ namespace B516_inc {
 
   enum Values_usage {
     all: 0,
-    heat: 2,
+    heat: 3,
     water: 4,
     cool: 5,
   }
 
   @base(MF, 0x16, 0x10,
-    0, // period=total
+    0,  // period=total
     0xff, 0xff // fix value
   )
   model r {
