@@ -41,6 +41,14 @@ namespace Ctlv2 {
     value: hoursum2;
   }
 
+  /** global system OFF */
+  @inherit(r_1, w_1)
+  @ext(0x7, 0)
+  model GlobalSystemOff {
+    /** global system off, disable all schedule and no hc or hwc production */
+    value: yesno;
+  }
+
   /** hwc parallel loading */
   @inherit(r_1, w_1)
   @ext(0xa, 0)
@@ -417,6 +425,14 @@ namespace Ctlv2 {
   @write
   @base(MF, 0x24, 0x2, 1, 1, 0)
   model w_2 {}
+
+  /** HwcEnabled */
+  @inherit(r_2, w_2)
+  @ext(0x1, 0)
+  model HwcEnabled {
+    /** Switch off Hwc production and schedule */
+    value: yesno;
+  }
 
   /** HwcOpMode */
   @inherit(r_2, w_2)
