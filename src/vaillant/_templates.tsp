@@ -20,17 +20,17 @@ scalar temps2 extends SIN;
 
 /** temperature */
 @unit("°C")
-@minValue(-50) @maxValue(180)
+@minValue(-50) @maxValue(180) @step(0.5)
 scalar tempv extends EXP;
 
 /** pressure */
 @unit("bar")
-@minValue(0) @maxValue(70)
+@minValue(0) @maxValue(32) @step(0.5)
 scalar press extends FLT;
 
 /** pressure */
 @unit("bar")
-@minValue(0) @maxValue(70)
+@minValue(0) @maxValue(70) @step(0.5)
 scalar pressv extends EXP;
 
 @unit("l/h")
@@ -46,13 +46,15 @@ scalar flowrate100 extends UIN;
 scalar airflowrate extends UIN;
 
 @unit("rpm")
+@maxValue(1000)
 scalar fanspeed extends UIN;
 
 @unit("rpm")
+@minValue(-1000) @maxValue(1000)
 scalar fanspeedoffset extends SIN;
 
 @unit("rpm")
-@minValue(0)
+@minValue(0) @maxValue(1000) @step(1)
 scalar fanspeedv extends EXP;
 
 /** two-point / analogue control */
@@ -61,7 +63,7 @@ scalar twopointanalog extends UCH;
 
 /** percentage */
 @unit("%")
-@minValue(0) @maxValue(100)
+@minValue(0) @maxValue(100) @step(0.5)
 scalar percentv extends EXP;
 
 /** date */
@@ -154,7 +156,7 @@ scalar seconds2 extends UIN;
 scalar seconds4 extends ULG;
 
 @unit("K")
-@minValue(-450) @maxValue(450)
+@minValue(-450) @maxValue(450) @step(0.5)
 scalar calibration extends D2C;
 
 @unit("K")
@@ -168,7 +170,7 @@ scalar calibration1 extends D1C;
 scalar calibrations extends SCH;
 
 @unit("K")
-@minValue(-450) @maxValue(450)
+@minValue(-450) @maxValue(450) @step(0.5)
 scalar calibrationv extends EXP;
 
 @unit("°min")
@@ -277,7 +279,7 @@ model presssensor {
 scalar pressm extends ULG;
 
 /** pressure */
-@unit("mbar")
+@unit("mbar") @step(50)
 scalar pressm2 extends UIN;
 
 @divisor(100)
@@ -1125,4 +1127,6 @@ model Timer<T> {
 /** display contrast */
 @minValue(0)
 @maxValue(15)
+@unit("%", "heinz")
+@attr("other", "xxx")
 scalar displaycontrast extends UCH;

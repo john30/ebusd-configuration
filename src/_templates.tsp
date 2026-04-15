@@ -56,7 +56,7 @@ scalar desiredtemp extends UCH;
 scalar outsidetemp extends SCH;
 
 @unit("%")
-@minValue(-100) @maxValue(100)
+@minValue(-100) @maxValue(100) @step(0.5)
 scalar percent extends D2C;
 
 @unit("%")
@@ -67,7 +67,7 @@ scalar percent0 extends UCH;
 scalar percent1 extends D1C;
 
 @unit("%")
-@minValue(-100) @maxValue(100)
+@minValue(-100) @maxValue(100) @step(0.5)
 scalar percent2 extends D2B;
 
 @unit("%")
@@ -76,7 +76,7 @@ scalar percents extends SCH;
 
 /** temperature */
 @unit("°C")
-@minValue(-50) @maxValue(180)
+@minValue(-50) @maxValue(180) @step(0.5)
 scalar temp extends D2C;
 
 /** temperature */
@@ -90,12 +90,12 @@ scalar temp1 extends D1C;
 
 /** temperature */
 @unit("°C")
-@minValue(-50) @maxValue(180)
+@minValue(-50) @maxValue(127) @step(0.5)
 scalar temp2 extends D2B;
 
 /** pressure */
 @unit("bar")
-@minValue(0) @maxValue(70)
+@minValue(0) @maxValue(70) @step(0.5)
 scalar press extends D2B;
 
 /** time */
