@@ -2434,7 +2434,7 @@ namespace _720 {
     }
 
     /** hwc timer monday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(0)
     model HwcTimer_Monday {
       value: wTimeSlotWithoutTemp;
@@ -2448,7 +2448,7 @@ namespace _720 {
     }
 
     /** hwc timer tuesday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(1)
     model HwcTimer_Tuesday {
       value: wTimeSlotWithoutTemp;
@@ -2462,7 +2462,7 @@ namespace _720 {
     }
 
     /** hwc timer wednesday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(2)
     model HwcTimer_Wednesday {
       value: wTimeSlotWithoutTemp;
@@ -2476,7 +2476,7 @@ namespace _720 {
     }
 
     /** hwc timer thursday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(3)
     model HwcTimer_Thursday {
       value: wTimeSlotWithoutTemp;
@@ -2490,7 +2490,7 @@ namespace _720 {
     }
 
     /** hwc timer friday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(4)
     model HwcTimer_Friday {
       value: wTimeSlotWithoutTemp;
@@ -2504,7 +2504,7 @@ namespace _720 {
     }
 
     /** hwc timer saturday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(5)
     model HwcTimer_Saturday {
       value: wTimeSlotWithoutTemp;
@@ -2518,7 +2518,7 @@ namespace _720 {
     }
 
     /** hwc timer sunday */
-    @inherit(w_9)
+    @inherit(r_10, w_9)
     @ext(6)
     model HwcTimer_Sunday {
       value: wTimeSlotWithoutTemp;
@@ -2563,7 +2563,7 @@ namespace _720 {
     }
 
     /** cc timer monday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(0)
     model CcTimer_Monday {
       value: wTimeSlotWithoutTemp;
@@ -2577,7 +2577,7 @@ namespace _720 {
     }
 
     /** cc timer tuesday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(1)
     model CcTimer_Tuesday {
       value: wTimeSlotWithoutTemp;
@@ -2591,7 +2591,7 @@ namespace _720 {
     }
 
     /** cc timer wednesday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(0x2)
     model CcTimer_Wednesday {
       value: wTimeSlotWithoutTemp;
@@ -2605,7 +2605,7 @@ namespace _720 {
     }
 
     /** cc timer thursday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(0x3)
     model CcTimer_Thursday {
       value: wTimeSlotWithoutTemp;
@@ -2619,7 +2619,7 @@ namespace _720 {
     }
 
     /** cc timer friday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(0x4)
     model CcTimer_Friday {
       value: wTimeSlotWithoutTemp;
@@ -2633,7 +2633,7 @@ namespace _720 {
     }
 
     /** cc timer saturday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(0x5)
     model CcTimer_Saturday {
       value: wTimeSlotWithoutTemp;
@@ -2647,7 +2647,7 @@ namespace _720 {
     }
 
     /** cc timer sunday */
-    @inherit(w_10)
+    @inherit(r_11, w_10)
     @ext(0x6)
     model CcTimer_Sunday {
       value: wTimeSlotWithoutTemp;
@@ -2690,7 +2690,7 @@ namespace _720 {
   }
 
   /** silent timer monday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(0)
   model SilentTimer_Monday {
     value: wTimeSlotWithoutTemp;
@@ -2704,7 +2704,7 @@ namespace _720 {
   }
 
   /** silent timer tuesday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(1)
   model SilentTimer_Tuesday {
     value: wTimeSlotWithoutTemp;
@@ -2718,7 +2718,7 @@ namespace _720 {
   }
 
   /** silent timer wednesday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(0x2)
   model SilentTimer_Wednesday {
     value: wTimeSlotWithoutTemp;
@@ -2732,7 +2732,7 @@ namespace _720 {
   }
 
   /** silent timer thursday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(0x3)
   model SilentTimer_Thursday {
     value: wTimeSlotWithoutTemp;
@@ -2746,7 +2746,7 @@ namespace _720 {
   }
 
   /** silent timer friday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(0x4)
   model SilentTimer_Friday {
     value: wTimeSlotWithoutTemp;
@@ -2760,7 +2760,7 @@ namespace _720 {
   }
 
   /** silent timer saturday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(0x5)
   model SilentTimer_Saturday {
     value: wTimeSlotWithoutTemp;
@@ -2774,7 +2774,7 @@ namespace _720 {
   }
 
   /** silent timer sunday */
-  @inherit(w_11)
+  @inherit(r_12, w_11)
   @ext(0x6)
   model SilentTimer_Sunday {
     value: wTimeSlotWithoutTemp;
@@ -2818,7 +2818,7 @@ namespace _720 {
     }
 
     /** timer heating monday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(0)
     model Z1Timer_Monday {
       value: wTimeSlotWithTemp;
@@ -2832,7 +2832,7 @@ namespace _720 {
     }
 
     /** timer heating tuesday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(1)
     model Z1Timer_Tuesday {
       value: wTimeSlotWithTemp;
@@ -2846,7 +2846,7 @@ namespace _720 {
     }
 
     /** timer heating wednesday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(0x2)
     model Z1Timer_Wednesday {
       value: wTimeSlotWithTemp;
@@ -2860,7 +2860,7 @@ namespace _720 {
     }
 
     /** timer heating thursday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(0x3)
     model Z1Timer_Thursday {
       value: wTimeSlotWithTemp;
@@ -2874,7 +2874,7 @@ namespace _720 {
     }
 
     /** timer heating friday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(0x4)
     model Z1Timer_Friday {
       value: wTimeSlotWithTemp;
@@ -2888,7 +2888,7 @@ namespace _720 {
     }
 
     /** timer heating saturday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(0x5)
     model Z1Timer_Saturday {
       value: wTimeSlotWithTemp;
@@ -2902,7 +2902,7 @@ namespace _720 {
     }
 
     /** timer heating sunday */
-    @inherit(w_12)
+    @inherit(r_13, w_12)
     @ext(0x6)
     model Z1Timer_Sunday {
       value: wTimeSlotWithTemp;
@@ -2948,7 +2948,7 @@ namespace _720 {
     }
 
     /** timer cooling monday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(0)
     model Z1CoolingTimer_Monday {
       value: wTimeSlotWithoutTemp;
@@ -2962,7 +2962,7 @@ namespace _720 {
     }
 
     /** timer cooling tuesday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(1)
     model Z1CoolingTimer_Tuesday {
       value: wTimeSlotWithoutTemp;
@@ -2976,7 +2976,7 @@ namespace _720 {
     }
 
     /** timer cooling wednesday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(0x2)
     model Z1CoolingTimer_Wednesday {
       value: wTimeSlotWithoutTemp;
@@ -2990,7 +2990,7 @@ namespace _720 {
     }
 
     /** timer cooling thursday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(0x3)
     model Z1CoolingTimer_Thursday {
       value: wTimeSlotWithoutTemp;
@@ -3004,7 +3004,7 @@ namespace _720 {
     }
 
     /** timer cooling friday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(0x4)
     model Z1CoolingTimer_Friday {
       value: wTimeSlotWithoutTemp;
@@ -3018,7 +3018,7 @@ namespace _720 {
     }
 
     /** timer cooling saturday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(0x5)
     model Z1CoolingTimer_Saturday {
       value: wTimeSlotWithoutTemp;
@@ -3032,7 +3032,7 @@ namespace _720 {
     }
 
     /** timer cooling sunday */
-    @inherit(w_13)
+    @inherit(r_14, w_13)
     @ext(0x6)
     model Z1CoolingTimer_Sunday {
       value: wTimeSlotWithoutTemp;
@@ -3077,7 +3077,7 @@ namespace _720 {
     }
 
     /** timer heating monday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(0)
     model Z2Timer_Monday {
       value: wTimeSlotWithTemp;
@@ -3091,7 +3091,7 @@ namespace _720 {
     }
 
     /** timer heating tuesday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(1)
     model Z2Timer_Tuesday {
       value: wTimeSlotWithTemp;
@@ -3105,7 +3105,7 @@ namespace _720 {
     }
 
     /** timer heating wednesday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(0x2)
     model Z2Timer_Wednesday {
       value: wTimeSlotWithTemp;
@@ -3119,7 +3119,7 @@ namespace _720 {
     }
 
     /** timer heating thursday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(0x3)
     model Z2Timer_Thursday {
       value: wTimeSlotWithTemp;
@@ -3133,7 +3133,7 @@ namespace _720 {
     }
 
     /** timer heating friday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(0x4)
     model Z2Timer_Friday {
       value: wTimeSlotWithTemp;
@@ -3147,7 +3147,7 @@ namespace _720 {
     }
 
     /** timer heating saturday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(0x5)
     model Z2Timer_Saturday {
       value: wTimeSlotWithTemp;
@@ -3161,7 +3161,7 @@ namespace _720 {
     }
 
     /** timer heating sunday */
-    @inherit(w_14)
+    @inherit(r_15, w_14)
     @ext(0x6)
     model Z2Timer_Sunday {
       value: wTimeSlotWithTemp;
@@ -3207,7 +3207,7 @@ namespace _720 {
     }
 
     /** timer cooling monday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(0)
     model Z2CoolingTimer_Monday {
       value: wTimeSlotWithoutTemp;
@@ -3221,7 +3221,7 @@ namespace _720 {
     }
 
     /** timer cooling tuesday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(1)
     model Z2CoolingTimer_Tuesday {
       value: wTimeSlotWithoutTemp;
@@ -3235,7 +3235,7 @@ namespace _720 {
     }
 
     /** timer cooling wednesday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(0x2)
     model Z2CoolingTimer_Wednesday {
       value: wTimeSlotWithoutTemp;
@@ -3249,7 +3249,7 @@ namespace _720 {
     }
 
     /** timer cooling thursday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(0x3)
     model Z2CoolingTimer_Thursday {
       value: wTimeSlotWithoutTemp;
@@ -3263,7 +3263,7 @@ namespace _720 {
     }
 
     /** timer cooling friday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(0x4)
     model Z2CoolingTimer_Friday {
       value: wTimeSlotWithoutTemp;
@@ -3277,7 +3277,7 @@ namespace _720 {
     }
 
     /** timer cooling saturday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(0x5)
     model Z2CoolingTimer_Saturday {
       value: wTimeSlotWithoutTemp;
@@ -3291,7 +3291,7 @@ namespace _720 {
     }
 
     /** timer cooling sunday */
-    @inherit(w_15)
+    @inherit(r_16, w_15)
     @ext(0x6)
     model Z2CoolingTimer_Sunday {
       value: wTimeSlotWithoutTemp;
@@ -3336,7 +3336,7 @@ namespace _720 {
     }
 
     /** timer heating monday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(0)
     model Z3Timer_Monday {
       value: wTimeSlotWithTemp;
@@ -3350,7 +3350,7 @@ namespace _720 {
     }
 
     /** timer heating tuesday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(1)
     model Z3Timer_Tuesday {
       value: wTimeSlotWithTemp;
@@ -3364,7 +3364,7 @@ namespace _720 {
     }
 
     /** timer heating wednesday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(0x2)
     model Z3Timer_Wednesday {
       value: wTimeSlotWithTemp;
@@ -3378,7 +3378,7 @@ namespace _720 {
     }
 
     /** timer heating thursday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(0x3)
     model Z3Timer_Thursday {
       value: wTimeSlotWithTemp;
@@ -3392,7 +3392,7 @@ namespace _720 {
     }
 
     /** timer heating friday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(0x4)
     model Z3Timer_Friday {
       value: wTimeSlotWithTemp;
@@ -3406,7 +3406,7 @@ namespace _720 {
     }
 
     /** timer heating saturday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(0x5)
     model Z3Timer_Saturday {
       value: wTimeSlotWithTemp;
@@ -3420,7 +3420,7 @@ namespace _720 {
     }
 
     /** timer heating sunday */
-    @inherit(w_16)
+    @inherit(r_17, w_16)
     @ext(0x6)
     model Z3Timer_Sunday {
       value: wTimeSlotWithTemp;
@@ -3466,7 +3466,7 @@ namespace _720 {
     }
 
     /** timer cooling monday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(0)
     model Z3CoolingTimer_Monday {
       value: wTimeSlotWithoutTemp;
@@ -3480,7 +3480,7 @@ namespace _720 {
     }
 
     /** timer cooling tuesday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(1)
     model Z3CoolingTimer_Tuesday {
       value: wTimeSlotWithoutTemp;
@@ -3494,7 +3494,7 @@ namespace _720 {
     }
 
     /** timer cooling wednesday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(0x2)
     model Z3CoolingTimer_Wednesday {
       value: wTimeSlotWithoutTemp;
@@ -3508,7 +3508,7 @@ namespace _720 {
     }
 
     /** timer cooling thursday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(0x3)
     model Z3CoolingTimer_Thursday {
       value: wTimeSlotWithoutTemp;
@@ -3522,7 +3522,7 @@ namespace _720 {
     }
 
     /** timer cooling friday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(0x4)
     model Z3CoolingTimer_Friday {
       value: wTimeSlotWithoutTemp;
@@ -3536,7 +3536,7 @@ namespace _720 {
     }
 
     /** timer cooling saturday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(0x5)
     model Z3CoolingTimer_Saturday {
       value: wTimeSlotWithoutTemp;
@@ -3550,7 +3550,7 @@ namespace _720 {
     }
 
     /** timer cooling sunday */
-    @inherit(w_17)
+    @inherit(r_18, w_17)
     @ext(0x6)
     model Z3CoolingTimer_Sunday {
       value: wTimeSlotWithoutTemp;
