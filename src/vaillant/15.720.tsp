@@ -152,9 +152,23 @@ namespace _720 {
   }
 
   /** tariff aux heater */
-  @inherit(ri_1)
+  @inherit(ri_1, wi_1)
   @ext(0x10, 0)
   model TariffAuxHeater {
+    value: UIN;
+  }
+
+  /** tariff primary heater low value */
+  @inherit(ri_1, wi_1)
+  @ext(0x11, 0)
+  model TariffPriHeaterLow {
+    value: UIN;
+  }
+
+  /** tariff primary heater high value */
+  @inherit(ri_1, wi_1)
+  @ext(0x12, 0)
+  model TariffPriHeaterHigh {
     value: UIN;
   }
 
