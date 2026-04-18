@@ -2415,7 +2415,7 @@ namespace _720 {
     /** hwc timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 0x2)
-    model HwcTimer_Timeframes {
+    model HwcTimer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -2544,7 +2544,7 @@ namespace _720 {
     /** cc timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 0x3)
-    model CcTimer_Timeframes {
+    model CcTimer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -2671,7 +2671,7 @@ namespace _720 {
   /** silent timer amount */
   @inherit(r_9)
   @ext(MF, 0x55, 0xa4, 0, 0x4)
-  model SilentTimer_Timeframes {
+  model SilentTimer_Timeslots {
     /** Amount of configured slots per weekday */
     value: slotCountWeek;
   }
@@ -2799,7 +2799,7 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 0)
-    model Z1Timer_Timeframes {
+    model Z1Timer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -2929,7 +2929,7 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 0, 1)
-    model Z1CoolingTimer_Timeframes {
+    model Z1CoolingTimer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -3058,7 +3058,7 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 1, 0)
-    model Z2Timer_Timeframes {
+    model Z2Timer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -3188,7 +3188,7 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 1, 1)
-    model Z2CoolingTimer_Timeframes {
+    model Z2CoolingTimer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -3317,7 +3317,7 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 2, 0)
-    model Z3Timer_Timeframes {
+    model Z3Timer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
@@ -3447,7 +3447,7 @@ namespace _720 {
     /** timer amount */
     @inherit(r_9)
     @ext(MF, 0x55, 0xa4, 2, 1)
-    model Z3CoolingTimer_Timeframes {
+    model Z3CoolingTimer_Timeslots {
       /** Amount of configured slots per weekday */
       value: slotCountWeek;
     }
