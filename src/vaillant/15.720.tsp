@@ -169,7 +169,6 @@ namespace _720 {
   /** maximum cylinder charging time hwc (15=no limit) */
   @inherit(r_1, w_1)
   @ext(0x17, 0)
-  @condition(_720.HwcEnabled.value, "1")
   model MaxCylinderChargeTime {
     value: minutes2;
   }
@@ -177,7 +176,6 @@ namespace _720 {
   /** hwc lock time */
   @inherit(r_1, w_1)
   @ext(0x18, 0)
-  @condition(_720.HwcEnabled.value, "1")
   model HwcLockTime {
     /** Lock time hot water current */
     value: minutes2;
@@ -241,7 +239,6 @@ namespace _720 {
   /** hysteresis cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x27, 0)
-  @condition(_720.HwcEnabled.value, "1")
   model CylinderChargeHyst {
     @minValue(3)
     @maxValue(20)
@@ -252,7 +249,6 @@ namespace _720 {
   /** offset cylinder charge */
   @inherit(r_1, w_1)
   @ext(0x29, 0)
-  @condition(_720.HwcEnabled.value, "1")
   model CylinderChargeOffset {
     @minValue(0)
     @maxValue(40)
@@ -263,7 +259,6 @@ namespace _720 {
   /** hwc legionella time */
   @inherit(r_1, w_1)
   @ext(0x2a, 0)
-  @condition(_720.HwcEnabled.value, "1")
   model HwcLegionellaTime {
     value: HTI;
   }
@@ -271,7 +266,6 @@ namespace _720 {
   /** hwc legionella day */
   @inherit(r_1, w_1)
   @ext(0x2b, 0)
-  @condition(_720.HwcEnabled.value, "1")
   model HwcLegionellaDay {
     value: daysel3;
   }
@@ -781,7 +775,7 @@ namespace _720 {
   /** External hot water desired temperature heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x9, 0)
-  @condition(_720.Hc1ExtHwcActive.value, "1")
+  @condition(_720.Hc1CircuitType.value, "3")
   model Hc1ExtHwcTempDesired {
     value: tempv;
   }
@@ -884,7 +878,7 @@ namespace _720 {
   /** External hot water operation mode heating circuit 1 */
   @inherit(r_3, w_3)
   @ext(0x13, 0)
-  @condition(_720.Hc1ExtHwcActive.value, "1")
+  @condition(_720.Hc1CircuitType.value, "3")
   model Hc1ExtHwcOpMode {
     value: opmode2;
   }
@@ -1050,7 +1044,7 @@ namespace _720 {
   /** External hot water desired temperature heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x9, 0)
-  @condition(_720.Hc2ExtHwcActive.value, "1")
+  @condition(_720.Hc2CircuitType.value, "3")
   model Hc2ExtHwcTempDesired {
     value: tempv;
   }
@@ -1153,7 +1147,7 @@ namespace _720 {
   /** External hot water operation mode heating circuit 2 */
   @inherit(r_4, w_4)
   @ext(0x13, 0)
-  @condition(_720.Hc2ExtHwcActive.value, "1")
+  @condition(_720.Hc2CircuitType.value, "3")
   model Hc2ExtHwcOpMode {
     value: opmode2;
   }
@@ -1319,7 +1313,7 @@ namespace _720 {
   /** External hot water desired temperature heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x9, 0)
-  @condition(_720.Hc3ExtHwcActive.value, "1")
+  @condition(_720.Hc3CircuitType.value, "3")
   model Hc3ExtHwcTempDesired {
     value: tempv;
   }
@@ -1422,7 +1416,7 @@ namespace _720 {
   /** External hot water operation mode heating circuit 3 */
   @inherit(r_5, w_5)
   @ext(0x13, 0)
-  @condition(_720.Hc3ExtHwcActive.value, "1")
+  @condition(_720.Hc3CircuitType.value, "3")
   model Hc3ExtHwcOpMode {
     value: opmode2;
   }
