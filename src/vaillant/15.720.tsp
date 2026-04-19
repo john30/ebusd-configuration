@@ -490,6 +490,23 @@ namespace _720 {
     value: energy4;
   }
 
+  enum Values_MultiInput {
+    not_connected: 0,
+    circulation: 1,
+    photovoltaic: 2,
+    external_cooling: 3,
+  }
+
+  /** multifunction input configuration */
+  @inherit(r_1, w_1)
+  @ext(0x6a, 0)
+  model MultiInputSetting {
+    @values(Values_MultiInput)
+    value: UCH;
+    @maxLength(3)
+    ign: IGN;
+  }
+
   /** installer name 1 (first part) */
   @inherit(r_1, w_1)
   @ext(0x6c, 0)
