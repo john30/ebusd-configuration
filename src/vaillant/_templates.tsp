@@ -160,21 +160,24 @@ scalar seconds2 extends UIN;
 scalar seconds4 extends ULG;
 
 @unit("K")
-@minValue(-450) @maxValue(450) @step(0.5)
+@minValue(-50) @maxValue(50) @step(0.5)
 scalar calibration extends D2C;
 
 @unit("K")
+@maxValue(50)
 scalar calibration0 extends UCH;
 
 @unit("K")
+@maxValue(50)
 scalar calibration1 extends D1C;
 
 @unit("K")
 @divisor(2)
+@minValue(-50) @maxValue(50)
 scalar calibrations extends SCH;
 
 @unit("K")
-@minValue(-450) @maxValue(450) @step(0.5)
+@minValue(-50) @maxValue(50) @step(0.5)
 scalar calibrationv extends EXP;
 
 @unit("°min")
@@ -295,8 +298,8 @@ scalar uin100 extends UIN;
 
 /** Heating curve */
 @divisor(100)
-@maxValue(500)
-@step(5)
+@maxValue(5)
+@step(0.05)
 scalar curve extends UIN;
 
 /** Heating curve */
@@ -559,7 +562,7 @@ model slotTimeFrame {
 /** desired temperature of a slot */
 @unit("°C")
 @divisor(10)
-@maxValue(1000)
+@maxValue(100)
 scalar slotTemp extends UIN;
 
 /** complete slot for writing with target temperature */
@@ -1194,6 +1197,5 @@ model Timer<T> {
 /** display contrast */
 @minValue(0)
 @maxValue(15)
-@unit("%", "heinz")
-@attr("other", "xxx")
+@unit("%", "intensity")
 scalar displaycontrast extends UCH;

@@ -48,7 +48,7 @@ namespace Wtw {
   // @divisor(3.333) // todo not possible to have this divisor yet (900=270qm/h, 166=50qm/h), thus using l/s instead
   @unit("l/s")
   @divisor(12) // 900=75l/s, 166=13.8l/s, factor to get qm/h is 3.6
-  @minValue(166) @maxValue(900) @step(5)
+  @minValue(13) @maxValue(112) @step(5)
   scalar ventilation extends UIN;
 
   /** ventilation level */
