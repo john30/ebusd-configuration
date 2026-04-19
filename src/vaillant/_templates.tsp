@@ -80,6 +80,10 @@ scalar daysel extends UCH;
 @values(Values_daysel2)
 scalar daysel2 extends UCH;
 
+/** day selector */
+@values(Values_daysel2)
+scalar daysel3 extends UIN;
+
 /** days */
 @maxValue(60)
 scalar days extends UCH;
@@ -207,6 +211,10 @@ scalar mctype extends UCH;
 @values(Values_mctype7)
 scalar mctype7 extends BI0_7;
 
+/** hc type */
+@values(Values_hctype)
+scalar hctype extends UCH;
+
 /** hot water mode */
 @values(Values_hwcmode)
 scalar hwcmode extends UCH;
@@ -293,6 +301,12 @@ scalar uin100 extends UIN;
 @maxValue(5)
 @step(0.05)
 scalar curve extends UIN;
+
+/** Heating curve */
+@minValue(0)
+@maxValue(5)
+@step(0.05)
+scalar curvev extends EXP;
 
 /** phase 1 state */
 @values(Values_phase1)
@@ -453,6 +467,12 @@ scalar zonesel extends UIN;
 @values(Values_zonestatus)
 scalar zonestatus extends UIN;
 
+@values(Values_zonestatus2)
+scalar zonestatus2 extends UIN;
+
+@values(Values_zonestatus3)
+scalar zonestatus3 extends UIN;
+
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
@@ -470,6 +490,9 @@ scalar opmode2 extends UIN;
 
 @values(Values_zmapping)
 scalar zmapping extends UIN;
+
+@values(Values_zmapping2)
+scalar zmapping2 extends UIN;
 
 /** heat circuit name */
 @maxLength(11)
@@ -493,6 +516,9 @@ scalar shortphone extends STR;
 
 @values(Values_mamode)
 scalar mamode extends UIN;
+
+@values(Values_mamode2)
+scalar mamode2 extends UIN;
 
 @values(Values_offmode)
 scalar offmode extends UIN;
@@ -674,6 +700,14 @@ enum Values_mctype7 {
   returnincr: 4,
   pool: 5,
   circulation: 6,
+}
+
+enum Values_hctype {
+  inactive: 0,
+  heat: 1,
+  fixed: 2,
+  water: 3,
+  returnincr: 4,
 }
 
 enum Values_escomode {
@@ -867,6 +901,22 @@ enum Values_zonestatus {
   off: 10,
 }
 
+enum Values_zonestatus2 {
+  auto: 0,
+  holidayaway: 7,
+  load: 9,
+  off: 10,
+}
+
+enum Values_zonestatus3 {
+  auto: 0,
+  ventilation: 1,
+  veto: 4,
+  holidayaway: 7,
+  load: 9,
+  off: 10,
+}
+
 enum Values_sfmode {
   auto: 0,
   ventilation: 1,
@@ -909,11 +959,28 @@ enum Values_zmapping {
   VR91_3: 4,
 }
 
+enum Values_zmapping2 {
+  none: 0,
+  VRC720: 1,
+  VR92_1: 2,
+  VR92_2: 3,
+  VR92_3: 4,
+}
+
 enum Values_mamode {
   circulation: 0,
   dryer: 1,
   zone: 2,
   legiopump: 3,
+}
+
+enum Values_mamode2 {
+  circulation: 0,
+  dryer: 1,
+  zone: 2,
+  legiopump: 3,
+  not_connected: 4,
+  cool: 5,
 }
 
 enum Values_offmode {
