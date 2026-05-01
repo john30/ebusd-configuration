@@ -102,10 +102,10 @@ namespace Vwz {
   // VWZIO-specific. Replaces what we'd previously split as
   // Stats01/Stats02 (id=0f0001 / id=0f0002) — per @Hoppur's PR #598
   // review (2026-04-30): the bytes after `0f` aren't id-suffix, they
-  // are actual content (StatusCircPump + DhwActive). The same logical
+  // are actual content (StatusDHWCircPump + DhwActive). The same logical
   // message fires every 10s with whatever current state is. Unifies
   // the two CSV rows into one and exposes 4 net-new fields
-  // (StatusCircPump, DhwActive, MultifunctionInput, plus correctly
+  // (StatusDHWCircPump, DhwActive, MultifunctionInput, plus correctly
   // typed HwcStorageTemp / SupplyTemp / WaterPressure / temp_7 pad).
   //
   // The b51a 05ff32xx slow-poll family (1/h) carries the electric
@@ -118,50 +118,103 @@ namespace Vwz {
   @base(MF, 0x12, 0xf)
   model u_b512 {}
 
-  /** Hydraulikstation DHW state. Layout per @Hoppur's PR #598 review
-   * (2026-04-30). Master sends `b5 12 03 0f <pump-state> <dhw-state>`
-   * every 10 s; slave responds with HWC tank temp + multifunction
-   * input state + supply temp + heating-circuit pressure + 0xff pad.
-   * Verified against this install's 72 h capture: only (pump=0,dhw=1)
-   * and (pump=0,dhw=2) ever seen; MultifunctionInput always 0;
-   * temp_7 always 0xff; HwcStorageTemp range 42-71 °C. */
+  /** Hydraulikstation DHW state per Hoppur PR #598 review */
   @inherit(u_b512)
+  @ext
   model StatusDhw {
-    /** master byte 1: circulation pump state */
-    @master
-    @values(Values_StatusCircPump)
-    statuscircpump: UCH;
+    /** circulation pump state */
+    @out
+    @values(Values_StatusDHWCircPump)
+    statusdhwcircpump: UCH;
 
-    /** master byte 2: DHW heating active */
-    @master
+    /** DHW heating active */
+    @out
     @values(Values_DhwActive)
     dhwactive: UCH;
 
-    /** slave bytes 0+1: DHW tank temperature, D2C 1/16 °C */
+    /** DHW tank temperature */
     hwcstoragetemp: temp;
 
-    /** slave byte 2: multifunction input button state */
+    /** multifunction input button state */
     @values(Values_OnOff)
     multifunctioninput: UCH;
 
-    /** slave bytes 3+4: supply line temperature D2C 1/16 °C
-     * (sensor reads HC flow when DhwActive=off, compressor outlet
-     * when DhwActive=on — the supply line is physically routed
-     * through the 3-way valve) */
+    /** supply line temperature (HC flow if DhwActive=off / compressor outlet if on) */
     supplytemp: temp;
 
-    /** slave byte 5: heating-circuit pressure UCH/10 bar */
+    /** heating-circuit pressure */
     @unit("bar")
     @divisor(10)
     waterpressure: UCH;
 
-    /** slave byte 6: trailing pad, always 0xff in our capture */
+    /** trailing pad always 0xff */
     temp_7: UCH;
   }
 
-  enum Values_StatusCircPump { off: 0, on: 2 }
+  enum Values_StatusDHWCircPump { off: 0, on: 2 }
   enum Values_DhwActive { off: 1, on: 2 }
   enum Values_OnOff { off: 0, on: 1 }
+
+  // ----------------------------------------------------------------------
+  // Display state (b511 07) per @chrizzzp's PR #598 review. Active
+  // read: ebusd polls the slave when the entity is read. Works on
+  // both HMU (0x08) and VWZIO/VWZ00 (0x76); placed here so the VWZ
+  // side gets it (HMU has a simpler `State` already defined in
+  // 08.hmu.tsp covering the first 5 of these 7 bytes).
+  // ----------------------------------------------------------------------
+
+  /** default *r for b511 */
+  @base(MF, 0x11)
+  model r_b511 {}
+
+  /** Hydraulikstation display state per chrizzzp PR #598 review */
+  @inherit(r_b511)
+  @ext(0x7)
+  model Status07 {
+    @unit("%")
+    power: UCH;
+
+    @unit("kWh")
+    @divisor(10)
+    dailyenvyield: UIN;
+
+    display_b0_heaterenabled: BI0;
+    display_b1: BI1;
+    display_b2_backupheater: BI2;
+    display_b3: BI3;
+    display_b4: BI4;
+    display_b5_noisereduction: BI5;
+    display_b6_dhwecomode: BI6;
+    display_b7: BI7;
+
+    @values(Values_Status07HeaterMode)
+    displayheatermain: UCH;
+
+    @unit("bar")
+    @divisor(30)
+    displaysystempressure: UCH;
+
+    @values(Values_Status07HeaterMode)
+    displayheaterbackup: UCH;
+  }
+
+  /** State enum for `Status07.DisplayHeaterMain` and
+   * `Status07.DisplayHeaterBackup`. Two adjacent codes per state
+   * (e.g. 0/1 standby, 8/9 hc) — the low bit appears to subdivide
+   * each mode but isn't documented; preserving both per
+   * @chrizzzp's contribution. */
+  enum Values_Status07HeaterMode {
+    standby_0: 0,
+    standby_1: 1,
+    hc_8: 8,
+    hc_9: 9,
+    error_a: 10,
+    error_b: 11,
+    cool_10: 16,
+    cool_11: 17,
+    dhw_80: 128,
+    dhw_81: 129,
+  }
 
   // ----------------------------------------------------------------------
   // Heizstab (electric backup heater) + 3-way valve telemetry.
