@@ -178,13 +178,21 @@ namespace Vwz {
     @divisor(10)
     dailyenvyield: UIN;
 
+    @values(Values_OnOff)
     display_b0_heaterenabled: BI0;
+    @values(Values_OnOff)
     display_b1: BI1;
+    @values(Values_OnOff)
     display_b2_backupheater: BI2;
+    @values(Values_OnOff)
     display_b3: BI3;
+    @values(Values_OnOff)
     display_b4: BI4;
+    @values(Values_OnOff)
     display_b5_noisereduction: BI5;
+    @values(Values_OnOff)
     display_b6_dhwecomode: BI6;
+    @values(Values_OnOff)
     display_b7: BI7;
 
     @values(Values_Status07HeaterMode)
