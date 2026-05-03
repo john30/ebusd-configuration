@@ -385,6 +385,20 @@ namespace Hmu_HW5103 {
     value: tempv;
   }
 
+  @inherit(r_7)
+  @ext(0xfc, 0x8)
+  model RunDataFlowTemp {
+    /** current flow temp, accurate to 2 decimal places */
+    value: tempv;
+  }
+
+  @inherit(r_7)
+  @ext(0x6, 0x9)
+  model RunDataReturnTemp {
+    /** current return temp, accurate to 2 decimal places */
+    value: tempv;
+  }
+
   // B516
   /** default *r */
   @base(MF, 0x16)
