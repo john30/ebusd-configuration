@@ -2433,7 +2433,7 @@ namespace _720 {
   model w_9 {}
 
   @condition(_720.HwcEnabled.value, "1")
-  namespace HotWaterCircutTimer {
+  namespace HotWaterCircuitTimer {
     // /** hwc timer Configuration */
     // @inherit(r_9)
     // @ext(MF, 0x55, 0xa3, 0, 0x2)

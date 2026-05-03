@@ -567,22 +567,23 @@ scalar slotTemp extends UIN;
 
 /** complete slot for writing with target temperature */
 model wTimeSlotWithTemp {
+  @out
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
   slotTemp: slotTemp;
 }
 
-/** constant value for writing a slot without target temperature */
-@constValue(0xffff)
-scalar wTimeSlotConst extends U2L;
 
 /** complete slot for writing without target temperature */
 model wTimeSlotWithoutTemp {
+  @out
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
-  wTimeSlotConst: wTimeSlotConst;
+  /** constant value for writing a slot without target temperature */
+  @constValue(0xffff)
+  wTimeSlotConst: U2L;
 }
 
 /** complete slot for reading with target temperature */
@@ -1197,5 +1198,4 @@ model Timer<T> {
 /** display contrast */
 @minValue(0)
 @maxValue(15)
-@unit("%", "intensity")
 scalar displaycontrast extends UCH;
