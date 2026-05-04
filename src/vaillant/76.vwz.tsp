@@ -147,82 +147,14 @@ namespace Vwz {
     @divisor(10)
     waterpressure: UCH;
 
-    /** trailing pad always 0xff */
-    temp_7: UCH;
+    /** trailing pad always 0xff in capture */
+    @maxLength(1)
+    ign: IGN;
   }
 
   enum Values_StatusDHWCircPump { off: 0, on: 2 }
   enum Values_DhwActive { off: 1, on: 2 }
   enum Values_OnOff { off: 0, on: 1 }
-
-  // ----------------------------------------------------------------------
-  // Display state (b511 07) per @chrizzzp's PR #598 review. Active
-  // read: ebusd polls the slave when the entity is read. Works on
-  // both HMU (0x08) and VWZIO/VWZ00 (0x76); placed here so the VWZ
-  // side gets it (HMU has a simpler `State` already defined in
-  // 08.hmu.tsp covering the first 5 of these 7 bytes).
-  // ----------------------------------------------------------------------
-
-  /** default *r for b511 */
-  @base(MF, 0x11)
-  model r_b511 {}
-
-  /** Hydraulikstation display state per chrizzzp PR #598 review */
-  @inherit(r_b511)
-  @ext(0x7)
-  model Status07 {
-    @unit("%")
-    power: UCH;
-
-    @unit("kWh")
-    @divisor(10)
-    dailyenvyield: UIN;
-
-    @values(Values_OnOff)
-    display_b0_heaterenabled: BI0;
-    @values(Values_OnOff)
-    display_b1: BI1;
-    @values(Values_OnOff)
-    display_b2_backupheater: BI2;
-    @values(Values_OnOff)
-    display_b3: BI3;
-    @values(Values_OnOff)
-    display_b4: BI4;
-    @values(Values_OnOff)
-    display_b5_noisereduction: BI5;
-    @values(Values_OnOff)
-    display_b6_dhwecomode: BI6;
-    @values(Values_OnOff)
-    display_b7: BI7;
-
-    @values(Values_Status07HeaterMode)
-    displayheatermain: UCH;
-
-    @unit("bar")
-    @divisor(30)
-    displaysystempressure: UCH;
-
-    @values(Values_Status07HeaterMode)
-    displayheaterbackup: UCH;
-  }
-
-  /** State enum for `Status07.DisplayHeaterMain` and
-   * `Status07.DisplayHeaterBackup`. Two adjacent codes per state
-   * (e.g. 0/1 standby, 8/9 hc) — the low bit appears to subdivide
-   * each mode but isn't documented; preserving both per
-   * @chrizzzp's contribution. */
-  enum Values_Status07HeaterMode {
-    standby_0: 0,
-    standby_1: 1,
-    hc_8: 8,
-    hc_9: 9,
-    error_a: 10,
-    error_b: 11,
-    cool_10: 16,
-    cool_11: 17,
-    dhw_80: 128,
-    dhw_81: 129,
-  }
 
   // ----------------------------------------------------------------------
   // Heizstab (electric backup heater) + 3-way valve telemetry.
