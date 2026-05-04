@@ -58,7 +58,7 @@ namespace Bai.Emm_inc {
   /** water pressure */
   @inherit(r_1)
   @ext(0x39, 0)
-  model WaterPressure {
+  model WaterPressureEMM {
     /** water pressure */
     value: pressv;
   }
