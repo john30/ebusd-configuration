@@ -64,6 +64,16 @@ namespace Hmu_HW5103 {
   }
 
   @inherit(r_2)
+  @ext(0x7)
+  model TargetTempHwc {
+    @maxLength(3)
+    ign: IGN;
+
+    /** Target Hwc temperature */
+    temp: temp;
+  }
+
+  @inherit(r_2)
   @ext(0xe)
   model YieldHcMonth {
     @unit("kWh")
@@ -122,16 +132,17 @@ namespace Hmu_HW5103 {
     value: UIN;
   }
 
+  /** heat circuit target temperature */
   @inherit(r_2)
-  @ext(0x1e)
-  model CompressorBlocktime {
-    @unit("min")
-    value: UIN;
+  @ext(0x1c)
+  model TargetTempHc {
+    value: temp;
   }
 
+  /** target flow temperature */
   @inherit(r_2)
   @ext(0x1f)
-  model SupplyTempWeighted {
+  model TargetFlowTemp {
     value: temp;
   }
 
@@ -173,6 +184,13 @@ namespace Hmu_HW5103 {
   @Ebus.example("52%", "3108b51a0405ff3225", "0aff08384d030000000000")
   model CurrentCompressorUtil {
     value: percent;
+  }
+
+  /** air intake temperature */
+  @inherit(r_2)
+  @ext(0x26)
+  model AirIntakeTemp {
+    value: temp;
   }
 
   @inherit(r_2)
@@ -219,6 +237,34 @@ namespace Hmu_HW5103 {
     @unit("bar")
     @divisor(4)
     value: D2C;
+  }
+
+  /** operation hours */
+  @inherit(r_2)
+  @ext(0x40)
+  model Hours {
+    value: hoursum;
+  }
+
+  /** operation hours heating */
+  @inherit(r_2)
+  @ext(0x41)
+  model HoursHc {
+    value: hoursum;
+  }
+
+  /** operation hours cooling */
+  @inherit(r_2)
+  @ext(0x43)
+  model HoursCool {
+    value: hoursum;
+  }
+
+  /** operation hours hot water */
+  @inherit(r_2)
+  @ext(0x44)
+  model HoursHwc {
+    value: hoursum;
   }
 
   @inherit(r_2)
