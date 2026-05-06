@@ -139,6 +139,13 @@ namespace Hmu_HW5103 {
     value: temp;
   }
 
+  @inherit(r_2)
+  @ext(0x1e)
+  model CompressorBlocktime {
+    @unit("min")
+    value: UIN;
+  }
+
   /** target flow temperature */
   @inherit(r_2)
   @ext(0x1f)
