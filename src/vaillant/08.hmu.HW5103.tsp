@@ -39,6 +39,29 @@ namespace Hmu_HW5103 {
     ign: IGN;
   }
 
+  /** default *ws for user level "service" */
+  @write
+  @auth("service")
+  @base(MF, 0x1a, 0x6, 0xff, 0x32)
+  model ws_2 {
+  }
+
+  /** room target temperature */
+  @inherit(r_2, ws_2)
+  @ext(0x1c)
+  model TargetTempHc {
+    // note that this only works without a VRC regulator
+    value: temp;
+  }
+
+  /** cylinder target temperature */
+  @inherit(r_2, ws_2)
+  @ext(0x7)
+  model TargetTempHwc {
+    // note that this only works without a VRC regulator
+    temp: temp;
+  }
+
   @inherit(r_2)
   @ext(0)
   model YieldHcDay {
@@ -61,16 +84,6 @@ namespace Hmu_HW5103 {
     @unit("kWh")
     @divisor(10)
     value: energy;
-  }
-
-  @inherit(r_2)
-  @ext(0x7)
-  model TargetTempHwc {
-    @maxLength(3)
-    ign: IGN;
-
-    /** Target Hwc temperature */
-    temp: temp;
   }
 
   @inherit(r_2)
@@ -132,11 +145,32 @@ namespace Hmu_HW5103 {
     value: UIN;
   }
 
-  /** heat circuit target temperature */
+  /** operating hours */
   @inherit(r_2)
-  @ext(0x1c)
-  model TargetTempHc {
-    value: temp;
+  @ext(0x40)
+  model Hours {
+    value: hoursum;
+  }
+
+  /** operating hours heating */
+  @inherit(r_2)
+  @ext(0x41)
+  model HoursHc {
+    value: hoursum;
+  }
+
+  /** operating hours cooling */
+  @inherit(r_2)
+  @ext(0x43)
+  model HoursCool {
+    value: hoursum;
+  }
+
+  /** operating hours hot water */
+  @inherit(r_2)
+  @ext(0x44)
+  model HoursHwc {
+    value: hoursum;
   }
 
   @inherit(r_2)
@@ -244,34 +278,6 @@ namespace Hmu_HW5103 {
     @unit("bar")
     @divisor(4)
     value: D2C;
-  }
-
-  /** operation hours */
-  @inherit(r_2)
-  @ext(0x40)
-  model Hours {
-    value: hoursum;
-  }
-
-  /** operation hours heating */
-  @inherit(r_2)
-  @ext(0x41)
-  model HoursHc {
-    value: hoursum;
-  }
-
-  /** operation hours cooling */
-  @inherit(r_2)
-  @ext(0x43)
-  model HoursCool {
-    value: hoursum;
-  }
-
-  /** operation hours hot water */
-  @inherit(r_2)
-  @ext(0x44)
-  model HoursHwc {
-    value: hoursum;
   }
 
   @inherit(r_2)
