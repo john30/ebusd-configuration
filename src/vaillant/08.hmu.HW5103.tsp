@@ -46,7 +46,7 @@ namespace Hmu_HW5103 {
   }
 
   /** room target temperature */
-  @inherit(r_2, ws_2)
+  @inherit(r_2, w_2)
   @ext(0x1c)
   model TargetTempHc {
     // note that this only works without a VRC regulator in the system
@@ -54,7 +54,7 @@ namespace Hmu_HW5103 {
   }
 
   /** cylinder target temperature */
-  @inherit(r_2, ws_2)
+  @inherit(r_2, w_2)
   @ext(0x7)
   model TargetTempHwc {
     // note that this only works without a VRC regulator in the system
