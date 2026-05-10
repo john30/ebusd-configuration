@@ -41,7 +41,6 @@ namespace Hmu_HW5103 {
 
   /** *w for controlling the heat pump */
   @write
-  @auth("control")
   @base(MF, 0x1a, 0x6, 0xff, 0x32)
   model w_2 {
   }
