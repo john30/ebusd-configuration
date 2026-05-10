@@ -10,26 +10,60 @@ alias MF = 0xb5; // Ebus.Id.Values_manufacturers.Vaillant
 
 /** temperature */
 @unit("°C")
+@minValue(-50)
 scalar temps extends SCH;
 
 /** temperature */
 @unit("°C")
+@minValue(-50) @maxValue(180)
 scalar temps2 extends SIN;
 
 /** temperature */
 @unit("°C")
+@minValue(-50) @maxValue(180) @step(0.5)
 scalar tempv extends EXP;
 
 /** pressure */
 @unit("bar")
+@minValue(0) @maxValue(32) @step(0.5)
 scalar press extends FLT;
 
 /** pressure */
 @unit("bar")
+@minValue(0) @maxValue(70) @step(0.5)
 scalar pressv extends EXP;
+
+@unit("l/h")
+@maxValue(20)
+scalar flowrate extends UIN;
+
+@unit("l/min")
+@divisor(100)
+scalar flowrate100 extends UIN;
+
+@unit("m3/h")
+@maxValue(400)
+scalar airflowrate extends UIN;
+
+@unit("rpm")
+@maxValue(1000)
+scalar fanspeed extends UIN;
+
+@unit("rpm")
+@minValue(-1000) @maxValue(1000)
+scalar fanspeedoffset extends SIN;
+
+@unit("rpm")
+@minValue(0) @maxValue(1000) @step(1)
+scalar fanspeedv extends EXP;
+
+/** two-point / analogue control */
+@values(Values_twopointanalog)
+scalar twopointanalog extends UCH;
 
 /** percentage */
 @unit("%")
+@minValue(0) @maxValue(100) @step(0.5)
 scalar percentv extends EXP;
 
 /** date */
@@ -46,7 +80,12 @@ scalar daysel extends UCH;
 @values(Values_daysel2)
 scalar daysel2 extends UCH;
 
+/** day selector */
+@values(Values_daysel2)
+scalar daysel3 extends UIN;
+
 /** days */
+@maxValue(60)
 scalar days extends UCH;
 
 /** time */
@@ -70,6 +109,7 @@ scalar minutes0 extends UCH;
 
 /** minutes */
 @unit("min")
+@maxValue(1440)
 scalar minutes2 extends UIN;
 
 /** minutes */
@@ -120,19 +160,24 @@ scalar seconds2 extends UIN;
 scalar seconds4 extends ULG;
 
 @unit("K")
+@minValue(-50) @maxValue(50) @step(0.5)
 scalar calibration extends D2C;
 
 @unit("K")
+@maxValue(50)
 scalar calibration0 extends UCH;
 
 @unit("K")
+@maxValue(50)
 scalar calibration1 extends D1C;
 
 @unit("K")
 @divisor(2)
+@minValue(-50) @maxValue(50)
 scalar calibrations extends SCH;
 
 @unit("K")
+@minValue(-50) @maxValue(50) @step(0.5)
 scalar calibrationv extends EXP;
 
 @unit("°min")
@@ -166,6 +211,10 @@ scalar mctype extends UCH;
 @values(Values_mctype7)
 scalar mctype7 extends BI0_7;
 
+/** hc type */
+@values(Values_hctype)
+scalar hctype extends UCH;
+
 /** hot water mode */
 @values(Values_hwcmode)
 scalar hwcmode extends UCH;
@@ -173,6 +222,10 @@ scalar hwcmode extends UCH;
 /** hot water mode */
 @values(Values_hwcmode2)
 scalar hwcmode2 extends UCH;
+
+/** hot water mode with holiday */
+@values(Values_hwcmode7)
+scalar hwcmode7 extends UCH;
 
 /** mixer State */
 @values(Values_mixer)
@@ -233,10 +286,11 @@ model presssensor {
 
 /** pressure */
 @unit("mbar")
+@maxValue(70000)
 scalar pressm extends ULG;
 
 /** pressure */
-@unit("mbar")
+@unit("mbar") @step(50)
 scalar pressm2 extends UIN;
 
 @divisor(100)
@@ -244,7 +298,15 @@ scalar uin100 extends UIN;
 
 /** Heating curve */
 @divisor(100)
+@maxValue(5)
+@step(0.05)
 scalar curve extends UIN;
+
+/** Heating curve */
+@minValue(0)
+@maxValue(5)
+@step(0.05)
+scalar curvev extends EXP;
 
 /** phase 1 state */
 @values(Values_phase1)
@@ -343,6 +405,7 @@ scalar energy4 extends ULG;
 
 @unit("kWh")
 @divisor(1000)
+@minValue(0)
 scalar energye extends EXP;
 
 /** start count */
@@ -404,6 +467,12 @@ scalar zonesel extends UIN;
 @values(Values_zonestatus)
 scalar zonestatus extends UIN;
 
+@values(Values_zonestatus2)
+scalar zonestatus2 extends UIN;
+
+@values(Values_zonestatus3)
+scalar zonestatus3 extends UIN;
+
 @values(Values_sfmode)
 scalar sfmode extends UCH;
 
@@ -421,6 +490,9 @@ scalar opmode2 extends UIN;
 
 @values(Values_zmapping)
 scalar zmapping extends UIN;
+
+@values(Values_zmapping2)
+scalar zmapping2 extends UIN;
 
 /** heat circuit name */
 @maxLength(11)
@@ -445,6 +517,9 @@ scalar shortphone extends STR;
 @values(Values_mamode)
 scalar mamode extends UIN;
 
+@values(Values_mamode2)
+scalar mamode2 extends UIN;
+
 @values(Values_offmode)
 scalar offmode extends UIN;
 
@@ -458,9 +533,11 @@ scalar rcmode extends UIN;
 scalar rcmode2 extends UIN;
 
 /** index of a time slot */
+@maxValue(20)
 scalar slotIndex extends UCH;
 
 /** number of slots on a day */
+@maxValue(24)
 scalar slotCount extends UCH;
 
 /** number of slots per weekday */
@@ -485,26 +562,28 @@ model slotTimeFrame {
 /** desired temperature of a slot */
 @unit("°C")
 @divisor(10)
+@maxValue(100)
 scalar slotTemp extends UIN;
 
 /** complete slot for writing with target temperature */
 model wTimeSlotWithTemp {
+  @out
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
   slotTemp: slotTemp;
 }
 
-/** constant value for writing a slot without target temperature */
-@constValue(0xffff)
-scalar wTimeSlotConst extends U2L;
 
 /** complete slot for writing without target temperature */
 model wTimeSlotWithoutTemp {
+  @out
   slotIndex: slotIndex;
   slotCount: slotCount;
   slotTimeFrame: slotTimeFrame;
-  wTimeSlotConst: wTimeSlotConst;
+  /** constant value for writing a slot without target temperature */
+  @constValue(0xffff)
+  wTimeSlotConst: U2L;
 }
 
 /** complete slot for reading with target temperature */
@@ -528,6 +607,28 @@ scalar appliancecode extends UCH;
 /** HMU Status code */
 @values(Values_hmucode)
 scalar hmucode extends UIN;
+
+/** display language variant */
+@values(Values_languageVariant2)
+scalar languageVariant2 extends UCH;
+
+enum Values_languageVariant2 {
+  de: 0,
+  it: 1,
+  es: 2,
+  pt: 3,
+  fr: 4,
+  nl: 5,
+  dk: 6,
+  fin: 7,
+  se: 8,
+  no: 9,
+  en: 10,
+  ee: 11,
+  lt: 12,
+  lv: 13,
+  tr: 14,
+}
 
 enum Values_daysel {
   selected: 0,
@@ -602,6 +703,14 @@ enum Values_mctype7 {
   circulation: 6,
 }
 
+enum Values_hctype {
+  inactive: 0,
+  heat: 1,
+  fixed: 2,
+  water: 3,
+  returnincr: 4,
+}
+
 enum Values_escomode {
   heatpump: 0,
   backup: 1,
@@ -623,6 +732,16 @@ enum Values_hwcmode2 {
   on: 1,
   auto: 2,
   manual: 3,
+}
+
+enum Values_hwcmode7 {
+  off: 0,
+  on: 1,
+  auto: 2,
+  sunday: 3,
+  party: 4,
+  load: 6,
+  holiday: 7,
 }
 
 enum Values_mixer {
@@ -783,6 +902,22 @@ enum Values_zonestatus {
   off: 10,
 }
 
+enum Values_zonestatus2 {
+  auto: 0,
+  holidayaway: 7,
+  load: 9,
+  off: 10,
+}
+
+enum Values_zonestatus3 {
+  auto: 0,
+  ventilation: 1,
+  veto: 4,
+  holidayaway: 7,
+  load: 9,
+  off: 10,
+}
+
 enum Values_sfmode {
   auto: 0,
   ventilation: 1,
@@ -825,11 +960,28 @@ enum Values_zmapping {
   VR91_3: 4,
 }
 
+enum Values_zmapping2 {
+  none: 0,
+  VRC720: 1,
+  VR92_1: 2,
+  VR92_2: 3,
+  VR92_3: 4,
+}
+
 enum Values_mamode {
   circulation: 0,
   dryer: 1,
   zone: 2,
   legiopump: 3,
+}
+
+enum Values_mamode2 {
+  circulation: 0,
+  dryer: 1,
+  zone: 2,
+  legiopump: 3,
+  not_connected: 4,
+  cool: 5,
 }
 
 enum Values_offmode {
@@ -931,6 +1083,11 @@ enum Values_hmucode {
   frequency_converter_fault: 575,
   connection_fault_frequency_converter: 581,
   four_port_valve_position_fault: 590,
+}
+
+enum Values_twopointanalog {
+  two_point: 0,
+  analog: 1,
 }
 
 /** default *r for register */

@@ -158,7 +158,7 @@ namespace V61.Mc {
 
   /** HcPumpIdlePeriod: 0=off, heating circuit pump's maximum blocking time for pump's energy saving function */
   @ext(0x28, 0)
-  model HcPumpIdlePeriod is ReadonlyRegister<UCH>;
+  model HcPumpIdlePeriod is ReadonlyRegister<minutes0>;
 
   /** MaxPreheatingMinutes: in steps of 10, maximum time of enabling the heating before the heating time window starts */
   @ext(0x24, 0)
@@ -166,7 +166,7 @@ namespace V61.Mc {
 
   /** BoilerMaxPreShutdown: in steps of 10, maximum time of starting the lowering operation before the heating time window ends */
   @ext(0x18, 0)
-  model BoilerMaxPreShutdown is ReadonlyRegister<UCH>;
+  model BoilerMaxPreShutdown is ReadonlyRegister<minutes0>;
 
   /** HC2_ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
   @ext(0x36, 0)
@@ -210,11 +210,11 @@ namespace V61.Mc {
 
   /** HcPreHeatingActive: bit-array where a set bit indicates that preheating is active for the corresponding heating circuit */
   @ext(0x2a, 0)
-  model HcPreHeatingActive is ReadonlyRegister<yesno>;
+  model HcPreHeatingActive is ReadonlyRegister<UCH>;
 
   /** HcPreShutdownActive: bit-array where a set bit indicates that early cut off is active for the corresponding heating circuit */
   @ext(0x29, 0)
-  model HcPreShutdownActive is ReadonlyRegister<yesno>;
+  model HcPreShutdownActive is ReadonlyRegister<UCH>;
 
   /** HcPumpIdlePeriodActive: bit-array where a set bit indicates that pump's energy saving function is active for the corresponding heating circuit */
   @ext(0x2b, 0)

@@ -108,7 +108,7 @@ namespace Bai._0010021961_inc {
 
   /** d.15 Current heating pump power: Current central heating pump power */
   @ext(0x73, 0)
-  model PumpPower is ReadonlyRegister<UCH>;
+  model PumpPower is ReadonlyRegister<percent0>;
 
   /** d.16 Room thermostat 24 V: xternal controls heat demand (Clamp 3-4) */
   @ext(0xe, 0)
@@ -131,22 +131,12 @@ namespace Bai._0010021961_inc {
   model StoragereleaseClock is ReadonlyRegister<yesno>;
 
   /** d.33 Target fan speed */
-  @inherit(r)
   @ext(0x24, 0)
-  model TargetFanSpeed {
-    /** Fan speed setpoint */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.34 Current fan speed */
-  @inherit(r)
   @ext(0x83, 0)
-  model FanSpeed {
-    /** Current fan speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
   @ext(0x54, 0)
@@ -309,13 +299,8 @@ namespace Bai._0010021961_inc {
   model DSN is ReadonlyRegister<UIN>;
 
   /** Target fan speed */
-  @inherit(r)
   @ext(0x9f, 0)
-  model TargetFanSpeedOutput {
-    /** Target fan speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeedOutput is ReadonlyRegister<fanspeed>;
 
   /** Power number */
   @inherit(r)
@@ -379,23 +364,13 @@ namespace Bai._0010021961_inc {
   @ext(0xde, 0)
   model TimerInputHc is ReadonlyRegister<onoff>;
 
-  /** Minimum fan speed */
-  @inherit(r)
+  /** FanMinSpeedOperation: Minimum Fan speed of the appliance */
   @ext(0xdf, 0)
-  model FanMinSpeedOperation {
-    /** Fan minimum speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMinSpeedOperation is ReadonlyRegister<fanspeed>;
 
-  /** Maximum fan speed */
-  @inherit(r)
+  /** FanMaxSpeedOperation: Maximum Fan speed of the appliance */
   @ext(0xe0, 0)
-  model FanMaxSpeedOperation {
-    /** Fan maximum speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMaxSpeedOperation is ReadonlyRegister<fanspeed>;
 
   /** External gas valve: External solenoid valve */
   @ext(0xe4, 0)
@@ -488,8 +463,7 @@ namespace Bai._0010021961_inc {
   @ext(0xa7, 0)
   model FanSpeedOffsetMin {
     /** Fan minimum speed offset */
-    @unit("rpm")
-    value: SIN;
+    value: fanspeedoffset;
   }
 
   /** d.51 Maximum fan speed offset */
@@ -497,8 +471,7 @@ namespace Bai._0010021961_inc {
   @ext(0xa8, 0)
   model FanSpeedOffsetMax {
     /** Fan maximum speed offset */
-    @unit("rpm")
-    value: SIN;
+    value: fanspeedoffset;
   }
 
   /** d.58 solar function */
@@ -539,11 +512,11 @@ namespace Bai._0010021961_inc {
 
   /** d.68 Failed ignition (1nd attempt): Number of unsuccessful ignition attempts (in the first attempt) */
   @ext(0x6e, 0)
-  model CounterStartattempts1 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts1 is ReadonlyRegister<UCH>;
 
   /** d.69 Failed ignition (2nd attempt): Number of unsuccessful ignition attempts (in the second attempt) */
   @ext(0x6f, 0)
-  model CounterStartattempts2 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts2 is ReadonlyRegister<UCH>;
 
   /** d.70 diverter valve position */
   @inherit(r, wi_1)
@@ -767,11 +740,11 @@ namespace Bai._0010021961_inc {
 
   /** Failed ignition (3rd attempt): Number of unsuccessful ignition attempts (in the 3rd attempt) */
   @ext(0x81, 0)
-  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts3 is ReadonlyRegister<UCH>;
 
   /** Failed ignition (4th attempt): Number of unsuccessful ignition attempts (in the 4th attempt) */
   @ext(0x82, 0)
-  model CounterStartAttempts4 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts4 is ReadonlyRegister<UCH>;
 
   /** Max flow return temperature */
   @ext(0xbe, 0)

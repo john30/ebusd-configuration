@@ -41,9 +41,9 @@ namespace Zeo.Cc {
   @ext(0x1f, 0x2)
   model FlowTempDesired is ReadonlyRegister<temp1>;
 
-  /** CleaningLady: 0,5h */
+  /** CleaningLady: saving function is activated for that duration */
   @ext(0x23, 0x2)
-  model CleaningLady is ReadonlyRegister<UCH>;
+  model CleaningLady is ReadonlyRegister<hours1>;
 
   /** ActualDesiredTemp: 1/2°C Auflösung */
   @ext(0x33, 0x2)

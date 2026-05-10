@@ -18,6 +18,6 @@ namespace Roomtempoffset_inc {
   @inherit(w_1)
   @ext
   model RoomTempOffset {
-    value: temp;
+    value: calibration;
   }
 }

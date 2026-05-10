@@ -67,9 +67,9 @@ namespace Bai._0010008045_inc {
   @ext(0x71, 0)
   model StoragereleaseClock is ReadonlyRegister<yesno>;
 
-  /** d.29 PrimaryCircuitFlowRate_DK: primary circuit water flow rate */
+  /** d.29 Primary circuit flow rate */
   @ext(0xfb, 0)
-  model PrimaryCircuitFlowRate is ReadonlyRegister<uin100>;
+  model PrimaryCircuitFlowrate is ReadonlyRegister<flowrate100>;
 
   /** d.30 Gasvalve: Gasvalve activation signal */
   @ext(0xbb, 0)
@@ -208,11 +208,11 @@ namespace Bai._0010008045_inc {
 
   /** d.68 ignition attempts 1: unsuccessfull ignitions in the first attempt */
   @ext(0x6e, 0)
-  model CounterStartattempts1 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts1 is ReadonlyRegister<UCH>;
 
   /** d.69 ignition attempts 2: unsuccessfull ignitions in the second attempt */
   @ext(0x6f, 0)
-  model CounterStartattempts2 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts2 is ReadonlyRegister<UCH>;
 
   /** d.71 Max value flow temp: Adjustment of maximum central heating setpoint range (maximum endposition of potmeter) */
   @ext(0xa5, 0)
@@ -349,11 +349,11 @@ namespace Bai._0010008045_inc {
 
   /** CounterStartAttempts3_DK: unsuccessfull ignitions in the third attempt */
   @ext(0x81, 0)
-  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts3 is ReadonlyRegister<UCH>;
 
   /** CounterStartAttempts4_DK: unsuccessfull ignitions in the fourth attempt */
   @ext(0x82, 0)
-  model CounterStartAttempts4 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts4 is ReadonlyRegister<UCH>;
 
   /** TRT_max_DK: max. return temperature */
   @ext(0xbe, 0)
@@ -574,14 +574,9 @@ namespace Bai._0010008045_inc {
   @ext(0x9a, 0)
   model DSN is ReadonlyRegister<UIN>;
 
-  /** TargetFan_Speed_Output_DK */
-  @inherit(r)
+  /** TargetFan_Speed_Output_DK: output fan speed */
   @ext(0x9f, 0)
-  model TargetFanSpeedOutput {
-    /** output fan speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeedOutput is ReadonlyRegister<fanspeed>;
 
   /** PowerValue */
   @inherit(r)
@@ -649,23 +644,13 @@ namespace Bai._0010008045_inc {
   @ext(0xde, 0)
   model TimerInputHc is ReadonlyRegister<onoff>;
 
-  /** FanMinSpeedOperation */
-  @inherit(r)
+  /** FanMinSpeedOperation: Minimum Fan speed of the appliance */
   @ext(0xdf, 0)
-  model FanMinSpeedOperation {
-    /** Minimum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMinSpeedOperation is ReadonlyRegister<fanspeed>;
 
-  /** FanMaxSpeedOperation */
-  @inherit(r)
+  /** FanMaxSpeedOperation: Maximum Fan speed of the appliance */
   @ext(0xe0, 0)
-  model FanMaxSpeedOperation {
-    /** Maximum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMaxSpeedOperation is ReadonlyRegister<fanspeed>;
 
   /** ExternGasvalve_DK: external gasvalve activated */
   @ext(0xe4, 0)

@@ -64,7 +64,7 @@ namespace Vr630.Mc {
 
   /** Ferienmodus aktiv */
   @ext(0x27, 0)
-  model IsInHoliday is ReadonlyRegister<UCH>;
+  model IsInHoliday is ReadonlyRegister<yesno>;
 
   /** Speicherladung aktiv */
   @ext(0x47, 0)
@@ -76,7 +76,7 @@ namespace Vr630.Mc {
 
   /** Partymodus aktiv */
   @ext(0x4e, 0)
-  model IsInParty is ReadonlyRegister<UCH>;
+  model IsInParty is ReadonlyRegister<yesno>;
 
   /** Mischeransteuerung */
   @ext(0xe, 0)

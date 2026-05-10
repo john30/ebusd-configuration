@@ -51,9 +51,9 @@ namespace Zeo.Mc {
   @ext(0x18, 0x4)
   model CircuitDiaState is ReadonlyRegister<UCH>;
 
-  /** CleaningLady: 0,5h */
+  /** CleaningLady: saving function is activated for that duration */
   @ext(0x23, 0x4)
-  model CleaningLady is ReadonlyRegister<UCH>;
+  model CleaningLady is ReadonlyRegister<hours1>;
 
   /** RemoteControlMode */
   @ext(0x24, 0)

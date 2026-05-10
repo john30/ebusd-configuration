@@ -177,7 +177,7 @@ namespace Zeo {
 
   /** Partload: 0..100% MSW_max in Testbetrieb */
   @ext(0xf8, 0)
-  model Partload is ReadonlyRegister<UCH>;
+  model Partload is ReadonlyRegister<percent0>;
 
   /** PrimaryCircuitMicroSwitchPattern: 1=Des.o.B. 2=Adsorption 4=Des.m.B. 8=Direktheizbetrieb */
   @ext(0xf9, 0)
@@ -235,7 +235,7 @@ namespace Zeo {
 
   /** Holiday function active */
   @ext(0x2, 0)
-  model IsInHoliday is ReadonlyRegister<UCH>;
+  model IsInHoliday is ReadonlyRegister<onoff>;
 
   /** OutsideTempSensorCorrection: 0,5°C resolution */
   @ext(0x8, 0)
@@ -255,11 +255,11 @@ namespace Zeo {
 
   /** BoilerMaxPreShutdown: 15..120min */
   @ext(0x14, 0)
-  model BoilerMaxPreShutdown is ReadonlyRegister<UCH>;
+  model BoilerMaxPreShutdown is ReadonlyRegister<minutes0>;
 
   /** HcFlowIncrease */
   @ext(0x15, 0)
-  model HcFlowIncrease is ReadonlyRegister<UCH>;
+  model HcFlowIncrease is ReadonlyRegister<calibration0>;
 
   /** CircuitPeriods */
   @ext(0x19, 0)
@@ -267,7 +267,7 @@ namespace Zeo {
 
   /** LegioProtectionEnabled: Global for all DHW circuits */
   @ext(0x1a, 0)
-  model LegioProtectionEnabled is ReadonlyRegister<onoff>;
+  model LegioProtectionEnabled is ReadonlyRegister<yesno>;
 
   /** IsInTankFilling */
   @ext(0x20, 0)
@@ -275,11 +275,11 @@ namespace Zeo {
 
   /** FrostProtectDelay: 1h */
   @ext(0x22, 0)
-  model FrostProtectDelay is ReadonlyRegister<UCH>;
+  model FrostProtectDelay is ReadonlyRegister<hours>;
 
   /** IsInParty */
   @ext(0x26, 0)
-  model IsInParty is ReadonlyRegister<UCH>;
+  model IsInParty is ReadonlyRegister<yesno>;
 
   /** HcPreShutdownActive: One bit for each heating circuit */
   @ext(0x28, 0)
@@ -311,11 +311,11 @@ namespace Zeo {
 
   /** DhwLaggingTime: 3..9min 1min Auflösung */
   @ext(0x36, 0)
-  model HwcLaggingTime is ReadonlyRegister<UCH>;
+  model HwcLaggingTime is ReadonlyRegister<minutes0>;
 
   /** DhwLoadingDelay: 0..30min / 1min */
   @ext(0x37, 0)
-  model HwcLoadingDelay is ReadonlyRegister<UCH>;
+  model HwcLoadingDelay is ReadonlyRegister<minutes0>;
 
   /** RestartBlockingTime */
   @ext(0x38, 0)
@@ -386,13 +386,17 @@ namespace Zeo {
   @ext(0xcc, 0)
   model ModuleDisplayedFilling is ReadonlyRegister<UCH>;
 
-  /** P1_Voltage_38: gemessene P1 Spannung bei 38% in 1/100V */
-  @ext(0xe4, 0)
-  model P1Voltage38 is ServiceRegister<UIN>;
+  @unit("V")
+  @divisor(100)
+  scalar voltage100 extends UIN;
 
-  /** P2_Voltage_38: gemessene P2 Spannung bei 38% in 1/100V */
+  /** P1_Voltage_38: gemessene P1 Spannung bei 38% */
+  @ext(0xe4, 0)
+  model P1Voltage38 is ServiceRegister<voltage100>;
+
+  /** P2_Voltage_38: gemessene P2 Spannung bei 38% */
   @ext(0xe6, 0)
-  model P2Voltage38 is ServiceRegister<UIN>;
+  model P2Voltage38 is ServiceRegister<voltage100>;
 
   /** FillBrineCircuit */
   @ext(0xf6, 0)

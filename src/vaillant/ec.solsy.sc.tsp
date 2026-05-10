@@ -118,7 +118,7 @@ namespace Solsy.Sc {
 
   /** SolEnableDiffTemp1: Temperature difference between collector 1 and tank, which is necassary to start solar pump */
   @ext(0x63, 0)
-  model SolEnableDiffTemp1 is Register<temp0>;
+  model SolEnableDiffTemp1 is Register<calibration0>;
 
   /** DeltaTOnFlexDtController: Temperature difference between flexible deltaT sensors, which is necassary to start solar pump */
   @ext(0xa6, 0)
@@ -130,15 +130,15 @@ namespace Solsy.Sc {
 
   /** SolEnableDiffTemp2: Temperature difference between collector 2 and tank, which is necassary to start solar pump */
   @ext(0x63, 0x8)
-  model SolEnableDiffTemp2 is Register<temp0>;
+  model SolEnableDiffTemp2 is Register<calibration0>;
 
   /** SolDisableDiffTemp1: Temperature difference between collector 1 and tank, at which pump stops */
   @ext(0x64, 0)
-  model SolDisableDiffTemp1 is Register<temp0>;
+  model SolDisableDiffTemp1 is Register<calibration0>;
 
   /** SolDisableDiffTemp2: Temperature difference between collector 2 and tank, at which pump stops */
   @ext(0x64, 0x8)
-  model SolDisableDiffTemp2 is Register<temp0>;
+  model SolDisableDiffTemp2 is Register<calibration0>;
 
   /** SolDhwMaxLoadTemp1: Maximal temperature for solar loading of tank1 */
   @ext(0x65, 0)
@@ -172,7 +172,7 @@ namespace Solsy.Sc {
 
   /** SolarCircuitProtectionHysteresis: After collector pump protection in case of too high temperatures, the collector has to cool down at least this temperature */
   @ext(0x9f, 0)
-  model ScProtectionHysteresis is Register<desiredtemp>;
+  model ScProtectionHysteresis is Register<calibration0>;
 
   /** FrostProtectionLimit */
   @inherit(r)
@@ -195,15 +195,9 @@ namespace Solsy.Sc {
     value: UCH;
   }
 
-  /** SolarFlowRate */
-  @inherit(r, w)
+  /** SolarFlowRate: Flow rate the collector pumps are able to deliver for 100% power */
   @ext(0x74, 0)
-  model SolFlowRate {
-    /** Flow rate the collector pumps are able to deliver for 100% power */
-    @unit("l/min")
-    @divisor(60)
-    value: UIN;
-  }
+  model SolFlowRate is Register<flowrate>;
 
   /** SolEnablePumpPWM: Collector pumps should be driven by a slow pulse width modulation */
   @ext(0xae, 0)

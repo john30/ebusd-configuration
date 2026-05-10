@@ -92,7 +92,7 @@ namespace Sol.Hwc {
 
   /** DHW_LoadingHysteresis: Hysteresis for DHW tank loading, if there is no special hysteresis (legionella, frost protection...). */
   @ext(0x5c, 0)
-  model HwcLoadingHysteresis is ReadonlyRegister<desiredtemp>;
+  model HwcLoadingHysteresis is ReadonlyRegister<calibration0>;
 
   /** DhwLoadingRequest: Flag: Loading request to the energy manager for DHW */
   @ext(0x1c, 0)

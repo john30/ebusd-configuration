@@ -1,3 +1,15 @@
+# 2026-04-19
+https://ebus.github.io/ only:
+* reworked+merged several PRs:
+  * vaillant/15.vai and c0.wtw from #503 and #429
+  * vaillant/15.700 and 15.ctlv2 from #521 and room hunidity from comment in #330
+  * vaillant/b516_inc for bai/hmu/ctlv2/vr_71/vwz from #504
+  * vaillant/15.ctlv2 and 720/bas*/ctls2/ctlv3 from #564
+  * vaillant/15.350 HW7202 from #542
+  * vaillant/08.hmu from #565
+* start using the value range feature (not yet included in csv conversinoo though)
+* fix several unit mismatches
+
 # 2026-02-01
 https://ebus.github.io/ only:
 * smaller corrections, remove unused top level broadcast items where appropriate

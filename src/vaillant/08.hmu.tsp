@@ -2,6 +2,7 @@ import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
 import "./hcmode_inc.tsp";
 import "./errors_inc.tsp";
+import "./b516_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -205,6 +206,12 @@ namespace Hmu {
   @inherit(r_2)
   @ext(0x1c)
   model TargetTempHc {
+    value: temp;
+  }
+
+  @inherit(r_2)
+  @ext(0x22)
+  model SourceTempInput {
     value: temp;
   }
 
@@ -1445,15 +1452,13 @@ namespace Hmu {
   @inherit(r_7)
   @ext(0x47, 0xa)
   model RunDataFan1Speed {
-    @unit("rpm")
-    value: EXP;
+    value: fanspeedv;
   }
 
   @inherit(r_7)
   @ext(0x49, 0xa)
   model RunDataFan2Speed {
-    @unit("rpm")
-    value: EXP;
+    value: fanspeedv;
   }
 
   @inherit(r_7)
@@ -1697,5 +1702,6 @@ namespace Hmu {
   union _includes {
     Hcmode_inc,
     Errors_inc,
+    B516_inc,
   }
 }

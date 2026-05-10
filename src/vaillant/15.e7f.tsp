@@ -72,24 +72,19 @@ namespace E7f {
 
   /** RaumtemperaturIstOffset: room temperature correction */
   @ext(0x2, 0)
-  model RoomTempOffset is InstallRegister<temp>;
+  model RoomTempOffset is InstallRegister<calibration>;
 
   /** OutDoorTempCorr: outside temperature correction */
   @ext(0x4, 0)
-  model OutsideTempOffset is InstallRegister<temp>;
+  model OutsideTempOffset is InstallRegister<calibration>;
 
   /** heating curve (only relevant if an outside temperature sensor is connected to the BMU) */
   @ext(0x23, 0)
   model HeatingCurve is InstallRegister<curve>;
 
   /** two point analog control */
-  @inherit(r, wi)
   @ext(0x29, 0)
-  model TwoPointAnalogCtrl {
-    /** two-point / analogue control */
-    @values(Values_TwoPointAnalogCtrl)
-    value: UCH;
-  }
+  model TwoPointAnalogCtrl is InstallRegister<twopointanalog>;
 
   /** WeekDayProgSwitch */
   @inherit(r, wi)
@@ -164,11 +159,6 @@ namespace E7f {
   /** eBUSCommErrorPending: eBUS communication fails */
   @ext(0x39, 0)
   model EBUSCommErrorPending is ReadonlyRegister<onoff>;
-
-  enum Values_TwoPointAnalogCtrl {
-    two_point_control: 0,
-    analogue_control: 1,
-  }
 
   enum Values_WeekDayProgSwitch {
     daily: 1,

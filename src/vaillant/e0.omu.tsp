@@ -188,11 +188,11 @@ namespace Omu {
   namespace Sw_ge104 {
     /** AirInletSensor_Offset: calibration value for air inlet sensor */
     @ext(0x4a, 0)
-    model SourceInputSensorOffset is InstallRegister<temp>;
+    model SourceInputSensorOffset is InstallRegister<calibration>;
 
     /** Brine_warmSensor_Offset: calibration value for brine sensor */
     @ext(0x4b, 0)
-    model SourceInputSensorOffsetBrine is InstallRegister<temp>;
+    model SourceInputSensorOffsetBrine is InstallRegister<calibration>;
 
     /** MaxDeiceTime: max. deicing time. By exceeding this value, message unsuccessful deicing is released */
     @ext(0x45, 0)

@@ -91,22 +91,12 @@ namespace Bai._0010006101_inc {
   model Gasvalve is ReadonlyRegister<onoff2>;
 
   /** d.33 Target fan speed */
-  @inherit(r)
   @ext(0x24, 0)
-  model TargetFanSpeed {
-    /** Fan speed setpoint */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.34 Actual fan speed */
-  @inherit(r)
   @ext(0x83, 0)
-  model FanSpeed {
-    /** fan speed actual value */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanSpeed is ReadonlyRegister<fanspeed>;
 
   /** d.35 Position TWV: Position of diverter valve; 100 = DHW, 0 = heating, 40 = middle position */
   @ext(0x54, 0)
@@ -214,23 +204,13 @@ namespace Bai._0010006101_inc {
   @ext(0x60, 0)
   model ParamToken is ReadonlyRegister<UCH>;
 
-  /** FanMinSpeedOperation */
-  @inherit(r)
+  /** FanMinSpeedOperation: Minimum Fan speed of the appliance */
   @ext(0xdf, 0)
-  model FanMinSpeedOperation {
-    /** Minimum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMinSpeedOperation is ReadonlyRegister<fanspeed>;
 
-  /** FanMaxSpeedOperation */
-  @inherit(r)
+  /** FanMaxSpeedOperation: Maximum Fan speed of the appliance */
   @ext(0xe0, 0)
-  model FanMaxSpeedOperation {
-    /** Maximum Fan speed of the appliance */
-    @unit("rpm")
-    value: UIN;
-  }
+  model FanMaxSpeedOperation is ReadonlyRegister<fanspeed>;
 
   /** WaterpressureBranchControlOff_DK: water pressure branch control off */
   @ext(0xaf, 0)
@@ -340,7 +320,7 @@ namespace Bai._0010006101_inc {
 
   /** d.14 WP_PWMPowerDia_DK: Set-PWM-Powerrate of electronic-pump */
   @ext(0xa, 0x4)
-  model WPPWMPowerDia is InstallRegister<UCH>;
+  model WPPWMPowerDia is InstallRegister<percent0>;
 
   /** d.17 Return regulation: heating flow/return regulation activation */
   @ext(0xc, 0x4)
@@ -431,11 +411,11 @@ namespace Bai._0010006101_inc {
 
   /** d.68 ignition attempts 1: unsuccessfull ignitions in the first attempt */
   @ext(0x6e, 0)
-  model CounterStartattempts1 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts1 is ReadonlyRegister<UCH>;
 
   /** d.69 ignition attempts 2: unsuccessfull ignitions in the second attempt */
   @ext(0x6f, 0)
-  model CounterStartattempts2 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts2 is ReadonlyRegister<UCH>;
 
   /** d.70 diverter valve position: Set diverter valve position 0=normal mode, 1=middle position (GB), 2=permanent CH position */
   @ext(0x2a, 0x4)
@@ -568,14 +548,9 @@ namespace Bai._0010006101_inc {
   @ext(0x3a, 0x4)
   model WarmstartDemand is ReadonlyRegister<yesno>;
 
-  /** TargetFan_Speed_Output_DK */
-  @inherit(r)
+  /** TargetFan_Speed_Output_DK: output fan speed */
   @ext(0x9f, 0)
-  model TargetFanSpeedOutput {
-    /** output fan speed */
-    @unit("rpm")
-    value: UIN;
-  }
+  model TargetFanSpeedOutput is ReadonlyRegister<fanspeed>;
 
   /** ReduceModulationBlocktime_DK: Reduced modulation blocking time to fulfil 3-star requirement */
   @ext(0x5c, 0)
@@ -583,7 +558,7 @@ namespace Bai._0010006101_inc {
 
   /** CounterStartAttempts3_DK: unsuccessfull ignitions in the third attempt */
   @ext(0x81, 0)
-  model CounterStartAttempts3 is ReadonlyRegister<temp0>;
+  model CounterStartAttempts3 is ReadonlyRegister<UCH>;
 
   /** SHE_MaxFlowTemp_DK: maximum flow temperature DHW */
   @ext(0xc3, 0)

@@ -64,19 +64,19 @@ namespace Vr630.Mc._3 {
 
   /** Ferienmodus aktiv */
   @ext(0x27, 0)
-  model IsInHoliday is ReadonlyRegister<UCH>;
+  model IsInHoliday is ReadonlyRegister<yesno>;
 
   /** Speicherladung aktiv */
   @ext(0x47, 0)
   model IsInStorageFilling is ReadonlyRegister<yesno>;
 
-  /** Sparfunktion */
+  /** CleaningLady: saving function is activated for that duration */
   @ext(0x4b, 0)
-  model CleaningLady is ReadonlyRegister<UCH>;
+  model CleaningLady is ReadonlyRegister<hours1>;
 
   /** Partymodus aktiv */
   @ext(0x4e, 0)
-  model IsInParty is ReadonlyRegister<UCH>;
+  model IsInParty is ReadonlyRegister<yesno>;
 
   /** Mischeransteuerung */
   @ext(0xf, 0)

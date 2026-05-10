@@ -47,12 +47,12 @@ namespace V81 {
 
   /** RaumtemperaturIstOffset: room temperature correction */
   @ext(0x2, 0)
-  model RoomTempOffset is Register<temp>;
+  model RoomTempOffset is Register<calibration>;
   // ##### developer's info #####
 
   /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(1, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** MaxStackeBUSTask: maximum number of bytes needed for the eBUS task stack */
   @ext(0xc, 0)

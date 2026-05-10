@@ -188,7 +188,7 @@ namespace _470 {
 
   /** RaumTempOffsetEigenErwaerm: room temperature intrinsic heating offset */
   @ext(0x15, 0)
-  model RoomTempOffsetSelfWarming is ReadonlyRegister<temp>;
+  model RoomTempOffsetSelfWarming is ReadonlyRegister<calibration>;
 
   /** OpModeEffect */
   @inherit(r, wi)
@@ -319,7 +319,7 @@ namespace _470 {
 
   /** ContinuosHeating: -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
   @ext(0x4f, 0)
-  model ContinuosHeating is InstallRegister<SCH>;
+  model ContinuosHeating is InstallRegister<temps>;
 
   /** PreheatingTime: in steps of 10, maximum time of enabling the heating before the heating time window starts */
   @ext(0x50, 0)
@@ -432,22 +432,17 @@ namespace _470 {
   @ext(0xb, 0)
   model TestVarActivateFunction is ReadonlyRegister<UCH>;
 
-  /** DHW_OPMode */
-  @inherit(r)
+  /** DHW_OPMode: operation mode of the domestic hot water circuit */
   @ext(0x42, 0)
-  model HwcOPMode {
-    /** operation mode of the domestic hot water circuit set implicitly */
-    @values(Values_HwcOPMode)
-    value: UCH;
-  }
+  model HwcOPMode is ReadonlyRegister<hwcmode7>;
 
   /** BMUB51101_DHWState: flame is on because of either tapping or tank loading */
   @ext(0x75, 0)
-  model BMUB51101HwcState is ReadonlyRegister<UCH>;
+  model BMUB51101HwcState is ReadonlyRegister<onoff>;
 
   /** B51000SetPointLoadingPump: loading pump's setpoint sent via B5 10 00 to the BMU */
   @ext(0x7b, 0)
-  model B51000TempDesiredLoadingPump is ReadonlyRegister<D1C>;
+  model B51000TempDesiredLoadingPump is ReadonlyRegister<temp1>;
 
   /** BMUB51101_BoilerFlowTemp: current flow temperature inside the BMU */
   @ext(0x77, 0)
