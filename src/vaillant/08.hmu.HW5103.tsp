@@ -228,6 +228,8 @@ namespace Hmu_HW5103 {
     value: energy;
   }
 
+  // Settings that can be changed from the indoors controller unit
+
   /** default *r */
   @base(MF, 0x1a, 0x5, 0xff)
   model r_3 {
