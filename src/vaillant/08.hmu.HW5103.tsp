@@ -379,11 +379,13 @@ namespace Hmu_HW5103 {
     uch: UCH;
   }
 
-  /** maximum anti-cycling time */
+  /** maximum block time by energy company (S21 contact) */
   @inherit(r_3, wi_1)
   @ext(0x34, 0x2d)
-  model MaxAntiCyclingTime {
-    value: integral;
+  model MaximumS21BlockAllowed {
+    @minValue(0)
+    @maxValue(9)
+    value: hour;
   }
 
   /** pump speed for heating */
@@ -392,7 +394,9 @@ namespace Hmu_HW5103 {
   model BuildingCircuitPumpOutputHeating {
     /** pump percentage or auto */
     @values(Values_pumpperc)
-    value: percentp;
+    @minValue(49)
+    @maxValue(100)
+    value: percent2;
   }
 
   /** pump speed for cooling */
@@ -401,7 +405,9 @@ namespace Hmu_HW5103 {
   model BuildingCircuitPumpOutputCooling {
     /** pump percentage or auto */
     @values(Values_pumpperc)
-    value: percentp;
+    @minValue(49)
+    @maxValue(100)
+    value: percent2;
   }
 
   /** pump speed for domestic hot water */
@@ -410,32 +416,42 @@ namespace Hmu_HW5103 {
   model BuildingCircuitPumpOutputDhw {
     /** pump percentage or auto */
     @values(Values_pumpperc)
-    value: percentp;
+    @minValue(49)
+    @maxValue(100)
+    value: percent2;
   }
 
   /** minutes to wait after mains switch on */
   @inherit(r_3, wi_1)
   @ext(0x33, 0x19)
-  model ResetAntiCyclingTime {
+  model BlockTimeAfterRestart {
+    @minValue(0)
+    @maxValue(120)
     value: minutes2;
   }
 
-  /** noise reduction factor applied when in silent mode */
+  /** maximum compressor speed in noise reduction mode */
   @inherit(r_3, wi_1)
   @ext(0x34, 0x28)
   @Ebus.example("40%", "3108b51a0405ff3428", "0aff021b280028003c0001")
-  model CompNoiseReductionFactor {
-    @minValue(30)
+  model CompNoiseReductionSpeed {
+    @minValue(40)
     @maxValue(60)
-    value: percentp;
+    value: percent2;
   }
 
-  /** cooling technology */
+  /** number of main heat pump starts */
+  @inherit(r_3)
+  @ext(0x34, 0x30)
+  model NoOfSwitchingOps {
+    value: cntstarts2;
+  }
+
+  /** cooling enabled */
   @inherit(r_3, wi_1)
   @ext(0x33, 0x1b)
-  model CoolingTechnology {
-    // none / active cooling
-    value: minutes2;
+  model ActiveCoolingEnabled {
+    value: onoff;
   }
 
   // B509
