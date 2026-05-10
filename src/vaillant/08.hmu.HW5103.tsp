@@ -39,9 +39,9 @@ namespace Hmu_HW5103 {
     ign: IGN;
   }
 
-  /** default *ws for user level "service" */
+  /** *w for controlling the heat pump */
   @write
-  @auth("service")
+  @auth("control")
   @base(MF, 0x1a, 0x6, 0xff, 0x32)
   model ws_2 {
   }
@@ -50,7 +50,7 @@ namespace Hmu_HW5103 {
   @inherit(r_2, ws_2)
   @ext(0x1c)
   model TargetTempHc {
-    // note that this only works without a VRC regulator
+    // note that this only works without a VRC regulator in the system
     value: temp;
   }
 
@@ -58,8 +58,8 @@ namespace Hmu_HW5103 {
   @inherit(r_2, ws_2)
   @ext(0x7)
   model TargetTempHwc {
-    // note that this only works without a VRC regulator
-    temp: temp;
+    // note that this only works without a VRC regulator in the system
+    value: temp;
   }
 
   @inherit(r_2)
