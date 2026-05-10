@@ -420,6 +420,16 @@ namespace Hmu_HW5103 {
     value: minutes2;
   }
 
+  /** noise reduction factor applied when in silent mode */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x28)
+  @Ebus.example("40%", "3108b51a0405ff3428", "0aff021b280028003c0001")
+  model CompNoiseReductionFactor {
+    @minValue(30)
+    @maxValue(60)
+    value: percentp;
+  }
+
   /** cooling technology */
   @inherit(r_3, wi_1)
   @ext(0x33, 0x1b)
