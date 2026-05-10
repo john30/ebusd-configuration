@@ -66,6 +66,10 @@ scalar twopointanalog extends UCH;
 @minValue(0) @maxValue(100) @step(0.5)
 scalar percentv extends EXP;
 
+/** pump percentage */
+@unit("%")
+scalar percentp extends UIN;
+
 /** date */
 scalar date extends HDA3;
 

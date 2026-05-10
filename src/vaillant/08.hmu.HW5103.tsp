@@ -228,6 +228,204 @@ namespace Hmu_HW5103 {
     value: energy;
   }
 
+  /** default *r */
+  @base(MF, 0x1a, 0x5, 0xff)
+  model r_3 {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  /** default *w */
+  @write
+  @auth("install")
+  @base(MF, 0x1a, 0x6, 0xff)
+  model wi_1 {
+  }
+
+  /** heat curve 0.1 to 4.0 */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x2d)
+  model HeatCurve {
+    @divisor(10)
+    bcd: BCD;
+  }
+
+  /** summer switch-off temperature */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x2e)
+  model SummerSwitchOffTemp {
+    temp: temp;
+  }
+
+  /** bivalence point central heating */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x2f)
+  model HcBivalencePoint {
+    temp: temp;
+  }
+
+  /** bivalence point domestic hot water */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x30)
+  model HwcBivalencePoint {
+    temp: temp;
+  }
+
+  /** alternative point central heating */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x31)
+  model HcAlternativePoint {
+    temp: temp;
+  }
+
+  /** maximum allowed flow temperature */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x32)
+  model MaxFlowTemp {
+    temp: temp;
+  }
+
+  /** minimum allowed flow temperature */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x33)
+  model MinFlowTemp {
+    temp: temp;
+  }
+
+  /** central heating activation */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x34)
+  model HcModeActive {
+    yesno: yesno;
+  }
+
+  /** domestic hot water activation */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x35)
+  model HwcModeActive {
+    yesno: yesno;
+  }
+
+  /** hysteresis for cylinder charging */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x39)
+  model HwcChargeHysteresis {
+    calibration: calibration;
+  }
+
+  /** immersion heater activation */
+  @inherit(r_3, wi_1)
+  @ext(0x33, 0x1e)
+  model ImmersionHeaterMode {
+    onoff: onoff;
+  }
+
+  /** limp home mode activation */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x37)
+  model LimpHomeMode {
+    //onoff: onoff;
+  }
+
+  /** cooling target flow temperature */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x2b)
+  model CoolTargetFlow {
+    temp: temp;
+  }
+
+  /** start heating at energy integral value */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x1e)
+  model CompStartHeatingFrom {
+    value: integral;
+  }
+
+  /** start cooling at energy integral value */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x21)
+  model CompStartCoolingFrom {
+    value: integral;
+  }
+
+  /** hysteresis for heating */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x43)
+  model CompHysteresisHeating {
+    value: integral;
+  }
+
+  /** hysteresis for cooling */
+  @inherit(r_3, wi_1)
+  @ext(0x35, 0x3f)
+  model CompHysteresisCooling {
+    value: integral;
+  }
+
+  /** maximum allowed differential pressure */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x1f)
+  model MaxRemainingDeltaP {
+    value: integral;
+  }
+
+  /** domestic hot water charging mode */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x44)
+  model HwcMode {
+    @values(Values_Domestic_hot_water_mod__eco_normal_balance_)
+    uch: UCH;
+  }
+
+  /** maximum anti-cycling time */
+  @inherit(r_3, wi_1)
+  @ext(0x34, 0x2d)
+  model MaxAntiCyclingTime {
+    value: integral;
+  }
+
+  /** pump speed for heating */
+  @inherit(r_3, wi_1)
+  @ext(0x33, 0x16)
+  model BuildingCircuitPumpOutputHeating {
+    /** pump percentage or auto */
+    @values(Values_pumpperc)
+    value: percentp;
+  }
+
+  /** pump speed for cooling */
+  @inherit(r_3, wi_1)
+  @ext(0x33, 0x17)
+  model BuildingCircuitPumpOutputCooling {
+    /** pump percentage or auto */
+    @values(Values_pumpperc)
+    value: percentp;
+  }
+
+  /** pump speed for domestic hot water */
+  @inherit(r_3, wi_1)
+  @ext(0x33, 0x18)
+  model BuildingCircuitPumpOutputDhw {
+    /** pump percentage or auto */
+    @values(Values_pumpperc)
+    value: percentp;
+  }
+
+  /** minutes to wait after mains switch on */
+  @inherit(r_3, wi_1)
+  @ext(0x33, 0x19)
+  model ResetAntiCyclingTime {
+    value: minutes2;
+  }
+
+  /** cooling technology */
+  @inherit(r_3, wi_1)
+  @ext(0x33, 0x1b)
+  model CoolingTechnology {
+    // none / active cooling
+    value: minutes2;
+  }
+
   // B509
   /** default *r */
   @base(MF, 0x9, 0x54, 0x2, 0)
@@ -405,5 +603,15 @@ namespace Hmu_HW5103 {
   union _includes {
     Hcmode_inc,
     Errors_inc,
+  }
+
+  enum Values_Domestic_hot_water_mod__eco_normal_balance_ {
+    eco: 0,
+    normal: 1,
+    balance: 2,
+  }
+
+  enum Values_pumpperc {
+    auto: 49,
   }
 }
