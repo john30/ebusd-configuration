@@ -43,7 +43,7 @@ namespace Hmu_HW5103 {
   @write
   @auth("control")
   @base(MF, 0x1a, 0x6, 0xff, 0x32)
-  model ws_2 {
+  model w_2 {
   }
 
   /** room target temperature */
