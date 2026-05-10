@@ -256,6 +256,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x2e)
   model SummerSwitchOffTemp {
+    @minValue(10)
+    @maxValue(90)
     temp: temp;
   }
 
@@ -263,6 +265,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x2f)
   model HcBivalencePoint {
+    @minValue(-30)
+    @maxValue(20)
     temp: temp;
   }
 
@@ -270,6 +274,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x30)
   model HwcBivalencePoint {
+    @minValue(-20)
+    @maxValue(20)
     temp: temp;
   }
 
@@ -277,6 +283,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x31)
   model HcAlternativePoint {
+    @minValue(-20)
+    @maxValue(40)
     temp: temp;
   }
 
@@ -284,6 +292,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x32)
   model MaxFlowTemp {
+    @minValue(15)
+    @maxValue(90)
     temp: temp;
   }
 
@@ -291,17 +301,19 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x33)
   model MinFlowTemp {
+    @minValue(15)
+    @maxValue(90)
     temp: temp;
   }
 
-  /** central heating activation */
+  /** heating function enabled */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x34)
   model HcModeActive {
     yesno: yesno;
   }
 
-  /** domestic hot water activation */
+  /** domestic hot water function enabled */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x35)
   model HwcModeActive {
@@ -312,27 +324,31 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x35, 0x39)
   model HwcChargeHysteresis {
-    calibration: calibration;
+    value: hysteresis;
   }
 
-  /** immersion heater activation */
+  /** normal immersion heater activation */
   @inherit(r_3, wi_1)
   @ext(0x33, 0x1e)
   model ImmersionHeaterMode {
-    onoff: onoff;
+    @values(Values_immersion_heater_applications)
+    value: UIN;
   }
 
-  /** limp home mode activation */
+  /** emergency immersion heater activation */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x37)
-  model LimpHomeMode {
-    //onoff: onoff;
+  model ImmersionHeaterLimpHomeMode {
+    @values(Values_immersion_heater_applications)
+    value: UIN;
   }
 
   /** cooling target flow temperature */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x2b)
-  model CoolTargetFlow {
+  model CoolTargetFlowTemp {
+    @minValue(7)
+    @maxValue(24)
     temp: temp;
   }
 
@@ -340,6 +356,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x34, 0x1e)
   model CompStartHeatingFrom {
+    @minValue(-999)
+    @maxValue(9)
     value: integral;
   }
 
@@ -347,6 +365,8 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x34, 0x21)
   model CompStartCoolingFrom {
+    @minValue(0)
+    @maxValue(999)
     value: integral;
   }
 
@@ -354,21 +374,28 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x34, 0x43)
   model CompHysteresisHeating {
-    value: integral;
+    @minValue(3)
+    @maxValue(15)
+    value: hysteresis;
   }
 
   /** hysteresis for cooling */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x3f)
   model CompHysteresisCooling {
-    value: integral;
+    @minValue(3)
+    @maxValue(15)
+    value: hysteresis;
   }
 
   /** maximum allowed differential pressure */
   @inherit(r_3, wi_1)
   @ext(0x34, 0x1f)
   model MaxRemainingDeltaP {
-    value: integral;
+    @minValue(200)
+    @maxValue(900)
+    @step(10)
+    value: pressm2;
   }
 
   /** domestic hot water charging mode */
@@ -443,7 +470,7 @@ namespace Hmu_HW5103 {
   /** number of main heat pump starts */
   @inherit(r_3)
   @ext(0x34, 0x30)
-  model NoOfSwitchingOps {
+  model HMUStarts {
     value: cntstarts2;
   }
 
@@ -637,6 +664,13 @@ namespace Hmu_HW5103 {
     eco: 0,
     normal: 1,
     balance: 2,
+  }
+
+  enum Values_immersion_heater_applications {
+    off: 0,
+    heating: 1,
+    dhw: 2,
+    both: 3,
   }
 
   enum Values_pumpperc {

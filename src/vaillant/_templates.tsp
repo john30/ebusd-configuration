@@ -184,6 +184,10 @@ scalar calibrations extends SCH;
 @minValue(-50) @maxValue(50) @step(0.5)
 scalar calibrationv extends EXP;
 
+@unit("K")
+@divisor(16)
+scalar hysteresis extends UIN;
+
 @unit("°min")
 scalar integral extends SIN;
 
