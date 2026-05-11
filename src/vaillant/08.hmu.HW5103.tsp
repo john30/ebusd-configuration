@@ -231,6 +231,7 @@ namespace Hmu_HW5103 {
   // Settings that can be changed from the indoors controller unit
 
   /** default *r */
+  @auth("install")
   @base(MF, 0x1a, 0x5, 0xff)
   model r_3 {
     @maxLength(3)
@@ -309,14 +310,14 @@ namespace Hmu_HW5103 {
   /** heating function enabled */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x34)
-  model HcModeActive {
+  model HcEnabled {
     yesno: yesno;
   }
 
   /** domestic hot water function enabled */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x35)
-  model HwcModeActive {
+  model HwcEnabled {
     yesno: yesno;
   }
 
@@ -330,7 +331,7 @@ namespace Hmu_HW5103 {
   /** normal immersion heater activation */
   @inherit(r_3, wi_1)
   @ext(0x33, 0x1e)
-  model ImmersionHeaterMode {
+  model ImmersionHeaterEnabled {
     @values(Values_immersion_heater_applications)
     value: UIN;
   }
@@ -338,7 +339,8 @@ namespace Hmu_HW5103 {
   /** emergency immersion heater activation */
   @inherit(r_3, wi_1)
   @ext(0x35, 0x37)
-  model ImmersionHeaterLimpHomeMode {
+  model EmergencyModeImmersionHeaterEnabled {
+    // also called "limp home mode" and "Notbetrieb"
     @values(Values_immersion_heater_applications)
     value: UIN;
   }
@@ -440,7 +442,7 @@ namespace Hmu_HW5103 {
   /** pump speed for domestic hot water */
   @inherit(r_3, wi_1)
   @ext(0x33, 0x18)
-  model BuildingCircuitPumpOutputDhw {
+  model BuildingCircuitPumpOutputHwc {
     /** pump percentage or auto */
     @values(Values_pumpperc)
     @minValue(49)
@@ -461,7 +463,7 @@ namespace Hmu_HW5103 {
   @inherit(r_3, wi_1)
   @ext(0x34, 0x28)
   @Ebus.example("40%", "3108b51a0405ff3428", "0aff021b280028003c0001")
-  model CompNoiseReductionSpeed {
+  model NoiseReductionLevel {
     @minValue(40)
     @maxValue(60)
     value: percent2;
@@ -470,7 +472,7 @@ namespace Hmu_HW5103 {
   /** number of main heat pump starts */
   @inherit(r_3)
   @ext(0x34, 0x30)
-  model HMUStarts {
+  model HMUSystemStarts {
     value: cntstarts2;
   }
 
