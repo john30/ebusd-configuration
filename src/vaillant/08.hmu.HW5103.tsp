@@ -286,6 +286,7 @@ namespace Hmu_HW5103 {
   model HcAlternativePoint {
     @minValue(-20)
     @maxValue(40)
+    @values(Values_alternative_point)
     temp: temp;
   }
 
@@ -677,5 +678,9 @@ namespace Hmu_HW5103 {
 
   enum Values_pumpperc {
     auto: 49,
+  }
+
+  enum Values_alternative_point {
+    off: -21,
   }
 }
