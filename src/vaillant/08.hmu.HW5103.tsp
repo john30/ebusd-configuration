@@ -61,6 +61,14 @@ namespace Hmu_HW5103 {
     value: temp;
   }
 
+  /** start cooling manually */
+  @inherit(r_2, w_2)
+  @ext(0x1d)
+  model StartCooling {
+    // note that this only works without a VRC regulator in the system
+    value: onoff;
+  }
+
   @inherit(r_2)
   @ext(0)
   model YieldHcDay {
