@@ -64,7 +64,7 @@ namespace Hmu_HW5103 {
   /** start cooling manually */
   @inherit(r_2, w_2)
   @ext(0x1d)
-  model StartCooling {
+  model ManualCooling {
     // note that this only works without a VRC regulator in the system
     value: onoff;
   }
