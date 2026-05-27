@@ -1133,14 +1133,7 @@ namespace _700 {
     /** current room setpoint considering all basic conditions passed to the control algorithms */
     value: tempv;
   }
-
-  /** cooling room temperature desired zone 1 */
-  @inherit(r_6)
-  @ext(0x15, 0)
-  model Z1CoolingTempDesired {
-    /** current cooling room setpoint used by the control algorithms */
-    value: tempv;
-  }
+  // r;w,z1Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 1,1500,tempv,unknown value for zone 1
 
   /** Kurzbezeichnung zone 1 */
   @inherit(r_6, w_6)
@@ -1164,14 +1157,6 @@ namespace _700 {
   model Z1Name2 {
     /** name of zone 1 */
     value: zname;
-  }
-
-  /** manual cooling setpoint zone 1 */
-  @inherit(r_6, w_6)
-  @ext(0x23, 0)
-  model Z1CoolingManualTemp {
-    /** manual cooling setpoint for zone 1 */
-    value: tempv;
   }
   // ##### zone 2 #####
 
@@ -1313,14 +1298,7 @@ namespace _700 {
     /** current room setpoint considering all basic conditions passed to the control algorithms */
     value: tempv;
   }
-
-  /** cooling room temperature desired zone 2 */
-  @inherit(r_7)
-  @ext(0x15, 0)
-  model Z2CoolingTempDesired {
-    /** current cooling room setpoint used by the control algorithms */
-    value: tempv;
-  }
+  // r;w,z2Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 2,1500,tempv,unknown value for zone 2
 
   /** Kurzbezeichnung zone 2 */
   @inherit(r_7, w_7)
@@ -1344,14 +1322,6 @@ namespace _700 {
   model Z2Name2 {
     /** name of zone 2 */
     value: zname;
-  }
-
-  /** manual cooling setpoint zone 2 */
-  @inherit(r_7, w_7)
-  @ext(0x23, 0)
-  model Z2CoolingManualTemp {
-    /** manual cooling setpoint for zone 2 */
-    value: tempv;
   }
   // ##### zone 3 #####
 
@@ -1493,14 +1463,7 @@ namespace _700 {
     /** current room setpoint considering all basic conditions passed to the control algorithms */
     value: tempv;
   }
-
-  /** cooling room temperature desired zone 3 */
-  @inherit(r_8)
-  @ext(0x15, 0)
-  model Z3CoolingTempDesired {
-    /** current cooling room setpoint used by the control algorithms */
-    value: tempv;
-  }
+  // r;w,z3Unknown15Temp,(in noise reduction 24 otherwise 99 - max.air level?) temperature zone 3,1500,tempv,unknown value for zone 3
 
   /** shortlabel zone 3 */
   @inherit(r_8, w_8)
@@ -1524,14 +1487,6 @@ namespace _700 {
   model Z3Name2 {
     /** name of zone 3 */
     value: zname;
-  }
-
-  /** manual cooling setpoint zone 3 */
-  @inherit(r_8, w_8)
-  @ext(0x23, 0)
-  model Z3CoolingManualTemp {
-    /** manual cooling setpoint for zone 3 */
-    value: tempv;
   }
   // ##### timers #####
   // air
