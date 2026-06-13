@@ -33,15 +33,15 @@ scalar press extends FLT;
 @minValue(0) @maxValue(70) @step(0.5)
 scalar pressv extends EXP;
 
-@unit("l/h")
+@unit("L/h")
 @maxValue(20)
 scalar flowrate extends UIN;
 
-@unit("l/min")
+@unit("L/min")
 @divisor(100)
 scalar flowrate100 extends UIN;
 
-@unit("m3/h")
+@unit("m³/h")
 @maxValue(400)
 scalar airflowrate extends UIN;
 
