@@ -175,6 +175,25 @@ namespace Hmu_HW5103 {
     value: percent;
   }
 
+  @base(MF, 0x1a, 0x5)
+  model r_silent {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  @write
+  @base(MF, 0x1a, 0x6)
+  model w_silent {}
+
+  @inherit(r_silent, w_silent)
+  @ext(0xff, 0x34, 0x28)
+  @Ebus.example("40%", "3108b51a0405ff3428", "0aff021b280028003c0001")
+  model SilentModeCompressorReduction {
+    @minValue(30)
+    @maxValue(60)
+    value: percent0;
+  }
+
   @inherit(r_2)
   @ext(0x2A)
   model YieldCoolingMonth {
