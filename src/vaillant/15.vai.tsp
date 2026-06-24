@@ -22,13 +22,13 @@ namespace Vai {
   @ext(0x24, 0)
   model Mode is Register<mcmode>;
 
-  /** temporary high ventilation duration
-   * Validated with recoVair 275/3: register uses HCD:2 encoding (not plain minutes).
-   * Values represent 0.5h steps: 0=off, 2=0.5h, 3=1h, 4=1.5h, 5=2h, 6=2.5h, 7=3h.
-   * Note: device decrements value by one step immediately upon activation.
+  /** temporary high ventilation duration in 0.5h steps
+   * Uses HCD:2 (2-byte hex coded decimal) encoding.
+   * Values: 0=off, 2=0.5h, 3=1h, 4=1.5h, 5=2h, 6=2.5h, 7=3h.
+   * Note (validated with recoVair 275/3): device decrements by one step immediately upon activation.
    */
   @ext(0x58, 0)
-  model HighDuration is Register<minutes2>;
+  model HighDuration is Register<HCD2>;
 
   /** cooling days */
   @ext(0x36, 0)
