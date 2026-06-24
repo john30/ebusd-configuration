@@ -10,24 +10,29 @@ namespace Vaillant;
 @zz(0xc0)
 namespace Wtw {
   // ,WTW04,0124,1000535200 190
+  // Note: validated with WTW04 SW=0127 HW=9001 (recoVair 275/3)
+  // IMPORTANT for HW=9001: temperature registers (RoomTemp, AirInletTemp, AirOutletTemp,
+  // ExhaustAirInletTemp, ExhaustAirOutletTemp) require PBSB B509,29 with a 2-byte IGN prefix
+  // before the register ID. This differs from the standard B509,0D used in the @ext definitions.
+  // If temperatures read as invalid on HW=9001, use PBSB B509,29 with IGN:2 prefix.
 
   /** room temperature */
   @ext(0, 0)
   model RoomTemp is Register<tempsensor>;
 
-  /** Supply air inlet temperature */
+  /** Supply air inlet temperature (Zuluft) */
   @ext(1, 0)
   model AirInletTemp is ReadonlyUpdateRegister<tempsensor>;
 
-  /** Supply air outlet temperature */
+  /** Supply air outlet temperature (Außenluft) */
   @ext(0x2, 0)
   model AirOutletTemp is ReadonlyUpdateRegister<tempsensor>;
 
-  /** Exhaust air inlet temperature */
+  /** Exhaust air inlet temperature (Abluft) */
   @ext(0x3, 0)
   model ExhaustAirInletTemp is ReadonlyUpdateRegister<tempsensor>;
 
-  /** Exhaust air outlet temperature */
+  /** Exhaust air outlet temperature (Fortluft) */
   @ext(0x4, 0)
   model ExhaustAirOutletTemp is ReadonlyUpdateRegister<tempsensor>;
 

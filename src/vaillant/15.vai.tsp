@@ -9,16 +9,24 @@ namespace Vaillant;
 // @zz(0x15)
 namespace Vai {
   // ,VAI00,0124,0020015281 189
+  // Validated with VAI00 SW=0125 HW=8901 (recoVair 275/3)
 
   /** room temperature */
   @ext(0, 0)
   model RoomTemp is Register<tempsensor>;
 
-  /** ventilation mode */
+  /** ventilation mode
+   * Validated values for recoVair 275/3 (VAI00 SW=0125 HW=8901):
+   * on(1)=day, off(2)=off, auto(3)=auto, low(5)=night
+   */
   @ext(0x24, 0)
   model Mode is Register<mcmode>;
 
-  /** temporary high duration */
+  /** temporary high ventilation duration
+   * Validated with recoVair 275/3: register uses HCD:2 encoding (not plain minutes).
+   * Values represent 0.5h steps: 0=off, 2=0.5h, 3=1h, 4=1.5h, 5=2h, 6=2.5h, 7=3h.
+   * Note: device decrements value by one step immediately upon activation.
+   */
   @ext(0x58, 0)
   model HighDuration is Register<minutes2>;
 
