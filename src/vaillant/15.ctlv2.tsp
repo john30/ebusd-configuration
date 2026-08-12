@@ -614,6 +614,20 @@ namespace _720 {
     value: calibrationv;
   }
 
+  /** manual cooling start date */
+  @inherit(r_1, w_1)
+  @ext(0xda, 0)
+  model ManualCoolingStartDate {
+    value: date;
+  }
+
+  /** manual cooling end date */
+  @inherit(r_1, w_1)
+  @ext(0xdb, 0)
+  model ManualCoolingEndDate {
+    value: date;
+  }
+
   // ##### Hot water circuit #####
 
   /** default *r */
