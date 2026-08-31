@@ -342,7 +342,7 @@ namespace Excellent {
   model RelativeHumidity {
     @unit("%")
     @divisor(10)
-    value: SIR;
+    value: UIR;
   }
 
   /** Humidity Boost State */
