@@ -100,10 +100,19 @@ namespace Excellent {
   @inherit(r_1)
   @ext(0x22)
   model TotalFilterDays {
+    @unit("d")
     days: days;
+
+    @unit("d")
     min: days;
+
+    @unit("d")
     max: days;
+
+    @unit("d")
     step: days;
+
+    @unit("d")
     default: days;
   }
 
@@ -133,7 +142,7 @@ namespace Excellent {
   @inherit(r_1)
   @ext(0x25)
   model TotalFlow {
-    volume: volume;
+    total: volume;
     min: volume;
     max: volume;
     step: volume;
