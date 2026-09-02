@@ -505,7 +505,7 @@ namespace Bai._308523_inc {
   model StorageLoadTimeMax is InstallRegister<minutes0>;
 
   /** d.77 hot water partload: storage part load (storage charging capacity limit) */
-  @ext(0x8, 0x4)
+  @ext(0x4d, 0x00)
   model PartloadHwcKW is InstallRegister<power>;
 
   /** d.78 Max value flow temp storage: storage charging temperature limit (target flow temperature in storage mode) */
