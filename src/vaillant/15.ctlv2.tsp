@@ -71,6 +71,21 @@ namespace _720 {
     ign: IGN;
   }
 
+  enum Values_SystemDemand {
+    off: 0,
+    heating: 1,
+    cooling: 2,
+    hot_water: 3,
+  }
+
+  /** current system demand - cooling=2 is assumed */
+  @inherit(r_1)
+  @ext(0x48, 0)
+  model SystemDemand {
+    @values(Values_SystemDemand)
+    value: UIN;
+  }
+
   /** default *ri for user level "install" */
   @auth("install")
   @base(MF, 0x24, 0x2, 0, 0, 0)
