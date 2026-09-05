@@ -69,6 +69,10 @@ scalar percentv extends EXP;
 /** date */
 scalar date extends HDA3;
 
+// BCD variant of the above, as used in the error/service history records
+/** date */
+scalar date2 extends BDA3;
+
 /** weekday */
 scalar day extends BDY;
 
@@ -93,6 +97,10 @@ scalar time extends VTI;
 
 /** time */
 scalar time2 extends VTM;
+
+// BCD variant of the above, as used in the error/service history records
+/** time */
+scalar time3 extends BTM;
 
 /** minutes */
 @unit("min")
@@ -341,8 +349,8 @@ model errors {
 
 model errorhistory {
   status: status;
-  time: time2;
-  date: date;
+  time: time3;
+  date: date2;
   error: error;
 }
 
