@@ -434,7 +434,7 @@ namespace _470 {
 
   /** DHW_OPMode: operation mode of the domestic hot water circuit */
   @ext(0x42, 0)
-  model HwcOPMode is ReadonlyRegister<hwcmode7>;
+  model HwcOPMode is Register<hwcmode7>;
 
   /** BMUB51101_DHWState: flame is on because of either tapping or tank loading */
   @ext(0x75, 0)
