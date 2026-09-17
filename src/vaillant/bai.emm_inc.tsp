@@ -58,7 +58,7 @@ namespace Bai.Emm_inc {
   /** water pressure */
   @inherit(r_1)
   @ext(0x39, 0)
-  model WaterPressure {
+  model DisplayedWaterPressure {
     /** water pressure */
     value: pressv;
   }
@@ -95,7 +95,7 @@ namespace Bai.Emm_inc {
   /** gewünschte Temperatur Warmwasserkreis */
   @inherit(r_2, w_2)
   @ext(0x4, 0)
-  model HwcTempDesired {
+  model DisplayedHwcTempDesired {
     /** setpoint of domestic hot water circuit */
     value: tempv;
   }
