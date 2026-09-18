@@ -1069,7 +1069,7 @@ enum Values_hmucode {
   hot_gas_temp_switch_open: 286,
   fan1_wind: 287,
   fan2_wind: 288,
-  current_limt_active: 289,
+  current_limit_active: 289,
   high_pressure_switch_open: 302,
   compressor_outlet_temp_too_high_1: 303,
   evaporation_temp_too_low: 304,
