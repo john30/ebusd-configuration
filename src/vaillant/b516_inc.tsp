@@ -54,6 +54,22 @@ namespace B516_inc {
     value: energye;
   }
 
+  /** energy statistics for a specific day */
+  @inherit(rc)
+  @ext(
+    1,  // period=day
+    0xff, 0xff // fix value
+  )
+  model StatEnergySumDay {
+    /** packed MDYY date, see comment in StatEnergySumYear */
+    @out
+    date: UIN;
+
+    @maxLength(7)
+    ign: IGN;
+
+    value: energye;
+  }
   enum Values_period {
     total: 0,
     day: 1,
