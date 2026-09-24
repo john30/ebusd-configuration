@@ -1049,7 +1049,7 @@ namespace _700 {
 
   /** desired temperature zone 1 */
   @inherit(r_6, w_6)
-  @ext(0x7, 0)
+  @ext(0x22, 0)
   model Z1DayTemp {
     /** day setpoint for zone 1 */
     value: tempv;
@@ -1237,7 +1237,7 @@ namespace _700 {
 
   /** desired temperature zone 2 */
   @inherit(r_7, w_7)
-  @ext(0x7, 0)
+  @ext(0x22, 0)
   model Z2DayTemp {
     /** day setpoint for zone 2 */
     value: tempv;
@@ -1417,7 +1417,7 @@ namespace _700 {
 
   /** desired temperature zone 3 */
   @inherit(r_8, w_8)
-  @ext(0x7, 0)
+  @ext(0x22, 0)
   model Z3DayTemp {
     /** day setpoint for zone 3 */
     value: tempv;
