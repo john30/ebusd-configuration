@@ -1,5 +1,4 @@
 *~
-.worktrees/
 node_modules/
 out*
 dist/
