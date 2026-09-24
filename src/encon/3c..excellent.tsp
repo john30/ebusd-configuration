@@ -249,10 +249,10 @@ namespace Excellent {
     value: UIR;
   }
 
-  /** Bypass current */
+  /** Current bypass position */
   @inherit(r_2)
   @ext(0xd)
-  model BypassCurrent {
+  model BypassPosition {
     value: UIR;
   }
 
@@ -540,10 +540,10 @@ namespace Excellent {
   @inherit(r_3, w_1)
   @ext(0x4)
   model BypassTemp {
-    @minValue(150)
-    @maxValue(350)
-    @step(5)
-    temp10: temp10;
+    @minValue(15)
+    @maxValue(35)
+    @step(0.5)
+    value: temp10;
 
     /** [min:150] */
     min?: temp10;
