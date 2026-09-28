@@ -291,7 +291,21 @@ namespace Hmu_HW5103 {
   model RunDataEEVOutletTemp {
     value: tempv;
   }
+  /** evaporation temperature; corresponds to service value T.0.85 */
+  @inherit(r_7)
+  @ext(0xa7, 0x0e)
+  model RunDataEvaporationTemp {
+    value: tempv;
+  }
 
+  /** actual overheating/superheat; corresponds to service value T.0.88 */
+  @inherit(r_7)
+  @ext(0xa9, 0x0e)
+  model RunDataOverheatingActualValue {
+    @unit("K")
+    value: EXP;
+
+  }
   @inherit(r_7)
   @ext(0xb8, 0xb)
   model RunStatsHMUHours {
