@@ -3797,6 +3797,25 @@ namespace _720 {
     Resolved: 2,
   }
 
+  /** passive B531 gateway LPC signal */
+  @write
+  @passive
+  @base(MF, 0x31)
+  model uw_b531 {}
+
+  /** LPC signal received from the gateway */
+  @inherit(uw_b531)
+  @ext(0x03)
+  model GatewayLpcSignal {
+    @values(Values_GatewayLpcSignal)
+    value: UCH;
+  }
+
+  enum Values_GatewayLpcSignal {
+    absent: 1,
+    present: 2,
+  }
+
   // includes
 
   /** included parts */
