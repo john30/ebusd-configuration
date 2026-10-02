@@ -66,6 +66,10 @@ scalar twopointanalog extends UCH;
 @minValue(0) @maxValue(100) @step(0.5)
 scalar percentv extends EXP;
 
+/** percentage */
+@unit("%")
+scalar percent2 extends UIN;
+
 /** date */
 scalar date extends HDA3;
 
@@ -179,6 +183,10 @@ scalar calibrations extends SCH;
 @unit("K")
 @minValue(-50) @maxValue(50) @step(0.5)
 scalar calibrationv extends EXP;
+
+@unit("K")
+@divisor(16)
+scalar hysteresis extends UIN;
 
 @unit("°min")
 scalar integral extends SIN;
