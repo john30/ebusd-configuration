@@ -614,6 +614,41 @@ namespace _720 {
     value: calibrationv;
   }
 
+  /** holiday/absence start date */
+  @inherit(r_1, w_1)
+  @ext(0xf2, 0)
+  model HolidayStartPeriod {
+    value: hfrom;
+  }
+
+  /** holiday/absence end date */
+  @inherit(r_1, w_1)
+  @ext(0xf3, 0)
+  model HolidayEndPeriod {
+    value: hto;
+  }
+
+  /** holiday/absence start time */
+  @inherit(r_1, w_1)
+  @ext(0xf4, 0)
+  model HolidayStartTime {
+    value: HTI;
+  }
+
+  /** holiday/absence end time */
+  @inherit(r_1, w_1)
+  @ext(0xf5, 0)
+  model HolidayEndTime {
+    value: HTI;
+  }
+
+  /** holiday/absence room temperature setpoint */
+  @inherit(r_1, w_1)
+  @ext(0xf6, 0)
+  model HolidayRoomTemp {
+    value: tempv;
+  }
+
   // ##### Hot water circuit #####
 
   /** default *r */
