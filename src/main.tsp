@@ -5,6 +5,7 @@ import "./encon/broadcast.tsp";
 import "./memory.tsp";
 import "./ochsner/15.22102.tsp";
 import "./ochsner/broadcast.tsp";
+import "./tem/15.r19.tsp";
 // import "./tem/15.tsp";
 import "./tem/broadcast.tsp";
 import "./vaillant/05.vd4.tsp";
