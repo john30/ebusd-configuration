@@ -52,15 +52,13 @@ namespace Hcmode_inc {
     hwctempdesired: temp1;
     hwcflowtempdesired: temp0;
 
-    @maxLength(1)
-    ign: IGN;
+    setmode1: UCH;
 
     disablehc: BI0;
     disablehwctapping: BI1;
     disablehwcload: BI2;
 
-    @maxLength(1)
-    ign_1: IGN;
+    setmode2: UCH;
 
     remoteControlHcPump: BI0;
     releaseBackup: BI1;
