@@ -20,6 +20,7 @@ import "./bai.0010021901_inc.tsp";
 import "./bai.0010021961_inc.tsp";
 import "./bai.0010043897_inc.tsp";
 import "./bai.0010008045_inc.tsp";
+import "./bai.0010023671_inc.tsp";
 import "./errors_inc.tsp";
 import "./hcmode_inc.tsp";
 import "./b516_inc.tsp";
@@ -352,6 +353,9 @@ namespace Bai {
     @condition(Scan.Id.product, "='0010043897'")
     Scan_Id_product_0010043897: Bai._0010043897_inc,
 
+    @condition(Scan.Id.product, "='0010023671'")
+    Scan_Id_product_0010023671: Bai._0010023671_inc,
+
     @condition(Id.Id.hw, "=6701")
     hw_6701: Bai._0010003886_inc,
 
@@ -387,6 +391,9 @@ namespace Bai {
 
     @condition(Id.Id.hw, "=7603")
     hw_7603: Bai._0010043897_inc,
+
+    @condition(Id.Id.hw, "=7503")
+    hw_7503: Bai._0010023671_inc,
 
     // final load alternative
     default: Bai._308523_inc,
