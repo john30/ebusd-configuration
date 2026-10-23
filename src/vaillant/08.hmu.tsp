@@ -817,6 +817,14 @@ namespace Hmu {
     value: percent0;
   }
 
+  /** EEV-VI position */
+  @inherit(rs)
+  @ext(0x16, 0x03, 0xff, 0xff)
+  model TestEEVVIPosition {
+    /** T.24 on VWF */
+    value: percent0;
+  }
+
   /** read compressor outlet temperature */
   @inherit(ws_1)
   @ext(0x37)
@@ -856,7 +864,7 @@ namespace Hmu {
   @inherit(rs)
   @ext(0x2b)
   model TestWaterThroughput {
-    /** T.0.45 */
+    /** T.0.43 */
     @unit("l/h")
     value: UIN;
   }
@@ -883,6 +891,30 @@ namespace Hmu {
   model TestBuildingPumpPower {
     /** T.0.01 */
     value: percent0;
+  }
+
+  /** circulation pump power, 255 = off */
+  @inherit(rs)
+  @ext(0x05, 0x03, 0xff, 0xff)
+  model TestCirculationPump {
+    /** T.48 on VWF */
+    value: percent0;
+  }
+
+  /** brine pump power, 255 = off */
+  @inherit(rs)
+  @ext(0x0e, 0x03, 0xff, 0xff)
+  model TestBrinePumpPower {
+    /** T.14 on VWF */
+    value: percent0;
+  }
+
+  /** cooling active relay */
+  @inherit(rs)
+  @ext(0x0a, 0x03, 0xff, 0xff)
+  model TestCoolingActive {
+    /** T.49 on VWF */
+    value: onoff;
   }
 
   /** fan 1 */
@@ -965,6 +997,18 @@ namespace Hmu {
     value: UIN;
   }
 
+  // Test menu values of brine/water heat pumps (VWF x7/4, HMU HW0403). On these devices the value is only
+  // returned when the request carries the payload 03 FF FF, so it is part of the id here.
+
+  /** alarm output */
+  @inherit(rs)
+  @ext(0x2d, 0x03, 0xff, 0xff)
+  model TestAlarmOutput {
+    /** T.0.45 */
+    @values(Values_TestAlarmOutput)
+    value: UIN;
+  }
+
   /** air intake temperature */
   @inherit(rs)
   @ext(0x30)
@@ -973,6 +1017,36 @@ namespace Hmu {
     @unit("°C")
     @divisor(10)
     value: SIN;
+  }
+
+  /** brine inlet temperature */
+  @inherit(rs)
+  @ext(0x31, 0x03, 0xff, 0xff)
+  model TestBrineTempIn {
+    /** T.97 on VWF */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** brine outlet temperature */
+  @inherit(rs)
+  @ext(0x32, 0x03, 0xff, 0xff)
+  model TestBrineTempOut {
+    /** T.98 on VWF */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** brine pressure */
+  @inherit(rs)
+  @ext(0x33, 0x03, 0xff, 0xff)
+  model TestBrinePressure {
+    /** T.101 on VWF */
+    @unit("bar")
+    @divisor(10)
+    value: UIN;
   }
 
   /** EEV outlet temperature */
@@ -1097,6 +1171,45 @@ namespace Hmu {
     @unit("K")
     @divisor(10)
     value: SIN;
+  }
+
+  /** EEV-VI inlet temperature */
+  @inherit(rs)
+  @ext(0x6e, 0x03, 0xff, 0xff)
+  model TestEEVVIInletTemp {
+    /** T.123 on VWF */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** EEV-VI outlet temperature */
+  @inherit(rs)
+  @ext(0x6f, 0x03, 0xff, 0xff)
+  model TestEEVVIOutletTemp {
+    /** T.124 on VWF */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** cooling flow temperature */
+  @inherit(rs)
+  @ext(0x70, 0x03, 0xff, 0xff)
+  model TestCoolingFlowTemp {
+    /** T.80 on VWF */
+    @unit("°C")
+    @divisor(10)
+    value: SIN;
+  }
+
+  /** priority switch valve cooling */
+  @inherit(rs)
+  @ext(0x78, 0x03, 0xff, 0xff)
+  model TestPrioritySwitchingValveCooling {
+    /** T.03 on VWF */
+    @values(Values_TestPrioritySwitchingValveCooling)
+    value: UIN;
   }
 
   /** temperature switch compressor outlet */
@@ -1646,6 +1759,16 @@ namespace Hmu {
   enum Values_TestTempSwitchCompressorOutlet {
     open: 0,
     close: 1,
+  }
+
+  enum Values_TestPrioritySwitchingValveCooling {
+    heat: 0,
+    cooling: 1,
+  }
+
+  enum Values_TestAlarmOutput {
+    no_alarm: 0,
+    alarm: 1,
   }
 
   enum Values_TestLockoutContactS20 {
