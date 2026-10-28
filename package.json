@@ -33,5 +33,8 @@
   "dependencies": {
     "@ebusd/ebus-typespec": "~0.29.0",
     "@typespec/compiler": "~1.12.0"
+  },
+  "overrides": {
+    "@typespec/asset-emitter": "0.79.1"
   }
 }

@@ -10,6 +10,7 @@ namespace Vaillant;
 // @zz(0x15)
 namespace _700 {
   // ,70000,VRC 700,700 110
+  // 15.ctls3.tsp is a copy of this file with a different DayTemp/cooling layout: apply changes there too
   // ##### Generell #####
 
   /** default *r */
