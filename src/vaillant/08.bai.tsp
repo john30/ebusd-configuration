@@ -13,6 +13,7 @@ import "./bai.0010006341_inc.tsp";
 import "./bai.0010007508_inc.tsp";
 import "./bai.0010010674_inc.tsp";
 import "./bai.0010011701_inc.tsp";
+import "./bai.0010011694_inc.tsp";
 import "./bai.0010015600_inc.tsp";
 import "./bai.0020066007_inc.tsp";
 import "./bai.308523_inc.tsp";
@@ -36,6 +37,12 @@ namespace Bai {
 
   /** included parts */
   union _includes {
+    // Product-specific override; leave the shared HW5502 fallback unchanged.
+    @condition(Scan.Id.product, "='0010011694'")
+    @condition(Id.Id.sw, "=0602")
+    @condition(Id.Id.hw, "=5502")
+    Scan_Id_product_0010011694: Bai._0010011694_inc,
+
     @condition(Scan.Id.product, "='0010002315'", "'0010002316'", "'0010002317'")
     Scan_Id_product_0010002315: Bai._0010002315_inc,
 
