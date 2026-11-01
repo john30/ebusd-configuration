@@ -141,68 +141,236 @@ namespace Bass3 {
 
   // Weekly timer base templates per circuit and day
   // Circuit 3 (Heating Zone 1)
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x00, 0x00) model u_t3_0 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x00, 0x00, 0x01) model w_t3_0 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x01, 0x00) model u_t3_1 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x01, 0x00, 0x01) model w_t3_1 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x02, 0x00) model u_t3_2 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x02, 0x00, 0x01) model w_t3_2 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x03, 0x00) model u_t3_3 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x03, 0x00, 0x01) model w_t3_3 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x04, 0x00) model u_t3_4 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x04, 0x00, 0x01) model w_t3_4 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x05, 0x00) model u_t3_5 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x05, 0x00, 0x01) model w_t3_5 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x06, 0x00) model u_t3_6 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x06, 0x00, 0x01) model w_t3_6 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x00, 0x00)
+  model u_t3_0 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x00, 0x00, 0x01)
+  model w_t3_0 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x01, 0x00)
+  model u_t3_1 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x01, 0x00, 0x01)
+  model w_t3_1 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x02, 0x00)
+  model u_t3_2 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x02, 0x00, 0x01)
+  model w_t3_2 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x03, 0x00)
+  model u_t3_3 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x03, 0x00, 0x01)
+  model w_t3_3 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x04, 0x00)
+  model u_t3_4 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x04, 0x00, 0x01)
+  model w_t3_4 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x05, 0x00)
+  model u_t3_5 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x05, 0x00, 0x01)
+  model w_t3_5 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x06, 0x00)
+  model u_t3_6 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x06, 0x00, 0x01)
+  model w_t3_6 {}
 
   // Circuit 2 (DHW)
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x00, 0x00) model u_t2_0 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x00, 0x00, 0x01) model w_t2_0 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x01, 0x00) model u_t2_1 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x01, 0x00, 0x01) model w_t2_1 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x02, 0x00) model u_t2_2 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x02, 0x00, 0x01) model w_t2_2 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x03, 0x00) model u_t2_3 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x03, 0x00, 0x01) model w_t2_3 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x04, 0x00) model u_t2_4 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x04, 0x00, 0x01) model w_t2_4 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x05, 0x00) model u_t2_5 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x05, 0x00, 0x01) model w_t2_5 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x06, 0x00) model u_t2_6 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x06, 0x00, 0x01) model w_t2_6 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x00, 0x00)
+  model u_t2_0 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x00, 0x00, 0x01)
+  model w_t2_0 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x01, 0x00)
+  model u_t2_1 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x01, 0x00, 0x01)
+  model w_t2_1 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x02, 0x00)
+  model u_t2_2 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x02, 0x00, 0x01)
+  model w_t2_2 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x03, 0x00)
+  model u_t2_3 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x03, 0x00, 0x01)
+  model w_t2_3 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x04, 0x00)
+  model u_t2_4 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x04, 0x00, 0x01)
+  model w_t2_4 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x05, 0x00)
+  model u_t2_5 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x05, 0x00, 0x01)
+  model w_t2_5 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x06, 0x00)
+  model u_t2_6 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x06, 0x00, 0x01)
+  model w_t2_6 {}
 
   // Circuit 1 (Cooling)
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x00, 0x00) model u_t1_0 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x00, 0x00, 0x01) model w_t1_0 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x01, 0x00) model u_t1_1 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x01, 0x00, 0x01) model w_t1_1 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x02, 0x00) model u_t1_2 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x02, 0x00, 0x01) model w_t1_2 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x03, 0x00) model u_t1_3 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x03, 0x00, 0x01) model w_t1_3 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x04, 0x00) model u_t1_4 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x04, 0x00, 0x01) model w_t1_4 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x05, 0x00) model u_t1_5 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x05, 0x00, 0x01) model w_t1_5 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x06, 0x00) model u_t1_6 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x06, 0x00, 0x01) model w_t1_6 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x00, 0x00)
+  model u_t1_0 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x00, 0x00, 0x01)
+  model w_t1_0 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x01, 0x00)
+  model u_t1_1 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x01, 0x00, 0x01)
+  model w_t1_1 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x02, 0x00)
+  model u_t1_2 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x02, 0x00, 0x01)
+  model w_t1_2 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x03, 0x00)
+  model u_t1_3 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x03, 0x00, 0x01)
+  model w_t1_3 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x04, 0x00)
+  model u_t1_4 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x04, 0x00, 0x01)
+  model w_t1_4 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x05, 0x00)
+  model u_t1_5 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x05, 0x00, 0x01)
+  model w_t1_5 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x06, 0x00)
+  model u_t1_6 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x06, 0x00, 0x01)
+  model w_t1_6 {}
 
   // Circuit 0 (Circulation)
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x00, 0x00) model u_t0_0 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x00, 0x00, 0x01) model w_t0_0 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x01, 0x00) model u_t0_1 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x01, 0x00, 0x01) model w_t0_1 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x02, 0x00) model u_t0_2 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x02, 0x00, 0x01) model w_t0_2 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x03, 0x00) model u_t0_3 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x03, 0x00, 0x01) model w_t0_3 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x04, 0x00) model u_t0_4 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x04, 0x00, 0x01) model w_t0_4 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x05, 0x00) model u_t0_5 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x05, 0x00, 0x01) model w_t0_5 {}
-  @passive @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x06, 0x00) model u_t0_6 { @maxLength(1) ign: IGN; }
-  @write @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x06, 0x00, 0x01) model w_t0_6 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x00, 0x00)
+  model u_t0_0 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x00, 0x00, 0x01)
+  model w_t0_0 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x01, 0x00)
+  model u_t0_1 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x01, 0x00, 0x01)
+  model w_t0_1 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x02, 0x00)
+  model u_t0_2 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x02, 0x00, 0x01)
+  model w_t0_2 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x03, 0x00)
+  model u_t0_3 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x03, 0x00, 0x01)
+  model w_t0_3 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x04, 0x00)
+  model u_t0_4 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x04, 0x00, 0x01)
+  model w_t0_4 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x05, 0x00)
+  model u_t0_5 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x05, 0x00, 0x01)
+  model w_t0_5 {}
+  @passive
+  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x06, 0x00)
+  model u_t0_6 {
+    @maxLength(1) ign: IGN;
+  }
+  @write
+  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x06, 0x00, 0x01)
+  model w_t0_6 {}
 
   /** default *u for timer slots */
   @passive
@@ -506,13 +674,15 @@ namespace Bass3 {
     data: HEX;
   }
 
-  /** energy header query */
+  /** total solar energy sum */
   @passive
   @id(MF, 0x16, 0x10, 0x00, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00)
-  model PrHeader {
+  model PrEnergySolarTotal {
     @maxLength(7)
     ign: IGN;
-    value: EXP;
+
+    @unit("Wh")
+    energy: EXP;
   }
 
   // ==============================================================================
@@ -996,6 +1166,7 @@ namespace Bass3 {
   model CoolingStartDate {
     day: UCH;
     month: UCH;
+
     /** Start date for active cooling (day, month, year) */
     year: UCH;
   }
@@ -1006,6 +1177,7 @@ namespace Bass3 {
   model CoolingEndDate {
     day: UCH;
     month: UCH;
+
     /** End date for active cooling (day, month, year) */
     year: UCH;
   }
@@ -1068,6 +1240,7 @@ namespace Bass3 {
   model HolidayStartDate {
     day: UCH;
     month: UCH;
+
     /** Start date for holiday mode (day, month, year) */
     year: UCH;
   }
@@ -1078,6 +1251,7 @@ namespace Bass3 {
   model HolidayStartTime {
     hours: UCH;
     minutes: UCH;
+
     /** Start time for holiday mode (hours, minutes, seconds) */
     seconds: UCH;
   }
@@ -1088,6 +1262,7 @@ namespace Bass3 {
   model HolidayEndDate {
     day: UCH;
     month: UCH;
+
     /** End date for holiday mode (day, month, year) */
     year: UCH;
   }
@@ -1098,6 +1273,7 @@ namespace Bass3 {
   model HolidayEndTime {
     hours: UCH;
     minutes: UCH;
+
     /** End time for holiday mode (hours, minutes, seconds) */
     seconds: UCH;
   }
@@ -1120,12 +1296,16 @@ namespace Bass3 {
   model Currenterror {
     /** error number */
     error: UIN;
+
     /** error number */
     error_1: UIN;
+
     /** error number */
     error_2: UIN;
+
     /** error number */
     error_3: UIN;
+
     /** error number */
     error_4: UIN;
   }
@@ -1136,12 +1316,16 @@ namespace Bass3 {
   model Errorhistory {
     @out
     index: UCH;
+
     /** Status */
     status: UCH;
+
     /** time */
     time: VTM;
+
     /** date */
     date: HDA3;
+
     /** error number */
     error: UIN;
   }
@@ -1152,8 +1336,10 @@ namespace Bass3 {
   model ErrorMemorySlot {
     @out
     slot: UCH;
+
     /** error number */
     error: UIN;
+
     @maxLength(8)
     data: HEX;
   }
@@ -1191,10 +1377,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Monday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Monday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Zone 1 Tuesday */
@@ -1205,10 +1396,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Tuesday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Tuesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Zone 1 Wednesday */
@@ -1219,10 +1415,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Wednesday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Wednesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Zone 1 Thursday */
@@ -1233,10 +1434,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Thursday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Thursday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Zone 1 Friday */
@@ -1247,10 +1453,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Friday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Friday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Zone 1 Saturday */
@@ -1261,10 +1472,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Saturday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Saturday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Zone 1 Sunday */
@@ -1275,10 +1491,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Heating schedule Sunday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Heating schedule Sunday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   // 6.2 Domestic Hot Water - DHW (Circuit 02)
@@ -1291,10 +1512,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Monday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Monday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer DHW Tuesday */
@@ -1305,10 +1531,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Tuesday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Tuesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer DHW Wednesday */
@@ -1319,10 +1550,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Wednesday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Wednesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer DHW Thursday */
@@ -1333,10 +1569,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Thursday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Thursday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer DHW Friday */
@@ -1347,10 +1588,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Friday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Friday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer DHW Saturday */
@@ -1361,10 +1607,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Saturday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Saturday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer DHW Sunday */
@@ -1375,10 +1626,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** DHW schedule Sunday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** DHW schedule Sunday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   // 6.3 Cooling (Circuit 01)
@@ -1391,10 +1647,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Monday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Monday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Cooling Tuesday */
@@ -1405,10 +1666,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Tuesday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Tuesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Cooling Wednesday */
@@ -1419,10 +1685,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Wednesday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Wednesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Cooling Thursday */
@@ -1433,10 +1704,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Thursday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Thursday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Cooling Friday */
@@ -1447,10 +1723,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Friday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Friday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Cooling Saturday */
@@ -1461,10 +1742,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Saturday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Saturday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Cooling Sunday */
@@ -1475,10 +1761,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Cooling schedule Sunday (HH;MM;HH;MM) */
     @in(false) @unit("°C") cooling_temp: D1C;
+
     /** Cooling schedule Sunday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   // 6.4 Circulation Pump (Circuit 00)
@@ -1491,10 +1782,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Monday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Monday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Circulation Tuesday */
@@ -1505,10 +1801,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Tuesday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Tuesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Circulation Wednesday */
@@ -1519,10 +1820,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Wednesday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Wednesday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Circulation Thursday */
@@ -1533,10 +1839,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Thursday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Thursday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Circulation Friday */
@@ -1547,10 +1858,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Friday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Friday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Circulation Saturday */
@@ -1561,10 +1877,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Saturday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Saturday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   /** Timer Circulation Sunday */
@@ -1575,10 +1896,15 @@ namespace Bass3 {
     from_min: UCH;
     to_hour: UCH;
     to_min: UCH;
+
     /** Circulation schedule Sunday (HH;MM;HH;MM) */
     @in(false) @maxLength(2) ign_2: IGN;
+
     /** Circulation schedule Sunday (HH;MM;HH;MM) */
-    @out(true) @constValue("FFFF") @maxLength(2) ignore: HEX;
+    @out(true)
+    @constValue("FFFF")
+    @maxLength(2)
+    ignore: HEX;
   }
 
   // ==============================================================================
@@ -1596,6 +1922,7 @@ namespace Bass3 {
     fri: UCH;
     sat: UCH;
     sun: UCH;
+
     @maxLength(1)
     ign_2: IGN;
   }
@@ -1611,6 +1938,7 @@ namespace Bass3 {
     fri: UCH;
     sat: UCH;
     sun: UCH;
+
     @maxLength(1)
     ign_2: IGN;
   }
@@ -1626,6 +1954,7 @@ namespace Bass3 {
     fri: UCH;
     sat: UCH;
     sun: UCH;
+
     @maxLength(1)
     ign_2: IGN;
   }
@@ -1641,6 +1970,7 @@ namespace Bass3 {
     fri: UCH;
     sat: UCH;
     sun: UCH;
+
     @maxLength(1)
     ign_2: IGN;
   }

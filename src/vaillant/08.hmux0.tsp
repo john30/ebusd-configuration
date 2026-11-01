@@ -28,8 +28,13 @@ namespace Hmux0 {
     @values(Values_SetModeHcmode)
     hcmode: UCH;
 
+    @unit("°C")
     flowtempdesired: D1C;
+
+    @unit("°C")
     hwctempdesired: D1C;
+
+    @unit("°C")
     hwcflowtempdesired: UCH;
 
     @maxLength(2)
@@ -69,34 +74,48 @@ namespace Hmux0 {
     value: UCH;
   }
 
-  /** default *u for precision energy (b516) */
+  /** default *u for passive energy diagnostics (b516) */
   @passive
   @base(MF, 0x16)
   model u_16 {}
 
-  /** precision energy yield and consumption */
+  /** default *r for on-demand and passively decoded energy telemetry (b516) */
+  @base(MF, 0x16)
+  model r_16 {}
+
+  /** energy statistics EEPROM table descriptor */
   @inherit(u_16)
-  @ext(0x14)
-  model EnergyYieldPrecision {
-    @values(Values_EnergyYieldStatus)
-    status: UCH;
-
-    /** cumulative environmental yield (kWh) */
-    @unit("kWh")
-    yield: EXP;
-
-    /** cumulative electrical consumption (kWh) */
-    @unit("kWh")
-    consumed: EXP;
+  @ext(0x11)
+  model EnergyStatsDescriptor {
+    @maxLength(9)
+    data: HEX;
   }
 
-  enum Values_EnergyYieldStatus {
+  /** instantaneous power consumption and active mode */
+  @inherit(r_16)
+  @ext(0x14)
+  model PowerStatus {
+    /** active energy integration mode */
+    @values(Values_PowerStatusMode)
+    status: UCH;
+
+    /** instantaneous electrical power */
+    @unit("W")
+    power: EXP;
+
+    /** instantaneous fuel power */
+    @unit("W")
+    fuel_power: EXP;
+  }
+
+  enum Values_PowerStatusMode {
     standby: 0,
     heating: 1,
     hwc: 2,
+    cooling: 3,
   }
 
-  /** default *u for high precision IEEE 754 counters (b516 1000ffff) */
+  /** default *u for passive IEEE 754 energy counters (b516 1000ffff) */
   @passive
   @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
   model u_energy {
@@ -104,117 +123,113 @@ namespace Hmux0 {
     ign: IGN;
   }
 
-  /** energy header query */
+  /** default *r for readable and passively decoded IEEE 754 energy counters (b516 1000ffff) */
+  @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
+  model r_energy {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  /** total solar energy sum */
   @inherit(u_energy)
   @ext(0x01, 0x00, 0x00, 0x00)
-  model PrHeader {
-    value: EXP;
+  model PrEnergySolarTotal {
+    @unit("Wh")
+    energy: EXP;
   }
 
-  /** electrical energy today */
-  @inherit(u_energy)
+  /** total heating electrical energy consumed */
+  @inherit(r_energy)
   @ext(0x83, 0x03, 0x00, 0x00)
-  model PrEnergyElectricToday {
-    /** daily consumed electrical energy */
+  model PrEnergyElectricHc {
+    /** cumulative heating consumed electrical energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** electrical energy this month */
-  @inherit(u_energy)
+  /** total hot water electrical energy consumed */
+  @inherit(r_energy)
   @ext(0x83, 0x04, 0x00, 0x00)
-  model PrEnergyElectricMonth {
-    /** monthly consumed electrical energy */
+  model PrEnergyElectricHwc {
+    /** cumulative hot water consumed electrical energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** electrical energy total */
-  @inherit(u_energy)
+  /** total cooling electrical energy consumed */
+  @inherit(r_energy)
   @ext(0x83, 0x05, 0x00, 0x00)
-  model PrEnergyElectricTotal {
-    /** total historical consumed electrical energy */
+  model PrEnergyElectricCool {
+    /** cumulative cooling consumed electrical energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** cooling electrical energy today */
+  /** total heating fuel energy consumed (unsupported on heat pump) */
   @inherit(u_energy)
   @ext(0x84, 0x03, 0x00, 0x00)
-  model PrEnergyCoolingElectricToday {
-    /** daily cooling electrical energy */
+  model PrEnergyFuelHc {
     @unit("Wh")
     energy: EXP;
   }
 
-  /** cooling electrical energy this month */
+  /** total hot water fuel energy consumed (unsupported on heat pump) */
   @inherit(u_energy)
   @ext(0x84, 0x04, 0x00, 0x00)
-  model PrEnergyCoolingElectricMonth {
-    /** monthly cooling electrical energy */
+  model PrEnergyFuelHwc {
     @unit("Wh")
     energy: EXP;
   }
 
-  /** cooling electrical energy total */
-  @inherit(u_energy)
-  @ext(0x84, 0x05, 0x00, 0x00)
-  model PrEnergyCoolingElectricTotal {
-    /** total historical cooling electrical energy */
-    @unit("Wh")
-    energy: EXP;
-  }
-
-  /** thermal energy today */
-  @inherit(u_energy)
+  /** total heating thermal energy delivered */
+  @inherit(r_energy)
   @ext(0x49, 0x03, 0x00, 0x00)
-  model PrEnergyThermalToday {
-    /** daily delivered thermal energy */
+  model PrEnergyThermalHc {
+    /** cumulative heating delivered thermal energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** thermal energy this month */
-  @inherit(u_energy)
+  /** total hot water thermal energy delivered */
+  @inherit(r_energy)
   @ext(0x49, 0x04, 0x00, 0x00)
-  model PrEnergyThermalMonth {
-    /** monthly delivered thermal energy */
+  model PrEnergyThermalHwc {
+    /** cumulative hot water delivered thermal energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** thermal energy total */
-  @inherit(u_energy)
+  /** total cooling thermal energy extracted */
+  @inherit(r_energy)
   @ext(0x49, 0x05, 0x00, 0x00)
-  model PrEnergyThermalTotal {
-    /** total historical delivered thermal energy */
+  model PrEnergyThermalCool {
+    /** cumulative cooling extracted thermal energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** heating thermal energy today */
-  @inherit(u_energy)
+  /** total heating environmental energy yield */
+  @inherit(r_energy)
   @ext(0x42, 0x03, 0x00, 0x00)
-  model PrEnergyHeatingToday {
-    /** daily heating thermal energy */
+  model PrEnergyEnvYieldHc {
+    /** cumulative heating environmental energy yield */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** heating thermal energy this month */
-  @inherit(u_energy)
+  /** total hot water environmental energy yield */
+  @inherit(r_energy)
   @ext(0x42, 0x04, 0x00, 0x00)
-  model PrEnergyHeatingMonth {
-    /** monthly heating thermal energy */
+  model PrEnergyEnvYieldHwc {
+    /** cumulative hot water environmental energy yield */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** heating thermal energy total */
+  /** total cooling environmental energy yield */
   @inherit(u_energy)
   @ext(0x42, 0x05, 0x00, 0x00)
-  model PrEnergyHeatingTotal {
-    /** total historical heating thermal energy */
+  model PrEnergyEnvYieldCool {
     @unit("Wh")
     energy: EXP;
   }
@@ -250,15 +265,19 @@ namespace Hmux0 {
   @ext(0x01, 0x01)
   model CircuitTemps {
     /** heat pump flow temperature */
+    @unit("°C")
     flow_temp: D1C;
 
     /** heat pump return temperature */
+    @unit("°C")
     return_temp: D1C;
 
     /** compressor discharge temperature */
+    @unit("°C")
     discharge_temp: D1C;
 
     /** evaporator temperature */
+    @unit("°C")
     evaporator_temp: D1C;
 
     @maxLength(1)
@@ -275,6 +294,11 @@ namespace Hmux0 {
   // ==============================================================================
   // 2. RUN DATA DIAGNOSTIC SENSORS (b509 - PASSIVE u AND ACTIVE r)
   // ==============================================================================
+
+  /** default *u for raw 4-byte unsupported run data responses (b509 540200) */
+  @passive
+  @base(MF, 0x09, 0x54, 0x02, 0x00)
+  model u_raw_rundata {}
 
   /** default *u for run data (b509 540200) */
   @passive
@@ -320,7 +344,7 @@ namespace Hmux0 {
   }
 
   /** unsupported status register on HMUX0 */
-  @inherit(u_rundata)
+  @inherit(u_raw_rundata)
   @ext(0x53, 0x0d)
   model RunDataUnsupported530d {
     /** HMU Status code (use HMUStatusCode b503 0003) */
@@ -611,10 +635,19 @@ namespace Hmux0 {
   @inherit(u_11)
   @ext(0x01)
   model Status01 {
+    @unit("°C")
     flow_temp: D1C;
+
+    @unit("°C")
     return_temp: D1C;
+
+    @unit("°C")
     outside_temp: D2B;
+
+    @unit("°C")
     hwc_temp: D1C;
+
+    @unit("°C")
     storage_temp: D1C;
 
     @values(Values_PumpState)
@@ -638,11 +671,13 @@ namespace Hmux0 {
     @unit("°C")
     max_temp: UCH;
 
+    @unit("°C")
     current_temp: D1C;
 
     @unit("°C")
     max_temp_1: UCH;
 
+    @unit("°C")
     current_temp_1: D1C;
   }
 
@@ -657,6 +692,7 @@ namespace Hmux0 {
   @inherit(u_11)
   @ext(0x03)
   model Status {
+    @unit("°C")
     temp: D2C;
 
     @unit("bar")
@@ -704,9 +740,7 @@ namespace Hmux0 {
 
     status: UCH;
     time: VTM;
-
     date: HDA3;
-
     error: UIN;
   }
 

@@ -27,8 +27,13 @@ namespace Vwzio {
     @values(Values_SetModeHcmode)
     hcmode: UCH;
 
+    @unit("°C")
     flowtempdesired: D1C;
+
+    @unit("°C")
     hwctempdesired: D1C;
+
+    @unit("°C")
     hwcflowtempdesired: UCH;
 
     @maxLength(2)
@@ -55,10 +60,19 @@ namespace Vwzio {
   @inherit(u_11)
   @ext(0x01)
   model Status01 {
+    @unit("°C")
     flow_temp: D1C;
+
+    @unit("°C")
     return_temp: D1C;
+
+    @unit("°C")
     outside_temp: D2B;
+
+    @unit("°C")
     hwc_temp: D1C;
+
+    @unit("°C")
     storage_temp: D1C;
 
     @values(Values_PumpState)
@@ -113,34 +127,48 @@ namespace Vwzio {
   // 3. ENERGY TELEMETRY AND DIAGNOSTICS (APP f1 -> 76)
   // ==============================================================================
 
-  /** default *u for precision energy (b516) */
+  /** default *u for passive energy diagnostics (b516) */
   @passive
   @base(MF, 0x16)
   model u_16 {}
 
-  /** precision energy yield and consumption */
+  /** default *r for on-demand and passively decoded energy telemetry (b516) */
+  @base(MF, 0x16)
+  model r_16 {}
+
+  /** energy statistics EEPROM table descriptor */
   @inherit(u_16)
-  @ext(0x14)
-  model EnergyYieldPrecision {
-    @values(Values_EnergyYieldStatus)
-    status: UCH;
-
-    /** cumulative environmental yield (kWh) */
-    @unit("kWh")
-    yield: EXP;
-
-    /** cumulative electrical consumption (kWh) */
-    @unit("kWh")
-    consumed: EXP;
+  @ext(0x11)
+  model EnergyStatsDescriptor {
+    @maxLength(9)
+    data: HEX;
   }
 
-  enum Values_EnergyYieldStatus {
+  /** instantaneous power consumption and active mode */
+  @inherit(r_16)
+  @ext(0x14)
+  model PowerStatus {
+    /** active energy integration mode */
+    @values(Values_PowerStatusMode)
+    status: UCH;
+
+    /** instantaneous electrical power */
+    @unit("W")
+    power: EXP;
+
+    /** instantaneous fuel power */
+    @unit("W")
+    fuel_power: EXP;
+  }
+
+  enum Values_PowerStatusMode {
     standby: 0,
     heating: 1,
     hwc: 2,
+    cooling: 3,
   }
 
-  /** default *u for high precision IEEE 754 counters (b516 1000ffff) */
+  /** default *u for passive IEEE 754 energy counters (b516 1000ffff) */
   @passive
   @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
   model u_energy {
@@ -148,63 +176,53 @@ namespace Vwzio {
     ign: IGN;
   }
 
-  /** energy header query */
+  /** default *r for readable and passively decoded IEEE 754 energy counters (b516 1000ffff) */
+  @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
+  model r_energy {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  /** total solar energy sum */
   @inherit(u_energy)
   @ext(0x01, 0x00, 0x00, 0x00)
-  model PrHeader {
-    value: EXP;
+  model PrEnergySolarTotal {
+    @unit("Wh")
+    energy: EXP;
   }
 
-  /** electrical energy today */
-  @inherit(u_energy)
+  /** total heating electrical energy consumed */
+  @inherit(r_energy)
   @ext(0x83, 0x03, 0x00, 0x00)
-  model PrEnergyElectricToday {
-    /** daily consumed electrical energy */
+  model PrEnergyElectricHc {
+    /** cumulative heating and standby consumed electrical energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** electrical energy this month */
-  @inherit(u_energy)
+  /** total hot water electrical energy consumed */
+  @inherit(r_energy)
   @ext(0x83, 0x04, 0x00, 0x00)
-  model PrEnergyElectricMonth {
-    /** monthly consumed electrical energy */
+  model PrEnergyElectricHwc {
+    /** cumulative hot water consumed electrical energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** electrical energy total */
-  @inherit(u_energy)
-  @ext(0x83, 0x05, 0x00, 0x00)
-  model PrEnergyElectricTotal {
-    /** total historical consumed electrical energy */
-    @unit("Wh")
-    energy: EXP;
-  }
-
-  /** thermal energy today */
-  @inherit(u_energy)
+  /** total heating thermal energy delivered */
+  @inherit(r_energy)
   @ext(0x49, 0x03, 0x00, 0x00)
-  model PrEnergyThermalToday {
-    /** daily delivered thermal energy */
+  model PrEnergyThermalHc {
+    /** cumulative heating delivered thermal energy */
     @unit("Wh")
     energy: EXP;
   }
 
-  /** thermal energy this month */
-  @inherit(u_energy)
+  /** total hot water thermal energy delivered */
+  @inherit(r_energy)
   @ext(0x49, 0x04, 0x00, 0x00)
-  model PrEnergyThermalMonth {
-    /** monthly delivered thermal energy */
-    @unit("Wh")
-    energy: EXP;
-  }
-
-  /** thermal energy total */
-  @inherit(u_energy)
-  @ext(0x49, 0x05, 0x00, 0x00)
-  model PrEnergyThermalTotal {
-    /** total historical delivered thermal energy */
+  model PrEnergyThermalHwc {
+    /** cumulative hot water delivered thermal energy */
     @unit("Wh")
     energy: EXP;
   }
