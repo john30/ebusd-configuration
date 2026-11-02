@@ -34,6 +34,13 @@ namespace Broadcast {
     value: temp2;
   }
 
+  /** average outside temperature over the last 24 hours, used for the cooling release */
+  @inherit(b)
+  @ext(4)
+  model OutsideTempAvg {
+    value: temp2;
+  }
+
   /** default *b */
   @passive
   @zz(BROADCAST)
