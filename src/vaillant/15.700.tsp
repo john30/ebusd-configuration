@@ -699,6 +699,7 @@ namespace _700 {
   @ext(0x1a, 0)
   model Hc1MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
+    @unit("%")
     value: EXP;
   }
 
@@ -829,6 +830,7 @@ namespace _700 {
   @ext(0x1a, 0)
   model Hc2MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
+    @unit("%")
     value: EXP;
   }
 
@@ -959,6 +961,7 @@ namespace _700 {
   @ext(0x1a, 0)
   model Hc3MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
+    @unit("%")
     value: EXP;
   }
 

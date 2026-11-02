@@ -970,6 +970,7 @@ namespace _720 {
   @condition(_720.Hc1CircuitType.value, "1")
   model Hc1MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
+    @unit("%")
     value: EXP;
   }
 
@@ -1239,6 +1240,7 @@ namespace _720 {
   @condition(_720.Hc2CircuitType.value, "1")
   model Hc2MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
+    @unit("%")
     value: EXP;
   }
 
@@ -1508,6 +1510,7 @@ namespace _720 {
   @condition(_720.Hc3CircuitType.value, "1")
   model Hc3MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
+    @unit("%")
     value: EXP;
   }
 
