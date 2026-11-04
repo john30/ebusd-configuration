@@ -234,6 +234,22 @@ namespace Recov {
   @ext(0x85, 0x3)
   model ExhaustAirHumidity is ReadonlyUpdateRegister<percent>;
 
+  /** CO2 sensor 1 actual concentration */
+  @inherit(u)
+  @ext(0x86, 0x3)
+  model CO2Sensor1Actual {
+    @unit("ppm")
+    value: UIN;
+  }
+
+  /** CO2 sensor 2 actual concentration */
+  @inherit(u)
+  @ext(0x87, 0x3)
+  model CO2Sensor2Actual {
+    @unit("ppm")
+    value: UIN;
+  }
+
   /** Supply air temperature */
   @ext(0xb3, 0xd)
   model SupplyAirTemp is ReadonlyUpdateRegister<tempsensor>;
