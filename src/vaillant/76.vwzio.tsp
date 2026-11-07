@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./b516_inc.tsp";
 
 using Ebus;
 using Ebus.Num;
@@ -84,6 +85,34 @@ namespace Vwzio {
     on: 1,
     overrun: 2,
     hwc: 4,
+  }
+
+  /** immersion heater runtime and start count in heating mode (sum of Hc+Hwc matches myVAILLANT app hydraulic station operating hours/cycles) */
+  @inherit(u_11)
+  @ext(0x18, 0x01)
+  model RunStatsHeaterHc {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
+  }
+
+  /** immersion heater runtime and start count in hot water mode */
+  @inherit(u_11)
+  @ext(0x18, 0x02)
+  model RunStatsHeaterHwc {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
   }
 
   /** default *u for secondary circuit (b512) */
@@ -235,11 +264,19 @@ namespace Vwzio {
     ign: IGN;
   }
 
-  /** total starts of heating mode */
+  /** switching operations of the auxiliary heater (display D.074) */
   @inherit(u_rundata)
   @ext(0xc0, 0x0b)
-  model RunStatsHcStarts {
+  model RunStatsAuxHeaterSwitches {
     value: UIN;
+  }
+
+  /** electrical energy consumption of the immersion heater (display D.073) */
+  @inherit(u_rundata)
+  @ext(0x0c, 0x0b)
+  model RunStatsHeaterEnergy {
+    @unit("kWh")
+    value: ULG;
   }
 
   /** total starts of Hwc mode */
@@ -247,6 +284,14 @@ namespace Vwzio {
   @ext(0xc1, 0x0b)
   model RunStatsHwcStarts {
     value: UIN;
+  }
+
+  /** immersion heater flow temperature (display: flow temperature immersion heater) */
+  @inherit(u_rundata)
+  @ext(0x4c, 0x09)
+  model RunDataHeaterFlowTemp {
+    @unit("°C")
+    value: EXP;
   }
 
   /** diagnostic code readout */
@@ -365,5 +410,10 @@ namespace Vwzio {
     @unit("°C")
     @divisor(10)
     value: SIN;
+  }
+
+  /** included parts */
+  union _includes {
+    B516_inc,
   }
 }

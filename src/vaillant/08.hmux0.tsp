@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./b516_inc.tsp";
 import "./errors_inc.tsp";
 
 using Ebus;
@@ -291,6 +292,48 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
+  /** compressor runtime and start count in heating mode (sum of Hc+Hwc+Cool runtime/starts matches myVAILLANT app operating hours/cycles) */
+  @inherit(u_11)
+  @ext(0x18, 0x01)
+  model RunStatsCompressorHc {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
+  }
+
+  /** compressor runtime and start count in hot water mode */
+  @inherit(u_11)
+  @ext(0x18, 0x02)
+  model RunStatsCompressorHwc {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
+  }
+
+  /** compressor runtime and start count in cooling mode */
+  @inherit(u_11)
+  @ext(0x18, 0x03)
+  model RunStatsCompressorCool {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
+  }
+
   // ==============================================================================
   // 2. RUN DATA DIAGNOSTIC SENSORS (b509 - PASSIVE u AND ACTIVE r)
   // ==============================================================================
@@ -423,12 +466,20 @@ namespace Hmux0 {
     value: EXP;
   }
 
-  /** building circuit water flow rate */
+  /** building circuit water flow rate (display D.060) */
   @inherit(u_rundata)
-  @ext(0x68, 0x0b)
+  @ext(0x09, 0x0b)
   model RunDataFlowRate {
     /** building circuit volumetric water flow rate */
     @unit("l/h")
+    value: UIN;
+  }
+
+  /** maximum residual pump head (display D.231, constant setting) */
+  @inherit(u_rundata)
+  @ext(0x68, 0x0b)
+  model RunDataMaxResidualHead {
+    @unit("mbar")
     value: UIN;
   }
 
@@ -454,10 +505,10 @@ namespace Hmux0 {
     value: UIN;
   }
 
-  /** total starts of heating mode */
+  /** switching operations of the auxiliary heater (display D.074) */
   @inherit(u_rundata)
   @ext(0xc0, 0x0b)
-  model RunStatsHcStarts {
+  model RunStatsAuxHeaterSwitches {
     value: UIN;
   }
 
@@ -597,6 +648,57 @@ namespace Hmux0 {
   @ext(0xe6, 0x0b)
   model RunStatsImmersionHeaterStarts {
     value: UIN;
+  }
+
+  /** compressor flow temperature target (display: flow temperature target compressor) */
+  @inherit(u_rundata)
+  @ext(0x4a, 0x0d)
+  model RunDataFlowTempDesired {
+    @unit("°C")
+    value: EXP;
+  }
+
+  /** water side heat output (equals flow rate x spread x 1.163 within 0.3 %) */
+  @inherit(u_rundata)
+  @ext(0x5e, 0x0d)
+  model RunDataHeatOutput {
+    @unit("W")
+    value: EXP;
+  }
+
+  /** compressor energy integral (display: energy integral compressor) */
+  @inherit(u_rundata)
+  @ext(0xfe, 0x0a)
+  model RunDataEnergyIntegral {
+    @unit("°min")
+    value: SIN;
+  }
+
+  /** evaporation temperature (display: evaporation temperature) */
+  @inherit(u_rundata)
+  @ext(0xd1, 0x10)
+  model RunDataEvaporationTemp {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
+  }
+
+  /** suction line superheat (display: superheat) */
+  @inherit(u_rundata)
+  @ext(0xd7, 0x10)
+  model RunDataSuperheat {
+    @unit("K")
+    @divisor(16)
+    value: SIN;
+  }
+
+  /** condenser liquid outlet temperature (condensation temperature minus this value matches display subcooling) */
+  @inherit(u_rundata)
+  @ext(0xdb, 0x10)
+  model RunDataCondensateTemp {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
   }
 
   // ==============================================================================
@@ -855,6 +957,21 @@ namespace Hmux0 {
     status: UIN;
   }
 
+  /** condensation temperature (display: condensation temperature) */
+  @inherit(u_diagfeat)
+  @ext(0x05, 0xff, 0x35, 0x46)
+  model RunDataCondensationTemp {
+    @maxLength(3)
+    ign: IGN;
+
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
   /** central regulator heartbeat */
   @passive
   @base(MF, 0x13)
@@ -905,5 +1022,10 @@ namespace Hmux0 {
   model RunDataDiag8b13 {
     @maxLength(10)
     value: HEX;
+  }
+
+  /** included parts */
+  union _includes {
+    B516_inc,
   }
 }
