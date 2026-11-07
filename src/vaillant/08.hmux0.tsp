@@ -658,6 +658,14 @@ namespace Hmux0 {
     value: EXP;
   }
 
+  /** water side heat output (equals flow rate x spread x 1.163 within 0.3 %) */
+  @inherit(u_rundata)
+  @ext(0x5e, 0x0d)
+  model RunDataHeatOutput {
+    @unit("W")
+    value: EXP;
+  }
+
   /** compressor energy integral (display: energy integral compressor) */
   @inherit(u_rundata)
   @ext(0xfe, 0x0a)
