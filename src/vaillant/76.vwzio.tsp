@@ -264,11 +264,19 @@ namespace Vwzio {
     ign: IGN;
   }
 
-  /** total starts of heating mode */
+  /** switching operations of the auxiliary heater (display D.074) */
   @inherit(u_rundata)
   @ext(0xc0, 0x0b)
-  model RunStatsHcStarts {
+  model RunStatsAuxHeaterSwitches {
     value: UIN;
+  }
+
+  /** electrical energy consumption of the immersion heater (display D.073) */
+  @inherit(u_rundata)
+  @ext(0x0c, 0x0b)
+  model RunStatsHeaterEnergy {
+    @unit("kWh")
+    value: ULG;
   }
 
   /** total starts of Hwc mode */

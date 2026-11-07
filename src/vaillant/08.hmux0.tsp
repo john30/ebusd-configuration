@@ -466,12 +466,20 @@ namespace Hmux0 {
     value: EXP;
   }
 
-  /** building circuit water flow rate */
+  /** building circuit water flow rate (display D.060) */
   @inherit(u_rundata)
-  @ext(0x68, 0x0b)
+  @ext(0x09, 0x0b)
   model RunDataFlowRate {
     /** building circuit volumetric water flow rate */
     @unit("l/h")
+    value: UIN;
+  }
+
+  /** maximum residual pump head (display D.231, constant setting) */
+  @inherit(u_rundata)
+  @ext(0x68, 0x0b)
+  model RunDataMaxResidualHead {
+    @unit("mbar")
     value: UIN;
   }
 
@@ -497,10 +505,10 @@ namespace Hmux0 {
     value: UIN;
   }
 
-  /** total starts of heating mode */
+  /** switching operations of the auxiliary heater (display D.074) */
   @inherit(u_rundata)
   @ext(0xc0, 0x0b)
-  model RunStatsHcStarts {
+  model RunStatsAuxHeaterSwitches {
     value: UIN;
   }
 
