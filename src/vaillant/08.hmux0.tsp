@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./b516_inc.tsp";
 import "./errors_inc.tsp";
 
 using Ebus;
@@ -1005,5 +1006,10 @@ namespace Hmux0 {
   model RunDataDiag8b13 {
     @maxLength(10)
     value: HEX;
+  }
+
+  /** included parts */
+  union _includes {
+    B516_inc,
   }
 }

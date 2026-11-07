@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./b516_inc.tsp";
 
 using Ebus;
 using Ebus.Num;
@@ -401,5 +402,10 @@ namespace Vwzio {
     @unit("°C")
     @divisor(10)
     value: SIN;
+  }
+
+  /** included parts */
+  union _includes {
+    B516_inc,
   }
 }
