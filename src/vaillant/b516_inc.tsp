@@ -54,6 +54,62 @@ namespace B516_inc {
     value: energye;
   }
 
+  // The sensoCOMFORT (CTLV3) sends the date bytes also for the total, month and day periods
+  // (e.g. 0x3421 = 2026-01-01 for total, 0x3541 = 2026-10-01 for month), so the fixed "0, 0"
+  // suffix of the StatXxxSum messages below never matches its passive traffic.
+  // These generic messages carry the raw date (encoding see StatEnergySumYear) instead.
+
+  @inherit(rc)
+  @ext(
+    0,  // period=total
+    0xff, 0xff // fix value
+  )
+  model StatEnergySumTotal {
+    /** query date (MDYY encoding as above, ignored for period=total) */
+    @out
+    @maxLength(2)
+    date: HEX;
+
+    @maxLength(7)
+    ign: IGN; // repeats the query (more or less)
+
+    value: energye;
+  }
+
+  @inherit(rc)
+  @ext(
+    1,  // period=day
+    0xff, 0xff // fix value
+  )
+  model StatEnergySumDay {
+    /** query date (MDYY encoding as above) */
+    @out
+    @maxLength(2)
+    date: HEX;
+
+    @maxLength(7)
+    ign: IGN; // repeats the query (more or less)
+
+    value: energye;
+  }
+
+  @inherit(rc)
+  @ext(
+    2,  // period=month
+    0xff, 0xff // fix value
+  )
+  model StatEnergySumMonth {
+    /** query date (MDYY encoding as above) */
+    @out
+    @maxLength(2)
+    date: HEX;
+
+    @maxLength(7)
+    ign: IGN; // repeats the query (more or less)
+
+    value: energye;
+  }
+
   enum Values_period {
     total: 0,
     day: 1,
