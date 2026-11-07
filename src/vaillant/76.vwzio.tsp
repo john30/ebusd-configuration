@@ -86,6 +86,34 @@ namespace Vwzio {
     hwc: 4,
   }
 
+  /** immersion heater runtime and start count in heating mode (sum of Hc+Hwc matches myVAILLANT app hydraulic station operating hours/cycles) */
+  @inherit(u_11)
+  @ext(0x18, 0x01)
+  model RunStatsHeaterHc {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
+  }
+
+  /** immersion heater runtime and start count in hot water mode */
+  @inherit(u_11)
+  @ext(0x18, 0x02)
+  model RunStatsHeaterHwc {
+    @maxLength(1)
+    ign: IGN;
+
+    @unit("min")
+    runtime: ULG;
+
+    /** start count */
+    cycles: ULG;
+  }
+
   /** default *u for secondary circuit (b512) */
   @passive
   @base(MF, 0x12)
@@ -247,6 +275,14 @@ namespace Vwzio {
   @ext(0xc1, 0x0b)
   model RunStatsHwcStarts {
     value: UIN;
+  }
+
+  /** immersion heater flow temperature (display: flow temperature immersion heater) */
+  @inherit(u_rundata)
+  @ext(0x4c, 0x09)
+  model RunDataHeaterFlowTemp {
+    @unit("°C")
+    value: EXP;
   }
 
   /** diagnostic code readout */
