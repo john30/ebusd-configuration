@@ -3,6 +3,7 @@ import "./_templates.tsp";
 import "./hcmode_inc.tsp";
 import "./errors_inc.tsp";
 import "./b516_inc.tsp";
+import "./hmu.hw0403_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -173,7 +174,7 @@ namespace Hmu {
   model CurrentYieldPower {
     @unit("kW")
     @divisor(10)
-    value: D1B;
+    value: UIN;
   }
   // example: 3108b51a0405ff3224 / 0aff083501000000000000
 
@@ -183,7 +184,7 @@ namespace Hmu {
   model CurrentConsumedPower {
     @unit("kW")
     @divisor(10)
-    value: D1B;
+    value: UIN;
   }
 
   /** current compressor utilization */
@@ -1703,5 +1704,8 @@ namespace Hmu {
     Hcmode_inc,
     Errors_inc,
     B516_inc,
+
+    @condition(Id.Id.hw, "=0403")
+    hw_0403: Hmu._hw0403_inc,
   }
 }

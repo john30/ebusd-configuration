@@ -3870,3 +3870,17 @@ zone 2 label (second part): Bezeichnung Zone 2 Teil 2
 zone name: Name der Zone
 'ZustandOAWLogic: Output of "OAW_control" statemachine': 'ZustandOAWLogic: Output of "OAW_control" statemachine'
 ZweipunktAnalogSlct: Zweipunkt / Analogbetrieb
+building circuit flow: Durchfluss Gebäudekreis
+building circuit pump power (actual): Leistung Gebäudekreispumpe (Ist)
+brine pump on/off: Solepumpe an/aus
+brine pump power (actual): Leistung Solepumpe (Ist)
+brine pump total runtime: Gesamtlaufzeit Solepumpe
+brine pump total starts: Gesamtstarts Solepumpe
+condensation temperature: Kondensationstemperatur
+evaporation temperature: Verdampfungstemperatur
+superheat target: Sollwert Überhitzung
+EEV position: Position EEV
+EEV-VI (vapour injection) inlet temperature: Eintrittstemperatur EEV-VI (Dampfeinspritzung)
+EEV-VI (vapour injection) outlet temperature: Austrittstemperatur EEV-VI (Dampfeinspritzung)
+compressor start at energy integral: Kompressorstart bei Energieintegral
+building circuit pump max residual head: maximale Restförderhöhe Gebäudekreispumpe
