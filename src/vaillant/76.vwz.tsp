@@ -350,6 +350,15 @@ namespace Vwz {
     value: UIN;
   }
 
+  /** current electric backup heater power, in 0.1 kW steps (issue #609) */
+  @inherit(u_b51a32)
+  @ext(0x4c)
+  model ImmersionHeaterPower {
+    @unit("kW")
+    @divisor(10)
+    value: UIN;
+  }
+
   /** default *r for b51a 05 ff 33 xx (Heizstab config) */
   @base(MF, 0x1a, 0x5, 0xff, 0x33)
   model u_b51a33 {
