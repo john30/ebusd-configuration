@@ -295,9 +295,9 @@ namespace register {
    @wcrc(0x3b, 0x01)
    model R3B01 is Register<UIN>;
 
-   /**[WCRC] 42 Holiday Temperature Level*/
+   /**[WCRC] 142 Holiday Temperature Level */
    @wcrc(0x3d, 0x01)
-   model HolidayTempLevel is Register<temp10>;
+   model HolidayTempLevel is Register<TempReduced>;
 
    /**[WCRC] 575 DHW Switch Diff */
    @wcrc(0x40, 0x01)
