@@ -331,7 +331,12 @@ namespace Bai {
     )
     Scan_Id_product_308523: Bai._308523_inc,
 
-    @condition(Scan.Id.product, "='0010021901'")
+    @condition(
+      Scan.Id.product,
+      "='0010021901'",
+      "'0010015667'",
+      "'0010020399'"
+    )
     Scan_Id_product_0010021901: Bai._0010021901_inc,
 
     @condition(
@@ -378,6 +383,9 @@ namespace Bai {
 
     @condition(Id.Id.hw, "=3302")
     hw_3302: Bai._0010021901_inc,
+
+    @condition(Id.Id.hw, "=1303")
+    hw_1303: Bai._0010021901_inc,
 
     @condition(Id.Id.hw, "=7803")
     hw_7803: Bai._0010021961_inc,
