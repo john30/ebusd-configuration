@@ -579,6 +579,7 @@ namespace Bai._0010021901_inc {
     post_run: 0,
     permanent: 1,
     winter: 2,
+    eco: 3,
   }
 
   enum Values_AccessoriesOne {
