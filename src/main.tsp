@@ -71,5 +71,6 @@ import "./vaillant/ec.zeo.sc.tsp";
 import "./vaillant/general.tsp";
 import "./vaillant/scan.tsp";
 import "./wolf/08..hc.tsp";
+import "./wolf/15..ka.tsp";
 import "./wolf/50..mc.tsp";
 import "./wolf/broadcast.tsp";
