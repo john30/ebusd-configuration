@@ -200,6 +200,42 @@ namespace Hmu {
   model AirIntakeTemp {
     value: temp;
   }
+
+  // immersion heater values from Live Monitor, verified on VWF 117/4 (HMU00 SW 0307 HW 0403)
+
+  /** immersion heater operation hours (unverified, did not change during a 9 min run) */
+  @inherit(r_2)
+  @ext(0x46)
+  @Ebus.example("1562 h", "3108b51a0405ff3246", "0aff08271a060000000000")
+  model ImmersionHeaterHours {
+    value: hoursum;
+  }
+
+  /** immersion heater energy consumption */
+  @inherit(r_2)
+  @ext(0x49)
+  @Ebus.example("8410 kWh", "3108b51a0405ff3249", "0aff0826da200000000000")
+  model ImmersionHeaterEnergy {
+    value: energy4;
+  }
+
+  /** immersion heater starts */
+  @inherit(r_2)
+  @ext(0x4a)
+  @Ebus.example("2359", "3108b51a0405ff324a", "0aff082837090000000000")
+  model ImmersionHeaterStarts {
+    value: cntstarts;
+  }
+
+  /** current immersion heater power (Live Monitor "Heizstab Leistung", 0/2.0/3.5/5.5/9.0 kW) */
+  @inherit(r_2)
+  @ext(0x4c)
+  @Ebus.example("5.5", "3108b51a0405ff324c", "0aff083537000000000000")
+  model ImmersionHeaterPower {
+    @unit("kW")
+    @divisor(10)
+    value: D1B;
+  }
   // Values from Live Monitor
 
   /** heat circuit target temperature */
