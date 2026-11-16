@@ -3,6 +3,7 @@ import "../_templates.tsp";
 
 using Ebus;
 using Ebus.Num;
+using Ebus.Str;
 
 namespace Wolf;
 
@@ -92,4 +93,67 @@ model Status {
 
   /** boiler flow setpoint */
   SupplySetTemp: temp0;
+}
+
+/** temperature difference */
+@unit("K")
+scalar temp1k extends D1C;
+
+/**
+ * Exchange between a room controller and its heating module (PBSB 50 14). Incoming only:
+ * the room controller sends the first part, the module answers with the second; ebusd decodes
+ * both passively. Field layout confirmed against a live frame (see evidence).
+ */
+@ext(0x50, 0x14)
+model HcMode {
+  @out Ink1_1: BI0;
+  @out @values(_onoff) Heating: BI1;
+  @out Ink1_3: BI2;
+  @out Ink1_4: BI3;
+  @out Ink1_5: BI4;
+  @out Ink1_6: BI5;
+  @out Ink1_7: BI6;
+  @out Ink1_8: BI7;
+
+  /** requested flow setpoint */
+  @out SupplyHCSetTemp: temp2;
+
+  /** room temperature */
+  @out RoomTemp: temp2;
+
+  @out Ink2_1: BI0;
+  @out Ink2_2: BI1;
+  @out Ink2_3: BI2;
+  @out @values(_onoff) DHW: BI3;
+  @out Ink2_5: BI4;
+  @out Ink2_6: BI5;
+  @out Ink2_7: BI6;
+  @out Ink2_8: BI7;
+  @out @maxLength(1) ign: IGN;
+
+  /** operating mode */
+  @in Opmode: UCH;
+
+  @in @values(_onoff) Pump: BI0;
+  @in @values(_onoff) ValveClosing: BI1;
+  @in @values(_onoff) ValveOpening: BI2;
+  @in Opmode_4: BI3;
+  @in Opmode_5: BI4;
+  @in Opmode_6: BI5;
+  @in Opmode_7: BI6;
+
+  /** actual flow temperature */
+  @in SupplyHCTemp: temp2;
+
+  /** outside temperature */
+  @in OutsideTemp: temp2;
+
+  /** boiler boost offset */
+  @in BoilerMCBoostTemp: temp1k;
+
+  /** maximum flow temperature */
+  @in SupplyHCMaxTemp: temp1;
+
+  /** minimum flow temperature */
+  @in SupplyHCMinTemp: temp1;
 }
