@@ -1,5 +1,6 @@
 import "@ebusd/ebus-typespec";
 import "./_templates.tsp";
+import "./wtc_inc.tsp";
 
 using Ebus;
 using Ebus.Num;
@@ -7,11 +8,6 @@ using Ebus.Dtm;
 using Ebus.Str;
 
 namespace Wolf;
-
-/** outside temperature (may be negative) */
-@unit("°C")
-@divisor(10)
-scalar otemp10 extends SIN;
 
 enum _DHWOperation {
   Priority: 0x00,
@@ -23,21 +19,7 @@ enum _DHWOperation {
 @values(_DHWOperation)
 scalar DHWOperation extends UIN;
 
-/**
- * Register read whose first ID byte is the Weishaupt CRC-8 (polynomial 0x5C, no reflection,
- * init = first address byte) over the address bytes that follow. The checksum of a read
- * depends only on the static address, so it is precomputed here and emitted as a literal;
- * stock ebusd then addresses the register with no runtime CRC. (The 0x22 base keeps no
- * trailing byte, unlike `regr`, so each message supplies its own checksum.)
- */
-@base(MF, 0x22)
-model crcr {}
-
-/** register read with a precomputed address checksum */
-@inherit(crcr)
-model CrcRead<T> {
-  value: T;
-}
+// The register-read template (crcr / CrcRead) and otemp10 are shared from wtc_inc.tsp.
 
 @zz(0x15) // system manager (KA)
 namespace ka {

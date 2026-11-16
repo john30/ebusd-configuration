@@ -1,11 +1,84 @@
 import "@ebusd/ebus-typespec";
 import "../_templates.tsp";
+import "./_templates.tsp";
 
 using Ebus;
 using Ebus.Num;
 using Ebus.Str;
+using Ebus.Dtm;
 
 namespace Wolf;
+
+// --- shared register-read template (precomputed address CRC, see 15..ka.tsp / evidence) ---
+
+/** register read whose first ID byte is the precomputed Weishaupt CRC-8 (poly 0x5C) */
+@base(MF, 0x22)
+model crcr {}
+
+/** register read with a precomputed address checksum */
+@inherit(crcr)
+model CrcRead<T> {
+  value: T;
+}
+
+/** outside temperature (may be negative) */
+@unit("°C")
+@divisor(10)
+scalar otemp10 extends SIN;
+
+/** seconds */
+@unit("s")
+scalar seconds extends UIN;
+
+enum _enabled {
+  Enabled: 0,
+  Disabled: 1,
+}
+
+enum _weekday {
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
+  Sunday: 7,
+}
+
+/** day of the week */
+@values(_weekday)
+scalar weekday extends UIN;
+
+enum _month {
+  January: 1,
+  February: 2,
+  March: 3,
+  April: 4,
+  May: 5,
+  June: 6,
+  July: 7,
+  August: 8,
+  September: 9,
+  October: 10,
+  November: 11,
+  December: 12,
+}
+
+/** month of the year */
+@values(_month)
+scalar month extends UIN;
+
+/**
+ * One switch-time slot of a weekly program (read side): a start ("from") and stop ("to")
+ * time, each with an enable flag. Read via the precomputed-CRC register base.
+ */
+@inherit(crcr)
+model SwitchTimes {
+  ToTime: TTQ;
+  @values(_enabled) ToEnabled: BI7;
+  FromTime: TTQ;
+  @values(_enabled) FromEnabled: BI7;
+}
 
 enum _onoff {
   off: 0,
