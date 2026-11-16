@@ -130,4 +130,90 @@ namespace em1 {
   /** Sunday slot 3 */
   @ext(0x56, 0x72, 0x1a)
   model CircProgramSun3 is SwitchTimes;
+
+  // --- Weekly hot-water program, read side: three switch-time slots per day ---
+
+  /** Monday slot 1 */
+  @ext(0xa7, 0x10, 0x17)
+  model DHWProgramMon1 is SwitchTimes;
+
+  /** Monday slot 2 */
+  @ext(0xfb, 0x11, 0x17)
+  model DHWProgramMon2 is SwitchTimes;
+
+  /** Monday slot 3 */
+  @ext(0x1f, 0x12, 0x17)
+  model DHWProgramMon3 is SwitchTimes;
+
+  /** Tuesday slot 1 */
+  @ext(0x2b, 0x20, 0x17)
+  model DHWProgramTue1 is SwitchTimes;
+
+  /** Tuesday slot 2 */
+  @ext(0x77, 0x21, 0x17)
+  model DHWProgramTue2 is SwitchTimes;
+
+  /** Tuesday slot 3 */
+  @ext(0x93, 0x22, 0x17)
+  model DHWProgramTue3 is SwitchTimes;
+
+  /** Wednesday slot 1 */
+  @ext(0x9b, 0x30, 0x17)
+  model DHWProgramWed1 is SwitchTimes;
+
+  /** Wednesday slot 2 */
+  @ext(0xc7, 0x31, 0x17)
+  model DHWProgramWed2 is SwitchTimes;
+
+  /** Wednesday slot 3 */
+  @ext(0x23, 0x32, 0x17)
+  model DHWProgramWed3 is SwitchTimes;
+
+  /** Thursday slot 1 */
+  @ext(0x6f, 0x40, 0x17)
+  model DHWProgramThu1 is SwitchTimes;
+
+  /** Thursday slot 2 */
+  @ext(0x33, 0x41, 0x17)
+  model DHWProgramThu2 is SwitchTimes;
+
+  /** Thursday slot 3 */
+  @ext(0xd7, 0x42, 0x17)
+  model DHWProgramThu3 is SwitchTimes;
+
+  /** Friday slot 1 */
+  @ext(0xdf, 0x50, 0x17)
+  model DHWProgramFri1 is SwitchTimes;
+
+  /** Friday slot 2 */
+  @ext(0x83, 0x51, 0x17)
+  model DHWProgramFri2 is SwitchTimes;
+
+  /** Friday slot 3 */
+  @ext(0x67, 0x52, 0x17)
+  model DHWProgramFri3 is SwitchTimes;
+
+  /** Saturday slot 1 */
+  @ext(0x53, 0x60, 0x17)
+  model DHWProgramSat1 is SwitchTimes;
+
+  /** Saturday slot 2 */
+  @ext(0x0f, 0x61, 0x17)
+  model DHWProgramSat2 is SwitchTimes;
+
+  /** Saturday slot 3 */
+  @ext(0xeb, 0x62, 0x17)
+  model DHWProgramSat3 is SwitchTimes;
+
+  /** Sunday slot 1 */
+  @ext(0xe3, 0x70, 0x17)
+  model DHWProgramSun1 is SwitchTimes;
+
+  /** Sunday slot 2 */
+  @ext(0xbf, 0x71, 0x17)
+  model DHWProgramSun2 is SwitchTimes;
+
+  /** Sunday slot 3 */
+  @ext(0x5b, 0x72, 0x17)
+  model DHWProgramSun3 is SwitchTimes;
 }
