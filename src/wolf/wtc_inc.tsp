@@ -29,6 +29,22 @@ enum _operatingPhase {
 scalar operatingPhase extends UCH;
 
 /**
+ * Boiler burner load (PBSB 05 04): current load and the configured minimum and maximum.
+ * Incoming only, decoded passively.
+ */
+@ext(0x05, 0x04)
+model Power {
+  /** current burner load */
+  CurrentLoad: percent0;
+
+  /** minimum burner load */
+  MinLoad: percent0;
+
+  /** maximum burner load */
+  MaxLoad: percent0;
+}
+
+/**
  * Boiler status the WTC broadcasts (PBSB 50 0A). Incoming only: the boiler sends it on its
  * own, so ebusd decodes it passively. Field layout confirmed against a live broadcast frame
  * (see evidence).
