@@ -21,7 +21,8 @@ model CrcRead<T> {
   value: T;
 }
 
-/** outside temperature (may be negative) */
+// Signed tenths: outside sensors, and registers that answer -100.0 when no sensor is fitted.
+/** temperature */
 @unit("°C")
 @divisor(10)
 scalar otemp10 extends SIN;

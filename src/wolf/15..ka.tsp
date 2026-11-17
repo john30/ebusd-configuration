@@ -33,7 +33,7 @@ namespace ka {
 
   /** domestic hot water setpoint */
   @ext(0xe4, 0x03, 0x00)
-  model DHWSetValue is CrcRead<temp10>;
+  model DHWSetValue is CrcRead<otemp10>;
 
   /** outside sensor B1 */
   @ext(0x74, 0x0c, 0x00)
@@ -41,11 +41,11 @@ namespace ka {
 
   /** de-couple sensor B22 (hydraulic separator or plate exchanger, secondary side) */
   @ext(0x28, 0x0d, 0x00)
-  model DeCoupleTemp is CrcRead<temp10>;
+  model DeCoupleTemp is CrcRead<otemp10>;
 
   /** domestic hot water sensor B3 */
   @ext(0xcc, 0x0e, 0x00)
-  model DHWTemp is CrcRead<temp10>;
+  model DHWTemp is CrcRead<otemp10>;
 
   /** configuration status */
   @ext(0xb0, 0x10, 0x00)
