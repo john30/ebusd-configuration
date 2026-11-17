@@ -39,9 +39,9 @@ namespace ka {
   @ext(0x74, 0x0c, 0x00)
   model OutsideTemp is CrcRead<otemp10>;
 
-  /** boiler flow temperature */
+  /** de-couple sensor B22 (hydraulic separator or plate exchanger, secondary side) */
   @ext(0x28, 0x0d, 0x00)
-  model SupplyWTCTemp is CrcRead<temp10>;
+  model DeCoupleTemp is CrcRead<temp10>;
 
   /** domestic hot water sensor B3 */
   @ext(0xcc, 0x0e, 0x00)
