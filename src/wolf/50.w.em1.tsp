@@ -33,6 +33,10 @@ namespace em1 {
   @ext(0x11, 0x24, 0x01)
   model SystemYear is CrcRead<UIN>;
 
+  /** hour */
+  @ext(0x4d, 0x25, 0x01)
+  model SystemHour is CrcRead<hours>;
+
   /** minute */
   @ext(0xa9, 0x26, 0x01)
   model SystemMinute is CrcRead<minutes>;
