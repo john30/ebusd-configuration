@@ -112,7 +112,7 @@ namespace ka {
   @ext(0xd8, 0x23, 0x00)
   model DHWOperationMode is CrcRead<DHWOperation>;
 
-  /** minimum burner blocking time */
+  /** blocking time before a further boiler of the cascade is switched on */
   @ext(0x4c, 0x25, 0x00)
   model BlockingTime is CrcRead<minutes>;
 
