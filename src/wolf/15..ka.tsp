@@ -23,6 +23,37 @@ scalar DHWOperation extends UIN;
 
 @zz(0x15) // system manager (KA)
 namespace ka {
+  // Status each boiler sends to the cascade master (ZZ 0x10, the master address of this
+  // device). ebusd loads a file for a scanned slave address only, hence these messages are here.
+
+  /** passive, sent by the first boiler */
+  @passive
+  @qq(0x03)
+  @zz(0x10)
+  model up1 {}
+
+  /** passive, sent by the second boiler */
+  @passive
+  @qq(0x13)
+  @zz(0x10)
+  model up2 {}
+
+  /** status of the first boiler */
+  @inherit(up1)
+  model Boiler1Status is Status;
+
+  /** burner load of the first boiler */
+  @inherit(up1)
+  model Boiler1Power is Power;
+
+  /** status of the second boiler */
+  @inherit(up2)
+  model Boiler2Status is Status;
+
+  /** burner load of the second boiler */
+  @inherit(up2)
+  model Boiler2Power is Power;
+
   /** error status, 0 when no error is pending */
   @ext(0x5c, 0x01, 0x00)
   model ErrorStatus is CrcRead<UIN>;
