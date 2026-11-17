@@ -9,7 +9,7 @@ using Ebus.Dtm;
 
 namespace Wolf;
 
-// --- shared register-read template (precomputed address CRC, see 15..ka.tsp / evidence) ---
+// --- shared register-read template (precomputed address CRC, see 15.w.ka.tsp / evidence) ---
 
 /** register read whose first ID byte is the precomputed Weishaupt CRC-8 (poly 0x5C) */
 @base(MF, 0x22)
