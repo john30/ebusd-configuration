@@ -173,6 +173,12 @@ model Status {
 @unit("K")
 scalar temp1k extends D1C;
 
+// Signed with a fraction byte, without the range of temp2: a heating module that has no
+// outside sensor answers -100.0, and ebusd rejects a whole message for one value out of range.
+/** temperature */
+@unit("°C")
+scalar otemp2 extends D2B;
+
 /**
  * Exchange between a room controller and its heating module (PBSB 50 14). Incoming only:
  * the room controller sends the first part, the module answers with the second; ebusd decodes
@@ -219,8 +225,8 @@ model HcMode {
   /** actual flow temperature */
   @in SupplyHCTemp: temp2;
 
-  /** outside temperature */
-  @in OutsideTemp: temp2;
+  /** outside temperature, -100.0 when the module has no outside sensor */
+  @in OutsideTemp: otemp2;
 
   /** boiler boost offset */
   @in BoilerMCBoostTemp: temp1k;
