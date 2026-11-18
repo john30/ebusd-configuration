@@ -15,7 +15,9 @@ enum _DHWOperation {
   Parallel: 0x02,
 }
 
-/** domestic hot water operating mode */
+// Parameter "DHW operation" of the vendor. Only 0 (Priority) has been read on the bus: the
+// values of Sliding and Parallel are not established.
+/** hot water loading with priority over the heating circuit, in parallel with it, or sliding */
 @values(_DHWOperation)
 scalar DHWOperation extends UIN;
 
@@ -108,9 +110,9 @@ namespace ka {
   @ext(0x54, 0x13, 0x00)
   model DHWSetpoint is CrcRead<temp10>;
 
-  /** hot water operating mode */
+  /** priority of the hot water loading over the heating circuit */
   @ext(0xd8, 0x23, 0x00)
-  model DHWOperationMode is CrcRead<DHWOperation>;
+  model DHWLoadingPriority is CrcRead<DHWOperation>;
 
   /** blocking time before a further boiler of the cascade is switched on */
   @ext(0x4c, 0x25, 0x00)
