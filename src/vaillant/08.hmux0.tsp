@@ -13,7 +13,7 @@ namespace Vaillant;
 // @zz(0x08)
 namespace Hmux0 {
   // ==============================================================================
-  // 1. REAL-TIME TELEMETRY AND REFRIGERATION CIRCUIT (PASSIVE u - BROADCAST/UPDATE)
+  // 1. REAL-TIME TELEMETRY AND REFRIGERATION CIRCUIT (PASSIVE u & ON-DEMAND READ r)
   // ==============================================================================
 
   /** default *uw for controller 10 -> 08 */
@@ -80,12 +80,12 @@ namespace Hmux0 {
   @base(MF, 0x16)
   model u_16 {}
 
-  /** default *r for on-demand and passively decoded energy telemetry (b516) */
+  /** default *r for on-demand energy telemetry (b516) */
   @base(MF, 0x16)
   model r_16 {}
 
   /** energy statistics EEPROM table descriptor */
-  @inherit(u_16)
+  @inherit(r_16, u_16)
   @ext(0x11)
   model EnergyStatsDescriptor {
     @maxLength(9)
@@ -93,7 +93,7 @@ namespace Hmux0 {
   }
 
   /** instantaneous power consumption and active mode */
-  @inherit(r_16)
+  @inherit(r_16, u_16)
   @ext(0x14)
   model PowerStatus {
     /** active energy integration mode */
@@ -124,14 +124,14 @@ namespace Hmux0 {
     ign: IGN;
   }
 
-  /** default *r for readable and passively decoded IEEE 754 energy counters (b516 1000ffff) */
+  /** default *r for readable IEEE 754 energy counters (b516 1000ffff) */
   @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
   model r_energy {
     @maxLength(7)
     ign: IGN;
   }
 
-  /** total solar energy sum */
+  /** total solar energy sum (active read provided via B516_inc.StatSolarEnergySum) */
   @inherit(u_energy)
   @ext(0x01, 0x00, 0x00, 0x00)
   model PrEnergySolarTotal {
@@ -140,7 +140,7 @@ namespace Hmux0 {
   }
 
   /** total heating electrical energy consumed */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x83, 0x03, 0x00, 0x00)
   model PrEnergyElectricHc {
     /** cumulative heating consumed electrical energy */
@@ -149,7 +149,7 @@ namespace Hmux0 {
   }
 
   /** total hot water electrical energy consumed */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x83, 0x04, 0x00, 0x00)
   model PrEnergyElectricHwc {
     /** cumulative hot water consumed electrical energy */
@@ -158,7 +158,7 @@ namespace Hmux0 {
   }
 
   /** total cooling electrical energy consumed */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x83, 0x05, 0x00, 0x00)
   model PrEnergyElectricCool {
     /** cumulative cooling consumed electrical energy */
@@ -167,7 +167,7 @@ namespace Hmux0 {
   }
 
   /** total heating fuel energy consumed (unsupported on heat pump) */
-  @inherit(u_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x84, 0x03, 0x00, 0x00)
   model PrEnergyFuelHc {
     @unit("Wh")
@@ -175,7 +175,7 @@ namespace Hmux0 {
   }
 
   /** total hot water fuel energy consumed (unsupported on heat pump) */
-  @inherit(u_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x84, 0x04, 0x00, 0x00)
   model PrEnergyFuelHwc {
     @unit("Wh")
@@ -183,7 +183,7 @@ namespace Hmux0 {
   }
 
   /** total heating thermal energy delivered */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x49, 0x03, 0x00, 0x00)
   model PrEnergyThermalHc {
     /** cumulative heating delivered thermal energy */
@@ -192,7 +192,7 @@ namespace Hmux0 {
   }
 
   /** total hot water thermal energy delivered */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x49, 0x04, 0x00, 0x00)
   model PrEnergyThermalHwc {
     /** cumulative hot water delivered thermal energy */
@@ -201,7 +201,7 @@ namespace Hmux0 {
   }
 
   /** total cooling thermal energy extracted */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x49, 0x05, 0x00, 0x00)
   model PrEnergyThermalCool {
     /** cumulative cooling extracted thermal energy */
@@ -210,7 +210,7 @@ namespace Hmux0 {
   }
 
   /** total heating environmental energy yield */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x42, 0x03, 0x00, 0x00)
   model PrEnergyEnvYieldHc {
     /** cumulative heating environmental energy yield */
@@ -219,7 +219,7 @@ namespace Hmux0 {
   }
 
   /** total hot water environmental energy yield */
-  @inherit(r_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x42, 0x04, 0x00, 0x00)
   model PrEnergyEnvYieldHwc {
     /** cumulative hot water environmental energy yield */
@@ -228,7 +228,7 @@ namespace Hmux0 {
   }
 
   /** total cooling environmental energy yield */
-  @inherit(u_energy)
+  @inherit(r_energy, u_energy)
   @ext(0x42, 0x05, 0x00, 0x00)
   model PrEnergyEnvYieldCool {
     @unit("Wh")
@@ -240,65 +240,41 @@ namespace Hmux0 {
   @base(MF, 0x11)
   model u_11 {}
 
+  /** default *r for compressor state (b511) */
+  @base(MF, 0x11)
+  model r_11 {}
+
   /** compressor state and modulation */
-  @inherit(u_11)
+  @inherit(r_11, u_11)
   @ext(0x00)
   model StateCompressor {
-    /** compressor speed */
-    @unit("rpm")
-    comp_speed: UIN;
+    /** flow temperature */
+    @unit("°C")
+    flow_temp: D2C;
 
-    /** outdoor fan speed */
-    @unit("rpm")
-    fan_speed: UIN;
+    @maxLength(1)
+    ign: IGN;
 
     /** compressor modulation */
     @unit("%")
     modulation: UCH;
+
+    /** operating mode flags */
+    mode_flags: UCH;
 
     /** state bytes */
     @maxLength(4)
     state_bytes: HEX;
   }
 
-  /** refrigerant circuit temperatures */
-  @inherit(u_11)
-  @ext(0x01, 0x01)
-  model CircuitTemps {
-    /** heat pump flow temperature */
-    @unit("°C")
-    flow_temp: D1C;
-
-    /** heat pump return temperature */
-    @unit("°C")
-    return_temp: D1C;
-
-    /** compressor discharge temperature */
-    @unit("°C")
-    discharge_temp: D1C;
-
-    /** evaporator temperature */
-    @unit("°C")
-    evaporator_temp: D1C;
-
-    @maxLength(1)
-    ign: IGN;
-
-    /** outdoor pump PWM modulation */
-    @unit("%")
-    pump_pwm: UCH;
-
-    @maxLength(3)
-    ign_2: IGN;
-  }
-
   /** compressor runtime and start count in heating mode (sum of Hc+Hwc+Cool runtime/starts matches myVAILLANT app operating hours/cycles) */
-  @inherit(u_11)
+  @inherit(r_11, u_11)
   @ext(0x18, 0x01)
   model RunStatsCompressorHc {
     @maxLength(1)
     ign: IGN;
 
+    /** compressor runtime */
     @unit("min")
     runtime: ULG;
 
@@ -307,12 +283,13 @@ namespace Hmux0 {
   }
 
   /** compressor runtime and start count in hot water mode */
-  @inherit(u_11)
+  @inherit(r_11, u_11)
   @ext(0x18, 0x02)
   model RunStatsCompressorHwc {
     @maxLength(1)
     ign: IGN;
 
+    /** compressor runtime */
     @unit("min")
     runtime: ULG;
 
@@ -321,12 +298,13 @@ namespace Hmux0 {
   }
 
   /** compressor runtime and start count in cooling mode */
-  @inherit(u_11)
+  @inherit(r_11, u_11)
   @ext(0x18, 0x03)
   model RunStatsCompressorCool {
     @maxLength(1)
     ign: IGN;
 
+    /** compressor runtime */
     @unit("min")
     runtime: ULG;
 
@@ -335,7 +313,7 @@ namespace Hmux0 {
   }
 
   // ==============================================================================
-  // 2. RUN DATA DIAGNOSTIC SENSORS (b509 - PASSIVE u AND ACTIVE r)
+  // 2. RUN DATA DIAGNOSTIC SENSORS (b509 - PASSIVE u, ON-DEMAND READ r & SLOW POLL r9)
   // ==============================================================================
 
   /** default *u for raw 4-byte unsupported run data responses (b509 540200) */
@@ -358,7 +336,7 @@ namespace Hmux0 {
     ign: IGN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x0d, 0x0a)
   model RunDataCompressorSpeed {
     @unit("rps")
@@ -366,20 +344,20 @@ namespace Hmux0 {
   }
 
   /** (EEV Position in different scale?) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x28, 0x0a)
   model RunDataEEVPositionAbs {
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x47, 0x0a)
   model RunDataFan1Speed {
     @unit("rpm")
     value: EXP;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x49, 0x0a)
   model RunDataFan2Speed {
     @unit("rpm")
@@ -397,7 +375,7 @@ namespace Hmux0 {
 
   /** current electrical power consumption (Watt) */
   @poll(1)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x5b, 0x0d)
   model RunDataElectricPowerConsumption {
     @unit("W")
@@ -405,8 +383,8 @@ namespace Hmux0 {
   }
 
   /** refrigerant high pressure */
-  @poll(3)
-  @inherit(r_rundata)
+  @poll(9)
+  @inherit(r_rundata, u_rundata)
   @ext(0x6a, 0x09)
   model RunDataHighPressure {
     @unit("bar")
@@ -415,7 +393,7 @@ namespace Hmux0 {
 
   /** compressor inlet suction temperature */
   @poll(9)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x98, 0x08)
   model RunDataCompressorInletTemp {
     @unit("°C")
@@ -424,7 +402,7 @@ namespace Hmux0 {
 
   /** compressor outlet discharge temperature */
   @poll(9)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xa2, 0x08)
   model RunDataCompressorOutletTemp {
     @unit("°C")
@@ -433,7 +411,7 @@ namespace Hmux0 {
 
   /** expansion valve outlet temperature */
   @poll(9)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xac, 0x08)
   model RunDataEEVOutletTemp {
     @unit("°C")
@@ -441,7 +419,7 @@ namespace Hmux0 {
   }
 
   /** condenser outlet temperature */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xb6, 0x08)
   model RunDataCondenserOutTemp {
     @unit("°C")
@@ -450,7 +428,7 @@ namespace Hmux0 {
 
   /** current flow temp, accurate to 2 decimal places */
   @poll(2)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xfc, 0x08)
   model RunDataFlowTemp {
     @unit("°C")
@@ -459,7 +437,7 @@ namespace Hmux0 {
 
   /** current return temp, accurate to 2 decimal places */
   @poll(2)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x06, 0x09)
   model RunDataReturnTemp {
     @unit("°C")
@@ -467,7 +445,8 @@ namespace Hmux0 {
   }
 
   /** building circuit water flow rate (display D.060) */
-  @inherit(u_rundata)
+  @poll(2)
+  @inherit(r_rundata, u_rundata)
   @ext(0x09, 0x0b)
   model RunDataFlowRate {
     /** building circuit volumetric water flow rate */
@@ -476,29 +455,36 @@ namespace Hmux0 {
   }
 
   /** maximum residual pump head (display D.231, constant setting) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x68, 0x0b)
   model RunDataMaxResidualHead {
     @unit("mbar")
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xb8, 0x0b)
   model RunStatsHMUHours {
     @unit("h")
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xb9, 0x0b)
   model RunStatsHcHours {
     @unit("h")
     value: UIN;
   }
 
-  /** total runtime of Hwc mode */
   @inherit(u_rundata)
+  @ext(0xbb, 0x0b)
+  model RunStatsDiagbb0b {
+    @unit("h")
+    value: UIN;
+  }
+
+  /** total runtime of Hwc mode */
+  @inherit(r_rundata, u_rundata)
   @ext(0xbc, 0x0b)
   model RunStatsHwcHours {
     @unit("h")
@@ -506,20 +492,21 @@ namespace Hmux0 {
   }
 
   /** switching operations of the auxiliary heater (display D.074) */
-  @inherit(u_rundata)
+  @poll(9)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc0, 0x0b)
   model RunStatsAuxHeaterSwitches {
     value: UIN;
   }
 
   /** total starts of Hwc mode */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc1, 0x0b)
   model RunStatsHwcStarts {
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc2, 0x0b)
   model RunStatsCompressorHours {
     @unit("h")
@@ -527,20 +514,20 @@ namespace Hmux0 {
   }
 
   /** start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc3, 0x0b)
   model RunStatsCompressorStarts {
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc4, 0x0b)
   model RunStatsBuildingPumpHours {
     @unit("h")
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc5, 0x09)
   model RunDataBuildingCPumpPower {
     @unit("%")
@@ -548,13 +535,13 @@ namespace Hmux0 {
   }
 
   /** total starts of building circuit pump */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc5, 0x0b)
   model RunStatsBuildingCPumpStarts {
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc8, 0x0b)
   model RunStats4PortValveHours {
     @unit("h")
@@ -562,13 +549,13 @@ namespace Hmux0 {
   }
 
   /** start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xc9, 0x0b)
   model RunStats4PortValveSwitches {
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xd7, 0x0b)
   model RunStatsFan1Hours {
     @unit("h")
@@ -576,13 +563,13 @@ namespace Hmux0 {
   }
 
   /** start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xd8, 0x0b)
   model RunStatsFan1Starts {
     value: UIN;
   }
 
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xd9, 0x0b)
   model RunStatsFan2Hours {
     @unit("h")
@@ -590,7 +577,7 @@ namespace Hmux0 {
   }
 
   /** start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xda, 0x0b)
   model RunStatsFan2Starts {
     value: UIN;
@@ -598,7 +585,7 @@ namespace Hmux0 {
 
   /** outdoor air inlet temperature */
   @poll(9)
-  @inherit(r_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xde, 0x08)
   model RunDataAirInletTemp {
     @unit("°C")
@@ -606,7 +593,7 @@ namespace Hmux0 {
   }
 
   /** cooling operating hours */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xe1, 0x0b)
   model RunStatsCoolingHours {
     @unit("h")
@@ -614,14 +601,14 @@ namespace Hmux0 {
   }
 
   /** cooling start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xe2, 0x0b)
   model RunStatsCoolingStarts {
     value: UIN;
   }
 
   /** defrost operating hours */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xe3, 0x0b)
   model RunStatsDeiceHours {
     @unit("h")
@@ -629,14 +616,14 @@ namespace Hmux0 {
   }
 
   /** defrost start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xe4, 0x0b)
   model RunStatsDeiceStarts {
     value: UIN;
   }
 
   /** backup electric heater operating hours */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xe5, 0x0b)
   model RunStatsImmersionHeaterHours {
     @unit("h")
@@ -644,14 +631,14 @@ namespace Hmux0 {
   }
 
   /** backup electric heater start count */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xe6, 0x0b)
   model RunStatsImmersionHeaterStarts {
     value: UIN;
   }
 
   /** compressor flow temperature target (display: flow temperature target compressor) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x4a, 0x0d)
   model RunDataFlowTempDesired {
     @unit("°C")
@@ -659,7 +646,7 @@ namespace Hmux0 {
   }
 
   /** water side heat output (equals flow rate x spread x 1.163 within 0.3 %) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0x5e, 0x0d)
   model RunDataHeatOutput {
     @unit("W")
@@ -667,7 +654,7 @@ namespace Hmux0 {
   }
 
   /** compressor energy integral (display: energy integral compressor) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xfe, 0x0a)
   model RunDataEnergyIntegral {
     @unit("°min")
@@ -675,7 +662,7 @@ namespace Hmux0 {
   }
 
   /** evaporation temperature (display: evaporation temperature) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xd1, 0x10)
   model RunDataEvaporationTemp {
     @unit("°C")
@@ -684,7 +671,7 @@ namespace Hmux0 {
   }
 
   /** suction line superheat (display: superheat) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xd7, 0x10)
   model RunDataSuperheat {
     @unit("K")
@@ -693,7 +680,7 @@ namespace Hmux0 {
   }
 
   /** condenser liquid outlet temperature (condensation temperature minus this value matches display subcooling) */
-  @inherit(u_rundata)
+  @inherit(r_rundata, u_rundata)
   @ext(0xdb, 0x10)
   model RunDataCondensateTemp {
     @unit("°C")
@@ -702,10 +689,10 @@ namespace Hmux0 {
   }
 
   // ==============================================================================
-  // 3. STATISTICS AND GLOBAL STATE (PASSIVE u)
+  // 3. STATISTICS AND GLOBAL STATE (PASSIVE u & ON-DEMAND READ r)
   // ==============================================================================
 
-  @inherit(u_11)
+  @inherit(r_11, u_11)
   @ext(0x07)
   model State {
     energy: UCH;
@@ -734,7 +721,7 @@ namespace Hmux0 {
   }
 
   /** flow/return/outside/hwc/storage temperature/pump status */
-  @inherit(u_11)
+  @inherit(r_11, u_11)
   @ext(0x01)
   model Status01 {
     @unit("°C")
@@ -763,7 +750,7 @@ namespace Hmux0 {
     hwc: 4,
   }
 
-  /** operating mode/maximum temp/current temp */
+  /** operating mode/maximum temp/current temp (passive; unsupported on heat pump) */
   @inherit(u_11)
   @ext(0x02)
   model Status02 {
@@ -790,7 +777,7 @@ namespace Hmux0 {
     auto: 3,
   }
 
-  /** Status */
+  /** Status (passive; unsupported on heat pump) */
   @inherit(u_11)
   @ext(0x03)
   model Status {
@@ -822,8 +809,12 @@ namespace Hmux0 {
   @base(MF, 0x03)
   model u_error {}
 
+  /** default *r for error/status registers (b503) */
+  @base(MF, 0x03)
+  model r_error {}
+
   /** Current errors */
-  @inherit(u_error)
+  @inherit(r_error, u_error)
   @ext(0x00, 0x01)
   model Currenterror {
     error: UIN;
@@ -834,7 +825,7 @@ namespace Hmux0 {
   }
 
   /** Error History */
-  @inherit(u_error)
+  @inherit(r_error, u_error)
   @ext(0x01, 0x01)
   model Errorhistory {
     @out
@@ -847,7 +838,7 @@ namespace Hmux0 {
   }
 
   /** outdoor unit status code */
-  @inherit(u_error)
+  @inherit(r_error, u_error)
   @ext(0x00, 0x03)
   model HMUStatusCode {
     @values(Values_HMUStatusCode)
@@ -914,7 +905,7 @@ namespace Hmux0 {
   }
 
   /** error memory slot */
-  @inherit(u_error)
+  @inherit(r_error, u_error)
   @ext(0x00)
   model ErrorMemorySlot {
     @out
@@ -957,19 +948,46 @@ namespace Hmux0 {
     status: UIN;
   }
 
-  /** condensation temperature (display: condensation temperature) */
-  @inherit(u_diagfeat)
-  @ext(0x05, 0xff, 0x35, 0x46)
-  model RunDataCondensationTemp {
+  /** default *u for extended b51a 05ff diagnostic/config registers */
+  @passive
+  @base(MF, 0x1a, 0x05, 0xff)
+  model u_1a_ff {
     @maxLength(3)
     ign: IGN;
+  }
 
+  /** default *r for extended b51a 05ff diagnostic/config registers */
+  @base(MF, 0x1a, 0x05, 0xff)
+  model r_1a_ff {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  /** default *w for extended b51a 06ff config registers */
+  @write
+  @base(MF, 0x1a, 0x06, 0xff)
+  model w_1a_ff {}
+
+  /** condensation temperature (display: condensation temperature) */
+  @inherit(r_1a_ff, u_1a_ff)
+  @ext(0x35, 0x46)
+  model RunDataCondensationTemp {
     @unit("°C")
     @divisor(16)
     value: SIN;
 
     @maxLength(5)
     ign_2: IGN;
+  }
+
+  /** compressor silent operation level */
+  @poll(9)
+  @inherit(r_1a_ff, u_1a_ff, w_1a_ff)
+  @ext(0x34, 0x28)
+  model CompressorSilentOperationLevel {
+    /** compressor silent operation level */
+    @unit("%")
+    value: UCH;
   }
 
   /** central regulator heartbeat */
@@ -984,7 +1002,7 @@ namespace Hmux0 {
     value: UCH;
   }
 
-  /** diagnostic code readout */
+  /** diagnostic telemetry readout cc10 (tracks load/temp) */
   @inherit(u_rundata)
   @ext(0xcc, 0x10)
   model RunDataDiagnostic {
@@ -992,7 +1010,7 @@ namespace Hmux0 {
     value: HEX;
   }
 
-  /** diagnostic code 030b readout */
+  /** diagnostic telemetry readout 030b (tracks compressor load) */
   @inherit(u_rundata)
   @ext(0x03, 0x0b)
   model RunDataDiag030b {
@@ -1000,7 +1018,7 @@ namespace Hmux0 {
     value: HEX;
   }
 
-  /** diagnostic code fd0a readout */
+  /** diagnostic telemetry readout fd0a (tracks load/temp) */
   @inherit(u_rundata)
   @ext(0xfd, 0x0a)
   model RunDataDiagfd0a {
@@ -1008,10 +1026,11 @@ namespace Hmux0 {
     value: HEX;
   }
 
-  /** diagnostic code 8813 readout */
+  /** passive status mirror (uint16 matches HMUStatusCode b503 0003) */
   @inherit(u_rundata)
   @ext(0x88, 0x13)
   model RunDataDiag8813 {
+    /** HMUStatusCode mirror + ff padding */
     @maxLength(10)
     value: HEX;
   }
@@ -1022,6 +1041,132 @@ namespace Hmux0 {
   model RunDataDiag8b13 {
     @maxLength(10)
     value: HEX;
+  }
+
+  // Passive-only (u) diagnostic & unverified inverter parameters (no active polling)
+
+  /** inverter compressor dynamic control offset */
+  @inherit(u_rundata)
+  @ext(0x00, 0x0b)
+  model RunDataDiag000b {
+    value: SLG;
+  }
+
+  /** inverter fan load diagnostic index */
+  @inherit(u_rundata)
+  @ext(0x01, 0x0b)
+  model RunDataDiag010b {
+    /** inverter secondary stage or fan load index */
+    value: ULG;
+  }
+
+  /** target evaporator reference temperature */
+  @inherit(u_rundata)
+  @ext(0x7c, 0x08)
+  model RunDataDiag7c08 {
+    @unit("°C")
+    value: EXP;
+  }
+
+  /** secondary economizer circuit diagnostic */
+  @inherit(u_rundata)
+  @ext(0xd6, 0x10)
+  model RunDataDiagd610 {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
+  }
+
+  /** unverified diagnostic byte f40a (observed 29..30) */
+  @inherit(u_rundata)
+  @ext(0xf4, 0x0a)
+  model RunDataDiagf40a {
+    value: UCH;
+  }
+
+  /** unverified diagnostic byte f60a (observed 27..29) */
+  @inherit(u_rundata)
+  @ext(0xf6, 0x0a)
+  model RunDataDiagf60a {
+    value: UCH;
+  }
+
+  /** unverified diagnostic byte f80a (observed 30..31) */
+  @inherit(u_rundata)
+  @ext(0xf8, 0x0a)
+  model RunDataDiagf80a {
+    value: UCH;
+  }
+
+  /** unverified diagnostic byte fa0a (observed constant 34) */
+  @inherit(u_rundata)
+  @ext(0xfa, 0x0a)
+  model RunDataDiagfa0a {
+    value: UCH;
+  }
+
+  /** refrigerant circuit diagnostic temp 354a */
+  @inherit(u_1a_ff)
+  @ext(0x35, 0x4a)
+  model RunDataDiag354a {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** refrigerant circuit diagnostic temp 354b */
+  @inherit(u_1a_ff)
+  @ext(0x35, 0x4b)
+  model RunDataDiag354b {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** inverter electric diagnostic 3702 */
+  @inherit(u_1a_ff)
+  @ext(0x37, 0x02)
+  model RunDataDiag3702 {
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** inverter electric diagnostic 3704 */
+  @inherit(u_1a_ff)
+  @ext(0x37, 0x04)
+  model RunDataDiag3704 {
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** inverter electric diagnostic 3705 */
+  @inherit(u_1a_ff)
+  @ext(0x37, 0x05)
+  model RunDataDiag3705 {
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** inverter electric diagnostic 370b */
+  @inherit(u_1a_ff)
+  @ext(0x37, 0x0b)
+  model RunDataDiag370b {
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
   }
 
   /** included parts */

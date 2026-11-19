@@ -27,6 +27,10 @@ namespace Bass3 {
   @base(MF, 0x24, 0x02, 0x00, 0x00, 0x00)
   model u_raw_c0 {}
 
+  /** default *r for raw data in circuit 0 (uninstalled probes) */
+  @base(MF, 0x24, 0x02, 0x00, 0x00, 0x00)
+  model r_raw_c0 {}
+
   /** default *r for circuit 0 */
   @base(MF, 0x24, 0x02, 0x00, 0x00, 0x00)
   model r_c0 {
@@ -65,12 +69,6 @@ namespace Bass3 {
   @base(MF, 0x24, 0x02, 0x01, 0x01, 0x00)
   model w_c1 {}
 
-  /** default *wi for circuit 1 level install */
-  @write
-  @auth("install")
-  @base(MF, 0x24, 0x02, 0x01, 0x01, 0x00)
-  model wi_c1 {}
-
   /** default *u for circuit 2 */
   @passive
   @base(MF, 0x24, 0x02, 0x00, 0x02, 0x00)
@@ -90,12 +88,6 @@ namespace Bass3 {
   @write
   @base(MF, 0x24, 0x02, 0x01, 0x02, 0x00)
   model w_c2 {}
-
-  /** default *wi for circuit 2 level install */
-  @write
-  @auth("install")
-  @base(MF, 0x24, 0x02, 0x01, 0x02, 0x00)
-  model wi_c2 {}
 
   /** default *u for circuit 3 */
   @passive
@@ -117,16 +109,105 @@ namespace Bass3 {
   @base(MF, 0x24, 0x02, 0x01, 0x03, 0x00)
   model w_c3 {}
 
-  /** default *wi for circuit 3 level install */
+  /** default *u for solar energy counter (b516 1000ffff) */
+  @passive
+  @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
+  model u_16_solar {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  /** default *r for solar energy counter (b516 1000ffff) */
+  @base(MF, 0x16, 0x10, 0x00, 0xff, 0xff)
+  model r_16_solar {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  // Split read (circuit 3) / write (circuit 0) base templates for Holiday mode
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x05, 0x00)
+  model r_hol_temp {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @passive
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x05, 0x00)
+  model u_hol_temp {
+    @maxLength(4)
+    ign: IGN;
+  }
   @write
-  @auth("install")
-  @base(MF, 0x24, 0x02, 0x01, 0x03, 0x00)
-  model wi_c3 {}
+  @base(MF, 0x24, 0x02, 0x01, 0x00, 0x00, 0xf6, 0x00)
+  model w_hol_temp {}
+
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x03, 0x00)
+  model r_hol_sdate {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @passive
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x03, 0x00)
+  model u_hol_sdate {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @write
+  @base(MF, 0x24, 0x02, 0x01, 0x00, 0x00, 0xf2, 0x00)
+  model w_hol_sdate {}
+
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x21, 0x00)
+  model r_hol_stime {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @passive
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x21, 0x00)
+  model u_hol_stime {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @write
+  @base(MF, 0x24, 0x02, 0x01, 0x00, 0x00, 0xf4, 0x00)
+  model w_hol_stime {}
+
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x04, 0x00)
+  model r_hol_edate {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @passive
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x04, 0x00)
+  model u_hol_edate {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @write
+  @base(MF, 0x24, 0x02, 0x01, 0x00, 0x00, 0xf3, 0x00)
+  model w_hol_edate {}
+
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x20, 0x00)
+  model r_hol_etime {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @passive
+  @base(MF, 0x24, 0x02, 0x00, 0x03, 0x00, 0x20, 0x00)
+  model u_hol_etime {
+    @maxLength(4)
+    ign: IGN;
+  }
+  @write
+  @base(MF, 0x24, 0x02, 0x01, 0x00, 0x00, 0xf5, 0x00)
+  model w_hol_etime {}
 
   /** default *u for diagnostics */
   @passive
   @base(MF, 0x03)
   model u_err {}
+
+  /** default *r for diagnostics */
+  @base(MF, 0x03)
+  model r_err {}
 
   /** default *w for diagnostics */
   @write
@@ -139,238 +220,110 @@ namespace Bass3 {
   @base(MF, 0x31)
   model u_app {}
 
-  // Weekly timer base templates per circuit and day
-  // Circuit 3 (Heating Zone 1)
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x00, 0x00)
-  model u_t3_0 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x00, 0x00, 0x01)
-  model w_t3_0 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x01, 0x00)
-  model u_t3_1 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x01, 0x00, 0x01)
-  model w_t3_1 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x02, 0x00)
-  model u_t3_2 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x02, 0x00, 0x01)
-  model w_t3_2 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x03, 0x00)
-  model u_t3_3 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x03, 0x00, 0x01)
-  model w_t3_3 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x04, 0x00)
-  model u_t3_4 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x04, 0x00, 0x01)
-  model w_t3_4 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x05, 0x00)
-  model u_t3_5 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x05, 0x00, 0x01)
-  model w_t3_5 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x03, 0x06, 0x00)
-  model u_t3_6 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x03, 0x06, 0x00, 0x01)
-  model w_t3_6 {}
+  /** default *r for app */
+  @base(MF, 0x31)
+  model r_app {}
 
-  // Circuit 2 (DHW)
+  // Weekly timer base templates per circuit (b5 55 a5/a6 00 <circuit> <day> <slot>)
+  // Circuit 00 (Heating Zone 1)
+  @base(MF, 0x55, 0xa5, 0x00, 0x00)
+  model r_t0 {
+    @maxLength(1)
+    ign: IGN;
+  }
   @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x00, 0x00)
-  model u_t2_0 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa5, 0x00, 0x00)
+  model u_t0 {
+    @maxLength(1)
+    ign: IGN;
   }
   @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x00, 0x00, 0x01)
-  model w_t2_0 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x01, 0x00)
-  model u_t2_1 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa6, 0x00, 0x00)
+  model w_t0 {
+    total_slots: UCH;
   }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x01, 0x00, 0x01)
-  model w_t2_1 {}
   @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x02, 0x00)
-  model u_t2_2 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x02, 0x00, 0x01)
-  model w_t2_2 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x03, 0x00)
-  model u_t2_3 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x03, 0x00, 0x01)
-  model w_t2_3 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x04, 0x00)
-  model u_t2_4 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x04, 0x00, 0x01)
-  model w_t2_4 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x05, 0x00)
-  model u_t2_5 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x05, 0x00, 0x01)
-  model w_t2_5 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x02, 0x06, 0x00)
-  model u_t2_6 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x02, 0x06, 0x00, 0x01)
-  model w_t2_6 {}
+  @base(MF, 0x55, 0xa6, 0x00, 0x00)
+  model u_t0_passive {}
 
-  // Circuit 1 (Cooling)
+  // Circuit 01 (Cooling)
+  @base(MF, 0x55, 0xa5, 0x00, 0x01)
+  model r_t1 {
+    @maxLength(1)
+    ign: IGN;
+  }
   @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x00, 0x00)
-  model u_t1_0 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa5, 0x00, 0x01)
+  model u_t1 {
+    @maxLength(1)
+    ign: IGN;
   }
   @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x00, 0x00, 0x01)
-  model w_t1_0 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x01, 0x00)
-  model u_t1_1 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa6, 0x00, 0x01)
+  model w_t1 {
+    total_slots: UCH;
   }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x01, 0x00, 0x01)
-  model w_t1_1 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x02, 0x00)
-  model u_t1_2 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x02, 0x00, 0x01)
-  model w_t1_2 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x03, 0x00)
-  model u_t1_3 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x03, 0x00, 0x01)
-  model w_t1_3 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x04, 0x00)
-  model u_t1_4 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x04, 0x00, 0x01)
-  model w_t1_4 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x05, 0x00)
-  model u_t1_5 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x05, 0x00, 0x01)
-  model w_t1_5 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x01, 0x06, 0x00)
-  model u_t1_6 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x01, 0x06, 0x00, 0x01)
-  model w_t1_6 {}
 
-  // Circuit 0 (Circulation)
+  // Circuit 02 (DHW)
+  @base(MF, 0x55, 0xa5, 0x00, 0x02)
+  model r_t2 {
+    @maxLength(1)
+    ign: IGN;
+  }
   @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x00, 0x00)
-  model u_t0_0 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa5, 0x00, 0x02)
+  model u_t2 {
+    @maxLength(1)
+    ign: IGN;
   }
   @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x00, 0x00, 0x01)
-  model w_t0_0 {}
+  @base(MF, 0x55, 0xa6, 0x00, 0x02)
+  model w_t2 {
+    total_slots: UCH;
+  }
+
+  // Circuit 03 (Circulation Pump)
+  @base(MF, 0x55, 0xa5, 0x00, 0x03)
+  model r_t3 {
+    @maxLength(1)
+    ign: IGN;
+  }
   @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x01, 0x00)
-  model u_t0_1 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa5, 0x00, 0x03)
+  model u_t3 {
+    @maxLength(1)
+    ign: IGN;
   }
   @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x01, 0x00, 0x01)
-  model w_t0_1 {}
+  @base(MF, 0x55, 0xa6, 0x00, 0x03)
+  model w_t3 {
+    total_slots: UCH;
+  }
+
+  // Circuit 04 (Silent Mode)
+  @base(MF, 0x55, 0xa5, 0x00, 0x04)
+  model r_t4 {
+    @maxLength(1)
+    ign: IGN;
+  }
   @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x02, 0x00)
-  model u_t0_2 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa5, 0x00, 0x04)
+  model u_t4 {
+    @maxLength(1)
+    ign: IGN;
   }
   @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x02, 0x00, 0x01)
-  model w_t0_2 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x03, 0x00)
-  model u_t0_3 {
-    @maxLength(1) ign: IGN;
+  @base(MF, 0x55, 0xa6, 0x00, 0x04)
+  model w_t4 {
+    total_slots: UCH;
   }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x03, 0x00, 0x01)
-  model w_t0_3 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x04, 0x00)
-  model u_t0_4 {
-    @maxLength(1) ign: IGN;
+
+  /** default *r for timer slots */
+  @base(MF, 0x55, 0xa4, 0x00)
+  model r_tslots {
+    @maxLength(1)
+    ign: IGN;
   }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x04, 0x00, 0x01)
-  model w_t0_4 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x05, 0x00)
-  model u_t0_5 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x05, 0x00, 0x01)
-  model w_t0_5 {}
-  @passive
-  @base(MF, 0x55, 0xa5, 0x00, 0x00, 0x06, 0x00)
-  model u_t0_6 {
-    @maxLength(1) ign: IGN;
-  }
-  @write
-  @base(MF, 0x55, 0xa6, 0xff, 0x00, 0x06, 0x00, 0x01)
-  model w_t0_6 {}
 
   /** default *u for timer slots */
   @passive
@@ -385,7 +338,7 @@ namespace Bass3 {
   // ==============================================================================
 
   /** water pressure */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x39, 0x00)
   model WaterPressure {
     /** water pressure */
@@ -394,15 +347,16 @@ namespace Bass3 {
   }
 
   /** system flow temp */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x4b, 0x00)
   model SystemFlowTemp {
     /** system flow temperature */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
   }
 
   /** continuos heating */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x02, 0x00)
   model ContinuosHeating {
     /** -26=off, when the outside temperature falls below this threshold temperature the continuous heating function is started (off <=> function is disabled) */
@@ -411,7 +365,7 @@ namespace Bass3 {
   }
 
   /** frost delay time */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x03, 0x00)
   model FrostOverRideTime {
     /** delay before frost protection is activated */
@@ -420,8 +374,7 @@ namespace Bass3 {
   }
 
   /** Global System OFF */
-  @poll(9)
-  @inherit(r_c0, wi_c0)
+  @inherit(r_c0, u_c0, wi_c0)
   @ext(0x07, 0x00)
   model GlobalSystemOff {
     /** For switching system off */
@@ -431,7 +384,7 @@ namespace Bass3 {
 
   /** max room humidity */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x0e, 0x00)
   model MaxRoomHumidity {
     /** maximum room humidity */
@@ -439,8 +392,7 @@ namespace Bass3 {
   }
 
   /** adaptive heat curve */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x14, 0x00)
   model AdaptHeatCurve {
     /** automatic correction of configured heat curve */
@@ -449,7 +401,7 @@ namespace Bass3 {
   }
 
   /** date */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x34, 0x00)
   model Date {
     /** current date */
@@ -457,7 +409,7 @@ namespace Bass3 {
   }
 
   /** time */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x35, 0x00)
   model Time {
     /** current time */
@@ -465,7 +417,7 @@ namespace Bass3 {
   }
 
   /** system diagram */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x36, 0x00)
   model HydraulicScheme {
     /** system diagram */
@@ -473,7 +425,7 @@ namespace Bass3 {
   }
 
   /** multifunction relay setting */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x4d, 0x00)
   model MultiRelaySetting {
     @values(Values_MultiRelaySetting_value)
@@ -481,7 +433,7 @@ namespace Bass3 {
   }
 
   /** outside temperature */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x73, 0x00)
   model DisplayedOutsideTemp {
     /** outside temperature */
@@ -490,7 +442,7 @@ namespace Bass3 {
   }
 
   /** average outside temperature */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x95, 0x00)
   model OutsideTempAvg {
     /** rounded average outside temperature (updated every 3h) */
@@ -501,7 +453,7 @@ namespace Bass3 {
   // Disabled active polling of non-existent solar registers to prevent bus saturation and read timeouts
 
   /** total environmental yield */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x3e, 0x00)
   model YieldTotal {
     /** total environmental yield */
@@ -510,7 +462,7 @@ namespace Bass3 {
   }
 
   /** total solar yield */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x3d, 0x00)
   model SolarYieldTotal {
     /** total solar yield */
@@ -520,7 +472,7 @@ namespace Bass3 {
 
   /** total energy consumption heating */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x57, 0x00)
   model PrEnergySumHc {
     /** total heating electricity consumption */
@@ -530,7 +482,7 @@ namespace Bass3 {
 
   /** this months energy consumption heating */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x4f, 0x00)
   model PrEnergySumHcThisMonth {
     /** current month heating electricity consumption */
@@ -540,7 +492,7 @@ namespace Bass3 {
 
   /** last months energy consumption heating */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x53, 0x00)
   model PrEnergySumHcLastMonth {
     /** last month heating electricity consumption */
@@ -550,7 +502,7 @@ namespace Bass3 {
 
   /** total energy consumption hot water */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x58, 0x00)
   model PrEnergySumHwc {
     /** total hot water electricity consumption */
@@ -560,7 +512,7 @@ namespace Bass3 {
 
   /** this months energy consumption hot water */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x50, 0x00)
   model PrEnergySumHwcThisMonth {
     /** current month hot water electricity consumption */
@@ -570,7 +522,7 @@ namespace Bass3 {
 
   /** last months energy consumption hot water */
   @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x54, 0x00)
   model PrEnergySumHwcLastMonth {
     /** last month hot water electricity consumption */
@@ -579,7 +531,7 @@ namespace Bass3 {
   }
 
   /** code for installer menu */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x76, 0x00)
   model KeyCodeforConfigMenu {
     /** 000-999; code for the installer's menues */
@@ -587,7 +539,7 @@ namespace Bass3 {
   }
 
   /** next maintenance */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x2c, 0x00)
   model MaintenanceDate {
     /** next maintenance date */
@@ -595,7 +547,7 @@ namespace Bass3 {
   }
 
   /** maintenance due */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x96, 0x00)
   model MaintenanceDue {
     /** indicates whether maintenance is due */
@@ -604,7 +556,7 @@ namespace Bass3 {
   }
 
   /** system operating state */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x48, 0x00)
   model SystemOperatingState {
     /** current active system operating state */
@@ -613,8 +565,7 @@ namespace Bass3 {
   }
 
   /** bivalence point heating */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x23, 0x00)
   model BivalencePointHc {
     /** bivalence point for heat pump heating */
@@ -623,8 +574,7 @@ namespace Bass3 {
   }
 
   /** bivalence point hot water */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x01, 0x00)
   model BivalencePointHwc {
     /** bivalence point for hot water */
@@ -633,8 +583,7 @@ namespace Bass3 {
   }
 
   /** alternative point heating */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x22, 0x00)
   model AlternativePoint {
     /** alternative point threshold temperature */
@@ -643,7 +592,7 @@ namespace Bass3 {
   }
 
   /** unknown register 04 (uninstalled) */
-  @inherit(u_raw_c0)
+  @inherit(r_raw_c0, u_raw_c0)
   @ext(0x04, 0x00)
   model Unknown04 {
     @maxLength(4)
@@ -651,23 +600,25 @@ namespace Bass3 {
   }
 
   /** solar storage temperature bottom */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x67, 0x00)
   model SolarStorageTempBottom {
     /** solar temperature sensor, bottom */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
   }
 
   /** solar storage temperature top */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x68, 0x00)
   model SolarStorageTempTop {
     /** solar temperature sensor, top */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
   }
 
   /** unknown setting b6 (uninstalled) */
-  @inherit(u_raw_c0)
+  @inherit(r_raw_c0, u_raw_c0)
   @ext(0xb6, 0x00)
   model UnknownSettingB6 {
     @maxLength(4)
@@ -675,14 +626,29 @@ namespace Bass3 {
   }
 
   /** total solar energy sum */
-  @passive
-  @id(MF, 0x16, 0x10, 0x00, 0xff, 0xff, 0x01, 0x00, 0x00, 0x00)
+  @inherit(r_16_solar, u_16_solar)
+  @ext(0x01, 0x00, 0x00, 0x00)
   model PrEnergySolarTotal {
-    @maxLength(7)
-    ign: IGN;
-
     @unit("Wh")
     energy: EXP;
+  }
+
+  /** multifunction input setting */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0x6a, 0x00)
+  model MultiInputSetting {
+    /** multifunction input setting */
+    @values(Values_MultiInputSetting_value)
+    value: UCH;
+  }
+
+  /** outside temperature calibration offset */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0x2d, 0x00)
+  model OffsetOutsideTemp {
+    /** outside temperature calibration offset */
+    @unit("K")
+    value: EXP;
   }
 
   // ==============================================================================
@@ -690,7 +656,7 @@ namespace Bass3 {
   // ==============================================================================
 
   /** hwc storage temperature */
-  @inherit(u_c1)
+  @inherit(r_c1, u_c1)
   @ext(0x05, 0x00)
   model HwcStorageTemp {
     /** actual storage temperature */
@@ -699,7 +665,7 @@ namespace Bass3 {
   }
 
   /** hwc temperature desired */
-  @inherit(u_c1, w_c1)
+  @inherit(r_c1, u_c1, w_c1)
   @ext(0x04, 0x00)
   model HwcTempDesired {
     /** setpoint of domestic hot water circuit */
@@ -708,7 +674,7 @@ namespace Bass3 {
   }
 
   /** hwc operation mode */
-  @inherit(u_c1, w_c1)
+  @inherit(r_c1, u_c1, w_c1)
   @ext(0x03, 0x00)
   model HwcOpMode {
     /** operation mode of Hwc */
@@ -718,7 +684,7 @@ namespace Bass3 {
 
   /** hwc SF mode */
   @poll(9)
-  @inherit(r_c1, w_c1)
+  @inherit(r_c1, u_c1, w_c1)
   @ext(0x0d, 0x00)
   model HwcSFMode {
     @values(Values_HwcSFMode_value)
@@ -727,7 +693,7 @@ namespace Bass3 {
 
   /** hwc flow temperature */
   @poll(9)
-  @inherit(r_c1)
+  @inherit(r_c1, u_c1)
   @ext(0x08, 0x00)
   model HwcFlowTemp {
     /** desired flow temp for Hwc */
@@ -736,8 +702,7 @@ namespace Bass3 {
   }
 
   /** hwc max flow temp desired */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x46, 0x00)
   model HwcMaxFlowTempDesired {
     /** maximum flow temperature setpoint of Hwc */
@@ -746,8 +711,7 @@ namespace Bass3 {
   }
 
   /** hwc parallel loading */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x0a, 0x00)
   model HwcParallelLoading {
     /** heating and hot water parallel */
@@ -756,8 +720,7 @@ namespace Bass3 {
   }
 
   /** hwc lock time */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x18, 0x00)
   model HwcLockTime {
     /** DHW lock time */
@@ -766,8 +729,7 @@ namespace Bass3 {
   }
 
   /** maximale Speicherladezeit */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x17, 0x00)
   model MaxCylinderChargeTime {
     /** maximum cylinder charging time */
@@ -776,8 +738,7 @@ namespace Bass3 {
   }
 
   /** pump additional time */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x1b, 0x00)
   model PumpAdditionalTime {
     /** charging pump overrun time */
@@ -786,8 +747,7 @@ namespace Bass3 {
   }
 
   /** hysteresis cylinder charge */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x27, 0x00)
   model CylinderChargeHyst {
     /** cylinder charging hysteresis */
@@ -796,8 +756,7 @@ namespace Bass3 {
   }
 
   /** offset cylinder charge */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x29, 0x00)
   model CylinderChargeOffset {
     /** cylinder charging offset */
@@ -806,23 +765,42 @@ namespace Bass3 {
   }
 
   /** hwc storage temperature top */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x9d, 0x00)
   model HwcStorageTempTop {
     /** DHW temperature sensor, top */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
   }
 
   /** storage temperature bottom */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x9e, 0x00)
   model HwcStorageTempBottom {
     /** DHW temperature sensor, bottom */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
+  }
+
+  /** legionella protection day */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0x2b, 0x00)
+  model HwcLegionellaDay {
+    /** legionella protection day */
+    @values(Values_HwcLegionellaDay_day)
+    day: UIN;
+  }
+
+  /** legionella protection time */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0x2a, 0x00)
+  model HwcLegionellaTime {
+    /** legionella protection time */
+    time: HTM;
   }
 
   /** hwc status */
-  @inherit(u_c1)
+  @inherit(r_c1, u_c1)
   @ext(0x0f, 0x00)
   model HwcStatus {
     @values(Values_HwcStatus_value)
@@ -830,8 +808,7 @@ namespace Bass3 {
   }
 
   /** offset buffer charge */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0xa2, 0x00)
   model BufferChargeOffset {
     @unit("K")
@@ -843,7 +820,7 @@ namespace Bass3 {
   // ==============================================================================
 
   /** room temperature zone 1 */
-  @inherit(u_c3)
+  @inherit(r_c3, u_c3)
   @ext(0x0f, 0x00)
   model Z1RoomTemp {
     /** current room temperature in zone 1 */
@@ -852,7 +829,7 @@ namespace Bass3 {
   }
 
   /** room temperature desired zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x14, 0x00)
   model Z1ActualRoomTempDesired {
     /** current room setpoint considering all basic conditions passed to the control algorithms */
@@ -861,7 +838,7 @@ namespace Bass3 {
   }
 
   /** operation mode zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x06, 0x00)
   model Z1OpMode {
     /** operation mode of zone 1 */
@@ -870,8 +847,7 @@ namespace Bass3 {
   }
 
   /** SF mode zone 1 */
-  @poll(9)
-  @inherit(r_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x0e, 0x00)
   model Z1SFMode {
     @values(Values_Z1SFMode_value)
@@ -880,7 +856,7 @@ namespace Bass3 {
 
   /** quick veto temperature zone 1 */
   @poll(9)
-  @inherit(r_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x08, 0x00)
   model Z1QuickVetoTemp {
     /** manual override setpoint for zone 1 */
@@ -888,9 +864,18 @@ namespace Bass3 {
     value: EXP;
   }
 
-  /** night temperature zone 1 */
+  /** quick veto duration zone 1 */
   @poll(9)
-  @inherit(r_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
+  @ext(0x26, 0x00)
+  model Z1QuickVetoDuration {
+    /** quick veto duration for zone 1 */
+    @unit("h")
+    value: EXP;
+  }
+
+  /** night temperature zone 1 */
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x09, 0x00)
   model Z1NightTemp {
     /** night setpoint for zone 1 */
@@ -898,18 +883,8 @@ namespace Bass3 {
     value: EXP;
   }
 
-  /** room setpoint holiday period zone 1 */
-  @poll(9)
-  @inherit(r_c3, w_c3)
-  @ext(0x05, 0x00)
-  model Z1HolidayTemp {
-    /** holiday setpoint for zone 1 */
-    @unit("°C")
-    value: EXP;
-  }
-
   /** FlowTemp heating circuit 1 */
-  @inherit(u_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x08, 0x00)
   model Hc1FlowTemp {
     /** current flow temperature of Hc1 */
@@ -918,7 +893,7 @@ namespace Bass3 {
   }
 
   /** ActualFlowTempDesired heating circuit 1 */
-  @inherit(u_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x07, 0x00)
   model Hc1ActualFlowTempDesired {
     /** current flow temperature setpoint of Hc1 */
@@ -927,8 +902,7 @@ namespace Bass3 {
   }
 
   /** HeatCurve heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x0f, 0x00)
   model Hc1HeatCurve {
     /** heating curve of Hc1 */
@@ -936,8 +910,7 @@ namespace Bass3 {
   }
 
   /** summer outside switchoff temperature heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x14, 0x00)
   model Hc1SummerTempLimit {
     /** if outside temperature > summer limit => heating is OFF;applies to comfort and night setback setpoint */
@@ -946,8 +919,7 @@ namespace Bass3 {
   }
 
   /** MaxFlowTempDesired heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x10, 0x00)
   model Hc1MaxFlowTempDesired {
     /** maximum flow temperature setpoint (end emphasis) of Hc1 */
@@ -956,8 +928,7 @@ namespace Bass3 {
   }
 
   /** MinFlowTempDesired heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x12, 0x00)
   model Hc1MinFlowTempDesired {
     /** minimum flow temperature setpoint (end emphasis) of Hc1 */
@@ -966,8 +937,7 @@ namespace Bass3 {
   }
 
   /** RoomTempSwitchOn heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x15, 0x00)
   model Hc1RoomTempSwitchOn {
     /** room temperature modulation of Hc1 */
@@ -976,8 +946,7 @@ namespace Bass3 {
   }
 
   /** Status heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x1b, 0x00)
   model Hc1Status {
     /** status of zone 1 */
@@ -985,7 +954,7 @@ namespace Bass3 {
   }
 
   /** PumpStatus heating circuit 1 */
-  @inherit(u_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x1e, 0x00)
   model Hc1PumpStatus {
     /** pump status of zone 1 */
@@ -993,8 +962,7 @@ namespace Bass3 {
   }
 
   /** AutoOffMode heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x0e, 0x00)
   model Hc1AutoOffMode {
     /** operation of Hc1 during the lowering time; no influence if room temperature modulation is set to thermostat */
@@ -1003,7 +971,7 @@ namespace Bass3 {
   }
 
   /** CircuitType heating circuit 1 */
-  @inherit(u_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x02, 0x00)
   model Hc1CircuitType {
     /** mixer type */
@@ -1017,8 +985,7 @@ namespace Bass3 {
   // Disabled active polling of non-existent mixer circuit and adaptive curve (prevents collisions and timeouts)
 
   /** ExcessTemp heating circuit 1 */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x0b, 0x00)
   model Hc1ExcessTemp {
     /** excess temperature of Hc1 */
@@ -1027,7 +994,7 @@ namespace Bass3 {
   }
 
   /** MixerMovement heating circuit 1 */
-  @inherit(u_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x1a, 0x00)
   model Hc1MixerMovement {
     /** status of mixer (<0 closing, >0 opening) */
@@ -1035,7 +1002,7 @@ namespace Bass3 {
   }
 
   /** HeatCurveAdaption heating circuit 1 */
-  @inherit(u_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x1c, 0x00)
   model Hc1HeatCurveAdaption {
     /** adaption applied to heating curve of Hc1 */
@@ -1043,24 +1010,25 @@ namespace Bass3 {
   }
 
   /** hc storage temperature top */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x9f, 0x00)
   model HcStorageTempTop {
     /** heating storage temperature sensor, top */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
   }
 
   /** hc storage temperature bottom */
-  @inherit(u_c0)
+  @inherit(r_c0, u_c0)
   @ext(0xa0, 0x00)
   model HcStorageTempBottom {
     /** heating storage temperature sensor, bottom */
-    value: tempv;
+    @unit("°C")
+    value: EXP;
   }
 
   /** valve status zone 1 */
-  @poll(9)
-  @inherit(r_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x12, 0x00)
   model Z1ValveStatus {
     /** valve status of zone 1 */
@@ -1068,7 +1036,7 @@ namespace Bass3 {
   }
 
   /** room zone mapping zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x13, 0x00)
   model Z1RoomZoneMapping {
     /** configures which room temperature is assigned to zone 1 */
@@ -1077,7 +1045,7 @@ namespace Bass3 {
   }
 
   /** short name zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x16, 0x00)
   model Z1Shortname {
     /** short name of zone 1 */
@@ -1086,7 +1054,7 @@ namespace Bass3 {
   }
 
   /** zone 1 label (first part) */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x17, 0x00)
   model Z1Name1 {
     /** name of zone 1 */
@@ -1095,7 +1063,7 @@ namespace Bass3 {
   }
 
   /** zone 1 status */
-  @inherit(u_c3)
+  @inherit(r_c3, u_c3)
   @ext(0x1b, 0x00)
   model Z1Status {
     @values(Values_Z1Status_value)
@@ -1103,7 +1071,7 @@ namespace Bass3 {
   }
 
   /** zone 1 heating demand state */
-  @inherit(u_c3)
+  @inherit(r_c3, u_c3)
   @ext(0x2c, 0x00)
   model Z1HeatingState {
     /** heating demand status */
@@ -1112,7 +1080,7 @@ namespace Bass3 {
   }
 
   /** manual heating setpoint zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x22, 0x00)
   model Z1ManualTemp {
     /** temperature */
@@ -1120,21 +1088,21 @@ namespace Bass3 {
     value: EXP;
   }
 
-  /** desired day temperature zone 1 */
-  @inherit(u_c3, w_c3)
+  /** manual cooling setpoint zone 1 */
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x23, 0x00)
-  model Z1DayTemp {
-    /** day comfort setpoint for zone 1 */
+  model Z1CoolingManualTemp {
+    /** desired cooling manual setpoint for zone 1 */
     @unit("°C")
     value: EXP;
   }
 
-  /** max flow temp zone 1 */
-  @inherit(u_c3, w_c3)
+  /** room relative humidity zone 1 */
+  @inherit(r_c3, u_c3)
   @ext(0x28, 0x00)
-  model Z1MaxFlowTempDesired {
-    /** max flow temperature zone 1 */
-    @unit("°C")
+  model Z1RoomHumidity {
+    /** current relative room humidity in zone 1 */
+    @unit("%")
     value: EXP;
   }
 
@@ -1143,7 +1111,7 @@ namespace Bass3 {
   // ==============================================================================
 
   /** cooling operation mode zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x01, 0x00)
   model Z1OpModeCooling {
     /** operation mode for cooling of zone 1 */
@@ -1152,7 +1120,7 @@ namespace Bass3 {
   }
 
   /** cooling setpoint zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x02, 0x00)
   model Z1CoolingTemp {
     /** desired cooling setpoint for zone 1 */
@@ -1161,7 +1129,7 @@ namespace Bass3 {
   }
 
   /** cooling start date */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0xda, 0x00)
   model CoolingStartDate {
     day: UCH;
@@ -1172,7 +1140,7 @@ namespace Bass3 {
   }
 
   /** cooling end date */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0xdb, 0x00)
   model CoolingEndDate {
     day: UCH;
@@ -1183,7 +1151,7 @@ namespace Bass3 {
   }
 
   /** cooling room temperature desired zone 1 */
-  @inherit(u_c3, w_c3)
+  @inherit(r_c3, u_c3, w_c3)
   @ext(0x15, 0x00)
   model Z1CoolingTempDesired {
     /** temperature */
@@ -1192,8 +1160,7 @@ namespace Bass3 {
   }
 
   /** cooling release status */
-  @poll(9)
-  @inherit(r_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x09, 0x00)
   model CoolingReleaseStatus {
     /** cooling release status */
@@ -1202,8 +1169,7 @@ namespace Bass3 {
   }
 
   /** cooling min flow temp desired */
-  @poll(9)
-  @inherit(r_c2, w_c2)
+  @inherit(r_c2, u_c2, w_c2)
   @ext(0x11, 0x00)
   model CoolingFlowTempDesiredMin {
     /** min flow temperature setpoint for cooling (Circuit 1: 10.0 °C on MiPro Sense) */
@@ -1212,8 +1178,7 @@ namespace Bass3 {
   }
 
   /** cooling max flow temp desired */
-  @poll(9)
-  @inherit(r_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0x26, 0x00)
   model CoolingFlowTempDesiredMax {
     /** max flow temperature setpoint for cooling */
@@ -1221,13 +1186,40 @@ namespace Bass3 {
     value: EXP;
   }
 
+  /** cooling outside temperature threshold */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0x38, 0x00)
+  model CoolingOutsideTempThreshold {
+    /** cooling outside temperature threshold */
+    @unit("°C")
+    value: EXP;
+  }
+
+  /** dew point offset */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0x3a, 0x00)
+  model DewPointOffset {
+    /** dew point offset */
+    @unit("K")
+    value: EXP;
+  }
+
+  /** dew point monitoring */
+  @inherit(r_c2, u_c2, w_c2)
+  @ext(0x04, 0x00)
+  model DewPointMonitoring {
+    /** dew point monitoring */
+    @values(Values_DewPointMonitoring_value)
+    value: UCH;
+  }
+
   // ==============================================================================
-  // 4b. HOLIDAY / AWAY MODE LOGIC (BASS3 b524 CIRCUIT 00 00)
+  // 4b. HOLIDAY / AWAY MODE LOGIC (READ ZONE 1 03 00 / WRITE GLOBAL 00 00)
   // ==============================================================================
 
   /** holiday room temperature setpoint */
-  @inherit(u_c0, w_c0)
-  @ext(0xf6, 0x00)
+  @inherit(r_hol_temp, u_hol_temp, w_hol_temp)
+  @ext
   model HolidayTemp {
     /** holiday setpoint */
     @unit("°C")
@@ -1235,8 +1227,8 @@ namespace Bass3 {
   }
 
   /** holiday start date */
-  @inherit(u_c0, w_c0)
-  @ext(0xf2, 0x00)
+  @inherit(r_hol_sdate, u_hol_sdate, w_hol_sdate)
+  @ext
   model HolidayStartDate {
     day: UCH;
     month: UCH;
@@ -1246,8 +1238,8 @@ namespace Bass3 {
   }
 
   /** holiday start time */
-  @inherit(u_c0, w_c0)
-  @ext(0xf4, 0x00)
+  @inherit(r_hol_stime, u_hol_stime, w_hol_stime)
+  @ext
   model HolidayStartTime {
     hours: UCH;
     minutes: UCH;
@@ -1257,8 +1249,8 @@ namespace Bass3 {
   }
 
   /** holiday end date */
-  @inherit(u_c0, w_c0)
-  @ext(0xf3, 0x00)
+  @inherit(r_hol_edate, u_hol_edate, w_hol_edate)
+  @ext
   model HolidayEndDate {
     day: UCH;
     month: UCH;
@@ -1268,8 +1260,8 @@ namespace Bass3 {
   }
 
   /** holiday end time */
-  @inherit(u_c0, w_c0)
-  @ext(0xf5, 0x00)
+  @inherit(r_hol_etime, u_hol_etime, w_hol_etime)
+  @ext
   model HolidayEndTime {
     hours: UCH;
     minutes: UCH;
@@ -1279,10 +1271,23 @@ namespace Bass3 {
   }
 
   /** holiday cancel trigger */
-  @inherit(u_c0, w_c0)
+  @inherit(r_c0, u_c0, w_c0)
   @ext(0xf7, 0x00)
   model HolidayCancel {
     /** holiday cancel trigger */
+    value: UCH;
+  }
+
+  // ==============================================================================
+  // 4c. INTENSIVE VENTILATION BOOST (GLOBAL 00 00)
+  // ==============================================================================
+
+  /** intensive ventilation boost */
+  @inherit(r_c0, u_c0, w_c0)
+  @ext(0xf9, 0x00)
+  model VentilationBoost {
+    /** Intensive ventilation boost (30 min heating pause) */
+    @values(Values_VentilationBoost_value)
     value: UCH;
   }
 
@@ -1291,7 +1296,7 @@ namespace Bass3 {
   // ==============================================================================
 
   /** Current errors */
-  @inherit(u_err)
+  @inherit(r_err, u_err)
   @ext(0x00, 0x01)
   model Currenterror {
     /** error number */
@@ -1311,7 +1316,7 @@ namespace Bass3 {
   }
 
   /** Error_History */
-  @inherit(u_err)
+  @inherit(r_err, u_err)
   @ext(0x01, 0x01)
   model Errorhistory {
     @out
@@ -1331,7 +1336,7 @@ namespace Bass3 {
   }
 
   /** error memory slot */
-  @inherit(u_err)
+  @inherit(r_err, u_err)
   @ext(0x00)
   model ErrorMemorySlot {
     @out
@@ -1354,7 +1359,7 @@ namespace Bass3 {
   }
 
   /** app session status */
-  @inherit(u_app)
+  @inherit(r_app, u_app)
   @ext(0x03, 0x01)
   model AppSessionStatus {
     /** app session status */
@@ -1363,15 +1368,17 @@ namespace Bass3 {
   }
 
   // ==============================================================================
-  // 6. WEEKLY TIME SCHEDULE (b5 55: READ r / WRITE w)
+  // 6. WEEKLY TIME SCHEDULE (b5 55: READ r;u / WRITE w)
   // ==============================================================================
-  // Read command structure (a5): a5 00 [circuit] [day 00-06] [slot 00-02]
-  // Write command structure (a6): a6 ff [circuit] [day 00-06] [slot 00-02] [total_slots 01-03]
-  // 6.1 Heating Zone 1 (Circuit 03)
+  // Read command structure (a5):  a5 00 [circuit] [day 00-06] [slot 00-02]
+  // Write command structure (a6): a6 00 [circuit] [day 00-06] [slot 00-02] [total_slots 01-03] [from_h] [from_m] [to_h] [to_m] [temp 2B UIN:10 or IGN:2]
+  // Circuits: 00=Heating Zone 1, 01=Cooling, 02=DHW, 03=Circulation, 04=Silent Mode
+  // Days: 00=Monday .. 06=Sunday | Slots: 00=Slot 1 .. 02=Slot 3
 
-  /** Timer Zone 1 Monday */
-  @inherit(u_t3_0, w_t3_0)
-  @ext
+  // 6.1 Heating Zone 1 (Circuit 00)
+  /** Timer Heating Monday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x00, 0x00)
   model Z1Timer_Monday {
     from_hour: UCH;
     from_min: UCH;
@@ -1379,18 +1386,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Monday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Heating schedule Monday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
-  /** Timer Zone 1 Tuesday */
-  @inherit(u_t3_1, w_t3_1)
-  @ext
+  /** Timer Heating Monday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x00, 0x01)
+  model Z1Timer_Monday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Monday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Monday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x00, 0x02)
+  model Z1Timer_Monday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Monday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Tuesday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x01, 0x00)
   model Z1Timer_Tuesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1398,18 +1431,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Tuesday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Heating schedule Tuesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
-  /** Timer Zone 1 Wednesday */
-  @inherit(u_t3_2, w_t3_2)
-  @ext
+  /** Timer Heating Tuesday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x01, 0x01)
+  model Z1Timer_Tuesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Tuesday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Tuesday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x01, 0x02)
+  model Z1Timer_Tuesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Tuesday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Wednesday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x02, 0x00)
   model Z1Timer_Wednesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1417,18 +1476,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Wednesday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Heating schedule Wednesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
-  /** Timer Zone 1 Thursday */
-  @inherit(u_t3_3, w_t3_3)
-  @ext
+  /** Timer Heating Wednesday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x02, 0x01)
+  model Z1Timer_Wednesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Wednesday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Wednesday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x02, 0x02)
+  model Z1Timer_Wednesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Wednesday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Thursday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x03, 0x00)
   model Z1Timer_Thursday {
     from_hour: UCH;
     from_min: UCH;
@@ -1436,18 +1521,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Thursday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Heating schedule Thursday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
-  /** Timer Zone 1 Friday */
-  @inherit(u_t3_4, w_t3_4)
-  @ext
+  /** Timer Heating Thursday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x03, 0x01)
+  model Z1Timer_Thursday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Thursday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Thursday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x03, 0x02)
+  model Z1Timer_Thursday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Thursday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Friday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x04, 0x00)
   model Z1Timer_Friday {
     from_hour: UCH;
     from_min: UCH;
@@ -1455,18 +1566,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Friday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Heating schedule Friday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
-  /** Timer Zone 1 Saturday */
-  @inherit(u_t3_5, w_t3_5)
-  @ext
+  /** Timer Heating Friday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x04, 0x01)
+  model Z1Timer_Friday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Friday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Friday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x04, 0x02)
+  model Z1Timer_Friday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Friday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Saturday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x05, 0x00)
   model Z1Timer_Saturday {
     from_hour: UCH;
     from_min: UCH;
@@ -1474,18 +1611,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Saturday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Heating schedule Saturday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
-  /** Timer Zone 1 Sunday */
-  @inherit(u_t3_6, w_t3_6)
-  @ext
+  /** Timer Heating Saturday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x05, 0x01)
+  model Z1Timer_Saturday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Saturday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Saturday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x05, 0x02)
+  model Z1Timer_Saturday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Saturday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Sunday */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x06, 0x00)
   model Z1Timer_Sunday {
     from_hour: UCH;
     from_min: UCH;
@@ -1493,20 +1656,571 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Heating schedule Sunday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** Heating schedule Sunday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Heating Sunday Slot 2 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x06, 0x01)
+  model Z1Timer_Sunday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Sunday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Sunday Slot 3 */
+  @inherit(r_t0, u_t0, w_t0)
+  @ext(0x06, 0x02)
+  model Z1Timer_Sunday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Heating schedule Sunday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  // 6.1b Passive MiGo Link / Gateway Schedule Writes (a6 00 00)
+  /** Timer Heating Monday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x00, 0x00)
+  model Z1Timer_Monday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Monday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x00, 0x01)
+  model Z1Timer_Monday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Monday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x00, 0x02)
+  model Z1Timer_Monday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Tuesday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x01, 0x00)
+  model Z1Timer_Tuesday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Tuesday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x01, 0x01)
+  model Z1Timer_Tuesday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Tuesday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x01, 0x02)
+  model Z1Timer_Tuesday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Wednesday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x02, 0x00)
+  model Z1Timer_Wednesday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Wednesday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x02, 0x01)
+  model Z1Timer_Wednesday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Wednesday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x02, 0x02)
+  model Z1Timer_Wednesday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Thursday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x03, 0x00)
+  model Z1Timer_Thursday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Thursday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x03, 0x01)
+  model Z1Timer_Thursday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Thursday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x03, 0x02)
+  model Z1Timer_Thursday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Friday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x04, 0x00)
+  model Z1Timer_Friday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Friday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x04, 0x01)
+  model Z1Timer_Friday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Friday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x04, 0x02)
+  model Z1Timer_Friday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Saturday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x05, 0x00)
+  model Z1Timer_Saturday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Saturday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x05, 0x01)
+  model Z1Timer_Saturday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Saturday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x05, 0x02)
+  model Z1Timer_Saturday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Sunday Passive */
+  @inherit(u_t0_passive)
+  @ext(0x06, 0x00)
+  model Z1Timer_Sunday_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Sunday Slot 2 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x06, 0x01)
+  model Z1Timer_Sunday_Slot2_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer Heating Sunday Slot 3 Passive */
+  @inherit(u_t0_passive)
+  @ext(0x06, 0x02)
+  model Z1Timer_Sunday_Slot3_Passive {
+    @out
+    total_slots: UCH;
+
+    @out
+    from_hour: UCH;
+
+    @out
+    from_min: UCH;
+
+    @out
+    to_hour: UCH;
+
+    @out
+    to_min: UCH;
+
+    @out
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   // 6.2 Domestic Hot Water - DHW (Circuit 02)
-
   /** Timer DHW Monday */
-  @inherit(u_t2_0, w_t2_0)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x00, 0x00)
   model HwcTimer_Monday {
     from_hour: UCH;
     from_min: UCH;
@@ -1514,18 +2228,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Monday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Monday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Monday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x00, 0x01)
+  model HwcTimer_Monday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Monday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Monday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x00, 0x02)
+  model HwcTimer_Monday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Monday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   /** Timer DHW Tuesday */
-  @inherit(u_t2_1, w_t2_1)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x01, 0x00)
   model HwcTimer_Tuesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1533,18 +2273,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Tuesday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Tuesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Tuesday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x01, 0x01)
+  model HwcTimer_Tuesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Tuesday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Tuesday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x01, 0x02)
+  model HwcTimer_Tuesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Tuesday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   /** Timer DHW Wednesday */
-  @inherit(u_t2_2, w_t2_2)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x02, 0x00)
   model HwcTimer_Wednesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1552,18 +2318,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Wednesday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Wednesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Wednesday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x02, 0x01)
+  model HwcTimer_Wednesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Wednesday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Wednesday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x02, 0x02)
+  model HwcTimer_Wednesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Wednesday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   /** Timer DHW Thursday */
-  @inherit(u_t2_3, w_t2_3)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x03, 0x00)
   model HwcTimer_Thursday {
     from_hour: UCH;
     from_min: UCH;
@@ -1571,18 +2363,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Thursday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Thursday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Thursday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x03, 0x01)
+  model HwcTimer_Thursday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Thursday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Thursday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x03, 0x02)
+  model HwcTimer_Thursday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Thursday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   /** Timer DHW Friday */
-  @inherit(u_t2_4, w_t2_4)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x04, 0x00)
   model HwcTimer_Friday {
     from_hour: UCH;
     from_min: UCH;
@@ -1590,18 +2408,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Friday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Friday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Friday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x04, 0x01)
+  model HwcTimer_Friday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Friday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Friday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x04, 0x02)
+  model HwcTimer_Friday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Friday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   /** Timer DHW Saturday */
-  @inherit(u_t2_5, w_t2_5)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x05, 0x00)
   model HwcTimer_Saturday {
     from_hour: UCH;
     from_min: UCH;
@@ -1609,18 +2453,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Saturday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Saturday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Saturday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x05, 0x01)
+  model HwcTimer_Saturday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Saturday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Saturday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x05, 0x02)
+  model HwcTimer_Saturday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Saturday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   /** Timer DHW Sunday */
-  @inherit(u_t2_6, w_t2_6)
-  @ext
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x06, 0x00)
   model HwcTimer_Sunday {
     from_hour: UCH;
     from_min: UCH;
@@ -1628,20 +2498,45 @@ namespace Bass3 {
     to_min: UCH;
 
     /** DHW schedule Sunday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
 
-    /** DHW schedule Sunday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer DHW Sunday Slot 2 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x06, 0x01)
+  model HwcTimer_Sunday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Sunday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
+  }
+
+  /** Timer DHW Sunday Slot 3 */
+  @inherit(r_t2, u_t2, w_t2)
+  @ext(0x06, 0x02)
+  model HwcTimer_Sunday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** DHW schedule Sunday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    temp: UIN;
   }
 
   // 6.3 Cooling (Circuit 01)
-
   /** Timer Cooling Monday */
-  @inherit(u_t1_0, w_t1_0)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x00, 0x00)
   model CoolingTimer_Monday {
     from_hour: UCH;
     from_min: UCH;
@@ -1649,18 +2544,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Monday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
 
-    /** Cooling schedule Monday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Cooling Monday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x00, 0x01)
+  model CoolingTimer_Monday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Monday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Monday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x00, 0x02)
+  model CoolingTimer_Monday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Monday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
   /** Timer Cooling Tuesday */
-  @inherit(u_t1_1, w_t1_1)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x01, 0x00)
   model CoolingTimer_Tuesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1668,18 +2589,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Tuesday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
 
-    /** Cooling schedule Tuesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Cooling Tuesday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x01, 0x01)
+  model CoolingTimer_Tuesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Tuesday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Tuesday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x01, 0x02)
+  model CoolingTimer_Tuesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Tuesday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
   /** Timer Cooling Wednesday */
-  @inherit(u_t1_2, w_t1_2)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x02, 0x00)
   model CoolingTimer_Wednesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1687,18 +2634,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Wednesday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
 
-    /** Cooling schedule Wednesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Cooling Wednesday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x02, 0x01)
+  model CoolingTimer_Wednesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Wednesday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Wednesday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x02, 0x02)
+  model CoolingTimer_Wednesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Wednesday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
   /** Timer Cooling Thursday */
-  @inherit(u_t1_3, w_t1_3)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x03, 0x00)
   model CoolingTimer_Thursday {
     from_hour: UCH;
     from_min: UCH;
@@ -1706,18 +2679,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Thursday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
 
-    /** Cooling schedule Thursday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Cooling Thursday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x03, 0x01)
+  model CoolingTimer_Thursday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Thursday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Thursday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x03, 0x02)
+  model CoolingTimer_Thursday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Thursday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
   /** Timer Cooling Friday */
-  @inherit(u_t1_4, w_t1_4)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x04, 0x00)
   model CoolingTimer_Friday {
     from_hour: UCH;
     from_min: UCH;
@@ -1725,18 +2724,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Friday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
 
-    /** Cooling schedule Friday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Cooling Friday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x04, 0x01)
+  model CoolingTimer_Friday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Friday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Friday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x04, 0x02)
+  model CoolingTimer_Friday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Friday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
   /** Timer Cooling Saturday */
-  @inherit(u_t1_5, w_t1_5)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x05, 0x00)
   model CoolingTimer_Saturday {
     from_hour: UCH;
     from_min: UCH;
@@ -1744,18 +2769,44 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Saturday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
 
-    /** Cooling schedule Saturday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+  /** Timer Cooling Saturday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x05, 0x01)
+  model CoolingTimer_Saturday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Saturday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Saturday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x05, 0x02)
+  model CoolingTimer_Saturday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Saturday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
   /** Timer Cooling Sunday */
-  @inherit(u_t1_6, w_t1_6)
-  @ext
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x06, 0x00)
   model CoolingTimer_Sunday {
     from_hour: UCH;
     from_min: UCH;
@@ -1763,20 +2814,45 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Cooling schedule Sunday (HH;MM;HH;MM) */
-    @in(false) @unit("°C") cooling_temp: D1C;
-
-    /** Cooling schedule Sunday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
-    @maxLength(2)
-    ignore: HEX;
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
   }
 
-  // 6.4 Circulation Pump (Circuit 00)
+  /** Timer Cooling Sunday Slot 2 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x06, 0x01)
+  model CoolingTimer_Sunday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
 
+    /** Cooling schedule Sunday Slot 2 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  /** Timer Cooling Sunday Slot 3 */
+  @inherit(r_t1, u_t1, w_t1)
+  @ext(0x06, 0x02)
+  model CoolingTimer_Sunday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Cooling schedule Sunday Slot 3 (HH;MM;HH;MM) */
+    @unit("°C")
+    @divisor(10)
+    cooling_temp: UIN;
+  }
+
+  // 6.4 Circulation Pump (Circuit 03)
   /** Timer Circulation Monday */
-  @inherit(u_t0_0, w_t0_0)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x00, 0x00)
   model CirculationTimer_Monday {
     from_hour: UCH;
     from_min: UCH;
@@ -1784,18 +2860,41 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Monday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Monday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Monday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x00, 0x01)
+  model CirculationTimer_Monday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Monday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Monday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x00, 0x02)
+  model CirculationTimer_Monday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Monday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
   }
 
   /** Timer Circulation Tuesday */
-  @inherit(u_t0_1, w_t0_1)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x01, 0x00)
   model CirculationTimer_Tuesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1803,18 +2902,41 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Tuesday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Tuesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Tuesday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x01, 0x01)
+  model CirculationTimer_Tuesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Tuesday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Tuesday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x01, 0x02)
+  model CirculationTimer_Tuesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Tuesday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
   }
 
   /** Timer Circulation Wednesday */
-  @inherit(u_t0_2, w_t0_2)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x02, 0x00)
   model CirculationTimer_Wednesday {
     from_hour: UCH;
     from_min: UCH;
@@ -1822,18 +2944,41 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Wednesday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Wednesday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Wednesday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x02, 0x01)
+  model CirculationTimer_Wednesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Wednesday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Wednesday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x02, 0x02)
+  model CirculationTimer_Wednesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Wednesday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
   }
 
   /** Timer Circulation Thursday */
-  @inherit(u_t0_3, w_t0_3)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x03, 0x00)
   model CirculationTimer_Thursday {
     from_hour: UCH;
     from_min: UCH;
@@ -1841,18 +2986,41 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Thursday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Thursday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Thursday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x03, 0x01)
+  model CirculationTimer_Thursday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Thursday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Thursday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x03, 0x02)
+  model CirculationTimer_Thursday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Thursday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
   }
 
   /** Timer Circulation Friday */
-  @inherit(u_t0_4, w_t0_4)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x04, 0x00)
   model CirculationTimer_Friday {
     from_hour: UCH;
     from_min: UCH;
@@ -1860,18 +3028,41 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Friday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Friday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Friday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x04, 0x01)
+  model CirculationTimer_Friday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Friday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Friday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x04, 0x02)
+  model CirculationTimer_Friday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Friday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
   }
 
   /** Timer Circulation Saturday */
-  @inherit(u_t0_5, w_t0_5)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x05, 0x00)
   model CirculationTimer_Saturday {
     from_hour: UCH;
     from_min: UCH;
@@ -1879,18 +3070,41 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Saturday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Saturday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Saturday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x05, 0x01)
+  model CirculationTimer_Saturday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Saturday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Saturday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x05, 0x02)
+  model CirculationTimer_Saturday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Saturday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
   }
 
   /** Timer Circulation Sunday */
-  @inherit(u_t0_6, w_t0_6)
-  @ext
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x06, 0x00)
   model CirculationTimer_Sunday {
     from_hour: UCH;
     from_min: UCH;
@@ -1898,22 +3112,338 @@ namespace Bass3 {
     to_min: UCH;
 
     /** Circulation schedule Sunday (HH;MM;HH;MM) */
-    @in(false) @maxLength(2) ign_2: IGN;
-
-    /** Circulation schedule Sunday (HH;MM;HH;MM) */
-    @out(true)
-    @constValue("FFFF")
     @maxLength(2)
-    ignore: HEX;
+    ign_end: IGN;
   }
 
-  // ==============================================================================
-  // 6.5 NUMBER OF ACTIVE TIME SLOTS PER DAY (MONDAY TO SUNDAY)
-  // ==============================================================================
+  /** Timer Circulation Sunday Slot 2 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x06, 0x01)
+  model CirculationTimer_Sunday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Sunday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Circulation Sunday Slot 3 */
+  @inherit(r_t3, u_t3, w_t3)
+  @ext(0x06, 0x02)
+  model CirculationTimer_Sunday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Circulation schedule Sunday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  // 6.5 Silent Mode (Circuit 04)
+  /** Timer Silent Mode Monday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x00, 0x00)
+  model SilentTimer_Monday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Monday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Monday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x00, 0x01)
+  model SilentTimer_Monday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Monday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Monday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x00, 0x02)
+  model SilentTimer_Monday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Monday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Tuesday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x01, 0x00)
+  model SilentTimer_Tuesday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Tuesday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Tuesday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x01, 0x01)
+  model SilentTimer_Tuesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Tuesday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Tuesday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x01, 0x02)
+  model SilentTimer_Tuesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Tuesday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Wednesday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x02, 0x00)
+  model SilentTimer_Wednesday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Wednesday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Wednesday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x02, 0x01)
+  model SilentTimer_Wednesday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Wednesday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Wednesday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x02, 0x02)
+  model SilentTimer_Wednesday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Wednesday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Thursday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x03, 0x00)
+  model SilentTimer_Thursday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Thursday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Thursday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x03, 0x01)
+  model SilentTimer_Thursday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Thursday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Thursday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x03, 0x02)
+  model SilentTimer_Thursday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Thursday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Friday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x04, 0x00)
+  model SilentTimer_Friday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Friday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Friday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x04, 0x01)
+  model SilentTimer_Friday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Friday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Friday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x04, 0x02)
+  model SilentTimer_Friday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Friday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Saturday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x05, 0x00)
+  model SilentTimer_Saturday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Saturday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Saturday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x05, 0x01)
+  model SilentTimer_Saturday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Saturday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Saturday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x05, 0x02)
+  model SilentTimer_Saturday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Saturday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Sunday */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x06, 0x00)
+  model SilentTimer_Sunday {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Sunday (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Sunday Slot 2 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x06, 0x01)
+  model SilentTimer_Sunday_Slot2 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Sunday Slot 2 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  /** Timer Silent Mode Sunday Slot 3 */
+  @inherit(r_t4, u_t4, w_t4)
+  @ext(0x06, 0x02)
+  model SilentTimer_Sunday_Slot3 {
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+
+    /** Silent mode schedule Sunday Slot 3 (HH;MM;HH;MM) */
+    @maxLength(2)
+    ign_end: IGN;
+  }
+
+  // 6.6 NUMBER OF ACTIVE TIME SLOTS PER DAY (MONDAY TO SUNDAY)
 
   /** Active slots Circulation */
-  @inherit(u_tslots)
-  @ext(0x00)
+  @inherit(r_tslots, u_tslots)
+  @ext(0x03)
   model CirculationTimer_Slots {
     mon: UCH;
     tue: UCH;
@@ -1928,7 +3458,7 @@ namespace Bass3 {
   }
 
   /** Active slots Cooling */
-  @inherit(u_tslots)
+  @inherit(r_tslots, u_tslots)
   @ext(0x01)
   model CoolingTimer_Slots {
     mon: UCH;
@@ -1944,7 +3474,7 @@ namespace Bass3 {
   }
 
   /** Active slots DHW */
-  @inherit(u_tslots)
+  @inherit(r_tslots, u_tslots)
   @ext(0x02)
   model HwcTimer_Slots {
     mon: UCH;
@@ -1959,9 +3489,25 @@ namespace Bass3 {
     ign_2: IGN;
   }
 
+  /** Active slots Silent Mode */
+  @inherit(r_tslots, u_tslots)
+  @ext(0x04)
+  model SilentTimer_Slots {
+    mon: UCH;
+    tue: UCH;
+    wed: UCH;
+    thu: UCH;
+    fri: UCH;
+    sat: UCH;
+    sun: UCH;
+
+    @maxLength(1)
+    ign_2: IGN;
+  }
+
   /** Active slots Zone 1 */
-  @inherit(u_tslots)
-  @ext(0x03)
+  @inherit(r_tslots, u_tslots)
+  @ext(0x00)
   model Z1Timer_Slots {
     mon: UCH;
     tue: UCH;
@@ -1996,6 +3542,13 @@ namespace Bass3 {
     legiopump: 3,
   }
 
+  enum Values_MultiInputSetting_value {
+    off: 0,
+    circulation: 1,
+    photovoltaic: 2,
+    cooling: 3,
+  }
+
   enum Values_MaintenanceDue_value {
     no: 0,
     yes: 1,
@@ -2028,6 +3581,17 @@ namespace Bass3 {
   enum Values_HwcParallelLoading_value {
     off: 0,
     on: 1,
+  }
+
+  enum Values_HwcLegionellaDay_day {
+    off: 0,
+    Monday: 1,
+    Tuesday: 2,
+    Wednesday: 3,
+    Thursday: 4,
+    Friday: 5,
+    Saturday: 6,
+    Sunday: 7,
   }
 
   enum Values_HwcStatus_value {
@@ -2104,6 +3668,16 @@ namespace Bass3 {
   }
 
   enum Values_CoolingReleaseStatus_value {
+    off: 0,
+    on: 1,
+  }
+
+  enum Values_DewPointMonitoring_value {
+    off: 0,
+    on: 1,
+  }
+
+  enum Values_VentilationBoost_value {
     off: 0,
     on: 1,
   }
