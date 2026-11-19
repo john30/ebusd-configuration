@@ -874,6 +874,31 @@ namespace Bass3 {
     value: EXP;
   }
 
+  /** quick veto end time zone 1 */
+  @inherit(r_c3, u_c3)
+  @ext(0x1e, 0x00)
+  model Z1QuickVetoEndTime {
+    /** quick veto end time for zone 1 */
+    value: HTI;
+  }
+
+  /** quick veto end date zone 1 */
+  @inherit(r_c3, u_c3)
+  @ext(0x24, 0x00)
+  model Z1QuickVetoEndDate {
+    /** quick veto end date for zone 1 */
+    value: HDA3;
+  }
+
+  /** heating time slot active zone 1 */
+  @inherit(r_c3, u_c3)
+  @ext(0x19, 0x00)
+  model Z1TimeSlotActive {
+    /** heating time slot active for zone 1 */
+    @values(Values_Z1TimeSlotActive_value)
+    value: UCH;
+  }
+
   /** night temperature zone 1 */
   @inherit(r_c3, u_c3, w_c3)
   @ext(0x09, 0x00)
@@ -1206,11 +1231,38 @@ namespace Bass3 {
 
   /** dew point monitoring */
   @inherit(r_c2, u_c2, w_c2)
-  @ext(0x04, 0x00)
+  @ext(0x05, 0x00)
   model DewPointMonitoring {
     /** dew point monitoring */
     @values(Values_DewPointMonitoring_value)
     value: UCH;
+  }
+
+  /** cooling time slot active zone 1 */
+  @inherit(r_c3, u_c3)
+  @ext(0x1a, 0x00)
+  model Z1CoolingTimeSlotActive {
+    /** cooling time slot active for zone 1 */
+    @values(Values_Z1CoolingTimeSlotActive_value)
+    value: UCH;
+  }
+
+  /** cooling enabled heating circuit 1 */
+  @inherit(r_c2, u_c2, w_c2)
+  @ext(0x06, 0x00)
+  model Hc1CoolingEnabled {
+    /** cooling enabled for Hc1 */
+    @values(Values_Hc1CoolingEnabled_value)
+    value: UCH;
+  }
+
+  /** dew point offset heating circuit 1 */
+  @inherit(r_c2, u_c2, w_c2)
+  @ext(0x0a, 0x00)
+  model Hc1DewPointOffset {
+    /** dew point offset for Hc1 */
+    @unit("K")
+    value: EXP;
   }
 
   // ==============================================================================
@@ -3673,6 +3725,21 @@ namespace Bass3 {
   }
 
   enum Values_DewPointMonitoring_value {
+    off: 0,
+    on: 1,
+  }
+
+  enum Values_Z1TimeSlotActive_value {
+    no: 0,
+    yes: 1,
+  }
+
+  enum Values_Z1CoolingTimeSlotActive_value {
+    no: 0,
+    yes: 1,
+  }
+
+  enum Values_Hc1CoolingEnabled_value {
     off: 0,
     on: 1,
   }
