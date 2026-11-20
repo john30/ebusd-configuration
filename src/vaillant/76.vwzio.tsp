@@ -89,6 +89,7 @@ namespace Vwzio {
     on: 1,
     overrun: 2,
     hwc: 4,
+    venting: 8,
   }
 
   /** immersion heater runtime and start count in heating mode (sum of Hc+Hwc matches myVAILLANT app hydraulic station operating hours/cycles) */
@@ -402,8 +403,14 @@ namespace Vwzio {
     index: UCH;
 
     status: UCH;
-    time: VTM;
-    date: HDA3;
+
+    /** BCD minutes, hours */
+    time: BTM;
+
+    /** BCD day, month, year */
+    date: BDA3;
+
+    /** followed by 1 (HMU) or 2 (VWZIO) bytes of unknown data that change between reads of the same entry */
     error: UIN;
   }
 
@@ -487,6 +494,15 @@ namespace Vwzio {
     @unit("°C")
     @divisor(10)
     value: SIN;
+  }
+
+  /** building circuit water pressure (1/64 bar, follows the controller water pressure) */
+  @inherit(u_rundata)
+  @ext(0x3b, 0x0b)
+  model RunDataWaterPressure {
+    @unit("bar")
+    @divisor(64)
+    value: UIN;
   }
 
   /** included parts */

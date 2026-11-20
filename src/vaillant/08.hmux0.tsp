@@ -748,6 +748,7 @@ namespace Hmux0 {
     on: 1,
     overrun: 2,
     hwc: 4,
+    venting: 8,
   }
 
   /** operating mode/maximum temp/current temp (passive; unsupported on heat pump) */
@@ -832,8 +833,14 @@ namespace Hmux0 {
     index: UCH;
 
     status: UCH;
-    time: VTM;
-    date: HDA3;
+
+    /** BCD minutes, hours */
+    time: BTM;
+
+    /** BCD day, month, year */
+    date: BDA3;
+
+    /** followed by 1 (HMU) or 2 (VWZIO) bytes of unknown data that change between reads of the same entry */
     error: UIN;
   }
 
@@ -1105,11 +1112,12 @@ namespace Hmux0 {
     value: UCH;
   }
 
-  /** refrigerant circuit diagnostic temp 354a */
-  @inherit(u_1a_ff)
+  /** D.374 subcooling target (display verified) */
+  @poll(9)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x4a)
-  model RunDataDiag354a {
-    @unit("°C")
+  model SubcoolingTargetTemp {
+    @unit("K")
     @divisor(16)
     value: SIN;
 
@@ -1117,11 +1125,12 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** refrigerant circuit diagnostic temp 354b */
-  @inherit(u_1a_ff)
+  /** D.375 subcooling (display verified) */
+  @poll(3)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x4b)
-  model RunDataDiag354b {
-    @unit("°C")
+  model SubcoolingTemp {
+    @unit("K")
     @divisor(16)
     value: SIN;
 
@@ -1167,6 +1176,26 @@ namespace Hmux0 {
 
     @maxLength(5)
     ign_2: IGN;
+  }
+
+  /** currently active error codes of the outdoor unit (0xffff = empty slot; seen: 22 = F.22 low water pressure, 733 = F.733 evaporation temperature too low) */
+  @inherit(u_rundata)
+  @ext(0x8c, 0x13)
+  model RunDataActiveErrors {
+    error: UIN;
+    error_1: UIN;
+    error_2: UIN;
+    error_3: UIN;
+    error_4: UIN;
+  }
+
+  /** building circuit water pressure (1/64 bar, follows the controller water pressure) */
+  @inherit(u_rundata)
+  @ext(0x3b, 0x0b)
+  model RunDataWaterPressure {
+    @unit("bar")
+    @divisor(64)
+    value: UIN;
   }
 
   /** included parts */
