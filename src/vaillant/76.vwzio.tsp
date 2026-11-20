@@ -505,6 +505,64 @@ namespace Vwzio {
     value: UIN;
   }
 
+  /** default *r for extended b51a 05ff diagnostic/config registers (D-code key, see #637) */
+  @base(MF, 0x1a, 0x05, 0xff)
+  model r_1a_ff {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  // Installer settings and counters via b51a 05ff HH LL (D-code key from #637), checked against the
+  // hydraulic station display (aroTHERM plus VWL 75/8.1 A + VWZ MEH 97, 2026-11-15). HMU (08) and VWZIO (76)
+  // answer identically. Settings answer "ff 02 <type> <value LE16> <min LE16> <max LE16> <step>",
+  // measured values "ff 08 <type> <value LE32> ...", unsupported codes "ff 01".
+
+  /** D.074 immersion heater switching operations (display 8 = RunStatsAuxHeaterSwitches 0BC0) */
+  @inherit(r_1a_ff)
+  @ext(0x32, 0x4a)
+  model ImmersionHeaterSwitches {
+    value: ULG;
+
+    @maxLength(3)
+    ign_2: IGN;
+  }
+
+  /** D.076 immersion heater current power (0.0 kW while off) */
+  @poll(3)
+  @inherit(r_1a_ff)
+  @ext(0x32, 0x4c)
+  model ImmersionHeaterPower {
+    @unit("kW")
+    @divisor(10)
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.126 immersion heater power limit (display 2.0 kW; setting, range 0..9.0 step 0.5) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x1a)
+  model ImmersionHeaterPowerLimit {
+    @unit("kW")
+    @divisor(10)
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.362 immersion heater block time (display 0 min) */
+  @inherit(r_1a_ff)
+  @ext(0x35, 0x3e)
+  model ImmersionHeaterBlockTime {
+    @unit("min")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
   /** included parts */
   union _includes {
     B516_inc,
