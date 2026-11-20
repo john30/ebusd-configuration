@@ -14,6 +14,28 @@ namespace Sol.Sc {
   // ,sol00,VR 68,sol 210 Solar
   // ##### SOLAR: Solar #####
 
+  /** HwcStatus: cylinder status polled by the controller (VRC 470) every ~10 s */
+  @passive
+  @qq(0x10)
+  @id(0xb5, 0x04, 0x18)
+  model HwcStatus {
+    /** unknown, 0x55 during cylinder charge, 0 otherwise */
+    flag1: UCH;
+
+    /** unknown, 0x55 during cylinder charge, 0 otherwise */
+    flag2: UCH;
+
+    /** unknown, 1 during cylinder charge, 0 otherwise */
+    flag3: UCH;
+
+    /** cylinder temperature (same as SP1) */
+    storageTemp: temp;
+
+    /** current cylinder setpoint (depends on time program) */
+    @unit("°C")
+    tempDesired: UCH;
+  }
+
   /** KOL: value and sensorstate of the collector sensor */
   @ext(0x4, 0)
   model Col is ReadonlyRegister<tempsensor>;

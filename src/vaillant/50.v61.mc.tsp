@@ -15,6 +15,15 @@ namespace V61.Mc {
   // ,V6100,VR 61,V61 219
   // ##### general #####
 
+  /** BoilerFlowTemp: boiler flow temperature sent by the controller (VRC 470) every ~10 s, in whole degrees; for a zone-type HC2 this is also the circuit flow temperature */
+  @passive
+  @write
+  @qq(0x10)
+  @id(0xb5, 0x09, 0x0e, 0x40, 0x00)
+  model BoilerFlowTemp {
+    value: temp;
+  }
+
   /** DesiredLowTemperature: lowering temperature setpoint of the second heating circuit */
   @ext(0x13, 0)
   model TempDesiredLow is Register<temp1>;
