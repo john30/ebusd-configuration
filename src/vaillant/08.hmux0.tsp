@@ -1059,11 +1059,12 @@ namespace Hmux0 {
     value: SLG;
   }
 
-  /** inverter fan load diagnostic index */
+  /** electrical power consumption in 100 W steps (= RunDataElectricPowerConsumption rounded, also during defrost) */
   @inherit(u_rundata)
   @ext(0x01, 0x0b)
-  model RunDataDiag010b {
-    /** inverter secondary stage or fan load index */
+  model RunDataElectricPower100 {
+    @unit("W")
+    @factor(100)
     value: ULG;
   }
 
@@ -1148,11 +1149,13 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** inverter electric diagnostic 3704 */
+  /** evaporation temperature (= RunDataEvaporationTemp d110 within 0.1 K; D.504 by the #637 key) */
   @inherit(u_1a_ff)
   @ext(0x37, 0x04)
-  model RunDataDiag3704 {
-    value: UIN;
+  model RunDataEvaporationTempB51a {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
 
     @maxLength(5)
     ign_2: IGN;
@@ -1168,10 +1171,12 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** inverter electric diagnostic 370b */
+  /** refrigerant high pressure (= RunDataHighPressure 6a09 within 0.1 bar in 40 same-minute samples; D.511 by the #637 key) */
   @inherit(u_1a_ff)
   @ext(0x37, 0x0b)
-  model RunDataDiag370b {
+  model RunDataHighPressureB51a {
+    @unit("bar")
+    @divisor(10)
     value: UIN;
 
     @maxLength(5)
