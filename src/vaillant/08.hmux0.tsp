@@ -749,6 +749,7 @@ namespace Hmux0 {
     on: 1,
     overrun: 2,
     hwc: 4,
+    venting: 8,
   }
 
   /** operating mode/maximum temp/current temp (passive; unsupported on heat pump) */
@@ -833,8 +834,14 @@ namespace Hmux0 {
     index: UCH;
 
     status: UCH;
-    time: VTM;
-    date: HDA3;
+
+    /** BCD minutes, hours */
+    time: BTM;
+
+    /** BCD day, month, year */
+    date: BDA3;
+
+    /** followed by 1 (HMU) or 2 (VWZIO) bytes of unknown data that change between reads of the same entry */
     error: UIN;
   }
 
@@ -1053,11 +1060,12 @@ namespace Hmux0 {
     value: SLG;
   }
 
-  /** inverter fan load diagnostic index */
+  /** electrical power consumption in 100 W steps (= RunDataElectricPowerConsumption rounded, also during defrost) */
   @inherit(u_rundata)
   @ext(0x01, 0x0b)
-  model RunDataDiag010b {
-    /** inverter secondary stage or fan load index */
+  model RunDataElectricPower100 {
+    @unit("W")
+    @factor(100)
     value: ULG;
   }
 
@@ -1106,11 +1114,12 @@ namespace Hmux0 {
     value: UCH;
   }
 
-  /** refrigerant circuit diagnostic temp 354a */
-  @inherit(u_1a_ff)
+  /** D.374 subcooling target (display verified) */
+  @poll(9)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x4a)
-  model RunDataDiag354a {
-    @unit("°C")
+  model SubcoolingTargetTemp {
+    @unit("K")
     @divisor(16)
     value: SIN;
 
@@ -1118,11 +1127,12 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** refrigerant circuit diagnostic temp 354b */
-  @inherit(u_1a_ff)
+  /** D.375 subcooling (display verified) */
+  @poll(3)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x4b)
-  model RunDataDiag354b {
-    @unit("°C")
+  model SubcoolingTemp {
+    @unit("K")
     @divisor(16)
     value: SIN;
 
@@ -1140,11 +1150,13 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** inverter electric diagnostic 3704 */
+  /** evaporation temperature (= RunDataEvaporationTemp d110 within 0.1 K; D.504 by the #637 key) */
   @inherit(u_1a_ff)
   @ext(0x37, 0x04)
-  model RunDataDiag3704 {
-    value: UIN;
+  model RunDataEvaporationTempB51a {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
 
     @maxLength(5)
     ign_2: IGN;
@@ -1160,11 +1172,241 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** inverter electric diagnostic 370b */
+  /** refrigerant high pressure (= RunDataHighPressure 6a09 within 0.1 bar in 40 same-minute samples; D.511 by the #637 key) */
   @inherit(u_1a_ff)
   @ext(0x37, 0x0b)
-  model RunDataDiag370b {
+  model RunDataHighPressureB51a {
+    @unit("bar")
+    @divisor(10)
     value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** currently active error codes of the outdoor unit (0xffff = empty slot; seen: 22 = F.22 low water pressure, 733 = F.733 evaporation temperature too low) */
+  @inherit(u_rundata)
+  @ext(0x8c, 0x13)
+  model RunDataActiveErrors {
+    error: UIN;
+    error_1: UIN;
+    error_2: UIN;
+    error_3: UIN;
+    error_4: UIN;
+  }
+
+  /** building circuit water pressure (1/64 bar, follows the controller water pressure) */
+  @inherit(u_rundata)
+  @ext(0x3b, 0x0b)
+  model RunDataWaterPressure {
+    @unit("bar")
+    @divisor(64)
+    value: UIN;
+  }
+
+  enum Values_DcodeHwcMode {
+    eco: 0,
+    normal: 1,
+    balance: 2,
+  }
+
+  enum Values_DcodeCooling {
+    no_cooling: 0,
+    active_cooling: 1,
+  }
+
+  enum Values_DcodeAnode {
+    not_connected: 0,
+  }
+
+  // Installer settings and counters via b51a 05ff HH LL (D-code key from #637), checked against the
+  // hydraulic station display (aroTHERM plus VWL 75/8.1 A + VWZ MEH 97, 2026-11-15). HMU (08) and VWZIO (76)
+  // answer identically. Settings answer "ff 02 <type> <value LE16> <min LE16> <max LE16> <step>",
+  // measured values "ff 08 <type> <value LE32> ...", unsupported codes "ff 01".
+
+  /** D.230 compressor start heating at energy integral (display -60 °min; setting, range -120..-30 step 5) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x1e)
+  model CompressorStartHeatingFrom {
+    @unit("°min")
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.233 compressor start cooling at energy integral (display 60 °min; setting, range 30..120 step 5) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x21)
+  model CompressorStartCoolingFrom {
+    @unit("°min")
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.231 maximum residual pump head (display 900 mbar; setting, range 200..900 step 10) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x1f)
+  model MaxResidualHeadSetting {
+    @unit("mbar")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.245 maximum utility block time (display 5 h; setting, range 0..9) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x2d)
+  model MaxBlockTimeUtility {
+    @unit("h")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.248 number of switch-on operations (display 32) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x30)
+  model PowerOnCount {
+    value: ULG;
+
+    @maxLength(3)
+    ign_2: IGN;
+  }
+
+  /** D.267 compressor hysteresis heating (display 7.0 K; setting, range 3..15 K) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x43)
+  model CompressorHysteresisHeating {
+    @unit("K")
+    @divisor(16)
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.268 DHW operating mode (display Eco = 0; 1/2 unverified) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x44)
+  model HwcOperatingMode {
+    @values(Values_DcodeHwcMode)
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.363 compressor hysteresis cooling (display 5.0 K; setting, range 3..15 K) */
+  @inherit(r_1a_ff)
+  @ext(0x35, 0x3f)
+  model CompressorHysteresisCooling {
+    @unit("K")
+    @divisor(16)
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.122 building circuit pump setting heating (29 = minimum = display Auto) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x16)
+  model BuildingPumpConfigHeating {
+    @unit("%")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.123 building circuit pump setting cooling (29 = minimum = display Auto) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x17)
+  model BuildingPumpConfigCooling {
+    @unit("%")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.124 building circuit pump setting DHW (29 = minimum = display Auto) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x18)
+  model BuildingPumpConfigHwc {
+    @unit("%")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.125 switch-on delay after power on (display 0 min; setting, range 0..120) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x19)
+  model SwitchOnDelay {
+    @unit("min")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.127 cooling possible (display "Aktive Kühlung" = 1) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x1b)
+  model CoolingPossible {
+    @values(Values_DcodeCooling)
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.131 compressor current limit (display 16 A; setting, range 13..16) */
+  @inherit(r_1a_ff)
+  @ext(0x33, 0x1f)
+  model CompressorCurrentLimit {
+    @unit("A")
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.201 compressor starts (display 939 = RunStatsCompressorStarts) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x01)
+  model CompressorStartsDcode {
+    value: ULG;
+
+    @maxLength(3)
+    ign_2: IGN;
+  }
+
+  /** D.269 impressed current anode status (display "Anode nicht angeschlossen" = 0) */
+  @inherit(r_1a_ff)
+  @ext(0x34, 0x45)
+  model AnodeStatus {
+    @values(Values_DcodeAnode)
+    value: UIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** D.367 building circuit pump modulation (display 77.8 %) */
+  @inherit(r_1a_ff)
+  @ext(0x35, 0x43)
+  model BuildingPumpModulation {
+    @unit("%")
+    @divisor(16)
+    value: SIN;
 
     @maxLength(5)
     ign_2: IGN;
