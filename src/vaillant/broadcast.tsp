@@ -55,4 +55,32 @@ namespace Broadcast {
   model Load {
     value: onoff;
   }
+
+  /** system cooling broadcast status */
+  @inherit(b_1)
+  @ext(0x5c)
+  model CoolingStatus {
+    /** cooling broadcast status */
+    @values(Values_CoolingStatus)
+    status: UCH;
+  }
+
+  enum Values_CoolingStatus {
+    off: 0,
+    on: 1,
+  }
+
+  /** default *b for b508 */
+  @passive
+  @zz(BROADCAST)
+  @base(MF, 0x8)
+  model b_8 {}
+
+  /** system status broadcast */
+  @inherit(b_8)
+  @ext(0x9)
+  model SystemStatus {
+    /** system status */
+    status: UCH;
+  }
 }
