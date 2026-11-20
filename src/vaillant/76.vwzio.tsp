@@ -505,6 +505,14 @@ namespace Vwzio {
     value: UIN;
   }
 
+  /** default *u for extended b51a 05ff diagnostic/config registers (D-code key, see #637) */
+  @passive
+  @base(MF, 0x1a, 0x05, 0xff)
+  model u_1a_ff {
+    @maxLength(3)
+    ign: IGN;
+  }
+
   /** default *r for extended b51a 05ff diagnostic/config registers (D-code key, see #637) */
   @base(MF, 0x1a, 0x05, 0xff)
   model r_1a_ff {
@@ -518,7 +526,7 @@ namespace Vwzio {
   // measured values "ff 08 <type> <value LE32> ...", unsupported codes "ff 01".
 
   /** D.074 immersion heater switching operations (display 8 = RunStatsAuxHeaterSwitches 0BC0) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x32, 0x4a)
   model ImmersionHeaterSwitches {
     value: ULG;
@@ -528,8 +536,7 @@ namespace Vwzio {
   }
 
   /** D.076 immersion heater current power (0.0 kW while off) */
-  @poll(3)
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x32, 0x4c)
   model ImmersionHeaterPower {
     @unit("kW")
@@ -541,7 +548,7 @@ namespace Vwzio {
   }
 
   /** D.126 immersion heater power limit (display 2.0 kW; setting, range 0..9.0 step 0.5) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x1a)
   model ImmersionHeaterPowerLimit {
     @unit("kW")
@@ -553,7 +560,7 @@ namespace Vwzio {
   }
 
   /** D.362 immersion heater block time (display 0 min) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x3e)
   model ImmersionHeaterBlockTime {
     @unit("min")

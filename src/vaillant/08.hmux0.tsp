@@ -1115,7 +1115,6 @@ namespace Hmux0 {
   }
 
   /** D.374 subcooling target (display verified) */
-  @poll(9)
   @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x4a)
   model SubcoolingTargetTemp {
@@ -1128,7 +1127,6 @@ namespace Hmux0 {
   }
 
   /** D.375 subcooling (display verified) */
-  @poll(3)
   @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x4b)
   model SubcoolingTemp {
@@ -1225,7 +1223,7 @@ namespace Hmux0 {
   // measured values "ff 08 <type> <value LE32> ...", unsupported codes "ff 01".
 
   /** D.230 compressor start heating at energy integral (display -60 °min; setting, range -120..-30 step 5) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x1e)
   model CompressorStartHeatingFrom {
     @unit("°min")
@@ -1236,7 +1234,7 @@ namespace Hmux0 {
   }
 
   /** D.233 compressor start cooling at energy integral (display 60 °min; setting, range 30..120 step 5) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x21)
   model CompressorStartCoolingFrom {
     @unit("°min")
@@ -1247,7 +1245,7 @@ namespace Hmux0 {
   }
 
   /** D.231 maximum residual pump head (display 900 mbar; setting, range 200..900 step 10) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x1f)
   model MaxResidualHeadSetting {
     @unit("mbar")
@@ -1258,7 +1256,7 @@ namespace Hmux0 {
   }
 
   /** D.245 maximum utility block time (display 5 h; setting, range 0..9) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x2d)
   model MaxBlockTimeUtility {
     @unit("h")
@@ -1269,7 +1267,7 @@ namespace Hmux0 {
   }
 
   /** D.248 number of switch-on operations (display 32) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x30)
   model PowerOnCount {
     value: ULG;
@@ -1279,7 +1277,7 @@ namespace Hmux0 {
   }
 
   /** D.267 compressor hysteresis heating (display 7.0 K; setting, range 3..15 K) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x43)
   model CompressorHysteresisHeating {
     @unit("K")
@@ -1291,7 +1289,7 @@ namespace Hmux0 {
   }
 
   /** D.268 DHW operating mode (display Eco = 0; 1/2 unverified) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x44)
   model HwcOperatingMode {
     @values(Values_DcodeHwcMode)
@@ -1302,7 +1300,7 @@ namespace Hmux0 {
   }
 
   /** D.363 compressor hysteresis cooling (display 5.0 K; setting, range 3..15 K) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x3f)
   model CompressorHysteresisCooling {
     @unit("K")
@@ -1314,7 +1312,7 @@ namespace Hmux0 {
   }
 
   /** D.122 building circuit pump setting heating (29 = minimum = display Auto) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x16)
   model BuildingPumpConfigHeating {
     @unit("%")
@@ -1325,7 +1323,7 @@ namespace Hmux0 {
   }
 
   /** D.123 building circuit pump setting cooling (29 = minimum = display Auto) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x17)
   model BuildingPumpConfigCooling {
     @unit("%")
@@ -1336,7 +1334,7 @@ namespace Hmux0 {
   }
 
   /** D.124 building circuit pump setting DHW (29 = minimum = display Auto) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x18)
   model BuildingPumpConfigHwc {
     @unit("%")
@@ -1347,7 +1345,7 @@ namespace Hmux0 {
   }
 
   /** D.125 switch-on delay after power on (display 0 min; setting, range 0..120) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x19)
   model SwitchOnDelay {
     @unit("min")
@@ -1358,7 +1356,7 @@ namespace Hmux0 {
   }
 
   /** D.127 cooling possible (display "Aktive Kühlung" = 1) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x1b)
   model CoolingPossible {
     @values(Values_DcodeCooling)
@@ -1369,7 +1367,7 @@ namespace Hmux0 {
   }
 
   /** D.131 compressor current limit (display 16 A; setting, range 13..16) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x33, 0x1f)
   model CompressorCurrentLimit {
     @unit("A")
@@ -1380,7 +1378,7 @@ namespace Hmux0 {
   }
 
   /** D.201 compressor starts (display 939 = RunStatsCompressorStarts) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x01)
   model CompressorStartsDcode {
     value: ULG;
@@ -1390,7 +1388,7 @@ namespace Hmux0 {
   }
 
   /** D.269 impressed current anode status (display "Anode nicht angeschlossen" = 0) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x34, 0x45)
   model AnodeStatus {
     @values(Values_DcodeAnode)
@@ -1401,7 +1399,7 @@ namespace Hmux0 {
   }
 
   /** D.367 building circuit pump modulation (display 77.8 %) */
-  @inherit(r_1a_ff)
+  @inherit(r_1a_ff, u_1a_ff)
   @ext(0x35, 0x43)
   model BuildingPumpModulation {
     @unit("%")
