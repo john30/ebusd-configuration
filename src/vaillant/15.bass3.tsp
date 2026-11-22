@@ -287,17 +287,36 @@ namespace Bass3 {
   model r_t3 {
     @maxLength(1)
     ign: IGN;
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+    @maxLength(2)
+    ign_end: IGN;
   }
   @passive
   @base(MF, 0x55, 0xa5, 0x00, 0x03)
   model u_t3 {
     @maxLength(1)
     ign: IGN;
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+    @maxLength(2)
+    ign_end: IGN;
   }
   @write
   @base(MF, 0x55, 0xa6, 0x00, 0x03)
   model w_t3 {
     total_slots: UCH;
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+    @maxLength(2)
+    @constValue("ffff")
+    ign_end: HEX;
   }
 
   // Circuit 04 (Silent Mode)
@@ -305,17 +324,36 @@ namespace Bass3 {
   model r_t4 {
     @maxLength(1)
     ign: IGN;
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+    @maxLength(2)
+    ign_end: IGN;
   }
   @passive
   @base(MF, 0x55, 0xa5, 0x00, 0x04)
   model u_t4 {
     @maxLength(1)
     ign: IGN;
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+    @maxLength(2)
+    ign_end: IGN;
   }
   @write
   @base(MF, 0x55, 0xa6, 0x00, 0x04)
   model w_t4 {
     total_slots: UCH;
+    from_hour: UCH;
+    from_min: UCH;
+    to_hour: UCH;
+    to_min: UCH;
+    @maxLength(2)
+    @constValue("ffff")
+    ign_end: HEX;
   }
 
   /** default *r for timer slots */
@@ -445,7 +483,7 @@ namespace Bass3 {
   @inherit(r_c0, u_c0, w_c0)
   @ext(0x95, 0x00)
   model OutsideTempAvg {
-    /** rounded average outside temperature (updated every 3h) */
+    /** 24h rolling average outside temperature (updated every 3h) */
     @unit("°C")
     value: EXP;
   }
@@ -1202,11 +1240,14 @@ namespace Bass3 {
     value: EXP;
   }
 
-  /** cooling max flow temp desired */
+  /** emergency operation flow temperature setpoint */
   @inherit(r_c0, u_c0, w_c0)
   @ext(0x26, 0x00)
-  model CoolingFlowTempDesiredMax {
-    /** max flow temperature setpoint for cooling */
+  model HcEmergencyTemp {
+    /** emergency mode flow temperature setpoint (20..80 °C, display-verified on BASS3) */
+    @minValue(20)
+    @maxValue(80)
+    @step(1)
     @unit("°C")
     value: EXP;
   }
@@ -2905,591 +2946,213 @@ namespace Bass3 {
   /** Timer Circulation Monday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x00, 0x00)
-  model CirculationTimer_Monday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Monday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Monday {}
 
   /** Timer Circulation Monday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x00, 0x01)
-  model CirculationTimer_Monday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Monday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Monday_Slot2 {}
 
   /** Timer Circulation Monday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x00, 0x02)
-  model CirculationTimer_Monday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Monday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Monday_Slot3 {}
 
   /** Timer Circulation Tuesday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x01, 0x00)
-  model CirculationTimer_Tuesday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Tuesday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Tuesday {}
 
   /** Timer Circulation Tuesday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x01, 0x01)
-  model CirculationTimer_Tuesday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Tuesday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Tuesday_Slot2 {}
 
   /** Timer Circulation Tuesday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x01, 0x02)
-  model CirculationTimer_Tuesday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Tuesday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Tuesday_Slot3 {}
 
   /** Timer Circulation Wednesday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x02, 0x00)
-  model CirculationTimer_Wednesday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Wednesday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Wednesday {}
 
   /** Timer Circulation Wednesday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x02, 0x01)
-  model CirculationTimer_Wednesday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Wednesday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Wednesday_Slot2 {}
 
   /** Timer Circulation Wednesday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x02, 0x02)
-  model CirculationTimer_Wednesday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Wednesday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Wednesday_Slot3 {}
 
   /** Timer Circulation Thursday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x03, 0x00)
-  model CirculationTimer_Thursday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Thursday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Thursday {}
 
   /** Timer Circulation Thursday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x03, 0x01)
-  model CirculationTimer_Thursday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Thursday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Thursday_Slot2 {}
 
   /** Timer Circulation Thursday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x03, 0x02)
-  model CirculationTimer_Thursday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Thursday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Thursday_Slot3 {}
 
   /** Timer Circulation Friday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x04, 0x00)
-  model CirculationTimer_Friday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Friday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Friday {}
 
   /** Timer Circulation Friday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x04, 0x01)
-  model CirculationTimer_Friday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Friday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Friday_Slot2 {}
 
   /** Timer Circulation Friday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x04, 0x02)
-  model CirculationTimer_Friday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Friday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Friday_Slot3 {}
 
   /** Timer Circulation Saturday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x05, 0x00)
-  model CirculationTimer_Saturday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Saturday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Saturday {}
 
   /** Timer Circulation Saturday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x05, 0x01)
-  model CirculationTimer_Saturday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Saturday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Saturday_Slot2 {}
 
   /** Timer Circulation Saturday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x05, 0x02)
-  model CirculationTimer_Saturday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Saturday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Saturday_Slot3 {}
 
   /** Timer Circulation Sunday */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x06, 0x00)
-  model CirculationTimer_Sunday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Sunday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Sunday {}
 
   /** Timer Circulation Sunday Slot 2 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x06, 0x01)
-  model CirculationTimer_Sunday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Sunday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Sunday_Slot2 {}
 
   /** Timer Circulation Sunday Slot 3 */
   @inherit(r_t3, u_t3, w_t3)
   @ext(0x06, 0x02)
-  model CirculationTimer_Sunday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Circulation schedule Sunday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model CirculationTimer_Sunday_Slot3 {}
 
   // 6.5 Silent Mode (Circuit 04)
   /** Timer Silent Mode Monday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x00, 0x00)
-  model SilentTimer_Monday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Monday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Monday {}
 
   /** Timer Silent Mode Monday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x00, 0x01)
-  model SilentTimer_Monday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Monday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Monday_Slot2 {}
 
   /** Timer Silent Mode Monday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x00, 0x02)
-  model SilentTimer_Monday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Monday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Monday_Slot3 {}
 
   /** Timer Silent Mode Tuesday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x01, 0x00)
-  model SilentTimer_Tuesday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Tuesday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Tuesday {}
 
   /** Timer Silent Mode Tuesday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x01, 0x01)
-  model SilentTimer_Tuesday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Tuesday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Tuesday_Slot2 {}
 
   /** Timer Silent Mode Tuesday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x01, 0x02)
-  model SilentTimer_Tuesday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Tuesday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Tuesday_Slot3 {}
 
   /** Timer Silent Mode Wednesday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x02, 0x00)
-  model SilentTimer_Wednesday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Wednesday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Wednesday {}
 
   /** Timer Silent Mode Wednesday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x02, 0x01)
-  model SilentTimer_Wednesday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Wednesday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Wednesday_Slot2 {}
 
   /** Timer Silent Mode Wednesday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x02, 0x02)
-  model SilentTimer_Wednesday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Wednesday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Wednesday_Slot3 {}
 
   /** Timer Silent Mode Thursday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x03, 0x00)
-  model SilentTimer_Thursday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Thursday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Thursday {}
 
   /** Timer Silent Mode Thursday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x03, 0x01)
-  model SilentTimer_Thursday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Thursday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Thursday_Slot2 {}
 
   /** Timer Silent Mode Thursday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x03, 0x02)
-  model SilentTimer_Thursday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Thursday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Thursday_Slot3 {}
 
   /** Timer Silent Mode Friday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x04, 0x00)
-  model SilentTimer_Friday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Friday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Friday {}
 
   /** Timer Silent Mode Friday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x04, 0x01)
-  model SilentTimer_Friday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Friday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Friday_Slot2 {}
 
   /** Timer Silent Mode Friday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x04, 0x02)
-  model SilentTimer_Friday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Friday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Friday_Slot3 {}
 
   /** Timer Silent Mode Saturday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x05, 0x00)
-  model SilentTimer_Saturday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Saturday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Saturday {}
 
   /** Timer Silent Mode Saturday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x05, 0x01)
-  model SilentTimer_Saturday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Saturday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Saturday_Slot2 {}
 
   /** Timer Silent Mode Saturday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x05, 0x02)
-  model SilentTimer_Saturday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Saturday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Saturday_Slot3 {}
 
   /** Timer Silent Mode Sunday */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x06, 0x00)
-  model SilentTimer_Sunday {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Sunday (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Sunday {}
 
   /** Timer Silent Mode Sunday Slot 2 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x06, 0x01)
-  model SilentTimer_Sunday_Slot2 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Sunday Slot 2 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Sunday_Slot2 {}
 
   /** Timer Silent Mode Sunday Slot 3 */
   @inherit(r_t4, u_t4, w_t4)
   @ext(0x06, 0x02)
-  model SilentTimer_Sunday_Slot3 {
-    from_hour: UCH;
-    from_min: UCH;
-    to_hour: UCH;
-    to_min: UCH;
-
-    /** Silent mode schedule Sunday Slot 3 (HH;MM;HH;MM) */
-    @maxLength(2)
-    ign_end: IGN;
-  }
+  model SilentTimer_Sunday_Slot3 {}
 
   // 6.6 NUMBER OF ACTIVE TIME SLOTS PER DAY (MONDAY TO SUNDAY)
 
