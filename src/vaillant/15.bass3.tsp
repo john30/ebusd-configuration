@@ -480,7 +480,7 @@ namespace Bass3 {
   }
 
   /** average outside temperature */
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x95, 0x00)
   model OutsideTempAvg {
     /** 24h rolling average outside temperature (updated every 3h) */
@@ -491,7 +491,7 @@ namespace Bass3 {
   // Disabled active polling of non-existent solar registers to prevent bus saturation and read timeouts
 
   /** total environmental yield */
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x3e, 0x00)
   model YieldTotal {
     /** total environmental yield */
@@ -536,7 +536,7 @@ namespace Bass3 {
   }
 
   /** total solar yield */
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x3d, 0x00)
   model SolarYieldTotal {
     /** total solar yield */
@@ -546,7 +546,7 @@ namespace Bass3 {
 
   /** total energy consumption heating */
   @poll(9)
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x57, 0x00)
   model PrEnergySumHc {
     /** total heating electricity consumption */
@@ -556,7 +556,7 @@ namespace Bass3 {
 
   /** this months energy consumption heating */
   @poll(9)
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x4f, 0x00)
   model PrEnergySumHcThisMonth {
     /** current month heating electricity consumption */
@@ -566,7 +566,7 @@ namespace Bass3 {
 
   /** last months energy consumption heating */
   @poll(9)
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x53, 0x00)
   model PrEnergySumHcLastMonth {
     /** last month heating electricity consumption */
@@ -594,7 +594,7 @@ namespace Bass3 {
 
   /** total energy consumption hot water */
   @poll(9)
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x58, 0x00)
   model PrEnergySumHwc {
     /** total hot water electricity consumption */
@@ -604,7 +604,7 @@ namespace Bass3 {
 
   /** this months energy consumption hot water */
   @poll(9)
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x50, 0x00)
   model PrEnergySumHwcThisMonth {
     /** current month hot water electricity consumption */
@@ -614,7 +614,7 @@ namespace Bass3 {
 
   /** last months energy consumption hot water */
   @poll(9)
-  @inherit(r_c0, u_c0, w_c0)
+  @inherit(r_c0, u_c0)
   @ext(0x54, 0x00)
   model PrEnergySumHwcLastMonth {
     /** last month hot water electricity consumption */
@@ -993,7 +993,7 @@ namespace Bass3 {
   }
 
   /** room temperature desired zone 1 */
-  @inherit(r_c3, u_c3, w_c3)
+  @inherit(r_c3, u_c3)
   @ext(0x14, 0x00)
   model Z1ActualRoomTempDesired {
     /** current room setpoint considering all basic conditions passed to the control algorithms */
@@ -1135,7 +1135,7 @@ namespace Bass3 {
   }
 
   /** Status heating circuit 1 */
-  @inherit(r_c2, u_c2, w_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x1b, 0x00)
   model Hc1Status {
     /** status of zone 1 */
@@ -1143,7 +1143,7 @@ namespace Bass3 {
   }
 
   /** PumpStatus heating circuit 1 */
-  @inherit(r_c2, u_c2, w_c2)
+  @inherit(r_c2, u_c2)
   @ext(0x1e, 0x00)
   model Hc1PumpStatus {
     /** pump status of zone 1 */
@@ -1217,7 +1217,7 @@ namespace Bass3 {
   }
 
   /** valve status zone 1 */
-  @inherit(r_c3, u_c3, w_c3)
+  @inherit(r_c3, u_c3)
   @ext(0x12, 0x00)
   model Z1ValveStatus {
     /** valve status of zone 1 */
