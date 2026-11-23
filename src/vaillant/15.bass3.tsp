@@ -499,6 +499,42 @@ namespace Bass3 {
     value: ULG;
   }
 
+  /** this months environmental yield */
+  @inherit(r_c0, u_c0)
+  @ext(0xe0, 0x00)
+  model YieldThisMonth {
+    /** current month environmental yield */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** last months environmental yield */
+  @inherit(r_c0, u_c0)
+  @ext(0xd6, 0x00)
+  model YieldLastMonth {
+    /** last month environmental yield */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** this years environmental yield */
+  @inherit(r_c0, u_c0)
+  @ext(0xd8, 0x00)
+  model YieldThisYear {
+    /** current year environmental yield */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** last years environmental yield */
+  @inherit(r_c0, u_c0)
+  @ext(0xd7, 0x00)
+  model YieldLastYear {
+    /** last year environmental yield */
+    @unit("kWh")
+    value: ULG;
+  }
+
   /** total solar yield */
   @inherit(r_c0, u_c0, w_c0)
   @ext(0x3d, 0x00)
@@ -538,6 +574,24 @@ namespace Bass3 {
     value: ULG;
   }
 
+  /** this years energy consumption heating */
+  @inherit(r_c0, u_c0)
+  @ext(0xc1, 0x00)
+  model PrEnergySumHcThisYear {
+    /** current year heating electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** last years energy consumption heating */
+  @inherit(r_c0, u_c0)
+  @ext(0xc0, 0x00)
+  model PrEnergySumHcLastYear {
+    /** last year heating electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
   /** total energy consumption hot water */
   @poll(9)
   @inherit(r_c0, u_c0, w_c0)
@@ -564,6 +618,78 @@ namespace Bass3 {
   @ext(0x54, 0x00)
   model PrEnergySumHwcLastMonth {
     /** last month hot water electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** this years energy consumption hot water */
+  @inherit(r_c0, u_c0)
+  @ext(0xbb, 0x00)
+  model PrEnergySumHwcThisYear {
+    /** current year hot water electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** last years energy consumption hot water */
+  @inherit(r_c0, u_c0)
+  @ext(0xbc, 0x00)
+  model PrEnergySumHwcLastYear {
+    /** last year hot water electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** total energy consumption cooling */
+  @inherit(r_c0, u_c0)
+  @ext(0xb1, 0x00)
+  model PrEnergySumCooling {
+    /** total cooling electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** total installation energy consumption */
+  @inherit(r_c0, u_c0)
+  @ext(0xc6, 0x00)
+  model PrEnergySumTotal {
+    /** total installation electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** this months installation energy consumption */
+  @inherit(r_c0, u_c0)
+  @ext(0xc2, 0x00)
+  model PrEnergySumTotalThisMonth {
+    /** current month installation electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** last months installation energy consumption */
+  @inherit(r_c0, u_c0)
+  @ext(0xc3, 0x00)
+  model PrEnergySumTotalLastMonth {
+    /** last month installation electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** this years installation energy consumption */
+  @inherit(r_c0, u_c0)
+  @ext(0xc4, 0x00)
+  model PrEnergySumTotalThisYear {
+    /** current year installation electricity consumption */
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** last years installation energy consumption */
+  @inherit(r_c0, u_c0)
+  @ext(0xc5, 0x00)
+  model PrEnergySumTotalLastYear {
+    /** last year installation electricity consumption */
     @unit("kWh")
     value: ULG;
   }
@@ -677,7 +803,7 @@ namespace Bass3 {
   model MultiInputSetting {
     /** multifunction input setting */
     @values(Values_MultiInputSetting_value)
-    value: UCH;
+    value: UIN;
   }
 
   /** outside temperature calibration offset */
