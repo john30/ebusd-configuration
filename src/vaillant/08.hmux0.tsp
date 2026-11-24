@@ -623,18 +623,18 @@ namespace Hmux0 {
     value: UIN;
   }
 
-  /** backup electric heater operating hours */
-  @inherit(r_rundata, u_rundata)
+  /** unverified outdoor cycle runtime counter e50b (tracks compressor cycles; not hydraulic backup heater) */
+  @inherit(u_rundata)
   @ext(0xe5, 0x0b)
-  model RunStatsImmersionHeaterHours {
+  model RunStatsDiage50b {
     @unit("h")
     value: UIN;
   }
 
-  /** backup electric heater start count */
-  @inherit(r_rundata, u_rundata)
+  /** unverified outdoor cycle count e60b (tracks compressor starts 1:1; not hydraulic backup heater) */
+  @inherit(u_rundata)
   @ext(0xe6, 0x0b)
-  model RunStatsImmersionHeaterStarts {
+  model RunStatsDiage60b {
     value: UIN;
   }
 
