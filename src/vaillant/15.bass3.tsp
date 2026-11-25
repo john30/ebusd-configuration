@@ -1317,25 +1317,25 @@ namespace Bass3 {
     value: EXP;
   }
 
-  /** cooling start date */
+  /** manual cooling period start date */
   @inherit(r_c0, u_c0, w_c0)
   @ext(0xda, 0x00)
   model CoolingStartDate {
     day: UCH;
     month: UCH;
 
-    /** Start date for active cooling (day, month, year) */
+    /** Start date for active manual cooling period (day, month, year) */
     year: UCH;
   }
 
-  /** cooling end date */
+  /** manual cooling period end date */
   @inherit(r_c0, u_c0, w_c0)
   @ext(0xdb, 0x00)
   model CoolingEndDate {
     day: UCH;
     month: UCH;
 
-    /** End date for active cooling (day, month, year) */
+    /** End date for active manual cooling period (day, month, year) */
     year: UCH;
   }
 
@@ -1387,12 +1387,11 @@ namespace Bass3 {
     value: EXP;
   }
 
-  /** dew point offset */
-  @inherit(r_c0, u_c0, w_c0)
+  /** dew point / live calculated value (read-only; flag byte 00, fluctuates on BASS3; circuit 1 writable offset is Hc1DewPointOffset 02 0a00) */
+  @inherit(r_c0, u_c0)
   @ext(0x3a, 0x00)
   model DewPointOffset {
-    /** dew point offset */
-    @unit("K")
+    /** live calculated value (unverified semantics; inherited name from 15.ctlv2) */
     value: EXP;
   }
 
