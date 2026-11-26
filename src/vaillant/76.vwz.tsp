@@ -71,6 +71,120 @@ namespace Vwz {
     value: temps2;
   }
 
+  // ---------------------------------------------------------------------------
+  // Additions 2026-11-26 from the Vaillant EU Data Act export (VWZ02 at 0x76),
+  // polled by the myVaillant gateway since 2026-11-23. Vaillant name in comments.
+  // ---------------------------------------------------------------------------
+
+  /** default *r (b509 54 02 00 <reg>) */
+  @base(MF, 0x9, 0x54, 0x2, 0)
+  model r_x09 {
+    @maxLength(4)
+    ign: IGN;
+  }
+
+  /** flow temperature at the backup heater, Vaillant BackupHeaterFlowTemperatureSensor */
+  @inherit(r_x09)
+  @ext(0x4c, 0x9)
+  @Ebus.example("33.63 °C", "76b509055402004c09", "0802014c0921840642")
+  model RunDataBackupHeaterFlowTemp {
+    value: tempv;
+  }
+
+  /** current power of the electric backup heater, Vaillant EBH_CurrentPower */
+  @inherit(r_x09)
+  @ext(0xa0, 0xa)
+  model RunDataBackupHeaterPower {
+    @unit("W")
+    value: UIN;
+  }
+
+  /** flow measured by the outdoor unit, Vaillant VortexFlow_lph_Outdoor */
+  @inherit(r_x09)
+  @ext(0xbb, 0x9)
+  model RunDataFlowOutdoor {
+    @unit("l/h")
+    value: EXP;
+  }
+
+  /** requested operation mode, Vaillant ASW2_ReqOpMode */
+  @inherit(r_x09)
+  @ext(0xac, 0xd)
+  model RunDataReqOpMode {
+    value: UCH;
+  }
+
+  /** current operation mode, Vaillant ASW2_CurOpMode */
+  @inherit(r_x09)
+  @ext(0xad, 0xd)
+  model RunDataCurOpMode {
+    value: UCH;
+  }
+
+  /** fault list (65535 = empty), Vaillant ASW2_FaultList */
+  @inherit(r_x09)
+  @ext(0xb8, 0xd)
+  model RunDataFaultList {
+    code1: UIN;
+    code2: UIN;
+    code3: UIN;
+    code4: UIN;
+    code5: UIN;
+  }
+
+  /** default *r (b51a 05 ff 32 <nr>), answer ff 08 <type> <value LE> */
+  @base(MF, 0x1a, 0x5, 0xff, 0x32)
+  model r_x32 {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  /** backup heater hours, Vaillant EBH_OperatingHours */
+  @inherit(r_x32)
+  @ext(0x46)
+  model BackupHeaterHours {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** backup heater energy, Vaillant EBH_PowerConsumption */
+  @inherit(r_x32)
+  @ext(0x49)
+  @Ebus.example("39 kWh", "76b51a0405ff3249", "0aff082627000000000000")
+  model BackupHeaterEnergy {
+    @unit("kWh")
+    value: ULG;
+  }
+
+  /** backup heater switches, Vaillant EBH_Commutations */
+  @inherit(r_x32)
+  @ext(0x4a)
+  model BackupHeaterSwitches {
+    value: ULG;
+  }
+
+  /** hot water 3 way valve switches, Vaillant DHW_TWV_Commutations */
+  @inherit(r_x32)
+  @ext(0x4b)
+  model HwcValveSwitches {
+    value: ULG;
+  }
+
+  /** default *r (b51a 05 ff 33 <nr>), answer ff 02 <type> <value> <min> <max> <step> */
+  @base(MF, 0x1a, 0x5, 0xff, 0x33)
+  model r_x33 {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  /** maximum power of the internal electric backup heater (parameter), Vaillant MaxPowerInternalElectricalBackupHeater */
+  @inherit(r_x33)
+  @ext(0x1a)
+  model BackupHeaterMaxPower {
+    @unit("kW")
+    value: UIN;
+  }
+
   enum Values_TestThreeWayValve {
     heating: 0,
     dhw: 1,
