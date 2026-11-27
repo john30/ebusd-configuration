@@ -305,19 +305,20 @@ namespace Vwzio {
     value: UIN;
   }
 
-  /** total starts of Hwc mode */
+  /** DHW 3-way valve switches (Vaillant data export: DHW_TWV_Commutations) */
   @inherit(r_rundata, u_rundata)
   @ext(0xc1, 0x0b)
-  model RunStatsHwcStarts {
-    value: UIN;
+  model RunStatsHwcValveSwitches {
+    value: ULG;
   }
 
-  /** diagnostic code readout */
+  /** return temperature sensor (Vaillant data export: ReturnTemperatureSensor) */
   @inherit(u_rundata)
   @ext(0xcc, 0x10)
-  model RunDataDiagnostic {
-    @maxLength(2)
-    value: HEX;
+  model RunDataReturnTempSensor {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
   }
 
   /** electrical energy consumption of the immersion heater (display D.073) */
@@ -346,33 +347,35 @@ namespace Vwzio {
     value: EXP;
   }
 
-  /** hydraulic actuator position status diagnostic */
+  /** current operation mode of the indoor unit (Vaillant data export: ASW2_CurOpMode) */
   @inherit(u_rundata)
   @ext(0xad, 0x0d)
-  model RunDataDiagad0d {
+  model RunDataCurOpMode {
     status: UCH;
   }
 
-  /** backup heater relay status diagnostic */
+  /** requested operation mode of the indoor unit (Vaillant data export: ASW2_ReqOpMode) */
   @inherit(u_rundata)
   @ext(0xac, 0x0d)
-  model RunDataDiagac0d {
+  model RunDataReqOpMode {
     status: UCH;
   }
 
-  /** hydraulic module runtime counter 640b */
+  /** maximum power of the internal electric backup heater (Vaillant data export: MaxPowerInternalElectricalBackupHeater; same value as D.126) */
   @inherit(u_rundata)
   @ext(0x64, 0x0b)
-  model RunDataDiag640b {
-    @unit("h")
-    hours: UIN;
+  model RunDataBackupHeaterMaxPower {
+    @unit("kW")
+    @divisor(10)
+    value: UIN;
   }
 
-  /** hydraulic module cycle counter bd0b */
+  /** electric backup heater operating hours (Vaillant data export: EBH_OperatingHours) */
   @inherit(u_rundata)
   @ext(0xbd, 0x0b)
-  model RunDataDiagbd0b {
-    switches: ULG;
+  model RunStatsBackupHeaterHours {
+    @unit("h")
+    value: ULG;
   }
 
   /** default *u for error/status registers (b503) */

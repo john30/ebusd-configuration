@@ -419,7 +419,7 @@ namespace Hmux0 {
     value: EXP;
   }
 
-  /** condenser outlet temperature */
+  /** refrigerant temperature after the building heat exchanger / EEV (Vaillant data export: TRefriBuildHexEev) */
   @inherit(r_rundata, u_rundata)
   @ext(0xb6, 0x08)
   model RunDataCondenserOutTemp {
@@ -477,11 +477,12 @@ namespace Hmux0 {
     value: UIN;
   }
 
+  /** cooling operating hours (Vaillant data export: ApplianceOperatingHoursCooling) */
   @inherit(u_rundata)
   @ext(0xbb, 0x0b)
-  model RunStatsDiagbb0b {
+  model RunStatsCoolingHours {
     @unit("h")
-    value: UIN;
+    value: ULG;
   }
 
   /** total runtime of Hwc mode */
@@ -500,11 +501,11 @@ namespace Hmux0 {
     value: UIN;
   }
 
-  /** total starts of Hwc mode */
+  /** DHW 3-way valve switches (Vaillant data export: DHW_TWV_Commutations) */
   @inherit(r_rundata, u_rundata)
   @ext(0xc1, 0x0b)
-  model RunStatsHwcStarts {
-    value: UIN;
+  model RunStatsHwcValveSwitches {
+    value: ULG;
   }
 
   @inherit(r_rundata, u_rundata)
@@ -593,49 +594,49 @@ namespace Hmux0 {
     value: EXP;
   }
 
-  /** cooling operating hours */
+  /** crank case heater hours (Vaillant data export: HP_CrankCaseHeaterOperatingHours; not cooling) */
   @inherit(r_rundata, u_rundata)
   @ext(0xe1, 0x0b)
-  model RunStatsCoolingHours {
+  model RunStatsCrankCaseHeaterHours {
     @unit("h")
-    value: UIN;
+    value: ULG;
   }
 
-  /** cooling start count */
+  /** crank case heater switches (Vaillant data export: HP_CrankCaseHeaterCommutations; not cooling) */
   @inherit(r_rundata, u_rundata)
   @ext(0xe2, 0x0b)
-  model RunStatsCoolingStarts {
-    value: UIN;
+  model RunStatsCrankCaseHeaterSwitches {
+    value: ULG;
   }
 
-  /** defrost operating hours */
+  /** condensate tray heater hours (Vaillant data export: HP_CondensateTrayHeaterOperatingHours; defrost = RunStats4PortValveHours) */
   @inherit(r_rundata, u_rundata)
   @ext(0xe3, 0x0b)
-  model RunStatsDeiceHours {
+  model RunStatsCondensateTrayHeaterHours {
     @unit("h")
-    value: UIN;
+    value: ULG;
   }
 
-  /** defrost start count */
+  /** condensate tray heater switches (Vaillant data export: HP_CondensateTrayHeaterCommutations; defrosts = RunStats4PortValveSwitches) */
   @inherit(r_rundata, u_rundata)
   @ext(0xe4, 0x0b)
-  model RunStatsDeiceStarts {
-    value: UIN;
+  model RunStatsCondensateTrayHeaterSwitches {
+    value: ULG;
   }
 
-  /** unverified outdoor cycle runtime counter e50b (tracks compressor cycles; not hydraulic backup heater) */
+  /** compressor safety relay hours (Vaillant data export: HP_CompressorSafetyRelayOperatingHours) */
   @inherit(u_rundata)
   @ext(0xe5, 0x0b)
-  model RunStatsDiage50b {
+  model RunStatsCompressorSafetyRelayHours {
     @unit("h")
-    value: UIN;
+    value: ULG;
   }
 
-  /** unverified outdoor cycle count e60b (tracks compressor starts 1:1; not hydraulic backup heater) */
+  /** compressor safety relay switches (Vaillant data export: HP_CompressorSafetyRelayCommutations) */
   @inherit(u_rundata)
   @ext(0xe6, 0x0b)
-  model RunStatsDiage60b {
-    value: UIN;
+  model RunStatsCompressorSafetyRelaySwitches {
+    value: ULG;
   }
 
   /** compressor flow temperature target (display: flow temperature target compressor) */
@@ -662,7 +663,7 @@ namespace Hmux0 {
     value: SIN;
   }
 
-  /** evaporation temperature (display: evaporation temperature) */
+  /** evaporation temperature (display: evaporation temperature; Vaillant data export: RefrigerantCircuitEvaporationTemperature) */
   @inherit(r_rundata, u_rundata)
   @ext(0xd1, 0x10)
   model RunDataEvaporationTemp {
@@ -671,7 +672,7 @@ namespace Hmux0 {
     value: SIN;
   }
 
-  /** suction line superheat (display: superheat) */
+  /** suction line superheat (display: superheat; Vaillant data export: RefrigerantCircuitCurrentSuperheating) */
   @inherit(r_rundata, u_rundata)
   @ext(0xd7, 0x10)
   model RunDataSuperheat {
@@ -680,7 +681,7 @@ namespace Hmux0 {
     value: SIN;
   }
 
-  /** condenser liquid outlet temperature (condensation temperature minus this value matches display subcooling) */
+  /** condenser liquid outlet temperature (condensation temperature minus this value matches display subcooling; Vaillant data export: BuildingCircuitHeatExchangerOutletTemperature) */
   @inherit(r_rundata, u_rundata)
   @ext(0xdb, 0x10)
   model RunDataCondensateTemp {
@@ -1010,57 +1011,67 @@ namespace Hmux0 {
     value: UCH;
   }
 
-  /** diagnostic telemetry readout cc10 (tracks load/temp) */
+  /** return temperature sensor (Vaillant data export: ReturnTemperatureSensor) */
   @inherit(u_rundata)
   @ext(0xcc, 0x10)
-  model RunDataDiagnostic {
-    @maxLength(2)
-    value: HEX;
+  model RunDataReturnTempSensor {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
   }
 
-  /** diagnostic telemetry readout 030b (tracks compressor load) */
+  /** fan unit air inlet temperature (Vaillant data export: FanUnitAirInletTemperature) */
   @inherit(u_rundata)
   @ext(0x03, 0x0b)
-  model RunDataDiag030b {
-    @maxLength(2)
-    value: HEX;
+  model RunDataFanAirInletTemp {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
   }
 
-  /** diagnostic telemetry readout fd0a (tracks load/temp) */
+  /** flow temperature sensor (Vaillant data export: FlowTemperatureSensor) */
   @inherit(u_rundata)
   @ext(0xfd, 0x0a)
-  model RunDataDiagfd0a {
-    @maxLength(2)
-    value: HEX;
+  model RunDataFlowTempSensor {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
   }
 
-  /** passive status mirror (uint16 matches HMUStatusCode b503 0003) */
+  /** status list, first entry matches HMUStatusCode b503 0003 (Vaillant data export: StatusList; 0xffff = empty) */
   @inherit(u_rundata)
   @ext(0x88, 0x13)
-  model RunDataDiag8813 {
-    /** HMUStatusCode mirror + ff padding */
-    @maxLength(10)
-    value: HEX;
+  model RunDataStatusList {
+    s1: UIN;
+    s2: UIN;
+    s3: UIN;
+    s4: UIN;
+    s5: UIN;
   }
 
-  /** diagnostic code 8b13 readout */
+  /** fault list (Vaillant data export: FaultList; 0xffff = empty) */
   @inherit(u_rundata)
   @ext(0x8b, 0x13)
-  model RunDataDiag8b13 {
-    @maxLength(10)
-    value: HEX;
+  model RunDataFaultList {
+    s1: UIN;
+    s2: UIN;
+    s3: UIN;
+    s4: UIN;
+    s5: UIN;
   }
 
   // Passive-only (u) diagnostic & unverified inverter parameters (no active polling)
 
-  /** inverter compressor dynamic control offset */
+  /** evaporator capacity (Vaillant data export: AI_EvapCapacity, 0.1 kW) */
   @inherit(u_rundata)
   @ext(0x00, 0x0b)
-  model RunDataDiag000b {
-    value: SLG;
+  model RunDataEvapCapacity {
+    @unit("kW")
+    @divisor(10)
+    value: ULG;
   }
 
-  /** electrical power consumption in 100 W steps (= RunDataElectricPowerConsumption rounded, also during defrost) */
+  /** electrical power consumption in 100 W steps (= RunDataElectricPowerConsumption rounded, also during defrost; Vaillant data export: AI_ApplCapacity) */
   @inherit(u_rundata)
   @ext(0x01, 0x0b)
   model RunDataElectricPower100 {
@@ -1069,48 +1080,52 @@ namespace Hmux0 {
     value: ULG;
   }
 
-  /** target evaporator reference temperature */
+  /** inverter input current limit (Vaillant data export: Inv_InputCurrentLimit; float reads 15.0 while Vaillant reports 0) */
   @inherit(u_rundata)
   @ext(0x7c, 0x08)
-  model RunDataDiag7c08 {
-    @unit("°C")
+  model RunDataInverterCurrentLimit {
+    @unit("A")
     value: EXP;
   }
 
-  /** secondary economizer circuit diagnostic */
+  /** superheat target (Vaillant data export: RefrigerantCircuitTargetSuperheating) */
   @inherit(u_rundata)
   @ext(0xd6, 0x10)
-  model RunDataDiagd610 {
-    @unit("°C")
+  model RunDataSuperheatTarget {
+    @unit("K")
     @divisor(16)
     value: SIN;
   }
 
-  /** unverified diagnostic byte f40a (observed 29..30) */
+  /** SCOP heating, current month (Vaillant data export: ScopCurrentMonthCentralHeating) */
   @inherit(u_rundata)
   @ext(0xf4, 0x0a)
-  model RunDataDiagf40a {
+  model RunDataScopHcMonth {
+    @divisor(10)
     value: UCH;
   }
 
-  /** unverified diagnostic byte f60a (observed 27..29) */
+  /** SCOP heating, total (Vaillant data export: ScopTotalCentralHeating) */
   @inherit(u_rundata)
   @ext(0xf6, 0x0a)
-  model RunDataDiagf60a {
+  model RunDataScopHcTotal {
+    @divisor(10)
     value: UCH;
   }
 
-  /** unverified diagnostic byte f80a (observed 30..31) */
+  /** SCOP domestic hot water, current month (Vaillant data export: ScopCurrentMonthDomesticHotWater) */
   @inherit(u_rundata)
   @ext(0xf8, 0x0a)
-  model RunDataDiagf80a {
+  model RunDataScopHwcMonth {
+    @divisor(10)
     value: UCH;
   }
 
-  /** unverified diagnostic byte fa0a (observed constant 34) */
+  /** SCOP domestic hot water, total (Vaillant data export: ScopTotalDomesticHotWater) */
   @inherit(u_rundata)
   @ext(0xfa, 0x0a)
-  model RunDataDiagfa0a {
+  model RunDataScopHwcTotal {
+    @divisor(10)
     value: UCH;
   }
 
@@ -1138,20 +1153,10 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** inverter electric diagnostic 3702 */
+  /** environment circuit heat exchanger (evaporator) inlet temperature (Vaillant data export: EnvironmentCircuitHeatExchangerInletTemperature) */
   @inherit(u_1a_ff)
   @ext(0x37, 0x02)
-  model RunDataDiag3702 {
-    value: UIN;
-
-    @maxLength(5)
-    ign_2: IGN;
-  }
-
-  /** evaporation temperature (= RunDataEvaporationTemp d110 within 0.1 K; D.504 by the #637 key) */
-  @inherit(u_1a_ff)
-  @ext(0x37, 0x04)
-  model RunDataEvaporationTempB51a {
+  model RunDataEnvHexInletTempB51a {
     @unit("°C")
     @divisor(16)
     value: SIN;
@@ -1160,17 +1165,31 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** inverter electric diagnostic 3705 */
+  /** compressor inlet (suction gas) temperature (Vaillant data export: CompressorInletTemperature; close to RunDataEvaporationTemp d110 because superheat is ~0 K) */
   @inherit(u_1a_ff)
-  @ext(0x37, 0x05)
-  model RunDataDiag3705 {
-    value: UIN;
+  @ext(0x37, 0x04)
+  model RunDataCompressorInletTempB51a {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
 
     @maxLength(5)
     ign_2: IGN;
   }
 
-  /** refrigerant high pressure (= RunDataHighPressure 6a09 within 0.1 bar in 40 same-minute samples; D.511 by the #637 key) */
+  /** compressor outlet temperature (Vaillant data export: CompressorOutletTemperature) */
+  @inherit(u_1a_ff)
+  @ext(0x37, 0x05)
+  model RunDataCompressorOutletTempB51a {
+    @unit("°C")
+    @divisor(16)
+    value: SIN;
+
+    @maxLength(5)
+    ign_2: IGN;
+  }
+
+  /** refrigerant high pressure (= RunDataHighPressure 6a09 within 0.1 bar in 40 same-minute samples; D.511 by the #637 key; Vaillant data export: RefrigerantCircuitHighPressureSensor) */
   @inherit(u_1a_ff)
   @ext(0x37, 0x0b)
   model RunDataHighPressureB51a {
@@ -1182,7 +1201,7 @@ namespace Hmux0 {
     ign_2: IGN;
   }
 
-  /** currently active error codes of the outdoor unit (0xffff = empty slot; seen: 22 = F.22 low water pressure, 733 = F.733 evaporation temperature too low) */
+  /** currently active error codes of the outdoor unit (0xffff = empty slot; seen: 22 = F.22 low water pressure, 733 = F.733 evaporation temperature too low; Vaillant data export calls this register MaintenanceList) */
   @inherit(u_rundata)
   @ext(0x8c, 0x13)
   model RunDataActiveErrors {
@@ -1413,5 +1432,67 @@ namespace Hmux0 {
   /** included parts */
   union _includes {
     B516_inc,
+  }
+
+  // Polled by the myVAILLANT gateway; names, units and enums from the Vaillant data export (EU Data Act,
+  // aroTHERM plus VWL 75/8.1 A, HMUX0 SW 0405, 2026-11-26).
+
+  /** four way valve, on = defrost (Vaillant data export: FourWayValve) */
+  @inherit(u_rundata)
+  @ext(0x19, 0x0a)
+  model RunDataFourWayValve {
+    @values(Values_OnOff)
+    value: UCH;
+  }
+
+  /** noise reduction demand (Vaillant data export: ASW1_NoiseReductionDemand) */
+  @inherit(u_rundata)
+  @ext(0x4e, 0x0d)
+  model RunDataNoiseReductionDemand {
+    @values(Values_OnOff)
+    value: UCH;
+  }
+
+  /** tank setpoint at the heat pump (Vaillant data export: TankSetpoint) */
+  @inherit(u_rundata)
+  @ext(0x58, 0x0b)
+  model RunDataTankSetpoint {
+    @unit("°C")
+    @divisor(16)
+    value: UIN;
+  }
+
+  /** DHW operation mode at the indoor unit (Vaillant data export: DomesticHotWaterOperationMode; same value as D.268) */
+  @inherit(u_rundata)
+  @ext(0x77, 0x0b)
+  model RunDataHwcOperationMode {
+    @values(Values_DcodeHwcMode)
+    value: UCH;
+  }
+
+  /** maximum power in noise reduction mode (Vaillant data export: HP_MaxNoiseRedPower) */
+  @inherit(u_rundata)
+  @ext(0x7c, 0x0b)
+  model RunDataMaxNoiseRedPower {
+    @unit("%")
+    value: UCH;
+  }
+
+  /** refrigerant high pressure switch, 1 = closed (Vaillant data export: RefrigerantCircuitHighPressureSwitch) */
+  @inherit(u_rundata)
+  @ext(0xf7, 0x09)
+  model RunDataHighPressureSwitch {
+    value: UCH;
+  }
+
+  /** irreversible limp home list (Vaillant data export: LimpHomeModeIrreversibleList; 0xffff = empty) */
+  @inherit(u_rundata)
+  @ext(0x8a, 0x13)
+  model RunDataLimpHomeList {
+    s1: UIN;
+    s2: UIN;
+    s3: UIN;
+    s4: UIN;
+    s5: UIN;
   }
 }
