@@ -826,6 +826,59 @@ namespace Hmu_HW5103 {
     value: EXP;
   }
 
+  // energy counters as polled by the myVaillant gateway (b516 10 00 ff ff <source> <usage> 00 00),
+  // names from the Vaillant EU Data Act export (energyType/operationMode, values in Wh, exact match).
+  // source with flag bits: 0x42 = earned environment energy, 0x49 = heat generated, 0x83 = consumed electrical energy.
+  // answer: <period> <0> <index> <source> <usage> <date: bits yyyyyyy mmmm ddddd, date of last update> <value EXP Wh>
+  /** default *r for gateway energy counters (b516 10, period total) */
+  @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
+  model r_x16stat {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  /** heat generated for heating, Vaillant HEAT_GENERATED/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x49, 0x03, 0, 0)
+  model HeatGeneratedHc {
+    value: energye;
+  }
+
+  /** heat generated for hot water, Vaillant HEAT_GENERATED/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x49, 0x04, 0, 0)
+  model HeatGeneratedHwc {
+    value: energye;
+  }
+
+  /** earned environment energy for heating, Vaillant EARNED_ENVIRONMENT_ENERGY/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x42, 0x03, 0, 0)
+  model EnvironmentEnergyHc {
+    value: energye;
+  }
+
+  /** earned environment energy for hot water, Vaillant EARNED_ENVIRONMENT_ENERGY/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x42, 0x04, 0, 0)
+  model EnvironmentEnergyHwc {
+    value: energye;
+  }
+
+  /** consumed electrical energy for heating, Vaillant CONSUMED_ELECTRICAL_ENERGY/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x03, 0, 0)
+  model ConsumedElectricalEnergyHc {
+    value: energye;
+  }
+
+  /** consumed electrical energy for hot water, Vaillant CONSUMED_ELECTRICAL_ENERGY/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x04, 0, 0)
+  model ConsumedElectricalEnergyHwc {
+    value: energye;
+  }
+
   /** included parts */
   union _includes {
     Hcmode_inc,

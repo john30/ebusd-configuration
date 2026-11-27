@@ -212,6 +212,31 @@ namespace Vwz {
     dhw: 1,
   }
 
+  // energy counters as polled by the myVaillant gateway (b516 10 00 ff ff <source> <usage> 00 00),
+  // names from the Vaillant EU Data Act export (energyType/operationMode, values in Wh, exact match).
+  // source with flag bits: 0x42 = earned environment energy, 0x49 = heat generated, 0x83 = consumed electrical energy.
+  // answer: <period> <0> <index> <source> <usage> <date: bits yyyyyyy mmmm ddddd, date of last update> <value EXP Wh>
+  /** default *r for gateway energy counters (b516 10, period total) */
+  @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
+  model r_x16stat {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  /** consumed electrical energy for heating (incl. standby, booked 1:1 as heat generated), Vaillant CONSUMED_ELECTRICAL_ENERGY/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x03, 0, 0)
+  model ConsumedElectricalEnergyHc {
+    value: energye;
+  }
+
+  /** consumed electrical energy for hot water (booked 1:1 as heat generated), Vaillant CONSUMED_ELECTRICAL_ENERGY/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x04, 0, 0)
+  model ConsumedElectricalEnergyHwc {
+    value: energye;
+  }
+
   /** included parts */
   union _includes {
     B516_inc,
