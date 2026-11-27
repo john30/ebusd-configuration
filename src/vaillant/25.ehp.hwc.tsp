@@ -5,6 +5,7 @@ import "./timer_inc.tsp";
 import "./iotesthp_inc.tsp";
 import "./errors_inc.tsp";
 import "./quick_inc.tsp";
+import "./ehpsync_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -69,5 +70,6 @@ namespace Ehp.Hwc {
     Iotesthp_inc,
     Errors_inc,
     Quick_inc,
+    Ehpsync_inc,
   }
 }
