@@ -6,6 +6,7 @@ import "./iotesthp_inc.tsp";
 import "./errors_inc.tsp";
 import "./roomtempoffset_inc.tsp";
 import "./quick_inc.tsp";
+import "./ehpsync_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -181,6 +182,66 @@ namespace Ehp.Mc {
     model Hc1PumpSpeedControlDirectCircuitWhileO is InstallRegister<percent0>;
   }
 
+  /** heating/cooling demand of the circuit */
+  @inherit(rm)
+  @ext(0x31)
+  model Status31 {
+    @maxLength(1)
+    ign: IGN;
+
+    value: hcpumpmode;
+  }
+
+  /** 24h outside temperature average (same value as Tot24hHc2) */
+  @inherit(rm)
+  @ext(0x33)
+  model Status33 {
+    value: temp2;
+  }
+
+  /** default *uw */
+  @write
+  @passive
+  @base(MF, 0x5, 0x43)
+  model uw_43 {}
+
+  /** room temperature sent by the remote control (VR 90) */
+  @inherit(uw_43)
+  @ext
+  model RcRoomTemp {
+    value: temp;
+  }
+
+  /** default *uw */
+  @write
+  @passive
+  @base(MF, 0x5, 0x53)
+  model uw_53 {}
+
+  /** room temperature modulation sent by the remote control (VR 90) */
+  @inherit(uw_53)
+  @ext
+  model RoomTempSwitchOn {
+    @values(Values_rcmode)
+    value: UCH;
+  }
+
+  /** default *uw */
+  @write
+  @passive
+  @base(MF, 0x5, 0x4b)
+  model uw_4b {}
+
+  /** cooling operating mode sent by the remote control (VR 90), same values as CoolingOperatingModeHc2 */
+  @inherit(uw_4b)
+  @ext
+  model SetCoolingOperatingModeHc2 {
+    @maxLength(1)
+    ign: IGN;
+
+    value: hwcmode;
+  }
+
   /** included parts */
   union _includes {
     Mcmode_inc,
@@ -189,5 +250,6 @@ namespace Ehp.Mc {
     Errors_inc,
     Roomtempoffset_inc,
     Quick_inc,
+    Ehpsync_inc,
   }
 }

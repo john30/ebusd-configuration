@@ -4,6 +4,7 @@ import "./hwcmode_inc.tsp";
 import "./timer_inc.tsp";
 import "./iotesthp_inc.tsp";
 import "./errors_inc.tsp";
+import "./ehpsync_inc.tsp";
 using Ebus;
 using Ebus.Num;
 using Ebus.Dtm;
@@ -25,5 +26,6 @@ namespace Ehp.Cc {
     Timer_inc,
     Iotesthp_inc,
     Errors_inc,
+    Ehpsync_inc,
   }
 }
