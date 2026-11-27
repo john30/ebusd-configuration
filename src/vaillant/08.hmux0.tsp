@@ -114,6 +114,7 @@ namespace Hmux0 {
     heating: 1,
     hwc: 2,
     cooling: 3,
+    defrost: 4,
   }
 
   /** default *u for passive IEEE 754 energy counters (b516 1000ffff) */
@@ -543,6 +544,7 @@ namespace Hmux0 {
     value: UIN;
   }
 
+  /** 4-way reversing valve operating hours (Vaillant data export: FourWayValveOperatingHours; tracks defrost + active cooling) */
   @inherit(r_rundata, u_rundata)
   @ext(0xc8, 0x0b)
   model RunStats4PortValveHours {
@@ -550,7 +552,7 @@ namespace Hmux0 {
     value: UIN;
   }
 
-  /** start count */
+  /** 4-way reversing valve switches (Vaillant data export: FourWayValveCommutations; tracks defrost + active cooling) */
   @inherit(r_rundata, u_rundata)
   @ext(0xc9, 0x0b)
   model RunStats4PortValveSwitches {
@@ -609,7 +611,7 @@ namespace Hmux0 {
     value: ULG;
   }
 
-  /** condensate tray heater hours (Vaillant data export: HP_CondensateTrayHeaterOperatingHours; defrost = RunStats4PortValveHours) */
+  /** condensate tray heater hours (Vaillant data export: HP_CondensateTrayHeaterOperatingHours; defrost + active cooling = RunStats4PortValveHours) */
   @inherit(r_rundata, u_rundata)
   @ext(0xe3, 0x0b)
   model RunStatsCondensateTrayHeaterHours {
@@ -617,7 +619,7 @@ namespace Hmux0 {
     value: ULG;
   }
 
-  /** condensate tray heater switches (Vaillant data export: HP_CondensateTrayHeaterCommutations; defrosts = RunStats4PortValveSwitches) */
+  /** condensate tray heater switches (Vaillant data export: HP_CondensateTrayHeaterCommutations; defrost + active cooling = RunStats4PortValveSwitches) */
   @inherit(r_rundata, u_rundata)
   @ext(0xe4, 0x0b)
   model RunStatsCondensateTrayHeaterSwitches {
@@ -1080,7 +1082,7 @@ namespace Hmux0 {
     value: ULG;
   }
 
-  /** inverter input current limit (Vaillant data export: Inv_InputCurrentLimit; float reads 15.0 while Vaillant reports 0) */
+  /** inverter input current limit (Vaillant data export: Inv_InputCurrentLimit; confirmed EXP in A: 23.5 A active / 0.0 A standby on 15 kW unit, 15.0 A on 7.5 kW; Vaillant export decodes only the first byte) */
   @inherit(u_rundata)
   @ext(0x7c, 0x08)
   model RunDataInverterCurrentLimit {
@@ -1437,11 +1439,58 @@ namespace Hmux0 {
   // Polled by the myVAILLANT gateway; names, units and enums from the Vaillant data export (EU Data Act,
   // aroTHERM plus VWL 75/8.1 A, HMUX0 SW 0405, 2026-11-26).
 
-  /** four way valve, on = defrost (Vaillant data export: FourWayValve) */
+  /** four way valve status, observed on during the core defrost phase (Vaillant data export: FourWayValve) */
   @inherit(u_rundata)
   @ext(0x19, 0x0a)
   model RunDataFourWayValve {
     @values(Values_OnOff)
+    value: UCH;
+  }
+
+  /** requested operation mode (Vaillant data export: ASW1_ReqOpMode; single unit observed 0=none, 1=heating, 5=hwc; raw UCH as cascades use different values) */
+  @inherit(u_rundata)
+  @ext(0x48, 0x0d)
+  model RunDataReqOpMode {
+    value: UCH;
+  }
+
+  /** current operation mode (Vaillant data export: ASW1_CurOpMode) */
+  @inherit(u_rundata)
+  @ext(0x49, 0x0d)
+  model RunDataCurOpMode {
+    @values(Values_PowerStatusMode)
+    value: UCH;
+  }
+
+  /** building circuit pump mode/setpoint heating, 29 = Auto (Vaillant data export: BuildPumpModeAndManualStpCH; same value as D.122) */
+  @inherit(u_rundata)
+  @ext(0x60, 0x0b)
+  model RunDataBuildPumpModeCH {
+    @unit("%")
+    value: UCH;
+  }
+
+  /** building circuit pump mode/setpoint cooling, 29 = Auto (Vaillant data export: BuildPumpModeAndManualStpCool; same value as D.123) */
+  @inherit(u_rundata)
+  @ext(0x61, 0x0b)
+  model RunDataBuildPumpModeCool {
+    @unit("%")
+    value: UCH;
+  }
+
+  /** building circuit pump mode/setpoint DHW, 29 = Auto (Vaillant data export: BuildPumpModeAndManualStpDHW; same value as D.124) */
+  @inherit(u_rundata)
+  @ext(0x62, 0x0b)
+  model RunDataBuildPumpModeHwc {
+    @unit("%")
+    value: UCH;
+  }
+
+  /** cooling technology (Vaillant data export: CoolingTechnology; same value as D.127) */
+  @inherit(u_rundata)
+  @ext(0x65, 0x0b)
+  model RunDataCoolingTechnology {
+    @values(Values_DcodeCooling)
     value: UCH;
   }
 

@@ -222,6 +222,7 @@ namespace Vwzio {
     heating: 1,
     hwc: 2,
     cooling: 3,
+    defrost: 4,
   }
 
   /** default *u for passive IEEE 754 energy counters (b516 1000ffff) */
@@ -339,11 +340,11 @@ namespace Vwzio {
 
   // Passive-only (u) diagnostic telemetry & hydraulic status
 
-  /** minimum volumetric flow rate safety threshold */
+  /** electrical power of the internal backup heater / hydraulic module (Vaillant data export: EBH_CurrentPower) */
   @inherit(u_rundata)
   @ext(0xbf, 0x0d)
-  model RunDataDiagbf0d {
-    @unit("l/min")
+  model RunDataBackupHeaterPower {
+    @unit("W")
     value: EXP;
   }
 
