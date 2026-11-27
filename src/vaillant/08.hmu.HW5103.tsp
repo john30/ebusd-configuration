@@ -443,7 +443,7 @@ namespace Hmu_HW5103 {
     value: pressv;
   }
 
-  /** 4 way valve (on = defrosting), Vaillant FourWayValve */
+  /** 4 way valve status, observed on during the core defrost phase, Vaillant FourWayValve */
   @inherit(r_7)
   @ext(0x19, 0xa)
   model RunDataFourWayValve {
@@ -548,7 +548,7 @@ namespace Hmu_HW5103 {
     value: EXP;
   }
 
-  /** inverter input current limit (raw 13.5 seen, Vaillant shows 0), Vaillant Inv_InputCurrentLimit */
+  /** inverter input current limit, Vaillant Inv_InputCurrentLimit (the Vaillant export shows only the first byte, e.g. 102 for 66 66 56 41 = 13.4) */
   @inherit(r_7)
   @ext(0x7c, 0x8)
   model RunDataInverterCurrentLimit {
@@ -556,11 +556,10 @@ namespace Hmu_HW5103 {
     value: EXP;
   }
 
-  /** requested operation mode, Vaillant ASW1_ReqOpMode */
+  /** requested operation mode (raw, seen: single unit 0/1/5, cascade 4/5/6), Vaillant ASW1_ReqOpMode */
   @inherit(r_7)
   @ext(0x48, 0xd)
   model RunDataReqOpMode {
-    @values(Values_hmureqopmode)
     value: UCH;
   }
 
@@ -570,6 +569,27 @@ namespace Hmu_HW5103 {
   model RunDataCurOpMode {
     @values(Values_hmucuropmode)
     value: UCH;
+  }
+
+  /** device specific number start, Vaillant DeviceSpecificNumberStart */
+  @inherit(r_7)
+  @ext(0x83, 0xb)
+  model DeviceSpecificNumberStart {
+    value: UIN;
+  }
+
+  /** device specific number offset, Vaillant DeviceSpecificNumberOffset */
+  @inherit(r_7)
+  @ext(0x84, 0xb)
+  model DeviceSpecificNumberOffset {
+    value: UCH;
+  }
+
+  /** device specific number (= start + offset), Vaillant DeviceSpecificNumber */
+  @inherit(r_7)
+  @ext(0x85, 0xb)
+  model DeviceSpecificNumber {
+    value: UIN;
   }
 
   /** noise reduction demand, Vaillant ASW1_NoiseReductionDemand */
@@ -736,7 +756,7 @@ namespace Hmu_HW5103 {
     value: hoursum2;
   }
 
-  /** 4 way valve switches (= number of defrosts), Vaillant FourWayValveCommutations */
+  /** 4 way valve switches (one increment per defrost), Vaillant FourWayValveCommutations */
   @inherit(r_x34)
   @ext(0x7)
   @Ebus.example("1032", "08b51a0405ff3407", "0aff082808040000000000")
@@ -781,13 +801,6 @@ namespace Hmu_HW5103 {
     heating: 1,
     hwc: 2,
     defrost: 4,
-  }
-
-  /** requested operation mode of the outdoor unit (ASW1_ReqOpMode) */
-  enum Values_hmureqopmode {
-    none: 0,
-    heating: 1,
-    hwc: 5,
   }
 
   /** hot water operation mode (all three values seen on the device) */

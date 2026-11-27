@@ -132,6 +132,28 @@ namespace Vwz {
     code5: UIN;
   }
 
+  /** device specific number start, Vaillant DeviceSpecificNumberStart */
+  @inherit(r_x09)
+  @ext(0x83, 0xb)
+  model DeviceSpecificNumberStart {
+    value: UIN;
+  }
+
+  /** device specific number offset, Vaillant DeviceSpecificNumberOffset */
+  @inherit(r_x09)
+  @ext(0x84, 0xb)
+  model DeviceSpecificNumberOffset {
+    value: UCH;
+  }
+
+  /** device specific number (= start + offset, the Vaillant export shows only the first byte, e.g. 249 for f9 07 = 2041), Vaillant DeviceSpecificNumber */
+  @inherit(r_x09)
+  @ext(0x85, 0xb)
+  @Ebus.example("2041", "76b50905540200850b", "060201850bf907")
+  model DeviceSpecificNumber {
+    value: UIN;
+  }
+
   /** default *r (b51a 05 ff 32 <nr>), answer ff 08 <type> <value LE> */
   @base(MF, 0x1a, 0x5, 0xff, 0x32)
   model r_x32 {
