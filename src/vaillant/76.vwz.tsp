@@ -215,7 +215,8 @@ namespace Vwz {
   // energy counters as polled by the myVaillant gateway (b516 10 00 ff ff <source> <usage> 00 00),
   // names from the Vaillant EU Data Act export (energyType/operationMode, values in Wh, exact match).
   // source with flag bits: 0x42 = earned environment energy, 0x49 = heat generated, 0x83 = consumed electrical energy.
-  // answer: <period> <0> <index> <source> <usage> <date: bits yyyyyyy mmmm ddddd, date of last update> <value EXP Wh>
+  // answer: <period> <0> <index> <source> <usage> <date> <value EXP Wh>
+  // date: bits yyyyyyy mmmm ddddd, device date of the last 100 Wh step of any of the device's counters (shared by all counters of the device)
   /** default *r for gateway energy counters (b516 10, period total) */
   @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
   model r_x16stat {

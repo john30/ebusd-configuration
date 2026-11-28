@@ -756,7 +756,7 @@ namespace Hmu_HW5103 {
     value: hoursum2;
   }
 
-  /** 4 way valve switches (one increment per defrost), Vaillant FourWayValveCommutations */
+  /** 4 way valve switches (one increment per defrost, on units with active cooling also per cooling cycle), Vaillant FourWayValveCommutations */
   @inherit(r_x34)
   @ext(0x7)
   @Ebus.example("1032", "08b51a0405ff3407", "0aff082808040000000000")
@@ -829,7 +829,8 @@ namespace Hmu_HW5103 {
   // energy counters as polled by the myVaillant gateway (b516 10 00 ff ff <source> <usage> 00 00),
   // names from the Vaillant EU Data Act export (energyType/operationMode, values in Wh, exact match).
   // source with flag bits: 0x42 = earned environment energy, 0x49 = heat generated, 0x83 = consumed electrical energy.
-  // answer: <period> <0> <index> <source> <usage> <date: bits yyyyyyy mmmm ddddd, date of last update> <value EXP Wh>
+  // answer: <period> <0> <index> <source> <usage> <date> <value EXP Wh>
+  // date: bits yyyyyyy mmmm ddddd, device date of the last 100 Wh step of any of the device's counters (shared by all counters of the device)
   /** default *r for gateway energy counters (b516 10, period total) */
   @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
   model r_x16stat {
@@ -876,6 +877,27 @@ namespace Hmu_HW5103 {
   @inherit(r_x16stat)
   @ext(0x83, 0x04, 0, 0)
   model ConsumedElectricalEnergyHwc {
+    value: energye;
+  }
+
+  /** heat generated for cooling, Vaillant HEAT_GENERATED/COOLING */
+  @inherit(r_x16stat)
+  @ext(0x49, 0x05, 0, 0)
+  model HeatGeneratedCool {
+    value: energye;
+  }
+
+  /** earned environment energy for cooling (seen 0 on all units), Vaillant EARNED_ENVIRONMENT_ENERGY/COOLING */
+  @inherit(r_x16stat)
+  @ext(0x42, 0x05, 0, 0)
+  model EnvironmentEnergyCool {
+    value: energye;
+  }
+
+  /** consumed electrical energy for cooling, Vaillant CONSUMED_ELECTRICAL_ENERGY/COOLING */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x05, 0, 0)
+  model ConsumedElectricalEnergyCool {
     value: energye;
   }
 
