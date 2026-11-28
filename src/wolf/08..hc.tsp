@@ -22,17 +22,17 @@ namespace hc {
   @ext(0x22, 0)
   model Hg01 is Register<temp10>;
 
-  /** HG 02 - Untere Geblaesedrehzahl (25-100) */
+  /** HG 02 - untere Brennerleistung Heizung, raw 0-255 = 0-100 % (e.g. 128 = 50 %, 255 = 100 %) */
   @ext(0x5a, 1)
-  model Hg02 is ReadonlyRegister<percent>;
+  model Hg02 is Register<percent>;
 
   /** HG 03 - Obere Geblaesedrehzahl Warmwasser */
   @ext(0x59, 1)
   model Hg03 is ReadonlyRegister<percent>;
 
-  /** HG 04 - Obere Geblaesedrehzahl Heizung (1-100) */
+  /** HG 04 - obere Brennerleistung Heizung, raw 0-255 = 0-100 % (255 = 100 %) */
   @id(0x3f, 1)
-  model Hg04 is ReadonlyRegister<percent>;
+  model Hg04 is Register<percent>;
 
   /** HG 06 - Heizkreispumpenbetriebsart (0-2) */
   @id(0x41, 1)
