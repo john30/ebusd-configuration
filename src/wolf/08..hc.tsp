@@ -129,4 +129,173 @@ namespace hc {
   /** PWM Pumpe */
   @id(0x6d, 1)
   model Pump is ReadonlyRegister<percent>;
+
+  /** Flow temperature 2 near the heat exchanger, 1-2 K warmer at standstill */
+  @id(0x58, 0x3)
+  model Flowtemp2 is ReadonlyRegister<stemp10>;
+
+  /** Hot water temperature at the storage sensor */
+  @id(0x59, 0x3)
+  model Hwctemp2 is ReadonlyRegister<stemp10>;
+
+  /** Outside temperature, -40 = no sensor connected */
+  @id(0xc, 0)
+  model Outsidetemp is ReadonlyRegister<stemp10>;
+
+  /** Water pressure, 0x8000 = invalid (no sensor fitted) */
+  @id(0x1a, 0x27)
+  model Press is ReadonlyRegister<press100>;
+
+  /** Ionisation */
+  @id(0x4f, 0x27)
+  model Ionisation is ReadonlyRegister<UCH>;
+
+  /** Burner performance in % of the allowed maximum */
+  @id(0x6f, 0x1)
+  model Performance is ReadonlyRegister<percent>;
+
+  /** Pump speed, 0x8000 = invalid (sensor not available) */
+  @id(0x57, 0x27)
+  model PumpSpeed is ReadonlyRegister<percent>;
+
+  /** Burner software version */
+  @id(0x9a, 0x1)
+  model Version is ReadonlyRegister<UIN>;
+
+  /** Modulation status, 179 assumed to mean burner off */
+  @id(0x93, 0x3)
+  model Modulation is ReadonlyRegister<UIN>;
+
+  /** Current error code, 0 = no error */
+  @inherit(regr)
+  @id(0x1, 0)
+  model Error {
+    @values(Values_errorcode)
+    value: UCH;
+  }
+
+  /** HG 80 - most recent error: code plus operating hours since occurrence */
+  @inherit(regr)
+  @id(0x29, 0x2)
+  model Hg80 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 81 - error 2 */
+  @inherit(regr)
+  @id(0x2b, 0x2)
+  model Hg81 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 82 - error 3 */
+  @inherit(regr)
+  @id(0x2c, 0x2)
+  model Hg82 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 83 - error 4 */
+  @inherit(regr)
+  @id(0x2d, 0x2)
+  model Hg83 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 84 - error 5 */
+  @inherit(regr)
+  @id(0x2e, 0x2)
+  model Hg84 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 85 - error 6 */
+  @inherit(regr)
+  @id(0x2f, 0x2)
+  model Hg85 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 86 - error 7 */
+  @inherit(regr)
+  @id(0x30, 0x2)
+  model Hg86 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 87 - error 8 */
+  @inherit(regr)
+  @id(0x31, 0x2)
+  model Hg87 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 88 - error 9 */
+  @inherit(regr)
+  @id(0x32, 0x2)
+  model Hg88 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** HG 89 - oldest error */
+  @inherit(regr)
+  @id(0x33, 0x2)
+  model Hg89 {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** operating hours since the error occurred */
+    hours: UCH;
+  }
+
+  /** Last error history entry via alternative register pair: code plus second byte */
+  @inherit(regr)
+  @id(0x3d, 0x2)
+  model ErrorLastStatus {
+    @values(Values_errorcode)
+    code: UCH;
+
+    /** second byte, likely operating hours since the error */
+    extra: UCH;
+  }
+
+  /** Operating hour of the most recent error, compare with Hg9x */
+  @id(0x3e, 0x2)
+  model ErrorLastHours is ReadonlyRegister<hours>;
 }

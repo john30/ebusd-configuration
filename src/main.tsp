@@ -1,4 +1,5 @@
 import "./broadcast.tsp";
+import "./encon/08..hc.tsp";
 import "./encon/0a..co2.tsp";
 import "./encon/3c..excellent.tsp";
 import "./encon/broadcast.tsp";
@@ -71,5 +72,6 @@ import "./vaillant/ec.zeo.sc.tsp";
 import "./vaillant/general.tsp";
 import "./vaillant/scan.tsp";
 import "./wolf/08..hc.tsp";
+import "./wolf/35..bm.tsp";
 import "./wolf/50..mc.tsp";
 import "./wolf/broadcast.tsp";
