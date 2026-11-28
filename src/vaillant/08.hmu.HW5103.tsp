@@ -385,6 +385,431 @@ namespace Hmu_HW5103 {
     value: tempv;
   }
 
+  // ---------------------------------------------------------------------------
+  // Additions 2026-11-26 from the Vaillant EU Data Act export (myVaillant
+  // "download data"): the gateway (NETX3, f1) polls these registers since
+  // 2026-11-23 every 1-5 min. Names/units/register numbers are Vaillant's own
+  // ("symbolicAddress" = register, e.g. 3422 = 0x0d5e -> ext 0x5e, 0xd).
+  // Byte-exact cross check against a passive eBUS log: 10.433 values, 0 diffs.
+  // Vaillant name given in the doc comment.
+  // ---------------------------------------------------------------------------
+
+  // B509 54 02 00 <reg_lo> <reg_hi>, answer 02 01 <reg_lo> <reg_hi> <data>
+
+  /** thermal (condensation) power, Vaillant ASW1_CondensationCapacity */
+  @inherit(r_7)
+  @ext(0x5e, 0xd)
+  @Ebus.example("4140 W", "08b509055402005e0d", "0802015e0d62608145")
+  model RunDataThermalPower {
+    @unit("W")
+    value: EXP;
+  }
+
+  /** electrical power consumption, Vaillant ASW1_PowerConsumption */
+  @inherit(r_7)
+  @ext(0x5b, 0xd)
+  @Ebus.example("1097.8 W", "08b509055402005b0d", "0802015b0d963a8944")
+  model RunDataElectricPowerConsumption {
+    @unit("W")
+    value: EXP;
+  }
+
+  /** flow temperature, accurate to 2 decimal places, Vaillant FlowTemperatureSensor */
+  @inherit(r_7)
+  @ext(0xfc, 0x8)
+  model RunDataFlowTemp {
+    value: tempv;
+  }
+
+  /** return temperature, accurate to 2 decimal places, Vaillant ReturnTemperatureSensor */
+  @inherit(r_7)
+  @ext(0x6, 0x9)
+  @Ebus.example("28.68 °C", "08b509055402000609", "0802010609e06ce541")
+  model RunDataReturnTemp {
+    value: tempv;
+  }
+
+  /** desired flow temperature incl. hot water, Vaillant DesiredFlowTemperature */
+  @inherit(r_7)
+  @ext(0x4a, 0xd)
+  model RunDataDesiredFlowTemp {
+    value: tempv;
+  }
+
+  /** water pressure, Vaillant WaterPressureSensor */
+  @inherit(r_7)
+  @ext(0x74, 0x9)
+  model RunDataWaterPressure {
+    value: pressv;
+  }
+
+  /** 4 way valve status, observed on during the core defrost phase, Vaillant FourWayValve */
+  @inherit(r_7)
+  @ext(0x19, 0xa)
+  model RunDataFourWayValve {
+    value: onoff;
+  }
+
+  /** Vaillant ESC */
+  @inherit(r_7)
+  @ext(0x4, 0xa)
+  model RunDataESC {
+    value: yesno;
+  }
+
+  /** condensation temperature, Vaillant RefrigerantCircuitCondensationTemperature */
+  @inherit(r_7)
+  @ext(0xa6, 0xe)
+  model RunDataCondensationTemp {
+    value: tempv;
+  }
+
+  /** evaporation temperature, Vaillant RefrigerantCircuitEvaporationTemperature */
+  @inherit(r_7)
+  @ext(0xa7, 0xe)
+  model RunDataEvaporationTemp {
+    value: tempv;
+  }
+
+  /** target superheating, Vaillant RefrigerantCircuitTargetSuperheating */
+  @inherit(r_7)
+  @ext(0xa8, 0xe)
+  model RunDataTargetSuperheat {
+    @unit("K")
+    value: EXP;
+  }
+
+  /** current superheating, Vaillant RefrigerantCircuitCurrentSuperheating */
+  @inherit(r_7)
+  @ext(0xa9, 0xe)
+  model RunDataSuperheat {
+    @unit("K")
+    value: EXP;
+  }
+
+  /** current subcooling, Vaillant RefrigerantCircuitCurrentSubcooling */
+  @inherit(r_7)
+  @ext(0xaa, 0xe)
+  model RunDataSubcooling {
+    @unit("K")
+    value: EXP;
+  }
+
+  /** setpoint subcooling, Vaillant RefrigerantCircuitSetpointSubcooling */
+  @inherit(r_7)
+  @ext(0xac, 0xe)
+  model RunDataTargetSubcooling {
+    @unit("K")
+    value: EXP;
+  }
+
+  /** refrigerant temperature after building heat exchanger/EEV, Vaillant TRefriBuildHexEev */
+  @inherit(r_7)
+  @ext(0xb6, 0x8)
+  model RunDataRefrigerantBuildHexTemp {
+    value: tempv;
+  }
+
+  /** building circuit heat exchanger outlet temperature (0 if not fitted), Vaillant BuildingCircuitHeatExchangerOutletTemperature */
+  @inherit(r_7)
+  @ext(0xba, 0x8)
+  model RunDataBuildingHexOutletTemp {
+    value: tempv;
+  }
+
+  /** building circuit heat exchanger inlet temperature (0 if not fitted), Vaillant BuildingCircuitHeatExchangerInletTemperature */
+  @inherit(r_7)
+  @ext(0xc4, 0x8)
+  model RunDataBuildingHexInletTemp {
+    value: tempv;
+  }
+
+  /** building circuit flow (vortex sensor), Vaillant VortexFlow_lph */
+  @inherit(r_7)
+  @ext(0xba, 0x9)
+  model RunDataVortexFlow {
+    @unit("l/h")
+    value: EXP;
+  }
+
+  /** building circuit flow DN15 scaling, Vaillant VortexFlowDN15_lph */
+  @inherit(r_7)
+  @ext(0xbc, 0x9)
+  model RunDataVortexFlowDN15 {
+    @unit("l/h")
+    value: EXP;
+  }
+
+  /** building circuit flow DN20 scaling (approx. 2x DN15), Vaillant VortexFlowDN20_lph */
+  @inherit(r_7)
+  @ext(0xbd, 0x9)
+  model RunDataVortexFlowDN20 {
+    @unit("l/h")
+    value: EXP;
+  }
+
+  /** inverter input current limit, Vaillant Inv_InputCurrentLimit (the Vaillant export shows only the first byte, e.g. 102 for 66 66 56 41 = 13.4) */
+  @inherit(r_7)
+  @ext(0x7c, 0x8)
+  model RunDataInverterCurrentLimit {
+    @unit("A")
+    value: EXP;
+  }
+
+  /** requested operation mode (raw, seen: single unit 0/1/5, cascade 4/5/6), Vaillant ASW1_ReqOpMode */
+  @inherit(r_7)
+  @ext(0x48, 0xd)
+  model RunDataReqOpMode {
+    value: UCH;
+  }
+
+  /** current operation mode, Vaillant ASW1_CurOpMode */
+  @inherit(r_7)
+  @ext(0x49, 0xd)
+  model RunDataCurOpMode {
+    @values(Values_hmucuropmode)
+    value: UCH;
+  }
+
+  /** device specific number start, Vaillant DeviceSpecificNumberStart */
+  @inherit(r_7)
+  @ext(0x83, 0xb)
+  model DeviceSpecificNumberStart {
+    value: UIN;
+  }
+
+  /** device specific number offset, Vaillant DeviceSpecificNumberOffset */
+  @inherit(r_7)
+  @ext(0x84, 0xb)
+  model DeviceSpecificNumberOffset {
+    value: UCH;
+  }
+
+  /** device specific number (= start + offset), Vaillant DeviceSpecificNumber */
+  @inherit(r_7)
+  @ext(0x85, 0xb)
+  model DeviceSpecificNumber {
+    value: UIN;
+  }
+
+  /** noise reduction demand, Vaillant ASW1_NoiseReductionDemand */
+  @inherit(r_7)
+  @ext(0x4e, 0xd)
+  model RunDataNoiseReductionDemand {
+    value: yesno;
+  }
+
+  /** maintenance list (65535 = empty), Vaillant MaintenanceList */
+  @inherit(r_7)
+  @ext(0x54, 0xd)
+  model RunDataMaintenanceList {
+    code1: UIN;
+    code2: UIN;
+    code3: UIN;
+    code4: UIN;
+    code5: UIN;
+  }
+
+  /** emergency list (65535 = empty), Vaillant EmergencyList */
+  @inherit(r_7)
+  @ext(0x55, 0xd)
+  model RunDataEmergencyList {
+    code1: UIN;
+    code2: UIN;
+    code3: UIN;
+    code4: UIN;
+    code5: UIN;
+  }
+
+  /** fault list (65535 = empty), Vaillant FaultList */
+  @inherit(r_7)
+  @ext(0x56, 0xd)
+  model RunDataFaultList {
+    code1: UIN;
+    code2: UIN;
+    code3: UIN;
+    code4: UIN;
+    code5: UIN;
+  }
+
+  /** crank case heater hours, Vaillant HP_CrankCaseHeaterOperatingHours */
+  @inherit(r_7)
+  @ext(0xe1, 0xb)
+  model RunStatsCrankCaseHeaterHours {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** crank case heater switches, Vaillant HP_CrankCaseHeaterCommutations */
+  @inherit(r_7)
+  @ext(0xe2, 0xb)
+  model RunStatsCrankCaseHeaterSwitches {
+    value: ULG;
+  }
+
+  /** condensate tray heater hours, Vaillant HP_CondensateTrayHeaterOperatingHours */
+  @inherit(r_7)
+  @ext(0xe3, 0xb)
+  model RunStatsCondensateTrayHeaterHours {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** condensate tray heater switches, Vaillant HP_CondensateTrayHeaterCommutations */
+  @inherit(r_7)
+  @ext(0xe4, 0xb)
+  model RunStatsCondensateTrayHeaterSwitches {
+    value: ULG;
+  }
+
+  /** compressor safety relay hours, Vaillant HP_CompressorSafetyRelayOperatingHours */
+  @inherit(r_7)
+  @ext(0xe5, 0xb)
+  model RunStatsCompressorSafetyRelayHours {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** compressor safety relay switches, Vaillant HP_CompressorSafetyRelayCommutations */
+  @inherit(r_7)
+  @ext(0xe6, 0xb)
+  model RunStatsCompressorSafetyRelaySwitches {
+    value: ULG;
+  }
+
+  /** flow setpoint backup heater, Vaillant ASW0_FlowSetpointBackupHeater */
+  @inherit(r_7)
+  @ext(0xea, 0xc)
+  model RunDataBackupHeaterFlowSetpoint {
+    value: tempv;
+  }
+
+  /** refrigerant high pressure switch, Vaillant RefrigerantCircuitHighPressureSwitch */
+  @inherit(r_7)
+  @ext(0xf7, 0x9)
+  model RunDataHighPressureSwitch {
+    value: yesno;
+  }
+
+  // B51A 05 FF 32 <nr>, answer FF 08 <type> <value LE>
+
+  /** appliance hours powered, Vaillant ApplianceOperatingHoursPowered */
+  @inherit(r_2)
+  @ext(0x40)
+  model OperatingHoursPowered {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** appliance hours central heating, Vaillant ApplianceOperatingHoursCentralHeating */
+  @inherit(r_2)
+  @ext(0x41)
+  model OperatingHoursHc {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** appliance hours cooling, Vaillant ApplianceOperatingHoursCooling */
+  @inherit(r_2)
+  @ext(0x43)
+  model OperatingHoursCooling {
+    @unit("h")
+    value: ULG;
+  }
+
+  /** appliance hours hot water, Vaillant ApplianceOperatingHoursDomesticHotWater */
+  @inherit(r_2)
+  @ext(0x44)
+  model OperatingHoursHwc {
+    @unit("h")
+    value: ULG;
+  }
+
+  // B51A 05 FF 34 <nr>, answer FF 08 <type> <value LE> (counters)
+  // or FF 02 <type> <value> <min> <max> <step> (parameters)
+
+  /** default *r (b51a 05 ff 34) */
+  @base(MF, 0x1a, 0x5, 0xff, 0x34)
+  model r_x34 {
+    @maxLength(3)
+    ign: IGN;
+  }
+
+  /** building pump hours, Vaillant WaterPumpOperatingHours */
+  @inherit(r_x34)
+  @ext(0x2)
+  model BuildingPumpHours {
+    value: hoursum2;
+  }
+
+  /** building pump starts, Vaillant WaterPumpCommutations */
+  @inherit(r_x34)
+  @ext(0x3)
+  model BuildingPumpStarts {
+    value: UIN;
+  }
+
+  /** 4 way valve hours (defrost), Vaillant FourWayValveOperatingHours */
+  @inherit(r_x34)
+  @ext(0x6)
+  model FourWayValveHours {
+    value: hoursum2;
+  }
+
+  /** 4 way valve switches (one increment per defrost, on units with active cooling also per cooling cycle), Vaillant FourWayValveCommutations */
+  @inherit(r_x34)
+  @ext(0x7)
+  @Ebus.example("1032", "08b51a0405ff3407", "0aff082808040000000000")
+  model FourWayValveSwitches {
+    value: UIN;
+  }
+
+  /** fan hours, Vaillant VentilatorOperatingHours */
+  @inherit(r_x34)
+  @ext(0x51)
+  model Fan1Hours {
+    value: hoursum2;
+  }
+
+  /** fan starts, Vaillant VentilatorCounter */
+  @inherit(r_x34)
+  @ext(0x52)
+  model Fan1Starts {
+    value: UIN;
+  }
+
+  /** maximum remaining pressure head (parameter), Vaillant MaximumRemainingPressureHead */
+  @inherit(r_x34)
+  @ext(0x1f)
+  model MaxRemainingPressureHead {
+    @unit("mbar")
+    value: UIN;
+  }
+
+  /** hot water operation mode (parameter, set at the indoor unit), Vaillant DomesticHotWaterOperationMode */
+  @inherit(r_x34)
+  @ext(0x44)
+  @Ebus.example("balanced", "08b51a0405ff3444", "0aff020002000000020001")
+  model HwcOperationMode {
+    @values(Values_hmuhwcopmode)
+    value: UIN;
+  }
+
+  /** current operation mode of the outdoor unit (ASW1_CurOpMode) */
+  enum Values_hmucuropmode {
+    off: 0,
+    heating: 1,
+    hwc: 2,
+    defrost: 4,
+  }
+
+  /** hot water operation mode (all three values seen on the device) */
+  enum Values_hmuhwcopmode {
+    eco: 0,
+    normal: 1,
+    balanced: 2,
+  }
+
   // B516
   /** default *r */
   @base(MF, 0x16)
@@ -399,6 +824,81 @@ namespace Hmu_HW5103 {
     @unit("kW")
     @divisor(1000)
     value: EXP;
+  }
+
+  // energy counters as polled by the myVaillant gateway (b516 10 00 ff ff <source> <usage> 00 00),
+  // names from the Vaillant EU Data Act export (energyType/operationMode, values in Wh, exact match).
+  // source with flag bits: 0x42 = earned environment energy, 0x49 = heat generated, 0x83 = consumed electrical energy.
+  // answer: <period> <0> <index> <source> <usage> <date> <value EXP Wh>
+  // date: bits yyyyyyy mmmm ddddd, device date of the last 100 Wh step of any of the device's counters (shared by all counters of the device)
+  /** default *r for gateway energy counters (b516 10, period total) */
+  @base(MF, 0x16, 0x10, 0, 0xff, 0xff)
+  model r_x16stat {
+    @maxLength(7)
+    ign: IGN;
+  }
+
+  /** heat generated for heating, Vaillant HEAT_GENERATED/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x49, 0x03, 0, 0)
+  model HeatGeneratedHc {
+    value: energye;
+  }
+
+  /** heat generated for hot water, Vaillant HEAT_GENERATED/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x49, 0x04, 0, 0)
+  model HeatGeneratedHwc {
+    value: energye;
+  }
+
+  /** earned environment energy for heating, Vaillant EARNED_ENVIRONMENT_ENERGY/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x42, 0x03, 0, 0)
+  model EnvironmentEnergyHc {
+    value: energye;
+  }
+
+  /** earned environment energy for hot water, Vaillant EARNED_ENVIRONMENT_ENERGY/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x42, 0x04, 0, 0)
+  model EnvironmentEnergyHwc {
+    value: energye;
+  }
+
+  /** consumed electrical energy for heating, Vaillant CONSUMED_ELECTRICAL_ENERGY/HEATING */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x03, 0, 0)
+  model ConsumedElectricalEnergyHc {
+    value: energye;
+  }
+
+  /** consumed electrical energy for hot water, Vaillant CONSUMED_ELECTRICAL_ENERGY/DOMESTIC_HOT_WATER */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x04, 0, 0)
+  model ConsumedElectricalEnergyHwc {
+    value: energye;
+  }
+
+  /** heat generated for cooling, Vaillant HEAT_GENERATED/COOLING */
+  @inherit(r_x16stat)
+  @ext(0x49, 0x05, 0, 0)
+  model HeatGeneratedCool {
+    value: energye;
+  }
+
+  /** earned environment energy for cooling (seen 0 on all units), Vaillant EARNED_ENVIRONMENT_ENERGY/COOLING */
+  @inherit(r_x16stat)
+  @ext(0x42, 0x05, 0, 0)
+  model EnvironmentEnergyCool {
+    value: energye;
+  }
+
+  /** consumed electrical energy for cooling, Vaillant CONSUMED_ELECTRICAL_ENERGY/COOLING */
+  @inherit(r_x16stat)
+  @ext(0x83, 0x05, 0, 0)
+  model ConsumedElectricalEnergyCool {
+    value: energye;
   }
 
   /** included parts */
